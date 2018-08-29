@@ -1,0 +1,125 @@
+--- 
+title: "Text Mining for Technical Knowledge Extraction"
+author: "Filippo Chiarello"
+date: "`r Sys.Date()`"
+bibliography:
+- book.bib
+- packages.bib
+description: Test uno, due, tre, quattro description.
+documentclass: book
+link-citations: yes
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+# Prerequisites
+
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction {#intro}
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+<!--chapter:end:01-introduction.Rmd-->
+
+# State of the Art
+
+Here is a review of existing methods.
+
+## Tools 
+
+## Documents
+
+### Patents
+
+### Papers
+
+### Projects
+
+### Wikipedia
+
+### Twitter
+
+### Job Profiles
+
+<!--chapter:end:02-state_of_the_art.Rmd-->
+
+# Methods
+
+We describe our methods in this chapter.
+
+## Patents
+
+## Papers
+
+## Projects
+
+## Wikipedia
+
+## Twitter
+
+## Job Profiles
+
+<!--chapter:end:03-methods.Rmd-->
+
+# Applications
+
+Some _significant_ applications are demonstrated in this chapter.
+
+## Patents
+
+## Papers
+
+## Projects
+
+## Wikipedia
+
+## Twitter
+
+## Job Profiles
+
+<!--chapter:end:04-case_studies.Rmd-->
+
+# Future Developments
+
+Decide the way in wich devide the chapter. Tools or functions?
+
+## Research and Development
+
+## Marketing
+
+## Human Resources
+
+<!--chapter:end:05-future_developments.Rmd-->
+
+# Final Words
+
+We have finished a nice book.
+
+<!--chapter:end:06-conlusion.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:07-references.Rmd-->
+

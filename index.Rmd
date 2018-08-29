@@ -1,5 +1,5 @@
 --- 
-title: "Text Mining for Technical Knowledge Extraction"
+title: "Text Mining Techniques for Knowledge Extraction from Technical Documents"
 author: "Filippo Chiarello"
 date: "`r Sys.Date()`"
 bibliography:
