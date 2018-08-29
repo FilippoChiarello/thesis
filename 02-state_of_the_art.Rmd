@@ -4,6 +4,36 @@ Here is a review of existing methods.
 
 ## Tools 
 
+### Program
+
+### Understand
+
+### Import
+
+#### Retrieval
+
+### Tidy
+
+### Transform
+
+#### Preprocessing
+
+### Model
+
+#### Pattern Analysis
+
+#### Sentiment Analysis
+
+#### Named Entity Recognition
+
+#### Network Analysis
+
+#### Topic Modelling
+
+### Visualize
+
+### Comunicate
+
 ## Documents
 
 ### Patents

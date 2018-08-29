@@ -3,14 +3,15 @@ title: "Text Mining Techniques for Knowledge Extraction from Technical Documents
 author: "Filippo Chiarello"
 date: "`r Sys.Date()`"
 bibliography:
-- book.bib
-- packages.bib
-description: Test uno, due, tre, quattro description.
+- bib_book.bib
+- bib_papers.bib
+- bib_web.bib
+- bib_packages.bib
+description: This document contains the PhD thesis of Filippo Chiarello.
 documentclass: book
 link-citations: yes
 site: bookdown::bookdown_site
 biblio-style: apalike
 ---
 
-# Prerequisites
 

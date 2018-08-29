@@ -1,9 +1,9 @@
 # Future Developments
 
-Decide the way in wich devide the chapter. Tools or functions?
+## Marketing
 
 ## Research and Development
 
-## Marketing
+## Design
 
 ## Human Resources
