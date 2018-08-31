@@ -84,10 +84,24 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2018-08-29}
+  \date{2018-08-31}
 
 \usepackage{booktabs}
 
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 \begin{document}
 \maketitle
 
@@ -95,7 +109,7 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\chapter{Introduction}\label{intro}
+\chapter{Introduction}\label{introduction}
 
 \section{Goal}\label{goal}
 
@@ -114,69 +128,158 @@ Programming}\label{challenges-understanding-and-programming}
 
 \section{Stakeholders}\label{stakeholders}
 
-\subsection{Marketing}\label{marketing}
+Marketing
 
-\subsection{Research and Development}\label{research-and-development}
+Research and Development
 
-\subsection{Design}\label{design}
+Design
 
-\subsection{Human Resources}\label{human-resources}
+Human Resources
 
-\subsection{Other Stakeholders}\label{other-stakeholders}
+Other Stakeholders
 
-\chapter{State of the Art}\label{state-of-the-art}
+\chapter{State of the Art}\label{sota}
 
-Here is a review of existing methods.
+The analysis of technical documents require the design of processes that
+rely both on programming and Natural Language Processing techniques and
+on the undestanding and knowldege of field experts. While the first
+techniques are codified and explicit, the second are sometimes implicit
+and always harder to systematize. In this section i treat these two
+groups of techniques in the same way to give to the reader a sistematic
+litterature review on these topics. For this reason the sections of this
+chapter has the sequent structure:
 
-\section{Tools}\label{tools}
+\begin{itemize}
+\tightlist
+\item
+  At a first level we have two sections @ref(sota\_tools) and
+  @ref(sota\_documents), reviewing respectivelly the process of
+  \emph{programming and Natural Language Processing} and of
+  \emph{undestanding and knowldege of field experts application};
+\item
+  Section @ref(sota\_tools) has a subsection for each of the
+  \emph{phases} showed in figure tot. These subsections goes from
+  @ref(sota\_tools\_program) to @ref(sota\_tools\_comunicate);
+\item
+  Each subsection from @ref(sota\_tools\_program) to
+  @refref(sota\_tools\_comunicate) contains the relative Natural
+  Language Processing \emph{task} that are relevant for the analysis of
+  technical documents, for example Document Retrieval
+  @ref(sota\_tools\_retrieval), Part-Of-Speech-Tagging;
+  \#ref(sota\_tools\_transform\_pos) or Named Entity Recognition
+  @ref(sota\_tools\_model\_ner).
+\item
+  Each task subsection describes the relevant \emph{techniques} to
+  perform that task;
+\item
+  Since the second section @ref(sota\_documents) describes less
+  systematics phases, task and techniques this section opens with a
+  first subsection @ref(sota\_documents\_understand) that focuses on the
+  studies of the problems of using expert knowledge in an analytical
+  process and which are the techniques to convert this knowledge in a
+  format that is usable in a Natural Language Processing workflow.
+\item
+  Finally, always section @ref(sota\_documents) has a subsection for
+  each of the technical \emph{documents} I analyzed (aggiungi gancio con
+  introduzione). These subsections goes from
+  @ref(sota\_documents\_patents) to @ref(sota\_documents\_jobs);
+\end{itemize}
 
-\subsection{Program}\label{program}
+\section{Phases, Task, and Techniques}\label{sota_tools}
 
-\subsection{Understand}\label{understand}
+\subsection{Program}\label{sota_tools_program}
 
-\subsection{Import}\label{import}
+\subsection{Import}\label{sota_tools_import}
 
-\subsubsection{Retrieval}\label{retrieval}
+\subsubsection{Document Retrieval}\label{sota_tools_import_retrieval}
 
-\subsection{Tidy}\label{tidy}
+\subsection{Tidy}\label{sota_tools_tidy}
 
-\subsection{Transform}\label{transform}
+\subsection{Transform}\label{sota_tools_transform}
 
-\subsubsection{Preprocessing}\label{preprocessing}
+\subsubsection{Stemming}\label{sota_tools_transform_stemming}
 
-\subsection{Model}\label{model}
+\subsubsection{Lemmatisation}\label{sota_tools_transform_lemmatisation}
 
-\subsubsection{Pattern Analysis}\label{pattern-analysis}
+\subsubsection{N-Grams}\label{sota_tools_transform_ngrams}
 
-\subsubsection{Sentiment Analysis}\label{sentiment-analysis}
+\subsubsection{Part-of-Speech Tagging}\label{sota_tools_transform_pos}
 
-\subsubsection{Named Entity Recognition}\label{named-entity-recognition}
+\subsubsection{Regular Expressions}\label{sota_tools_transform_regex}
 
-\subsubsection{Network Analysis}\label{network-analysis}
+\subsection{Model}\label{sota_tools_model}
 
-\subsubsection{Topic Modelling}\label{topic-modelling}
+\subsubsection{Document
+Classification}\label{sota_tools_model_doc_class}
 
-\subsection{Visualize}\label{visualize}
+\subsubsection{Network Analysis}\label{sota_tools_model_net_anal}
 
-\subsection{Comunicate}\label{comunicate}
+\subsubsection{Sentiment Analsysis}\label{sota_tools_model_sent_anal}
 
-\section{Documents}\label{documents}
+\subsubsection{Named Entity Recognition}\label{sota_tools_model_ner}
 
-\subsection{Patents}\label{patents}
+\subsubsection{Vector Semantics}\label{sota_tools_model_vec}
 
-\subsection{Papers}\label{papers}
+\subsubsection{Topic Modelling}\label{sota_tools_model_topic_model}
 
-\subsection{Projects}\label{projects}
+\subsection{Visualize}\label{sota_tools_visualize}
 
-\subsection{Wikipedia}\label{wikipedia}
+\subsection{Comunicate}\label{sota_tools_comunicate}
 
-\subsection{Twitter}\label{twitter}
+\section{Documents}\label{sota_documents}
 
-\subsection{Job Profiles}\label{job-profiles}
+\subsection{Understand}\label{sota_documents_understand}
+
+Rember to modify the DS workflow
+
+\subsubsection{The problem of
+byases}\label{sota_documents_understand_byas}
+
+\subsubsection{The Importance of Lexicons for Technical Documents
+Analysis}\label{sota_documents_understand_lexicons}
+
+\subsection{Patents}\label{sota_documents_patents}
+
+\subsection{Papers}\label{sota_documents_papers}
+
+\subsection{Projects}\label{sota_documents_projects}
+
+\subsection{Wikipedia}\label{sota_documents_wiki}
+
+\subsection{Twitter}\label{sota_documents_twitter}
+
+\subsection{Job Profiles}\label{sota_documents_jobs}
 
 \chapter{Methods}\label{methods}
 
-We describe our methods in this chapter.
+In this chapter I describe the methods applied for the analysis of
+different types of documents containing technical information. The
+methods are ensamble of Natural Language Processing (NLP) and Text
+Mining techniques described in @ref(sota\_tools), re-designed depending
+on the analyzed document and the analysis goal.
+
+Table tot summarise the relations between the documents under analysis
+(introduced in section @ref(sota\_documents)) and the NLP techniques.
+
+Table documents vs tools
+
+Table algorithms vs tools
+
+\section{Patents}\label{patents}
+
+\section{Papers}\label{papers}
+
+\section{Projects}\label{projects}
+
+\section{Wikipedia}\label{wikipedia}
+
+\section{Twitter}\label{twitter}
+
+\section{Job Profiles}\label{job-profiles}
+
+\chapter{Applications and Results}\label{applications-and-results}
+
+Some \emph{significant} applications are demonstrated in this chapter.
 
 \section{Patents}\label{patents-1}
 
@@ -190,35 +293,19 @@ We describe our methods in this chapter.
 
 \section{Job Profiles}\label{job-profiles-1}
 
-\chapter{Applications and Results}\label{applications-and-results}
-
-Some \emph{significant} applications are demonstrated in this chapter.
-
-\section{Patents}\label{patents-2}
-
-\section{Papers}\label{papers-2}
-
-\section{Projects}\label{projects-2}
-
-\section{Wikipedia}\label{wikipedia-2}
-
-\section{Twitter}\label{twitter-2}
-
-\section{Job Profiles}\label{job-profiles-2}
-
 \chapter{Future Developments}\label{future-developments}
 
-\section{Marketing}\label{marketing-1}
+\section{Marketing}\label{marketing}
 
-\section{Research and Development}\label{research-and-development-1}
+\section{Research and Development}\label{research-and-development}
 
-\section{Design}\label{design-1}
+\section{Design}\label{design}
 
-\section{Human Resources}\label{human-resources-1}
+\section{Human Resources}\label{human-resources}
 
 \chapter{Conclusions}\label{conclusions}
 
-We have finished a nice book.
+We have finished a nice thesis
 
 \bibliography{bib\_book.bib,bib\_papers.bib,bib\_web.bib,bib\_packages.bib}
 
