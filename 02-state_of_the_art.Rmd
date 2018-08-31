@@ -2,66 +2,66 @@
 
 The analysis of technical documents require the design of processes that rely both on programming and Natural Language Processing techniques and on the undestanding and knowldege of field experts. While the first techniques are codified and explicit, the second are sometimes implicit and always harder to systematize. In this section i treat these two groups of techniques in the same way to give to the reader a sistematic litterature review on these topics. For this reason the sections of this chapter has the sequent structure: 
 
-- At a first level we have two sections \@ref(sota_tools) and \@ref(sota_documents), reviewing respectivelly the process of _programming and Natural Language Processing_ and of _undestanding and knowldege of field  experts application_;
-- Section \@ref(sota_tools) has a subsection for each of the _phases_ showed in figure tot. These subsections goes from \@ref(sota_tools_program) to \@ref(sota_tools_comunicate);
-- Each subsection from \@ref(sota_tools_program) to \@refref(sota_tools_comunicate) contains the relative Natural Language Processing _task_ that are relevant for the analysis of technical documents, for example Document Retrieval \@ref(sota_tools_retrieval), Part-Of-Speech-Tagging; \#ref(sota_tools_transform_pos) or Named Entity Recognition \@ref(sota_tools_model_ner).
+- At a first level we have two sections \@ref(sotatools) and \@ref(sotadocuments), reviewing respectivelly the process of _programming and Natural Language Processing_ and of _undestanding and knowldege of field  experts application_;
+- Section \@ref(sotatools) has a subsection for each of the _phases_ showed in figure tot. These subsections goes from \@ref(sotatoolsprogram) to \@ref(sotatoolscomunicate);
+- Each subsection from \@ref(sotatoolsprogram) to \@ref(sotatoolscomunicate) contains the relative Natural Language Processing _task_ that are relevant for the analysis of technical documents, for example Document Retrieval \@ref(sotatoolsretrieval), Part-Of-Speech-Tagging; \@ref(sotatoolstransformpos) or Named Entity Recognition \@ref(sotatoolsmodelner).
 - Each task subsection describes the relevant _techniques_ to perform that task;
-- Since the second section \@ref(sota_documents) describes less systematics phases, task and techniques this section opens with a first subsection \@ref(sota_documents_understand) that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow. 
-- Finally, always section \@ref(sota_documents) has a subsection for each of the technical _documents_ I analyzed (aggiungi gancio con introduzione).  These subsections goes from \@ref(sota_documents_patents) to \@ref(sota_documents_jobs);
+- Since the second section \@ref(sotadocuments) describes less systematics phases, task and techniques this section opens with a first subsection \@ref(sotadocumentsunderstand) that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow. 
+- Finally, always section \@ref(sotadocuments) has a subsection for each of the technical _documents_ I analyzed (aggiungi gancio con introduzione).  These subsections goes from \@ref(sotadocumentspatents) to \@ref(sotadocumentsjobs);
 
-## Phases, Task, and Techniques {#sota_tools}
+## Phases, Task, and Techniques {#sotatools}
 
-### Program {#sota_tools_program}
+### Program {#sotatoolsprogram}
 
-### Import {#sota_tools_import}
+### Import {#sotatoolsimport}
 
-#### Document Retrieval {#sota_tools_import_retrieval}
+#### Document Retrieval {#sotatoolsimportretrieval}
 
-### Tidy {#sota_tools_tidy}
+### Tidy {#sotatoolstidy}
 
-### Transform {#sota_tools_transform}
+### Transform {#sotatoolstransform}
 
-#### Stemming {#sota_tools_transform_stemming}
-#### Lemmatisation {#sota_tools_transform_lemmatisation}
-#### N-Grams {#sota_tools_transform_ngrams}
-#### Part-of-Speech Tagging {#sota_tools_transform_pos}
-#### Regular Expressions {#sota_tools_transform_regex}
+#### Stemming {#sotatoolstransformstemming}
+#### Lemmatisation {#sotatoolstransformlemmatisation}
+#### N-Grams {#sotatoolstransformngrams}
+#### Part-of-Speech Tagging {#sotatoolstransformpos}
+#### Regular Expressions {#sotatoolstransformregex}
 
-### Model {#sota_tools_model}
+### Model {#sotatoolsmodel}
 
-#### Document Classification {#sota_tools_model_doc_class}
-#### Network Analysis {#sota_tools_model_net_anal}
-#### Sentiment Analsysis {#sota_tools_model_sent_anal}
-#### Named Entity Recognition {#sota_tools_model_ner}
-#### Vector Semantics {#sota_tools_model_vec}
-#### Topic Modelling {#sota_tools_model_topic_model}
+#### Document Classification {#sotatoolsmodeldocclass}
+#### Network Analysis {#sotatoolsmodelnetanal}
+#### Sentiment Analsysis {#sotatoolsmodelsentanal}
+#### Named Entity Recognition {#sotatoolsmodelner}
+#### Vector Semantics {#sotatoolsmodelvec}
+#### Topic Modelling {#sotatoolsmodeltopicmodel}
 
-### Visualize {#sota_tools_visualize}
+### Visualize {#sotatoolsvisualize}
 
-### Comunicate {#sota_tools_comunicate}
-
-
+### Comunicate {#sotatoolscomunicate}
 
 
 
-## Documents {#sota_documents}
 
-### Understand {#sota_documents_understand}
+
+## Documents {#sotadocuments}
+
+### Understand {#sotadocumentsunderstand}
 
 Rember to modify the DS workflow
 
-#### The problem of byases {#sota_documents_understand_byas}
+#### The problem of byases {#sotadocumentsunderstandbyas}
 
-#### The Importance of Lexicons for Technical Documents Analysis  {#sota_documents_understand_lexicons}
+#### The Importance of Lexicons for Technical Documents Analysis  {#sotadocumentsunderstandlexicons}
 
-### Patents {#sota_documents_patents}
+### Patents {#sotadocumentspatents}
 
-### Papers {#sota_documents_papers}
+### Papers {#sotadocumentspapers}
 
-### Projects {#sota_documents_projects}
+### Projects {#sotadocumentsprojects}
 
-### Wikipedia {#sota_documents_wiki}
+### Wikipedia {#sotadocumentswiki}
 
-### Twitter {#sota_documents_twitter}
+### Twitter {#sotadocumentstwitter}
 
-### Job Profiles {#sota_documents_jobs}
+### Job Profiles {#sotadocumentsjobs}
