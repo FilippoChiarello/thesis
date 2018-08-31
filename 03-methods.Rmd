@@ -1,6 +1,16 @@
-# Methods
+# Methods{#methods}
 
-We describe our methods in this chapter.
+In this chapter I describe the methods applied for the analysis of different types of documents containing technical information. The methods are ensamble of Natural Language Processing (NLP) and Text Mining techniques described in \@ref(sota_tools), re-designed depending on the analyzed document and the analysis goal. 
+
+Table tot summarise the relations between the documents under analysis (introduced in section \@ref(sota_documents)) and the NLP techniques.
+
+
+
+
+
+Table documents vs tools
+
+Table algorithms vs tools
 
 ## Patents
 

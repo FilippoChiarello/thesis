@@ -1,4 +1,4 @@
-# Introduction {#intro}
+# Introduction {#introduction}
 
 ## Goal
 
@@ -16,12 +16,12 @@
 
 ## Stakeholders
 
-### Marketing
+Marketing
 
-### Research and Development
+Research and Development
 
-### Design
+Design
 
-### Human Resources
+Human Resources
 
-### Other Stakeholders
+Other Stakeholders

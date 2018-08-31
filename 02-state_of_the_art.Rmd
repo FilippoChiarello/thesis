@@ -1,49 +1,67 @@
-# State of the Art
+# State of the Art{#sota}
 
-Here is a review of existing methods.
+The analysis of technical documents require the design of processes that rely both on programming and Natural Language Processing techniques and on the undestanding and knowldege of field experts. While the first techniques are codified and explicit, the second are sometimes implicit and always harder to systematize. In this section i treat these two groups of techniques in the same way to give to the reader a sistematic litterature review on these topics. For this reason the sections of this chapter has the sequent structure: 
 
-## Tools 
+- At a first level we have two sections \@ref(sota_tools) and \@ref(sota_documents), reviewing respectivelly the process of _programming and Natural Language Processing_ and of _undestanding and knowldege of field  experts application_;
+- Section \@ref(sota_tools) has a subsection for each of the _phases_ showed in figure tot. These subsections goes from \@ref(sota_tools_program) to \@ref(sota_tools_comunicate);
+- Each subsection from \@ref(sota_tools_program) to \@refref(sota_tools_comunicate) contains the relative Natural Language Processing _task_ that are relevant for the analysis of technical documents, for example Document Retrieval \@ref(sota_tools_retrieval), Part-Of-Speech-Tagging; \#ref(sota_tools_transform_pos) or Named Entity Recognition \@ref(sota_tools_model_ner).
+- Each task subsection describes the relevant _techniques_ to perform that task;
+- Since the second section \@ref(sota_documents) describes less systematics phases, task and techniques this section opens with a first subsection \@ref(sota_documents_understand) that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow. 
+- Finally, always section \@ref(sota_documents) has a subsection for each of the technical _documents_ I analyzed (@fil, aggiungi gancio con introduzione).  These subsections goes from \@ref(sota_documents_patents) to \@ref(sota_documents_jobs);
 
-### Program
+## Phases, Task, and Techniques {#sota_tools}
 
-### Understand
+### Program {#sota_tools_program}
 
-### Import
+### Import {#sota_tools_import}
 
-#### Retrieval
+#### Document Retrieval {#sota_tools_import_retrieval}
 
-### Tidy
+### Tidy {#sota_tools_tidy}
 
-### Transform
+### Transform {#sota_tools_transform}
 
-#### Preprocessing
+#### Stemming {#sota_tools_transform_stemming}
+#### Lemmatisation {#sota_tools_transform_lemmatisation}
+#### N-Grams {#sota_tools_transform_ngrams}
+#### Part-of-Speech Tagging {#sota_tools_transform_pos}
+#### Regular Expressions {#sota_tools_transform_regex}
 
-### Model
+### Model {#sota_tools_model}
 
-#### Pattern Analysis
+#### Document Classification {#sota_tools_model_doc_class}
+#### Network Analysis {#sota_tools_model_net_anal}
+#### Sentiment Analsysis {#sota_tools_model_sent_anal}
+#### Named Entity Recognition {#sota_tools_model_ner}
+#### Vector Semantics {#sota_tools_model_vec}
+#### Topic Modelling {#sota_tools_model_topic_model}
 
-#### Sentiment Analysis
+### Visualize {#sota_tools_visualize}
 
-#### Named Entity Recognition
+### Comunicate {#sota_tools_comunicate}
 
-#### Network Analysis
 
-#### Topic Modelling
 
-### Visualize
 
-### Comunicate
 
-## Documents
+## Documents {#sota_documents}
 
-### Patents
+### Understand {#sota_documents_understand}
 
-### Papers
+Rember to modify the DS workflow
 
-### Projects
+#### The problem of byases {#sota_documents_understand_byas}
 
-### Wikipedia
+#### The Importance of Lexicons for Technical Documents Analysis  {#sota_documents_understand_lexicons}
 
-### Twitter
+### Patents {#sota_documents_patents}
 
-### Job Profiles
+### Papers {#sota_documents_papers}
+
+### Projects {#sota_documents_projects}
+
+### Wikipedia {#sota_documents_wiki}
+
+### Twitter {#sota_documents_twitter}
+
+### Job Profiles {#sota_documents_jobs}
