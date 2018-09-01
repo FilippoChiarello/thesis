@@ -9,7 +9,7 @@ The analysis of technical documents require the design of processes that rely bo
 - Since the second section \@ref(sotadocuments) describes less systematics phases, task and techniques this section opens with a first subsection \@ref(sotadocumentsunderstand) that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow. 
 - Finally, always section \@ref(sotadocuments) has a subsection for each of the technical _documents_ I analyzed (aggiungi gancio con introduzione).  These subsections goes from \@ref(sotadocumentspatents) to \@ref(sotadocumentsjobs).
 
-Commento test Arianna
+Ok risolto.
 
 ## Phases, Tasks, and Techniques {#sotatools}
 
