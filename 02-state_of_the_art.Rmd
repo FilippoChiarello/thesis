@@ -4,12 +4,12 @@ The analysis of technical documents require the design of processes that rely bo
 
 - At a first level we have two sections \@ref(sotatools) and \@ref(sotadocuments), reviewing respectivelly the process of _programming and Natural Language Processing_ and of _undestanding and knowldege of field  experts application_;
 - Section \@ref(sotatools) has a subsection for each of the _phases_ showed in figure tot. These subsections goes from \@ref(sotatoolsprogram) to \@ref(sotatoolscomunicate);
-- Each subsection from \@ref(sotatoolsprogram) to \@ref(sotatoolscomunicate) contains the relative Natural Language Processing _task_ that are relevant for the analysis of technical documents, for example Document Retrieval \@ref(sotatoolsretrieval), Part-Of-Speech-Tagging; \@ref(sotatoolstransformpos) or Named Entity Recognition \@ref(sotatoolsmodelner).
+- Each subsection from \@ref(sotatoolsprogram) to \@ref(sotatoolscomunicate) contains the relative Natural Language Processing _task_ that are relevant for the analysis of technical documents, for example Document Retrieval \@ref(sotatoolsimportretrieval), Part-Of-Speech-Tagging; \@ref(sotatoolstransformpos) or Named Entity Recognition \@ref(sotatoolsmodelner).
 - Each task subsection describes the relevant _techniques_ to perform that task;
 - Since the second section \@ref(sotadocuments) describes less systematics phases, task and techniques this section opens with a first subsection \@ref(sotadocumentsunderstand) that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow. 
 - Finally, always section \@ref(sotadocuments) has a subsection for each of the technical _documents_ I analyzed (aggiungi gancio con introduzione).  These subsections goes from \@ref(sotadocumentspatents) to \@ref(sotadocumentsjobs);
 
-## Phases, Task, and Techniques {#sotatools}
+## Phases, Tasks, and Techniques {#sotatools}
 
 ### Program {#sotatoolsprogram}
 
