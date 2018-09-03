@@ -84,7 +84,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2018-09-01}
+  \date{2018-09-03}
 
 \usepackage{booktabs}
 
@@ -116,6 +116,15 @@
 \section{Problem}\label{problem}
 
 \section{Solutions}\label{solutions}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/main_work_flow} 
+
+}
+
+\caption{A general workflow for the process of data analysis. Readapted from Wickham (2016)}\label{fig:mainworkflow}
+\end{figure}
 
 \section{Challenges: Understanding and
 Programming}\label{challenges-understanding-and-programming}
@@ -153,7 +162,7 @@ chapter has the sequent structure:
 \tightlist
 \item
   At a first level we have two sections \ref{sotatools} and
-  \ref{sotadocuments}, reviewing respectivelly the process of
+  \ref{sotadocuments}, reviewing respectivelly the processes of
   \emph{programming and Natural Language Processing} and of
   \emph{undestanding and knowldege of field experts application};
 \item
@@ -170,7 +179,8 @@ chapter has the sequent structure:
   \ref{sotatoolsmodelner}.
 \item
   Each task subsection describes the relevant \emph{techniques} to
-  perform that task;
+  perform that task. I use the word techniques to include mainly
+  algorythms and procedures but also more generic methods or frameworks;
 \item
   Since the second section \ref{sotadocuments} describes less
   systematics phases, task and techniques this section opens with a
@@ -182,10 +192,19 @@ chapter has the sequent structure:
   Finally, always section \ref{sotadocuments} has a subsection for each
   of the technical \emph{documents} I analyzed (aggiungi gancio con
   introduzione). These subsections goes from \ref{sotadocumentspatents}
-  to \ref{sotadocumentsjobs};
+  to \ref{sotadocumentsjobs}.
 \end{itemize}
 
 \section{Phases, Tasks, and Techniques}\label{sotatools}
+
+In this section I make a review of the most important techniques for
+Natural Language Processing. The techniques (mainly algorythms) are
+grouped in phases (Import, Tidy, Transform, Model, Visualize,
+Communicate) showed in figure \ref{fig:mainworkflow} and each phases is
+dived in the NLP tasks that are the most important for the analysis of
+technical documents. The algorythm i reviewed in this section are
+summmarised in table tot, where the reader can see the relationship
+between tasks and techniques.
 
 \subsection{Program}\label{sotatoolsprogram}
 

@@ -6,6 +6,12 @@
 
 ## Solutions
 
+```{r mainworkflow, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='A general workflow for the process of data analysis. Readapted from Wickham (2016)', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/main_work_flow.png")
+
+```
+
 ## Challenges: Understanding and Programming
 
 ### Understanding

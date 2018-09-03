@@ -2,26 +2,63 @@
 
 The analysis of technical documents require the design of processes that rely both on programming and Natural Language Processing techniques and on the undestanding and knowldege of field experts. While the first techniques are codified and explicit, the second are sometimes implicit and always harder to systematize. In this section i treat these two groups of techniques in the same way to give to the reader a sistematic litterature review on these topics. For this reason the sections of this chapter has the sequent structure: 
 
-- At a first level we have two sections \@ref(sotatools) and \@ref(sotadocuments), reviewing respectivelly the process of _programming and Natural Language Processing_ and of _undestanding and knowldege of field  experts application_;
-- Section \@ref(sotatools) has a subsection for each of the _phases_ showed in figure tot. These subsections goes from \@ref(sotatoolsprogram) to \@ref(sotatoolscomunicate);
+- At a first level we have two sections \@ref(sotatools) and \@ref(sotadocuments), reviewing respectivelly the processes of _programming and Natural Language Processing_ and of _undestanding and knowldege of field  experts application_;
+- Section \@ref(sotatools) has a subsection for each of the _phases_ showed in figure \@ref(fig:mainworkflow). These subsections goes from \@ref(sotatoolsprogram) to \@ref(sotatoolscomunicate);
 - Each subsection from \@ref(sotatoolsprogram) to \@ref(sotatoolscomunicate) contains the relative Natural Language Processing _task_ that are relevant for the analysis of technical documents, for example Document Retrieval \@ref(sotatoolsimportretrieval), Part-Of-Speech-Tagging; \@ref(sotatoolstransformpos) or Named Entity Recognition \@ref(sotatoolsmodelner).
-- Each task subsection describes the relevant _techniques_ to perform that task;
+- Each task subsection describes the relevant _techniques_ to perform that task. I use the word techniques to include mainly algorythms and procedures but also more generic methods or frameworks;
 - Since the second section \@ref(sotadocuments) describes less systematics phases, task and techniques this section opens with a first subsection \@ref(sotadocumentsunderstand) that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow. 
 - Finally, always section \@ref(sotadocuments) has a subsection for each of the technical _documents_ I analyzed (aggiungi gancio con introduzione).  These subsections goes from \@ref(sotadocumentspatents) to \@ref(sotadocumentsjobs).
 
-Ok risolto.
-
 ## Phases, Tasks, and Techniques {#sotatools}
+
+In this section I make a review of the most important techniques for Natural Language Processing in the context of technical documents analysis. The techniques (mainly algorythms) are grouped in phases (Import, Tidy, Transform, Model, Visualize, Communicate) showed in figure \@ref(fig:mainworkflow) and each phases is dived in the NLP tasks that are the most important for the analysis of technical documents. 
+The algorythms i reviewed in this section are summmarised in table tot, where the reader can see the relationship between tasks and techniques. 
 
 ### Program {#sotatoolsprogram}
 
+- __Articoli Emily__
+
 ### Import {#sotatoolsimport}
+
+- I tipi di codifica di testo
+- Pachetti per import 
+
 
 #### Document Retrieval {#sotatoolsimportretrieval}
 
+- Letteratura query
+
 ### Tidy {#sotatoolstidy}
 
+- Hadley
+
 ### Transform {#sotatoolstransform}
+
+articolo utenti, parte Andre
+
+
+### Sentence Splitting
+
+The analysis of technical documents require as first process, that the input text is segmented in sentences. Since documents do not encode this information in a non ambiguous manner (using dots) due to common abbreviations (e.g.: “Mr., Dr.”), a sentence splitting process that does not rely only on a trivial _dot based_ rule is required. This issue in the technical documents domain is even more problematic due to the presence of formulas, numbers, chemical entity names and bibliographic references. Furthermore, since sentece splitting is one of the first processes of an NLP pipeline, errors in this early stage are propagated in the following steps causing a strong decrease for what concerns their accuracy. 
+
+Many researchers has studies this problem. 
+
+- Trova articolo ItalianNLP ed estrai stato dell'arte
+
+One of the most advanced techniques are machine learning techniques: given a training corpus of properly segmented sentences and a learning algorithm, a statistical model is built. By reusing the statistical model, the sentence splitter is able to split sentences on texts not used in the training phase. ItalianNLP lab systems uses this approach. For this reason this algorythm is used for the most of the application presented in my Thesis
+
+### Tokenization
+
+Since documents are unstructured information, these has to be divided into linguistic units. The definition of linguistic units is non-trivial, and more advanced techniques can be used (such as n-gram extraction) but most of the times these are words, punctuation and numbers. This process is defined as tokenization. 
+
+- Trova articolo ItalianNLP ed estrai stato dell'arte
+
+In most of the application described in the present Thesis, the tokenizer developed by the ItalianNLP lab was integrated. This tokenizer is regular expression based: each token must match one of the regular expression defined in a configuration file. For example, the regular expression:
+
+http:\/\/(\w+[\.\/]?)+
+
+is used to tokenize URLs. A rule for URLs must be defined since the ":" in URLs has a different meaning with respect to “explaination/list following”. In this sense single token must be linguistically significant [52]. Among the others, rules are defined to tokenize words, acronyms, numbers, dates and equations.
+
 
 #### Stemming {#sotatoolstransformstemming}
 #### Lemmatisation {#sotatoolstransformlemmatisation}
@@ -49,8 +86,6 @@ Ok risolto.
 ## Documents {#sotadocuments}
 
 ### Understand {#sotadocumentsunderstand}
-
-Rember to modify the DS workflow
 
 #### The problem of byases {#sotadocumentsunderstandbyas}
 
