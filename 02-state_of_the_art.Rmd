@@ -32,41 +32,65 @@ The algorythms i reviewed in this section are summmarised in table tot, where th
 
 - Hadley
 
+DTM
+
+problems such as sparsity
+
 ### Transform {#sotatoolstransform}
 
-articolo utenti, parte Andre
-
+Transforming in the context of Natural Language Processing  is what in computational linguistic is called text normalization. Normalizing text means converting it to a more convenient, standard form. Most of the task of technical document analysis in fact relies on first separating out or tokenizing sentences and words, strip suffixes from the end of the word, determining the root of a word or transform the text using regular expressions. 
 
 ### Sentence Splitting
 
-The analysis of technical documents require as first process, that the input text is segmented in sentences. Since documents do not encode this information in a non ambiguous manner (using dots) due to common abbreviations (e.g.: “Mr., Dr.”), a sentence splitting process that does not rely only on a trivial _dot based_ rule is required. This issue in the technical documents domain is even more problematic due to the presence of formulas, numbers, chemical entity names and bibliographic references. Furthermore, since sentece splitting is one of the first processes of an NLP pipeline, errors in this early stage are propagated in the following steps causing a strong decrease for what concerns their accuracy. 
-
-Many researchers has studies this problem. 
-
-- Trova articolo ItalianNLP ed estrai stato dell'arte
-
-One of the most advanced techniques are machine learning techniques: given a training corpus of properly segmented sentences and a learning algorithm, a statistical model is built. By reusing the statistical model, the sentence splitter is able to split sentences on texts not used in the training phase. ItalianNLP lab systems uses this approach. For this reason this algorythm is used for the most of the application presented in my Thesis
+The analysis of technical documents require as first process, that the input text is segmented in sentences. Since documents do not encode this information in a non ambiguous manner (using dots) due to common abbreviations (e.g.: “Mr., Dr.”), a sentence splitting process that does not rely only on a trivial _dot based_ rule is required. This issue in the technical documents domain is even more problematic due to the presence of formulas, numbers, chemical entity names and bibliographic references. Furthermore, since sentece splitting is one of the first processes of an NLP pipeline, errors in this early stage are propagated in the following steps causing a strong decrease for what concerns their accuracy. One of the most advanced techniques are machine learning techniques: given a training corpus of properly segmented sentences and a learning algorithm, a statistical model is built. By reusing the statistical model, the sentence splitter is able to split sentences on texts not used in the training phase. ItalianNLP lab systems uses this approach [@dell2009ensemble;@attardi2009reverse;@attardi2009accurate]. For this reason this algorythm is used for the most of the application presented in this Thesis.
 
 ### Tokenization
 
-Since documents are unstructured information, these has to be divided into linguistic units. The definition of linguistic units is non-trivial, and more advanced techniques can be used (such as n-gram extraction) but most of the times these are words, punctuation and numbers. This process is defined as tokenization. 
-
-- Trova articolo ItalianNLP ed estrai stato dell'arte
-
-In most of the application described in the present Thesis, the tokenizer developed by the ItalianNLP lab was integrated. This tokenizer is regular expression based: each token must match one of the regular expression defined in a configuration file. For example, the regular expression:
-
-http:\/\/(\w+[\.\/]?)+
-
-is used to tokenize URLs. A rule for URLs must be defined since the ":" in URLs has a different meaning with respect to “explaination/list following”. In this sense single token must be linguistically significant [52]. Among the others, rules are defined to tokenize words, acronyms, numbers, dates and equations.
-
+Since documents are unstructured information, these has to be divided into linguistic units. The definition of linguistic units is non-trivial, and more advanced techniques can be used (such as n-gram extraction) but most of the times these are words, punctuation and numbers. English words are often separated from each other
+by whitespace, but whitespace is not always sufficient. Solving this problems and splitting words in well-defined tokensis defined as tokenization. In most of the application described in the present Thesis, the tokenizer developed by the ItalianNLP lab was integrated [@dell2009ensemble;@attardi2009reverse;@attardi2009accurate]. This tokenizer is regular expression based: each token must match one of the regular expression defined in a configuration file. Among the others, rules are defined to tokenize words, acronyms, numbers, dates and equations.
 
 #### Stemming {#sotatoolstransformstemming}
+
+Stemming is a simpler but cruder methodology for chopping off of affixes. The goal of stemming is reducing inflected (or sometimes derived) words to their word stem, base or root form. The stem of a word and its morphological root do not need to be identical; it is sufficient that related words map to the same stem, even if this stem is not a valid root. One of the most widely used stemming is the simple and efficient Porter algorithm [@porter1980algorithm].
+
 #### Lemmatisation {#sotatoolstransformlemmatisation}
-#### N-Grams {#sotatoolstransformngrams}
+
+Lemmatization is the task of determining the root of a words. The output allow to find that two words have the same root, despite their surface differences. For example, the verbs _am_, _are_, and _is_ have the shared lemma _be_; the nouns _cat_ and _cats_ both have the lemma _cat_. Representing a word by its lemma is important for many natural language processing tasks. Lemmatisation in fact diminish the problem of sparsity of document-word matrix. Futhermore lemmatisaion is important for document retrieval \@ref(sotatoolsimportretrieval) web search, since we want to find documents mentioning motors if we search for motor. The most recent methods for lemmatization involve complete morphological parsing of the word [@hankamer1989morphological]. 
+
 #### Part-of-Speech Tagging {#sotatoolstransformpos}
+
+The part of speech plays an central role in technical document analysis since it provides very useful information concerning the morphological role of a word and its morphosyntactic context: for example, if a token is a determiner, the next token is a noun or an adjective with very high confidence. 
+Part of speech tags are used for many information extraction tools such as named entity taggers (see section \@ref(sotatoolsmodelner)) in order to identify named entities. In typical named entity task these are people and locations since tokens representing named entities follow common morphological patterns (e.g. they start with a capital letter). For the application to technical documents, technical entities (like the possibile failures of a manufact) becomes more relevant. In this context a correct part-of-speech tagger becomes even more important since we can not rely on morphosyntactical rules. In addition part of speech tags can be used to mitigate problems related to polysemy since words often have different meaning with respect to their part of speech (e.g. “track”, “guide”). This information is extremelly valuable in patent analysis, and some patent tailored part-of-speech tagger has been designed (see section \@ref(sotadocumentspatents)).
+The litterature on pos-tagger is huge, and goes behoind the scope of the present thesis to make a complete review. In most of the application presentend in this work, was employed the ILC postagger [@attardi2006experiments]. This postagger uses a supervised training algorithm: given a set of features and a training corpus, the classifier creates a statistical model using the feature statistics extracted from the training corpus. 
+
+
 #### Regular Expressions {#sotatoolstransformregex}
 
+Regular expression (regex) is a language for specifying text search strings, an algebraic notation for characterizing a set of strings. This language whidelly used in modern word processor and text processing tools.. They are particularly useful for searching in texts, when we have a pattern to search for. 
+
+
+A pattern could be at  A regular expression search function will search through the
+corpus, returning all texts that match the pattern. The corpus can be a single document
+or a collection. For example, the Unix command-line tool grep takes a regular
+expression and returns every line of the input document that matches the expression.
+A search can be designed to return every match on a line, if there are more than
+one, or just the first match. In the following examples we generally underline the
+exact part of the pattern that matches the regular expression and show only the first
+match. We’ll show regular expressions delimited by slashes but note that slashes are
+not part of the regular expressions.
+
 ### Model {#sotatoolsmodel}
+
+Classi di modelli. Pedro Domingos
+
+#### N-Grams {#sotatoolstransformngrams}
+
+An n-gram is a sequence of N n-gram words: a 2-gram (or bigram) is a two-word sequence of words like “credit card”, “3d printing”, or ”printing machine”, and a 3-gram (or trigram) is a three-word sequence of words like “3d printing machine”. Statistical model can be used to extract the n-grams contained in a document. 
+A first approach has the of predicting the next item in a sequence in the form of a (n − 1)–order Markov model[@lafferty2001document]. The algorythm begin with the task of computing P(w|h), the probability of a word w given a word h.The way to extimate this probability is using relative frequency counts. To do that the algorythms count the number of times h is followed by the w. With a large enough corpus it is possibile to build valuable models, able to extract n-grams [@bellegarda2004statistical].
+While this method of estimating probabilities directly from counts works for many natural language applications, in many cases a huge dimension of the corpus does make the model useful, and this is particularly true for technical documents [@brants2012large]. This is because technical language has a strong ratio of evolution; as new artifcat are invented, new chunks are created all the time, and has no sense to continuolly count every word co-occurrence to update our model[@gibson1994tools].
+A more usefull method for chunk extraction fro technical document uses part-of-speech-taggin and regular expression. Once a document is pos-taggerd each word is associated whit a particular part of speech: each sentence is rapresented as a sequence of part-of-spech. Once we have this rappresentation, it is possible to etract only certain sequences of part-of-speeches, the ones that whit an high level of confidence are n-grams.
+[TROVA LAVORI SU QUESTO ARGOMENTO]
+
 
 #### Document Classification {#sotatoolsmodeldocclass}
 #### Network Analysis {#sotatoolsmodelnetanal}
@@ -87,6 +111,13 @@ is used to tokenize URLs. A rule for URLs must be defined since the ":" in URLs 
 
 ### Understand {#sotadocumentsunderstand}
 
+
+Expertise (collins)
+
+Sheela Jasanow
+
+Taleb?
+
 #### The problem of byases {#sotadocumentsunderstandbyas}
 
 #### The Importance of Lexicons for Technical Documents Analysis  {#sotadocumentsunderstandlexicons}
@@ -94,6 +125,9 @@ is used to tokenize URLs. A rule for URLs must be defined since the ":" in URLs 
 ### Patents {#sotadocumentspatents}
 
 ### Papers {#sotadocumentspapers}
+
+- Parte Barilari.Keyword base, defini i confini di area tecnologica. Hot-topics su paper (guaiè)
+- Biblio 
 
 ### Projects {#sotadocumentsprojects}
 

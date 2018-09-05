@@ -2,7 +2,24 @@
 
 ## Goal
 
+Il problema non è sostituire domain knowledge. Idea vecchia ha fallito. E' insostibuibile perchè:
+
+- Technology, interessa gli ingegneri
+- Social Science, decision making
+
+PErchè fallita: da una parte è andata avanti la knowledge rappresentation. E' impossibile rappresentare la conoscenza con regole, ma con altri strumenti si può rappresentare (bottom-up). 
+
+Inoltre ho text mining, capaità di processare testi. Parte di intelligenza artificiale. Questi fenomeni non sostituioscono l'esperto ma ne cambiano il modo di operare. 
+
+Oggi si integra. Vogliamo un esperto di dominio che faccia meglio il suo mestiere. 
+
+Abbiamo oggi più potenza e correzione errori. 
+
+Oltre ad efficienza e potenza nel correggere gli errori. Ora c'è anche la possibilità dio maggiore specificità. L'obiettivo è qiuindi poratre domain knowledge sia su technology sia ai decisori sociali. 
+
 ## Problem
+
+Foresight
 
 ## Solutions
 
@@ -31,3 +48,11 @@ Design
 Human Resources
 
 Other Stakeholders
+
+## Knowledge Intensive Manegement Engineering
+
+Tipicamente occupaimo di attività ad altà ripetitività. Ti porti dietro metodologie ingegneristiche applicate a sistemi inernti, andnano a operare in sistemi socio-tecnici. Hai fatto il tuo mestieri (ricerca operativa ecc..). Negli ultimi anni però le aziende le attività a maggior valore aggiunto sono non ripetitive. Innovazione, marketing ecc.. e quindi gestione della conoscena. Su situazione che sembrano uniche il gestionale rischia di perdere rispetto al creativo. Come disciplina voglio presidiare queste aree: non ci occupaimo di casi unici, ma costruire modelli in grado di incorporare conoscenza per essere usati in questi. 
+La tesi ha l'obbiettivo di esploration and exploitation queste direzioni.
+
+
+

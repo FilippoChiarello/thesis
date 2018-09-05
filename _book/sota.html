@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Text Mining Techniques for Knowledge Extraction from Technical Documents</title>
   <meta name="description" content="This document contains the PhD thesis of Filippo Chiarello.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Text Mining Techniques for Knowledge Extraction from Technical Documents" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Filippo Chiarello">
 
 
-<meta name="date" content="2018-09-03">
+<meta name="date" content="2018-09-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -63,7 +63,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Text Mining Techniques for Knowledge Extraction from Technical Documents</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
@@ -76,6 +76,7 @@
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#research-questions"><i class="fa fa-check"></i><b>1.5</b> Research Questions</a></li>
 <li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#stakeholders"><i class="fa fa-check"></i><b>1.6</b> Stakeholders</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#knowledge-intensive-manegement-engineering"><i class="fa fa-check"></i><b>1.7</b> Knowledge Intensive Manegement Engineering</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="sota.html"><a href="sota.html"><i class="fa fa-check"></i><b>2</b> State of the Art</a><ul>
 <li class="chapter" data-level="2.1" data-path="sota.html"><a href="sota.html#sotatools"><i class="fa fa-check"></i><b>2.1</b> Phases, Tasks, and Techniques</a><ul>
@@ -83,9 +84,11 @@
 <li class="chapter" data-level="2.1.2" data-path="sota.html"><a href="sota.html#sotatoolsimport"><i class="fa fa-check"></i><b>2.1.2</b> Import</a></li>
 <li class="chapter" data-level="2.1.3" data-path="sota.html"><a href="sota.html#sotatoolstidy"><i class="fa fa-check"></i><b>2.1.3</b> Tidy</a></li>
 <li class="chapter" data-level="2.1.4" data-path="sota.html"><a href="sota.html#sotatoolstransform"><i class="fa fa-check"></i><b>2.1.4</b> Transform</a></li>
-<li class="chapter" data-level="2.1.5" data-path="sota.html"><a href="sota.html#sotatoolsmodel"><i class="fa fa-check"></i><b>2.1.5</b> Model</a></li>
-<li class="chapter" data-level="2.1.6" data-path="sota.html"><a href="sota.html#sotatoolsvisualize"><i class="fa fa-check"></i><b>2.1.6</b> Visualize</a></li>
-<li class="chapter" data-level="2.1.7" data-path="sota.html"><a href="sota.html#sotatoolscomunicate"><i class="fa fa-check"></i><b>2.1.7</b> Comunicate</a></li>
+<li class="chapter" data-level="2.1.5" data-path="sota.html"><a href="sota.html#sentence-splitting"><i class="fa fa-check"></i><b>2.1.5</b> Sentence Splitting</a></li>
+<li class="chapter" data-level="2.1.6" data-path="sota.html"><a href="sota.html#tokenization"><i class="fa fa-check"></i><b>2.1.6</b> Tokenization</a></li>
+<li class="chapter" data-level="2.1.7" data-path="sota.html"><a href="sota.html#sotatoolsmodel"><i class="fa fa-check"></i><b>2.1.7</b> Model</a></li>
+<li class="chapter" data-level="2.1.8" data-path="sota.html"><a href="sota.html#sotatoolsvisualize"><i class="fa fa-check"></i><b>2.1.8</b> Visualize</a></li>
+<li class="chapter" data-level="2.1.9" data-path="sota.html"><a href="sota.html#sotatoolscomunicate"><i class="fa fa-check"></i><b>2.1.9</b> Comunicate</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="sota.html"><a href="sota.html#sotadocuments"><i class="fa fa-check"></i><b>2.2</b> Documents</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="sota.html"><a href="sota.html#sotadocumentsunderstand"><i class="fa fa-check"></i><b>2.2.1</b> Understand</a></li>
@@ -121,6 +124,7 @@
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>6</b> Conclusions</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -146,15 +150,15 @@
 <p>The analysis of technical documents require the design of processes that rely both on programming and Natural Language Processing techniques and on the undestanding and knowldege of field experts. While the first techniques are codified and explicit, the second are sometimes implicit and always harder to systematize. In this section i treat these two groups of techniques in the same way to give to the reader a sistematic litterature review on these topics. For this reason the sections of this chapter has the sequent structure:</p>
 <ul>
 <li>At a first level we have two sections <a href="sota.html#sotatools">2.1</a> and <a href="sota.html#sotadocuments">2.2</a>, reviewing respectivelly the processes of <em>programming and Natural Language Processing</em> and of <em>undestanding and knowldege of field experts application</em>;</li>
-<li>Section <a href="sota.html#sotatools">2.1</a> has a subsection for each of the <em>phases</em> showed in figure <a href="#fig:mainworkflow"><strong>??</strong></a>. These subsections goes from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.7</a>;</li>
-<li>Each subsection from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.7</a> contains the relative Natural Language Processing <em>task</em> that are relevant for the analysis of technical documents, for example Document Retrieval <a href="sota.html#sotatoolsimportretrieval">2.1.2.1</a>, Part-Of-Speech-Tagging; <a href="sota.html#sotatoolstransformpos">2.1.4.4</a> or Named Entity Recognition <a href="sota.html#sotatoolsmodelner">2.1.5.4</a>.</li>
+<li>Section <a href="sota.html#sotatools">2.1</a> has a subsection for each of the <em>phases</em> showed in figure <a href="introduction.html#fig:mainworkflow">1.1</a>. These subsections goes from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a>;</li>
+<li>Each subsection from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a> contains the relative Natural Language Processing <em>task</em> that are relevant for the analysis of technical documents, for example Document Retrieval <a href="sota.html#sotatoolsimportretrieval">2.1.2.1</a>, Part-Of-Speech-Tagging; <a href="sota.html#sotatoolstransformpos">2.1.6.4</a> or Named Entity Recognition <a href="sota.html#sotatoolsmodelner">2.1.7.4</a>.</li>
 <li>Each task subsection describes the relevant <em>techniques</em> to perform that task. I use the word techniques to include mainly algorythms and procedures but also more generic methods or frameworks;</li>
 <li>Since the second section <a href="sota.html#sotadocuments">2.2</a> describes less systematics phases, task and techniques this section opens with a first subsection <a href="sota.html#sotadocumentsunderstand">2.2.1</a> that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow.</li>
 <li>Finally, always section <a href="sota.html#sotadocuments">2.2</a> has a subsection for each of the technical <em>documents</em> I analyzed (aggiungi gancio con introduzione). These subsections goes from <a href="sota.html#sotadocumentspatents">2.2.2</a> to <a href="sota.html#sotadocumentsjobs">2.2.7</a>.</li>
 </ul>
 <div id="sotatools" class="section level2">
 <h2><span class="header-section-number">2.1</span> Phases, Tasks, and Techniques</h2>
-<p>In this section I make a review of the most important techniques for Natural Language Processing in the context of technical documents analysis. The techniques (mainly algorythms) are grouped in phases (Import, Tidy, Transform, Model, Visualize, Communicate) showed in figure <a href="#fig:mainworkflow"><strong>??</strong></a> and each phases is dived in the NLP tasks that are the most important for the analysis of technical documents. The algorythms i reviewed in this section are summmarised in table tot, where the reader can see the relationship between tasks and techniques.</p>
+<p>In this section I make a review of the most important techniques for Natural Language Processing in the context of technical documents analysis. The techniques (mainly algorythms) are grouped in phases (Import, Tidy, Transform, Model, Visualize, Communicate) showed in figure <a href="introduction.html#fig:mainworkflow">1.1</a> and each phases is dived in the NLP tasks that are the most important for the analysis of technical documents. The algorythms i reviewed in this section are summmarised in table tot, where the reader can see the relationship between tasks and techniques.</p>
 <div id="sotatoolsprogram" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Program</h3>
 <ul>
@@ -163,63 +167,93 @@
 </div>
 <div id="sotatoolsimport" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Import</h3>
+<ul>
+<li>I tipi di codifica di testo</li>
+<li>Pachetti per import</li>
+</ul>
 <div id="sotatoolsimportretrieval" class="section level4">
 <h4><span class="header-section-number">2.1.2.1</span> Document Retrieval</h4>
+<ul>
+<li>Letteratura query</li>
+</ul>
 </div>
 </div>
 <div id="sotatoolstidy" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> Tidy</h3>
+<ul>
+<li>Hadley</li>
+</ul>
+<p>DTM</p>
+<p>problems such as sparsity</p>
 </div>
 <div id="sotatoolstransform" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> Transform</h3>
+<p>Transforming in the context of Natural Language Processing is what in computational linguistic is called text normalization. Normalizing text means converting it to a more convenient, standard form. Most of the task of technical document analysis in fact relies on first separating out or tokenizing sentences and words, strip suffixes from the end of the word, determining the root of a word or transform the text using regular expressions.</p>
+</div>
+<div id="sentence-splitting" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Sentence Splitting</h3>
+<p>The analysis of technical documents require as first process, that the input text is segmented in sentences. Since documents do not encode this information in a non ambiguous manner (using dots) due to common abbreviations (e.g.: “Mr., Dr.”), a sentence splitting process that does not rely only on a trivial <em>dot based</em> rule is required. This issue in the technical documents domain is even more problematic due to the presence of formulas, numbers, chemical entity names and bibliographic references. Furthermore, since sentece splitting is one of the first processes of an NLP pipeline, errors in this early stage are propagated in the following steps causing a strong decrease for what concerns their accuracy. One of the most advanced techniques are machine learning techniques: given a training corpus of properly segmented sentences and a learning algorithm, a statistical model is built. By reusing the statistical model, the sentence splitter is able to split sentences on texts not used in the training phase. ItalianNLP lab systems uses this approach <span class="citation">(Dell’Orletta <a href="#ref-dell2009ensemble">2009</a>; Attardi and Dell’Orletta <a href="#ref-attardi2009reverse">2009</a>; Attardi et al. <a href="#ref-attardi2009accurate">2009</a>)</span>. For this reason this algorythm is used for the most of the application presented in this Thesis.</p>
+</div>
+<div id="tokenization" class="section level3">
+<h3><span class="header-section-number">2.1.6</span> Tokenization</h3>
+<p>Since documents are unstructured information, these has to be divided into linguistic units. The definition of linguistic units is non-trivial, and more advanced techniques can be used (such as n-gram extraction) but most of the times these are words, punctuation and numbers. English words are often separated from each other by whitespace, but whitespace is not always sufficient. Solving this problems and splitting words in well-defined tokensis defined as tokenization. In most of the application described in the present Thesis, the tokenizer developed by the ItalianNLP lab was integrated <span class="citation">(Dell’Orletta <a href="#ref-dell2009ensemble">2009</a>; Attardi and Dell’Orletta <a href="#ref-attardi2009reverse">2009</a>; Attardi et al. <a href="#ref-attardi2009accurate">2009</a>)</span>. This tokenizer is regular expression based: each token must match one of the regular expression defined in a configuration file. Among the others, rules are defined to tokenize words, acronyms, numbers, dates and equations.</p>
 <div id="sotatoolstransformstemming" class="section level4">
-<h4><span class="header-section-number">2.1.4.1</span> Stemming</h4>
+<h4><span class="header-section-number">2.1.6.1</span> Stemming</h4>
+<p>Stemming is a simpler but cruder methodology for chopping off of affixes. The goal of stemming is reducing inflected (or sometimes derived) words to their word stem, base or root form. The stem of a word and its morphological root do not need to be identical; it is sufficient that related words map to the same stem, even if this stem is not a valid root. One of the most widely used stemming is the simple and efficient Porter algorithm <span class="citation">(Porter <a href="#ref-porter1980algorithm">1980</a>)</span>.</p>
 </div>
 <div id="sotatoolstransformlemmatisation" class="section level4">
-<h4><span class="header-section-number">2.1.4.2</span> Lemmatisation</h4>
+<h4><span class="header-section-number">2.1.6.2</span> Lemmatisation</h4>
+<p>Lemmatization is the task of determining the root of a words. The output allow to find that two words have the same root, despite their surface differences. For example, the verbs <em>am</em>, <em>are</em>, and <em>is</em> have the shared lemma <em>be</em>; the nouns <em>cat</em> and <em>cats</em> both have the lemma <em>cat</em>. Representing a word by its lemma is important for many natural language processing tasks. Lemmatisation in fact diminish the problem of sparsity of document-word matrix. Futhermore lemmatisaion is important for document retrieval <a href="sota.html#sotatoolsimportretrieval">2.1.2.1</a> web search, since we want to find documents mentioning motors if we search for motor. The most recent methods for lemmatization involve complete morphological parsing of the word <span class="citation">(Hankamer <a href="#ref-hankamer1989morphological">1989</a>)</span>.</p>
 </div>
 <div id="sotatoolstransformngrams" class="section level4">
-<h4><span class="header-section-number">2.1.4.3</span> N-Grams</h4>
+<h4><span class="header-section-number">2.1.6.3</span> N-Grams</h4>
 </div>
 <div id="sotatoolstransformpos" class="section level4">
-<h4><span class="header-section-number">2.1.4.4</span> Part-of-Speech Tagging</h4>
+<h4><span class="header-section-number">2.1.6.4</span> Part-of-Speech Tagging</h4>
+<p>The part of speech plays an central role in technical document analysis since it provides very useful information concerning the morphological role of a word and its morphosyntactic context: for example, if a token is a determiner, the next token is a noun or an adjective with very high confidence. Part of speech tags are used for many information extraction tools such as named entity taggers (see section <a href="sota.html#sotatoolsmodelner">2.1.7.4</a>) in order to identify named entities. In typical named entity task these are people and locations since tokens representing named entities follow common morphological patterns (e.g. they start with a capital letter). For the application to technical documents, technical entities (like the possibile failures of a manufact) becomes more relevant. In this context a correct part-of-speech tagger becomes even more important since we can not rely on morphosyntactical rules. In addition part of speech tags can be used to mitigate problems related to polysemy since words often have different meaning with respect to their part of speech (e.g. “track”, “guide”). This information is extremelly valuable in patent analysis, and some patent tailored part-of-speech tagger has been designed (see section <a href="sota.html#sotadocumentspatents">2.2.2</a>). The litterature on pos-tagger is huge, and goes behoind the scope of the present thesis to make a complete review. In most of the application presentend in this work,was employed the ILC postagger <span class="citation">(Attardi <a href="#ref-attardi2006experiments">2006</a>)</span>. This postagger uses a supervised training algorithm: given a set of features and a training corpus, the classifier creates a statistical model using the feature statistics extracted from the training corpus.</p>
 </div>
 <div id="sotatoolstransformregex" class="section level4">
-<h4><span class="header-section-number">2.1.4.5</span> Regular Expressions</h4>
+<h4><span class="header-section-number">2.1.6.5</span> Regular Expressions</h4>
+<p>Regular expression (regex) is a language for specifying text search strings, an algebraic notation for characterizing a set of strings. This language whidelly used in modern word processor and text processing tools.. They are particularly useful for searching in texts, when we have a pattern to search for.</p>
+<p>A pattern could be at A regular expression search function will search through the corpus, returning all texts that match the pattern. The corpus can be a single document or a collection. For example, the Unix command-line tool grep takes a regular expression and returns every line of the input document that matches the expression. A search can be designed to return every match on a line, if there are more than one, or just the first match. In the following examples we generally underline the exact part of the pattern that matches the regular expression and show only the first match. We’ll show regular expressions delimited by slashes but note that slashes are not part of the regular expressions.</p>
 </div>
 </div>
 <div id="sotatoolsmodel" class="section level3">
-<h3><span class="header-section-number">2.1.5</span> Model</h3>
+<h3><span class="header-section-number">2.1.7</span> Model</h3>
+<p>Classi di modelli. Pedro Domingos</p>
 <div id="sotatoolsmodeldocclass" class="section level4">
-<h4><span class="header-section-number">2.1.5.1</span> Document Classification</h4>
+<h4><span class="header-section-number">2.1.7.1</span> Document Classification</h4>
 </div>
 <div id="sotatoolsmodelnetanal" class="section level4">
-<h4><span class="header-section-number">2.1.5.2</span> Network Analysis</h4>
+<h4><span class="header-section-number">2.1.7.2</span> Network Analysis</h4>
 </div>
 <div id="sotatoolsmodelsentanal" class="section level4">
-<h4><span class="header-section-number">2.1.5.3</span> Sentiment Analsysis</h4>
+<h4><span class="header-section-number">2.1.7.3</span> Sentiment Analsysis</h4>
 </div>
 <div id="sotatoolsmodelner" class="section level4">
-<h4><span class="header-section-number">2.1.5.4</span> Named Entity Recognition</h4>
+<h4><span class="header-section-number">2.1.7.4</span> Named Entity Recognition</h4>
 </div>
 <div id="sotatoolsmodelvec" class="section level4">
-<h4><span class="header-section-number">2.1.5.5</span> Vector Semantics</h4>
+<h4><span class="header-section-number">2.1.7.5</span> Vector Semantics</h4>
 </div>
 <div id="sotatoolsmodeltopicmodel" class="section level4">
-<h4><span class="header-section-number">2.1.5.6</span> Topic Modelling</h4>
+<h4><span class="header-section-number">2.1.7.6</span> Topic Modelling</h4>
 </div>
 </div>
 <div id="sotatoolsvisualize" class="section level3">
-<h3><span class="header-section-number">2.1.6</span> Visualize</h3>
+<h3><span class="header-section-number">2.1.8</span> Visualize</h3>
 </div>
 <div id="sotatoolscomunicate" class="section level3">
-<h3><span class="header-section-number">2.1.7</span> Comunicate</h3>
+<h3><span class="header-section-number">2.1.9</span> Comunicate</h3>
 </div>
 </div>
 <div id="sotadocuments" class="section level2">
 <h2><span class="header-section-number">2.2</span> Documents</h2>
 <div id="sotadocumentsunderstand" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Understand</h3>
+<p>Expertise (collins)</p>
+<p>Sheela Jasanow</p>
+<p>Taleb?</p>
 <div id="sotadocumentsunderstandbyas" class="section level4">
 <h4><span class="header-section-number">2.2.1.1</span> The problem of byases</h4>
 </div>
@@ -232,6 +266,10 @@
 </div>
 <div id="sotadocumentspapers" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Papers</h3>
+<ul>
+<li>Parte Barilari.Keyword base, defini i confini di area tecnologica. Hot-topics su paper (guaiè)</li>
+<li>Biblio</li>
+</ul>
 </div>
 <div id="sotadocumentsprojects" class="section level3">
 <h3><span class="header-section-number">2.2.4</span> Projects</h3>
@@ -246,6 +284,27 @@
 <h3><span class="header-section-number">2.2.7</span> Job Profiles</h3>
 
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-dell2009ensemble">
+<p>Dell’Orletta, Felice. 2009. “Ensemble System for Part-of-Speech Tagging.” <em>Proceedings of EVALITA</em> 9: 1–8.</p>
+</div>
+<div id="ref-attardi2009reverse">
+<p>Attardi, Giuseppe, and Felice Dell’Orletta. 2009. “Reverse Revision and Linear Tree Combination for Dependency Parsing.” In <em>Proceedings of Human Language Technologies: The 2009 Annual Conference of the North American Chapter of the Association for Computational Linguistics, Companion Volume: Short Papers</em>, 261–64. Association for Computational Linguistics.</p>
+</div>
+<div id="ref-attardi2009accurate">
+<p>Attardi, Giuseppe, Felice Dell’Orletta, Maria Simi, and Joseph Turian. 2009. “Accurate Dependency Parsing with a Stacked Multilayer Perceptron.” <em>Proceedings of EVALITA</em> 9: 1–8.</p>
+</div>
+<div id="ref-porter1980algorithm">
+<p>Porter, Martin F. 1980. “An Algorithm for Suffix Stripping.” <em>Program</em> 14 (3). MCB UP Ltd: 130–37.</p>
+</div>
+<div id="ref-hankamer1989morphological">
+<p>Hankamer, Jorge. 1989. “Morphological Parsing and the Lexicon.” In <em>Lexical Representation and Process</em>, 392–408. MIT Press.</p>
+</div>
+<div id="ref-attardi2006experiments">
+<p>Attardi, Giuseppe. 2006. “Experiments with a Multilanguage Non-Projective Dependency Parser.” In <em>Proceedings of the Tenth Conference on Computational Natural Language Learning</em>, 166–70. Association for Computational Linguistics.</p>
 </div>
 </div>
             </section>
