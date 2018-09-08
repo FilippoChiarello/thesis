@@ -85,7 +85,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-09-05}
+    \date{2018-09-06}
 
 \usepackage{booktabs}
 
@@ -171,13 +171,14 @@ Tipicamente occupaimo di attività ad altà ripetitività. Ti porti dietro
 metodologie ingegneristiche applicate a sistemi inernti, andnano a
 operare in sistemi socio-tecnici. Hai fatto il tuo mestieri (ricerca
 operativa ecc..). Negli ultimi anni però le aziende le attività a
-maggior valore aggiunto sono non ripetitive. Innovazione, marketing
+maggior valore aggiunto sono non ripetitive. R\&S, Design, marketing, HR
 ecc.. e quindi gestione della conoscena. Su situazione che sembrano
 uniche il gestionale rischia di perdere rispetto al creativo. Come
 disciplina voglio presidiare queste aree: non ci occupaimo di casi
 unici, ma costruire modelli in grado di incorporare conoscenza per
 essere usati in questi. La tesi ha l'obbiettivo di esploration and
-exploitation queste direzioni.
+exploitation queste direzioni. Hon trovato nella data science è più
+nello specifico nel text mining gli strumenti adatti.
 
 \chapter{State of the Art}\label{sota}
 
@@ -350,8 +351,6 @@ documents mentioning motors if we search for motor. The most recent
 methods for lemmatization involve complete morphological parsing of the
 word \citep{hankamer1989morphological}.
 
-\subsubsection{N-Grams}\label{sotatoolstransformngrams}
-
 \subsubsection{Part-of-Speech Tagging}\label{sotatoolstransformpos}
 
 The part of speech plays an central role in technical document analysis
@@ -373,7 +372,7 @@ different meaning with respect to their part of speech (e.g. ``track'',
 and some patent tailored part-of-speech tagger has been designed (see
 section \ref{sotadocumentspatents}). The litterature on pos-tagger is
 huge, and goes behoind the scope of the present thesis to make a
-complete review. In most of the application presentend in this work,was
+complete review. In most of the application presentend in this work, was
 employed the ILC postagger \citep{attardi2006experiments}. This
 postagger uses a supervised training algorithm: given a set of features
 and a training corpus, the classifier creates a statistical model using
@@ -402,11 +401,103 @@ slashes but note that slashes are not part of the regular expressions.
 
 Classi di modelli. Pedro Domingos
 
+\subsubsection{N-Grams}\label{sotatoolstransformngrams}
+
+An n-gram is a sequence of N n-gram words: a 2-gram (or bigram) is a
+two-word sequence of words like ``credit card'', ``3d printing'', or
+''printing machine'', and a 3-gram (or trigram) is a three-word sequence
+of words like ``3d printing machine''. Statistical model can be used to
+extract the n-grams contained in a document. A first approach has the of
+predicting the next item in a sequence in the form of a (n − 1)--order
+Markov model\citep{lafferty2001document}. The algorythm begin with the
+task of computing P(w\textbar{}h), the probability of a word w given a
+word h.The way to extimate this probability is using relative frequency
+counts. To do that the algorythms count the number of times h is
+followed by the w. With a large enough corpus it is possibile to build
+valuable models, able to extract n-grams
+\citep{bellegarda2004statistical}. While this method of estimating
+probabilities directly from counts works for many natural language
+applications, in many cases a huge dimension of the corpus does make the
+model useful, and this is particularly true for technical documents
+\citep{brants2012large}. This is because technical language has a strong
+ratio of evolution; as new artifcat are invented, new chunks are created
+all the time, and has no sense to continuolly count every word
+co-occurrence to update our model\citep{gibson1994tools}. A more usefull
+method for chunk extraction fro technical document uses
+part-of-speech-tagging and regular expression. Once a document is
+pos-taggerd each word is associated whit a particular part of speech:
+each sentence is rapresented as a sequence of part-of-spech. Once we
+have this rappresentation, it is possible to etract only certain
+sequences of part-of-speeches, the ones that whit an high level of
+confidence are n-grams.
+
+{[}TROVA LAVORI SU QUESTO ARGOMENTO{]}
+
 \subsubsection{Document Classification}\label{sotatoolsmodeldocclass}
 
-\subsubsection{Network Analysis}\label{sotatoolsmodelnetanal}
+Classification is a general process that has the goal of taking an
+object, extract features, and assign to the observation one of a set of
+discrete classes. This process is largerly used for documents
+\citep{borko1963automatic} and there exist many methods for document
+classification \citep{aggarwal2012survey}.
+
+Regardless of technological sector, most organizations today are facing
+the problem of overload of information. When it comes to classify huge
+ammount of documents or to separate the useful documents from the
+irrelevant, document classification techniques can reduce the proecess
+cost and time.
+
+The simplest method for classifying text is to use expert defined rules,
+expert systems.Expert rule-based systems are programs that consist of
+rules in the IF form condition THEN action (if condition, then action).
+Given a series of facts, expert systems, thanks to the rules they are
+made of, manage to deduce new facts. The expert systems therefore differ
+from other similar programs, since, by referring to technologies
+developed according to artificial intelligence, they are always able to
+exhibit the logical steps that underlie their decisions: a purpose that,
+for example, is not feasible from the human mind or black box-systems.
+There are many type of documents for which expert based classifiers
+constitute a stateof-the-art system, or at least part of it. Anyway,
+rules can be useless in situations such as: - data change over time -
+the rules are too many and interrelated
+
+Most systems of documents classification are instead done via supervised
+learning: we have a data set of input observations, each associated with
+some correct output (training set). The goal of the algorithm is to
+build a statical model able to learn how to map from a new observation
+(test set) to a correct output.
+
+In the supervised document classification process, we have a training
+set of N documents that have each been tipically hand-labeled with a
+class: (d1, c1),\ldots{}.,(dN, cN). I say tipically, because other less
+expensive methods could be designed, as we will show for the task of
+Named Entity Recongition (another supervised learning task, that
+classifies words intstead of documents \ref{sotatoolsmodelner}). The
+goal of the supervised document classification task is to learn a
+statistical model capable of assign a new document d to its correct
+class c ∈ C. There exist a class of these classifier, probabilistic
+classifiers, that additionally will tell us the probability of the
+observation being in the class.
+
+Many kinds of machine learning algorithms are used to build classifiers.
+
+\paragraph{naive Bayes}\label{naive-bayes}
+
+\paragraph{Logistic regression}\label{logistic-regression}
+
+This chapter introduces naive Bayes; the following one introduces
+logistic regression. These exemplify two ways of doing classification.
+Generative classifiers like naive Bayes build a model of how a class
+could generate some input data. Given an observation, they return the
+class most likely to have generated the observation. Discriminative
+classifiers like logistic regression instead learn what features from
+the input are most useful to discriminate between the different possible
+classes. While discriminative systems are often more accurate and hence
+more commonly used, generative classifiers still have a role.
 
 \subsubsection{Sentiment Analsysis}\label{sotatoolsmodelsentanal}
+
+\subsubsection{Network Analysis}\label{sotatoolsmodelnetanal}
 
 \subsubsection{Named Entity Recognition}\label{sotatoolsmodelner}
 
@@ -432,6 +523,8 @@ Taleb?
 
 \subsubsection{The Importance of Lexicons for Technical Documents
 Analysis}\label{sotadocumentsunderstandlexicons}
+
+\subsubsection{Expert Systems}\label{expert-systems}
 
 \subsection{Patents}\label{sotadocumentspatents}
 

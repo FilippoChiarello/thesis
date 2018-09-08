@@ -25,7 +25,7 @@
 <meta name="author" content="Filippo Chiarello">
 
 
-<meta name="date" content="2018-09-05">
+<meta name="date" content="2018-09-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -151,7 +151,7 @@
 <ul>
 <li>At a first level we have two sections <a href="sota.html#sotatools">2.1</a> and <a href="sota.html#sotadocuments">2.2</a>, reviewing respectivelly the processes of <em>programming and Natural Language Processing</em> and of <em>undestanding and knowldege of field experts application</em>;</li>
 <li>Section <a href="sota.html#sotatools">2.1</a> has a subsection for each of the <em>phases</em> showed in figure <a href="introduction.html#fig:mainworkflow">1.1</a>. These subsections goes from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a>;</li>
-<li>Each subsection from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a> contains the relative Natural Language Processing <em>task</em> that are relevant for the analysis of technical documents, for example Document Retrieval <a href="sota.html#sotatoolsimportretrieval">2.1.2.1</a>, Part-Of-Speech-Tagging; <a href="sota.html#sotatoolstransformpos">2.1.6.4</a> or Named Entity Recognition <a href="sota.html#sotatoolsmodelner">2.1.7.4</a>.</li>
+<li>Each subsection from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a> contains the relative Natural Language Processing <em>task</em> that are relevant for the analysis of technical documents, for example Document Retrieval <a href="sota.html#sotatoolsimportretrieval">2.1.2.1</a>, Part-Of-Speech-Tagging; <a href="sota.html#sotatoolstransformpos">2.1.6.3</a> or Named Entity Recognition <a href="sota.html#sotatoolsmodelner">2.1.7.5</a>.</li>
 <li>Each task subsection describes the relevant <em>techniques</em> to perform that task. I use the word techniques to include mainly algorythms and procedures but also more generic methods or frameworks;</li>
 <li>Since the second section <a href="sota.html#sotadocuments">2.2</a> describes less systematics phases, task and techniques this section opens with a first subsection <a href="sota.html#sotadocumentsunderstand">2.2.1</a> that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow.</li>
 <li>Finally, always section <a href="sota.html#sotadocuments">2.2</a> has a subsection for each of the technical <em>documents</em> I analyzed (aggiungi gancio con introduzione). These subsections goes from <a href="sota.html#sotadocumentspatents">2.2.2</a> to <a href="sota.html#sotadocumentsjobs">2.2.7</a>.</li>
@@ -205,15 +205,12 @@
 <h4><span class="header-section-number">2.1.6.2</span> Lemmatisation</h4>
 <p>Lemmatization is the task of determining the root of a words. The output allow to find that two words have the same root, despite their surface differences. For example, the verbs <em>am</em>, <em>are</em>, and <em>is</em> have the shared lemma <em>be</em>; the nouns <em>cat</em> and <em>cats</em> both have the lemma <em>cat</em>. Representing a word by its lemma is important for many natural language processing tasks. Lemmatisation in fact diminish the problem of sparsity of document-word matrix. Futhermore lemmatisaion is important for document retrieval <a href="sota.html#sotatoolsimportretrieval">2.1.2.1</a> web search, since we want to find documents mentioning motors if we search for motor. The most recent methods for lemmatization involve complete morphological parsing of the word <span class="citation">(Hankamer <a href="#ref-hankamer1989morphological">1989</a>)</span>.</p>
 </div>
-<div id="sotatoolstransformngrams" class="section level4">
-<h4><span class="header-section-number">2.1.6.3</span> N-Grams</h4>
-</div>
 <div id="sotatoolstransformpos" class="section level4">
-<h4><span class="header-section-number">2.1.6.4</span> Part-of-Speech Tagging</h4>
-<p>The part of speech plays an central role in technical document analysis since it provides very useful information concerning the morphological role of a word and its morphosyntactic context: for example, if a token is a determiner, the next token is a noun or an adjective with very high confidence. Part of speech tags are used for many information extraction tools such as named entity taggers (see section <a href="sota.html#sotatoolsmodelner">2.1.7.4</a>) in order to identify named entities. In typical named entity task these are people and locations since tokens representing named entities follow common morphological patterns (e.g. they start with a capital letter). For the application to technical documents, technical entities (like the possibile failures of a manufact) becomes more relevant. In this context a correct part-of-speech tagger becomes even more important since we can not rely on morphosyntactical rules. In addition part of speech tags can be used to mitigate problems related to polysemy since words often have different meaning with respect to their part of speech (e.g. “track”, “guide”). This information is extremelly valuable in patent analysis, and some patent tailored part-of-speech tagger has been designed (see section <a href="sota.html#sotadocumentspatents">2.2.2</a>). The litterature on pos-tagger is huge, and goes behoind the scope of the present thesis to make a complete review. In most of the application presentend in this work,was employed the ILC postagger <span class="citation">(Attardi <a href="#ref-attardi2006experiments">2006</a>)</span>. This postagger uses a supervised training algorithm: given a set of features and a training corpus, the classifier creates a statistical model using the feature statistics extracted from the training corpus.</p>
+<h4><span class="header-section-number">2.1.6.3</span> Part-of-Speech Tagging</h4>
+<p>The part of speech plays an central role in technical document analysis since it provides very useful information concerning the morphological role of a word and its morphosyntactic context: for example, if a token is a determiner, the next token is a noun or an adjective with very high confidence. Part of speech tags are used for many information extraction tools such as named entity taggers (see section <a href="sota.html#sotatoolsmodelner">2.1.7.5</a>) in order to identify named entities. In typical named entity task these are people and locations since tokens representing named entities follow common morphological patterns (e.g. they start with a capital letter). For the application to technical documents, technical entities (like the possibile failures of a manufact) becomes more relevant. In this context a correct part-of-speech tagger becomes even more important since we can not rely on morphosyntactical rules. In addition part of speech tags can be used to mitigate problems related to polysemy since words often have different meaning with respect to their part of speech (e.g. “track”, “guide”). This information is extremelly valuable in patent analysis, and some patent tailored part-of-speech tagger has been designed (see section <a href="sota.html#sotadocumentspatents">2.2.2</a>). The litterature on pos-tagger is huge, and goes behoind the scope of the present thesis to make a complete review. In most of the application presentend in this work, was employed the ILC postagger <span class="citation">(Attardi <a href="#ref-attardi2006experiments">2006</a>)</span>. This postagger uses a supervised training algorithm: given a set of features and a training corpus, the classifier creates a statistical model using the feature statistics extracted from the training corpus.</p>
 </div>
 <div id="sotatoolstransformregex" class="section level4">
-<h4><span class="header-section-number">2.1.6.5</span> Regular Expressions</h4>
+<h4><span class="header-section-number">2.1.6.4</span> Regular Expressions</h4>
 <p>Regular expression (regex) is a language for specifying text search strings, an algebraic notation for characterizing a set of strings. This language whidelly used in modern word processor and text processing tools.. They are particularly useful for searching in texts, when we have a pattern to search for.</p>
 <p>A pattern could be at A regular expression search function will search through the corpus, returning all texts that match the pattern. The corpus can be a single document or a collection. For example, the Unix command-line tool grep takes a regular expression and returns every line of the input document that matches the expression. A search can be designed to return every match on a line, if there are more than one, or just the first match. In the following examples we generally underline the exact part of the pattern that matches the regular expression and show only the first match. We’ll show regular expressions delimited by slashes but note that slashes are not part of the regular expressions.</p>
 </div>
@@ -221,23 +218,41 @@
 <div id="sotatoolsmodel" class="section level3">
 <h3><span class="header-section-number">2.1.7</span> Model</h3>
 <p>Classi di modelli. Pedro Domingos</p>
-<div id="sotatoolsmodeldocclass" class="section level4">
-<h4><span class="header-section-number">2.1.7.1</span> Document Classification</h4>
+<div id="sotatoolstransformngrams" class="section level4">
+<h4><span class="header-section-number">2.1.7.1</span> N-Grams</h4>
+<p>An n-gram is a sequence of N n-gram words: a 2-gram (or bigram) is a two-word sequence of words like “credit card”, “3d printing”, or ”printing machine”, and a 3-gram (or trigram) is a three-word sequence of words like “3d printing machine”. Statistical model can be used to extract the n-grams contained in a document. A first approach has the of predicting the next item in a sequence in the form of a (n − 1)–order Markov model<span class="citation">(Lafferty and Zhai <a href="#ref-lafferty2001document">2001</a>)</span>. The algorythm begin with the task of computing P(w|h), the probability of a word w given a word h.The way to extimate this probability is using relative frequency counts. To do that the algorythms count the number of times h is followed by the w. With a large enough corpus it is possibile to build valuable models, able to extract n-grams <span class="citation">(Bellegarda <a href="#ref-bellegarda2004statistical">2004</a>)</span>. While this method of estimating probabilities directly from counts works for many natural language applications, in many cases a huge dimension of the corpus does make the model useful, and this is particularly true for technical documents <span class="citation">(Brants et al. <a href="#ref-brants2012large">2012</a>)</span>. This is because technical language has a strong ratio of evolution; as new artifcat are invented, new chunks are created all the time, and has no sense to continuolly count every word co-occurrence to update our model<span class="citation">(K. R. Gibson, Gibson, and Ingold <a href="#ref-gibson1994tools">1994</a>)</span>. A more usefull method for chunk extraction fro technical document uses part-of-speech-tagging and regular expression. Once a document is pos-taggerd each word is associated whit a particular part of speech: each sentence is rapresented as a sequence of part-of-spech. Once we have this rappresentation, it is possible to etract only certain sequences of part-of-speeches, the ones that whit an high level of confidence are n-grams.</p>
+<p>[TROVA LAVORI SU QUESTO ARGOMENTO]</p>
 </div>
-<div id="sotatoolsmodelnetanal" class="section level4">
-<h4><span class="header-section-number">2.1.7.2</span> Network Analysis</h4>
+<div id="sotatoolsmodeldocclass" class="section level4">
+<h4><span class="header-section-number">2.1.7.2</span> Document Classification</h4>
+<p>Classification is a general process that has the goal of taking an object, extract features, and assign to the observation one of a set of discrete classes. This process is largerly used for documents <span class="citation">(Borko and Bernick <a href="#ref-borko1963automatic">1963</a>)</span> and there exist many methods for document classification <span class="citation">(Aggarwal and Zhai <a href="#ref-aggarwal2012survey">2012</a>)</span>.</p>
+<p>Regardless of technological sector, most organizations today are facing the problem of overload of information. When it comes to classify huge ammount of documents or to separate the useful documents from the irrelevant, document classification techniques can reduce the proecess cost and time.</p>
+<p>The simplest method for classifying text is to use expert defined rules, expert systems.Expert rule-based systems are programs that consist of rules in the IF form condition THEN action (if condition, then action). Given a series of facts, expert systems, thanks to the rules they are made of, manage to deduce new facts. The expert systems therefore differ from other similar programs, since, by referring to technologies developed according to artificial intelligence, they are always able to exhibit the logical steps that underlie their decisions: a purpose that, for example, is not feasible from the human mind or black box-systems. There are many type of documents for which expert based classifiers constitute a stateof-the-art system, or at least part of it. Anyway, rules can be useless in situations such as: - data change over time - the rules are too many and interrelated</p>
+<p>Most systems of documents classification are instead done via supervised learning: we have a data set of input observations, each associated with some correct output (training set). The goal of the algorithm is to build a statical model able to learn how to map from a new observation (test set) to a correct output.</p>
+<p>In the supervised document classification process, we have a training set of N documents that have each been tipically hand-labeled with a class: (d1, c1),….,(dN, cN). I say tipically, because other less expensive methods could be designed, as we will show for the task of Named Entity Recongition (another supervised learning task, that classifies words intstead of documents <a href="sota.html#sotatoolsmodelner">2.1.7.5</a>). The goal of the supervised document classification task is to learn a statistical model capable of assign a new document d to its correct class c ∈ C. There exist a class of these classifier, probabilistic classifiers, that additionally will tell us the probability of the observation being in the class.</p>
+<p>Many kinds of machine learning algorithms are used to build classifiers.</p>
+<div id="naive-bayes" class="section level5">
+<h5><span class="header-section-number">2.1.7.2.1</span> naive Bayes</h5>
+</div>
+<div id="logistic-regression" class="section level5">
+<h5><span class="header-section-number">2.1.7.2.2</span> Logistic regression</h5>
+<p>This chapter introduces naive Bayes; the following one introduces logistic regression. These exemplify two ways of doing classification. Generative classifiers like naive Bayes build a model of how a class could generate some input data. Given an observation, they return the class most likely to have generated the observation. Discriminative classifiers like logistic regression instead learn what features from the input are most useful to discriminate between the different possible classes. While discriminative systems are often more accurate and hence more commonly used, generative classifiers still have a role.</p>
+</div>
 </div>
 <div id="sotatoolsmodelsentanal" class="section level4">
 <h4><span class="header-section-number">2.1.7.3</span> Sentiment Analsysis</h4>
 </div>
+<div id="sotatoolsmodelnetanal" class="section level4">
+<h4><span class="header-section-number">2.1.7.4</span> Network Analysis</h4>
+</div>
 <div id="sotatoolsmodelner" class="section level4">
-<h4><span class="header-section-number">2.1.7.4</span> Named Entity Recognition</h4>
+<h4><span class="header-section-number">2.1.7.5</span> Named Entity Recognition</h4>
 </div>
 <div id="sotatoolsmodelvec" class="section level4">
-<h4><span class="header-section-number">2.1.7.5</span> Vector Semantics</h4>
+<h4><span class="header-section-number">2.1.7.6</span> Vector Semantics</h4>
 </div>
 <div id="sotatoolsmodeltopicmodel" class="section level4">
-<h4><span class="header-section-number">2.1.7.6</span> Topic Modelling</h4>
+<h4><span class="header-section-number">2.1.7.7</span> Topic Modelling</h4>
 </div>
 </div>
 <div id="sotatoolsvisualize" class="section level3">
@@ -259,6 +274,9 @@
 </div>
 <div id="sotadocumentsunderstandlexicons" class="section level4">
 <h4><span class="header-section-number">2.2.1.2</span> The Importance of Lexicons for Technical Documents Analysis</h4>
+</div>
+<div id="expert-systems" class="section level4">
+<h4><span class="header-section-number">2.2.1.3</span> Expert Systems</h4>
 </div>
 </div>
 <div id="sotadocumentspatents" class="section level3">
@@ -305,6 +323,24 @@
 </div>
 <div id="ref-attardi2006experiments">
 <p>Attardi, Giuseppe. 2006. “Experiments with a Multilanguage Non-Projective Dependency Parser.” In <em>Proceedings of the Tenth Conference on Computational Natural Language Learning</em>, 166–70. Association for Computational Linguistics.</p>
+</div>
+<div id="ref-lafferty2001document">
+<p>Lafferty, John, and Chengxiang Zhai. 2001. “Document Language Models, Query Models, and Risk Minimization for Information Retrieval.” In <em>Proceedings of the 24th Annual International Acm Sigir Conference on Research and Development in Information Retrieval</em>, 111–19. ACM.</p>
+</div>
+<div id="ref-bellegarda2004statistical">
+<p>Bellegarda, Jerome R. 2004. “Statistical Language Model Adaptation: Review and Perspectives.” <em>Speech Communication</em> 42 (1). Elsevier: 93–108.</p>
+</div>
+<div id="ref-brants2012large">
+<p>Brants, Thorsten, Ashok C Popat, Peng Xu, Franz J Och, and Jeffrey Dean. 2012. “Large Language Models in Machine Translation.” Google Patents.</p>
+</div>
+<div id="ref-gibson1994tools">
+<p>Gibson, Kathleen R, Kathleen Rita Gibson, and Tim Ingold. 1994. <em>Tools, Language and Cognition in Human Evolution</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-borko1963automatic">
+<p>Borko, Harold, and Myrna Bernick. 1963. “Automatic Document Classification.” <em>Journal of the ACM (JACM)</em> 10 (2). ACM: 151–62.</p>
+</div>
+<div id="ref-aggarwal2012survey">
+<p>Aggarwal, Charu C, and ChengXiang Zhai. 2012. “A Survey of Text Classification Algorithms.” In <em>Mining Text Data</em>, 163–222. Springer.</p>
 </div>
 </div>
             </section>

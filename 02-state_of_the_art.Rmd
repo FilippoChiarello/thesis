@@ -32,6 +32,8 @@ The algorythms i reviewed in this section are summmarised in table tot, where th
 
 - Hadley
 
+weight, tfids
+
 DTM
 
 problems such as sparsity
@@ -83,21 +85,47 @@ not part of the regular expressions.
 
 Classi di modelli. Pedro Domingos
 
+[@james2013introduction]
+
 #### N-Grams {#sotatoolstransformngrams}
 
 An n-gram is a sequence of N n-gram words: a 2-gram (or bigram) is a two-word sequence of words like “credit card”, “3d printing”, or ”printing machine”, and a 3-gram (or trigram) is a three-word sequence of words like “3d printing machine”. Statistical model can be used to extract the n-grams contained in a document. 
 A first approach has the of predicting the next item in a sequence in the form of a (n − 1)–order Markov model[@lafferty2001document]. The algorythm begin with the task of computing P(w|h), the probability of a word w given a word h.The way to extimate this probability is using relative frequency counts. To do that the algorythms count the number of times h is followed by the w. With a large enough corpus it is possibile to build valuable models, able to extract n-grams [@bellegarda2004statistical].
 While this method of estimating probabilities directly from counts works for many natural language applications, in many cases a huge dimension of the corpus does make the model useful, and this is particularly true for technical documents [@brants2012large]. This is because technical language has a strong ratio of evolution; as new artifcat are invented, new chunks are created all the time, and has no sense to continuolly count every word co-occurrence to update our model[@gibson1994tools].
-A more usefull method for chunk extraction fro technical document uses part-of-speech-taggin and regular expression. Once a document is pos-taggerd each word is associated whit a particular part of speech: each sentence is rapresented as a sequence of part-of-spech. Once we have this rappresentation, it is possible to etract only certain sequences of part-of-speeches, the ones that whit an high level of confidence are n-grams.
+A more usefull method for chunk extraction fro technical document uses part-of-speech-tagging and regular expression. Once a document is pos-taggerd each word is associated whit a particular part of speech: each sentence is rapresented as a sequence of part-of-spech. Once we have this rappresentation, it is possible to etract only certain sequences of part-of-speeches, the ones that whit an high level of confidence are n-grams.
+
 [TROVA LAVORI SU QUESTO ARGOMENTO]
 
-
 #### Document Classification {#sotatoolsmodeldocclass}
-#### Network Analysis {#sotatoolsmodelnetanal}
+
+Classification is a general process that has the goal of taking an object, extract features, and assign to the observation one of a set of discrete classes. This process is largerly used for documents [@borko1963automatic] and there exist many methods for document classification [@aggarwal2012survey]. 
+
+Regardless of technological sector, most organizations today are facing the problem of overload of information. When it comes to classify huge ammount of documents or to separate the useful documents from the irrelevant, document classification techniques can reduce the proecess cost and time.
+
+The simplest method for classifying text is to use expert defined rules. These systems are called expert systems or knowledge engineering approach. Expert rule-based systems are programs that consist of rules in the IF form condition THEN action (if condition, then action). Given a series of facts, expert systems, thanks to the rules they are made of, manage to deduce new facts. 
+The expert systems therefore differ from other similar programs, since, by referring to technologies developed according to artificial intelligence, they are always able to exhibit the logical steps that underlie their decisions: a purpose that, for example, is not feasible from the human mind or black box-systems. There are many type of documents for which expert based classifiers constitute a stateof-the-art system, or at least part of it. Anyway, rules can be useless in situations such as:
+- data change over time
+- the rules are too many and interrelated
+
+Most systems of documents classification are instead done via supervised learning: we have a data set of input observations, each associated with some correct output  (training set). The goal of the algorithm is to build a statical model able to learn how to map from a new observation (test set) to a correct output. The advantages of this approach over the knowledge engineering approach are a very good effectiveness, considerable savings in terms of expert labor power, and straightforward portability to different domains.
+
+In the supervised document classification process, we have a training set of N documents that have each been tipically hand-labeled with a class: (d1, c1),....,(dN, cN). I say tipically, because other less expensive methods could be designed, as we will show for the task of Named Entity Recongition (another supervised learning task, that classifies words intstead of documents \@ref(sotatoolsmodelner)). The goal of the supervised document classification task is to learn a statistical model capable of assign a new document d to its correct class c ∈ C. There exist a class of these classifier, probabilistic classifiers, that additionally will tell us the probability of the observation being in the class. 
+
+Many kinds of machine learning algorithms are used to build classifiers [@sebastiani2002machine], such as:
+
+- _Decision Tree Classifiers_: A decision tree documents classifier are systems that has as output a classification tree. In this tree internal nodes are terms contained in the corpus under analysis, branches departing are labeled by the weight (see section \@ref(sotatoolstidy)) that the term has in the test document, and leafs are labeled by categories. There exists many methods to automatically learn trees from data. A tree can be build by splitting the data source into subsets based on an test feature. This process is repeated on each derived subset in a recursive manner called recursive partitioning. The recursion is completed when the subset at a node has all the same value of the target variable, or when splitting no longer adds value to the predictions.
+
+
 #### Sentiment Analsysis {#sotatoolsmodelsentanal}
+
+#### Network Analysis {#sotatoolsmodelnetanal}
+
 #### Named Entity Recognition {#sotatoolsmodelner}
+
 #### Vector Semantics {#sotatoolsmodelvec}
+
 #### Topic Modelling {#sotatoolsmodeltopicmodel}
+
 
 ### Visualize {#sotatoolsvisualize}
 
@@ -121,6 +149,8 @@ Taleb?
 #### The problem of byases {#sotadocumentsunderstandbyas}
 
 #### The Importance of Lexicons for Technical Documents Analysis  {#sotadocumentsunderstandlexicons}
+
+#### Expert Systems
 
 ### Patents {#sotadocumentspatents}
 
