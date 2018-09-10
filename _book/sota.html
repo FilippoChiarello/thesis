@@ -236,9 +236,9 @@
 <ul>
 <li><p><em>Decision Tree Classifiers</em>: Decision tree documents classifier are systems that has as output a classification tree <span class="citation">(Sebastiani <a href="#ref-sebastiani2002machine">2002</a>)</span>. In this tree internal nodes are terms contained in the corpus under analysis, branches departing are labeled by the weight (see section <a href="sota.html#sotatoolstidy">2.1.3</a>) that the term has in the test document, and leafs are labeled by categories. There exists many methods to automatically learn trees from data. A tree can be build by splitting the data source into subsets based on an test feature. This process is repeated on each derived subset in a recursive manner called recursive partitioning. The recursion is completed when the subset at a node has all the same value of the target variable, or when splitting no longer adds value to the predictions.</p></li>
 <li><p><em>Rule Based Classifiers</em>: Rule-based classifiers are systems in wich the patterns which are most likely to be related to the different classes are extracted from a set of test documents. The set of rules corresponds to the lefthand side to a word pattern, and the right-hand side to a class label. These rules are used for the purposes of classification. In its most general form, the left hand side of the rule is a boolean condition, which is expressed in Disjunctive Normal Form (DNF). However, in most cases, the condition on the left hand side is much simpler and represents a set of terms, all of which must be present in the document for the condition to be satisfied <span class="citation">(Yang, Li, and Wang <a href="#ref-yang2004building">2004</a>)</span>.</p></li>
-<li><p><em>Support Vector Machines (SVM) Classifiers</em>: SVM Classifiers attempt to partition the data space with the use of linear or non-linear delineations between the different classes. The main principle of SVM algorythm is to determine separators in the feature space which can best separate the different classes <span class="citation">(Joachims <a href="#ref-joachims1998text">1998</a>)</span>.</p></li>
-<li><p><em>Baeysian Classifiers</em>: Bayesian classifiers build a probabilistic classifier based on modeling the underlying word features in different classes. The idea is then to classify documents using the posterior probability of the documents belonging to the different classes on the basis of the word presence in the documents.</p></li>
-<li><p><em>Neural Netword Classifiers</em>: The basic unit in a neural network is a neuron. Each neuron receives a set of inputs, which are denoted by the vector <em>Xi</em>, which are the values of the feature vector for a certain instance. Each neuron is also associated with a set of weights, which are used in order to compute a function of its inputs. Neural Networks Classifier are able, thank to a process called learning phase, to ajust their weights in such a way that the function is abble to effectively classify new instances. Neural networks are nowdays one of the best method for documents classification, and are used in a wide variety of appliations. [TROVA CITAZIONI]</p></li>
+<li><p><em>Support Vector Machines (SVM) Classifiers</em>: SVM Classifiers attempt to partition the data space with the use of linear or non-linear delineations between the different classes. The main principle of SVM algorythm is to determine separators in the feature space which can best separate the different classes <span class="citation">(Joachims <a href="#ref-joachims1998text">1998</a>,<span class="citation">L. M. Manevitz and Yousef (<a href="#ref-manevitz2001one">2001</a>)</span>)</span>.</p></li>
+<li><p><em>Baeysian Classifiers</em>: Bayesian classifiers build a probabilistic classifier based on modeling the underlying word features in different classes. The idea is then to classify documents using the posterior probability of the documents belonging to the different classes on the basis of the word presence in the documents <span class="citation">(Pop <a href="#ref-pop2006approach">2006</a>)</span>.</p></li>
+<li><p><em>Neural Netword Classifiers</em>: The basic unit in a neural network is a neuron. Each neuron receives a set of inputs, which are denoted by the vector <em>Xi</em>, which are the values of the feature vector for a certain instance. Each neuron is also associated with a set of weights, which are used in order to compute a function of its inputs. Neural Networks Classifier are able, thank to a process called learning phase, to ajust their weights in such a way that the function is abble to effectively classify new instances. Neural networks are nowdays one of the best method for documents classification, and are used in a wide variety of appliations <span class="citation">(L. Manevitz and Yousef <a href="#ref-manevitz2007one">2007</a>)</span>. Great performances has also been reached by deep neural networks, which are neural networks whit a large number o neurons arranged in multiple layers <span class="citation">(Lai et al. <a href="#ref-lai2015recurrent">2015</a>. <span class="citation">Kim (<a href="#ref-kim2014convolutional">2014</a>)</span>)</span>.</p></li>
 </ul>
 </div>
 <div id="sotatoolsmodelsentanal" class="section level4">
@@ -352,6 +352,21 @@
 </div>
 <div id="ref-joachims1998text">
 <p>Joachims, Thorsten. 1998. “Text Categorization with Support Vector Machines: Learning with Many Relevant Features.” In <em>European Conference on Machine Learning</em>, 137–42. Springer.</p>
+</div>
+<div id="ref-manevitz2001one">
+<p>Manevitz, Larry M, and Malik Yousef. 2001. “One-Class Svms for Document Classification.” <em>Journal of Machine Learning Research</em> 2 (Dec): 139–54.</p>
+</div>
+<div id="ref-pop2006approach">
+<p>Pop, Ioan. 2006. “An Approach of the Naive Bayes Classifier for the Document Classification.” <em>General Mathematics</em> 14 (4). University: 135–38.</p>
+</div>
+<div id="ref-manevitz2007one">
+<p>Manevitz, Larry, and Malik Yousef. 2007. “One-Class Document Classification via Neural Networks.” <em>Neurocomputing</em> 70 (7-9). Elsevier: 1466–81.</p>
+</div>
+<div id="ref-lai2015recurrent">
+<p>Lai, Siwei, Liheng Xu, Kang Liu, and Jun Zhao. 2015. “Recurrent Convolutional Neural Networks for Text Classification.” In <em>AAAI</em>, 333:2267–73.</p>
+</div>
+<div id="ref-kim2014convolutional">
+<p>Kim, Yoon. 2014. “Convolutional Neural Networks for Sentence Classification.” <em>arXiv Preprint arXiv:1408.5882</em>.</p>
 </div>
 </div>
             </section>
