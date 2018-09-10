@@ -111,10 +111,18 @@ Most systems of documents classification are instead done via supervised learnin
 
 In the supervised document classification process, we have a training set of N documents that have each been tipically hand-labeled with a class: (d1, c1),....,(dN, cN). I say tipically, because other less expensive methods could be designed, as we will show for the task of Named Entity Recongition (another supervised learning task, that classifies words intstead of documents \@ref(sotatoolsmodelner)). The goal of the supervised document classification task is to learn a statistical model capable of assign a new document d to its correct class c ∈ C. There exist a class of these classifier, probabilistic classifiers, that additionally will tell us the probability of the observation being in the class. 
 
-Many kinds of machine learning algorithms are used to build classifiers [@sebastiani2002machine], such as:
+Many kinds of machine learning algorithms are used to build classifiers [@aggarwal2012survey], such as:
 
-- _Decision Tree Classifiers_: A decision tree documents classifier are systems that has as output a classification tree. In this tree internal nodes are terms contained in the corpus under analysis, branches departing are labeled by the weight (see section \@ref(sotatoolstidy)) that the term has in the test document, and leafs are labeled by categories. There exists many methods to automatically learn trees from data. A tree can be build by splitting the data source into subsets based on an test feature. This process is repeated on each derived subset in a recursive manner called recursive partitioning. The recursion is completed when the subset at a node has all the same value of the target variable, or when splitting no longer adds value to the predictions.
+- _Decision Tree Classifiers_: Decision tree documents classifier are systems that has as output a classification tree [@sebastiani2002machine]. In this tree internal nodes are terms contained in the corpus under analysis, branches departing are labeled by the weight (see section \@ref(sotatoolstidy)) that the term has in the test document, and leafs are labeled by categories. There exists many methods to automatically learn trees from data. A tree can be build by splitting the data source into subsets based on an test feature. This process is repeated on each derived subset in a recursive manner called recursive partitioning. The recursion is completed when the subset at a node has all the same value of the target variable, or when splitting no longer adds value to the predictions.
 
+- _Rule Based Classifiers_: Rule-based classifiers are systems in wich the patterns which are most likely to be related to the different classes are extracted from a set of test documents. The set of rules corresponds to the lefthand side to a word pattern, and the right-hand side to a class label. These rules are used for the purposes of classification. In its most general form, the left hand side of the rule is a boolean condition, which is expressed in Disjunctive Normal Form (DNF). However, in most cases, the condition on the left hand side is much simpler and represents a set of terms, all of which must be present in the document for the condition to be satisfied [@yang2004building].
+
+- _Support Vector Machines (SVM) Classifiers_: SVM Classifiers attempt to partition the data
+space with the use of linear or non-linear delineations between the different classes. The main principle of SVM algorythm is to determine separators in the feature space which can best separate the different classes [@joachims1998text].
+
+- _Baeysian Classifiers_: Bayesian classifiers build a probabilistic classifier based on modeling the underlying word features in different classes. The idea is then to classify documents using  the posterior probability of the documents belonging to the different classes on the basis of the word presence in the documents.
+
+- _Neural Netword Classifiers_: The basic unit in a neural network is a neuron. Each neuron receives a set of inputs, which are denoted by the vector _Xi_, which are the values of the feature vector for a certain instance. Each neuron is also associated with a set of weights, which are used in order to compute a function of its inputs. Neural Networks Classifier are able, thank to a process called learning phase, to ajust their weights in such a way that the function is abble to effectively classify new instances. Neural networks are nowdays one of the best method for documents classification, and are used in a wide variety of appliations. [TROVA CITAZIONI]
 
 #### Sentiment Analsysis {#sotatoolsmodelsentanal}
 
@@ -122,10 +130,7 @@ Many kinds of machine learning algorithms are used to build classifiers [@sebast
 
 #### Named Entity Recognition {#sotatoolsmodelner}
 
-#### Vector Semantics {#sotatoolsmodelvec}
-
 #### Topic Modelling {#sotatoolsmodeltopicmodel}
-
 
 ### Visualize {#sotatoolsvisualize}
 

@@ -25,7 +25,7 @@
 <meta name="author" content="Filippo Chiarello">
 
 
-<meta name="date" content="2018-09-06">
+<meta name="date" content="2018-09-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -150,7 +150,7 @@
 <p>The analysis of technical documents require the design of processes that rely both on programming and Natural Language Processing techniques and on the undestanding and knowldege of field experts. While the first techniques are codified and explicit, the second are sometimes implicit and always harder to systematize. In this section i treat these two groups of techniques in the same way to give to the reader a sistematic litterature review on these topics. For this reason the sections of this chapter has the sequent structure:</p>
 <ul>
 <li>At a first level we have two sections <a href="sota.html#sotatools">2.1</a> and <a href="sota.html#sotadocuments">2.2</a>, reviewing respectivelly the processes of <em>programming and Natural Language Processing</em> and of <em>undestanding and knowldege of field experts application</em>;</li>
-<li>Section <a href="sota.html#sotatools">2.1</a> has a subsection for each of the <em>phases</em> showed in figure <a href="introduction.html#fig:mainworkflow">1.1</a>. These subsections goes from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a>;</li>
+<li>Section <a href="sota.html#sotatools">2.1</a> has a subsection for each of the <em>phases</em> showed in figure <a href="#fig:mainworkflow"><strong>??</strong></a>. These subsections goes from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a>;</li>
 <li>Each subsection from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a> contains the relative Natural Language Processing <em>task</em> that are relevant for the analysis of technical documents, for example Document Retrieval <a href="sota.html#sotatoolsimportretrieval">2.1.2.1</a>, Part-Of-Speech-Tagging; <a href="sota.html#sotatoolstransformpos">2.1.6.3</a> or Named Entity Recognition <a href="sota.html#sotatoolsmodelner">2.1.7.5</a>.</li>
 <li>Each task subsection describes the relevant <em>techniques</em> to perform that task. I use the word techniques to include mainly algorythms and procedures but also more generic methods or frameworks;</li>
 <li>Since the second section <a href="sota.html#sotadocuments">2.2</a> describes less systematics phases, task and techniques this section opens with a first subsection <a href="sota.html#sotadocumentsunderstand">2.2.1</a> that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow.</li>
@@ -158,7 +158,7 @@
 </ul>
 <div id="sotatools" class="section level2">
 <h2><span class="header-section-number">2.1</span> Phases, Tasks, and Techniques</h2>
-<p>In this section I make a review of the most important techniques for Natural Language Processing in the context of technical documents analysis. The techniques (mainly algorythms) are grouped in phases (Import, Tidy, Transform, Model, Visualize, Communicate) showed in figure <a href="introduction.html#fig:mainworkflow">1.1</a> and each phases is dived in the NLP tasks that are the most important for the analysis of technical documents. The algorythms i reviewed in this section are summmarised in table tot, where the reader can see the relationship between tasks and techniques.</p>
+<p>In this section I make a review of the most important techniques for Natural Language Processing in the context of technical documents analysis. The techniques (mainly algorythms) are grouped in phases (Import, Tidy, Transform, Model, Visualize, Communicate) showed in figure <a href="#fig:mainworkflow"><strong>??</strong></a> and each phases is dived in the NLP tasks that are the most important for the analysis of technical documents. The algorythms i reviewed in this section are summmarised in table tot, where the reader can see the relationship between tasks and techniques.</p>
 <div id="sotatoolsprogram" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Program</h3>
 <ul>
@@ -183,6 +183,7 @@
 <ul>
 <li>Hadley</li>
 </ul>
+<p>weight, tfids</p>
 <p>DTM</p>
 <p>problems such as sparsity</p>
 </div>
@@ -218,6 +219,7 @@
 <div id="sotatoolsmodel" class="section level3">
 <h3><span class="header-section-number">2.1.7</span> Model</h3>
 <p>Classi di modelli. Pedro Domingos</p>
+<p><span class="citation">(James et al. <a href="#ref-james2013introduction">2013</a>)</span></p>
 <div id="sotatoolstransformngrams" class="section level4">
 <h4><span class="header-section-number">2.1.7.1</span> N-Grams</h4>
 <p>An n-gram is a sequence of N n-gram words: a 2-gram (or bigram) is a two-word sequence of words like “credit card”, “3d printing”, or ”printing machine”, and a 3-gram (or trigram) is a three-word sequence of words like “3d printing machine”. Statistical model can be used to extract the n-grams contained in a document. A first approach has the of predicting the next item in a sequence in the form of a (n − 1)–order Markov model<span class="citation">(Lafferty and Zhai <a href="#ref-lafferty2001document">2001</a>)</span>. The algorythm begin with the task of computing P(w|h), the probability of a word w given a word h.The way to extimate this probability is using relative frequency counts. To do that the algorythms count the number of times h is followed by the w. With a large enough corpus it is possibile to build valuable models, able to extract n-grams <span class="citation">(Bellegarda <a href="#ref-bellegarda2004statistical">2004</a>)</span>. While this method of estimating probabilities directly from counts works for many natural language applications, in many cases a huge dimension of the corpus does make the model useful, and this is particularly true for technical documents <span class="citation">(Brants et al. <a href="#ref-brants2012large">2012</a>)</span>. This is because technical language has a strong ratio of evolution; as new artifcat are invented, new chunks are created all the time, and has no sense to continuolly count every word co-occurrence to update our model<span class="citation">(K. R. Gibson, Gibson, and Ingold <a href="#ref-gibson1994tools">1994</a>)</span>. A more usefull method for chunk extraction fro technical document uses part-of-speech-tagging and regular expression. Once a document is pos-taggerd each word is associated whit a particular part of speech: each sentence is rapresented as a sequence of part-of-spech. Once we have this rappresentation, it is possible to etract only certain sequences of part-of-speeches, the ones that whit an high level of confidence are n-grams.</p>
@@ -227,17 +229,17 @@
 <h4><span class="header-section-number">2.1.7.2</span> Document Classification</h4>
 <p>Classification is a general process that has the goal of taking an object, extract features, and assign to the observation one of a set of discrete classes. This process is largerly used for documents <span class="citation">(Borko and Bernick <a href="#ref-borko1963automatic">1963</a>)</span> and there exist many methods for document classification <span class="citation">(Aggarwal and Zhai <a href="#ref-aggarwal2012survey">2012</a>)</span>.</p>
 <p>Regardless of technological sector, most organizations today are facing the problem of overload of information. When it comes to classify huge ammount of documents or to separate the useful documents from the irrelevant, document classification techniques can reduce the proecess cost and time.</p>
-<p>The simplest method for classifying text is to use expert defined rules, expert systems.Expert rule-based systems are programs that consist of rules in the IF form condition THEN action (if condition, then action). Given a series of facts, expert systems, thanks to the rules they are made of, manage to deduce new facts. The expert systems therefore differ from other similar programs, since, by referring to technologies developed according to artificial intelligence, they are always able to exhibit the logical steps that underlie their decisions: a purpose that, for example, is not feasible from the human mind or black box-systems. There are many type of documents for which expert based classifiers constitute a stateof-the-art system, or at least part of it. Anyway, rules can be useless in situations such as: - data change over time - the rules are too many and interrelated</p>
-<p>Most systems of documents classification are instead done via supervised learning: we have a data set of input observations, each associated with some correct output (training set). The goal of the algorithm is to build a statical model able to learn how to map from a new observation (test set) to a correct output.</p>
+<p>The simplest method for classifying text is to use expert defined rules. These systems are called expert systems or knowledge engineering approach. Expert rule-based systems are programs that consist of rules in the IF form condition THEN action (if condition, then action). Given a series of facts, expert systems, thanks to the rules they are made of, manage to deduce new facts. The expert systems therefore differ from other similar programs, since, by referring to technologies developed according to artificial intelligence, they are always able to exhibit the logical steps that underlie their decisions: a purpose that, for example, is not feasible from the human mind or black box-systems. There are many type of documents for which expert based classifiers constitute a stateof-the-art system, or at least part of it. Anyway, rules can be useless in situations such as: - data change over time - the rules are too many and interrelated</p>
+<p>Most systems of documents classification are instead done via supervised learning: we have a data set of input observations, each associated with some correct output (training set). The goal of the algorithm is to build a statical model able to learn how to map from a new observation (test set) to a correct output. The advantages of this approach over the knowledge engineering approach are a very good effectiveness, considerable savings in terms of expert labor power, and straightforward portability to different domains.</p>
 <p>In the supervised document classification process, we have a training set of N documents that have each been tipically hand-labeled with a class: (d1, c1),….,(dN, cN). I say tipically, because other less expensive methods could be designed, as we will show for the task of Named Entity Recongition (another supervised learning task, that classifies words intstead of documents <a href="sota.html#sotatoolsmodelner">2.1.7.5</a>). The goal of the supervised document classification task is to learn a statistical model capable of assign a new document d to its correct class c ∈ C. There exist a class of these classifier, probabilistic classifiers, that additionally will tell us the probability of the observation being in the class.</p>
-<p>Many kinds of machine learning algorithms are used to build classifiers.</p>
-<div id="naive-bayes" class="section level5">
-<h5><span class="header-section-number">2.1.7.2.1</span> naive Bayes</h5>
-</div>
-<div id="logistic-regression" class="section level5">
-<h5><span class="header-section-number">2.1.7.2.2</span> Logistic regression</h5>
-<p>This chapter introduces naive Bayes; the following one introduces logistic regression. These exemplify two ways of doing classification. Generative classifiers like naive Bayes build a model of how a class could generate some input data. Given an observation, they return the class most likely to have generated the observation. Discriminative classifiers like logistic regression instead learn what features from the input are most useful to discriminate between the different possible classes. While discriminative systems are often more accurate and hence more commonly used, generative classifiers still have a role.</p>
-</div>
+<p>Many kinds of machine learning algorithms are used to build classifiers <span class="citation">(Aggarwal and Zhai <a href="#ref-aggarwal2012survey">2012</a>)</span>, such as:</p>
+<ul>
+<li><p><em>Decision Tree Classifiers</em>: Decision tree documents classifier are systems that has as output a classification tree <span class="citation">(Sebastiani <a href="#ref-sebastiani2002machine">2002</a>)</span>. In this tree internal nodes are terms contained in the corpus under analysis, branches departing are labeled by the weight (see section <a href="sota.html#sotatoolstidy">2.1.3</a>) that the term has in the test document, and leafs are labeled by categories. There exists many methods to automatically learn trees from data. A tree can be build by splitting the data source into subsets based on an test feature. This process is repeated on each derived subset in a recursive manner called recursive partitioning. The recursion is completed when the subset at a node has all the same value of the target variable, or when splitting no longer adds value to the predictions.</p></li>
+<li><p><em>Rule Based Classifiers</em>: Rule-based classifiers are systems in wich the patterns which are most likely to be related to the different classes are extracted from a set of test documents. The set of rules corresponds to the lefthand side to a word pattern, and the right-hand side to a class label. These rules are used for the purposes of classification. In its most general form, the left hand side of the rule is a boolean condition, which is expressed in Disjunctive Normal Form (DNF). However, in most cases, the condition on the left hand side is much simpler and represents a set of terms, all of which must be present in the document for the condition to be satisfied <span class="citation">(Yang, Li, and Wang <a href="#ref-yang2004building">2004</a>)</span>.</p></li>
+<li><p><em>Support Vector Machines (SVM) Classifiers</em>: SVM Classifiers attempt to partition the data space with the use of linear or non-linear delineations between the different classes. The main principle of SVM algorythm is to determine separators in the feature space which can best separate the different classes <span class="citation">(Joachims <a href="#ref-joachims1998text">1998</a>)</span>.</p></li>
+<li><p><em>Baeysian Classifiers</em>: Bayesian classifiers build a probabilistic classifier based on modeling the underlying word features in different classes. The idea is then to classify documents using the posterior probability of the documents belonging to the different classes on the basis of the word presence in the documents.</p></li>
+<li><p><em>Neural Netword Classifiers</em>: The basic unit in a neural network is a neuron. Each neuron receives a set of inputs, which are denoted by the vector <em>Xi</em>, which are the values of the feature vector for a certain instance. Each neuron is also associated with a set of weights, which are used in order to compute a function of its inputs. Neural Networks Classifier are able, thank to a process called learning phase, to ajust their weights in such a way that the function is abble to effectively classify new instances. Neural networks are nowdays one of the best method for documents classification, and are used in a wide variety of appliations. [TROVA CITAZIONI]</p></li>
+</ul>
 </div>
 <div id="sotatoolsmodelsentanal" class="section level4">
 <h4><span class="header-section-number">2.1.7.3</span> Sentiment Analsysis</h4>
@@ -248,11 +250,8 @@
 <div id="sotatoolsmodelner" class="section level4">
 <h4><span class="header-section-number">2.1.7.5</span> Named Entity Recognition</h4>
 </div>
-<div id="sotatoolsmodelvec" class="section level4">
-<h4><span class="header-section-number">2.1.7.6</span> Vector Semantics</h4>
-</div>
 <div id="sotatoolsmodeltopicmodel" class="section level4">
-<h4><span class="header-section-number">2.1.7.7</span> Topic Modelling</h4>
+<h4><span class="header-section-number">2.1.7.6</span> Topic Modelling</h4>
 </div>
 </div>
 <div id="sotatoolsvisualize" class="section level3">
@@ -324,6 +323,9 @@
 <div id="ref-attardi2006experiments">
 <p>Attardi, Giuseppe. 2006. “Experiments with a Multilanguage Non-Projective Dependency Parser.” In <em>Proceedings of the Tenth Conference on Computational Natural Language Learning</em>, 166–70. Association for Computational Linguistics.</p>
 </div>
+<div id="ref-james2013introduction">
+<p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. 2013. <em>An Introduction to Statistical Learning</em>. Vol. 112. Springer.</p>
+</div>
 <div id="ref-lafferty2001document">
 <p>Lafferty, John, and Chengxiang Zhai. 2001. “Document Language Models, Query Models, and Risk Minimization for Information Retrieval.” In <em>Proceedings of the 24th Annual International Acm Sigir Conference on Research and Development in Information Retrieval</em>, 111–19. ACM.</p>
 </div>
@@ -341,6 +343,15 @@
 </div>
 <div id="ref-aggarwal2012survey">
 <p>Aggarwal, Charu C, and ChengXiang Zhai. 2012. “A Survey of Text Classification Algorithms.” In <em>Mining Text Data</em>, 163–222. Springer.</p>
+</div>
+<div id="ref-sebastiani2002machine">
+<p>Sebastiani, Fabrizio. 2002. “Machine Learning in Automated Text Categorization.” <em>ACM Computing Surveys (CSUR)</em> 34 (1). ACM: 1–47.</p>
+</div>
+<div id="ref-yang2004building">
+<p>Yang, Qiang, Tianyi Li, and Ke Wang. 2004. “Building Association-Rule Based Sequential Classifiers for Web-Document Prediction.” <em>Data Mining and Knowledge Discovery</em> 8 (3). Springer: 253–73.</p>
+</div>
+<div id="ref-joachims1998text">
+<p>Joachims, Thorsten. 1998. “Text Categorization with Support Vector Machines: Learning with Many Relevant Features.” In <em>European Conference on Machine Learning</em>, 137–42. Springer.</p>
 </div>
 </div>
             </section>
