@@ -25,7 +25,7 @@
 <meta name="author" content="Filippo Chiarello">
 
 
-<meta name="date" content="2018-09-10">
+<meta name="date" content="2018-09-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -238,11 +238,19 @@
 <li><p><em>Rule Based Classifiers</em>: Rule-based classifiers are systems in wich the patterns which are most likely to be related to the different classes are extracted from a set of test documents. The set of rules corresponds to the lefthand side to a word pattern, and the right-hand side to a class label. These rules are used for the purposes of classification. In its most general form, the left hand side of the rule is a boolean condition, which is expressed in Disjunctive Normal Form (DNF). However, in most cases, the condition on the left hand side is much simpler and represents a set of terms, all of which must be present in the document for the condition to be satisfied <span class="citation">(Yang, Li, and Wang <a href="#ref-yang2004building">2004</a>)</span>.</p></li>
 <li><p><em>Support Vector Machines (SVM) Classifiers</em>: SVM Classifiers attempt to partition the data space with the use of linear or non-linear delineations between the different classes. The main principle of SVM algorythm is to determine separators in the feature space which can best separate the different classes <span class="citation">(Joachims <a href="#ref-joachims1998text">1998</a>,<span class="citation">L. M. Manevitz and Yousef (<a href="#ref-manevitz2001one">2001</a>)</span>)</span>.</p></li>
 <li><p><em>Baeysian Classifiers</em>: Bayesian classifiers build a probabilistic classifier based on modeling the underlying word features in different classes. The idea is then to classify documents using the posterior probability of the documents belonging to the different classes on the basis of the word presence in the documents <span class="citation">(Pop <a href="#ref-pop2006approach">2006</a>)</span>.</p></li>
-<li><p><em>Neural Netword Classifiers</em>: The basic unit in a neural network is a neuron. Each neuron receives a set of inputs, which are denoted by the vector <em>Xi</em>, which are the values of the feature vector for a certain instance. Each neuron is also associated with a set of weights, which are used in order to compute a function of its inputs. Neural Networks Classifier are able, thank to a process called learning phase, to ajust their weights in such a way that the function is abble to effectively classify new instances. Neural networks are nowdays one of the best method for documents classification, and are used in a wide variety of appliations <span class="citation">(L. Manevitz and Yousef <a href="#ref-manevitz2007one">2007</a>)</span>. Great performances has also been reached by deep neural networks, which are neural networks whit a large number o neurons arranged in multiple layers <span class="citation">(Lai et al. <a href="#ref-lai2015recurrent">2015</a>. <span class="citation">Kim (<a href="#ref-kim2014convolutional">2014</a>)</span>)</span>.</p></li>
+<li><p><em>Neural Netword Classifiers</em>: The basic unit in a neural network is a neuron. Each neuron receives a set of inputs, which are denoted by the vector <em>Xi</em>, which are the values of the feature vector for a certain instance. Each neuron is also associated with a set of weights, which are used in order to compute a function of its inputs. Neural Networks Classifier are able, thank to a process called learning phase, to ajust their weights in such a way that the function is abble to effectively classify new instances. Neural networks are nowdays one of the best method for documents classification, and are used in a wide variety of appliations <span class="citation">(L. Manevitz and Yousef <a href="#ref-manevitz2007one">2007</a>)</span>. Great performances has also been reached by deep neural networks, which are neural networks whit a large number o neurons arranged in multiple layers <span class="citation">(Lai et al. <a href="#ref-lai2015recurrent">2015</a>. <span class="citation">Y. Kim (<a href="#ref-kim2014convolutional">2014</a>)</span>)</span>.</p></li>
 </ul>
 </div>
 <div id="sotatoolsmodelsentanal" class="section level4">
 <h4><span class="header-section-number">2.1.7.3</span> Sentiment Analsysis</h4>
+<p>Sentiment analysis techniques are algorythms able to measure from text, people’s opinions and emotions toward events, topics, products and their attributes <span class="citation">(Pang, Lee, and others <a href="#ref-pang2008opinion">2008</a>)</span>. For example, businesses (particularly marketeers) are intrested in finding costumers opinions about their products and services.</p>
+<p>Thanks to the growth of social media (forums, blogs and social networks), individuals and organizations are producing a huge quantity of their written opinion. This has make it possible to scholars to study this phenomena and to develop many different and effective sentiment analysis techniques <span class="citation">(B. Liu and Zhang <a href="#ref-liu2012survey">2012</a>)</span>. In the past decade, a considerable amount of research has been done by scholars and there are also numerous commercial companies that provide opinion mining services. However, measuring sentiment in documents and distilling the information contained in them remains a challenging task because of the diversity of documents from which is possibile to extract sentiment.</p>
+<p>The approaches to perform sentiment analysis are many. Among all, the most intresting for tehcnical documents analysis are:</p>
+<ul>
+<li><p><em>Dictionary Base Approaches</em> : This approach has the aim of collecting words that are clues for positive or negative sentiment. In litterature these words are called opinion words, opinion-bearing words or sentiment words. Examples of positive opinion words are: good, nice and amazing. Examples of negative opinion words are bad, poor, and terrible. Collectively, they are called the opinion lexicon. The most simple and widely used techniques to produce a dictionary of opinion words is based on bootstrapping using a small set of seed opinion words and an online dictionary such as WordNet <span class="citation">(Miller <a href="#ref-miller1995wordnet">1995</a>)</span>. The works that used this approach <span class="citation">(Hu and Liu <a href="#ref-hu2004mining">2004</a>, <span class="citation">S.-M. Kim and Hovy (<a href="#ref-kim2004determining">2004</a>)</span>)</span>, adopts a process that consist in two phases: first collect set of opinion words manually, then grow this set by searching in the WordNet for their synonyms and antonyms. The process stops when no more new words are found. After that a manual inspection can be carried out to remove and/or correct errors. Scholars has developed several opinion lexicons <span class="citation">(Ding, Liu, and Yu <a href="#ref-ding2008holistic">2008</a>, <span class="citation">Baccianella, Esuli, and Sebastiani (<a href="#ref-baccianella2010sentiwordnet">2010</a>)</span>, <span class="citation">Hu and Liu (<a href="#ref-hu2004mining">2004</a>)</span>, <span class="citation">Philip et al. (<a href="#ref-philip1966general">1966</a>)</span>, <span class="citation">Wiebe, Bruce, and O’Hara (<a href="#ref-wiebe1999development">1999</a>)</span>)</span> The lexicon based approach has the characteristic of beeing strongly context specific. This is an advantage when the goal is to design a method able to extract sentiment in a specific context <span class="citation">(Chiarello et al. <a href="#ref-chiarello2017product">2017</a>)</span>, but is a major shortcoming if the goal is to design a general purpose method.</p></li>
+<li><p><em>Supervised Learning Approaches</em>:</p></li>
+<li><p><em>Corpus-based Approaches</em></p></li>
+</ul>
 </div>
 <div id="sotatoolsmodelnetanal" class="section level4">
 <h4><span class="header-section-number">2.1.7.4</span> Network Analysis</h4>
@@ -270,6 +278,7 @@
 <p>Taleb?</p>
 <div id="sotadocumentsunderstandbyas" class="section level4">
 <h4><span class="header-section-number">2.2.1.1</span> The problem of byases</h4>
+<p>Each site typically contains a huge volume of opinionated text that is not always easily deciphered in long forum postings and blogs. The average human reader will have difficulty identifying relevant sites and accurately summarizing the information and opinions contained in them. Moreover, it is also known that human analysis of text information is subject to con- siderable biases, e.g., people often pay greater attention to opinions that are consistent with their own preferences. People also have difficulty, owing to their mental and physical limitations, producing consistent results when the amount of information to be processed is large. Automated opinion mining and summarization systems are thus needed, as subjective biases and mental limitations can be overcome with an objective sentiment analysis system.</p>
 </div>
 <div id="sotadocumentsunderstandlexicons" class="section level4">
 <h4><span class="header-section-number">2.2.1.2</span> The Importance of Lexicons for Technical Documents Analysis</h4>
@@ -367,6 +376,36 @@
 </div>
 <div id="ref-kim2014convolutional">
 <p>Kim, Yoon. 2014. “Convolutional Neural Networks for Sentence Classification.” <em>arXiv Preprint arXiv:1408.5882</em>.</p>
+</div>
+<div id="ref-pang2008opinion">
+<p>Pang, Bo, Lillian Lee, and others. 2008. “Opinion Mining and Sentiment Analysis.” <em>Foundations and Trends in Information Retrieval</em> 2 (1–2). Now Publishers, Inc.: 1–135.</p>
+</div>
+<div id="ref-liu2012survey">
+<p>Liu, Bing, and Lei Zhang. 2012. “A Survey of Opinion Mining and Sentiment Analysis.” In <em>Mining Text Data</em>, 415–63. Springer.</p>
+</div>
+<div id="ref-miller1995wordnet">
+<p>Miller, George A. 1995. “WordNet: A Lexical Database for English.” <em>Communications of the ACM</em> 38 (11). ACM: 39–41.</p>
+</div>
+<div id="ref-hu2004mining">
+<p>Hu, Minqing, and Bing Liu. 2004. “Mining and Summarizing Customer Reviews.” In <em>Proceedings of the Tenth Acm Sigkdd International Conference on Knowledge Discovery and Data Mining</em>, 168–77. ACM.</p>
+</div>
+<div id="ref-kim2004determining">
+<p>Kim, Soo-Min, and Eduard Hovy. 2004. “Determining the Sentiment of Opinions.” In <em>Proceedings of the 20th International Conference on Computational Linguistics</em>, 1367. Association for Computational Linguistics.</p>
+</div>
+<div id="ref-ding2008holistic">
+<p>Ding, Xiaowen, Bing Liu, and Philip S Yu. 2008. “A Holistic Lexicon-Based Approach to Opinion Mining.” In <em>Proceedings of the 2008 International Conference on Web Search and Data Mining</em>, 231–40. ACM.</p>
+</div>
+<div id="ref-baccianella2010sentiwordnet">
+<p>Baccianella, Stefano, Andrea Esuli, and Fabrizio Sebastiani. 2010. “Sentiwordnet 3.0: An Enhanced Lexical Resource for Sentiment Analysis and Opinion Mining.” In <em>Lrec</em>, 10:2200–2204. 2010.</p>
+</div>
+<div id="ref-philip1966general">
+<p>Philip, J, Dexter C Dunphy, Marshall S Smith, Daniel M Ogilvie, and others. 1966. “The General Inquirer: A Computer Approach to Content Analysis.” The MIT Press Cambridge.</p>
+</div>
+<div id="ref-wiebe1999development">
+<p>Wiebe, Janyce M, Rebecca F Bruce, and Thomas P O’Hara. 1999. “Development and Use of a Gold-Standard Data Set for Subjectivity Classifications.” In <em>Proceedings of the 37th Annual Meeting of the Association for Computational Linguistics on Computational Linguistics</em>, 246–53. Association for Computational Linguistics.</p>
+</div>
+<div id="ref-chiarello2017product">
+<p>Chiarello, Filippo, Gualtiero Fantoni, Andrea Bonaccorsi, and others. 2017. “Product Description in Terms of Advantages and Drawbacks: Exploiting Patent Information in Novel Ways.” In <em>DS 87-6 Proceedings of the 21st International Conference on Engineering Design (Iced 17) Vol 6: Design Information and Knowledge, Vancouver, Canada, 21-25.08. 2017</em>, 101–10.</p>
 </div>
 </div>
             </section>

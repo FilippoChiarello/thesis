@@ -126,6 +126,25 @@ space with the use of linear or non-linear delineations between the different cl
 
 #### Sentiment Analsysis {#sotatoolsmodelsentanal}
 
+Sentiment analysis techniques are algorythms able to measure from text, people’s opinions and emotions toward events, topics, products and their attributes [@pang2008opinion].  For example, businesses (particularly marketeers) are intrested in finding costumers opinions about their products and services.
+
+Thanks to the growth of social media (forums, blogs and social networks), individuals and organizations are producing a huge quantity of their written opinion. This has make it possible to scholars to study this phenomena and to develop many different and effective sentiment analysis techniques [@liu2012survey]. In the past decade, a considerable amount of research has been done by scholars and there are also numerous commercial companies that provide opinion mining services. However, measuring sentiment in documents and distilling the information contained in them remains a challenging task because of the diversity of documents from which is possibile to extract sentiment. 
+
+The approaches to perform sentiment analysis are many. Among all, the most intresting for tehcnical documents analysis are:
+
+
+- _Dictionary Base Approaches_ : This approach has the aim of collecting words that are clues for positive or negative sentiment. In litterature these words are called opinion words, opinion-bearing words or sentiment words. Examples of positive opinion words are: good, nice and amazing. Examples of negative opinion words are bad, poor, and terrible. Collectively, they are called the opinion lexicon. The most simple and widely used techniques to produce a dictionary of opinion words is based on bootstrapping using a small set of seed opinion words and an online dictionary such as WordNet [@miller1995wordnet].
+The works that used this approach [@hu2004mining, @kim2004determining], adopts a process that consist in two phases: first collect set of opinion words manually, then grow this set by searching in the WordNet for their synonyms and antonyms. The process stops when no more new words are found. 
+After that a manual inspection can be carried out to remove and/or correct errors. Scholars has developed several opinion lexicons [@ding2008holistic, @baccianella2010sentiwordnet, @hu2004mining, @philip1966general, @wiebe1999development] The lexicon based approach has the characteristic of beeing strongly context specific. This is an advantage when the goal is to design a method able to extract sentiment in a specific context [@chiarello2017product], but is a major  shortcoming if the goal is to design a general purpose method.
+
+- _Supervised Learning Approaches_: 
+
+- _Corpus-based Approaches_
+
+
+
+
+
 #### Network Analysis {#sotatoolsmodelnetanal}
 
 #### Named Entity Recognition {#sotatoolsmodelner}
@@ -135,10 +154,6 @@ space with the use of linear or non-linear delineations between the different cl
 ### Visualize {#sotatoolsvisualize}
 
 ### Comunicate {#sotatoolscomunicate}
-
-
-
-
 
 ## Documents {#sotadocuments}
 
@@ -151,6 +166,9 @@ Sheela Jasanow
 Taleb?
 
 #### The problem of byases {#sotadocumentsunderstandbyas}
+
+
+Each site typically contains a huge volume of opinionated text that is not always easily deciphered in long forum postings and blogs. The average human reader will have difficulty identifying relevant sites and accurately summarizing the information and opinions contained in them. Moreover, it is also known that human analysis of text information is subject to con- siderable biases, e.g., people often pay greater attention to opinions that are consistent with their own preferences. People also have difficulty, owing to their mental and physical limitations, producing consistent results when the amount of information to be processed is large. Automated opinion mining and summarization systems are thus needed, as subjective biases and mental limitations can be overcome with an objective sentiment analysis system.
 
 #### The Importance of Lexicons for Technical Documents Analysis  {#sotadocumentsunderstandlexicons}
 
