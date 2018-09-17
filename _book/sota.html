@@ -25,7 +25,7 @@
 <meta name="author" content="Filippo Chiarello">
 
 
-<meta name="date" content="2018-09-11">
+<meta name="date" content="2018-09-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -150,7 +150,7 @@
 <p>The analysis of technical documents require the design of processes that rely both on programming and Natural Language Processing techniques and on the undestanding and knowldege of field experts. While the first techniques are codified and explicit, the second are sometimes implicit and always harder to systematize. In this section i treat these two groups of techniques in the same way to give to the reader a sistematic litterature review on these topics. For this reason the sections of this chapter has the sequent structure:</p>
 <ul>
 <li>At a first level we have two sections <a href="sota.html#sotatools">2.1</a> and <a href="sota.html#sotadocuments">2.2</a>, reviewing respectivelly the processes of <em>programming and Natural Language Processing</em> and of <em>undestanding and knowldege of field experts application</em>;</li>
-<li>Section <a href="sota.html#sotatools">2.1</a> has a subsection for each of the <em>phases</em> showed in figure <a href="introduction.html#fig:mainworkflow">1.1</a>. These subsections goes from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a>;</li>
+<li>Section <a href="sota.html#sotatools">2.1</a> has a subsection for each of the <em>phases</em> showed in figure <a href="#fig:mainworkflow"><strong>??</strong></a>. These subsections goes from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a>;</li>
 <li>Each subsection from <a href="sota.html#sotatoolsprogram">2.1.1</a> to <a href="sota.html#sotatoolscomunicate">2.1.9</a> contains the relative Natural Language Processing <em>task</em> that are relevant for the analysis of technical documents, for example Document Retrieval <a href="sota.html#sotatoolsimportretrieval">2.1.2.1</a>, Part-Of-Speech-Tagging; <a href="sota.html#sotatoolstransformpos">2.1.6.3</a> or Named Entity Recognition <a href="sota.html#sotatoolsmodelner">2.1.7.5</a>.</li>
 <li>Each task subsection describes the relevant <em>techniques</em> to perform that task. I use the word techniques to include mainly algorythms and procedures but also more generic methods or frameworks;</li>
 <li>Since the second section <a href="sota.html#sotadocuments">2.2</a> describes less systematics phases, task and techniques this section opens with a first subsection <a href="sota.html#sotadocumentsunderstand">2.2.1</a> that focuses on the studies of the problems of using expert knowledge in an analytical process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow.</li>
@@ -158,7 +158,7 @@
 </ul>
 <div id="sotatools" class="section level2">
 <h2><span class="header-section-number">2.1</span> Phases, Tasks, and Techniques</h2>
-<p>In this section I make a review of the most important techniques for Natural Language Processing in the context of technical documents analysis. The techniques (mainly algorythms) are grouped in phases (Import, Tidy, Transform, Model, Visualize, Communicate) showed in figure <a href="introduction.html#fig:mainworkflow">1.1</a> and each phases is dived in the NLP tasks that are the most important for the analysis of technical documents. The algorythms i reviewed in this section are summmarised in table tot, where the reader can see the relationship between tasks and techniques.</p>
+<p>In this section I make a review of the most important techniques for Natural Language Processing in the context of technical documents analysis. The techniques (mainly algorythms) are grouped in phases (Import, Tidy, Transform, Model, Visualize, Communicate) showed in figure <a href="#fig:mainworkflow"><strong>??</strong></a> and each phases is dived in the NLP tasks that are the most important for the analysis of technical documents. The algorythms i reviewed in this section are summmarised in table tot, where the reader can see the relationship between tasks and techniques.</p>
 <div id="sotatoolsprogram" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Program</h3>
 <ul>
@@ -248,12 +248,21 @@
 <p>The approaches to perform sentiment analysis are many. Among all, the most intresting for tehcnical documents analysis are:</p>
 <ul>
 <li><p><em>Dictionary Base Approaches</em> : This approach has the aim of collecting words that are clues for positive or negative sentiment. In litterature these words are called opinion words, opinion-bearing words or sentiment words. Examples of positive opinion words are: good, nice and amazing. Examples of negative opinion words are bad, poor, and terrible. Collectively, they are called the opinion lexicon. The most simple and widely used techniques to produce a dictionary of opinion words is based on bootstrapping using a small set of seed opinion words and an online dictionary such as WordNet <span class="citation">(Miller <a href="#ref-miller1995wordnet">1995</a>)</span>. The works that used this approach <span class="citation">(Hu and Liu <a href="#ref-hu2004mining">2004</a>, <span class="citation">S.-M. Kim and Hovy (<a href="#ref-kim2004determining">2004</a>)</span>)</span>, adopts a process that consist in two phases: first collect set of opinion words manually, then grow this set by searching in the WordNet for their synonyms and antonyms. The process stops when no more new words are found. After that a manual inspection can be carried out to remove and/or correct errors. Scholars has developed several opinion lexicons <span class="citation">(Ding, Liu, and Yu <a href="#ref-ding2008holistic">2008</a>, <span class="citation">Baccianella, Esuli, and Sebastiani (<a href="#ref-baccianella2010sentiwordnet">2010</a>)</span>, <span class="citation">Hu and Liu (<a href="#ref-hu2004mining">2004</a>)</span>, <span class="citation">Philip et al. (<a href="#ref-philip1966general">1966</a>)</span>, <span class="citation">Wiebe, Bruce, and O’Hara (<a href="#ref-wiebe1999development">1999</a>)</span>)</span> The lexicon based approach has the characteristic of beeing strongly context specific. This is an advantage when the goal is to design a method able to extract sentiment in a specific context <span class="citation">(Chiarello et al. <a href="#ref-chiarello2017product">2017</a>)</span>, but is a major shortcoming if the goal is to design a general purpose method.</p></li>
-<li><p><em>Supervised Learning Approaches</em>:</p></li>
-<li><p><em>Corpus-based Approaches</em></p></li>
+<li><p><em>Supervised Learning Approaches</em>: Sentiment analysis can be formulated as a document classification problem with three classes: positive, negative and neutral<span class="citation">(Mullen and Collier <a href="#ref-mullen2004sentiment">2004</a>)</span>. Treining and test sets of documents are tipically collected from product reviews, movies revies or are created by scratch using manuall annotation. Any learning algotyrhm can be applied to sentiment classification (naive Bayesian classification, and support vector machines <span class="citation">(Prabowo and Thelwall <a href="#ref-prabowo2009sentiment">2009</a>)</span>). The crucial phase for Supervised Learning sentiment analysis is the features rapresentaion of the data. It was shown <span class="citation">(Pang, Lee, and Vaithyanathan <a href="#ref-pang2002thumbs">2002</a>)</span> that using unigrams (a bag of individual words) as features in classification performed well with either naive Bayesian or SVM. Subsequent research used many more features and techniques in learning <span class="citation">(Pang, Lee, and others <a href="#ref-pang2008opinion">2008</a>)</span>.</p></li>
 </ul>
 </div>
 <div id="sotatoolsmodelnetanal" class="section level4">
-<h4><span class="header-section-number">2.1.7.4</span> Network Analysis</h4>
+<h4><span class="header-section-number">2.1.7.4</span> Text Clustering</h4>
+<p>The goal of clustering methods is to find groups of similar objects in the data thanks to the measure of a similarity function <span class="citation">(Jain and Dubes <a href="#ref-jain1988algorithms">1988</a>, <span class="citation">Kaufman and Rousseeuw (<a href="#ref-kaufman2009finding">2009</a>)</span>)</span>. Clustering techniques has been widelly applied in the text domain, where the objects of the clustering can be documents (at different level of granulairyt) or terms. In the context of technical documents analysis Clustering is especially useful documents retrieval <span class="citation">(Anick and Vaithyanathan <a href="#ref-anick1997exploiting">1997</a>, <span class="citation">Cutting, Karger, and Pedersen (<a href="#ref-cutting1993constant">1993</a>)</span>)</span>. Clustering problems has been and are studied widely outside the text domain. Methods for clustering have been developed focusing on quantitative/non-textual data <span class="citation">(Guha, Rastogi, and Shim <a href="#ref-guha1998cure">1998</a>, <span class="citation">Han, Kamber, and Tung (<a href="#ref-han2001spatial">2001</a>)</span>, <span class="citation">T. Zhang, Ramakrishnan, and Livny (<a href="#ref-zhang1996birch">1996</a>)</span>)</span>.</p>
+<p>In the context of text analysis, the problem of clustering finds applicability for a number of tasks, such as Document Organization and Browsing <span class="citation">(Cutting et al. <a href="#ref-cutting2017scatter">2017</a>)</span>, Corpus Summarization using documents maps <span class="citation">(Schütze and Silverstein <a href="#ref-schutze1997projections">1997</a>)</span> or word clusters <span class="citation">(Baker and McCallum <a href="#ref-baker1998distributional">1998</a>, <span class="citation">Bekkerman et al. (<a href="#ref-bekkerman2001feature">2001</a>)</span>)</span>.</p>
+<p>However, standard techniques for cluster analysis (k-means or hierachical clusterin) do not typically work well for clustering textual data in general or more specific technical documents. This is because of the unique characteristics of textual data which implies the design of specialized algorithms for the task.</p>
+<p>The distinguishing characteristics of the text representation are the following <span class="citation">(Aggarwal and Zhai <a href="#ref-aggarwal2012survey">2012</a>)</span>:</p>
+<ul>
+<li><p>There is a problem of course of dimensionality. The dimensionality of the bug-of-words representation is very large and the underlying data is sparse. In other words, the lexicon from which the documents are drawn may be of the order of milions, but a given document may contain only a few hundred words.This problem is even more serious for technical documents in which the lexicon is even more large.</p></li>
+<li><p>The words are correlated with one another and thus the number of concepts (or principal components) in the data is much smaller than the feature space. This necessitates the careful design of algorithms which can account for word correlations in the clustering process.</p></li>
+<li><p>The number of words (or non-zero entries) in the different documents may vary widely. Therefore, it is important to normalize the document representations appropriately during the clustering task.</p></li>
+</ul>
+<p>The problems of sparsity and high dimensionality necessitate the design of specific algorithms text processing. The topic has been heavily studied in the information retrieval literature where many techniques have been proposed <span class="citation">(Ricardo and Berthier <a href="#ref-ricardo2011modern">2011</a>)</span>.</p>
 </div>
 <div id="sotatoolsmodelner" class="section level4">
 <h4><span class="header-section-number">2.1.7.5</span> Named Entity Recognition</h4>
@@ -406,6 +415,51 @@
 </div>
 <div id="ref-chiarello2017product">
 <p>Chiarello, Filippo, Gualtiero Fantoni, Andrea Bonaccorsi, and others. 2017. “Product Description in Terms of Advantages and Drawbacks: Exploiting Patent Information in Novel Ways.” In <em>DS 87-6 Proceedings of the 21st International Conference on Engineering Design (Iced 17) Vol 6: Design Information and Knowledge, Vancouver, Canada, 21-25.08. 2017</em>, 101–10.</p>
+</div>
+<div id="ref-mullen2004sentiment">
+<p>Mullen, Tony, and Nigel Collier. 2004. “Sentiment Analysis Using Support Vector Machines with Diverse Information Sources.” In <em>Proceedings of the 2004 Conference on Empirical Methods in Natural Language Processing</em>.</p>
+</div>
+<div id="ref-prabowo2009sentiment">
+<p>Prabowo, Rudy, and Mike Thelwall. 2009. “Sentiment Analysis: A Combined Approach.” <em>Journal of Informetrics</em> 3 (2). Elsevier: 143–57.</p>
+</div>
+<div id="ref-pang2002thumbs">
+<p>Pang, Bo, Lillian Lee, and Shivakumar Vaithyanathan. 2002. “Thumbs up?: Sentiment Classification Using Machine Learning Techniques.” In <em>Proceedings of the Acl-02 Conference on Empirical Methods in Natural Language Processing-Volume 10</em>, 79–86. Association for Computational Linguistics.</p>
+</div>
+<div id="ref-jain1988algorithms">
+<p>Jain, Anil K, and Richard C Dubes. 1988. “Algorithms for Clustering Data.” Prentice-Hall, Inc.</p>
+</div>
+<div id="ref-kaufman2009finding">
+<p>Kaufman, Leonard, and Peter J Rousseeuw. 2009. <em>Finding Groups in Data: An Introduction to Cluster Analysis</em>. Vol. 344. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-anick1997exploiting">
+<p>Anick, Peter G, and Shivakumar Vaithyanathan. 1997. “Exploiting Clustering and Phrases for Context-Based Information Retrieval.” In <em>ACM Sigir Forum</em>, 31:314–23. SI. ACM.</p>
+</div>
+<div id="ref-cutting1993constant">
+<p>Cutting, Douglass R, David R Karger, and Jan O Pedersen. 1993. “Constant Interaction-Time Scatter/Gather Browsing of Very Large Document Collections.” In <em>Proceedings of the 16th Annual International Acm Sigir Conference on Research and Development in Information Retrieval</em>, 126–34. ACM.</p>
+</div>
+<div id="ref-guha1998cure">
+<p>Guha, Sudipto, Rajeev Rastogi, and Kyuseok Shim. 1998. “CURE: An Efficient Clustering Algorithm for Large Databases.” In <em>ACM Sigmod Record</em>, 27:73–84. 2. ACM.</p>
+</div>
+<div id="ref-han2001spatial">
+<p>Han, Jiawei, Micheline Kamber, and Anthony KH Tung. 2001. “Spatial Clustering Methods in Data Mining.” <em>Geographic Data Mining and Knowledge Discovery</em>. Cambridge, UK: Cambridge University Press, 188–217.</p>
+</div>
+<div id="ref-zhang1996birch">
+<p>Zhang, Tian, Raghu Ramakrishnan, and Miron Livny. 1996. “BIRCH: An Efficient Data Clustering Method for Very Large Databases.” In <em>ACM Sigmod Record</em>, 25:103–14. 2. ACM.</p>
+</div>
+<div id="ref-cutting2017scatter">
+<p>Cutting, Douglass R, David R Karger, Jan O Pedersen, and John W Tukey. 2017. “Scatter/Gather: A Cluster-Based Approach to Browsing Large Document Collections.” In <em>ACM Sigir Forum</em>, 51:148–59. 2. ACM.</p>
+</div>
+<div id="ref-schutze1997projections">
+<p>Schütze, Hinrich, and Craig Silverstein. 1997. “Projections for Efficient Document Clustering.” In <em>ACM Sigir Forum</em>, 31:74–81. SI. ACM.</p>
+</div>
+<div id="ref-baker1998distributional">
+<p>Baker, L Douglas, and Andrew Kachites McCallum. 1998. “Distributional Clustering of Words for Text Classification.” In <em>Proceedings of the 21st Annual International Acm Sigir Conference on Research and Development in Information Retrieval</em>, 96–103. ACM.</p>
+</div>
+<div id="ref-bekkerman2001feature">
+<p>Bekkerman, Ron, Ran El-Yaniv, Naftali Tishby, and Yoad Winter. 2001. “On Feature Distributional Clustering for Text Categorization.” In <em>Proceedings of the 24th Annual International Acm Sigir Conference on Research and Development in Information Retrieval</em>, 146–53. ACM.</p>
+</div>
+<div id="ref-ricardo2011modern">
+<p>Ricardo, BY, and RN Berthier. 2011. “Modern Information Retrieval: The Concepts and Technology Behind Search Second Edition.” <em>Addision Wesley</em> 84 (2).</p>
 </div>
 </div>
             </section>

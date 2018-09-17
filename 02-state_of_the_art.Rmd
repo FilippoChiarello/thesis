@@ -16,13 +16,15 @@ The algorythms i reviewed in this section are summmarised in table tot, where th
 
 ### Program {#sotatoolsprogram}
 
-- __Articoli Emily__
+Programming is a key activity to perform in order to effectively and efficiently perform text mining. It is not a phases per se because each phase is implemented trough programming. It is critical that an analysts has in mind the need of maximizing the probability that their analysis is reproducible, accurate, and collaborative. This goals can be reached only trough programming. 
+The most used programming languages for text mining and natural language processing are R [@r2008] and Python [@py95]. R and Python are both open-source programming languages with a large community of developers, and new libraries or tools are added continuously to their respective catalog. R is mainly used for statistical analysis and data science while Python is a more general purpose programming language. 
+R has been developed by Academics and statisticians over two decades. R has now one of the richest ecosystems to perform data analysis and there are around 12000 packages available in CRAN (open-source repository of R).  The rich variety of libraries makes R the first choice for statistical analysis. Another cutting-edge difference between R and the other statistical products is R-studio. RStudio is a free and open-source integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management. Finally, it is widelly recognized the great performances that R has for data visualisation and comunication. 
+Python can pretty much do the same tasks as R: data wrangling, engineering, feature selection web scrapping, app and so on. Anyway, Python has great performances in the deployement and implementation of machine learning at a large-scale. Furthermore, Python codes are easier to maintain and more robust than R.
 
 ### Import {#sotatoolsimport}
 
 - I tipi di codifica di testo
 - Pachetti per import 
-
 
 #### Document Retrieval {#sotatoolsimportretrieval}
 
@@ -124,6 +126,7 @@ space with the use of linear or non-linear delineations between the different cl
 
 - _Neural Netword Classifiers_: The basic unit in a neural network is a neuron. Each neuron receives a set of inputs, which are denoted by the vector _Xi_, which are the values of the feature vector for a certain instance. Each neuron is also associated with a set of weights, which are used in order to compute a function of its inputs. Neural Networks Classifier are able, thank to a process called learning phase, to ajust their weights in such a way that the function is abble to effectively classify new instances. Neural networks are nowdays one of the best method for documents classification, and are used in a wide variety of appliations [@manevitz2007one]. Great performances has also been reached by deep neural networks, which are neural networks whit a large number o neurons arranged in multiple layers [@lai2015recurrent. @kim2014convolutional]. 
 
+
 #### Sentiment Analsysis {#sotatoolsmodelsentanal}
 
 Sentiment analysis techniques are algorythms able to measure from text, people’s opinions and emotions toward events, topics, products and their attributes [@pang2008opinion].  For example, businesses (particularly marketeers) are intrested in finding costumers opinions about their products and services.
@@ -137,21 +140,50 @@ The approaches to perform sentiment analysis are many. Among all, the most intre
 The works that used this approach [@hu2004mining, @kim2004determining], adopts a process that consist in two phases: first collect set of opinion words manually, then grow this set by searching in the WordNet for their synonyms and antonyms. The process stops when no more new words are found. 
 After that a manual inspection can be carried out to remove and/or correct errors. Scholars has developed several opinion lexicons [@ding2008holistic, @baccianella2010sentiwordnet, @hu2004mining, @philip1966general, @wiebe1999development] The lexicon based approach has the characteristic of beeing strongly context specific. This is an advantage when the goal is to design a method able to extract sentiment in a specific context [@chiarello2017product], but is a major  shortcoming if the goal is to design a general purpose method.
 
-- _Supervised Learning Approaches_: 
-
-- _Corpus-based Approaches_
+- _Supervised Learning Approaches_: Sentiment analysis can be formulated as a document classification problem with three classes: positive, negative and neutral[@mullen2004sentiment]. Treining and test sets of documents are tipically collected from product reviews, movies revies or are created by scratch using manuall annotation. Any learning algotyrhm can be applied to sentiment classification (naive Bayesian classification, and support vector machines [@prabowo2009sentiment]). The crucial phase for Supervised Learning sentiment analysis is the features rapresentaion of the data. It was shown [@pang2002thumbs] that using unigrams (a bag of individual words) as features in classification performed well with either naive Bayesian or SVM. Subsequent research used many more features and techniques in learning [@pang2008opinion]. 
 
 
+#### Text Clustering {#sotatoolsmodelnetanal}
 
+The goal of clustering methods is to find groups of similar objects in the data thanks to the measure of a similarity function [@jain1988algorithms, @kaufman2009finding]. Clustering techniques has been widelly applied in the text domain, where the objects of the clustering can be documents (at different level of granulairyt) or terms. In the context of technical documents analysis Clustering is especially useful documents retrieval [@anick1997exploiting, @cutting1993constant].
+Clustering problems has been and are studied widely outside the text domain. Methods for clustering have been developed focusing on quantitative/non-textual data [@guha1998cure, @han2001spatial, @zhang1996birch]. 
 
+In the context of text analysis, the problem of clustering finds applicability for a number of tasks, such as Document Organization and Browsing [@cutting2017scatter], Corpus Summarization using documents maps [@schutze1997projections] or word clusters [@baker1998distributional, @bekkerman2001feature]. It is usefull also to use a Soft clustering approach, that associates each document with multiple clusters with a given probability. 
 
-#### Network Analysis {#sotatoolsmodelnetanal}
+However, standard techniques for cluster analysis (k-means or hierachical clusterin) do not typically work well for clustering textual data in general or more specific technical documents. This is because of the unique characteristics of textual data which implies the design of specialized algorithms for the task. 
+
+The distinguishing characteristics of the text representation are the following [@aggarwal2012survey]:
+
+- There is a problem of course of dimensionality. The dimensionality of the bug-of-words representation is very large and the underlying data is sparse. In other words, the lexicon from which the documents are drawn may be of the order of milions, but a given document may contain only a few hundred words.This problem is even more serious for technical documents in which the lexicon is even more large. 
+
+- The words are correlated with one another and thus the number of concepts (or principal components) in the data is much smaller than the feature space. This necessitates the careful design of algorithms which can account for word correlations in the clustering process.
+
+- The number of words (or non-zero entries) in the different documents may vary widely. Therefore, it is important to normalize the document representations appropriately during the clustering task.
+
+The problems of sparsity and high dimensionality necessitate the design of specific algorithms text processing. The topic has been heavily studied in the information retrieval literature where many techniques have been proposed [@ricardo2011modern]. 
 
 #### Named Entity Recognition {#sotatoolsmodelner}
 
+Named Entity Recognition is the task of identifying entity names like people, organizations, places, temporal expressions or numerical expressions. An example of an annotated sentence for a NER extraction system tailored for user entity extraction from patents, is the following:
+
+_Traditionally, < user > guitar players < user/ > or < user > players < user/ > of other stringed instruments may perform in any of a number of various positions, from seated, with the stringed instru- ment supported on the leg of the<user>performer<user/>, to standing or walking, with the stringed instrument suspended from a strap._
+
+Methods and algorithms to deal with the entity extraction task are different, but the most effective are the ones based on supervised methods. Supervised methods tackle this task by extracting relevant statistics from an annotated corpus. These statistics are collected from the computation of features values, which are strong indicators for the identification of entities in the analyzed text. Features used in NLP for NER purposes are divided in two main categories:
+- Linguistically motivated features, such as n-gram of words (se- quences of n words), lemma and part of speech 
+- External resources features as, for example, external lists of entities that are candidates to be classified in the extraction process.
+
+The annotation methods of a training corpus can be of two different kinds: human based, which is time expensive, but usually effective in the classification phase; automatically based, which can lead to annotation errors due to language ambiguity. For instance driver can be classified both as a user (the operator of a motor vehicle), or not a user (a program that determines how a computer will communicate with a peripheral device). Different training algorithms, such as Hidden Markov Models [@eddy1996hidden], Conditional Random Fields (CRF) [@lafferty2001conditional] Support Vector Machines (SVM) [@hearst1998support], or Bidirectional Long Short Term Mermory-CRF Neural Networks [@lample2016neural, @misawa2017character ] are used to build a sta- tistical model based on features that are extracted from the analyzed documents in the training phase.
+
 #### Topic Modelling {#sotatoolsmodeltopicmodel}
 
+Topic modeling is a form of dimension reduction that uses probabilistic models to find the co-occurrence patterns of terms that correspond to semantic topics in a collection of documents [@crain2012dimensionality]. To understand topic modelling it is usefull to understand its differences with clustering \ref(@sotatoolsmodelnetanal) and the problem they both solves: the course of dimensionality. Both these techniques has in fact the goal of representing documents in such a way that they reveals their internal structure and interrelations. 
+Clustering measures the similarity (or dissimilarity) between documents to place documents into groups. Rapresenting each document by considering the belonging to a group, clustering induces a low-dimensional representation for documents. However, it is often difficult to characterize a cluster in terms of meaningful features because the clustering is independent of the document representation, given the computed similarity.
+Topic modeling integrates soft clustering (assigning each element to a cluster with a given probability and not with a boolean variable) with dimension reduction. Each document is associated with a number of latent topics: a topic can be seed as both document clusters and compact group of words identified from a corpus. Each document is assigned to the topics with different weights: this feature can be seen both as the degree of membership in the clusters, as well as the coordinates of the document in the reduced dimension space. The result is an understandable representation of documents that is useful for analyzing the themes in documents.
+Latent Dirichlet allocation (LDA) is a particularly popular method for fitting a topic model [@blei2003latent]. It treats each document as a mixture of topics, and each topic as a mixture of words. This allows documents to “overlap” each other in terms of content, rather than being separated into discrete groups, in a way that mirrors typical use of natural language. 
+
 ### Visualize {#sotatoolsvisualize}
+
+Traditionally, statistical training has focused primarily on mathematical derivations and proofs of statistical tests. This problem influences also text mining[@parker2017opinionated]. The process of developing the output of the process (the paper, the report, the dashboard, or other deliverable) is less frequently anlyzed. 
 
 ### Comunicate {#sotatoolscomunicate}
 
@@ -167,7 +199,6 @@ Taleb?
 
 #### The problem of byases {#sotadocumentsunderstandbyas}
 
-
 Each site typically contains a huge volume of opinionated text that is not always easily deciphered in long forum postings and blogs. The average human reader will have difficulty identifying relevant sites and accurately summarizing the information and opinions contained in them. Moreover, it is also known that human analysis of text information is subject to con- siderable biases, e.g., people often pay greater attention to opinions that are consistent with their own preferences. People also have difficulty, owing to their mental and physical limitations, producing consistent results when the amount of information to be processed is large. Automated opinion mining and summarization systems are thus needed, as subjective biases and mental limitations can be overcome with an objective sentiment analysis system.
 
 #### The Importance of Lexicons for Technical Documents Analysis  {#sotadocumentsunderstandlexicons}
@@ -182,6 +213,7 @@ Each site typically contains a huge volume of opinionated text that is not alway
 - Biblio 
 
 ### Projects {#sotadocumentsprojects}
+
 
 ### Wikipedia {#sotadocumentswiki}
 
