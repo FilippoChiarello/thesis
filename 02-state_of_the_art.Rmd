@@ -275,7 +275,7 @@ Togheter with reports (and usually contained in them) there are visualisation. M
 
 ## Documents {#sotadocuments}
 
-In this section contains a review of the main classes of technical documents analyzed in the present work. The documents are patents, papers, projects, Wikipedia, social media  and Human Resources Documentation (job profiles).
+In this section contains a review of the main classes of technical documents analyzed in the present work. The documents are patents, papers, Wikipedia, Social Media, Policy Documentation and Human Resources Documentation.
 Before starting to analyze the state of the art techniques to perform knowledge extraction for these documents, the focus is on a task that has intentionally not been analyzed in section \@ref(sotatools): understanding.
 
 ### Understand {#sotadocumentsunderstand}
@@ -469,8 +469,6 @@ The described entity tagging systems have very good performances mainly for two 
 
 ### Papers {#sotadocumentspapers}
 
-### Projects {#sotadocumentsprojects}
-
 ### Wikipedia {#sotadocumentswiki}
 
 The use of Wikipedia as source of knowledge started more than a decade ago and has been validated repeatedly in a variety of text mining applications (text annotation, categorization, indexing, clustering, searching [@milne2008learning]). In addition to the large and growing size in terms of number of articles, the structure of Wikipedia has a number of useful features that make it a good candidate for text mining applications.
@@ -522,7 +520,7 @@ Maybe at least some of these methods can be applied to other platforms, however 
 
 Since the usage of social media has a wide impact on a great number of disciplines, here is exposed the main literature in the most technical related fields that are strongly related to social media analysis: economics and marketing.
 
-#### Economics and Social Media
+#### Economics
 
 This domain has raised the great interest of researchers. The first studies focused especially on market fluctuation and on aggregated measure, such as Dow Jones Industrial Average (DJIA). Most recent researches have gone further predicting single stock price and yield.
 
@@ -544,8 +542,74 @@ The findings show that tweets can be used to predict product sales for up to at 
 
 #### Marketing
 
-
 Scholars had a great focus in the last years on using Social Media Information for marketing. Chen et al. [@chen2015making] conducted a survey study and a field study to explore the feasibility of using predicted personality traits derived from social media text for the purpose of ad targeting. In the survey study, they measured people's personalities and their responses to an advertisement tweet. They found that people with high openness and low neuroticism responded more favorably to a targeted advertisement, thus demonstrating the effects of the personality traits themselves. In the field study, they sent the advertisement tweets to real-world Twitter users, and found the same effects on users' responses using personality traits derived from users' tweet text. They demonstrate that aiming advertisements at users with particular personality traits improves click and follow rates by 66% and 87% respectively, representing a large increase in value for companies. These results suggest that the derived personality traits had the same effects as the personality traits measured by traditional personality questionnaires and can indeed improve ad targeting in real-world settings. Li et al. [@li2016project] present a solution to the problem of predicting project success in a crowd-funding environment combined with innovative introduction of survival analysis based approaches. They used comprehensive data of 18 thousand Kick-starter (a popular crowd-funding platform) projects and 116 thousand corresponding tweets collected from Twitter. While the day of success is considered to be the time to reach an event, the failed projects are considered to be censored since the day of success is not known.
 They performed rigorous analysis of the Kick-starter crowd-funding domain to reveal unique insights about factors that impact the success of projects. Their experimental results show that incorporation of failed projects (censored information) can significantly help in building a robust prediction model. Additionally, they also created several Twitter-based features to study the impact of social network on the crowd-funding domain. Their study shows that these social network-based features can help in improving the prediction performance. They found that the temporal features obtained at the beginning stage (first 3 days) of each project will significantly improve the prediction performance. Even when just using Social Media information from the first three days of the project, they achieve an AUC of 0.90, reflecting very high classification performance.
 
-### Job Profiles {#sotadocumentsjobs}
+### Policy Documentation {#sotadocumentsprojects}
+
+
+
+### Human Resources Documentation {#sotadocumentsjobs}
+
+Text Mining techniques are also used to manage human resources (HR) strategically, mainly with applications aiming at analyzing staff’s opinions, monitoring the level of employee satisfaction, as well as reading and storing CVs for the selection of new personnel. In the context of human resources management, the text mining techniques are often utilized to monitor the state of health of a company by means of the systematic analysis of informal documents. 
+Nowadays HR experts started to use text mining technique also with intelligence purposes. 
+
+
+The need to organize and modify their strategies according to demands and to the opportunities that the HR market present requires that companies collect information about their employees, the HR market and their competitors, and to manage enormous amount of documents, and analyzing them to make plans. The aim of Competitive Intelligence in HR [@bolasco2005understanding] is to select relevant information by automatic reading of this data. Once the material has been collected, it is classified into categories to develop a database, and analyzing the database to get answers to specific and crucial information for HR company strategies. The typical queries concern the skills or the technological sectors of the competitors  and the names of the employees of a company with a certain profile of competences. Before the introduction of Text Minig, there was a division that was entirely dedicated to the continuous monitoring of information and answering the queries coming from other sectors of the company. In these cases the return on investment by the use of automatic document analysis technologies was self evident when compared to results previously achieved by manual operators.  In some cases, if a scheme of categories is not defined a priori, clusterization algotyrhm (\@ref(sotatoolsmodelnetanal)) are used to classify the set of documents (considered) relevant with regard to a certain topic, in clusters of documents with similar contents. The analysis of the key concepts present in the single clusters gives an overall vision of the subjects dealt with in the single texts [@gupta2009survey].
+
+Futhermore it has to be considered that as intellectual capital has become one of the most strategic assets of successful organizations, the ability to manage the expertise, skills, and experience of employees has become a key factor in overcoming the increasing competitiveness of the global market [@colucci2003formal]. In today’s competitive business environment, companies need to accurately grasp the competency of their HR in order to be successful [@fazel2009semantic].
+
+
+
+However, technology companies often suffer from high turnover rates and find it hard to recruit the right talents [@chien2008data]
+
+Due to the current trend of pursuing better HRM options, an increasing number of publications concerning data mining in the context of HRM are providing new research data [@strohmeier2013domain].
+
+
+For example, one study investigated the relationship between web data mining and strategic HR planning by developing a practical model [@al2011investigating].
+
+
+Another study focused on the HRM performance evaluation process by introducing a data-mining method termed knowledge discovery in databases [@zhao2008empirical]. 
+
+Thus far, filtered résumés have been the most important resource for HR departments when hiring new employees [@ccelik2012ontology]. 
+
+
+One study introduced an approach to improve the matching of profiles by searching job descriptions and applicant profiles using filters that represent the relevant skills and competencies [@paoletti2015extending]. 
+
+Nevertheless, several studies have found that résumés and work experience lists, which are composed of brief words or short sentences, are limited and have tried to improve HR solutions by adopting a semantic system approach, such as ontologies and text-mining methods.  An example is the On-To-Knowledge project. The OnTo-Knowledge project focuses on the application-driven development of ontologies during the introduction of ontology-based knowledge management systems [@lau2002introducing].
+
+One research study has suggested that a possible approach could be addressing an intelligent decision support system composed of case-based reasoning and ontology [@zhukova2014intelligent]. 
+
+A case study focused on the electronic market introduced a unique configurable framework that was designed to be adapted for electronic marketplace applications [@veit2001matchmaking]. 
+
+Another research stressed the importance of HR recruiting, selecting individuals for teams based on different skills and qualifications, determining who to train and what training programs to offer, and recommending the right expert to individuals for acquiring information or learning from within the organization [@fazel2009semantic]. 
+
+In addition, previous research has focused on the overall HR domain, whereas researchers studying the construction industry specifically have not attempted to actively apply text mining to HRM. In addition, to fully understand the current status of HRM in the construction industry, we reviewed the relevant articles and papers relating to the inherent problems of construction HRM. One study pointed out the importance of an automated HR information system using a case study of Australian construction companies to prevent chronic problems like high turnover, lower job satisfaction, and motivation [@thomas2001towards]. 
+
+Another study stressed that a typical Korean construction organization has been simply classified by terms such as architect, safety, quality, administration, etc., even though it should be categorized with more detailed activities, such as claim/contract management, design management, HRM, document management, information management, risk management, etc. [@bae2000organizational].
+
+Another example of TM techniques often utilized to monitor the state of health of a company by means of the systematic analysis of informal documents is the case of ConocoPhilips, a fast-moving American company, which developed an internal system - the VSM (Virtual Signs Monitor) - able to find the intangible but crucial aspects of company life, the degree of experience and knowledge and the “productive” abilities. The approach chosen by Conoco was that of measuring the company mood by means of state of the art indicators [@ghoshal1997individualized], which contrasts a new model based on completely different pillars, like stretch, discipline, trust and reciprocal support with the traditional managerial model founded on concepts of constraint, contract, control and compliance. This managerial model, according to Ghoshal’s formulation encourages the cooperation and collaboration between the elements of an organisation, improving its results.
+Its collaboration with Temis enabled Conoco to refine its system for the monitoring of textual sources like e-mails, internal surveys of employees’ opinions, declarations of the management, internal and external chat lines, all representing important means for sounding the evolution of company culture. 
+
+
+
+
+#### Web-Based Human Resources Systems    
+
+Probably the most widely well-known web-based HR systems are Linked-In and OilandGas. Their search systems are designed so that a recruiter can input a few words, and within milliseconds, the web page shows the search results of résumés through keyword matching, similar to portal web searching like Google. With the special services of Linked-In, recruiters can also search for specialists and candidates from various industries, not only for the construction industry. On the other hand, the OilandGas service is specialized for searching for experts in the oil and gas industry. These services use basically the same concept of discrete keywords matching. Hence, users can put in keywords, like a  position or job title, add some more information like nationality, and then search. The results can be anywhere from just a few to thousands of CVs. However, once this search process is completed, the recruiter has to download all the search results and résumés and then read through all the documents to pick the most suitable candidates.   # Analysis of the Current Practices   To fully understand current practices, we conducted an interview with a HR manager at one of the largest construction companies in Korea. He has been working on the HR team at the company’s headquarters for about 5 years and is in charge of recruiting experts for international construction projects. Due to the growing needs for the international construction market— especially for the oil and gas plants and the power plants, the HR overseas department target-recruits experts suited for those projects from outside the company. We asked the HR manager several questions related to our research subject: 1. How do you find a person who is suitable for a particular job? 2. How do you find new employees from outside the company? 3. Do you keep detailed records of each employee’s job experience? 4. If so, how do you collect and manage detailed job experience information? Do you use long descriptions or the more traditional keyword-based HR database? 5. How important do you think are long descriptions about job experience for job allocation? 6. Do you use an automated HR resource allocation or recommendation system? For the job allocation of employees, this particular company uses its own web-based HRM system that had fields to input detailed and descriptive records of employees’ past job experiences, but these fields are optional. Thus, according to the HR manager, most staffs do not input these descriptions. In addition, the HR department does not consider these descriptions to be important, especially for low-profile staff. Internal job allocation of employees relies heavily on recommendations from previous project managers. For the recruitment of experienced employees from outside the company, the interviewee responded that résumés and SOPs were essential to filter out unqualified personnel and to allocate an individual most suitable for a particular job. Nevertheless, the analysis process is very time-consuming and challenging, as the number of  applicants for each position has grown rapidly. According to the HR manager, the company uses its own HR system for controlling and managing all the employees. This system handles various aspects of individual staff, from private information like family members to involved projects of the company or of previous companies. But, like most Korean companies, work experience and job descriptions are expressed by a single word such as ‘Architectural (construction)’ or ‘safety,’ along with the involved project or team name. For comparison, we collected other cases of Korean top-ranking construction companies and found that their HR systems were very similar. For companies A and B, their web-based HR systems showed only job position and its domain, such as architecture or infrastructure, and even such categories were generally left blank. This shows that most Korean construction companies do not seem to consider individuals’ detailed experiences as important factors for HRM and that they prefer simple job categories due to ease of management. Also, we can assume that the Korean construction companies’ HRM relies on simple facets of each employee, like the level of their position (staff, assistant manager, senior manager, etc.), their job title, and their reputation and references. However, the interviewee’s company has a unique system for collecting long descriptions of each staff. The staff members write their own job descriptions freely, using their own judgement to rank their skills and experience. It may seem like the most useful type of information for depicting each staff’s career and abilities for certain tasks and positions; however, the company does not view this as a beneficial asset for HRM. The input guidelines consist of two sentences only, so the staffs also do not want to put their energy and time into filling out long descriptions to express their experience and major job skills. From exploring the current status of HRM in common Korean construction companies, we can conclude that the HRM mainly relies on fragmentary factors of individuals or on their reputation that is transferred verbally. Hence, the purpose of this study to improve the current shortcomings of the HR systems of construction companies seems to be reasonable.         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
