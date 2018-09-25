@@ -85,7 +85,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-09-24}
+    \date{2018-09-25}
 
 \usepackage{booktabs}
 
@@ -96,6 +96,9 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
+\chapter*{Preface}\label{preface}
+\addcontentsline{toc}{chapter}{Preface}
+
 \chapter{Introduction}\label{introduction}
 
 \section{Goal}\label{goal}
@@ -2357,21 +2360,1174 @@ skills that compete with machines, an increase in skills that complement
 machines; finally, an increase in skills where machines are not enough
 advanced \citep{maccrory2014racing}.
 
-\chapter{Methods}\label{methods}
+\chapter{Case Studies: Methods and Results}\label{methods}
 
-L'aprrocio metodologicogenerico\ldots{}
+L'aprrocio metodologico generico\ldots{}
 
 This chapter describes the methods applied for the analysis of technical
 documents. The methods are ensamble of Natural Language Processing (NLP)
-and Text Mining \emph{techniques} described in @ref(sota\_tools),
+and Text Mining \emph{techniques} described in \ref{sotatools},
 re-designed depending on the analyzed document and the analysis goal.
 Not all the \emph{techniques} have been applied to all the documents:
 table tot summarise the relations between the documents under analysis
-(introduced in section @ref(sota\_documents)) and the NLP techniques.
+(introduced in section \ref{sotadocuments}) and the NLP techniques.
 
 Table documents vs tools
 
 \section{Patents}\label{patents}
+
+Patents contain a large quantity of information which is usually
+neglected. This information is hidden beneath technical and juridical
+jargon and therefore so many potential readers cannot take advantage of
+it. State of the art natural language processing tools and in particular
+named entity recognition tools, could be used to detect valuable
+concepts in patent documents. In this section we present three
+methodologies capable of automatically detecting and extracting threee
+of the multiple entities hidden in patents: the users of the invention,
+advantages and drawbacks of the invention and trademarks contained in
+patents. The results of the methodologies are described, togheter with
+example of applications of the extracted entities for intelligence
+tasks.
+
+\subsection{Users}\label{users}
+
+In this section we show the approach used to extract the users of the
+invention described in a patent. The proposed process is shown in figure
+\ref{fig:procesuser} and its phases are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Generation of an input list of users}: search all possible
+  sources with the aim of creating an input list of users with the
+  largest possible coverage (section \ref{sourc});
+\item
+  \emph{Patent set selection}: select the set of documents from which
+  extract the users (section \ref{patsel});
+\item
+  \emph{Patent text pre-processing}: application of natural language
+  processing tools on the documents with the aim of preparing them for
+  the automatic user extraction;
+\item
+  \emph{Automatic patent set annotation 1}: projection of the input list
+  of users on the text to generate the Automatically Annotated Patent
+  Set 1;
+\item
+  \emph{Relevant sentences extraction}: selection of sentences
+  containing at least one user to generate an informative training set;
+\item
+  \emph{Automatic patent set annotation 2}: generation of a statistical
+  model by a machine learning algorithm based on the training set
+  sentences and automatically tagging the patent set to generate the
+  Automatically Annotated Patent Set 2;
+\item
+  \emph{Difference computation}: generation of the new list of users by
+  computing the difference between the lists of users found in the
+  automatically annotated patent set 1 and 2;
+\item
+  \emph{Manual review}: manual selection of the entities that, in the
+  new list of users, are effectively users. This new list will enrich
+  the original list of users. This phase is described in section
+  \ref{manrev}.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/Process} 
+
+}
+
+\caption{Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.}\label{fig:procesuser}
+\end{figure}
+
+before the description of each phases, in section \ref{userdef} the
+concept of \emph{user of the invetion} is explained by giving a
+definition of users and presenting the way that this concept is
+exploited in different knowledge fields.
+
+\subsubsection{Users: A key information hidden in
+patents}\label{userdef}
+
+Patents are documents that must provide a detailed public disclosure of
+an invention \citep{wipo2}. An \emph{invention} is a new and useful
+process, machine, manufacture, or composition of matter, or any new and
+useful improvement thereof \footnote{\url{http://www.uspto.gov}}.
+
+The notion of usefulness implies that the invention must have some value
+and not necessarily for a human entity. In fact, patents usually
+describe processes, machines or composition of matter which are useful
+for another process, machine or composition of matter.
+
+Therefore, we distinguish between stakeholders and users, considering
+the definitions given by the authors in \citep{bonam2017}.
+
+Definition 1: \textbf{Stakeholder} : \emph{Stakeholders are entities on
+which the invention has or will have a positive or negative effect in
+order to show usefulness.}
+
+This definition covers all possible entities that engage an active or
+passive relation with the invention.Given the logical condition of
+usefulness of patents, all patents must have stakeholder information. If
+a patent has not got any stakeholder information in it the patent
+application should be rejected.
+
+Definition 2: \textbf{User}: \emph{Users are animated or previously
+animated entities (human or animal, alive or dead), on which the
+invention has a positive or negative effect at an unspecified moment.}
+
+Given definition 2, it is clear that every user is a stakeholder while
+non-users stakeholders include artifacts, machines, manufacturing or
+operational processes.
+
+Corollary 1: \textbf{Multiple roles}: \emph{Identities may have multiple
+roles as users.}
+
+Our idea of users describes roles, not identities. Animated entities
+have an identity, as it happens for a specific person. A person has many
+roles as a user. For example, a \emph{working mother} starts her day
+taking on the role of a \emph{mom}, in which she is expected to feed her
+children and get them ready for school. At the office she shifts to the
+role of \emph{project manager}, so she oversees projects in a timely and
+professional manner. \emph{Working mother}, \emph{mom} or \emph{project
+manager} can be considered user roles attributed to the same person, or
+identity. From this definition it is clear that users are close to what
+social sciences define as ``social roles''.
+
+Afterward, we can outline knowledge fields using the concept of user,
+with a twofold aim: help the reader to understand how the concept of
+users is interpreted in different knowledge fields; explain the
+background of the methodology we adopted.
+
+\paragraph{Social sciences: social roles as
+users}\label{social-sciences-social-roles-as-users}
+\addcontentsline{toc}{paragraph}{Social sciences: social roles as users}
+
+In social sciences \emph{social roles} are comparable with our
+definition of user. As defined in the psychological field
+\citep{alleydog}, \emph{``social roles refer to the expectations,
+responsibilities and behaviors we adopt in certain situations.''}. The
+example of the working mother shown before, is the case of social roles.
+
+The field of social sciences is the only one in which an attempt of
+automatic extraction of users has been done. In \citep{belieber} the
+authors extracted social roles from Twitter using heuristic methods. The
+authors looked for all the words preceded by constructions like ``I'm
+a'' and similar variations. This search resulted in 63.858 unique roles
+identified, 44.260 of which appeared only once. The result of the
+extraction process is noisy and only a low percentage of the extracted
+words are social roles. Despite of this noisy extraction, some entities
+are consistent with our definition of user, e.g. \emph{doctor, teacher},
+\emph{mother} or \emph{christian}.
+
+Another work \citep{prefine} tries to identify social roles on Twitter
+exploiting a set of assumptions. The authors take into account roles,
+each one with a set of related verbs: if someone uses verbs from a set,
+that person may cover that particular social role. To sanitize the
+collection of positively identified users, the authors crowd-sourced a
+manual verification procedure, using the Mechanical Turk platform
+\citep{kittur2008crowdsourcing}. Also here some interesting extractions
+are performed, obtaining users like \emph{artist, athlete, blogger,
+cheerleader, christian, DJ}, or \emph{filmmaker}. These two works differ
+from the present study for what concerns the analyzed texts and the
+methods to extract the entities. Nevertheless, the extracted set of
+entities is consistent with our definition of user.
+
+\paragraph{Human Resources Management: workers as
+users}\label{human-resources-management-workers-as-users}
+\addcontentsline{toc}{paragraph}{Human Resources Management: workers as
+users}
+
+In organizations, Human Resources Management is the function designed to
+maximize employees performance \citep{HRM}. Employees are key actors and
+they can be considered users according to our definition.
+
+Human Resources Management has tried to classify employees, especially
+in sub-fields like insurance, social security or work psychology.
+Usually, we refer to those as lists of jobs. Classifications were made
+with the goal of grouping similar jobs for educational requirements, job
+outlooks, salary ranges or work environments to facilitate social
+analysis and the placement of new workers. Such lists are relevant
+because, even if they represent just one subset of all the possible
+users, they contain valid information. Many institutions developed lists
+of jobs \citep{listjobs}.
+
+\paragraph{Medicine: patients as
+users}\label{medicine-patients-as-users}
+\addcontentsline{toc}{paragraph}{Medicine: patients as users}
+
+Another field of interest is medicine, since patients can be considered
+users. Also in this case there are many lists of patients, illnesses and
+diseases \citep{cdcdiseases}, which are valuable in terms of information
+contained.
+
+\paragraph{Design and Marketing: between users and
+customers}\label{design-and-marketing-between-users-and-customers}
+\addcontentsline{toc}{paragraph}{Design and Marketing: between users and
+customers}
+
+In the field of \emph{Design} the concept of user plays a central role
+and it overlaps with our definition of user. Many tools and theories
+like ``User Centered Design'' are based on the concept of user
+\citep{ucd}. As stated by the authors in \citep{npdul}, the quality of
+the design process is proportional to the user needs' satisfaction. It
+implies that a designer has to understand the user needs; as a
+consequence he has to discover whom are potential users.
+
+\subsubsection{List of users generation}\label{sourc}
+
+To generate the input list of users, we used two different approaches: a
+bottom-up approach and a top-down approach. The bottom-up approach is
+based on the merge of lists from heterogeneous sources. In the present
+work we used the following lists of entities:
+
+\begin{itemize}
+\item
+  \emph{Lists of jobs} :\citep{listjobs}, 11.142 entities
+\item
+  \emph{Lists of sports and hobbies}\footnote{\url{http://www.notsoboringlife.com/list-of-hobbies/,http://www.notsoboringlife.com/list-of-hobbies/}}:
+  9.660 entities;
+\end{itemize}
+
+\emph{List of animals} \footnote{\url{http://a-z-animals.com/animals/}}:
+600 entities;
+
+\begin{itemize}
+\item
+  \emph{Lists of patients} \footnote{\url{http://www.medicinenet.com/diseases/_and/_conditions/alpha/_a.htm},
+    \url{http://www.cdc.gov/DiseasesConditions/az/a.html}}: 14.609
+  users;
+\item
+  \emph{List of generic words}: manually generated. It contains users
+  with a higher level of abstraction (such as \emph{person} or
+  \emph{human being}), 56 items.
+\end{itemize}
+
+Bottom-up approach produced a list of 35.767 entries.
+
+Afterwards, a top-down approach was applied. Starting from the list
+generated with the bottom-up approach, we looked for alternative methods
+to indicate a user, finding defined word patterns. The most relevant
+are:
+
+\begin{itemize}
+\tightlist
+\item
+  Patterns like ``hobby\_term + practitioner'' for the hobbies;
+\item
+  Patterns like ``person who has + disease\_term'' or ``suffering from +
+  disease\_term'' for the diseases;
+\item
+  Patterns like ``practitioner of + sport\_term'' for sports.
+\end{itemize}
+
+Top-down approach generated a total of 41.090 entries.
+
+The whole process generated a total of 76.857 users and gave us a
+reasonable number of terms to be used in the next step of the process.
+
+Obviously our lists have a limited coverage and, therefore, they do not
+contain all variations of a certain user. For instance, the lists miss
+some users belonging to the classes mentioned above (e.g.~new jobs
+emerged in the last years) and all the alternative ways for referring to
+a user we do not spotted in the top-down approach. For example our lists
+miss jobs like \emph{data analyst}, \emph{lap dancer},
+\emph{undertaker}, \emph{mortician} and \emph{thief} or patients with
+emerging diseases like \emph{work-alcoholic} and \emph{web-addicted}. In
+addition, our lists miss a class of users related to religious groups,
+containing users like \emph{christians} or \emph{jewish}. Such terms
+have intentionally \textbf{not} been introduced in the input list
+because we considered these terms as candidates to be extracted by the
+process in our case study .
+
+\subsubsection{Patent set selection}\label{patsel}
+
+Our choice of patent sets aimed at challenging our system to find new
+users missing in the input list. To reproduce a patent set selection, we
+took into consideration the International Patent Classification (IPC)
+\citep{wipo1}. IPC is a hierarchical system of patent classes
+representing different areas of technology. Then, we wondered which
+classes could contain new users according to our seed list. Furthermore,
+IPC class A, which is the first level in IPC differentiation, is based
+on human necessities. For this reason, we assumed that in this class we
+would have found likely users from patents texts.
+
+\subsubsection{Patent text analysis}\label{patent-text-analysis}
+
+Our Entity Extraction system is composed by a set of sequential phases.
+The first three phases are related to the linguistic annotation:
+sentence splitting and tokenization, part of speech tagging and
+lemmatization. Then, the patent set is analyzed by the entity extractor,
+specialized for users extraction. A more detailed description of each
+phase is:
+
+\begin{itemize}
+\item
+  Sentence splitting and Tokenization: These processes split the text
+  into sentences and then segment each sentence in orthographic units
+  called tokens. In our system, sentence splitting plays a key role
+  since thanks to a given word, it is possible to find sentences where
+  the word is used. Finding correct boundaries for a specific word
+  allows to dramatically reduce the space to retrieve its surrounding
+  contexts.
+\item
+  POS tagging and Lemmatization: The Part-Of-Speech tagging (or POS
+  tagging) is the process of assigning unambiguous grammatical
+  categories to words in context. It plays a key role in NLP and in many
+  language technology systems. For the present application we used the
+  most recent version of the Felice-POS-tagger described in
+  \citep{dell2009ensemble}. Once the computation of the POS-tagged text
+  is completed, the text is lemmatized according to the result of this
+  analysis.
+\item
+  Semi-automatic Users Annotation: The Users Extraction tool is based on
+  supervised methods. Such methods require an entity annotated corpus in
+  order to extract new entities from unseen documents. A semi-automatic
+  method has been used to generate an annotated corpus of users to avoid
+  manual annotation of a patent set. The method is a projection of the
+  list of users on the patent set defined in section @ref\{patsel\}. The
+  list of users described in section @ref\{sourc\} is cleaned to avoid
+  linguistic ambiguities when projecting these entities on the corpus.
+  For example, the term \emph{``guide''} has two different meanings when
+  used as a verb or as a noun. Furthermore, as a noun it could indicate
+  a component of a system (guide for mechanical parts) or a person
+  (someone employed to conduct others) and therefore a user. Avoiding
+  ambiguities is a crucial aspect to produce an informative training
+  set, so ambiguous words were pruned.
+\end{itemize}
+
+The entity annotation schema for a single token is defined using a
+widely accepted BIO annotation scheme \cite{ramshaw}:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{B-USE}: the token is the beginning of an entity representing
+  an User;
+\item
+  \textbf{I-USE}: the token is the continuation of a sequence of tokens
+  representing an User;
+\item
+  \textbf{O}: for all the other cases.
+\end{itemize}
+
+\subsubsection{User Entity Extraction}\label{user-entity-extraction}
+
+The Users extraction problem is tackled by the implementation of a
+supervised classifier that is trained on an annotated patent set. Thus,
+the patent set is linguistically-annotated, using the steps described
+above and entity-annotated, exploiting the semiautomatic annotation
+process executed in the previous steps.
+
+Given a set of features the classifier trains a statistical model using
+the feature statistics extracted from the corpus. For each new document
+the trained model assigns to each word the probability of belonging to
+one of the classes previously defined (B-USE, I-USE, O).
+
+In our experiments the classifier has been trained using two different
+learning algorithms: Support Vector Machines (SVM) using the LIBSVM
+library \citep{libsvm} configured to use a linear kernel and Multi Layer
+Perceptron (MLP) implemented using the Keras library \citep{libkeras}.
+It has been proven that LSTM methods are well suited for similar NER
+task. Anyway, we chose SVM and MLP method to study how two wheel
+established state of the art classifiers perform on the specific task of
+user extraction from patents and to evaluate their performance in terms
+of precision and computational effort. We also think that the popularity
+of these methods increment the reproducibility of the work.
+
+The classifier uses different kind of features extracted from the text:
+
+\begin{itemize}
+\item
+  \emph{linguistic features}, i.e.~lemma, Part-Of-Speech, prefix and
+  suffix of the analyzed token;
+\item
+  \emph{contextual features}, the linguistic characteristics of the
+  context words of the analyzed token; in addition the entity category
+  of the previous token is considered;
+\item
+  \emph{compositional features}, combinations of contextual features and
+  linguistic features. i.e.~Part-Of-Speech of the previous word and the
+  lemma of the current word. These extra features allow to infer
+  statistics on the interaction of the combined features that can not be
+  captured by a linear SVM model.
+\item
+  \emph{word2vec features}: vector representations of words computed by
+  the \emph{word2vec} \citep{word2vec1} tool.
+\end{itemize}
+
+\emph{Word2vec} is a NLP tool able to produce word representations
+exploiting big corpora. The main property of the vectors produced by
+\emph{word2vec} is that words sharing similar contexts have similar
+vector representations. By using word vectors instead of the
+corresponding words we were able overcome the problem of the limited
+lexical knowledge in the training phase. Using these features and
+excluding all the others (delexicalized model) we expected that the
+resulting user extraction system had a lower precision and an higher
+recall in the classification phase. We presumed to find new users not
+contained in the input seed list.
+
+\subsubsection{Manual Review of the new list of users}\label{manrev}
+
+It is still possible that the classification process creates false
+positive results (words labeled as users that do not match the
+definition in section @ref\{theuse\}). Thus, it is necessary to make a
+manual review of the extracted entities with the aim of evaluating the
+output.
+
+\subsubsection{Results}\label{results}
+
+The following section describes the performances of the automatic users
+extraction process on two different patent sets. To test the system four
+experiments were conducted\}. Finally the performances and the outcomes
+of the system are shown and discussed.
+
+Following the guidelines for the patent set selection described in
+section \ref{patsel}, we examined two patent sets belonging to the IPC
+class A:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{A47G33}. The IPC definition of the subclass is
+  \emph{``religious or ritual equipment in dwelling or for general''}.
+\item
+  \textbf{A61G1-A61G13}. The IPC definition of the subclass A61G1 is
+  \emph{``Stretchers''} while the definition of the subclass A61G13 is
+  \emph{``Operating tables; Auxiliary appliances therefor''}.
+\end{itemize}
+
+We extracted from the private Errequadro s.r.l. \footnote{\url{http://www.errequadrosrl.com/}}
+database a random sample of 2.000 patents from each IPC class. For each
+patent set we applied the semiautomatic set annotation process by
+projecting the input list of users on the morphosyntactically analyzed
+patent set. After this process, each semi-automatically annotated patent
+set was split in two parts: the first was used as training set for the
+user extractor, and the second one was used as test set.
+
+To build an informative training set, from the semi-automatically patent
+set we selected a subset of sentences containing at least one user. The
+size of the training set in both cases is approximately composed by
+600.000 tokens. For each patent set table \ref{tab:patentsetdetails}
+shows the number of sentences of the training set, the number of
+sentences of the test set, and the number of distinct users in the
+training set (re-projected by the semi-automatic annotation process).
+
+ref ---\textgreater{} patent set-details
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{\label{tab:patentsetdetails} Statistics related to the patent set
+groups analyzed in the case study}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.16\columnwidth}\centering\strut
+\emph{patent set group}\strut
+\end{minipage} & \begin{minipage}[b]{0.21\columnwidth}\centering\strut
+\emph{\#Sentences - training}\strut
+\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\centering\strut
+\emph{\#Sentences - test}\strut
+\end{minipage} & \begin{minipage}[b]{0.33\columnwidth}\centering\strut
+\emph{\#Distinct users projected on training}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.16\columnwidth}\centering\strut
+\emph{patent set group}\strut
+\end{minipage} & \begin{minipage}[b]{0.21\columnwidth}\centering\strut
+\emph{\#Sentences - training}\strut
+\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\centering\strut
+\emph{\#Sentences - test}\strut
+\end{minipage} & \begin{minipage}[b]{0.33\columnwidth}\centering\strut
+\emph{\#Distinct users projected on training}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+A47G33\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\centering\strut
+13.364\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\centering\strut
+214.029\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\centering\strut
+126\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+A61G1-A61G13\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\centering\strut
+15.108\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\centering\strut
+2.520.350\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\centering\strut
+121\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+We chose two orders of magnitude for the sentences test-set to test the
+efficiency of multiple configurations of the system.
+
+To test the performances of the implemented user extractor, we devised
+four different configurations. Each configuration uses a specific
+learning algorithm and a set of features to build the statistical model.
+The main purpose of this procedure is to find the configurations that
+better perform in the user extraction task. In addition, the different
+behaviour of the system in the classification phase is studied. In table
+\ref{tab:feat-confs} are reported the detailed configurations used in
+our experiments.
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{\label{tab:feat-confs} Context windows of the extracted features
+considering 0 as the current analyzed token.}\tabularnewline
+\toprule
+\emph{Feature group} & \emph{Context Window}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\emph{Feature group} & \emph{Context Window}\tabularnewline
+\midrule
+\endhead
+Lemma unigrams & \textbackslash{}({[}-2, -1, 0,
+1{]}\textbackslash{})\tabularnewline
+Lemma bigrams & \textbackslash{}({[}(-1 ,0), (0,
+1){]}\textbackslash{})\tabularnewline
+Word bigrams & \textbackslash{}({[}(-1 ,0), (-2, -1), (0, 1), (1,
+2){]}\textbackslash{})\tabularnewline
+Word trigrams & \textbackslash{}({[}(1, 0, 1) (-2, 1,
+0){]}\textbackslash{})\tabularnewline
+Pos unigrams & \textbackslash{}({[}-2, -1, 0,
+1{]}\textbackslash{})\tabularnewline
+Pos bigrams & \textbackslash{}(({[}(-2, -1) (-1, 0),
+(0,1){]})\textbackslash{})\tabularnewline
+Compositional feature \#1 & \textbackslash{}((POS\_\{-1\},
+Lemma\_\{0\})\textbackslash{})\tabularnewline
+Compositional feature \#2 & \textbackslash{}((Lemma\_\{-1\},
+Lemma\_\{0\})\textbackslash{})\tabularnewline
+Compositional feature \#3 & \textbackslash{}((Lemma\_\{0\},
+Lemma\_\{1\})\textbackslash{})\tabularnewline
+Compositional feature \#4 & \textbackslash{}((POS\_\{0\},
+Lemma\_\{1\})\textbackslash{})\tabularnewline
+Compositional feature \#5 & \textbackslash{}((NER\_\{-1\},
+Lemma\_\{0\})\textbackslash{})\tabularnewline
+Word2vec & \(-2, -1, 0, 1, 2\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+By using the first and the second configuration we expected to have a
+higher precision in the classification phase, since explicit lexical
+information is used in the training phase. For the same reason we
+expected to have low recall in classification phase. On the other hand,
+the third and fourth configurations are delexicalized: lexical
+information is provided by word vectors computed by word2vec\_. In these
+two configurations we expected to have an higher recall and a lower
+precision, due to the characteristics of the computed vectors explained
+before. To limit errors when using the \emph{word2vec} features, some
+linguistically motivated filtering rules were introduced. Specifically,
+sequences of tokens classified as users were constrained from the
+following categories: verbs, adjectives not preceded by articles,
+articles and adverbs.
+
+To evaluate the whole user extraction process in each experiment, we
+defined some evaluation measures. Each measure was introduced to
+evaluate the characteristics of the extraction system concerning the
+configuration applied.
+
+These measures are:
+
+\begin{itemize}
+\tightlist
+\item
+  Training time: time needed to create the statistical model using the
+  training set;
+\item
+  Test time: time needed to re-annotate the semi-automatically annotated
+  patent set;
+\item
+  Number of extracted users: number of unique entities classified as
+  user in the automatically annotated patent set;
+\item
+  Number of known users: number of distinct extracted users in the
+  automatically annotated patent set and belonging to the list of user
+  in input;
+\item
+  Number of new users: number of distinct entities classified as user in
+  the automatically annotated patent set and not belonging to the input
+  list of users;
+\item
+  Number of new correct users: number of distinct entities considered as
+  user and as correct after a manual review;
+\item
+  Precision: ratio between the number of new distinct correct users and
+  the total number of new distinct users;
+\item
+  Gain: ratio between the number of new distinct correct users and the
+  number of re-projected distinct users on the training set.
+\end{itemize}
+
+Table \ref{tab:runs-data} reports the values of the defined metrics
+across all the experiments run on the two patent sets.
+
+\begin{longtable}[]{@{}lccccccccc@{}}
+\caption{\label{tab:runs-data} Comparison of the values of the defined
+metrics across all the experiments. The patent set annotation in the
+experiment (6) was not performed due to the computational costs. All the
+experiments were run on a machine provided with 10 AMD Opteron(tm) 6376
+processors.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+Experiment\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Training time\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+Test Time\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+Extracted\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\centering\strut
+Known\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+New\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+New correct\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+New wrong\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+Prec. (\%)\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+Gain (\%)\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+Experiment\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Training time\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+Test Time\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+Extracted\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\centering\strut
+Known\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+New\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+New correct\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+New wrong\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+Prec. (\%)\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+Gain (\%)\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+1 (SVM)\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+83m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+321m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+161\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+93\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+68\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+47\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+21\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+69.11\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+37.30\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+2 (MLP)\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1911m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+9091m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+196\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+55\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+141\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+27\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+114\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+19.15\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+21.42\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+3 (MLP-W2V)\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+165m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+246m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+162\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+35\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+127\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+45\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+82\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+35.43\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+35.71\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+4 (SVM-W2V)\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1265m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+4310m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+121\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+29\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+92\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+45\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+47\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+48.91\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+35.71\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+5 (SVM)\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+148m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+3443m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+302\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+120\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+182\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+88\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+108\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+48.35\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+72.72\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+6 (MLP)\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1818m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+---\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+---\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+---\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+---\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+---\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+---\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+---\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+---\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+7 (MLP-W2V)\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+333m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+3530m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+305\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+38\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+267\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+44\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+230\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+16.48\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+36.36\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+8 (SVM-W2V)\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1268m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+47020m\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+313\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+49\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+264\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+74\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+197\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+28.03\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+61.15\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+For what concerns training and test time of the automatic patent set
+annotation, it's clear that the configuration based on the SVM learning
+algorithm without the \emph{word2vec} features performs better in both
+the experiments (1, 5). When the features based on \emph{word2vec} are
+introduced, the configuration based on the MLP learning algorithm is the
+fastest both in training and test time (3, 6): it is due to the fact
+that keras implementation of this algorithm exploits all the available
+CPU cores of the system. On the other side, the MLP algorithm does not
+scale properly with a higher number of features, as seen in training and
+annotation time in the experiment (2). In addition, we could not perform
+the patent set annotation in the experiment (6), since it would have
+required more than 60 machine days to complete the process. When
+\emph{word2vec} features are introduced, the patent set annotation based
+on the SVM algorithm is 10 times slower than the MLP algorithm.
+
+For what concerns the precision in the automatic patent set annotation,
+the SVM configuration without \emph{word2vec} features is clearly the
+more reliable: the precision values are from 1.5 to 2 times higher in
+the experiments (1, 5) in contrast to the other experiments. The higher
+precision is justified by the fact that the configurations based on
+\emph{word2vec} features lack explicit lexical information: words with
+very similar contexts are represented by similar \emph{word2vec}
+vectors, probably leading to errors in the classification phase. On the
+other hand, the use of \emph{word2vec} vectors aims at extracting
+entities that would not be extracted by considering explicit lexical
+information only.
+
+Finally, for what concerns information gain, the same amount of new
+information (21-37\%) is extracted in the experiments on the A47G33
+patent set. The gain values drastically change in the experiments on the
+A61G1-A61G13 patent set: in the experiments (5, 8) a gain between 61\%
+and 72\% is obtained: it is due to the size of this patent set in
+comparison to the A47G33 one. In the experiment (7), despite the
+introduction of \emph{word2vec} features, a gain of 36\% is obtained.
+This fact, in conjunction with the non-feasibility of the experimental
+configuration 6, shows how MLP systems lack in efficacy and efficiency
+(in entity extraction in patent domain) when the test-set has an order
+of magnitude of millions of sentences. We think that this result is
+relevant, based on our experience with practical applications.
+
+Furthremore, a way to maximize the overall informative gain is to merge
+the results of all manually reviewed user extractions obtained by
+executing the patent set annotation process with all possible
+configurations.
+
+The overall informative gain of the merging process is related to
+intersections that occur among the results obtained by the patent set
+annotation process in each configuration: the less the intersections,
+the more the overall informative gain obtained. In table
+\ref{tab:mergedata} is shown the overall gain obtained by merging
+results of the manually reviewed extractions in each patent set.
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{\label{tab:mergedata} Gain obtained by merging correct entities
+extracted from each patent set annotation.}\tabularnewline
+\toprule
+Configuration & A47G33 - Gain (\%) & A61G1+A61G11 - Gain
+(\%)\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Configuration & A47G33 - Gain (\%) & A61G1+A61G11 - Gain
+(\%)\tabularnewline
+\midrule
+\endhead
+SVM & 37.30 & 72.72\tabularnewline
+MLP & 21.42 & ---\tabularnewline
+MLP-W2V & 35.71 & 36.36\tabularnewline
+SVM-W2V & 35.71 & 61.15\tabularnewline
+SVM - MLP & 52.38 & ---\tabularnewline
+SVM - MLP-W2V & 69.84 & 126.44\tabularnewline
+SVM - SVM-W2V & 73.01 & 103.30\tabularnewline
+MLP - MLP-W2V & 55.55 & ---\tabularnewline
+MLP - SVM-W2V & 57.14 & ---\tabularnewline
+MLP-W2V - SVM-W2V & 59.52 & 76.30\tabularnewline
+SVM - SVM-W2V - MLP-W2V & 90.47 & 140.49\tabularnewline
+SVM - MLP - MLP-W2V & 82.53 & ---\tabularnewline
+SVM - MLP - SVM-W2V & 85.71 & ---\tabularnewline
+MLP - SVM-W2V - MLP-W2V & 77.77 & ---\tabularnewline
+SVM - MLP - SVM-W2V - MLP-W2V & 103.17 & ---\tabularnewline
+\bottomrule
+\end{longtable}
+
+The table shows that the merging process of manually reviewed entities
+extracted from each patent set annotation run effectively contributes to
+increase the overall informative gain. For instance in the A47G33 patent
+set an overall gain of 103.17\% is obtained, tripling the best result
+achieved by the extraction performed using the best single
+configuration. Good results are also achieved in the A47G33 patent set
+user extraction. In this case an overall gain of 140.49\% is obtained,
+doubling the best result achieved by the extraction performed using the
+best single configuration.
+
+The results shown in section 5 prove that if the goal of the extraction
+is to reach the maximal recall, an ensemble method (combining the output
+of multiple classifier) over-performs every single classifier method.
+Anyway, the ensemble approach has clear efficiency issues, because the
+time of analysis will be the sum of every single approach time (in
+hypotheses of non-parallelization). This leads to a trade off between
+the speed of the system and the quality of the results, and whoever
+would use the presented system can decide to gain benefit in one or in
+another direction.
+
+Finally, tables \ref{tab:result-extraction-dl-a47g33} and
+\ref{tab:result-extraction-dlw2v-a47g33} show an overview of extracted
+users randomly chosen from the A47G33 patent set (the only one in which
+were able to perform all experiments). Each table is divided in two
+blocks, representing the results of the extraction performed using a
+specific configuration. For each extracted user is shown the
+corresponding lemma (the root form), the frequency (how many times that
+user appears in the whole corpus) and the total number of patents
+containing the user. Users not contained in the starting user list, are
+highlighted in bold.
+
+The table shows that the system was able to extract characteristic users
+of the patent set. The results are in fact not unexpected for the IPC
+class under analysis: this is an evidence of the correct performances of
+the proposed system. In other words, the results presented in the table
+show that it is possible to train a NER systems able to extract sparse
+and valuable information. Such users are the ones that an expert would
+manually extract but the NER system does it with an enormous saving in
+terms of time and efforts.
+
+Other remarkable results are:
+
+\begin{itemize}
+\item
+  many newly extracted entities have very low frequency in the patent
+  set: it shows that the developed system is able to extract rare
+  entities.
+\item
+  table \ref{tab:result-extraction-dlw2v-a47g33} shows that
+  configurations using \emph{word2vec} features are able to find new
+  users with a higher frequency in the patent set: it was an expected
+  result, since the \emph{word2vec} configurations are not explicitly
+  lexicalized and more able to generalize during extraction phase.
+\item
+  The system is able to extract single words and multi-words.
+\item
+  Taking into consideration the definition of user of an invention, the
+  system extracts unusual and sometimes borderline users. Examples like
+  \emph{saint}, \emph{angel}, \emph{god} and \emph{ghost} need
+  discussion that is far beyond the purposes of the present paper. These
+  results are a remarkable evidence of the human-like generalization
+  ability of the described method.
+\end{itemize}
+
+\begin{longtable}[]{@{}cccccc@{}}
+\caption{\label{tab:result-extraction-dl-a47g33} Extracted users from the
+A47G33 patent set using the SVM and DL configurations. New users
+extracted by the system are reported in bold.}\tabularnewline
+\toprule
+Lemma & Frequency & \# Patents & Lemma & Frequency & \#
+Patents\tabularnewline
+female & 801 & 109 & child & 402 & 102\tabularnewline
+child & 426 & 108 & cleregy member & 128 & 5\tabularnewline
+guy & 156 & 17 & patient & 113 & 11\tabularnewline
+patient & 115 & 11 & man & 50 & 26\tabularnewline
+parent & 70 & 31 & young & 48 & 32\tabularnewline
+man & 51 & 26 & \textbf{angel} & 29 & 23\tabularnewline
+merchant & 50 & 6 & dog & 20 & 7\tabularnewline
+soon & 46 & 29 & artisan & 12 & 12\tabularnewline
+engineer & 45 & 45 & \textbf{male/female} & 12 & 4\tabularnewline
+adult & 39 & 23 & hockey player & 7 & 1\tabularnewline
+young & 35 & 24 & \textbf{professional} & 7 & 7\tabularnewline
+society & 32 & 21 & tennis player & 7 & 4\tabularnewline
+\textbf{angel} & 29 & 23 & football player & 6 & 3\tabularnewline
+fund raiser & 27 & 4 & \textbf{ghost} & 5 & 3\tabularnewline
+priest & 22 & 4 & children & 5 & 5\tabularnewline
+cheerleader & 15 & 4 & manager & 5 & 5\tabularnewline
+\textbf{fund-raiser} & 11 & 4 & \textbf{spider} & 5 & 5\tabularnewline
+\textbf{athlete} & 10 & 9 & \textbf{vandal} & 5 & 1\tabularnewline
+\textbf{ghost} & 5 & 5 & \textbf{athlete} & 4 & 3\tabularnewline
+\textbf{adulterant} & 3 & 3 & mother & 4 & 2\tabularnewline
+\textbf{jew} & 3 & 3 & soccer player & 4 & 3\tabularnewline
+\textbf{maid} & 3 & 1 & squirrel & 3 & 2\tabularnewline
+\textbf{tourist} & 3 & 3 & \textbf{maid} & 3 & 1\tabularnewline
+\textbf{indian} & 2 & 2 & \textbf{god} & 3 & 2\tabularnewline
+\textbf{beginner} & 1 & 1 & \textbf{mariner} & 3 & 3\tabularnewline
+\textbf{christians} & 1 & 1 & \textbf{male-female} & 2 &
+2\tabularnewline
+\textbf{datum entry operator} & 1 & 1 & \textbf{manufacturer} & 2 &
+2\tabularnewline
+\textbf{expert} & 1 & 1 & \textbf{jew} & 1 & 1\tabularnewline
+\textbf{jewish} & 1 & 1 & \textbf{merchandizers} & 1 & 1\tabularnewline
+\textbf{marinaro} & 1 & 1 & \textbf{parishioner} & 1 & 1\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cccccc@{}}
+\caption{\label{tab:result-extraction-dlw2v-a47g33} Extracted users from the
+A47G33 patent set using the SVM-W2V and MLP-W2V configurations. New
+users extracted by the system are reported in bold.}\tabularnewline
+\toprule
+Lemma & Frequency & \# Patents & Lemma & Frequency & \#
+Patents\tabularnewline
+child & 152 & 68 & clergy member & 124 & 5\tabularnewline
+clergy member & 124 & 5 & \textbf{crowd} & 36 & 3\tabularnewline
+man & 50 & 26 & basketball player & 20 & 5\tabularnewline
+engineer & 45 & 45 & \textbf{him} & 17 & 8\tabularnewline
+young & 29 & 24 & woman & 16 & 8\tabularnewline
+\textbf{choir} & 17 & 1 & \textbf{saint} & 14 & 2\tabularnewline
+\textbf{infirm} & 13 & 8 & \textbf{youth} & 14 & 2\tabularnewline
+\textbf{bride} & 9 & 4 & \textbf{angel} & 8 & 4\tabularnewline
+\textbf{volunteer} & 8 & 6 & \textbf{choir} & 8 & 1\tabularnewline
+musician & 6 & 6 & musician & 6 & 6\tabularnewline
+boy & 3 & 1 & \textbf{god} & 5 & 1\tabularnewline
+children & 3 & 3 & children & 3 & 3\tabularnewline
+girl & 3 & 2 & guy & 3 & 3\tabularnewline
+\textbf{creature} & 2 & 1 & infant & 3 & 3\tabularnewline
+\textbf{deceased} & 2 & 1 & priest & 3 & 3\tabularnewline
+\textbf{jewish} & 2 & 2 & \textbf{bride} & 2 & 2\tabularnewline
+\textbf{person} & 2 & 2 & \textbf{consumer} & 2 & 2\tabularnewline
+mother & 2 & 2 & \textbf{everyone} & 2 & 2\tabularnewline
+\textbf{audience} & 1 & 1 & \textbf{him/her} & 2 & 2\tabularnewline
+\textbf{boyfriend} & 1 & 1 & \textbf{spectator} & 2 & 2\tabularnewline
+\textbf{derby member} & 1 & 1 & farmer & 2 & 1\tabularnewline
+\textbf{gift giver} & 1 & 1 & youngster & 2 & 2\tabularnewline
+\textbf{handicapped} & 1 & 1 & \textbf{boyfriend} & 1 & 1\tabularnewline
+\textbf{jesus} & 1 & 1 & \textbf{grandparent} & 1 & 1\tabularnewline
+\textbf{saint} & 1 & 1 & \textbf{subject} & 1 & 1\tabularnewline
+husband & 1 & 1 & clown & 1 & 1\tabularnewline
+lady & 1 & 1 & husband & 1 & 1\tabularnewline
+runner & 1 & 1 & runner & 1 & 1\tabularnewline
+society & 1 & 1 & society & 1 & 1\tabularnewline
+teenager & 1 & 1 & tennis player & 1 & 1\tabularnewline
+\bottomrule
+\end{longtable}
+
+The total number of users is 109. 28,2\% (564 on 2.000) of patents in
+analysis contains at least one user. This result is an evidence of the
+fact that patents actually contain users information, and, considering
+the approach we followed, this percentage is an accurate lower
+approximation of the actual percentage of patents containing at least
+one user.
+
+In figure \ref{fig:patentsperuser} for each user on the x axes is shown
+the number of patents in which the user is contained. The distribution
+is skewed, with some occurrences showing large numbers and many others
+with just one or few occurrences. It is clear that there is a Pareto
+like distribution, with the first 20\% of users covering 70\% of total
+users in terms of occurrence. It means that some users are more likely
+to be cited in patents and many more users that rarely appear. Following
+this observations, we can divide users in three groups:
+
+\begin{itemize}
+\item
+  \emph{Group A}: users that appear in more than 100 patents (5\% of the
+  patent set). In our case these are \emph{male}, \emph{child} and
+  \emph{female}.
+\item
+  \emph{Group B}: users that appear in more than 20 patents (1\% of the
+  patent set). This group is composed by 13 different users. Some of
+  these are \emph{engineer}, \emph{person}, \emph{player}, \emph{adult},
+  \emph{angel} and \_guy.
+\item
+  \emph{Group C}: users that appear in less then 20 patents. This group
+  is composed by 93 different users. Some of these are \emph{mother},
+  \emph{athlete}, \emph{priest}, \emph{adulterant}, \emph{golfer} and
+  \emph{hockey player}.
+\end{itemize}
+
+Further research means to study how these users differ from patent set
+to patent set. We expect to see similar distribution but with different
+content of users. Frequent and non-specific users comprise Group A: in
+other patent set we could see differences in terms of entities contained
+in this class but its content will stay non-specific. These results seem
+to be generic social roles indicating the gender or the age of a person.
+Group B is composed of mainly non-specific users and some specific users
+that change from patent set to patent set. This class helps to identify
+the core users of the patent set. Lastly, Group C contains non-frequent
+users that are both specific and non-specific, making it the most
+interesting of the three for the purposes of our work. In this group we
+find users that are market niches, so the patent that contains these
+users is of great interest for marketers and designers. These are both
+samples of the more generic users (for example a \emph{mother} is a
+\emph{female} and a \emph{hockey player} is a \emph{player}) or specific
+users of the patent-set (like \emph{priest}, \emph{fund-raiser},
+\emph{doll}, \emph{spouse} and \emph{clergy member}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/user_rank} 
+
+}
+
+\caption{Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.}\label{fig:patentsperuser}
+\end{figure}
+
+\subsection{Advantages and Drawbacks}\label{advantages-and-drawbacks}
+
+In this section we show the approach used to extract the advantages and
+the drawbacks of the invention described in a patent. The proposed
+process is shown in figure \ref{fig:procesuser} and its phases are:
+
+\subsection{Trademakrs}\label{trademakrs}
 
 \section{Papers}\label{papers}
 
@@ -2382,22 +3538,6 @@ Table documents vs tools
 \section{Twitter}\label{twitter}
 
 \section{Job Profiles}\label{job-profiles}
-
-\chapter{Applications and Results}\label{applications}
-
-Some \emph{significant} applications are demonstrated in this chapter.
-
-\section{Patents}\label{patents-1}
-
-\section{Papers}\label{papers-1}
-
-\section{Projects}\label{projects-1}
-
-\section{Wikipedia}\label{wikipedia-1}
-
-\section{Twitter}\label{twitter-1}
-
-\section{Job Profiles}\label{job-profiles-1}
 
 \chapter{Future Developments}\label{future-developments}
 

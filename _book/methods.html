@@ -25,7 +25,7 @@
 <meta name="author" content="Filippo Chiarello">
 
 
-<meta name="date" content="2018-09-24">
+<meta name="date" content="2018-09-25">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -66,6 +66,7 @@
 <li><a href="./">Text Mining Techniques for Knowledge Extraction from Technical Documents</a></li>
 
 <li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#goal"><i class="fa fa-check"></i><b>1.1</b> Goal</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#problem"><i class="fa fa-check"></i><b>1.2</b> Problem</a></li>
@@ -151,14 +152,14 @@
 <h3><span class="header-section-number">3.1.1</span> Users</h3>
 <p>In this section we show the approach used to extract the users of the invention described in a patent. The proposed process is shown in figure <a href="methods.html#fig:procesuser">3.1</a> and its phases are:</p>
 <ol style="list-style-type: decimal">
-<li><p><em>Generation of an input list of users</em>: search all possible sources with the aim of creating an input list of users with the largest possible coverage (section <a href="methods.html#sourc">3.1.1.1</a>);</p></li>
-<li><p><em>Patent set selection</em>: select the set of documents from which extract the users (section <a href="methods.html#patsel">3.1.1.2</a>);</p></li>
+<li><p><em>Generation of an input list of users</em>: search all possible sources with the aim of creating an input list of users with the largest possible coverage (section <a href="methods.html#sourc">3.1.1.2</a>);</p></li>
+<li><p><em>Patent set selection</em>: select the set of documents from which extract the users (section <a href="methods.html#patsel">3.1.1.3</a>);</p></li>
 <li><p><em>Patent text pre-processing</em>: application of natural language processing tools on the documents with the aim of preparing them for the automatic user extraction;</p></li>
 <li><p><em>Automatic patent set annotation 1</em>: projection of the input list of users on the text to generate the Automatically Annotated Patent Set 1;</p></li>
 <li><p><em>Relevant sentences extraction</em>: selection of sentences containing at least one user to generate an informative training set;</p></li>
 <li><p><em>Automatic patent set annotation 2</em>: generation of a statistical model by a machine learning algorithm based on the training set sentences and automatically tagging the patent set to generate the Automatically Annotated Patent Set 2;</p></li>
 <li><p><em>Difference computation</em>: generation of the new list of users by computing the difference between the lists of users found in the automatically annotated patent set 1 and 2;</p></li>
-<li><p><em>Manual review</em>: manual selection of the entities that, in the new list of users, are effectively users. This new list will enrich the original list of users. This phase is described in section <a href="methods.html#manrev">3.1.1.5</a>.</p></li>
+<li><p><em>Manual review</em>: manual selection of the entities that, in the new list of users, are effectively users. This new list will enrich the original list of users. This phase is described in section <a href="methods.html#manrev">3.1.1.6</a>.</p></li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:procesuser"></span>
 <img src="_bookdown_files/figures/Process.pdf" alt="Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output." width="80%" />
@@ -166,16 +167,49 @@
 Figure 3.1: Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.
 </p>
 </div>
+<p>before the description of each phases, in section <a href="methods.html#userdef">3.1.1.1</a> the concept of <em>user of the invetion</em> is explained by giving a definition of users and presenting the way that this concept is exploited in different knowledge fields.</p>
+<div id="userdef" class="section level4">
+<h4><span class="header-section-number">3.1.1.1</span> Users: A key information hidden in patents</h4>
+<p>Patents are documents that must provide a detailed public disclosure of an invention <span class="citation">(Idris <a href="#ref-wipo2">2008</a>)</span>. An <em>invention</em> is a new and useful process, machine, manufacture, or composition of matter, or any new and useful improvement thereof.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>The notion of usefulness implies that the invention must have some value and not necessarily for a human entity. In fact, patents usually describe processes, machines or composition of matter which are useful for another process, machine or composition of matter.</p>
+<p>Therefore, we distinguish between stakeholders and users, considering the definitions given by the authors in <span class="citation">(Bonaccorsi and D’amico <a href="#ref-bonam2017">2017</a>)</span>.</p>
+<p>Definition 1: <strong>Stakeholder</strong> : <em>Stakeholders are entities on which the invention has or will have a positive or negative effect in order to show usefulness.</em></p>
+<p>This definition covers all possible entities that engage an active or passive relation with the invention.Given the logical condition of usefulness of patents, all patents must have stakeholder information. If a patent has not got any stakeholder information in it the patent application should be rejected.</p>
+<p>Definition 2: <strong>User</strong>: <em>Users are animated or previously animated entities (human or animal, alive or dead), on which the invention has a positive or negative effect at an unspecified moment.</em></p>
+<p>Given definition 2, it is clear that every user is a stakeholder while non-users stakeholders include artifacts, machines, manufacturing or operational processes.</p>
+<p>Corollary 1: <strong>Multiple roles</strong>: <em>Identities may have multiple roles as users.</em></p>
+<p>Our idea of users describes roles, not identities. Animated entities have an identity, as it happens for a specific person. A person has many roles as a user. For example, a <em>working mother</em> starts her day taking on the role of a <em>mom</em>, in which she is expected to feed her children and get them ready for school. At the office she shifts to the role of <em>project manager</em>, so she oversees projects in a timely and professional manner. <em>Working mother</em>, <em>mom</em> or <em>project manager</em> can be considered user roles attributed to the same person, or identity. From this definition it is clear that users are close to what social sciences define as “social roles”.</p>
+<p>Afterward, we can outline knowledge fields using the concept of user, with a twofold aim: help the reader to understand how the concept of users is interpreted in different knowledge fields; explain the background of the methodology we adopted.</p>
+<div id="social-sciences-social-roles-as-users" class="section level5 unnumbered">
+<h5>Social sciences: social roles as users</h5>
+<p>In social sciences <em>social roles</em> are comparable with our definition of user. As defined in the psychological field <span class="citation">(Dog <a href="#ref-alleydog">2015</a>)</span>, <em>“social roles refer to the expectations, responsibilities and behaviors we adopt in certain situations.”</em>. The example of the working mother shown before, is the case of social roles.</p>
+<p>The field of social sciences is the only one in which an attempt of automatic extraction of users has been done. In <span class="citation">(Beller et al. <a href="#ref-belieber">2014</a>)</span> the authors extracted social roles from Twitter using heuristic methods. The authors looked for all the words preceded by constructions like “I’m a” and similar variations. This search resulted in 63.858 unique roles identified, 44.260 of which appeared only once. The result of the extraction process is noisy and only a low percentage of the extracted words are social roles. Despite of this noisy extraction, some entities are consistent with our definition of user, e.g. <em>doctor, teacher</em>, <em>mother</em> or <em>christian</em>.</p>
+<p>Another work <span class="citation">(Beller, Harman, and Van Durme <a href="#ref-prefine">2014</a>)</span> tries to identify social roles on Twitter exploiting a set of assumptions. The authors take into account roles, each one with a set of related verbs: if someone uses verbs from a set, that person may cover that particular social role. To sanitize the collection of positively identified users, the authors crowd-sourced a manual verification procedure, using the Mechanical Turk platform <span class="citation">(Kittur, Chi, and Suh <a href="#ref-kittur2008crowdsourcing">2008</a>)</span>. Also here some interesting extractions are performed, obtaining users like <em>artist, athlete, blogger, cheerleader, christian, DJ</em>, or <em>filmmaker</em>. These two works differ from the present study for what concerns the analyzed texts and the methods to extract the entities. Nevertheless, the extracted set of entities is consistent with our definition of user.</p>
+</div>
+<div id="human-resources-management-workers-as-users" class="section level5 unnumbered">
+<h5>Human Resources Management: workers as users</h5>
+<p>In organizations, Human Resources Management is the function designed to maximize employees performance <span class="citation">(Johnson <a href="#ref-HRM">2009</a>)</span>. Employees are key actors and they can be considered users according to our definition.</p>
+<p>Human Resources Management has tried to classify employees, especially in sub-fields like insurance, social security or work psychology. Usually, we refer to those as lists of jobs. Classifications were made with the goal of grouping similar jobs for educational requirements, job outlooks, salary ranges or work environments to facilitate social analysis and the placement of new workers. Such lists are relevant because, even if they represent just one subset of all the possible users, they contain valid information. Many institutions developed lists of jobs <span class="citation">(“Suffix Codes for Jobs Defined in the Dictionary of Occupational Titles, Third Edition” <a href="#ref-listjobs">1967</a>)</span>.</p>
+</div>
+<div id="medicine-patients-as-users" class="section level5 unnumbered">
+<h5>Medicine: patients as users</h5>
+<p>Another field of interest is medicine, since patients can be considered users. Also in this case there are many lists of patients, illnesses and diseases <span class="citation">(Health and Services <a href="#ref-cdcdiseases">2018</a>)</span>, which are valuable in terms of information contained.</p>
+</div>
+<div id="design-and-marketing-between-users-and-customers" class="section level5 unnumbered">
+<h5>Design and Marketing: between users and customers</h5>
+<p>In the field of <em>Design</em> the concept of user plays a central role and it overlaps with our definition of user. Many tools and theories like “User Centered Design” are based on the concept of user <span class="citation">(ISO <a href="#ref-ucd">1999</a>)</span>. As stated by the authors in <span class="citation">(K. <a href="#ref-npdul">2008</a>)</span>, the quality of the design process is proportional to the user needs’ satisfaction. It implies that a designer has to understand the user needs; as a consequence he has to discover whom are potential users.</p>
+</div>
+</div>
 <div id="sourc" class="section level4">
-<h4><span class="header-section-number">3.1.1.1</span> List of users generation</h4>
+<h4><span class="header-section-number">3.1.1.2</span> List of users generation</h4>
 <p>To generate the input list of users, we used two different approaches: a bottom-up approach and a top-down approach. The bottom-up approach is based on the merge of lists from heterogeneous sources. In the present work we used the following lists of entities:</p>
 <ul>
 <li><p><em>Lists of jobs</em> :<span class="citation">(“Suffix Codes for Jobs Defined in the Dictionary of Occupational Titles, Third Edition” <a href="#ref-listjobs">1967</a>)</span>, 11.142 entities</p></li>
-<li><p><em>Lists of sports and hobbies</em>: <span class="citation">(notsoboringlife <a href="#ref-listhob1">2010</a>, <span class="citation">discoverahobby (<a href="#ref-listhob2">2010</a>)</span>)</span>, 9.660 entities;</p></li>
+<li><p><em>Lists of sports and hobbies</em><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>: 9.660 entities;</p></li>
 </ul>
-<p><em>List of animals</em>: <span class="citation">(Animals <a href="#ref-listan">2010</a>)</span>, 600 entities;</p>
+<p><em>List of animals</em>:<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> 600 entities;</p>
 <ul>
-<li><p><em>Lists of patients</em>: <span class="citation">(medicinenet <a href="#ref-listpat1">2010</a>, <span class="citation">Health &amp; Human Services (<a href="#ref-listpat2">2010</a>)</span>)</span>,14.609 users;</p></li>
+<li><p><em>Lists of patients</em>:<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> 14.609 users;</p></li>
 <li><p><em>List of generic words</em>: manually generated. It contains users with a higher level of abstraction (such as <em>person</em> or <em>human being</em>), 56 items.</p></li>
 </ul>
 <p>Bottom-up approach produced a list of 35.767 entries.</p>
@@ -190,11 +224,11 @@ Figure 3.1: Process flow diagram of the proposed automatic user extraction syste
 <p>Obviously our lists have a limited coverage and, therefore, they do not contain all variations of a certain user. For instance, the lists miss some users belonging to the classes mentioned above (e.g. new jobs emerged in the last years) and all the alternative ways for referring to a user we do not spotted in the top-down approach. For example our lists miss jobs like <em>data analyst</em>, <em>lap dancer</em>, <em>undertaker</em>, <em>mortician</em> and <em>thief</em> or patients with emerging diseases like <em>work-alcoholic</em> and <em>web-addicted</em>. In addition, our lists miss a class of users related to religious groups, containing users like <em>christians</em> or <em>jewish</em>. Such terms have intentionally <strong>not</strong> been introduced in the input list because we considered these terms as candidates to be extracted by the process in our case study .</p>
 </div>
 <div id="patsel" class="section level4">
-<h4><span class="header-section-number">3.1.1.2</span> Patent set selection</h4>
+<h4><span class="header-section-number">3.1.1.3</span> Patent set selection</h4>
 <p>Our choice of patent sets aimed at challenging our system to find new users missing in the input list. To reproduce a patent set selection, we took into consideration the International Patent Classification (IPC) <span class="citation">(Organization <a href="#ref-wipo1">1971</a>)</span>. IPC is a hierarchical system of patent classes representing different areas of technology. Then, we wondered which classes could contain new users according to our seed list. Furthermore, IPC class A, which is the first level in IPC differentiation, is based on human necessities. For this reason, we assumed that in this class we would have found likely users from patents texts.</p>
 </div>
 <div id="patent-text-analysis" class="section level4">
-<h4><span class="header-section-number">3.1.1.3</span> Patent text analysis</h4>
+<h4><span class="header-section-number">3.1.1.4</span> Patent text analysis</h4>
 <p>Our Entity Extraction system is composed by a set of sequential phases. The first three phases are related to the linguistic annotation: sentence splitting and tokenization, part of speech tagging and lemmatization. Then, the patent set is analyzed by the entity extractor, specialized for users extraction. A more detailed description of each phase is:</p>
 <ul>
 <li><p>Sentence splitting and Tokenization: These processes split the text into sentences and then segment each sentence in orthographic units called tokens. In our system, sentence splitting plays a key role since thanks to a given word, it is possible to find sentences where the word is used. Finding correct boundaries for a specific word allows to dramatically reduce the space to retrieve its surrounding contexts.</p></li>
@@ -209,7 +243,7 @@ Figure 3.1: Process flow diagram of the proposed automatic user extraction syste
 </ul>
 </div>
 <div id="user-entity-extraction" class="section level4">
-<h4><span class="header-section-number">3.1.1.4</span> User Entity Extraction</h4>
+<h4><span class="header-section-number">3.1.1.5</span> User Entity Extraction</h4>
 <p>The Users extraction problem is tackled by the implementation of a supervised classifier that is trained on an annotated patent set. Thus, the patent set is linguistically-annotated, using the steps described above and entity-annotated, exploiting the semiautomatic annotation process executed in the previous steps.</p>
 <p>Given a set of features the classifier trains a statistical model using the feature statistics extracted from the corpus. For each new document the trained model assigns to each word the probability of belonging to one of the classes previously defined (B-USE, I-USE, O).</p>
 <p>In our experiments the classifier has been trained using two different learning algorithms: Support Vector Machines (SVM) using the LIBSVM library <span class="citation">(Chang and Lin <a href="#ref-libsvm">2011</a>)</span> configured to use a linear kernel and Multi Layer Perceptron (MLP) implemented using the Keras library <span class="citation">(Chollet <a href="#ref-libkeras">2015</a>)</span>. It has been proven that LSTM methods are well suited for similar NER task. Anyway, we chose SVM and MLP method to study how two wheel established state of the art classifiers perform on the specific task of user extraction from patents and to evaluate their performance in terms of precision and computational effort. We also think that the popularity of these methods increment the reproducibility of the work.</p>
@@ -223,24 +257,112 @@ Figure 3.1: Process flow diagram of the proposed automatic user extraction syste
 <p><em>Word2vec</em> is a NLP tool able to produce word representations exploiting big corpora. The main property of the vectors produced by <em>word2vec</em> is that words sharing similar contexts have similar vector representations. By using word vectors instead of the corresponding words we were able overcome the problem of the limited lexical knowledge in the training phase. Using these features and excluding all the others (delexicalized model) we expected that the resulting user extraction system had a lower precision and an higher recall in the classification phase. We presumed to find new users not contained in the input seed list.</p>
 </div>
 <div id="manrev" class="section level4">
-<h4><span class="header-section-number">3.1.1.5</span> Manual Review of the new list of users</h4>
+<h4><span class="header-section-number">3.1.1.6</span> Manual Review of the new list of users</h4>
 <p>It is still possible that the classification process creates false positive results (words labeled as users that do not match the definition in section @ref{theuse}). Thus, it is necessary to make a manual review of the extracted entities with the aim of evaluating the output.</p>
 </div>
 <div id="results" class="section level4">
-<h4><span class="header-section-number">3.1.1.6</span> Results</h4>
+<h4><span class="header-section-number">3.1.1.7</span> Results</h4>
 <p>The following section describes the performances of the automatic users extraction process on two different patent sets. To test the system four experiments were conducted}. Finally the performances and the outcomes of the system are shown and discussed.</p>
 <p>Following the guidelines for the patent set selection described in section , we examined two patent sets belonging to the IPC class A:</p>
 <ul>
 <li><strong>A47G33</strong>. The IPC definition of the subclass is <em>“religious or ritual equipment in dwelling or for general”</em>.</li>
 <li><strong>A61G1-A61G13</strong>. The IPC definition of the subclass A61G1 is <em>“Stretchers”</em> while the definition of the subclass A61G13 is <em>“Operating tables; Auxiliary appliances therefor”</em>.</li>
 </ul>
-<p>We extracted from the private Errequadro s.r.l. <span class="citation">(Errequadro <a href="#ref-errequadro">2016</a>)</span> database a random sample of 2.000 patents from each IPC class. For each patent set we applied the semiautomatic set annotation process by projecting the input list of users on the morphosyntactically analyzed patent set. After this process, each semi-automatically annotated patent set was split in two parts: the first was used as training set for the user extractor, and the second one was used as test set.</p>
-<p>To build an informative training set, from the semi-automatically patent set we selected a subset of sentences containing at least one user. The size of the training set in both cases is approximately composed by 600.000 tokens. For each patent set table  shows the number of sentences of the training set, the number of sentences of the test set, and the number of distinct users in the training set (re-projected by the semi-automatic annotation process).</p>
+<p>We extracted from the private Errequadro s.r.l.<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> database a random sample of 2.000 patents from each IPC class. For each patent set we applied the semiautomatic set annotation process by projecting the input list of users on the morphosyntactically analyzed patent set. After this process, each semi-automatically annotated patent set was split in two parts: the first was used as training set for the user extractor, and the second one was used as test set.</p>
+<p>To build an informative training set, from the semi-automatically patent set we selected a subset of sentences containing at least one user. The size of the training set in both cases is approximately composed by 600.000 tokens. For each patent set table <a href="methods.html#tab:patentsetdetails">3.1</a> shows the number of sentences of the training set, the number of sentences of the test set, and the number of distinct users in the training set (re-projected by the semi-automatic annotation process).</p>
 <p>ref —&gt; patent set-details</p>
-
+<table style="width:100%;">
+<caption><span id="tab:patentsetdetails">Table 3.1: </span> Statistics related to the patent set groups analyzed in the case study</caption>
+<colgroup>
+<col width="18%" />
+<col width="23%" />
+<col width="20%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><em>patent set group</em></th>
+<th align="center"><em>#Sentences - training</em></th>
+<th align="center"><em>#Sentences - test</em></th>
+<th align="center"><em>#Distinct users projected on training</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">A47G33</td>
+<td align="center">13.364</td>
+<td align="center">214.029</td>
+<td align="center">126</td>
+</tr>
+<tr class="even">
+<td align="center">A61G1-A61G13</td>
+<td align="center">15.108</td>
+<td align="center">2.520.350</td>
+<td align="center">121</td>
+</tr>
+</tbody>
+</table>
 <p>We chose two orders of magnitude for the sentences test-set to test the efficiency of multiple configurations of the system.</p>
-<p>To test the performances of the implemented user extractor, we devised four different configurations. Each configuration uses a specific learning algorithm and a set of features to build the statistical model. The main purpose of this procedure is to find the configurations that better perform in the user extraction task. In addition, the different behaviour of the system in the classification phase is studied. In tables  and  are reported the detailed configurations used in our experiments.</p>
-
+<p>To test the performances of the implemented user extractor, we devised four different configurations. Each configuration uses a specific learning algorithm and a set of features to build the statistical model. The main purpose of this procedure is to find the configurations that better perform in the user extraction task. In addition, the different behaviour of the system in the classification phase is studied. In table <a href="methods.html#tab:feat-confs">3.2</a> are reported the detailed configurations used in our experiments.</p>
+<table>
+<caption><span id="tab:feat-confs">Table 3.2: </span> Context windows of the extracted features considering 0 as the current analyzed token.</caption>
+<thead>
+<tr class="header">
+<th align="center"><em>Feature group</em></th>
+<th align="center"><em>Context Window</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lemma unigrams</td>
+<td align="center">\([-2, -1, 0, 1]\)</td>
+</tr>
+<tr class="even">
+<td align="center">Lemma bigrams</td>
+<td align="center">\([(-1 ,0), (0, 1)]\)</td>
+</tr>
+<tr class="odd">
+<td align="center">Word bigrams</td>
+<td align="center">\([(-1 ,0), (-2, -1), (0, 1), (1, 2)]\)</td>
+</tr>
+<tr class="even">
+<td align="center">Word trigrams</td>
+<td align="center">\([(1, 0, 1) (-2, 1, 0)]\)</td>
+</tr>
+<tr class="odd">
+<td align="center">Pos unigrams</td>
+<td align="center">\([-2, -1, 0, 1]\)</td>
+</tr>
+<tr class="even">
+<td align="center">Pos bigrams</td>
+<td align="center">\(([(-2, -1) (-1, 0), (0,1)])\)</td>
+</tr>
+<tr class="odd">
+<td align="center">Compositional feature #1</td>
+<td align="center">\((POS_{-1}, Lemma_{0})\)</td>
+</tr>
+<tr class="even">
+<td align="center">Compositional feature #2</td>
+<td align="center">\((Lemma_{-1}, Lemma_{0})\)</td>
+</tr>
+<tr class="odd">
+<td align="center">Compositional feature #3</td>
+<td align="center">\((Lemma_{0}, Lemma_{1})\)</td>
+</tr>
+<tr class="even">
+<td align="center">Compositional feature #4</td>
+<td align="center">\((POS_{0}, Lemma_{1})\)</td>
+</tr>
+<tr class="odd">
+<td align="center">Compositional feature #5</td>
+<td align="center">\((NER_{-1}, Lemma_{0})\)</td>
+</tr>
+<tr class="even">
+<td align="center">Word2vec</td>
+<td align="center"><span class="math display">\[-2, -1, 0, 1, 2\]</span></td>
+</tr>
+</tbody>
+</table>
 <p>By using the first and the second configuration we expected to have a higher precision in the classification phase, since explicit lexical information is used in the training phase. For the same reason we expected to have low recall in classification phase. On the other hand, the third and fourth configurations are delexicalized: lexical information is provided by word vectors computed by word2vec_. In these two configurations we expected to have an higher recall and a lower precision, due to the characteristics of the computed vectors explained before. To limit errors when using the <em>word2vec</em> features, some linguistically motivated filtering rules were introduced. Specifically, sequences of tokens classified as users were constrained from the following categories: verbs, adjectives not preceded by articles, articles and adverbs.</p>
 <p>To evaluate the whole user extraction process in each experiment, we defined some evaluation measures. Each measure was introduced to evaluate the characteristics of the extraction system concerning the configuration applied.</p>
 <p>These measures are:</p>
@@ -254,40 +376,776 @@ Figure 3.1: Process flow diagram of the proposed automatic user extraction syste
 <li>Precision: ratio between the number of new distinct correct users and the total number of new distinct users;</li>
 <li>Gain: ratio between the number of new distinct correct users and the number of re-projected distinct users on the training set.</li>
 </ul>
-{
-
-<p>}</p>
-<p>Table  reports the values of the defined metrics across all the experiments run on the two patent sets.</p>
+<p>Table <a href="methods.html#tab:runs-data">3.3</a> reports the values of the defined metrics across all the experiments run on the two patent sets.</p>
+<table style="width:100%;">
+<caption><span id="tab:runs-data">Table 3.3: </span> Comparison of the values of the defined metrics across all the experiments. The patent set annotation in the experiment (6) was not performed due to the computational costs. All the experiments were run on a machine provided with 10 AMD Opteron(tm) 6376 processors.</caption>
+<colgroup>
+<col width="11%" />
+<col width="13%" />
+<col width="10%" />
+<col width="10%" />
+<col width="6%" />
+<col width="5%" />
+<col width="11%" />
+<col width="10%" />
+<col width="10%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Experiment</th>
+<th align="center">Training time</th>
+<th align="center">Test Time</th>
+<th align="center">Extracted</th>
+<th align="center">Known</th>
+<th align="center">New</th>
+<th align="center">New correct</th>
+<th align="center">New wrong</th>
+<th align="center">Prec. (%)</th>
+<th align="center">Gain (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">1 (SVM)</td>
+<td align="center">83m</td>
+<td align="center">321m</td>
+<td align="center">161</td>
+<td align="center">93</td>
+<td align="center">68</td>
+<td align="center">47</td>
+<td align="center">21</td>
+<td align="center">69.11</td>
+<td align="center">37.30</td>
+</tr>
+<tr class="odd">
+<td align="left">2 (MLP)</td>
+<td align="center">1911m</td>
+<td align="center">9091m</td>
+<td align="center">196</td>
+<td align="center">55</td>
+<td align="center">141</td>
+<td align="center">27</td>
+<td align="center">114</td>
+<td align="center">19.15</td>
+<td align="center">21.42</td>
+</tr>
+<tr class="even">
+<td align="left">3 (MLP-W2V)</td>
+<td align="center">165m</td>
+<td align="center">246m</td>
+<td align="center">162</td>
+<td align="center">35</td>
+<td align="center">127</td>
+<td align="center">45</td>
+<td align="center">82</td>
+<td align="center">35.43</td>
+<td align="center">35.71</td>
+</tr>
+<tr class="odd">
+<td align="left">4 (SVM-W2V)</td>
+<td align="center">1265m</td>
+<td align="center">4310m</td>
+<td align="center">121</td>
+<td align="center">29</td>
+<td align="center">92</td>
+<td align="center">45</td>
+<td align="center">47</td>
+<td align="center">48.91</td>
+<td align="center">35.71</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">5 (SVM)</td>
+<td align="center">148m</td>
+<td align="center">3443m</td>
+<td align="center">302</td>
+<td align="center">120</td>
+<td align="center">182</td>
+<td align="center">88</td>
+<td align="center">108</td>
+<td align="center">48.35</td>
+<td align="center">72.72</td>
+</tr>
+<tr class="even">
+<td align="left">6 (MLP)</td>
+<td align="center">1818m</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr class="odd">
+<td align="left">7 (MLP-W2V)</td>
+<td align="center">333m</td>
+<td align="center">3530m</td>
+<td align="center">305</td>
+<td align="center">38</td>
+<td align="center">267</td>
+<td align="center">44</td>
+<td align="center">230</td>
+<td align="center">16.48</td>
+<td align="center">36.36</td>
+</tr>
+<tr class="even">
+<td align="left">8 (SVM-W2V)</td>
+<td align="center">1268m</td>
+<td align="center">47020m</td>
+<td align="center">313</td>
+<td align="center">49</td>
+<td align="center">264</td>
+<td align="center">74</td>
+<td align="center">197</td>
+<td align="center">28.03</td>
+<td align="center">61.15</td>
+</tr>
+</tbody>
+</table>
 <p>For what concerns training and test time of the automatic patent set annotation, it’s clear that the configuration based on the SVM learning algorithm without the <em>word2vec</em> features performs better in both the experiments (1, 5). When the features based on <em>word2vec</em> are introduced, the configuration based on the MLP learning algorithm is the fastest both in training and test time (3, 6): it is due to the fact that keras implementation of this algorithm exploits all the available CPU cores of the system. On the other side, the MLP algorithm does not scale properly with a higher number of features, as seen in training and annotation time in the experiment (2). In addition, we could not perform the patent set annotation in the experiment (6), since it would have required more than 60 machine days to complete the process. When <em>word2vec</em> features are introduced, the patent set annotation based on the SVM algorithm is 10 times slower than the MLP algorithm.</p>
 <p>For what concerns the precision in the automatic patent set annotation, the SVM configuration without <em>word2vec</em> features is clearly the more reliable: the precision values are from 1.5 to 2 times higher in the experiments (1, 5) in contrast to the other experiments. The higher precision is justified by the fact that the configurations based on <em>word2vec</em> features lack explicit lexical information: words with very similar contexts are represented by similar <em>word2vec</em> vectors, probably leading to errors in the classification phase. On the other hand, the use of <em>word2vec</em> vectors aims at extracting entities that would not be extracted by considering explicit lexical information only.</p>
 <p>Finally, for what concerns information gain, the same amount of new information (21-37%) is extracted in the experiments on the A47G33 patent set. The gain values drastically change in the experiments on the A61G1-A61G13 patent set: in the experiments (5, 8) a gain between 61% and 72% is obtained: it is due to the size of this patent set in comparison to the A47G33 one. In the experiment (7), despite the introduction of <em>word2vec</em> features, a gain of 36% is obtained. This fact, in conjunction with the non-feasibility of the experimental configuration 6, shows how MLP systems lack in efficacy and efficiency (in entity extraction in patent domain) when the test-set has an order of magnitude of millions of sentences. We think that this result is relevant, based on our experience with practical applications.</p>
 <p>Furthremore, a way to maximize the overall informative gain is to merge the results of all manually reviewed user extractions obtained by executing the patent set annotation process with all possible configurations.</p>
-<p>The overall informative gain of the merging process is related to intersections that occur among the results obtained by the patent set annotation process in each configuration: the less the intersections, the more the overall informative gain obtained. In table  is shown the overall gain obtained by merging results of the manually reviewed extractions in each patent set.</p>
-{
-
-<p>}</p>
+<p>The overall informative gain of the merging process is related to intersections that occur among the results obtained by the patent set annotation process in each configuration: the less the intersections, the more the overall informative gain obtained. In table <a href="methods.html#tab:mergedata">3.4</a> is shown the overall gain obtained by merging results of the manually reviewed extractions in each patent set.</p>
+<table>
+<caption><span id="tab:mergedata">Table 3.4: </span> Gain obtained by merging correct entities extracted from each patent set annotation.</caption>
+<thead>
+<tr class="header">
+<th align="center">Configuration</th>
+<th align="center">A47G33 - Gain (%)</th>
+<th align="center">A61G1+A61G11 - Gain (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SVM</td>
+<td align="center">37.30</td>
+<td align="center">72.72</td>
+</tr>
+<tr class="even">
+<td align="center">MLP</td>
+<td align="center">21.42</td>
+<td align="center">—</td>
+</tr>
+<tr class="odd">
+<td align="center">MLP-W2V</td>
+<td align="center">35.71</td>
+<td align="center">36.36</td>
+</tr>
+<tr class="even">
+<td align="center">SVM-W2V</td>
+<td align="center">35.71</td>
+<td align="center">61.15</td>
+</tr>
+<tr class="odd">
+<td align="center">SVM - MLP</td>
+<td align="center">52.38</td>
+<td align="center">—</td>
+</tr>
+<tr class="even">
+<td align="center">SVM - MLP-W2V</td>
+<td align="center">69.84</td>
+<td align="center">126.44</td>
+</tr>
+<tr class="odd">
+<td align="center">SVM - SVM-W2V</td>
+<td align="center">73.01</td>
+<td align="center">103.30</td>
+</tr>
+<tr class="even">
+<td align="center">MLP - MLP-W2V</td>
+<td align="center">55.55</td>
+<td align="center">—</td>
+</tr>
+<tr class="odd">
+<td align="center">MLP - SVM-W2V</td>
+<td align="center">57.14</td>
+<td align="center">—</td>
+</tr>
+<tr class="even">
+<td align="center">MLP-W2V - SVM-W2V</td>
+<td align="center">59.52</td>
+<td align="center">76.30</td>
+</tr>
+<tr class="odd">
+<td align="center">SVM - SVM-W2V - MLP-W2V</td>
+<td align="center">90.47</td>
+<td align="center">140.49</td>
+</tr>
+<tr class="even">
+<td align="center">SVM - MLP - MLP-W2V</td>
+<td align="center">82.53</td>
+<td align="center">—</td>
+</tr>
+<tr class="odd">
+<td align="center">SVM - MLP - SVM-W2V</td>
+<td align="center">85.71</td>
+<td align="center">—</td>
+</tr>
+<tr class="even">
+<td align="center">MLP - SVM-W2V - MLP-W2V</td>
+<td align="center">77.77</td>
+<td align="center">—</td>
+</tr>
+<tr class="odd">
+<td align="center">SVM - MLP - SVM-W2V - MLP-W2V</td>
+<td align="center">103.17</td>
+<td align="center">—</td>
+</tr>
+</tbody>
+</table>
 <p>The table shows that the merging process of manually reviewed entities extracted from each patent set annotation run effectively contributes to increase the overall informative gain. For instance in the A47G33 patent set an overall gain of 103.17% is obtained, tripling the best result achieved by the extraction performed using the best single configuration. Good results are also achieved in the A47G33 patent set user extraction. In this case an overall gain of 140.49% is obtained, doubling the best result achieved by the extraction performed using the best single configuration.</p>
 <p>The results shown in section 5 prove that if the goal of the extraction is to reach the maximal recall, an ensemble method (combining the output of multiple classifier) over-performs every single classifier method. Anyway, the ensemble approach has clear efficiency issues, because the time of analysis will be the sum of every single approach time (in hypotheses of non-parallelization). This leads to a trade off between the speed of the system and the quality of the results, and whoever would use the presented system can decide to gain benefit in one or in another direction.</p>
-<p>Finally, tables  and  show an overview of extracted users randomly chosen from the A47G33 patent set (the only one in which were able to perform all experiments). Each table is divided in two blocks, representing the results of the extraction performed using a specific configuration. For each extracted user is shown the corresponding lemma (the root form), the frequency (how many times that user appears in the whole corpus) and the total number of patents containing the user. Users not contained in the starting user list, are highlighted in bold.</p>
+<p>Finally, tables <a href="methods.html#tab:result-extraction-dl-a47g33">3.5</a> and <a href="methods.html#tab:result-extraction-dlw2v-a47g33">3.6</a> show an overview of extracted users randomly chosen from the A47G33 patent set (the only one in which were able to perform all experiments). Each table is divided in two blocks, representing the results of the extraction performed using a specific configuration. For each extracted user is shown the corresponding lemma (the root form), the frequency (how many times that user appears in the whole corpus) and the total number of patents containing the user. Users not contained in the starting user list, are highlighted in bold.</p>
 <p>The table shows that the system was able to extract characteristic users of the patent set. The results are in fact not unexpected for the IPC class under analysis: this is an evidence of the correct performances of the proposed system. In other words, the results presented in the table show that it is possible to train a NER systems able to extract sparse and valuable information. Such users are the ones that an expert would manually extract but the NER system does it with an enormous saving in terms of time and efforts.</p>
 <p>Other remarkable results are:</p>
 <ul>
 <li><p>many newly extracted entities have very low frequency in the patent set: it shows that the developed system is able to extract rare entities.</p></li>
-<li><p>table  shows that configurations using  features are able to find new users with a higher frequency in the patent set: it was an expected result, since the  configurations are not explicitly lexicalized and more able to generalize during extraction phase.</p></li>
+<li><p>table <a href="methods.html#tab:result-extraction-dlw2v-a47g33">3.6</a> shows that configurations using <em>word2vec</em> features are able to find new users with a higher frequency in the patent set: it was an expected result, since the <em>word2vec</em> configurations are not explicitly lexicalized and more able to generalize during extraction phase.</p></li>
 <li><p>The system is able to extract single words and multi-words.</p></li>
-<li><p>Taking into consideration the definition we have given in section , the system extracts unusual and sometimes borderline users. Examples like <em>saint</em>, <em>angel</em>, <em>god</em> and <em>ghost</em> need discussion that is far beyond the purposes of the present paper. These results are a remarkable evidence of the human-like generalization ability of the described method.</p></li>
+<li><p>Taking into consideration the definition of user of an invention, the system extracts unusual and sometimes borderline users. Examples like <em>saint</em>, <em>angel</em>, <em>god</em> and <em>ghost</em> need discussion that is far beyond the purposes of the present paper. These results are a remarkable evidence of the human-like generalization ability of the described method.</p></li>
 </ul>
-
-
+<table>
+<caption><span id="tab:result-extraction-dl-a47g33">Table 3.5: </span> Extracted users from the A47G33 patent set using the SVM and DL configurations. New users extracted by the system are reported in bold.</caption>
+<tbody>
+<tr class="odd">
+<td align="center">Lemma</td>
+<td align="center">Frequency</td>
+<td align="center"># Patents</td>
+<td align="center">Lemma</td>
+<td align="center">Frequency</td>
+<td align="center"># Patents</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">801</td>
+<td align="center">109</td>
+<td align="center">child</td>
+<td align="center">402</td>
+<td align="center">102</td>
+</tr>
+<tr class="odd">
+<td align="center">child</td>
+<td align="center">426</td>
+<td align="center">108</td>
+<td align="center">cleregy member</td>
+<td align="center">128</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">guy</td>
+<td align="center">156</td>
+<td align="center">17</td>
+<td align="center">patient</td>
+<td align="center">113</td>
+<td align="center">11</td>
+</tr>
+<tr class="odd">
+<td align="center">patient</td>
+<td align="center">115</td>
+<td align="center">11</td>
+<td align="center">man</td>
+<td align="center">50</td>
+<td align="center">26</td>
+</tr>
+<tr class="even">
+<td align="center">parent</td>
+<td align="center">70</td>
+<td align="center">31</td>
+<td align="center">young</td>
+<td align="center">48</td>
+<td align="center">32</td>
+</tr>
+<tr class="odd">
+<td align="center">man</td>
+<td align="center">51</td>
+<td align="center">26</td>
+<td align="center"><strong>angel</strong></td>
+<td align="center">29</td>
+<td align="center">23</td>
+</tr>
+<tr class="even">
+<td align="center">merchant</td>
+<td align="center">50</td>
+<td align="center">6</td>
+<td align="center">dog</td>
+<td align="center">20</td>
+<td align="center">7</td>
+</tr>
+<tr class="odd">
+<td align="center">soon</td>
+<td align="center">46</td>
+<td align="center">29</td>
+<td align="center">artisan</td>
+<td align="center">12</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td align="center">engineer</td>
+<td align="center">45</td>
+<td align="center">45</td>
+<td align="center"><strong>male/female</strong></td>
+<td align="center">12</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">adult</td>
+<td align="center">39</td>
+<td align="center">23</td>
+<td align="center">hockey player</td>
+<td align="center">7</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">young</td>
+<td align="center">35</td>
+<td align="center">24</td>
+<td align="center"><strong>professional</strong></td>
+<td align="center">7</td>
+<td align="center">7</td>
+</tr>
+<tr class="odd">
+<td align="center">society</td>
+<td align="center">32</td>
+<td align="center">21</td>
+<td align="center">tennis player</td>
+<td align="center">7</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>angel</strong></td>
+<td align="center">29</td>
+<td align="center">23</td>
+<td align="center">football player</td>
+<td align="center">6</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">fund raiser</td>
+<td align="center">27</td>
+<td align="center">4</td>
+<td align="center"><strong>ghost</strong></td>
+<td align="center">5</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">priest</td>
+<td align="center">22</td>
+<td align="center">4</td>
+<td align="center">children</td>
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">cheerleader</td>
+<td align="center">15</td>
+<td align="center">4</td>
+<td align="center">manager</td>
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>fund-raiser</strong></td>
+<td align="center">11</td>
+<td align="center">4</td>
+<td align="center"><strong>spider</strong></td>
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>athlete</strong></td>
+<td align="center">10</td>
+<td align="center">9</td>
+<td align="center"><strong>vandal</strong></td>
+<td align="center">5</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>ghost</strong></td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center"><strong>athlete</strong></td>
+<td align="center">4</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>adulterant</strong></td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">mother</td>
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>jew</strong></td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">soccer player</td>
+<td align="center">4</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>maid</strong></td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">squirrel</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>tourist</strong></td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center"><strong>maid</strong></td>
+<td align="center">3</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>indian</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center"><strong>god</strong></td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>beginner</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>mariner</strong></td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>christians</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>male-female</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>datum entry operator</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>manufacturer</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>expert</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>jew</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>jewish</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>merchandizers</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>marinaro</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>parishioner</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:result-extraction-dlw2v-a47g33">Table 3.6: </span> Extracted users from the A47G33 patent set using the SVM-W2V and MLP-W2V configurations. New users extracted by the system are reported in bold.</caption>
+<tbody>
+<tr class="odd">
+<td align="center">Lemma</td>
+<td align="center">Frequency</td>
+<td align="center"># Patents</td>
+<td align="center">Lemma</td>
+<td align="center">Frequency</td>
+<td align="center"># Patents</td>
+</tr>
+<tr class="even">
+<td align="center">child</td>
+<td align="center">152</td>
+<td align="center">68</td>
+<td align="center">clergy member</td>
+<td align="center">124</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">clergy member</td>
+<td align="center">124</td>
+<td align="center">5</td>
+<td align="center"><strong>crowd</strong></td>
+<td align="center">36</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">man</td>
+<td align="center">50</td>
+<td align="center">26</td>
+<td align="center">basketball player</td>
+<td align="center">20</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">engineer</td>
+<td align="center">45</td>
+<td align="center">45</td>
+<td align="center"><strong>him</strong></td>
+<td align="center">17</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">young</td>
+<td align="center">29</td>
+<td align="center">24</td>
+<td align="center">woman</td>
+<td align="center">16</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>choir</strong></td>
+<td align="center">17</td>
+<td align="center">1</td>
+<td align="center"><strong>saint</strong></td>
+<td align="center">14</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>infirm</strong></td>
+<td align="center">13</td>
+<td align="center">8</td>
+<td align="center"><strong>youth</strong></td>
+<td align="center">14</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>bride</strong></td>
+<td align="center">9</td>
+<td align="center">4</td>
+<td align="center"><strong>angel</strong></td>
+<td align="center">8</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>volunteer</strong></td>
+<td align="center">8</td>
+<td align="center">6</td>
+<td align="center"><strong>choir</strong></td>
+<td align="center">8</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">musician</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">musician</td>
+<td align="center">6</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">boy</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center"><strong>god</strong></td>
+<td align="center">5</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">children</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">children</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">girl</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">guy</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>creature</strong></td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">infant</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>deceased</strong></td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">priest</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>jewish</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center"><strong>bride</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>person</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center"><strong>consumer</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">mother</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center"><strong>everyone</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>audience</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>him/her</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>boyfriend</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>spectator</strong></td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>derby member</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">farmer</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>gift giver</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">youngster</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>handicapped</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>boyfriend</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>jesus</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>grandparent</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>saint</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center"><strong>subject</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">husband</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">clown</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">lady</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">husband</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">runner</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">runner</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">society</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">society</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">teenager</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">tennis player</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
 <p>The total number of users is 109. 28,2% (564 on 2.000) of patents in analysis contains at least one user. This result is an evidence of the fact that patents actually contain users information, and, considering the approach we followed, this percentage is an accurate lower approximation of the actual percentage of patents containing at least one user.</p>
-<p>In figure  for each user on the x axes is shown the number of patents in which the user is contained. The distribution is skewed, with some occurrences showing large numbers and many others with just one or few occurrences. It is clear that there is a Pareto like distribution, with the first 20% of users covering 70% of total users in terms of occurrence. It means that some users are more likely to be cited in patents and many more users that rarely appear. Following this observations, we can divide users in three groups:</p>
+<p>In figure <a href="methods.html#fig:patentsperuser">3.2</a> for each user on the x axes is shown the number of patents in which the user is contained. The distribution is skewed, with some occurrences showing large numbers and many others with just one or few occurrences. It is clear that there is a Pareto like distribution, with the first 20% of users covering 70% of total users in terms of occurrence. It means that some users are more likely to be cited in patents and many more users that rarely appear. Following this observations, we can divide users in three groups:</p>
 <ul>
 <li><p><em>Group A</em>: users that appear in more than 100 patents (5% of the patent set). In our case these are <em>male</em>, <em>child</em> and <em>female</em>.</p></li>
 <li><p><em>Group B</em>: users that appear in more than 20 patents (1% of the patent set). This group is composed by 13 different users. Some of these are <em>engineer</em>, <em>person</em>, <em>player</em>, <em>adult</em>, <em>angel</em> and _guy.</p></li>
 <li><p><em>Group C</em>: users that appear in less then 20 patents. This group is composed by 93 different users. Some of these are <em>mother</em>, <em>athlete</em>, <em>priest</em>, <em>adulterant</em>, <em>golfer</em> and <em>hockey player</em>.</p></li>
 </ul>
 <p>Further research means to study how these users differ from patent set to patent set. We expect to see similar distribution but with different content of users. Frequent and non-specific users comprise Group A: in other patent set we could see differences in terms of entities contained in this class but its content will stay non-specific. These results seem to be generic social roles indicating the gender or the age of a person. Group B is composed of mainly non-specific users and some specific users that change from patent set to patent set. This class helps to identify the core users of the patent set. Lastly, Group C contains non-frequent users that are both specific and non-specific, making it the most interesting of the three for the purposes of our work. In this group we find users that are market niches, so the patent that contains these users is of great interest for marketers and designers. These are both samples of the more generic users (for example a <em>mother</em> is a <em>female</em> and a <em>hockey player</em> is a <em>player</em>) or specific users of the patent-set (like <em>priest</em>, <em>fund-raiser</em>, <em>doll</em>, <em>spouse</em> and <em>clergy member</em>.</p>
-<div class="figure" style="text-align: center"><span id="fig:userrank"></span>
+<div class="figure" style="text-align: center"><span id="fig:patentsperuser"></span>
 <img src="_bookdown_files/figures/user_rank.png" alt="Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output." width="80%" />
 <p class="caption">
 Figure 3.2: Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.
@@ -297,6 +1155,7 @@ Figure 3.2: Process flow diagram of the proposed automatic user extraction syste
 </div>
 <div id="advantages-and-drawbacks" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> Advantages and Drawbacks</h3>
+<p>In this section we show the approach used to extract the advantages and the drawbacks of the invention described in a patent. The proposed process is shown in figure <a href="methods.html#fig:procesuser">3.1</a> and its phases are:</p>
 </div>
 <div id="trademakrs" class="section level3">
 <h3><span class="header-section-number">3.1.3</span> Trademakrs</h3>
@@ -321,23 +1180,38 @@ Figure 3.2: Process flow diagram of the proposed automatic user extraction syste
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-wipo2">
+<p>Idris, Kamil. 2008. “Wipo Intellectual Property Handbook: Policy, Law and Use.” <em>Geneva: WIPO Publication</em>, no. 489.</p>
+</div>
+<div id="ref-bonam2017">
+<p>Bonaccorsi, Fantoni, Chiarello, and D’amico. 2017. “Mapping Users in Patents. Towards a New Methodology and the Definition of a Research Agenda.” In <em>EPIP 2017 Conference Bordeaux</em>.</p>
+</div>
+<div id="ref-alleydog">
+<p>Dog, Alley. 2015. “Psychological Dictionaty.” <a href="http://alleydog.com" class="uri">http://alleydog.com</a>.</p>
+</div>
+<div id="ref-belieber">
+<p>Beller, Charley, Rebecca Knowles, Craig Harman, Shane Bergsma, Margaret Mitchell, and Benjamin Van Durme. 2014. “I’m a Belieber: Social Roles via Self-Identification and Conceptual Attributes.” In <em>ACL (2)</em>, 181–86.</p>
+</div>
+<div id="ref-prefine">
+<p>Beller, Charley, Craig Harman, and Benjamin Van Durme. 2014. “Predicting Fine-Grained Social Roles with Selectional Preferences.” <em>ACL 2014</em>, 50.</p>
+</div>
+<div id="ref-kittur2008crowdsourcing">
+<p>Kittur, Aniket, Ed H Chi, and Bongwon Suh. 2008. “Crowdsourcing User Studies with Mechanical Turk.” In <em>Proceedings of the Sigchi Conference on Human Factors in Computing Systems</em>, 453–56. ACM.</p>
+</div>
+<div id="ref-HRM">
+<p>Johnson, Phil. 2009. “2 Hrm in Changing Organizational Contexts.” <em>Strategic HRM</em>, 19.</p>
+</div>
 <div id="ref-listjobs">
 <p>“Suffix Codes for Jobs Defined in the Dictionary of Occupational Titles, Third Edition.” 1967. <em>United States Employment Service, U.S. Dept. of Labor</em>.</p>
 </div>
-<div id="ref-listhob1">
-<p>notsoboringlife. 2010. “List of Hobbies.” <a href="http://www.notsoboringlife.com/list-of-hobbies/" class="uri">http://www.notsoboringlife.com/list-of-hobbies/</a>.</p>
+<div id="ref-cdcdiseases">
+<p>Health, U.S. Department of, and Human Services. 2018. “Diseases and Conditions.” <a href="http://www.cdc.gov/DiseasesConditions" class="uri">http://www.cdc.gov/DiseasesConditions</a>.</p>
 </div>
-<div id="ref-listhob2">
-<p>discoverahobby. 2010. “List of Hobbies.” <a href="http://www.notsoboringlife.com/list-of-hobbies/" class="uri">http://www.notsoboringlife.com/list-of-hobbies/</a>.</p>
+<div id="ref-ucd">
+<p>ISO, ISO13407. 1999. “13407: Human-Centred Design Processes for Interactive Systems.” <em>Geneva: ISO</em>.</p>
 </div>
-<div id="ref-listan">
-<p>Animals. 2010. “List of Animals.” <a href="http://a-z-animals.com/animals/" class="uri">http://a-z-animals.com/animals/</a>.</p>
-</div>
-<div id="ref-listpat1">
-<p>medicinenet. 2010. “List of Diseases.” <a href="http://www.medicinenet.com/diseases\_and\_conditions/alpha\_a.htm" class="uri">http://www.medicinenet.com/diseases\_and\_conditions/alpha\_a.htm</a>.</p>
-</div>
-<div id="ref-listpat2">
-<p>Health &amp; Human Services, U.S. Department of. 2010. “List of Medical Conditions.” <a href="http://www.cdc.gov/DiseasesConditions/az/a.html" class="uri">http://www.cdc.gov/DiseasesConditions/az/a.html</a>.</p>
+<div id="ref-npdul">
+<p>K., Ulrich. 2008. “Users, Experts, and Institutions in Design.” <em>Handbook of New Product Development Management</em>. Elsevier, 421–38.</p>
 </div>
 <div id="ref-wipo1">
 <p>Organization, WIPO: World Intellectual Property. 1971. “International Patent Classification (Ipc).” <a href="http://www.wipo.int/classifications/ipc/en/" class="uri">http://www.wipo.int/classifications/ipc/en/</a>.</p>
@@ -354,9 +1228,16 @@ Figure 3.2: Process flow diagram of the proposed automatic user extraction syste
 <div id="ref-word2vec1">
 <p>Mikolov, Tomas, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013. “Efficient Estimation of Word Representations in Vector Space.” <em>arXiv Preprint arXiv:1301.3781</em>.</p>
 </div>
-<div id="ref-errequadro">
-<p>Errequadro. 2016. “Errequadro Web Site.” <a href="http://www.errequadrosrl.com/" class="uri">http://www.errequadrosrl.com/</a>.</p>
 </div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><a href="http://www.uspto.gov" class="uri">http://www.uspto.gov</a><a href="methods.html#fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="http://www.notsoboringlife.com/list-of-hobbies/,http://www.notsoboringlife.com/list-of-hobbies/" class="uri">http://www.notsoboringlife.com/list-of-hobbies/,http://www.notsoboringlife.com/list-of-hobbies/</a><a href="methods.html#fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="http://a-z-animals.com/animals/" class="uri">http://a-z-animals.com/animals/</a><a href="methods.html#fnref3">↩</a></p></li>
+<li id="fn4"><p><a href="http://www.medicinenet.com/diseases\_and\_conditions/alpha\_a.htm" class="uri">http://www.medicinenet.com/diseases\_and\_conditions/alpha\_a.htm</a>, <a href="http://www.cdc.gov/DiseasesConditions/az/a.html" class="uri">http://www.cdc.gov/DiseasesConditions/az/a.html</a><a href="methods.html#fnref4">↩</a></p></li>
+<li id="fn5"><p><a href="http://www.errequadrosrl.com/" class="uri">http://www.errequadrosrl.com/</a><a href="methods.html#fnref5">↩</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -405,6 +1286,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
