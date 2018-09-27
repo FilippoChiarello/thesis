@@ -85,7 +85,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-09-25}
+    \date{2018-09-27}
 
 \usepackage{booktabs}
 
@@ -2440,7 +2440,7 @@ invention described in a patent. The proposed process is shown in figure
 \caption{Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.}\label{fig:procesuser}
 \end{figure}
 
-before the description of each phases, in section \ref{userdef} the
+Before the description of each phases, in section \ref{userdef} the
 concept of \emph{user of the invetion} is explained by giving a
 definition of users and presenting the way that this concept is
 exploited in different knowledge fields.
@@ -2725,7 +2725,7 @@ one of the classes previously defined (B-USE, I-USE, O).
 
 In our experiments the classifier has been trained using two different
 learning algorithms: Support Vector Machines (SVM) using the LIBSVM
-library \citep{libsvm} configured to use a linear kernel and Multi Layer
+library \citep{svm} configured to use a linear kernel and Multi Layer
 Perceptron (MLP) implemented using the Keras library \citep{libkeras}.
 It has been proven that LSTM methods are well suited for similar NER
 task. Anyway, we chose SVM and MLP method to study how two wheel
@@ -3524,8 +3524,1034 @@ users of the patent-set (like \emph{priest}, \emph{fund-raiser},
 \subsection{Advantages and Drawbacks}\label{advantages-and-drawbacks}
 
 In this section we show the approach used to extract the advantages and
-the drawbacks of the invention described in a patent. The proposed
-process is shown in figure \ref{fig:procesuser} and its phases are:
+the drawbacks of the invention described in a patent. More precisely,
+the system identifies textual elements which represent the advantages or
+the drawbacks described in a patent. Advantages and drawbacks
+information can strongly advantage designers in the phase of new product
+development or in the process of product improvement and marketers in
+the phase of customer understanding and product placing. Furthermore a
+patent based method has a strong advantage with respected to methods
+that extracts information using other type of documents (e.g.~online
+reviews of products \citep{monireh}): patents anticipate availability of
+products on the market by a factor varying from 6 to 18 months
+\citep{golzio2012}.
+
+The proposed extraction process is shown in figure
+\ref{fig:advdrwprocessgeneral} and its macro-phases are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Advantage and Drawback Clues Collection}: in this section we
+  described the method to collect a reasonable number of generic
+  advantage and drawback clues;
+\item
+  \emph{Domain Clues Extraction}: in this section is shown how the
+  generic clues are used in exploiting machine learning algorithm to
+  extract new domain specific advantages and drawback clues;
+\item
+  \emph{Domain Clues Validation} : since the new clues are automatically
+  extracted, the output of the extraction phase surely contains a
+  certain degree of noise. To clean this output a validation tool based
+  on tweeter sentiment analysis is developed;
+\item
+  \emph{Advantages and Drawbacks Extraction}: here the extracted clues
+  (generic and domain specific) are expanded according to specific
+  regular expression pattern in order to obtain the advantages and the
+  drawbacks of the analyzed patent set.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/General} 
+
+}
+
+\caption{Main overview of the advantages and drawbacks extraction process from patents.}\label{fig:advdrwprocessgeneral}
+\end{figure}
+
+Before the description of each phases, in section \ref{advdisdef} the
+concepts of \emph{advantages and disadvantages of an invention} are
+explained.
+
+\subsubsection{Advantages and drawbacks: an engineering point of
+view}\label{advdisdef}
+
+An effective development of new products or the redesign of an existing
+one require the analysis of its positive and negative properties. Due to
+that, advantages and drawbacks of products are extremely valuable
+information for companies. Unfortunately, this information is not easy
+to obtain and manage: a strong evidence of that is the effort in the
+development of tools able to manage this information
+\citep[\citet{ulrich2003product}]{pahl2013engineering}. Companies
+frequently make use of Quality Functional Deployment (QFD) and
+requisites lists, users' needs, users' requirements with the purpose of
+tracking advantages \citep{carnevalli2008review}. On the other hand,
+companies use Failure mode and effects analysis (FMEA) to gather and
+study drawbacks, failure modes and their effects and causes
+\citep{liu2013risk} However, product developers can acquire QFD and FMEA
+data only from the users of the invention: this leads to the need of
+expensive processes of customer's voice listening whose results are
+often unclear. Moreover, this information is not disclosed to
+researchers since this is part of the company know-how.
+
+The description of the brought advantages and solved drawbacks are
+critical requirements for the patentability of a product, as stated by
+the politics and the guidelines given by World Intellectual Property
+Organization (WIPO) on writing patents \citep{world2004wipo}. As stated
+by WIPO, an invention is a \emph{solution} to a specific \emph{problem}
+. The problem that an invention solves is a negative effect that
+state-of-the-art technologies can not fully overcome; on the other side,
+a solution is a way to solve this problem. A solution can lead to some
+advantages with respect to the known art. Thus, starting from the
+definition of invention, it is clear how it can be characterized by the
+advantages that it brings and by the problems that it solves. Also, it
+is reasonable to assume that having a clear picture of both advantages
+and drawbacks of a technology is important for an effective design
+process \footnote{The most precise couple of words is \textbf{advantage}
+  and \textbf{disadvantage}, but the reading is facilitated by using two
+  very different words, therefore we decided to adopt the couple
+  \textbf{advantage} and \textbf{drawback}.}
+
+\subsubsection{Clues of Advantages and drawbacks in
+patents}\label{clues-of-advantages-and-drawbacks-in-patents}
+
+First of all we have to define the concept of clue to an advantage or a
+drawback. To describe with a certain degree of precision an advantage or
+a drawback, patent writers need to use sequences of words of a certain
+length. Since NER systems do not perform well on long sequence of
+tokens, we split the problem of extracting advantages and drawbacks in
+two parts: first we extract entities that are clues in the sequence of
+words that describes the advantage or the drawback; then we extract the
+surrounding words to collect the whole sequence that describes the
+advantage or the drawback.
+
+To better understand these concepts some examples are:
+
+\begin{itemize}
+\item
+   ease of access
+\item
+  cook food quickly and economically
+\item
+  benefits of keeping an outdoor cooker lid fixed
+\end{itemize}
+
+For the present work, we refer to advantages and drawbacks as a sequence
+of words of minimal length that express the advantage or the drawback.
+The three phrases of the example are three advantages. On the other hand
+clues are words that are likely to be contained in advantages or
+drawbacks phrases.
+
+\subsubsection{Advantages and Drawbacks Clue
+Collection}\label{adv-drw-article-sourc}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/pointer-collection-phase} 
+
+}
+
+\caption{Main overview of the patent set annotation process.}\label{fig:advdrwarticlecluecollection}
+\end{figure}
+
+The approaches to generate a knowledge base of clues were two. The first
+approach was based on a manual collection of clues of advantages and
+drawbacks directly from patent texts. This process was performed on
+2,000 patents, randomly chosen from the freepatent database \footnote{\url{http://www.freepatentsonline.com/}}.
+With this approach we were able to collect 3,254 advantages and 5,142
+drawback clues. Some examples of the extracted clues are shown in table
+\ref{tab:advdrwarticleextdclue}.
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{\label{tab:advdrwarticleextdclue} Examples of the clues collected
+with the first approach.}\tabularnewline
+\toprule
+\emph{Advantages Clues} & \emph{Drawbacks Clues}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\emph{Advantages Clues} & \emph{Drawbacks Clues}\tabularnewline
+\midrule
+\endhead
+ability & aggravated\tabularnewline
+efficacy & breakage\tabularnewline
+ensure & damage\tabularnewline
+healthy & defect\tabularnewline
+innovative & error\tabularnewline
+optimum & improper\tabularnewline
+protect & leak\tabularnewline
+quick-release & problem\tabularnewline
+reinforce & unavailable\tabularnewline
+securely & wrong\tabularnewline
+\bottomrule
+\end{longtable}
+
+The second approach consisted in looking for alternative methods to
+indicate advantages or drawbacks clues, looking defined word patterns.
+The most relevant are the negations of advantages to obtain drawbacks,
+and the negation of drawbacks to obtain advantages. Some examples of
+such constructions are shown in table \ref{tab:advdrwarticleexbaclue}.
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{\label{tab:advdrwarticleexbaclue} Examples of the clues collected
+with the second approach.}\tabularnewline
+\toprule
+\emph{Advantages Clues} & \emph{Drawbacks Clues}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\emph{Advantages Clues} & \emph{Drawbacks Clues}\tabularnewline
+\midrule
+\endhead
+non damaged & out of\tabularnewline
+anti-corrosion & in need of comfort\tabularnewline
+loss reduction & non user-friendly\tabularnewline
+prevent & diminish comfort\tabularnewline
+defect free & issue with\tabularnewline
+reduce waste & problem with\tabularnewline
+reduction of & lacks of\tabularnewline
+cost less & lacks with\tabularnewline
+less severe & loss of\tabularnewline
+avoid disease & unfacilitate\tabularnewline
+\bottomrule
+\end{longtable}
+
+At the end of this process, a total of 6.568 advantages and the 14.809
+drawbacks formed the knowledge base for the system, and gave us a
+reasonable number of clues to be used in the next step of the process.
+
+The first approach was restricted by the lists being extracted from a
+random and limited sample of patents. On the other side, the rules used
+in the second approach are non exhaustive, and this can create non-sense
+clues, due to all of the possible combinations of words. Anyway, it is
+reasonable to assume that a large set of non-domain dependent clues are
+collected and will be used in the next steps of the process.
+
+It is important to underline that the list of advantages and drawbacks
+clues is designed to avoid linguistic ambiguities when projecting these
+entities on the corpus. For example \emph{guide} has two different
+meanings\footnote{www.dictionary.com} when used as a verb or as a noun:
+as a verb it means \emph{``to assist something or someone to travel
+through, or reach a destination in, an unfamiliar area, as by
+accompanying or giving directions''}, so it could be the clue to an
+advantage; at the same time as a noun it assumes the mean of \emph{``a
+book, pamphlet, etc., giving information, instructions, or advice;
+handbook''} thus indicating a product and not an advantage. Avoiding
+such ambiguities is a crucial aspect to produce an informative training
+set, so ambiguous words were avoided to be projected on patents.
+
+\subsubsection{Domain Clues
+Extraction}\label{advdrwarticledomaincluecoll}
+
+The domain-specific clues collection process takes in input the
+automatically annotated patent set 1. The analyzed patent set is
+automatically annotated using the domain-independent clues, and is used
+to extract new domain-specific clues. We decided for the present methods
+to analyze the whole text of the patents and not to focus only on a
+specific section.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/pointer-expansion-phase} 
+
+}
+
+\caption{Overview of the domain specific advantages and failures clues extraction process.}\label{fig:advdrwarticleprocessfigclueexpansionphase}
+\end{figure}
+
+Our system resorts to state-of-the-art NLP tools which are part of the
+linguistic analysis pipeline shown in figure
+\ref{fig:advdrwarticleprocessfigclueexpansionphase}. In addition we
+developed a specific advantages and drawbacks clues extraction tool,
+still based on Natural Language Processing techniques.
+
+The automatic patent set annotation 2 process, as shown in figure
+\ref{fig:advdrwarticleprocessfigclueexpansionphase}, is composed by a
+set of sequential steps. The first three steps are related to the
+linguistic annotation: sentence splitting and tokenization, part of
+speech tagging and lemmatization. Once these three steps are completed
+the entity extractor collects the advantages and drawbacks clues from
+the analyzed patents.
+
+\emph{Sentence splitting and Tokenization} steps split the text into
+sentences and then segment each sentence in orthographic units called
+tokens.
+
+The \emph{Part-Of-Speech tagging} (or POS tagging) step assigns
+unambiguous grammatical categories to the tokens. For the present
+application we use the most recent version of the Felice-POS-tagger
+described in \citep{dell2009ensemble}. Once the computation of the
+POS-tagged text is completed, the text is automatically
+\emph{lemmatized} in order to group inflected forms of a word in a
+single item. Some of the following steps of the entire extraction
+process exploit the lemmatized texts in order to achieve better
+extraction results.
+
+Successively the \emph{semi-automatic annotation of advantages and
+drawbacks clues} is performed. The advantages and drawbacks clues
+extraction tool is the key ingredient of the present paper, and it is
+based on supervised methods. Such methods require an entity annotated
+corpus in order to extract new entities from unseen documents. Since the
+manual annotation of a patent set is too expensive both in terms of time
+and manual effort, we apply a semi-automatic method to generate an
+advantage and drawback annotated corpus.
+
+The entity annotation schema for a single token is defined using a
+widely accepted BIO annotation scheme \citep{ramshaw}:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{B-ADV}: the token is the start of an entity representing an
+  advantage clue;
+\item
+  \textbf{I-ADV}: the token is the continuation of a sequence of tokens
+  representing an advantage clue;
+\item
+  \textbf{B-DRW}: the token is the start of an entity representing a
+  drawback clue;
+\item
+  \textbf{I-DRW}: the token is the continuation of a sequence of tokens
+  representing a drawback clue;
+\item
+  \textbf{O}: for the remaining case.
+\end{itemize}
+
+The \emph{Advantages and Drawbacks Clues Extractor} is a supervised
+classifier that, given an annotated patent set, is trained on these
+examples. The patent set is: (a) linguistically-annotated, using the
+steps described above; (b) entity-annotated, exploiting the
+semiautomatic annotation process executed in the previous steps. Given a
+set of features the classifier trains a statistical model using the
+feature statistics extracted from the corpus. This trained model is then
+employed in the classification of unseen patents: it extracts new domain
+specific clues from patents and assigns them a probability score whether
+they are an advantage or a drawback. In our experiments the classifier
+has been trained using the Support Vector Machines (SVM) learning
+algorithm using the LIBSVM \citep{ibsvm} library configured to use a
+linear kernel. The classifier uses two different kinds of features that
+are extracted from the text:
+
+\begin{itemize}
+\item
+  \textbf{raw features}: prefix and suffix of the analyzed token; it
+  works particularly well with advantages ending with -full -ious and
+  with drawbacks starting with un- dis- etc..
+\item
+  \textbf{word2vec features}: vector representations of words computed
+  by the \emph{word2vec} \citep{word2vec1} tool.
+\end{itemize}
+
+Table \ref{tab:featconfsadvdis} reports the detailed features chosen for
+the proposed advantage and drawbacks clues extractor.
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{\label{tab:featconfsadvdis} Context windows of the extracted
+features considering 0 as the current analyzed token.}\tabularnewline
+\toprule
+\emph{Feature group} & \emph{Context Window}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\emph{Feature group} & \emph{Context Window}\tabularnewline
+\midrule
+\endhead
+Prefixes up to 4 & \(0\)\tabularnewline
+Suffixes up to 4 & \(0\)\tabularnewline
+Word2vec & \(-2, -1, 0, 1, 2\)\tabularnewline
+TAG & \(-1\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+By introducing prefixes and suffixes of the analyzed token, the
+classifier is able to identify frequent orthographic patterns which
+allow to maximize the precision in classification phase. On the other
+hand, the \emph{word2vec} features are introduced in order to maximize
+the recall, since semantically similar clues should have similar
+\emph{word2vec} vectors. Finally, the tag of the previous token is added
+to the final feature vector in order to improve the accuracy
+classification of multi-word clues.
+
+\paragraph{Word2vec feature
+computation}\label{word2vec-feature-computation}
+\addcontentsline{toc}{paragraph}{Word2vec feature computation}
+
+While contextual, linguistic and compositional features are commonly
+used for entity extraction task in patents, from a computational
+linguistic point of view the presented system introduces the novelty of
+using \emph{word2vec} features for entity extraction in patents.
+
+\emph{Word2vec} is a NLP tool able to produce word representations
+exploiting big corpora. The main property of the vectors produced by
+\emph{word2vec} is that words that share similar contexts have similar
+vector representations. By using word vectors instead of the
+corresponding words we were able to overcome the problem of the limited
+lexical knowledge in the training phase.
+
+To build our \emph{word2vec} vectors we used the Skipgram model with a
+context window of 5 tokens. As reported in table
+\ref{tab:word2vecpatents}, we used a corpus consisting of 48,194
+different patents, containing more than 400,000,000 tokens.
+
+The corpus was designed to contain patents belonging to different
+classes (12 in total) in order to acquire an extended knowledge of the
+contexts in which the words in general are surrounded. In addition,
+patents belonging to two of these classes are analyzed and, in the same
+section, detailed configurations of the entity extractor has been
+provided.
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{\label{tab:word2vecpatents} Statistics of the documents on which
+the word2vec vectors have been learned. The patent sets of the analyzed
+case study are reported in bold.}\tabularnewline
+\toprule
+Patent class & \# Patents & \# Tokens\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Patent class & \# Patents & \# Tokens\tabularnewline
+\midrule
+\endhead
+\textbf{A47G33} & \textbf{2423} & \textbf{5.225.000}\tabularnewline
+\textbf{A61G13} & \textbf{2991} & \textbf{15.937.000}\tabularnewline
+\textbf{A61G1} & \textbf{5040} & \textbf{36.348.000}\tabularnewline
+\textbf{A61H} & \textbf{5199} & \textbf{41.831.000}\tabularnewline
+A61P25/24 & 5297 & 103.098.000\tabularnewline
+A63F1 & 5461 & 75.900.000\tabularnewline
+A63F3 & 4923 & 40.909.000\tabularnewline
+A63F7 & 4747 & 13.807.000\tabularnewline
+E02B3 & 3796 & 14.434.000\tabularnewline
+E04H9 & 2221 & 12.500.000\tabularnewline
+G01V11 & 1345 & 11.166.000\tabularnewline
+G08B13 & 4831 & 40.904.000\tabularnewline
+\emph{Total} & 48194 & 412.065.000\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{Clue validation using tweets sentiment
+analysis\}}\label{clue-validation-using-tweets-sentiment-analysis}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/pointer-validation-phase} 
+
+}
+
+\caption{Overview of the domain specific advantages and failures clue validation process.}\label{fig:advdrwarticleprocessfigcluevalidationphase}
+\end{figure}
+
+Figure \ref{fig:advdrwarticleprocessfigcluevalidationphase} gives an
+overview of the activities performed to validate the collected clues
+using twtitter. Since the manual review of the new domain specific clues
+can be very time consuming, an innovative approach to automatic
+validation of these entities is proposed. The approach is based on the
+assumption that advantages of technological innovations can be
+considered positive factors by the users. Conversely, the drawbacks of
+the artifacts are considered negative factors impacting on the
+satisfaction of the users. Both advantages and drawbacks are common
+terms or chunks of terms commonly used in other contexts, too.
+Therefore, if we can identify a wide source of sentences tagged with a
+polarity score and containing advantages or drawbacks, the probability
+of assigning the proper polarity to advantages and drawbacks increases.
+
+Social media platforms provide powerful venues for consumers to interact
+not only with brands but also with other consumers as they engage in the
+processes of curation, creation, and collaboration
+\citep{evans2010social}. Such virtual platforms are places where users
+discuss about products, about their features but also about problems and
+failures they experienced during the daily use. The way they discuss or
+describe products or services is often unambiguous and highly polarized.
+
+Our approach to the automatic validation of advantages and drawbacks
+exploits the information contained in the Twitter platform \footnote{\url{https://twitter.com}}.
+More precisely, for each extracted advantage or drawback clue we collect
+a set of tweets in which the clue is mentioned. Once a significant
+number of tweets is collected (in our case 3,073,959 - around 2,738 per
+entity in average), they are analyzed by a sentiment classifier. The
+main idea behind this process is to assign to each clue a sentiment
+polarity score which should express the feeling of the user with respect
+to the considered clue on the social media.
+
+The tweet collection can be easily performed by using the Twitter
+streaming API \footnote{\url{https://dev.twitter.com/streaming/public}},
+which is freely available. By assigning a polarity score to each clue,
+we expect to detect tagging anomalies: entities tagged as advantages by
+the classifier are expected to have a positive polarity in the extracted
+tweets. Vice versa, entities tagged as drawbacks by the classifier are
+expected to have a negative polarity in the extracted tweets.
+
+\paragraph{Sentiment Classifier: features, classification model and
+performance
+evaluation}\label{sentiment-classifier-features-classification-model-and-performance-evaluation}
+\addcontentsline{toc}{paragraph}{Sentiment Classifier: features,
+classification model and performance evaluation}
+
+In our sentiment classifier we focused on a wide set of features ranging
+across different levels of linguistic description. The whole set of
+features we started with is described below, organized into four main
+categories:
+
+\begin{itemize}
+\tightlist
+\item
+  raw and lexical text features
+\item
+  morpho-syntactic features
+\item
+  syntactic features
+\item
+  lexicon features.
+\end{itemize}
+
+This proposed four-fold partition closely follows the different levels
+of linguistic analysis which is automatically carried out on the text
+being evaluated, (i.e.~tokenization, lemmatization, morpho-syntactic
+tagging and dependency parsing) and the use of external lexical
+resources.
+
+Raw and lexical text features are extracted considering the text
+available in the tweet. For this work we considered a number of tokens,
+character n-grams, word n-grams, lemma n-grams, char repetition
+sequences, mentions number, hashtags number and punctuation.
+
+Morpho-syntactic and Syntactic Features consider the part of speech tags
+and the syntactic analysis of the text. Our sentiment analyzer extracts
+Part-Of-Speech n-grams (coarse and fine), coarse grained Part-Of-Speech
+distribution and syntactic dependency types n-grams.
+
+To extract features based on lexicons we exploited three freely
+available resources. The Bing Liu Lexicon \citep{hu2004mining}, which
+includes approximately 6,000 English words, the Multi--Perspective
+Question Answering Subjectivity Lexicon \citep{wilson2005recognizing},
+which consists of approximately 8,200 English words and the SentiWordNet
+3.0 Lexicon \citep{baccianella2010sentiwordnet} which consists of more
+than 117,000 words. For each word in these lexicons the associated
+polarity is provided. In addition, we manually developed a lexicon of
+positive and negative emoticons, which usually is a strong indicator of
+tweets polarity. By exploiting the described resources, the following
+features were extracted: positive/negative emoticon distribution,
+sentiment polarity n-grams, sentiment polarity modifiers, the
+distribution of sentiment polarity, the most frequent sentiment polarity
+and changes of polarity in tweet sections. A more detailed description
+of these features is provided in {[}\citet{cimino2014linguistically}.
+
+In order to assign a sentiment polarity score to each tweet, we employed
+an adapted version of the ItaliaNLP Sentiment Polarity Classifier for
+the English language \citep{cimino2014linguistically}. This classifier
+operates on morpho-syntactically tagged and dependency parsed texts and
+assigns to each document a score expressing its probability of belonging
+to a given polarity class. The highest score represents the most
+probable class. Given a set of features and a training corpus, the
+classifier creates a statistical model using the feature statistics
+extracted from the training corpus. This model is used in the
+classification of unseen documents. The set of features and the machine
+learning algorithm can be parametrized through a configuration file. For
+this work, we used a tandem Long Short Term Memory Recurrent Neural
+Network (LSTM) - Support Vector Machines (SVM) architecture.
+
+\paragraph{Validation of the extracted
+clues}\label{validation-of-the-extracted-clues}
+\addcontentsline{toc}{paragraph}{Validation of the extracted clues}
+
+The sentiment classifier is employed to validate the advantage and
+drawback clues which were previously extracted from patents by the clue
+extractor. In order to do so, we exploited the output of the tweet
+classifier on the tweets we previously downloaded. Each tweet, as said
+before, contains one or more clues to be validated. The sentiment
+classifier assigns the likeliness to each tweet to positive, neutral or
+negative. Consequently by analyzing all the tweets we previously
+downloaded, we obtained for each clue the distribution of positive,
+neutral and negative tweets.
+
+Then to make a decision regarding each clue we used another SVM based
+classifier. This classifier is trained on a gold set of advantages and
+drawbacks clues: we manually labeled 344 words as advantages and 193
+words as drawbacks, obtaining the gold set. The features used by this
+classifier are a number of positive, neutral and negative tweets
+extracted in which the entities are mentioned and the \emph{word2vec}
+vector representing the considered entity. In table
+\ref{tab:sentiment-validation} the classification results of the
+proposed approach over a 5-fold cross validation are reported. The
+obtained results show that the proposed entity validation method is
+suitable for the automatic advantages/drawbacks clues validation
+process.
+
+\begin{longtable}[]{@{}cccccccc@{}}
+\caption{\label{tab:sentiment-validation} Classification results of the
+proposed validation method over a 5-fold validation.}\tabularnewline
+\toprule
+\emph{Method} & Global accuracy & \emph{ADV Prec.} & \emph{ADV Rec.} &
+\emph{ADV F1} & \emph{DRW Prec.} & \emph{DRW Rec.} & \emph{DRW
+F1}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\emph{Method} & Global accuracy & \emph{ADV Prec.} & \emph{ADV Rec.} &
+\emph{ADV F1} & \emph{DRW Prec.} & \emph{DRW Rec.} & \emph{DRW
+F1}\tabularnewline
+\midrule
+\endhead
+SVM-W2V & 87.71 & 89.89 & 91.29 & 90.57 & 83.35 & 80.66 &
+81.92\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{Advantages and Drawbacks sentences
+extraction}\label{advantages-and-drawbacks-sentences-extraction}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/relevant-sentences-extraction} 
+
+}
+
+\caption{Overview of the advantages and failures extraction process.}\label{fig:advantagedrawbacksextraction}
+\end{figure}
+
+The advantages and drawbacks extraction process is shown in figure
+\ref{fig:advantagedrawbacksextraction}. Once all the domain specific
+advantages and drawbacks clues are extracted, these are merged with the
+ones belonging to the original knowledge base, obtaining a final list
+which will be processed by the advantages and drawbacks sentences
+extractor. The advantages and drawbacks sentences extractor exploits
+predefined linguistic and clues filters which operate on the automatic
+pos--tagged patents. Specifically, for each advantage and drawback term
+identified in patents, we used a pos--clue-pattern constraining the
+start-token and the rest of the token pos. Since we were interested in
+phrases containing words belonging to specific morphological categories,
+we identified sequences of allowed pos--clue-pattern in order to cover
+most of the English morphosyntactic multi--words structures, using the
+following pattern:
+
+(ADVClue\textbar{}textbar DISClue)+Noun.*Noun.*Noun.
+
+The pattern is applied to the previously lemmatized text in order to
+have less sparse and more informative extractions.
+
+This choice was made because the pattern:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  expresses an advantage or a drawback exhaustively;
+\item
+  increases the precision and the recall of the final output list of
+  advantages and drawbacks;
+\item
+  allows to build a three-level named based tree over the final output
+  list.
+\end{enumerate}
+
+In particular, the tree is built by grouping terms which share at the
+first level the same clue, at the second level the same noun and at the
+third level the same noun. This grouping procedure allows to easily
+represent the final output list in a tree structure which can be easily
+navigated by the end user of the system.
+
+\subsubsection{Results: case study}\label{results-case-study}
+
+In this section we describe the experimental use of the proposed process
+by applying it on four different patent sets.
+
+To test the proposed methodology, we chose 4 patent sets composed of a
+sample of 3,000 patents each. The patent sets belong to 4 different IPC
+patent classes. The chosen classes and the definitions given by WIPO are
+reported in table \ref{tab:advdrwarticleexampleipcclasses}.
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{\label{tab:advdrwarticleexampleipcclasses} The patent IPC classes
+from which samples of 3,000 patents were chosen for the experimental
+analysis.}\tabularnewline
+\toprule
+\emph{IPC name} & \emph{Definition}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\emph{IPC name} & \emph{Definition}\tabularnewline
+\midrule
+\endhead
+A61G13 & Operating tables and auxiliary appliances
+therefor\tabularnewline
+A61H & Physical therapy apparatus\tabularnewline
+A61C15 & Devices for cleaning between the teeth\tabularnewline
+A47J37 & Baking; Roasting; Grilling; Frying\tabularnewline
+\bottomrule
+\end{longtable}
+
+Our choice of patent sets aimed at challenging our system to find new
+domain specific advantages and drawback clues in different domains.
+Furthermore, we only selected patent sets from the IPC class A, which is
+based on human necessities, to maximize the probability of finding
+advantages and drawbacks that impacts on the users and not only on other
+products/components.
+
+Once the advantages and drawbacks are extracted, a manual review process
+was performed on the output of the system to compute the number of true
+positive clues. In this way we were able to compute the precision of the
+process for both the advantages and the drawbacks. The output of the
+clue extraction validated by the clue validator is analyzed in table
+\ref{tab:advdrwarticlecluemeas}.
+
+The table shows that the number of the extracted true positive advantage
+clues is higher than the number of the extracted true positive drawback
+clues. On the other side, the automatic evaluation process has a lower
+performance on advantage clues in terms of precision.
+
+A first hypotheses to explain these results is that our knowledge base
+contained more drawback clues than advantage clues. Another possible
+reason could be that the applicant is minded to describe the invention
+highlighting the positive effects of the invention.
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{\label{tab:advdrwarticlecluemeas} Number of clues filtered with the
+clue validator and number of true positive clues.}\tabularnewline
+\toprule
+& \# \emph{Advantage clues} & \# \emph{Drawbacks clues}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+& \# \emph{Advantage clues} & \# \emph{Drawbacks clues}\tabularnewline
+\midrule
+\endhead
+\emph{Tot extracted clues} & 3607 & 1244\tabularnewline
+\emph{Automatically Validated clues} & 1976 & 576\tabularnewline
+\emph{True Positive} & 984 & 448\tabularnewline
+\emph{Precision} & 49.8\% & 77.8\%\tabularnewline
+\bottomrule
+\end{longtable}
+
+In order to assess the performance of the overall process, another
+important measure is the amount of new information that is obtained,
+which we call \emph{information gain}. As shown in table
+\ref{tab:infogain1}, the percentage of new discovered clues decreases
+with the number of starting clues. Obviously, the more patent sets are
+analyzed, the less new generic and domain specific clues are extracted.
+The percentage of information gain (represented as delta in the table),
+stabilizes at a 5\% value in the advantage clues case, and 1\% in the
+drawback clues case. This trend could be an evidence that the clue
+extraction process has a natural saturation level.
+
+\begin{longtable}[]{@{}ccccc@{}}
+\caption{\label{tab:infogain1} Information gained by applying the extraction
+process on different patent sets. Each row reports the percentage of
+information gained by incrementally adding the extracted entities to the
+knowledge base and the overall number of entities belonging to the
+extended knowledge base.}\tabularnewline
+\toprule
+\emph{Patent set} & ∆ Adv. & \# Adv. & ∆ Draw. & \# Draw.\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\emph{Patent set} & ∆ Adv. & \# Adv. & ∆ Draw. & \# Draw.\tabularnewline
+\midrule
+\endhead
+Knowledge Base & N/A & 6,568 & N/A & 14,809\tabularnewline
+A47J33 & +23\% & 8,133 & +3\% & 15,332\tabularnewline
+A61C15 & +12\% & 9,178 & +2\% & 15,644\tabularnewline
+A61G13 & +5\% & 9,653 & +1\% & 15,849\tabularnewline
+A61H & +5\% & 10,175 & +1\% & 16,053\tabularnewline
+\bottomrule
+\end{longtable}
+
+Tables \ref{tab:advantageclueextracted} and
+\ref{tab:drawbacksclueextracted} show the frequencies of a randomly
+chosen set of the new extracted advantages and drawbacks domain specific
+clues for each of the four analyzed patent sets. The results show that
+the domain specific clues clearly characterize the different technical
+areas of the patent sets. It is thus interesting to notice how valuable
+information is contained in the context specific clues them self.
+Further research can decide to stop here the process, without extracting
+the whole sentence.
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{\label{tab:advantageclueextracted} Extracted domain specific
+advantages clues with the measures of occurrences for each patent
+set.}\tabularnewline
+\toprule
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+A47J37 (Baking)\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+A61H (Therapy apparatus)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+A61C15 (Teeth cleaning)\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+A61G13 (Operating tables)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+transport 295\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+regenerative 144\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+elasticity 495\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+rigidity 784\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+integrity 246\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+waterproof 101\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+rigidity 461\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+ventilation 177\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+rigidity 233\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+hygienic 85\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+disinfection 247\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+hygiene 135\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+insure 180\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+ergonomically 77\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+precision 199\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+versatility 121\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+adjusting 164\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+disinfection 48\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+ergonomically 108\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+reliably 113\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+unobstructed 73\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+prevent excessive 39\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+economically 105\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+disinfection 56\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+uniformity 64\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+hemodynamics 25\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+waterproof 81\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+humidification 48\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+sensitivity 44\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+prophylaxis 22\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+hygienically 33\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+ergonomically 39\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+hygienic 30\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+prevent slippage 21\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+quick-connect 26\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+sanitation 20\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\centering\strut
+selectively 34\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+smoothly 15\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+sanitation 24\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+non-invasive 12\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{\label{tab:drawbacksclueextracted} Extracted domain specific
+drawbacks clues with the measures of occurrences for each patent
+set.}\tabularnewline
+\toprule
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+A47J37 (Baking)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+A61H (Therapy apparatus)\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+A61C15 (Teeth cleaning)\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+A61G13 (Operating tables)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+accidental 61\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+infection 595\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+infection 446\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+syndrome 134\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+burnt 59\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+trauma 378\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+inconvenience 126\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+costly 72\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+malfunctioning 12\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+abrasion 106\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+irregularity 40\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+claustrophobia 38\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+time-consuming 8\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+fragmentation 37\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+pathogen 14\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+malfunctioning 36\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+non-compliant 6\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+paralysis 17\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+infected 8\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+unnecessarily 27\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+dirty 6\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+hematoma 15\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+unintentionally 6\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+discoloration 19\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+ignites 4\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+uncomfortably 8\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+abnormal 6\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+hyperglycemia 11\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+turbulence 4\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+undetectable 8\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+burn 4\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+unavoidable 10\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+cross-contamination 3\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+embarrassment 8\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+toxic 3\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+not linearly 8\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\centering\strut
+violently 3\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\centering\strut
+discoloration 8\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+erosive 3\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\centering\strut
+catastrophic 6\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Then, after the re-projection of the extracted clues on the text, the
+regular expression described in section is used to extract the sentences
+highlighted by the clues.
+
+The number of advantages and drawbacks sentences extracted from each
+patent are shown in table \ref{tab:advantagedrawbackssentences}. The
+table shows that the occurrence of sentences describing an advantage is
+higher than the ones containing a drawback \ref{tab:infogain1}. This
+result may be due to the fact that the applicant is minded to describe
+the invention by highlighting the positive effects of the invention.
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{\label{tab:advantagedrawbackssentences} Number of sentences
+containing advantages and drawbacks for each analyzed patent
+set.}\tabularnewline
+\toprule
+\emph{Patent class} & \# \emph{Advantage sentences} & \# \emph{Drawbacks
+sentences}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\emph{Patent class} & \# \emph{Advantage sentences} & \# \emph{Drawbacks
+sentences}\tabularnewline
+\midrule
+\endhead
+\emph{A61G13} & 7,836 & 1,048\tabularnewline
+\emph{A61H} & 10,879 & 1,463\tabularnewline
+\emph{A61C15} & 9,551 & 1,572\tabularnewline
+\emph{A47J37} & 9,973 & 1,662\tabularnewline
+\emph{Total} & 38,239 & 5,745\tabularnewline
+\bottomrule
+\end{longtable}
+
+Figure \ref{fig:processimagetest1} and \ref{fig:processimagetest2} show
+two subsets of the taxonomies obtained by the extraction of the
+advantages and drawbacks for each of the four analyzed patent sets. The
+two figures respectively refers to a subset of the leaves linked to the
+advantage clue \emph{Improve} and a subset of the leaves linked to the
+drawback clue \_Damage. In both cases an additional trimming action is
+performed by removing those branches or leaves containing terms
+belonging to the stop-word list typical of patent lexicon (e.g.~claim,
+embodiment, invention, comprise, figure, etc..). The figure shows that
+our process can extract highly informative sentences also starting from
+generic and non-contextual clues like \emph{improve} or \emph{damage}.
+Moreover the words that follow the generic clues are specific of the
+technical field of the analyzed products. Both the results are promising
+for future applications, especially for the design fields. In particular
+figure \ref{fig:processimagetest1} allows designers to focus on the
+positive side of the effects provided by the product and to better meet
+the explicit and implicit user needs. Similarly, figure
+\ref{fig:processimagetest2} helps designers to redesign of the product
+in a proactive way, to keep attention to the critical issues identified
+by the drawbacks and to conceive possible corrective actions to solve
+such drawbacks.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/improve} 
+
+}
+
+\caption{Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the advantage clue Improve}\label{fig:processimagetest1}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/damage} 
+
+}
+
+\caption{Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the drawback clue Damage. }\label{fig:processimagetest2}
+\end{figure}
 
 \subsection{Trademakrs}\label{trademakrs}
 

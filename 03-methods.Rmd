@@ -2,7 +2,6 @@
 
 L'aprrocio metodologico generico...
 
-
 This chapter describes the methods applied for the analysis of technical documents. The methods are ensamble of Natural Language Processing (NLP) and Text Mining _techniques_ described in \@ref(sotatools), re-designed depending on the analyzed document and the analysis goal.
 Not all the _techniques_ have been applied to all the documents: table tot summarise the relations between the documents under analysis (introduced in section \@ref(sotadocuments)) and the NLP techniques.
 
@@ -41,7 +40,7 @@ knitr::include_graphics("_bookdown_files/figures/Process.pdf")
 
 ```
 
-before the description of each phases, in section \@ref(userdef) the concept of _user of the invetion_ is explained by giving a definition of users and presenting the way that this concept is exploited in different knowledge fields.
+Before the description of each phases, in section \@ref(userdef) the concept of _user of the invetion_ is explained by giving a definition of users and presenting the way that this concept is exploited in different knowledge fields.
 
 #### Users: A key information hidden in patents {#userdef}
 
@@ -149,7 +148,7 @@ The Users extraction problem is tackled by the implementation of a supervised cl
 
 Given a set of features the classifier trains a statistical model using the feature statistics extracted from the corpus. For each new document the trained model assigns to each word the probability of belonging to one of the classes previously defined (B-USE, I-USE, O).
 
-In our experiments the classifier has been trained using two different learning  algorithms:  Support  Vector  Machines  (SVM)  using  the  LIBSVM  library [@libsvm] configured to use a linear kernel and Multi Layer Perceptron (MLP) implemented using the Keras library [@libkeras]. It has been proven that LSTM methods are well suited for similar NER task. Anyway, we chose SVM and MLP method to study how two wheel established state of the art classifiers perform on the specific task of user extraction from patents and to evaluate their performance in terms of precision and computational effort. We also think that the popularity of these methods increment the reproducibility of the work.
+In our experiments the classifier has been trained using two different learning  algorithms:  Support  Vector  Machines  (SVM)  using  the  LIBSVM  library [@svm] configured to use a linear kernel and Multi Layer Perceptron (MLP) implemented using the Keras library [@libkeras]. It has been proven that LSTM methods are well suited for similar NER task. Anyway, we chose SVM and MLP method to study how two wheel established state of the art classifiers perform on the specific task of user extraction from patents and to evaluate their performance in terms of precision and computational effort. We also think that the popularity of these methods increment the reproducibility of the work.
 
 The classifier uses different kind of features extracted from the text:
 
@@ -413,7 +412,380 @@ knitr::include_graphics("_bookdown_files/figures/user_rank.png")
 
 ### Advantages and Drawbacks
 
-In this section we show the approach used to extract the advantages and the drawbacks of the invention described in a patent. The proposed process is shown in figure \@ref(fig:procesuser) and its phases are:
+In this section we show the approach used to extract the advantages and the drawbacks of the invention described in a patent. More precisely, the system identifies textual elements which represent the advantages or the drawbacks described in a patent. Advantages and drawbacks information can strongly advantage designers in the phase of new product development or in the process of product improvement and marketers in the phase of customer understanding and product placing. Furthermore a patent based method has a strong advantage with respected to methods that extracts information using other type of documents (e.g. online reviews of products [@monireh]): patents  anticipate availability of products on the market by a factor varying from 6 to 18 months [@golzio2012]. 
+
+The proposed extraction process is shown in figure \@ref(fig:advdrwprocessgeneral) and its macro-phases are:
+
+1. _Advantage and Drawback Clues Collection_: in this section we described the method to collect a reasonable number of generic advantage and drawback clues;
+2. _Domain Clues Extraction_: in this section is shown how the generic clues are used in exploiting machine learning algorithm to extract new domain specific advantages and drawback clues;
+3. _Domain Clues Validation_ : since the new clues are automatically extracted, the output of the extraction phase surely contains a certain degree of noise. To clean this output a validation tool based on tweeter sentiment analysis is developed;
+4. _Advantages and Drawbacks Extraction_: here the extracted clues (generic and domain specific) are expanded according to specific regular expression pattern in order to obtain the advantages and the drawbacks of the analyzed patent set.
+
+
+```{r advdrwprocessgeneral, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Main overview of the advantages and drawbacks extraction process from patents.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/General.pdf")
+
+```
+
+
+Before the description of each phases, in section \@ref(advdisdef) the concepts of _advantages and disadvantages of an invention_ are explained.
+
+#### Advantages and drawbacks: an engineering point of view {#advdisdef}
+
+An effective development of new products or the redesign of an existing one require the analysis of its positive and negative properties. Due to that, advantages and drawbacks of products are extremely valuable information for companies. Unfortunately, this information is not easy to obtain and manage: a strong evidence of that is the effort in the development of tools able to manage this information [@pahl2013engineering, @ulrich2003product]. Companies frequently make use of Quality Functional Deployment (QFD) and requisites lists, users' needs, users' requirements with the purpose of tracking advantages [@carnevalli2008review].  On the other hand, companies use Failure mode and effects analysis (FMEA) to gather and study drawbacks, failure modes and their effects and causes [@liu2013risk.] 
+However, product developers can acquire QFD and FMEA data only from the users of the invention: this leads to the need of expensive processes of customer's voice listening whose results are often unclear. Moreover, this information is not disclosed to researchers since this is part of the company know-how. 
+
+The description of the brought advantages and solved drawbacks are critical requirements for the patentability of a product, as stated by the politics and the guidelines given by World Intellectual Property Organization (WIPO) on writing patents [@world2004wipo]. As stated by WIPO, an invention is a _solution_ to a specific _problem_ . The problem that an invention solves is a negative effect that state-of-the-art technologies can not fully overcome; on the other side, a solution is a way to solve this problem. A solution can lead to some advantages with respect to the known art. Thus, starting from the definition of invention, it is clear how it can be characterized by the advantages that it brings and by the problems that it solves. Also, it is reasonable to assume that having a clear picture of both advantages and drawbacks of a technology is important for an effective design process ^[The most precise couple of words is __advantage__ and __disadvantage__, but the reading is facilitated by using two very different words, therefore we decided to adopt the couple __advantage__ and __drawback__.]
+
+#### Clues of Advantages and drawbacks in patents
+
+First of all we have to define the concept of clue to an advantage or a drawback. To describe with a certain degree of precision an advantage or a drawback, patent writers need to use sequences of words of a certain length. Since NER systems do not perform well on long sequence of tokens, we split the problem of extracting advantages and drawbacks in two parts: first we extract entities that are clues in the sequence of words that describes the advantage or the drawback; then we extract the surrounding words to collect the whole sequence that describes the advantage or the drawback. 
+
+To better understand these concepts some examples are:
+
+- <advantage_clue> ease </advantage_clue> of access
+
+- cook food <advantage_clue> quickly </advantage_clue> and <advantage_clue>economically</advantage_clue>
+
+- <advantage_clue>benefits</advantage_clue> of keeping an outdoor cooker lid fixed
+
+For the present work, we refer to advantages and drawbacks as a sequence of words of minimal length that express the advantage or the drawback. The three phrases of the example are three advantages. On the other hand clues are words that are likely to be contained in advantages or drawbacks phrases.
+
+#### Advantages and Drawbacks Clue Collection {#adv-drw-article-sourc}
+
+
+```{r advdrwarticlecluecollection, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Main overview of the patent set annotation process.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/pointer-collection-phase.pdf")
+
+```
+
+The approaches to generate a knowledge base of clues were two. The first approach was based on a  manual collection of clues of advantages and drawbacks directly from patent texts. This process was performed on 2,000 patents, randomly chosen from the freepatent database ^[http://www.freepatentsonline.com/]. With this approach we were able to collect 3,254 advantages and 5,142 drawback clues. Some examples of the extracted clues are shown in table \@ref(tab:advdrwarticleextdclue).
+
+
+Table: (\#tab:advdrwarticleextdclue) Examples of the clues collected with the first approach.
+  
+
+| *Advantages Clues* | *Drawbacks Clues* |
+|:------------------:|:-----------------:|
+|       ability      |     aggravated    |
+|      efficacy      |      breakage     |
+|       ensure       |       damage      |
+|       healthy      |       defect      |
+|     innovative     |       error       |
+|       optimum      |      improper     |
+|       protect      |        leak       |
+|    quick-release   |      problem      |
+|      reinforce     |    unavailable    |
+|      securely      |       wrong       |
+
+
+The second approach consisted in looking for alternative methods to indicate advantages or drawbacks clues, looking defined word patterns. The most relevant are the negations of advantages to obtain drawbacks, and the negation of drawbacks to obtain advantages. Some examples of such constructions are shown in table \@ref(tab:advdrwarticleexbaclue).
+
+Table: (\#tab:advdrwarticleexbaclue) Examples of the clues collected with the second approach.
+
+| *Advantages Clues* |  *Drawbacks Clues* |
+|:------------------:|:------------------:|
+|     non damaged    |       out of       |
+|   anti-corrosion   | in need of comfort |
+|   loss reduction   |  non user-friendly |
+|       prevent      |  diminish comfort  |
+|     defect free    |     issue with     |
+|    reduce waste    |    problem with    |
+|    reduction of    |      lacks of      |
+|      cost less     |     lacks with     |
+|     less severe    |       loss of      |
+|    avoid disease   |    unfacilitate    |
+
+At the end of this process, a total of 6.568 advantages and the 14.809 drawbacks formed the knowledge base for the system, and gave us a reasonable number of clues to be used in the next step of the process.
+
+The first approach was restricted by the lists being extracted from a random and limited sample of patents. On the other side, the rules used in the second approach are non exhaustive, and this can create non-sense clues, due to all of the possible combinations of words. Anyway, it is reasonable to assume that a large set of non-domain dependent clues are collected and will be used in the next steps of the process.
+
+It is important to underline that the list of advantages and drawbacks clues is designed to avoid linguistic ambiguities when projecting these entities on the corpus. For example _guide_ has two different meanings^[www.dictionary.com] when used as a verb or as a noun: as a verb it means _"to assist something or someone to travel through, or reach a destination in, an unfamiliar area, as by accompanying or giving directions"_, so it could be the clue to an advantage; at the same time as a noun it assumes the mean of _"a book, pamphlet, etc., giving information, instructions, or advice; handbook"_ thus indicating a product and not an advantage. Avoiding such ambiguities is a crucial aspect to produce an informative training set, so ambiguous words were avoided to be projected on patents. 
+
+#### Domain Clues Extraction {#advdrwarticledomaincluecoll}
+
+The domain-specific clues collection process takes in input the automatically annotated patent set 1. The analyzed patent set is automatically annotated using the domain-independent clues, and is used to extract new domain-specific clues. We decided for the present methods to analyze the whole text of the patents and not to focus only on a specific section. 
+
+
+```{r advdrwarticleprocessfigclueexpansionphase, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Overview of the domain specific advantages and failures clues extraction process.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/pointer-expansion-phase.pdf")
+
+```
+
+Our system resorts to state-of-the-art NLP tools which are part of the linguistic analysis pipeline shown in figure \@ref(fig:advdrwarticleprocessfigclueexpansionphase). In addition we developed a specific advantages and drawbacks clues extraction tool, still based on Natural Language Processing techniques.
+
+The automatic patent set annotation 2 process, as shown in figure \@ref(fig:advdrwarticleprocessfigclueexpansionphase), is composed by a set of sequential steps. The first three steps are related to the linguistic annotation: sentence splitting and tokenization, part of speech tagging and lemmatization. Once these three steps are completed the entity extractor collects the advantages and drawbacks clues from the analyzed patents. 
+
+_Sentence splitting and Tokenization_ steps split the text into sentences and then segment each sentence in orthographic units called tokens.
+
+The _Part-Of-Speech tagging_ (or POS tagging) step assigns unambiguous grammatical categories to the tokens. For the present application we use the most recent version of the Felice-POS-tagger described in [@dell2009ensemble]. Once the computation of the POS-tagged text is completed, the text is automatically _lemmatized_ in order to group inflected forms of a word in a single item. Some of the following steps of the entire extraction process exploit the lemmatized texts in order to achieve better extraction results. 
+
+Successively the _semi-automatic annotation of advantages and drawbacks clues_ is performed. The advantages and drawbacks clues extraction tool is the key ingredient of the present paper, and it is based on supervised methods. Such methods require an entity annotated corpus in order to extract new entities from unseen documents. Since the manual annotation of a patent set is too expensive both in terms of time and manual effort, we apply a semi-automatic method to generate an advantage and drawback annotated corpus.
+
+The entity annotation schema for a single token is defined using a widely accepted BIO annotation scheme [@ramshaw]:
+
+
+- __B-ADV__: the token is the start of an entity representing an advantage clue;
+- __I-ADV__: the token is the continuation of a sequence of tokens representing an advantage clue;
+- __B-DRW__: the token is the start of an entity representing a drawback clue;
+- __I-DRW__: the token is the continuation of a sequence of tokens representing a drawback clue;
+- __O__: for the remaining case.
+
+
+The _Advantages and Drawbacks Clues Extractor_ is a supervised classifier that, given an annotated patent set, is trained on these examples. The patent set is: (a) linguistically-annotated, using the steps described above; (b) entity-annotated, exploiting the semiautomatic annotation process executed in the previous steps.  Given a set of features the classifier trains a statistical model using the feature statistics extracted from the corpus. This trained model is then employed in the classification of unseen patents: it extracts new domain specific clues from patents and assigns them a probability score whether they are an advantage or a drawback. In our experiments the classifier has been trained using the Support Vector Machines (SVM) learning algorithm using the LIBSVM [@ibsvm] library configured to use a linear kernel. The classifier uses two different kinds of features that are extracted from the text:
+
+- __raw features__: prefix and suffix of the analyzed token; it works particularly well with advantages ending with -full -ious and with drawbacks starting with un- dis- etc..
+
+- __word2vec features__: vector representations of words computed by the _word2vec_ [@word2vec1] tool.
+
+Table \@ref(tab:featconfsadvdis) reports the detailed features chosen for the proposed advantage and drawbacks clues extractor.
+
+
+Table: (\#tab:featconfsadvdis) Context windows of the extracted features considering 0 as the current analyzed token.
+
+|  *Feature group* |   *Context Window*  |
+|:----------------:|:-------------------:|
+| Prefixes up to 4 |        \[0\]        |
+| Suffixes up to 4 |        \[0\]        |
+|     Word2vec     | \[-2, -1, 0, 1, 2\] |
+|        TAG       |        \[-1\]       |
+
+
+By introducing prefixes and suffixes of the analyzed token, the classifier is able to identify frequent orthographic patterns which allow to maximize the precision in classification phase. On the other hand, the _word2vec_ features are introduced in order to maximize the recall, since semantically similar clues should have similar _word2vec_ vectors. Finally, the tag of the previous token is added to the final feature vector in order to improve the accuracy classification of multi-word clues.
+
+##### Word2vec feature computation {-}
+
+While contextual, linguistic and compositional features are commonly used for entity extraction task in patents, from a computational linguistic point of view the presented system introduces the novelty of using _word2vec_ features for entity extraction in patents. 
+
+_Word2vec_ is a NLP tool able to produce word representations exploiting big corpora. The main property of the vectors produced by _word2vec_ is that words that share similar contexts have similar vector representations. By using word vectors instead of the corresponding words we were able to overcome the problem of the limited lexical knowledge in the training phase. 
+
+To build our _word2vec_ vectors we used the Skipgram model with a context window of 5 tokens. As reported in table \@ref(tab:word2vecpatents), we used a corpus consisting of 48,194 different patents, containing more than 400,000,000 tokens.
+
+The corpus was designed to contain patents belonging to different classes (12 in total) in order to acquire an extended knowledge of the contexts in which the words in general are surrounded. In addition, patents belonging to two of these classes are analyzed  and,  in the same section, detailed configurations of the entity extractor has been provided.
+
+Table: (\#tab:word2vecpatents) Statistics of the documents on which the
+word2vec vectors have been learned. The patent sets of the analyzed case study are reported in bold.
+
+| Patent class | \# Patents |               \# Tokens |
+|:--------------:|:------------:|:-------------------------:|
+|   **A47G33**   |   **2423**   |       **5.225.000**       |
+|   **A61G13**   |   **2991**   |       **15.937.000**      |
+|    **A61G1**   |   **5040**   |       **36.348.000**      |
+|    **A61H**    |   **5199**   |       **41.831.000**      |
+|    A61P25/24   |     5297     |        103.098.000        |
+|      A63F1     |     5461     |         75.900.000        |
+|      A63F3     |     4923     |         40.909.000        |
+|      A63F7     |     4747     |         13.807.000        |
+|      E02B3     |     3796     |         14.434.000        |
+|      E04H9     |     2221     |         12.500.000        |
+|     G01V11     |     1345     |         11.166.000        |
+|     G08B13     |     4831     |         40.904.000        |
+|     *Total*    |     48194    |        412.065.000        |
+
+####Clue validation using tweets sentiment analysis} 
+
+
+```{r advdrwarticleprocessfigcluevalidationphase, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Overview of the domain specific advantages and failures clue validation process.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/pointer-validation-phase.pdf")
+
+```
+
+Figure \@ref(fig:advdrwarticleprocessfigcluevalidationphase) gives an overview of the activities performed to validate the collected clues using twtitter. Since the manual review of the new domain specific clues can be very time consuming, an innovative approach to automatic validation of these entities is proposed. The approach is based on the assumption that advantages of technological innovations can be considered positive factors by the users. Conversely, the drawbacks of the artifacts are considered negative factors impacting on the satisfaction of the users. Both advantages and drawbacks are common terms or chunks of terms commonly used in other contexts, too. Therefore, if we can identify a wide source of sentences tagged with a polarity score and containing advantages or drawbacks, the probability of assigning the proper polarity to advantages and drawbacks increases.
+
+Social media platforms provide powerful venues for consumers to interact not only with brands but also with other consumers as they engage in the processes of curation, creation, and collaboration [@evans2010social].  Such virtual platforms are places where users discuss about products, about their features but also about problems and failures they experienced during the daily use. The way they discuss or describe products or services is often unambiguous and highly polarized.
+
+Our approach to the automatic validation of advantages and drawbacks exploits the information contained in the Twitter platform ^[https://twitter.com].  More precisely, for each extracted advantage or drawback clue we collect a set of tweets in which the clue is mentioned. Once a significant number of tweets is collected (in our case 3,073,959 - around 2,738 per entity in average), they are analyzed by a sentiment classifier. The main idea behind this process is to assign to each clue a sentiment polarity score which should express the feeling of the user with respect to the considered clue on the social media. 
+
+The tweet collection can be easily performed by using the Twitter streaming API ^[https://dev.twitter.com/streaming/public], which is freely available. By assigning a polarity score to each clue, we expect to detect tagging anomalies: entities tagged as advantages by the classifier are expected to have a positive polarity in the extracted tweets. Vice versa, entities tagged as drawbacks by the classifier are expected to have a negative polarity in the extracted tweets.
+
+##### Sentiment Classifier: features, classification model and performance evaluation {-}
+
+In our sentiment classifier we focused on a wide set of features ranging across different levels of linguistic description. The whole set of features we started with is described below, organized into four main categories: 
+
+- raw and lexical text features
+- morpho-syntactic features
+- syntactic features
+- lexicon features.  
+
+This proposed four-fold partition closely follows the different levels of linguistic analysis which is automatically carried out on the text being evaluated, (i.e. tokenization, lemmatization, morpho-syntactic tagging and dependency parsing) and the use of external lexical resources. 
+
+Raw and lexical text features are extracted considering the text available in the tweet. For this work we considered a number of tokens, character n-grams, word n-grams, lemma n-grams, char repetition sequences, mentions number, hashtags number and punctuation.
+
+Morpho-syntactic and Syntactic Features consider the part of speech tags and the syntactic analysis of the text. Our sentiment analyzer extracts Part-Of-Speech n-grams (coarse and fine), coarse grained Part-Of-Speech distribution and syntactic dependency types n-grams.
+
+To extract features based on lexicons we exploited three freely available resources. The Bing Liu Lexicon [@hu2004mining], which includes approximately 6,000 English words, the Multi--Perspective Question Answering Subjectivity Lexicon [@wilson2005recognizing], which consists of approximately 8,200 English words and the SentiWordNet 3.0 Lexicon [@baccianella2010sentiwordnet] which consists of more than 117,000 words. For each word in these lexicons the associated polarity is provided.  In addition, we manually developed a lexicon of positive and negative emoticons, which usually is a strong indicator of tweets polarity.
+By exploiting the described resources, the following features were extracted: positive/negative emoticon distribution, sentiment polarity n-grams, sentiment polarity modifiers, the distribution of sentiment polarity, the most frequent sentiment polarity and changes of polarity in tweet sections. A more detailed description of these features is provided in [@cimino2014linguistically.
+
+In order to assign a sentiment polarity score to each tweet, we employed an adapted version of the ItaliaNLP Sentiment Polarity Classifier for the English language [@cimino2014linguistically]. This classifier operates on morpho-syntactically tagged and dependency parsed texts and assigns to each document a score expressing its probability of belonging to a given polarity class. The highest score represents the most probable class. Given a set of features and a training corpus, the classifier creates a statistical model using the feature statistics extracted from the training corpus. This model is used in the classification of unseen documents. The set of features and the machine learning algorithm can be parametrized through a configuration file.  For this work, we used a tandem Long Short Term Memory Recurrent Neural Network (LSTM) - Support Vector Machines (SVM) architecture.
+
+##### Validation of the extracted clues {-}
+
+The sentiment classifier is employed to validate the advantage and drawback clues which were previously extracted from patents by the clue extractor. In order to do so, we exploited the output of the tweet classifier on the tweets we previously downloaded. Each tweet, as said before, contains one or more clues to be validated. The sentiment classifier assigns the likeliness to each tweet to positive, neutral or negative. Consequently by analyzing all the tweets we previously downloaded, we obtained for each clue the distribution of positive, neutral and negative tweets. 
+
+Then to make a decision regarding each clue we used another SVM based classifier. This classifier is trained on a gold set of advantages and drawbacks clues: we manually labeled 344 words as advantages and 193 words as drawbacks, obtaining the gold set. The features used by this classifier are a number of positive, neutral and negative tweets extracted in which the entities are mentioned and the _word2vec_ vector representing the considered entity. 
+In table \@ref(tab:sentiment-validation) the classification results of the proposed approach over a 5-fold cross validation are reported. The obtained results show that the proposed entity validation method is suitable for the automatic advantages/drawbacks clues validation process.
+
+Table: (\#tab:sentiment-validation) Classification results of the proposed validation method over a 5-fold validation.
+
+| *Method* | Global accuracy | *ADV Prec.* | *ADV Rec.* | *ADV F1* | *DRW Prec.* | *DRW Rec.* | *DRW F1* |
+|:--------:|:---------------:|:-----------:|:----------:|:--------:|:-----------:|:----------:|:--------:|
+|  SVM-W2V |      87.71      |    89.89    |    91.29   |   90.57  |    83.35    |    80.66   |   81.92  |
+
+
+
+
+#### Advantages and Drawbacks sentences extraction
+
+
+```{r advantagedrawbacksextraction, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Overview of the advantages and failures extraction process.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/relevant-sentences-extraction.pdf")
+
+```
+
+
+The advantages and drawbacks extraction process is shown in figure \@ref(fig:advantagedrawbacksextraction). Once all the domain specific advantages and drawbacks clues are extracted, these are merged with the ones belonging to the original knowledge base, obtaining a final list which will be processed by the advantages and drawbacks sentences extractor. The advantages and drawbacks sentences extractor exploits predefined linguistic and clues filters which operate on the automatic pos–tagged patents. Specifically, for each advantage and drawback term identified in patents, we used a pos–clue-pattern constraining the start-token and the rest of the token pos. Since we were interested in phrases containing words belonging to specific morphological categories, we identified sequences of allowed pos–clue-pattern in order to cover most of the English morphosyntactic multi–words structures, using the following pattern:
+
+(ADVClue|textbar DISClue)+Noun.\*Noun.\*Noun.
+
+
+The pattern is applied to the previously lemmatized text in order to have less sparse and more informative extractions.
+
+This choice was made because the pattern:
+
+1. expresses an advantage or a drawback exhaustively;
+2. increases the precision and the recall of the final output list of advantages and drawbacks;
+3. allows to build a three-level named based tree over the final output list.  
+
+In particular, the tree is built by grouping terms which share at the first level the same clue, at the second level the same noun and at the third level the same noun. This grouping procedure allows to easily represent the final output list in a tree structure which can be easily navigated by the end user of the system. 
+
+
+#### Results: case study
+
+In this section we describe the experimental use of the proposed process by applying it on four different patent sets. 
+
+To test the proposed methodology, we chose 4 patent sets composed of a sample of 3,000 patents each. The patent sets belong to 4 different IPC patent classes. The chosen classes and the definitions given by WIPO are reported in table \@ref(tab:advdrwarticleexampleipcclasses).
+
+
+Table: (\#tab:advdrwarticleexampleipcclasses) The patent IPC classes from which samples of 3,000 patents were chosen for the experimental analysis.
+
+| *IPC name* |                    *Definition*                    |
+|:----------:|:--------------------------------------------------:|
+|   A61G13   | Operating tables and auxiliary appliances therefor |
+|    A61H    |             Physical therapy apparatus             |
+|   A61C15   |       Devices for cleaning between the teeth       |
+|   A47J37   |         Baking; Roasting; Grilling; Frying         |
+
+Our choice of patent sets aimed at challenging our system to find new domain specific advantages and drawback clues in different domains. Furthermore, we only selected patent sets from the IPC class A, which is based on human necessities, to maximize the probability of finding advantages and drawbacks that impacts on the users and not only on other products/components.
+
+Once the advantages and drawbacks are extracted, a manual review process was performed on the output of the system to compute the number of true positive clues. In this way we were able to compute the precision of the process for both the advantages and the drawbacks. The output of the clue extraction validated by the clue validator is analyzed in table \@ref(tab:advdrwarticlecluemeas). 
+
+The table shows that the number of the extracted true positive advantage clues is higher than the number of the extracted true positive drawback clues. On the other side, the automatic evaluation process has a lower performance on advantage clues in terms of precision. 
+
+A first hypotheses to explain these results is that our knowledge base contained more drawback clues than advantage clues. Another possible reason could be that the applicant is minded to describe the invention highlighting the positive effects of the invention.
+
+Table: (\#tab:advdrwarticlecluemeas)  Number of clues filtered with the clue validator and number of true positive clues.
+
+|                                 | \# *Advantage clues* | \# *Drawbacks clues* |
+|:-------------------------------:|:--------------------:|:--------------------:|
+|      *Tot extracted clues*      |         3607         |         1244         |
+| *Automatically Validated clues* |         1976         |          576         |
+|         *True Positive*         |          984         |          448         |
+|           *Precision*           |         49.8%        |         77.8%        |
+
+
+In order to assess the performance of the overall process, another important measure is  the amount of new information that is obtained, which we call _information gain_. As shown in table  \@ref(tab:infogain1), the percentage of new discovered clues decreases with the number of starting clues. Obviously, the more patent sets are analyzed, the less new generic and domain specific clues are extracted. The percentage of information gain (represented as delta in the table), stabilizes at a 5\% value in the advantage clues case, and 1\% in the drawback clues case. This trend could be an evidence that the clue extraction process has a natural saturation level.
+
+Table: (\#tab:infogain1)  Information gained by applying the extraction process on different patent sets.
+         Each row reports the percentage of information gained by incrementally
+         adding the extracted entities to the knowledge base and the overall
+         number of entities belonging to the extended knowledge base.
+
+|  *Patent set*  | ∆ Adv. | \# Adv. | ∆ Draw. | \# Draw. |
+|:--------------:|:-----------------:|:-------:|:------------------:|:--------:|
+| Knowledge Base |        N/A        |  6,568  |         N/A        |  14,809  |
+|     A47J33     |        +23%       |  8,133  |         +3%        |  15,332  |
+|     A61C15     |        +12%       |  9,178  |         +2%        |  15,644  |
+|     A61G13     |        +5%        |  9,653  |         +1%        |  15,849  |
+|      A61H      |        +5%        |  10,175 |         +1%        |  16,053  |
+
+
+Tables \@ref(tab:advantageclueextracted) and \@ref(tab:drawbacksclueextracted) show the frequencies of a randomly chosen set of the new extracted advantages and drawbacks domain specific clues for each of the four analyzed patent sets. The results show that the domain specific clues clearly characterize the different technical areas of the patent sets. It is thus interesting to notice how valuable information is contained in the context specific clues them self. Further research can decide to stop here the process, without extracting the whole sentence. 
+
+Table: (\#tab:advantageclueextracted)  Extracted domain specific advantages clues with the measures of occurrences for each patent set.
+
+|                 |                          |                         |                           |
+|:---------------:|:------------------------:|:-----------------------:|:-------------------------:|
+| A47J37 (Baking) | A61H (Therapy apparatus) | A61C15 (Teeth cleaning) | A61G13 (Operating tables) |
+|  transport 295  |     regenerative 144     |      elasticity 495     |        rigidity 784       |
+|  integrity 246  |      waterproof 101      |       rigidity 461      |      ventilation 177      |
+|   rigidity 233  |        hygienic 85       |     disinfection 247    |        hygiene 135        |
+|    insure 180   |     ergonomically 77     |      precision 199      |      versatility 121      |
+|  adjusting 164  |      disinfection 48     |    ergonomically 108    |        reliably 113       |
+| unobstructed 73 |   prevent excessive 39   |     economically 105    |      disinfection 56      |
+|  uniformity 64  |      hemodynamics 25     |      waterproof 81      |     humidification 48     |
+|  sensitivity 44 |      prophylaxis 22      |     hygienically 33     |      ergonomically 39     |
+|   hygienic 30   |    prevent slippage 21   |     quick-connect 26    |       sanitation 20       |
+|  selectively 34 |        smoothly 15       |      sanitation 24      |      non-invasive 12      |
+
+
+Table: (\#tab:drawbacksclueextracted)  Extracted domain specific drawbacks clues with the measures of occurrences for each patent set.
+
+|                       |                          |                         |                           |
+|:---------------------:|:------------------------:|:-----------------------:|:-------------------------:|
+|    A47J37 (Baking)    | A61H (Therapy apparatus) | A61C15 (Teeth cleaning) | A61G13 (Operating tables) |
+|     accidental 61     |       infection 595      |      infection 446      |        syndrome 134       |
+|        burnt 59       |        trauma 378        |    inconvenience 126    |         costly 72         |
+|   malfunctioning 12   |       abrasion 106       |     irregularity 40     |     claustrophobia 38     |
+|    time-consuming 8   |     fragmentation 37     |       pathogen 14       |     malfunctioning 36     |
+|    non-compliant 6    |       paralysis 17       |        infected 8       |      unnecessarily 27     |
+|        dirty 6        |        hematoma 15       |    unintentionally 6    |      discoloration 19     |
+|       ignites 4       |      uncomfortably 8     |        abnormal 6       |      hyperglycemia 11     |
+|      turbulence 4     |      undetectable 8      |          burn 4         |       unavoidable 10      |
+| cross-contamination 3 |      embarrassment 8     |         toxic 3         |       not linearly 8      |
+|      violently 3      |      discoloration 8     |        erosive 3        |       catastrophic 6      |
+
+
+Then, after the re-projection of the extracted clues on the text, the regular expression described in section  is used to extract the sentences highlighted by the clues. 
+
+The number of advantages and drawbacks sentences extracted from each patent are shown in table \@ref(tab:advantagedrawbackssentences). The table shows that the occurrence of sentences describing an advantage is higher than the ones containing a drawback \@ref(tab:infogain1). This result may be due to the fact that the applicant is minded to describe the invention by highlighting the positive effects of the invention.
+
+
+Table: (\#tab:advantagedrawbackssentences)  Number of sentences containing advantages and drawbacks for each analyzed patent set.
+        
+
+| *Patent class* | \# *Advantage sentences* | \# *Drawbacks sentences* |
+|:--------------:|:------------------------:|:------------------------:|
+|    *A61G13*    |           7,836          |           1,048          |
+|     *A61H*     |          10,879          |           1,463          |
+|    *A61C15*    |           9,551          |           1,572          |
+|    *A47J37*    |           9,973          |           1,662          |
+|     *Total*    |          38,239          |           5,745          |
+
+
+Figure \@ref(fig:processimagetest1) and \@ref(fig:processimagetest2) show two subsets of the taxonomies obtained by the extraction of the advantages and drawbacks for each of the four analyzed patent sets. The two figures respectively refers to a subset of the leaves linked to the advantage clue _Improve_ and a subset of the leaves linked to the drawback clue _Damage.
+In both cases an additional trimming action is performed by removing those branches or leaves containing terms belonging to the stop-word list typical of patent lexicon (e.g. claim, embodiment, invention, comprise, figure, etc..).
+The figure shows that our process can extract highly informative sentences also starting from generic and non-contextual clues like  _improve_ or _damage_. Moreover the words that follow the generic clues are specific of the technical field of the analyzed products.
+Both the results are promising for future applications, especially for the design fields. In particular figure \@ref(fig:processimagetest1) allows designers to focus on the positive side of the effects provided by the product and to better meet the explicit and implicit user needs. Similarly, figure \@ref(fig:processimagetest2) helps designers to redesign of the product in a proactive way, to keep attention to the critical issues identified by the drawbacks and to conceive possible corrective actions to solve such drawbacks.
+
+
+```{r processimagetest1, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the advantage clue Improve', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/improve.png")
+
+```
+
+```{r processimagetest2, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the drawback clue Damage. ', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/damage.png")
+
+```
+
+
 
 ### Trademakrs
 
