@@ -1,9 +1,9 @@
-# Future Developments
+# (PART) Future Developments {-}
 
-## Marketing
+# Marketing
 
-## Research and Development
+# Research and Development
 
-## Design
+# Design
 
-## Human Resources
+# Human Resources

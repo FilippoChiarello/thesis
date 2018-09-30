@@ -1,6 +1,6 @@
-# State of the Art{#sota}
+# (PART) State of the Art {-}
 
-The analysis of technical documents require the design of processes that rely both on programming and Natural Language Processing techniques and on the understanding and knowledge of field experts. While the first techniques are codified and explicit, the second are sometimes implicit and always harder to systematize. In this section i treat these two groups of techniques in the same way to give to the reader a systematic literature review on these topics. For this reason the sections of this chapter has the subsequent structure: 
+The analysis of technical documents require the design of processes that rely both on programming and Natural Language Processing techniques and on the understanding and knowledge of field experts. While the first techniques are codified and explicit, the second are sometimes implicit and always harder to systematize. In this section i treat these two groups of techniques in the same way to give to the reader a systematic literature review on these topics. For this reason the chapter of this part has the subsequent structure: 
 
 - At a first level there are two sections \@ref(sotatools) and \@ref(sotadocuments), reviewing respectively the processes of _programming and Natural Language Processing_ and of _undestanding and knowldege of field  experts application_;
 - Section \@ref(sotatools) has a subsection for each of the _phases_ showed in figure \@ref(fig:mainworkflow). These subsections goes from \@ref(sotatoolsprogram) to \@ref(sotatoolscomunicate);
@@ -9,23 +9,23 @@ The analysis of technical documents require the design of processes that rely bo
 - Since the second section \@ref(sotadocuments) describes less systematic phases, task and techniques this section opens with a first subsection \@ref(sotadocumentsunderstand) that focuses on the studies of the problems of using expert knowledge in an analytic process and which are the techniques to convert this knowledge in a format that is usable in a Natural Language Processing workflow. 
 - Finally, always section \@ref(sotadocuments) has a subsection for each of the anlyzed technical _documents_.  These subsections goes from \@ref(sotadocumentspatents) to \@ref(sotadocumentsjobs).
 
-## Phases, Tasks, and Techniques {#sotatools}
+# Phases, Tasks, and Techniques {#sotatools}
 
 In this section I make a review of the most important techniques for Natural Language Processing in the context of technical documents analysis. The techniques (mainly algorithms) are grouped in phases (Import, Tidy, Transform, Model, Visualize, Communicate) showed in figure \@ref(fig:mainworkflow) and each phases is dived in the NLP tasks that are the most important for the analysis of technical documents. This standard process has been disclosed in the framework of the tidyverse [@wickham2016r].
 The algorithms i reviewed in this section are summmarised in table tot, where the reader can see the relationship between tasks and techniques. 
 
-### Program {#sotatoolsprogram}
+## Program {#sotatoolsprogram}
 
 Programming is a key activity to perform in order to effectively and efficiently perform text mining. It is not a phases per se because each phase is implemented trough programming. It is critical that an analysts has in mind the need of maximizing the probability that their analysis is reproducible, accurate, and collaborative. This goals can be reached only trough programming. 
 The most used programming languages for text mining and natural language processing are R [@r2008] and Python [@py95]. R and Python are both open-source programming languages with a large community of developers, and new libraries or tools are added continuously to their respective catalog. R is mainly used for statistical analysis and data science while Python is a more general purpose programming language. 
 R has been developed by Academics and statisticians over two decades. R has now one of the richest ecosystems to perform data analysis and there are around 12000 packages available in CRAN (open-source repository of R).  The rich variety of libraries makes R the first choice for statistical analysis. Another cutting-edge difference between R and the other statistical products is R-studio. RStudio is a free and open-source integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management. Finally, it is widely recognized the great performances that R has for data visualisation and communication. 
 Python can pretty much do the same tasks as R: data wrangling, engineering, feature selection web scrapping, app and so on. Anyway, Python has great performances in the deployment and implementation of machine learning at a large-scale. Furthermore, Python codes are easier to maintain and more robust than R.
 
-### Import {#sotatoolsimport}
+## Import {#sotatoolsimport}
 
 The first activities to perform in a text mining pipeline is to find all the documents that contains useful information for the analysis and then import the corpus (the set of documents) in to the computer program. The present section is thus focused on techniques for document retrieval \@ref(sotatoolsimportretrieval) and on the most popular documents digital formats \@ref(sotatoolsimportformat).
 
-#### Document Retrieval {#sotatoolsimportretrieval}
+### Document Retrieval {#sotatoolsimportretrieval}
 
 Document retrieval is the process of matching a user query against a set of documents. A document retrieval system has two main tasks:
 
@@ -38,7 +38,7 @@ To evaluate the performance of a query is useful to understand the concepts of p
 
 Recall is the ratio of relevant results returned to all relevant results. Precision is the number of relevant results returned to the total number of results returned. Due to the ambiguities of natural language, full-text-search systems typically includes options like stop words to increase precision. Stop-words are words that filter all the document which contains them. On the other side, stemming to increase recall \@ref(sotatoolstransformstemming). The trade-off between precision and recall is simple: an increase in precision can lower overall recall, while an increase in recall lowers precision [@yuwono1996search]. Usually when a user performs a query, the main problem are false positives (the results that are returned by the systems but are not relevant to the user). False positives has a negative impact on the precision of the query. The retrieval of irrelevant documents is particularly strong for technical documents due to the inherent ambiguity of technical language. For this reason to understand and to use the rules of query building are fundamental to the technical document analysis, since without a good query is rare to have a good set of documents to analyze. 
 
-#### Documents Format {#sotatoolsimportformat}
+### Documents Format {#sotatoolsimportformat}
 
 For the purpose of the present thesis documents are considered in a digital format, and there is no need to read it from a analogical source. From the computer science point of view, text is a human-readable sequence of characters and the words they form that can be encoded into computer-readable formats. There is no standard definition of a text file, though there are several common formats. The most common types of encoding are:
 
@@ -53,7 +53,7 @@ For the purpose of the present thesis documents are considered in a digital form
 
 For the R software there exist many packages that helps to import documents in several formats [@readr2017r]. 
 
-### Tidy {#sotatoolstidy}
+## Tidy {#sotatoolstidy}
 
 After that data are imported they have to be processed in such a way that it would be possible to perform the main task of data analysis (transformation, modelling and visualisation). This task of tidying data (usually referred to as data pre-processing) can be very time expensive, so it is important to have clear methods and techniques to perform this task. 
 
@@ -70,29 +70,29 @@ As stated before tidying data is not a trivial task, and applying this process t
 
 Tidy text format is designed as being a table with one-token-per-row. A token  unit of text that is meaningful for the analysis to be performed (for example letters, words, n-gram, sentences, or paragraphs ). Tokenization is the process of splitting text into tokens. This one-token-per-row structure is in different from the ways documents are often stored in current analyses, mainly strings or document-term matrix. The term document matrix has each corpus word represented as a row with documents as columns. The document term matrix is the transposition of the TDM so each document is a row and each word is a column. The term document matrix or document term matrix is the foundation of bag of words text mining. The bag-of-words model is a simplifying representation of documents: a text is represented as the bag (multiset) of its words, disregarding grammar and even word order but keeping multiplicity [@mctear2016conversational]. 
 
-### Transform {#sotatoolstransform}
+## Transform {#sotatoolstransform}
 
 Transforming in the context of Natural Language Processing  is what in computational linguistic is called text normalization. Normalizing text means converting it to a more convenient, standard form. Most of the task of technical document analysis in fact relies on first separating out or tokenizing sentences and words, strip suffixes from the end of the word, determining the root of a word or transform the text using regular expressions. 
 
-#### Sentence Splitting
+### Sentence Splitting {#sotatoolstransformsentencesplit}
 
 The analysis of technical documents require as first process, that the input text is segmented in sentences. Since documents do not encode this information in a non ambiguous manner (using dots) due to common abbreviations (e.g.: “Mr., Dr.”), a sentence splitting process that does not rely only on a trivial _dot based_ rule is required. This issue in the technical documents domain is even more problematic due to the presence of formulas, numbers, chemical entity names and bibliographic references. Furthermore, since sentence splitting is one of the first processes of an NLP pipeline, errors in this early stage are propagated in the following steps causing a strong decrease for what concerns their accuracy. One of the most advanced techniques are machine learning techniques: given a training corpus of properly segmented sentences and a learning algorithm, a statistical model is built. By reusing the statistical model, the sentence splitter is able to split sentences on texts not used in the training phase. ItalianNLP lab systems uses this approach [@dell2009ensemble, @attardi2009reverse, @attardi2009accurate]. For this reason this algorithm is used for the most of the application presented in this Thesis.
 
-#### Tokenization
+### Tokenization
 
 Since documents are unstructured information, these has to be divided into linguistic units. The definition of linguistic units is non-trivial, and more advanced techniques can be used (such as n-gram extraction) but most of the times these are words, punctuation and numbers. English words are often separated from each other
 by white space, but white space is not always sufficient. Solving this problems and splitting words in well-defined tokens defined as tokenization. In most of the application described in the present Thesis, the tokenizer developed by the ItalianNLP lab was integrated [@dell2009ensemble;@attardi2009reverse;@attardi2009accurate]. This tokenizer is regular expression based: each token must match one of the regular expression defined in a configuration file. Among the others, rules are defined to tokenize words, acronyms, numbers, dates and equations.
 
-#### Stemming {#sotatoolstransformstemming}
+### Stemming {#sotatoolstransformstemming}
 
 Stemming is a simpler but cruder methodology for chopping off of affixes. The goal of stemming is reducing inflected (or sometimes derived) words to their word stem, base or root form. The stem of a word and its morphological root do not need to be identical; it is sufficient that related words map to the same stem, even if this stem is not a valid root. One of the most widely used stemming is the simple and efficient Porter algorithm [@porter1980algorithm].
 
-#### Lemmatisation {#sotatoolstransformlemmatisation}
+### Lemmatisation {#sotatoolstransformlemmatisation}
 
 Lemmatization is the task of determining the root of a words. The output allow to find that two words have the same root, despite their surface differences. For example, the verbs _am_, _are_, and _is_ have the shared lemma _be_; the nouns _cat_ and _cats_ both have the lemma _cat_. Representing a word by its lemma is important for many natural language processing tasks. Lemmatisation in fact diminish the problem of sparsity of document-word matrix. Furthermore lemmatisaion is important for document retrieval \@ref(sotatoolsimportretrieval) web search, since the goal is to find documents mentioning motors if the search is for motor. The most recent methods for lemmatization involve complete morphological parsing of the word [@hankamer1989morphological]. 
 
 
-#### Words importance metrics  {#sotatoolstransformwi}
+### Words importance metrics  {#sotatoolstransformwi}
 
 Once that a document has been tokenized and the tokens has been transformed, an analyst usually wants to measure how important a word is to a document in a collection or corpus. Some of the metrics adopted are:
 
@@ -104,26 +104,26 @@ Once that a document has been tokenized and the tokens has been transformed, an 
 - _Term frequency–Inverse document frequency_: the product between _term frequency and inverse document frequency_.  A high weight in tf–idf is reached by a high term frequency (in the given document) and a low document frequency of the term in the whole collection of documents; the weights hence tend to filter out common terms.
 
 
-#### Part-of-Speech Tagging {#sotatoolstransformpos}
+### Part-of-Speech Tagging {#sotatoolstransformpos}
 
 The part of speech plays an central role in technical document analysis since it provides very useful information concerning the morphological role of a word and its morphosyntactic context: for example, if a token is a determiner, the next token is a noun or an adjective with very high confidence. 
 Part of speech tags are used for many information extraction tools such as named entity taggers (see section \@ref(sotatoolsmodelner)) in order to identify named entities. In typical named entity task these are people and locations since tokens representing named entities follow common morphological patterns (e.g. they start with a capital letter). For the application to technical documents, technical entities (like the possible failures of a manufact) becomes more relevant. In this context a correct part-of-speech tagger becomes even more important since morphosyntactical rules can not be used. In addition part of speech tags can be used to mitigate problems related to polysemy since words often have different meaning with respect to their part of speech (e.g. “track”, “guide”). This information is extremely valuable in patent analysis, and some patent tailored part-of-speech tagger has been designed (see section \@ref(sotadocumentspatents)).
 The literature on pos-tagger is huge, and goes behind the scope of the present thesis to make a complete review. In most of the application presented in this work, was employed the ILC postagger [@attardi2006experiments]. This postagger uses a supervised training algorithm: given a set of features and a training corpus, the classifier creates a statistical model using the feature statistics extracted from the training corpus. 
 
-### Model {#sotatoolsmodel}
+## Model {#sotatoolsmodel}
 
 The goal of a model is to provide a simple low-dimensional summary of a dataset [@wickham2016r]. Ideally, the model will capture patterns generated by the phenomenon of interest (true signals), and ignore random variations (noise). A good model at the same time is able to capture the weak signals that cab be easily confounded with noise. These information is particularly valuable in the context of technical document analysis, where great technical insight could come weak quasi-invisible signals. [@james2013introduction]
 
 Probabilistic models are widely used in text mining nowadays, and applications range from topic modeling, language modeling, document classification and clustering to information extraction. The present section contains a review of the most used methods used to model textual information.
 
-#### N-Grams {#sotatoolstransformngrams}
+### N-Grams {#sotatoolstransformngrams}
 
 An n-gram is a sequence of N n-gram words: a 2-gram (or bigram) is a two-word sequence of words like “credit card”, “3d printing”, or ”printing machine”, and a 3-gram (or trigram) is a three-word sequence of words like “3d printing machine”. Statistical model can be used to extract the n-grams contained in a document. 
 A first approach has the of predicting the next item in a sequence in the form of a (n − 1)–order Markov model[@lafferty2001document]. The algorithm begin with the task of computing P(w|h), the probability of a word w given a word h.The way to estimate this probability is using relative frequency counts. To do that the algorithms count the number of times h is followed by the w. With a large enough corpus it is possible to build valuable models, able to extract n-grams [@bellegarda2004statistical].
 While this method of estimating probabilities directly from counts works for many natural language applications, in many cases a huge dimension of the corpus does make the model useful, and this is particularly true for technical documents [@brants2012large]. This is because technical language has a strong ratio of evolution; as new artifact are invented, new chunks are created all the time, and has no sense to continuously count every word co-occurrence to update our model[@gibson1994tools].
 A more useful method for chunk extraction fro technical document uses part-of-speech-tagging and regular expression. Once a document is pos-taggerd each word is associated whit a particular part of speech: each sentence is represented as a sequence of part-of-spech. Once this representation is ready, it is possible to extract only certain sequences of part-of-speeches, the ones that whit an high level of confidence are n-grams.
 
-#### Document Classification {#sotatoolsmodeldocclass}
+### Document Classification {#sotatoolsmodeldocclass}
 
 Classification is a general process that has the goal of taking an object, extract features, and assign to the observation one of a set of discrete classes. This process is largely used for documents [@borko1963automatic] and there exist many methods for document classification [@aggarwal2012survey]. 
 
@@ -152,7 +152,7 @@ space with the use of linear or non-linear delineations between the different cl
 - _Neural Netword Classifiers_: The basic unit in a neural network is a neuron. Each neuron receives a set of inputs, which are denoted by the vector _Xi_, which are the values of the feature vector for a certain instance. Each neuron is also associated with a set of weights, which are used in order to compute a function of its inputs. Neural Networks Classifier are able, thank to a process called learning phase, to adjust their weights in such a way that the function is able to effectively classify new instances. Neural networks are nowadays one of the best method for documents classification, and are used in a wide variety of applications [@manevitz2007one]. Great performances has also been reached by deep neural networks, which are neural networks whit a large number o neurons arranged in multiple layers [@lai2015recurrent. @kim2014convolutional]. 
 
 
-#### Sentiment Analsysis {#sotatoolsmodelsentanal}
+### Sentiment Analsysis {#sotatoolsmodelsentanal}
 
 Sentiment analysis techniques are algorithms able to measure from text, people’s opinions and emotions toward events, topics, products and their attributes [@pang2008opinion].  For example, businesses (particularly marketeers) are interested in finding costumers opinions about their products and services.
 
@@ -168,7 +168,7 @@ After that a manual inspection can be carried out to remove and/or correct error
 - _Supervised Learning Approaches_: Sentiment analysis can be formulated as a document classification problem with three classes: positive, negative and neutral[@mullen2004sentiment]. Training and test sets of documents are typically collected from product reviews, movies reviews or are created by scratch using manual annotation. Any learning algorithm can be applied to sentiment classification (naive Bayesian classification, and support vector machines [@prabowo2009sentiment]). The crucial phase for Supervised Learning sentiment analysis is the features presentation of the data. It was shown [@pang2002thumbs] that using uni-grams (a bag of individual words) as features in classification performed well with either naive Bayesian or SVM. Subsequent research used many more features and techniques in learning [@pang2008opinion]. 
 
 
-#### Text Clustering {#sotatoolsmodelnetanal}
+### Text Clustering {#sotatoolsmodelnetanal}
 
 The goal of clustering methods is to find groups of similar objects in the data thanks to the measure of a similarity function [@jain1988algorithms, @kaufman2009finding]. Clustering techniques has been widely applied in the text domain, where the objects of the clustering can be documents (at different level of granularity) or terms. In the context of technical documents analysis Clustering is especially useful documents retrieval [@anick1997exploiting, @cutting1993constant].
 Clustering problems has been and are studied widely outside the text domain. Methods for clustering have been developed focusing on quantitative/non-textual data [@guha1998cure, @han2001spatial, @zhang1996birch]. 
@@ -187,7 +187,7 @@ The distinguishing characteristics of the text representation are the following 
 
 The problems of sparsity and high dimensionality necessitate the design of specific algorithms text processing. The topic has been heavily studied in the information retrieval literature where many techniques have been proposed [@ricardo2011modern]. 
 
-#### Named Entity Recognition {#sotatoolsmodelner}
+### Named Entity Recognition {#sotatoolsmodelner}
 
 Named Entity Recognition is the task of identifying entity names like people, organizations, places, temporal expressions or numerical expressions. An example of an annotated sentence for a NER extraction system tailored for user entity extraction from patents, is the following:
 
@@ -199,14 +199,14 @@ Methods and algorithms to deal with the entity extraction task are different, bu
 
 The annotation methods of a training corpus can be of two different kinds: human based, which is time expensive, but usually effective in the classification phase; automatically based, which can lead to annotation errors due to language ambiguity. For instance driver can be classified both as a user (the operator of a motor vehicle), or not a user (a program that determines how a computer will communicate with a peripheral device). Different training algorithms, such as Hidden Markov Models [@eddy1996hidden], Conditional Random Fields (CRF) [@lafferty2001conditional] Support Vector Machines (SVM) [@hearst1998support], or Bidirectional Long Short Term Mermory-CRF Neural Networks [@lample2016neural, @misawa2017character ] are used to build a statistical model based on features that are extracted from the analyzed documents in the training phase.
 
-#### Topic Modelling {#sotatoolsmodeltopicmodel}
+### Topic Modelling {#sotatoolsmodeltopicmodel}
 
 Topic modeling is a form of dimension reduction that uses probabilistic models to find the co-occurrence patterns of terms that correspond to semantic topics in a collection of documents [@crain2012dimensionality]. To understand topic modelling it is useful to understand its differences with clustering \@ref(sotatoolsmodelnetanal) and the problem they both solves: the course of dimensionality. Both these techniques has in fact the goal of representing documents in such a way that they reveals their internal structure and interrelations. 
 Clustering measures the similarity (or dissimilarity) between documents to place documents into groups. Representing each document by considering the belonging to a group, clustering induces a low-dimensional representation for documents. However, it is often difficult to characterize a cluster in terms of meaningful features because the clustering is independent of the document representation, given the computed similarity.
 Topic modeling integrates soft clustering (assigning each element to a cluster with a given probability and not with a Boolean variable) with dimension reduction. Each document is associated with a number of latent topics: a topic can be seed as both document clusters and compact group of words identified from a corpus. Each document is assigned to the topics with different weights: this feature can be seen both as the degree of membership in the clusters, as well as the coordinates of the document in the reduced dimension space. The result is an understandable representation of documents that is useful for analyzing the themes in documents.
 Latent Dirichlet allocation (LDA) is a particularly popular method for fitting a topic model [@blei2003latent]. It treats each document as a mixture of topics, and each topic as a mixture of words. This allows documents to “overlap” each other in terms of content, rather than being separated into discrete groups, in a way that mirrors typical use of natural language. 
 
-### Visualize {#sotatoolsvisualize}
+## Visualize {#sotatoolsvisualize}
 
 Traditionally, statistical training has focused primarily on mathematical derivations and proofs of statistical tests: the process of developing the outputs (the paper, the report, the dashboard, or other deliverable) is less frequently analyzed. This problem influences also text mining [@parker2017opinionated]. One of the most studied problems of output production is data visualisation.
 Data visualisation involves the creation and study of the visual representation of data [@friendly2001milestones]. Data visualization uses statistical graphics, plots, information graphics and other tools to communicate information in a clearl and efficient way. The main process of data visualisation is the visual encoding of numbers. Numerical data may be encoded in many ways, using a wide range of shapes: the main used are dots, lines, and bars [@wickham2016ggplot2]. The main goal of visualizations is to help users (students, researchers, companies and many others) analyze and reason about evidences hidden in data. It is possible thanks to the ability of visualisation to make complex data more accessible, understandable and usable. Tables are generally used where users will look up a specific measurement, while charts of various types are used to show patterns or relationships in the data for one or more variables.
@@ -241,7 +241,7 @@ In litterature are identified eight types of quantitative messages that users ma
 
 Data visualisation practionires has to consider whether some or all of the messages and graphic types above are applicable to their task and audience. The process of trial and error to identify meaningful relationships and messages in the data is part of exploratory data analysis.
 
-#### The Grammar of Graphics
+### The Grammar of Graphics
 
 Even if trial and error is and will remain an important part of data visualisation, some works as tried to give to data visualisation practitioners a well structured framework able to guide the process of data visualisation. Among the many frameworks, the most used is the _Grammar of Graphics_ [@wilkinson2006grammar] and its implementation [@wickham2008ggplot2]. The grammar of graphics is a coherent system for describing and building graphs. Like other kind of grammars, it describes to basic rules to use the element of data visualization with the goal of comunicating some content. The main concept in the grammar of graphics is that graphs are made by multiple layers. Layers are responsible for creating the objects that we perceive on the plot. A layer is composed of four parts:
 
@@ -258,9 +258,9 @@ After the decision of the scale, the designer has ti decid the _coordinate syste
 
 Finally, the last element of the grammar are _facets_. Faceting makes it easy to create small multiples of different subsets of an entire dataset. This is a powerful tool when investigating whether patterns are the same or different across conditions. The faceting specification describes which variables should be used to split up the data, and how they should be arranged.
 
-### Comunicate {#sotatoolscomunicate}
+## Comunicate {#sotatoolscomunicate}
 
-The last task to perform in the process of knowledge extraction from technical documents is communications. If it means to comunicate the results of an anlysis inside a team or to the world, it doesn not matter how great an analysis is unless it is impossibile to  explain it to others [@wickham2016r]. For the purposes of the present thesis, the focus is on the review of technical mechanics of communication especialli in the R [@R-base] enviroment, which is used to perform most of the analysis showed in the next chapter (\@ref(methods)).
+The last task to perform in the process of knowledge extraction from technical documents is communications. If it means to comunicate the results of an anlysis inside a team or to the world, it doesn not matter how great an analysis is unless it is impossibile to  explain it to others [@wickham2016r]. For the purposes of the present thesis, the focus is on the review of technical mechanics of communication especialli in the R [@R-base] enviroment.
 One of the most important innovation for the task of communication in data science is R Markdown [@R-rmarkdown].  R Markdown provides an unified authoring framework for data science, combining code, results, and comments. R Markdown documents are fully reproducible and support dozens of output formats, like PDFs, Word files, slideshows, and more.
 
 R Markdown files are designed to be used in three ways:
@@ -273,12 +273,12 @@ R Markdown files are designed to be used in three ways:
 
 Togheter with reports (and usually contained in them) there are visualisation. Making graphics for communication follow all the rules and framework previously revised in section \@ref(sotatoolsvisualize), but when a graph has to be used to comunicate to a wide audience there are some more rules to follow. The reason why this happen is that the audience likely do not share the background knowledge of the anlysit and do not be deeply invested in the data. To help others quickly build up a good mental model of the data, the analyst need to invest considerable effort in making plots as self-explanatory as possible. For this reason has been developed many tools to help data scientist to make effective comunication graphs[@wickham2016ggplot2, @shiny2017, @plotly2017, @ggprah2018, @ICWSM09154] . 
 
-## Documents {#sotadocuments}
+# Documents {#sotadocuments}
 
 In this section contains a review of the main classes of technical documents analyzed in the present work. The documents are patents, papers, Wikipedia, Social Media, Publicly Funded Projects and Human Resources Documentation.
 Before starting to analyze the state of the art techniques to perform knowledge extraction for these documents, the focus is on a task that has intentionally not been analyzed in section \@ref(sotatools): understanding.
 
-### Understand {#sotadocumentsunderstand}
+## Understand {#sotadocumentsunderstand}
 
 The most difficult challenge in technology intelligence is not how to detect the large trends- they are visible anyway. It is, rather, how to detect weak signals, or information that initially appears with low frequency, in unrelated or unexpected regions of the technology landscape, and associated with large noise (Apreda et al. 2016). These signals escape from traditional statistical detection techniques, exactly because it is difficult to distinguish them from pure statistical noise. Metadata are not the appropriate source of data for detecting weak signals. As a matter of fact, they can be detected only by using a fine-grained domain knowledge structure, or using the full text of documents. As an example, classification-based clustering has been shown to be flawed because the patent class used is usually only the first one listed in patents, generating loss of granularity (Benner and Waldfogel, 2008; Aharonson and Schilling, 2016).
 
@@ -286,7 +286,7 @@ Hypothesis
 
 postulation
 
-#### Domain Expertise 
+### Domain Expertise 
 
 (collins)
 
@@ -294,16 +294,16 @@ Sheela Jasanow
 
 Taleb?
 
-#### The problem of byases {#sotadocumentsunderstandbyas}
+### The problem of byases {#sotadocumentsunderstandbyas}
 
 Each site typically contains a huge volume of opinionated text that is not always easily deciphered in long forum postings and blogs. The average human reader will have difficulty identifying relevant sites and accurately summarizing the information and opinions contained in them. Moreover, it is also known that human analysis of text information is subject to considerable biases, e.g., people often pay greater attention to opinions that are consistent with their own preferences. People also have difficulty, owing to their mental and physical limitations, producing consistent results when the amount of information to be processed is large. Automated opinion mining and summarization systems are thus needed, as subjective biases and mental limitations can be overcome with an objective sentiment analysis system.
 
-#### The Importance of Lexicons for Technical Documents Analysis  {#sotadocumentsunderstandlexicons}
+### The Importance of Lexicons for Technical Documents Analysis  {#sotadocumentsunderstandlexicons}
 
 
 
 
-### Patents {#sotadocumentspatents}
+## Patents {#sotadocumentspatents}
 
 Nowadays patent data can be used for planning technological strategy [@ernst2003patent]. The focus on the technological usefulness of patent data is certainly a great advantage, but this huge research area could hide other useful application for patents. 
 For example, in [@jin2015technology] the authors consider on one side patents as a source to collect information about technologies and products, and on the other side manuals, handbooks and market reports to collect market information.
@@ -335,7 +335,7 @@ The field of technology intelligence has become so large in recent years that se
 
 Each approach allows to capture different types of information from patents and build a knowledge base which can be exploited by patent analysis tools. For this reason the right approach to be chosen to develop a patent analysis system depends on the task to be solved, on the information to be analyzed and on the computational resources involved to solve the task. Choosing a good trade-off between these factors is a strict requirement in particular when analyzing big patent sets.
 
-#### Metadata Approaches
+### Metadata Approaches
 
 Patent documents has the following metadata:
 
@@ -405,7 +405,7 @@ Finally, it has been reported that the total number of citations increased over 
 Derived from citation analysis, co-citation analysis argues that documents that are cited by the same documents should be considered part of the same cluster [@small2006tracking, @small1985clustering]. A variant of this technique, called author co-citation analysis [@white1981author], cluster documents that are cited by the same authors.
 Co-citation analysis can also be used to create classification systems of patents [@lai2005using].
 
-#### Keywords Approaches
+### Keywords Approaches
 
 In the keyword based approach each patent is represented as a vector where each component measure the importance of a specific keyword, like explained in section \@ref(sotatoolstransformwi). The keywords to be taken into account depend on the patent set under analysis and on the goal of the task. Keywords can be extracted automatically using a text mining module, manually by experts or with hybrid methods where domain experts judge the relevance and the quality of the extracted keywords in order to limit the results to the most important keywords. Once keyword vectors are obtained, tasks such as patent similarity can be easily computed by using standard distance measures like cosine similarity. In addition, the keyword extraction allows to define more complex patent similarities measures [@moehrle2010measures] that can be exploited for the development of patent analysis tools [@lee2009approach,@lee2015novelty] such as mappers or patent search engines.  The main goal of these works is to developed systems for building keyword-based patent maps to be used for technology innovation activities. The system is composed of a text mining module, a patent mapping module and a patent vacancies identification module. Once a specific technology field is taken into account for analysis and a related patent set is extracted, the modules of the system are sequentially executed.
 The text mining module automatically identifies relevant keywords in each patent of the considered patent set. Once all the keywords are extracted, only the ones with the highest relevance are selected for a further screening by domain experts. The final set of keywords resulting from the screening process is then considered for building the patent keyword vectors on the considered patent set. Specifically each component of the patent vector holds the frequency the corresponding keyword in the considered patent.
@@ -418,7 +418,7 @@ It has been shown that little differences in the wording of queries, or on the t
 Second, it has been shown that when experts are asked to decide on relatedness measures (e.g. synonyms, hypernims or hyponims), they do not apply systematic rules [@tseng2007text,@noh2015keyword].
 Third, the query list is static. Once defined, it is used to extract documents from large corpora, which are then processed. In dynamic technologies, it is likely that the pace of technological changes exceeds the speed of updating of the query lists. It is difficult to convene panels of experts repeatedly, also because of the large costs incurred in expert selection and management [@tseng2007text]. As an example, with the advent of nanotechnology it was felt the need to introduce a new patent sub-class. The sub-class B82B was introduced in year 2000, but it did not incorporate the previous patents, so that a comparison across time is not feasible. A new sub-class, B82Y, was introduced in 2011 [@kreuchauff2017patent].
 
-#### Natural Language Processing approaches
+### Natural Language Processing approaches
 
 The impressive advancements of computational linguistics in the last two decades have made it possible to carry out analysis on the full content, not only the metadata, of large collections of texts. In text mining patterns are extracted from unstructured collection of documents, while in the metadata approach the patterns are extracted from structured documents or databases.
 This has opened the way to the “full text based scientometrics” [@boyack2013improving] and has created the conditions for the convergence between the citationist approach illustrated above, and the lexical approach. 
@@ -467,7 +467,7 @@ Other entity extraction systems for the patent domain were proposed for the CHEM
 
 The described entity tagging systems have very good performances mainly for two reasons: firstly, chemical entity names (such as molecular formulas) have very common orthographic patterns; secondly, these entities surrounding contexts are very similar. In more generic cases, these two features can not be exploited for entity extraction from patents, since different words  have totally different surrounding contexts. Another important key factor concerning the high performances of the described systems is that many external resources, such as lists of chemicals or product names, are available: this external knowledge can not be fully exploited in generic system.
 
-### Papers {#sotadocumentspapers}
+## Papers {#sotadocumentspapers}
 
 
 
@@ -479,7 +479,7 @@ The described entity tagging systems have very good performances mainly for two 
 
 
 
-### Wikipedia {#sotadocumentswiki}
+## Wikipedia {#sotadocumentswiki}
 
 The use of Wikipedia as source of knowledge started more than a decade ago and has been validated repeatedly in a variety of text mining applications (text annotation, categorization, indexing, clustering, searching [@milne2008learning]). In addition to the large and growing size in terms of number of articles, the structure of Wikipedia has a number of useful features that make it a good candidate for text mining applications.
 First, Wikipedia pages are considered reliable in many knowledge fields, including the ones more interesting for technical analysis, i.e. engineering and computer science [@xu2015improving]. The pages are regularly and systematically updated by a large global community of contributors, which includes many scientific and industrial authorities in the field. The use of Wikipedia as knowledge source for computerized text mining tools is established in the literature [@ferragina2012fast]. In addition, it is powerful in disambiguation of terms, particularly through the use of redirect pages and disambiguation pages. This means that it can be used for detection and disambiguation of named entities [@bunescu2006using].
@@ -491,7 +491,7 @@ Finally, Wikipedia is free-content and multilingual. This make it possible to fr
 These properties make Wikipedia the ideal candidate for the goal of extracting technical knowledge from texts. Technical fields are in fact comprehensive, dynamically updated, and, as far as possible, expert-independent.
 In particular, Wikipedia entries allow an endogenous measurement of semantic relatedness. This is an exceedingly important property for technical analysis: technologies can be mapped and can be defined as included in the perimeter of a knowledge field if and only it exhibits relatedness with other technologies already included in the perimeter. The inclusion of new technologies is therefore not dependent on experts’ subjective views, but is endogenously generated by the technological community that writes the articles for the encyclopedia and includes hyperlinks in the text of newly added pages.
 
-### Social Media {#sotadocumentstwitter}
+## Social Media {#sotadocumentstwitter}
 
 Nowadays, more than ever before, companies, governments, and researchers can gather and access data about people on a massive scale. Monitoring public opinion is increasingly made possible thanks to the rise of Social Media. These ones are computer-mediated technologies that facilitate the creation and sharing of information, ideas, career interests and other forms of expression with friends, families, co-workers, and other users, via virtual communities and networks. There are many different Social Media platforms, each of which targets a different aspect of what users want or need: e.g., LinkedIn targets professional networking activities, Facebook provides a mean of connecting friends and family, and Twitter provides a platform from which to quickly broadcast thoughts and ideas. These platforms are incredibly popular: as of February 2017, Facebook sees an average of 1,871 billion active users, with 76% of them that logging in every day [@tuten2017social].
 
@@ -530,7 +530,7 @@ Maybe at least some of these methods can be applied to other platforms, however 
 
 Since the usage of social media has a wide impact on a great number of disciplines, here is exposed the main literature in the most technical related fields that are strongly related to social media analysis: economics and marketing.
 
-#### Economics
+### Economics
 
 This domain has raised the great interest of researchers. The first studies focused especially on market fluctuation and on aggregated measure, such as Dow Jones Industrial Average (DJIA). Most recent researches have gone further predicting single stock price and yield.
 
@@ -550,12 +550,12 @@ Ahn et al. [@ahn2014sales] focused on periodic forecasting problems of product s
 Tuarob et al. [@tuarob2013fad] proposed a Knowledge Discovery in Databases (KDD) model for predicting product market adoption and longevity using large scale, social media data. In particular, the authors analysed the sentiment in tweets and use the results to predict product sales. The authors presented a mathematical model that can quantify the correlations between social media sentiment and product market adoption in an effort to compute the ability to stay in the market of individual products. The proposed technique involves computing the Subjectivity, Polarity, and Favorability of the product. Finally, the authors utilised Information Retrieval techniques to mine users’ opinions about strong, weak, and controversial features of a given product model. The authors evaluated their approaches using the real-world smartphone data, which are obtained from www.statista.com and www.gsmarena.com.
 The findings show that tweets can be used to predict product sales for up to at least 3 months in advance for well-known products such as Apple iPhone 4, Samsung Galaxy S 4G, and Samsung Galaxy S II, thus the predictive ability varies across products. 
 
-#### Marketing
+### Marketing
 
 Scholars had a great focus in the last years on using Social Media Information for marketing. Chen et al. [@chen2015making] conducted a survey study and a field study to explore the feasibility of using predicted personality traits derived from social media text for the purpose of ad targeting. In the survey study, they measured people's personalities and their responses to an advertisement tweet. They found that people with high openness and low neuroticism responded more favorably to a targeted advertisement, thus demonstrating the effects of the personality traits themselves. In the field study, they sent the advertisement tweets to real-world Twitter users, and found the same effects on users' responses using personality traits derived from users' tweet text. They demonstrate that aiming advertisements at users with particular personality traits improves click and follow rates by 66% and 87% respectively, representing a large increase in value for companies. These results suggest that the derived personality traits had the same effects as the personality traits measured by traditional personality questionnaires and can indeed improve ad targeting in real-world settings. Li et al. [@li2016project] present a solution to the problem of predicting project success in a crowd-funding environment combined with innovative introduction of survival analysis based approaches. They used comprehensive data of 18 thousand Kick-starter (a popular crowd-funding platform) projects and 116 thousand corresponding tweets collected from Twitter. While the day of success is considered to be the time to reach an event, the failed projects are considered to be censored since the day of success is not known.
 They performed rigorous analysis of the Kick-starter crowd-funding domain to reveal unique insights about factors that impact the success of projects. Their experimental results show that incorporation of failed projects (censored information) can significantly help in building a robust prediction model. Additionally, they also created several Twitter-based features to study the impact of social network on the crowd-funding domain. Their study shows that these social network-based features can help in improving the prediction performance. They found that the temporal features obtained at the beginning stage (first 3 days) of each project will significantly improve the prediction performance. Even when just using Social Media information from the first three days of the project, they achieve an AUC of 0.90, reflecting very high classification performance.
 
-### Human Resources Documentation {#sotadocumentsjobs}
+## Human Resources Documentation {#sotadocumentsjobs}
 
 Text Mining has been used in the last years to manage human resources (HR) strategically, mainly with applications aiming at analyzing staff’s opinions, monitoring the level of employee satisfaction, as well as reading and storing CVs for the selection of new personnel. In the context of human resources management, the text mining techniques are often utilized to monitor the state of health of a company by means of the systematic analysis of informal documents. These documents are both internal (e.g. curricula, job description) and external  (e.g. Linkedin, social networks). 
 
@@ -571,7 +571,7 @@ Another example of TM techniques often utilized to monitor the state of health o
 
 Furthrmore, Web-Based Human Resources Systems had a strong impact on the HR processes. The most widely well-known web-based HR systems are Linkedin and OilandGas [@walker2001web]. Their search systems are designed so that a user can input a query and look at the search results of résumés through keyword matching.  With the special services of Linked-In (accessible to premium users only), users can also search for specialists and candidates from various industries. The OilandGas service is specialized for searching for experts in the oil and gas industry, using basically the same concept of discrete keywords matching. However, once this search process is completed, the recruiter has to download all the search results and résumés and then read through all the documents to pick the most suitable candidates.
 
-#### The Key Role of Skills Assessment
+### The Key Role of Skills Assessment
 
 The term "assessment" indicates the action of assessing the potential, the skills, the attitudes and the adequacy of a professional profile.
 

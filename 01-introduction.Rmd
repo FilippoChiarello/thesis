@@ -1,6 +1,6 @@
-# Introduction {#introduction}
+# (PART) Introduction {-}
 
-## Goal
+# Goal
 
 Il problema non è sostituire domain knowledge. Idea vecchia ha fallito. E' insostibuibile perchè:
 
@@ -17,11 +17,11 @@ Abbiamo oggi più potenza e correzione errori.
 
 Oltre ad efficienza e potenza nel correggere gli errori. Ora c'è anche la possibilità dio maggiore specificità. L'obiettivo è qiuindi poratre domain knowledge sia su technology sia ai decisori sociali. 
 
-## Problem
+# Problem
 
 Foresight
 
-## Solutions
+# Solutions
 
 ```{r mainworkflow, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='A general workflow for the process of data analysis. Readapted from Wickham (2016)', message=FALSE, warning=FALSE, out.width='80%'}
 
@@ -29,15 +29,15 @@ knitr::include_graphics("_bookdown_files/figures/main_work_flow.png")
 
 ```
 
-## Challenges: Understanding and Programming
+# Challenges: Understanding and Programming
 
-### Understanding
+## Understanding
 
-### Programming
+## Programming
 
-## Research Questions
+# Research Questions
 
-## Stakeholders
+# Stakeholders
 
 Marketing
 
@@ -49,7 +49,7 @@ Human Resources
 
 Other Stakeholders
 
-## Knowledge Intensive Manegement Engineering
+# Knowledge Intensive Manegement Engineering
 
 Tipicamente occupaimo di attività ad altà ripetitività. Ti porti dietro metodologie ingegneristiche applicate a sistemi inernti, andnano a operare in sistemi socio-tecnici. Hai fatto il tuo mestieri (ricerca operativa ecc..). Negli ultimi anni però le aziende le attività a maggior valore aggiunto sono non ripetitive. R&S, Design, marketing, HR ecc.. e quindi gestione della conoscena. Su situazione che sembrano uniche il gestionale rischia di perdere rispetto al creativo. Come disciplina voglio presidiare queste aree: non ci occupaimo di casi unici, ma costruire modelli in grado di incorporare conoscenza per essere usati in questi. 
 La tesi ha l'obbiettivo di esploration and exploitation queste direzioni. Hon trovato nella data science è più nello specifico nel text mining gli strumenti adatti.

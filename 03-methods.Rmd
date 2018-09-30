@@ -1,21 +1,22 @@
-# Case Studies: Methods and Results {#methods}
+# (PART) Case Studies: Methods and Results {-}
+
 
 L'aprrocio metodologico generico...
 
-This chapter describes the methods applied for the analysis of technical documents. The methods are ensamble of Natural Language Processing (NLP) and Text Mining _techniques_ described in \@ref(sotatools), re-designed depending on the analyzed document and the analysis goal.
+This part describes the methods applied for the analysis of technical documents. The methods are ensamble of Natural Language Processing (NLP) and Text Mining _techniques_ described in \@ref(sotatools), re-designed depending on the analyzed document and the analysis goal.
 Not all the _techniques_ have been applied to all the documents: table tot summarise the relations between the documents under analysis (introduced in section \@ref(sotadocuments)) and the NLP techniques.
 
 Table documents vs tools
 
 
 
-## Patents
+# Patents
 
 Patents contain a large quantity of information which is usually neglected. This information is hidden beneath technical and juridical jargon and therefore so many potential readers cannot take advantage of it. State of the art natural language processing tools and in particular named entity recognition tools, could be used to detect valuable concepts in patent documents. 
 
 In this section we present three methodologies capable of automatically detecting and extracting threee of the multiple entities hidden in patents: the users of the invention, advantages and drawbacks of the invention and trademarks contained in patents. The results of the methodologies are described, togheter with example of applications of the extracted entities for intelligence tasks. 
 
-### Users {#usersresults}
+## Users {#usersresults}
 
 In this section we show the approach used to extract the users of the invention described in a patent. The proposed process is shown in figure \@ref(fig:procesuser) and its phases are:
 
@@ -44,7 +45,7 @@ knitr::include_graphics("_bookdown_files/figures/Process.pdf")
 
 Before the description of each phases, in section \@ref(userdef) the concept of _user of the invetion_ is explained by giving a definition of users and presenting the way that this concept is exploited in different knowledge fields.
 
-#### Users: A key information hidden in patents {#userdef}
+### Users: A key information hidden in patents {#userdef}
 
 Patents are documents that must provide a detailed public disclosure of an invention [@wipo2]. An _invention_ is a new and useful process, machine, manufacture, or composition of matter, or any new and useful improvement thereof ^[http://www.uspto.gov]. 
 
@@ -66,7 +67,7 @@ Our idea of users describes roles, not identities. Animated entities have an ide
 
 Afterward, we can outline knowledge fields using the concept of user, with a twofold aim: help the reader to understand how the concept of users is interpreted in different knowledge fields; explain the background of the methodology we adopted.
 
-##### Social sciences: social roles as users {-}
+#### Social sciences: social roles as users {-}
 
 In social sciences _social roles_ are comparable with our definition of user. As defined in the psychological field [@alleydog], _"social roles refer to the expectations, responsibilities and behaviors we adopt in certain situations."_. The example of the working mother shown before, is the case of social roles. 
 
@@ -75,22 +76,22 @@ The field of social sciences is the only one in which an attempt of automatic ex
 Another work [@prefine] tries to identify social roles on Twitter exploiting a set of assumptions. The authors take into account roles, each one with a set of related verbs: if someone uses verbs from a set, that person may cover that particular social role. To sanitize the collection of positively identified users, the authors crowd-sourced a manual verification procedure, using the  Mechanical Turk platform [@kittur2008crowdsourcing]. Also here some interesting extractions are performed, obtaining users like _artist, athlete, blogger, cheerleader, christian, DJ_, or _filmmaker_. 
 These two works differ from the present study for what concerns the analyzed texts and the methods to extract the entities.  Nevertheless, the extracted set of entities is consistent with our definition of user.
 
-##### Human Resources Management: workers as users {-}
+#### Human Resources Management: workers as users {-}
 
 In organizations, Human Resources Management is the function designed to maximize employees performance [@HRM]. Employees are key actors and they can be considered users according to our definition.
 
 Human Resources Management has tried to classify employees, especially in sub-fields like insurance, social security or work psychology. Usually, we refer to those as lists of jobs. Classifications were made with the goal of grouping similar jobs for educational requirements, job outlooks, salary ranges or work environments to facilitate social analysis and the placement of new workers. Such lists are relevant because, even if they represent just one subset of all the possible users, they contain valid information. Many institutions developed lists of jobs [@listjobs].
 
-##### Medicine: patients as users {-}
+#### Medicine: patients as users {-}
 
 Another field of interest is medicine, since patients can be considered users. Also in this case there are many lists of patients, illnesses and diseases  [@cdcdiseases], which are valuable in terms of information contained.
 
-##### Design and Marketing: between users and customers {-}
+#### Design and Marketing: between users and customers {-}
 
 In the field of _Design_ the concept of user plays a central role and it overlaps with our definition of user. Many tools and theories like "User Centered Design" are based on the concept of user [@ucd]. As stated by the authors in [@npdul], the quality of the design process is proportional to the user needs' satisfaction. It implies that a designer has to understand the user needs; as a consequence he has to discover whom are potential users. 
 
 
-#### List of users generation {#sourc}
+### List of users generation {#sourc}
 
 To generate the input list of users, we used two different approaches: a bottom-up approach and a top-down approach.
 The bottom-up approach is based on the merge of lists from heterogeneous sources. In the present work we used the following lists of entities:
@@ -120,12 +121,12 @@ The whole process generated a total of 76.857 users and gave us a reasonable num
 
 Obviously our lists have a limited coverage and, therefore, they do not contain all variations of a certain user. For instance, the lists miss some users belonging to the classes mentioned above (e.g. new jobs emerged in the last years) and all the alternative ways for referring to a user we do not spotted in the top-down approach. For example our lists miss jobs like _data analyst_, _lap dancer_, _undertaker_, _mortician_ and _thief_ or patients with emerging diseases  like _work-alcoholic_ and _web-addicted_. In addition, our lists miss a class of users related to religious groups, containing users like _christians_ or _jewish_. Such terms have intentionally __not__ been introduced in the input list because we considered these terms as candidates to be extracted by the process in our case study .
 
-#### Patent set selection {#patsel}
+### Patent set selection {#patsel}
 
 Our choice of patent sets aimed at challenging our system to find new users missing in the input list. 
 To reproduce a patent set selection, we took into consideration the International Patent Classification (IPC) [@wipo1]. IPC is a hierarchical system of patent classes representing different areas of technology. Then, we wondered which classes could contain new users according to our seed list. Furthermore, IPC class A, which is the first level in IPC differentiation, is based on human necessities. For this reason, we assumed that in this class we would have found likely users from patents texts.
 
-#### Patent text analysis
+### Patent text analysis
 
 Our Entity Extraction system is composed by a set of sequential phases. The first three phases are related to the linguistic annotation: sentence splitting and tokenization, part of speech tagging and lemmatization. Then, the patent set is analyzed by the entity extractor, specialized for users extraction. A more detailed description of each phase is:
 
@@ -144,7 +145,7 @@ The entity annotation schema for a single token is defined using a widely accept
 - __O__: for all the other cases.
 
 
-#### User Entity Extraction
+### User Entity Extraction
 
 The Users extraction problem is tackled by the implementation of a supervised classifier that is trained on an annotated patent set. Thus, the patent set is linguistically-annotated, using the steps described above and entity-annotated, exploiting the semiautomatic annotation process executed in the previous steps.
 
@@ -164,11 +165,11 @@ The classifier uses different kind of features extracted from the text:
    
 _Word2vec_ is a NLP tool able to produce word representations exploiting big corpora. The main property of the vectors produced by _word2vec_ is that words sharing similar contexts have similar vector representations. By using word vectors instead of the corresponding words we were able overcome the problem of the limited lexical knowledge in the training phase. Using these features and excluding all the others (delexicalized model) we expected that the resulting user extraction system had a lower precision and an higher recall in the classification phase. We presumed to find new users not contained in the input seed list. 
  
-#### Manual Review of the new list of users {#manrev}
+### Manual Review of the new list of users {#manrev}
 
 It is still possible that the classification process creates false positive results (words labeled as users that do not match the definition in section \@ref{theuse}). Thus, it is necessary to make a manual review of the extracted entities with the aim of evaluating the output.
 
-#### Results
+### Results
 
 The following section describes the performances of the automatic users extraction process on two different patent sets. To test the system four experiments were conducted}. Finally the performances and the outcomes of the system are shown and discussed.
 
@@ -412,7 +413,7 @@ knitr::include_graphics("_bookdown_files/figures/user_rank.png")
 
 ```
 
-### Advantages and Drawbacks {#advdrwresults}
+## Advantages and Drawbacks {#advdrwresults}
 
 In this section we show the approach used to extract the advantages and the drawbacks of the invention described in a patent. More precisely, the system identifies textual elements which represent the advantages or the drawbacks described in a patent. Advantages and drawbacks information can strongly advantage designers in the phase of new product development or in the process of product improvement and marketers in the phase of customer understanding and product placing. Furthermore a patent based method has a strong advantage with respected to methods that extracts information using other type of documents (e.g. online reviews of products [@monireh]): patents  anticipate availability of products on the market by a factor varying from 6 to 18 months [@golzio2012]. 
 
@@ -433,14 +434,14 @@ knitr::include_graphics("_bookdown_files/figures/General.pdf")
 
 Before the description of each phases, in section \@ref(advdisdef) the concepts of _advantages and disadvantages of an invention_ are explained.
 
-#### Advantages and drawbacks: an engineering point of view {#advdisdef}
+### Advantages and drawbacks: an engineering point of view {#advdisdef}
 
 An effective development of new products or the redesign of an existing one require the analysis of its positive and negative properties. Due to that, advantages and drawbacks of products are extremely valuable information for companies. Unfortunately, this information is not easy to obtain and manage: a strong evidence of that is the effort in the development of tools able to manage this information [@pahl2013engineering, @ulrich2003product]. Companies frequently make use of Quality Functional Deployment (QFD) and requisites lists, users' needs, users' requirements with the purpose of tracking advantages [@carnevalli2008review].  On the other hand, companies use Failure mode and effects analysis (FMEA) to gather and study drawbacks, failure modes and their effects and causes [@liu2013risk.] 
 However, product developers can acquire QFD and FMEA data only from the users of the invention: this leads to the need of expensive processes of customer's voice listening whose results are often unclear. Moreover, this information is not disclosed to researchers since this is part of the company know-how. 
 
 The description of the brought advantages and solved drawbacks are critical requirements for the patentability of a product, as stated by the politics and the guidelines given by World Intellectual Property Organization (WIPO) on writing patents [@world2004wipo]. As stated by WIPO, an invention is a _solution_ to a specific _problem_ . The problem that an invention solves is a negative effect that state-of-the-art technologies can not fully overcome; on the other side, a solution is a way to solve this problem. A solution can lead to some advantages with respect to the known art. Thus, starting from the definition of invention, it is clear how it can be characterized by the advantages that it brings and by the problems that it solves. Also, it is reasonable to assume that having a clear picture of both advantages and drawbacks of a technology is important for an effective design process ^[The most precise couple of words is __advantage__ and __disadvantage__, but the reading is facilitated by using two very different words, therefore we decided to adopt the couple __advantage__ and __drawback__.]
 
-#### Clues of Advantages and drawbacks in patents
+### Clues of Advantages and drawbacks in patents
 
 First of all we have to define the concept of clue to an advantage or a drawback. To describe with a certain degree of precision an advantage or a drawback, patent writers need to use sequences of words of a certain length. Since NER systems do not perform well on long sequence of tokens, we split the problem of extracting advantages and drawbacks in two parts: first we extract entities that are clues in the sequence of words that describes the advantage or the drawback; then we extract the surrounding words to collect the whole sequence that describes the advantage or the drawback. 
 
@@ -454,7 +455,7 @@ To better understand these concepts some examples are:
 
 For the present work, we refer to advantages and drawbacks as a sequence of words of minimal length that express the advantage or the drawback. The three phrases of the example are three advantages. On the other hand clues are words that are likely to be contained in advantages or drawbacks phrases.
 
-#### Advantages and Drawbacks Clue Collection {#adv-drw-article-sourc}
+### Advantages and Drawbacks Clue Collection {#adv-drw-article-sourc}
 
 
 ```{r advdrwarticlecluecollection, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Main overview of the patent set annotation process.', message=FALSE, warning=FALSE, out.width='80%'}
@@ -506,7 +507,7 @@ The first approach was restricted by the lists being extracted from a random and
 
 It is important to underline that the list of advantages and drawbacks clues is designed to avoid linguistic ambiguities when projecting these entities on the corpus. For example _guide_ has two different meanings^[www.dictionary.com] when used as a verb or as a noun: as a verb it means _"to assist something or someone to travel through, or reach a destination in, an unfamiliar area, as by accompanying or giving directions"_, so it could be the clue to an advantage; at the same time as a noun it assumes the mean of _"a book, pamphlet, etc., giving information, instructions, or advice; handbook"_ thus indicating a product and not an advantage. Avoiding such ambiguities is a crucial aspect to produce an informative training set, so ambiguous words were avoided to be projected on patents. 
 
-#### Domain Clues Extraction {#advdrwarticledomaincluecoll}
+### Domain Clues Extraction {#advdrwarticledomaincluecoll}
 
 The domain-specific clues collection process takes in input the automatically annotated patent set 1. The analyzed patent set is automatically annotated using the domain-independent clues, and is used to extract new domain-specific clues. We decided for the present methods to analyze the whole text of the patents and not to focus only on a specific section. 
 
@@ -558,7 +559,7 @@ Table: (\#tab:featconfsadvdis) Context windows of the extracted features conside
 
 By introducing prefixes and suffixes of the analyzed token, the classifier is able to identify frequent orthographic patterns which allow to maximize the precision in classification phase. On the other hand, the _word2vec_ features are introduced in order to maximize the recall, since semantically similar clues should have similar _word2vec_ vectors. Finally, the tag of the previous token is added to the final feature vector in order to improve the accuracy classification of multi-word clues.
 
-##### Word2vec feature computation {-}
+#### Word2vec feature computation {-}
 
 While contextual, linguistic and compositional features are commonly used for entity extraction task in patents, from a computational linguistic point of view the presented system introduces the novelty of using _word2vec_ features for entity extraction in patents. 
 
@@ -587,7 +588,7 @@ word2vec vectors have been learned. The patent sets of the analyzed case study a
 |     G08B13     |     4831     |         40.904.000        |
 |     *Total*    |     48194    |        412.065.000        |
 
-####Clue validation using tweets sentiment analysis} 
+### Clue validation using tweets sentiment analysis} 
 
 
 ```{r advdrwarticleprocessfigcluevalidationphase, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Overview of the domain specific advantages and failures clue validation process.', message=FALSE, warning=FALSE, out.width='80%'}
@@ -604,7 +605,7 @@ Our approach to the automatic validation of advantages and drawbacks exploits th
 
 The tweet collection can be easily performed by using the Twitter streaming API ^[https://dev.twitter.com/streaming/public], which is freely available. By assigning a polarity score to each clue, we expect to detect tagging anomalies: entities tagged as advantages by the classifier are expected to have a positive polarity in the extracted tweets. Vice versa, entities tagged as drawbacks by the classifier are expected to have a negative polarity in the extracted tweets.
 
-##### Sentiment Classifier: features, classification model and performance evaluation {-}
+#### Sentiment Classifier: features, classification model and performance evaluation {-}
 
 In our sentiment classifier we focused on a wide set of features ranging across different levels of linguistic description. The whole set of features we started with is described below, organized into four main categories: 
 
@@ -624,7 +625,7 @@ By exploiting the described resources, the following features were extracted: po
 
 In order to assign a sentiment polarity score to each tweet, we employed an adapted version of the ItaliaNLP Sentiment Polarity Classifier for the English language [@cimino2014linguistically]. This classifier operates on morpho-syntactically tagged and dependency parsed texts and assigns to each document a score expressing its probability of belonging to a given polarity class. The highest score represents the most probable class. Given a set of features and a training corpus, the classifier creates a statistical model using the feature statistics extracted from the training corpus. This model is used in the classification of unseen documents. The set of features and the machine learning algorithm can be parametrized through a configuration file.  For this work, we used a tandem Long Short Term Memory Recurrent Neural Network (LSTM) - Support Vector Machines (SVM) architecture.
 
-##### Validation of the extracted clues {-}
+#### Validation of the extracted clues {-}
 
 The sentiment classifier is employed to validate the advantage and drawback clues which were previously extracted from patents by the clue extractor. In order to do so, we exploited the output of the tweet classifier on the tweets we previously downloaded. Each tweet, as said before, contains one or more clues to be validated. The sentiment classifier assigns the likeliness to each tweet to positive, neutral or negative. Consequently by analyzing all the tweets we previously downloaded, we obtained for each clue the distribution of positive, neutral and negative tweets. 
 
@@ -640,7 +641,7 @@ Table: (\#tab:sentiment-validation) Classification results of the proposed valid
 
 
 
-#### Advantages and Drawbacks sentences extraction
+### Advantages and Drawbacks sentences extraction
 
 
 ```{r advantagedrawbacksextraction, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Overview of the advantages and failures extraction process.', message=FALSE, warning=FALSE, out.width='80%'}
@@ -665,8 +666,7 @@ This choice was made because the pattern:
 
 In particular, the tree is built by grouping terms which share at the first level the same clue, at the second level the same noun and at the third level the same noun. This grouping procedure allows to easily represent the final output list in a tree structure which can be easily navigated by the end user of the system. 
 
-
-#### Results: case study
+### Results: case study
 
 In this section we describe the experimental use of the proposed process by applying it on four different patent sets. 
 
@@ -787,7 +787,7 @@ knitr::include_graphics("_bookdown_files/figures/damage.png")
 
 ```
 
-### Trademakrs
+## Trademakrs
 
 The market interest for both patents and trademarks has increased during the last decades, with a significant increase in filing for both types of Intellectual Property. The academia also took attention to patent data and trademark data, but with different and (almost) disconnected research approaches. Furthermore, the analysis of patents to study R&D is predominant while less attention has been paid to trademarks [@griliches1981market]. Indeed, very few are the works where patents and trademarks are investigated together and not generically cited together as parts of the intellectual property right framework.
 Moreover cultural differences exist between United States and Europe (at least) and practical consequences can be observed in daily life: for example, even if Europe had an earlier and more enduring interest  in trademarking than the US the presence of the symbols ® and ™ in the product labels are more common in US than in Europe [@mercer2010reading].
@@ -797,7 +797,7 @@ The present chapter studies the usage (if any) of _trademarks_ and _trade symbol
 The analysis clearly stands at the boundary between patent and trademark research areas, and since such intermediate territory has not been investigated in depth, there are several research questions we would like to answer. The starting point is a sheer numerical evidence: we have found out that, at the date of 01/09/2017, a total of 2.162.962 patents worldwide (for details about the database and its coverage see section 3) contain a trademark symbol. 
 It is therefore a not negligible phenomenon, worth of investigation and that should provide interesting insights about the mechanisms and strategies that companies adopt at the frontier between technical innovation and marketing. 
 
-#### The use of trademark symbols ™ and ® in patents from a legal perspective
+### The use of trademark symbols ™ and ® in patents from a legal perspective
 
 It is evident from our preliminary analysis that there exist an high number of patent documents containing a trademark indication. In the present section we investigate what is the legal perspective of this usage. 
 
@@ -817,7 +817,7 @@ Also the the US patent legislation [@jaffe2000us] focuses on the use of trademar
 
 Finally, in [@pressman2018nolo] the authors gives some guidelines on how to introduce trademarks when it is unavoidable. First,  the trademark should be capitalized and used as an adjective (not a noun), followed by the generic name of the product or service. Furthermore when referring to the trademark there should also be a reference to the trademark owner. 
 
-#### Finding Tradenames from Patents
+### Finding Tradenames from Patents
 
 With respect to Users \@ref(#usersresults) and to Advantages and Distadvantages \@ref(#advdrwresults) the process to extract tradenames from patents is trivial. The main activity performed are (for details aobut the activities see section \@ref(sotatools):
 
@@ -828,7 +828,7 @@ With respect to Users \@ref(#usersresults) and to Advantages and Distadvantages 
 
 After that is is possibile to identify tradenames searching for the symbols ™ and ®.
 
-#### Trademarks and IPC Classes
+### Trademarks and IPC Classes
 
 The first investigation has the aim of understanding if the ™ and ® symbols has different content depending on different IPC [@wipo1] classes. The IPC classes are:  The main evidence in figure \@ref(fig:histtm) is that ® is used more than ™ in patent, with and average percent of presence of 7.4% and 5.6% respectively. The reason of this evidence could be that patents contains unregistered trademarks that are never converted to registered trademarks; another reason is the confusion between the ® and ™ symbol, usually considered as synonymous. Furthermore the writer will use the symbol only if he/she knows that the mark is protected, otherwise he/she will not indicate any symbols or will use ™ or ® without checking the right use. Another possible problem is that the word has become of common use and thus usually used without symbols. Furthemore, classes A (Human Necessities) and C (Chemistry; Metallurgy) clearly has more trade symbols than the other classes. 
 
@@ -853,7 +853,7 @@ knitr::kable(
 
 ```
 
-#### The Selected Tradenames
+### The Selected Tradenames
 
 We a set of popular tradenames referring to [@morris2016trademarks]. Then we filtered the ambigouus ones (the one that can refer to surnames), because this can create an onverstimation of the number of patent citing it witouth the tradenames. The total namber of tradenames is 38 and these are:
 
@@ -906,7 +906,7 @@ knitr::include_graphics("_bookdown_files/figures/table_all_tradenames.png")
 
 ```
 
-#### Tradenames Usage in Patents
+### Tradenames Usage in Patents
 
 It is relevant to understand if there exists any difference between different tradenames in the correct usage of trade symbols (a trade name has been cited in the patent texts with the trade symbol). Figure \@ref(fig:tmcitedwell) illustrates in a bi-logaritmic plot the distribution of trade names correctly cited in patents with ® and ™ (Y-axis) versus the same trade names cited without using the proper symbol. Most of trade names are located under the diagonal. Those around the diagonal are those we can considered as well known trademarks and not so subject to genericization phenomena (green area). Conversely on the right we can find a read area where the ratio is even more shifted toward the absence of any indication of protected trademark. In the middle the orange area where many of the most famous trademarks fall down and that could be in phase of generalisation or conversely, since the trademark of a product is totally entangled with the owner (Iphone-Apple; Intel), inventors do not feel the reason to cite them as a trademark. 
 A remark on Figure \@ref(fig:tmcitedwell) is necessary: the plot presents a correct measurement of trademarks with ® and ™ plotted in the y axis, while the search for trademark with missing trademark symbols in some case can introduce undesired errors and include other meaning of the word. Take for example the case of Blackberry®: the datum is referring to mobile phones and accessories or software applications. In all the cases where ® or ™ are correctly written, it is probably true that the inventor is referring to the Blackberry® mobile phones, but machines for jam or juice production extracted out of the blackberry introduce false positive examples. Similarly Fender is probably located too far on the right because it is also a part of a car, bike, motorbike, boat, etc.. and Gibson could introduce citations of works performed by someone called Gibson, therefore if cleaned results are necessary the searching strategies for the trademarks without symbols have to be refined. 
@@ -918,7 +918,7 @@ knitr::include_graphics("_bookdown_files/figures/TrendsMarks.001.jpeg")
 
 ```
 
-#### The Popularity of Tradenames in Patens
+### The Popularity of Tradenames in Patens
 
 In figure \@ref(fig:populartm) are plotted the trends of the numbers of patents that correctly cites a tradenames. We anlyzed 12 different tradenames, divided in couples: each couple belong to a similar sector. We make use of a generalized additive model fitting function to better analyze the results and to make more easily to understand and compare the two element of each pair. 
 
@@ -938,7 +938,7 @@ knitr::include_graphics("_bookdown_files/figures/Marks_Years.jpeg")
 ```
 
 
-#### The Similarity of Tradenames in Patens
+### The Similarity of Tradenames in Patens
 
 Further informations can be derived by analysing the IPC classes where the patent have been chosen by the assignees-attorneys-examiners.The choice of a class is not only matter of market segment but rather of market use. Moreover it is necessary to remark that  from a formal point of view the IPC classes form a feature vector, denoted y ∈ N639. IPC classes form a complete dataset of 639 elements of such feature vector. Each tradename is represented in such a feature vector where the number of patents in each class constitutes the length of the vector along that direction (feature). Our training data is therefore D = (x,y,z), where x∈[1, .., 12], y∈[1, .., 639], and z represents the patent numerosity z∈[0..15*106]. This dataset contains information about how z varies as a function of x and y. The matrix is quite empty since each product/brand addresses needs of specific market/s, after cleaning of the totally empty columns the matrix reduces to the dimensions of 12x479 and demonstrates a correct choice of the trademarks since they covered almost 75% of the IPC space.
 
@@ -953,14 +953,15 @@ knitr::include_graphics("_bookdown_files/figures/correlation_matrix_tm.png")
 
 ```
 
-## Papers
+# Papers
 
-Papers are the main database of scientific knowledge. Recently, the volume of scientific literature has grown rapidly raising an imminent question about how to extract knowledge from this source. On the other hand, this tehcnical knowledge if  managed, can be used to answer questions that 10 years ago would need the help of domain experts to be  answered. In the present section is shown how text mining techniques can help to unswer some of this questions.
+There are fields (mature technologies) where patents anticipate papers, while in others (basic research) the opposite happens. For this reason, scientific literature is the place where companies and scholars gather information about the problems that researchers are facing in the development of new technologies. Anyway, standard approaches of knowledge extraction from papers requires skilled personnel, they are time consuming and lacks in reproducibility. 
+Furthemore, the volume of scientific literature has grown rapidly raising an imminent question about how to extract knowledge from this source. On the other hand, this tehcnical knowledge if  managed, can be used to answer questions that 10 years ago would need the help of domain experts to be  answered. In the present section is shown how text mining techniques can help to unswer some of this questions.
 In particular, it is an essential problem when different classification codes are used in order to organize scientific knowledge on a specific domain, becaues a specific categorization in a certain scientific field is missing. This leads to unnecessary complications in the researchers’ aims who want to quickly and easily find literature on a specific topic among the large amount of scientific publications, or want to effectivelly position a new research. Text mining techniques, and in particular topic modelling, can help scholars in solving this problems, if properly used togheter with domain expertise. 
 
 In this section we present two methodologies capable of automatically segmenting a knowledge field. These selected knowledge field are: sustainable manufacturing and block-chain. The results of the methodologies are described, togheter with example of applications. 
 
-### Sustainable Manufacturing
+## Sustainable Manufacturing
 
 One of the most important objectives of Sustainable Manufacturing (SM) is developing innovative and viable engineered materials, manufacturing processes and systems to provide multiple life-cycle of products. In SM the old concept “from cradle to grave” is now transforming into “from cradle to cradle” [@jawahir2016technological], tending toward multiple product life-cycles or even a “near-perpetual” product/material life. 
 Scientific contributions in the sustainable manufacturing field mostly deals with energy and resource consumption. In this respect, two different main fields of causes can be identified: the process level and the material efficiency one. As a matter of facts, manufacturing processes have a significant role also in putting in place material efficiency strategies [@ingarao2017manufacturing].  As far as the processes are concerned, a first classification of research contributions was discussed in the CIRP General Assembly [@duflou2012towards]. There the authors state that research in manufacturing field, oriented to environmental impact reduction, can be clustered in 5 main sub-classes: 
@@ -983,7 +984,7 @@ As concerns material efficiency options, a framework is presented by Allwood [@a
 A good framework of all the possible reuses of materials is provided by Coopper [@cooper2012reusing]. In this research the authors identify four main reuse strategies for metals: Remanufacture, Reshape (applying metal shaping processes, additive, subtractive, mass conserving) to obtain a new geometry, Relocate: (recovering component and applying little refurbishment, components reused in the same type of products), Cascade: recovering component and use it in another less demanding use (downgrading).
 The role of manufacturing processes in putting in place material efficiency/reuse strategy was also outlined by Ingarao [@ingarao2017manufacturing]. In fact, manufacturing processes deserve to be considered as means for enabling material efficiency strategies. SM may be pursued by several strategies, such as re-designing and/or even changing manufacturing practices to conceive new-generation products, as well as by creating a closed-loop of environmentally-friendly material flow.  
 
-#### The 6R Framework
+### The 6R Framework
 
 All the life-cycle stages of the product development (namely, design, production, use and post-use) should be considered carefully, with a particular attention to the design phase. This represents the real difference introduced by sustainable manufacturing concept with respect to traditional manufacturing, to lean manufacturing or even to green manufacturing, precursors of the SM. In a word, SM paradigm embraces those principles belonging to the 6R framework, namely: Reduce, Reuse, Recycle, Recover, Redesign and Remanufacture. The latter three principles where not included into the previous 3R framework.  To a certain extent, it appears that the better definition of sustainability for any manufacturing operation provided so far is the extent to these principles are applied. This statement justifies because in the search to find a common rationale behind the mess of SM applications, one possible way is to find common roots in the principles that inspired the same applications: namely principles, which allows to the decision maker either an effective way to search for new sustainable solutions or to a certain extent measure the “degree of sustainability”. The higher the number of principles that are satisfied, the higher the potential positive impact on sustainability can be for a given adopted solution.  In this sense, far from stating that the 6R framework is a widespread and commonly adopted metric of SM, the starting assumption in this paper is that 6R is the only approach, to the author’s knowledge, that provides a criteria of classification and selection of solution, and thus indirectly to provide a clear definition of what a SM application may look like.
 The true question nowadays is _if the 6R framework may capture the essence of SM_, provided that it is really critical to clearly define the SM paradigm rationale to the scientific community. This paper aims to stimulate the reflection from the Italian perspective to this point, with a particular concern to the production technology side, by using an automatic classification of papers within the 6R framework and then by benchmarking approaches followed by the Italian Technologist research-network SOSTNERE on SM issues. 
@@ -1003,12 +1004,12 @@ Sustainability (from sustain plus ability) refers to the set of properties of a 
 where the (-) sign stands for those prescriptions oriented to preservation of resources without any significant change of the present condition, while the (+) sign indicates those prescriptions aiming at ameliorating/modification of the trends with respect to traditionally manufactured processes/products. To summarize simplifying, sustainable manufacturing is all about minimizing business risks of any manufacturing operation while maximizing the new opportunities that arise from improving processes and products.  
 Fascinating in principle, these general statements are really difficult to deploy into real operations and production settings. The focus of the present analysis is to derive a clear definition of the concept of manufacturing sustainability based on clear and paper based evidences, rather than referring to general ethical or social principles, which appear to be a __top down__ definition. Conversely, information extracted from all the scientific papers available on SM can provide a sort of __bottom up__ statement. Evidences are relevant words and short concepts that can be related to sustainability, as it will be explained in the following paragraphs by also providing some sound examples from the italian point of view.
 
-#### Sustainable Manufacturing: A text driven bottom-up definition {#smtextdrivenbottomup}
+## Sustainable Manufacturing: A text driven bottom-up definition {#smtextdrivenbottomup}
 
 In this section, we describe the process involved to analyse the papers in the sustainable manufacturing field. To give a more detailed vision of the topic, we consider this field divided in 6 sub-classes (one for each principle), adopting the well know 6R framework. The goal of the process is both to identify which the topics in each of the 6R are, then to accurately measure the way this framework corresponds to the topics of sustainable manufacturing.
 As seen in the flowchart of figure 1 the main activities of the process are four: Paper manual classification, Automatic Keywords Extraction, Keywords manual selection and Clustering. Each activity will be described in the next subsection.
 
-##### Assignment of 6R principle meanings {-}
+### Assignment of 6R principle meanings
 
 The first critical issue is the selection criteria of 6R principles for the assignment. This was done by trying to assign a semantic specification of each R principle, as below explicated, built by summarizing all the possible definitions and concepts extracted by the selected bibliography (partially cited in the present paper). The semantic specification provided below refers to the functional scope of each class, intended as an activity to be performed.
 
@@ -1019,34 +1020,34 @@ knitr::include_graphics("_bookdown_files/figures/workflow_sm.png")
 
 ```
 
-_Reuse_
+__Reuse__
 
 Reuse is the action or practice of using something again, whether for its original purpose (conventional reuse) or to fulfill a different function (creative reuse or repurposing). Reuse involves taking, but not reprocessing, previously used items in order to save time, money, energy, and resources. In particular reuse is useful for machineries, especially when they are expensive, and for their components. Besides, technologies can be also reused and readapted to different situations. In addition, reuse is important because it minimizes disposal needs and costs.
 
-_Reduce_
+__Reduce__
 
 In pre-manufacturing it is possible to implement the reduction minimizing the use of resources. During the production phase, it refers to the use of energy and material, for example, it may involve the use of lower cost materials, the elimination of unnecessary product characteristics, the reduction of overhead costs or the readjustment of product processes. It implies a decrease of costs. As a consequence, the derived effect of this principle is to minimize and optimize performance in terms of cost, time and waste and it focuses primarily on the first three stages of the four life cycle of the product before recalled (§1).
 
-_Recycle_
+__Recycle__
 
 Recycle involves the process of converting material that would otherwise be considered waste, into new products and it corresponds to the breaking down of used items to make raw materials for the manufacture of new goods. Recycling can prevent the waste of potentially useful materials and reduce the consumption of fresh raw materials, thereby decreasing: energy usage, air pollution (from incineration) and water pollution (from landfilling). Recyclable materials include many kinds of glass, paper and cardboard, metal, plastic, tires, textiles and electronics.
 
-_Recover_
+__Recover__
 
 Product recovery operations refer to operational processes (e.g. disassembling, sorting and cleaning) on products at the end of their use, in order to make them usable in n subsequent life-cycles. Differently from recycling, the product life-cycle is shortened, skipping all that phases of retreatment of wastes up to their second use. The risks of implementing product recovery operations is the uncertainty of returned product quality and quantity and for this reason recovering activities have only recently been considered in manufacture.
 
-_Redesign_
+__Redesign__
 
 The redesign activity involves the act of redesigning the next generation of products, which would use components, materials and resources recovered from the previous life-cycle or previous generation of products. It refers to the evaluation of ideas turning them into concrete innovative products obtained from products in their post-use phase.
 
-_Remanufacture_
+__Remanufacture__
 
 Remanufacture involves the re-processing of used products, to restore them to their original like-new state through the reuse of as many parts as possible without loss of functionality. It includes and exceeds the activity of recovering, because a remanufactured product should match the same customer expectation as a new one.
 
 Despite this initial classification, some problem occurred for experts in assigning the papers to the different classes, due to the absence of the formalization that is needed to define unique criteria of belonging. This fact brought to the unbalance of the number of words within each class (corresponding to each principle), that drove to the fuzziness of the training set and, as a consequence, the difficulty in performing a real classification of scientific papers.
 This is the first critical issue of the followed approach so far, that may be overcome by alignment sessions of the decision makers.
 
-##### Automatic Text analysis and Keywords extraction {-}
+### Automatic Text analysis and Keywords extraction
 
 
 In order to analyze the information coming from scientific papers belonging to topics encompassed within the 6R framework, we exploit text mining techniques, which employ methods from different fields of data mining to extract meaningful information 8. The second activity in our analysis process is thus devoted to transforming the set of papers in a set of numeric vectors to be elaborated by the clustering algorithm. To this aim, some text mining techniques are applied in sequence 12 to automatically extract meaningful information and knowledge from unstructured texts.
@@ -1060,7 +1061,7 @@ In the following, the text mining steps performed are described (for details aob
 - _Stemming_ is the process of reducing each word (i.e., token) to its root form. The purpose of this step is to group words with the same theme having closely related semantics. In the proposed system, the stemmer exploits the Snowball Stemmer for the English language, based on the Porter’s algorithm.
 - _Feature representation_ consists in building, for each text, the corresponding vector of numeric features. Indeed, in order to cluster the texts, we have to represent them in the same feature space. In particular, we consider the F- dimensional set of features corresponding to the set of relevant stems.
 
-##### Manual keywords selection {-}
+### Manual keywords selection 
 
 Keyword selection procedure was performed by hand from a team of 4 experts in the scientific field of sustainable manufacturing and with consolidated expertise on research and innovation. In order to prevent misunderstandings and difference in the judgement, a preliminary analysis of the single attitudes to classification was statistically performed and misalignment were eliminated by a guided training, based on the contemporary evaluation of a same sample from different experts so as to align the judgement. This process was done, as above mentioned, based on the 6R explicit framework and sharing the meaning of each principle.
 
@@ -1077,7 +1078,7 @@ According to this procedure the 6R refer to the following keywords:
 
 It is clear that the keyword extraction is not a trivial task, since the outcome of the process may range from a useless single word to a meaningful group of combined words that, on the other hand, could become too specific to be significant for the training set of the search engines.
 
-##### Paper Clustering {-}
+### Paper Clustering 
 
 Document clustering is the application of the general process of cluster analysis to texts. The practical
 applications of document clustering systems are several and vary from automatic document organization to automatic topic extraction. For further details see section \@ref(sotatoolsmodelnetanal). Independently from the kind of algorithm, before the clustering phase, each document has to be represented as a set of features. These features are typically the n-grams contained in documents, so a critical activity for clustering effectiveness is the n-grams extraction (or feature selection). This goal is achieved with a series of sub-activity. These are typically tokenization (the process of parsing text data into smaller units), stemming and lemmatization (reducing all tokens to its semantic base), removing stop-words (less important words), and finally computing term frequencies (or other measures of the relationship between documents and words).
@@ -1086,13 +1087,13 @@ To get an exploratory view of the degree of precision with which the 6R framewor
 
 Spherical k-means exploit cosine dissimilarities to perform prototype-based partitioning of term weight representations of the documents. Prototypes are centroids defined in the same feature space of the documents. The aim of the algorithm is to minimize, given a set of objects (documents in our case) and prototypes described in the same features space (the selected keywords) the cosine distance between each element and the closest prototype. This implies that the output of the algorithm is a membership matrix, in which each document is assigned to a certain prototype.
 
-#### Results
+### Results
 
-In the present section, we describe the output of the application of the methodology described in section 2 on the 339 selected scientific papers on sustainable manufacturing extracted by the query <<sustainable manufacturing>> in the paper search field of the SCOPUS® database. Accordingly, apart the deliberate selection of the source database, no other filter was applied in the journal selection and this guarantees the significance of the journal sample selected. The main output, as highlighted in Figure 1, is the distribution of documents among the 6R principles (i.e. classes) as manually classified, the automatic keywords representations of the classes and the outputs of the clustering algorithm (which is an unsupervised assignment of the documents) compared to the manual classification.
+In the present section, we describe the output of the application of the methodology described in section \@ref(smtextdrivenbottomup) on the 339 selected scientific papers on sustainable manufacturing extracted by the query "sustainable manufacturing" in the paper search field of the SCOPUS® database. Accordingly, apart the deliberate selection of the source database, no other filter was applied in the journal selection and this guarantees the significance of the journal sample selected. The main output, as highlighted in Figure 1, is the distribution of documents among the 6R principles (i.e. classes) as manually classified, the automatic keywords representations of the classes and the outputs of the clustering algorithm (which is an unsupervised assignment of the documents) compared to the manual classification.
 
 The assignment of a paper to a class was made by recognizing the application, or tools or scope of the paper to one 6R’s principles. In this sense, for instance, a paper belonging to a recover might have as scope, or keywords or approach or an activity performed with the principal task to assure the recovery of a give good. It is thus clear, from the beginning, how complex may be to recognize just one principle more than a multiple possibility to satisfy more principles. This fact will be discussed in the followings.
 
-##### Distributions of documents among the 6R {-}
+#### Distributions of documents among the 6R {-}
 
 The main point coming out from the histogram in Figure \@ref(fig:smhistogram) is that the distribution of scientific papers assigned to the 6R principles (classes) is not homogeneous. If the four classes Reduce, Recycle, Redesign and Remanufacture collect a comparable number of papers, the other two (Reuse, Recover) are poorly represented. One possible explanation of this is that cases of reuses or recoveries are less generalizable compared to other “R”, and thus potentially less interesting for conferences and journals. Recovery and reuse, in fact, often refers to specific functions embedded into the product, and finding a general rule for assessing or designing such processes might be more difficult. They rather might find room in technical magazines, not included in the present analysis as concern processes. It worth noting that reuse and recover here refers to product and not explicitly to materials. Different approach concerns the design for reuse, which to a certain extent would belong to remanufacturing, as in the most of papers discussed, to mention a few, in the Annals of CIRP 18,19,20. It is difficult to think that the classification criteria, which plays a critical role into the assignment to classes, contributed to this situation, depending on the meaning assigned to each principle. Whether a different combination of classed have been provided, a different histogram would be expected to appear.
 
@@ -1103,7 +1104,7 @@ knitr::include_graphics("_bookdown_files/figures/sm_histogram.png")
 
 ```
 
-##### Keyword vector representation of 6R {-}
+#### Keyword vector representation of 6R {-}
 
 After the phases of automatic keyword extraction and manual keyword selection, we derived the paper/selected
 keywords matrix. A sample of the elements of this matrix (keyword and their occurrency) is:
@@ -1117,7 +1118,7 @@ keywords matrix. A sample of the elements of this matrix (keyword and their occu
 
 The keywords were divided according to the 6R principles (i.e. class), listing the number of the paper belonging to each class.The sample list of keywords and their occurrency, reflects the distribution of figure \@ref(fig:smhistogram) and cannot thus be significant for classification but only for clustering purposes at the present.
 
-##### Clusters/classes confusion matrix {-}
+#### Clusters/classes confusion matrix {-}
 
 To analyze from a semantic dimension how well 6R framework represent sustainable manufacturing definition through the scientific papers considered, the manually classified documents were clustered using a clustering Spherical K-Means Clustering algorithm. The results (the assignments of each paper to a cluster) was then compared with the manual classification. The number of resulted clusters was 6, having this number of clusters no specific relation with the number of 6R classes. The output of the clustering process is thus a 6x6 Matrix (Class(row)/Cluster (column)) shown in Figure \@ref(fig:clusterssm). Numbers in the cells of the matrix represents centroids that can be characterized by the related keywords.
 
@@ -1128,7 +1129,7 @@ knitr::include_graphics("_bookdown_files/figures/heat_map_sm.png")
 
 ```
 
-#### An extended mapping of the SM field worldwide
+### An extended mapping of the SM field worldwide
 
 The methodology described in section \@ref(smtextdrivenbottomup) has been then re-adapted to give an extended anlysis of the 6R framework from a bottom-up perspective. In the present section, we map the state of the art of Sustainable Manufacturing using topic modelling, a widely used text mining techniques. The aim is to give a broad overview of how this knowledge field is approached world-wide and then, in section 3, to have a deeper look at the Italian way to sustainable manufacturing.
 
@@ -1142,15 +1143,18 @@ The process of topic extraction is composed by the sequent activities:
 
 Each activity is described in the sequent sections. 
 
-##### Papers collection {-}
+#### Papers collection {-}
 
 The analysis starts form a corpus of papers on sustainable manufacturing. The papers were downloaded from the Scopus database searching for the query: 
 
-_TITLE-ABS-KEY ( "sustainable.*manufacturing")_
+\begin{equation*} 
+  TITLE-ABS-KEY("sustainable.*manufacturing")
+\end{equation*} 
+
 
 At the date of 29/05/2018 the query results in 1,628 documents.
 
-##### Keyword extraction {-}
+#### Keyword extraction {-}
 
 
 We represent each article as a set of keywords, merging Author Keywords and Index Keywords. The keywords are then “sanitized” following the sequent rules:
@@ -1165,7 +1169,7 @@ We represent each article as a set of keywords, merging Author Keywords and Inde
 Finally, we compute the Keywords Term Matrix. The matrix is composed of 1,628 documents and 26,272 keywords.
 Having a mathematical representation of the documents allows us to apply standard mathematical techniques to them.
 
-##### Topic Modelling: Number of Topic Selection and LDA Model Fitting
+#### Topic Modelling: Number of Topic Selection and LDA Model Fitting
 
 The goal of the present section is to compute a topic model based on the keyword representation of the papers. A topic model allows examining a set of documents and discovering, based on the statistics of the words in each, what the topics might be and what each document's balance of topics is. To deploy it for the purposes of the present paper, keywords will cluster to form a topic: each topic will represent a different view (say, principle) of sustainable manufacturing.  This approach brings a new perspective to the definition of sustainable manufacturing with respect to the 6R’s framework.
 
@@ -1195,7 +1199,7 @@ knitr::include_graphics("_bookdown_files/figures/geom_point_topic.pdf")
 ```
 
 
-##### Manual Labelling of the topics {-}
+#### Manual Labelling of the topics {-}
 
 To have a clearer representation of the topics, these were manually labelled by 6 independent experts in the field of manufacturing and sustainability. Then a seventh experts took in input the results of the manual naming and synthetized the label.  The final results are the names of the 12 topics. These names are: 
 
@@ -1214,13 +1218,171 @@ To have a clearer representation of the topics, these were manually labelled by 
 
 This final picture provides a clear representation of how topics recognized are mostly homogeneous, provided there are few outlier keywords per each topic, as in figure \@ref(fig:topicpicture). This “new perspective” of sustainable manufacturing represents a way of defining its contents by the grace of the tools or domain of interest involved. For instance, topic n.1 (smart sustainability) refers to the use of the new group of tools and approaches belonging to the Industry 4.0 stream, thus defining specific contents and criteria useful to pursue the sustainability in manufacturing.
 
+## Blockchain
 
-### Block Chain
+In section \@ref(advdrwresults)  has been proposed a new usage of sentiment analysis to extract advantages (considered synonym of the words benefit, gain or profit) and disadvantages (drawback, failure) of technologies from patents (Chiarello, 2017) with the aim of helping researchers and designers to effectively develop new products, analyzing positive and negative properties of an innovation.
+
+The main contributions of the present analysis is to list the problems of a technological field. We want to understand which are the problems that research is trying to solve for a technology and if is there any focus from researchers on the solution of certain technical problem. Furthermore using text mining techniques it is possibile to correlate these problems between them and understand if is there any correlation between problems of technologies and if this map help researchers and companies to understand the research agenda.
+
+This section thus proposes an innovative methodology for the (semi-automatic) extraction of technical knowledge from academic articles, using text mining techniques. Among many information related to technical knowledge, thw methodology focus on the collection and the analysis of the problems of a technology. The meaning of problems of a technology is related to the concept of disadvantages of a technology but with a broader sense. In fact, using papers as a source makes it possible to collect not only technical disadvantages (typically described in patents) but also, organizational, business or even social problems, since these are faced by different intellectual fields in the scientific literature.
+We also propose a case study on the application of the method to the field of _block-chain_. We chose this technology because:
+
+- It is highly innovative 
+- It is having an impact in many different field 
+- The problems of this technology are both technical and managerial
+
+### How Blockchain Technology Works
+
+
+The blockchain can be exemplified as a process in which a set of subjects shares computer resources (memory, CPU, band) to make available all private users in which each participant has a copy of the data.
+
+The use of cryptographic validation techniques generates the mutual trust of the participants in the data stored by the blockchain, which makes it comparable to the registries managed in a centralized manner by recognized and regulated authorities (banks, insurance companies, etc.) [@pilkington201611].
+
+A blockchain is an open and distributed register that can store transactions between parties in a safe, verifiable and permanent way. Once written, the data in a block can not be retroactively altered without the modification of all the subsequent blocks, and this, due to the nature of the protocol and the validation scheme, would require the consensus of the majority of the network. [@iansiti2017truth]
+
+The blockchain is a continuously growing list of records, called blocks, which are linked to each other and made safe by the use of cryptography. Each block in the chain contains a hash pointer (that is a link to the previous block), a timestamp and the transaction data.
+
+The distributed nature and the cooperative model makes the validation process robust and secure, but it has considerable time and costs, due in large part to the _price of the electricity_ needed to validate the blocks [@underwood2016blockchain]. Authentication takes place through mass collaboration and is fueled by collective interests. The result of all this is a robust workflow where participants' data security expertise is not required. The use of this technology also makes it possible to overcome the problem of the infinite reproducibility of a digital asset and of the double expense without using a central server or an authority. [@karame2012double]
+
+There exist an overtrust about blochain technology for businesess, and there exist a growing interest about the drawbacks of this technology [@eyal2018majority. @lin2017survey, @yli2016current]. Has been pointed out that a 51 percent attack 26 would be enough to access or control a private blockchain because, in most cases, the organization that controls it already controls one hundred percent of the block creation. In fact, if someone could attack or damage the blocking tool on a private company server, would be possibile to get complete management of the network and the ability to access and modify the data [@hampton2016understanding]. This is because the centralization due to the privatization of the blockchain leads to a single point of failure, or a central break point, which in a public blockchain could not happen as distributed, so there would be no central point to attack. This could have profound implications in financial crises or debt crises like the 2007-08 financial crisis.
+ 
+### Problems Extraction Methodology
+
+Considering our objectives, the approach we adopted for paper analysis is radically new with respect to the one traditionally established in the literature (bibliometric analysis and keyword approaches). These approaches do not allow a deeper understanding of the technical content described in the text. For this reason, we relied on text mining techniques supported by our technical knowledge base. For the sentiment computation in fact, we used a technical sentiment lexicon developed by the authors that extracts advantages and disadvantages of inventions from patents (\@ref(advdrwresults)) and a novel dictionary lookup approach that incorporates weighting for valence shifters. Following a bottom up-approach, we redesigned and updated these lexicons for an optimal application to paper documents.
+
+```{r bcworkflow, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Proposed workflow for the problem extraction from papers. ', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/bcworkflow.png")
+
+```
+
+
+The workflow of the proposed methodology is shown in figure \@ref(fig:bcworkflow). The process starts with the collection of abstracts belonging to the same technological field. The abstracts are downloaded using the Scopus API, extracting all the documents that contains keywords of the selected technology in the title, abstract or keywords fields. The texts are then pre-processed using state of the art natural language processing tools (sentence splitter, tokenizer, lemmatization). Then, for each sentence we computed a negative sentiment polarity and took into consideration only the sentences having a negative polarity score below a threshold level. We applied topic modelling algorithm on the negative sentences with the aim of clustering. The output of topic modelling is evaluated by technology domain experts with the aim of labeling the identified clusters. 
+
+The application scenarios of our methodology have a wide range of users: 
+
+1.	Companies that want to rapidly map a certain technological field 
+2.	Policy maker that want to invest to solve problems of a technology to boost its innovation
+3.	Journals, to understand the hot-topic of a specific field 
+4.	Research networks, to exploit possible collaborations and synergies between scholars.
+
+
+#### Document collection and selection {-}
+
+The documents were extracted from Scopus searching for the query:
+
+\begin{equation*} 
+  TITLE-ABS-KEY("blockchain" OR "block chain" OR "block-chain")
+\end{equation*} 
+
+At the date of 29/05/2018 the query results in 1,628 documents. 
+
+The term blockchain and its morphological variations is used in other fields different from computer science and economics, in particular in chemistry. For this reason we filtered from the data set all the papers belonging to one of the sequent All Science Journal Classification (ASJC) classes: chemistry, physics and astronomy, chemical engineering, biochemistry, genetics and molecular biology, pharmacology, toxicology and pharmaceutics, immunology and microbiology. The result of this lead us to a set of 1,364 papers.
+
+To have a dataset with an higher precision, we also filtered using rules based on the content of the abstracts, since many conferences do not have an ASJC class in scopus. This characteristic of the scopus database could lead to bias in the results, especially for innovative technologies like block-chain for which the scientific discussion is stronger in conferences then in more structured journals. For this reason we analyzed the abstracts of the 264 articles belonging to one of the ASJC classes listed above (chemistry related) extracting the most frequent words and filtering for a blacklist of generic words contained in scientific articles. This results in a dictionary of words that has ben used to search and filter al the papers containing in the abstract one or more of the words in the dictionary. The final number of selected papers is 1,276.
+
+#### Sentence Splitting {-}
+
+A sentence splitter (for furhter details see setction \@ref(sotatoolstransformsentencesplit)) is then applied to the abstract to divide the texts in sentences. From this step we had an output of 8,406 sentences.
+
+```{r histbllength, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Histogram of the lengths of the sentences.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/length_histogram_bl.pdf")
+
+```
+
+The next step involved the measure of the sentences length. Some of the sentences in fact could be too long due to several fact for example the style of the author or an error in the sentences splitting phase). Since it is not a goal of the present work to analyze the style of the authors or to design a better sentence splitter, we decided to filter the sentences that are too long. The decision on the threshold level of number of word has been taken analyzing the distribution shown in figure \@ref(fig:histbllength). The 97% of the population of sentences contain a number of words that is lower than 53. Thus all the sentences contain more than 53 words has been filtered. From this step we had an output of 8143 sentences.
+
+
+#### Polarity Computation {-}
+
+At this point has been possibile to apply a sentiment polarity measurement on the sentences [@sentimentr2018].
+As output we had a polarity score between -1 (strongly negative) and 1 (strongly positive) for each sentence. Since we are interested in extracting the problems of the state-of-the-art blockchain systems, we visualize the distribution of the polarity scores of the sentences labeled as negative (having a polarity score lower then 0). The histogram of this distribution is shown in figure TOT. In this histogram are represented 1,108 different sentences. As we can see we have a distribution center in -0.2, with a tail that goes down to -0.8. This is an evidence that the system give a reasonable measures since it would be unreasonable to have more probable extreme values. Furthermore, the number of sentences having a polarity equal to 0 is 4,435 that is about the 50% of the sentences and the number of sentences having a positive polarity is 2,700 : it is reasonable that the higher number of sentences falls in these classes since the scientific jargon has to be neutral. The positive bias has been seen also for patent documents (see section \@ref(advdrwresults))).
+
+
+```{r sentintimebl, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Box plots of the distributions  by years of the polarities of the sentences having a negative polarity score.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/polarity_histogram_time_bl.pdf")
+
+```
+
+One interesting evidence we found is that the number of outliers (having a polarity values lower than the 95% of the population) is growing over the year as shown in figure \@ref(fig:sentintimebl). Even if the mean remains near to -0.2, int he last five years the number of strongly negative sentences has increased. This shows how there has been a trend in the focus on the problems of blockchain.
+
+
+#### Tokenization and Token Filtering {-}
+
+In the next phase we apply a state of the art natural language processing pipeline (see section \@ref(sotatools) for more details) to the 1,108 negative sentences. 
+
+The tokenization process results in 220,094 tokens. To extract the meaningful words (words that adds information about the problem that the sentence is describing) we applied a series of filtering steps. As meaningful unit to analyze (token) we decided to use the lemma of the word.  The filtering chain we applied is described in table \@ref(tab:tableblfilter)- The 9,451 final token is a reasonable number considering the 1,108 sentences in input: we have a mean of 9 words per sentence. Considering the mean of 25 words per sentence shown in figure \@ref(fig:histbllength), we now have a summary of the sentences contains only the meaningful words. This output is a clean input for the topic modelling phase.
+
+Table: (\#tab:tableblfilter) Table of the filters applied to select the relevant tokens.
+ 
+```{r tableblfiltercode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/table_bl_filter.xlsx")
+  )
+
+```
+
+### Topic modelling
+
+Topic modeling is a method for unsupervised classification of documents which finds groups of documents fitting a statistical model to the data. In other words, these models captures word correlations in a collection of documents with a set of topics. Latent Dirichlet allocation (LDA) is a particularly popular method for fitting a topic model. It treats each document as a mixture of topics, and each topic as a mixture of words. This allows documents to “overlap” each other in terms of content, rather than being separated into discrete groups, in a way that mirrors typical use of natural language (for further details see section \@ref(sotatoolsmodeltopicmodel)). 
+If the topic modelling process is good, we have as output a structure where every topic is an understandable, meaningful and compact semantic cluster that in our case clearly represent a state-of-the-art problem of block chain technology. 
+
+#### Document Term Matrix {-}
+
+The first step is to take in input the 9,451 tokens and count how many times each one occurs in the 1,108 sentences. In this way we obtain a document-term matrix (DTM) where the documents are the sentences and the terms are our tokens (the lemmas). 
+In our case the DTM has 1077 rows representing the sentences (31 sentences did not contain any relevant tokens) and  1147 tokens.
+
+#### Definition of the Optimal Number of Topics: a Human-Machine Hybrid Approach {-}
+
+To fit a LDA model we have to give as a parameter the number of topic k that we think that best represent the corpus in analysis. In literature there exists many measurement to compute an optimal value of k. However it is worth to keep in mind that these measures  are not always correlated with expert judgement about topics interpretability and coherence. For this reason in the present paper we use an hybrid approach in which we find an optimal neighborhood of value using state of the art k tuning methods and then we compute a graphical output for the 5 best k values to be evaluated by 4 different experts. 
+
+Several approaches tried to take the problem of automatically finding the right number of topics contained in a set of documents. Every approach follow the idea of computing distances (or similarities) between pair of topics varying the number of topics.  We used four different methods to evaluate the output of a topic model for different value of k. These methods are:
+
+-	Caojuan2009 [@cao2009density]: Minimize the average cosine distance between every pair of topics. The best topic number K has a minimal final distance between topics in Latent Dirichlet Allocation
+-	Arun2010 [@arun2010finding]: Minimize the symmetric KL-Divergence of the salient distribution that are derived from the matrices of factors. These matrices are the re-projections of the documents on the topics and of the topics on the vocabulary (the selected tokens). The divergence values are higher for non-optimal K values.
+-	Griffiths2004 [@griffiths2004finding]: Maximize the likely of the data given the model built considering K topics. This is a problem of model selection using Bayesian statistics.
+- Deveaud2014 [@deveaud2014accurate]: Maximize the information divergence between all pairs of topics. The optimal value k is the value for which LDA modeled the most scattered topics.
+
+```{r topicnumsmbl, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Measures of quality of the topic modelling results for growing number of topics. The figure is divided in metrics to minimize (top figure) and to maximized (bottom figure).', message=FALSE, warning=FALSE, out.width='60%'}
+
+
+knitr::include_graphics("_bookdown_files/figures/FindTopicsNumber_plot_bl.pdf")
+
+```
+
+We computed these for measures fitting a LDA model for every K between 2 and 30. We choose the higher value because we wanted to obtain a reasonable number of topics representing the problems of blockchain. After a brain storming with experts it emerges that there can not exists more than 15 classes of problems. We decide to take the double of this number to take in to consideration the biases of human experts. The results of the analysis are shown in figure \@ref(fig:topicnumsmbl). From this figure is evident how the measure we want to minimize interest each other at a value of 7 topics; the values we want to minimize are a little more unstable (especially Arun2010) and intersect both at level of 9 and 11. We thus decided to visualize and make choose the results of the LDA models for a number of topics k between 7 an 10. 
+
+To help experts in their decision process, an interactive map of the problem hass been generated for 7, 8, 9, 10 and 11 topics. The map was created using Shiny [@shiny2017].  The interactive map of problems (a screen shot of the app is shown in figure \@ref(fig:topicmodelschinybc)) helped experts to understand the relationships between the problems. Here a multidimensional scaling algorithm compute the inter-topic distance that permits to visualize the distribution of topics in two dimensions. Clicking on a topic the experts can see its content, and for each word can see both at the estimated term frequency within the selected topic and at the overall term frequency. 
+
+```{r topicmodelschinybc, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Screenshot of the shiny app used by experts to choose the optimal number of topcis. ', message=FALSE, warning=FALSE, out.width='60%'}
+
+
+knitr::include_graphics("_bookdown_files/figures/bc_topicmodel_shiny.png")
+
+```
+
+The experts agreed for a total number of 8 topics as optimal. 
+
+#### Topic Modelling Results   {-}
+
+The output topic modelling phase is show in figure \@ref(fig:topicmodelsoutputbc). The results of the topic modelling are visualized to make it possibile for the expert to explore and label the topic representing the problems of block chain technology. Each point is a word, and word belonging to the same topic are grouped. The size of the label is proportional to the probability ß that the word belong to that topic.
+
+```{r topicmodelsoutputbc, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Content of the 8 topics of problems of blockchain. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term', message=FALSE, warning=FALSE, out.width='60%'}
+
+
+knitr::include_graphics("_bookdown_files/figures/output_bl_topicmodels.png")
+
+```
+
+# Wikipedia
+
+# Twitter
+
+# Job Profiles
 
 
 
-## Wikipedia
-
-## Twitter
-
-## Job Profiles

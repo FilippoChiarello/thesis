@@ -101,9 +101,9 @@
 
 Text Mining Techniques for Knowledge Extraction from Technical Documents
 
-\chapter{Introduction}\label{introduction}
+\part{Introduction}\label{part-introduction}
 
-\section{Goal}\label{goal}
+\chapter{Goal}\label{goal}
 
 Il problema non è sostituire domain knowledge. Idea vecchia ha fallito.
 E' insostibuibile perchè:
@@ -133,11 +133,11 @@ Oltre ad efficienza e potenza nel correggere gli errori. Ora c'è anche
 la possibilità dio maggiore specificità. L'obiettivo è qiuindi poratre
 domain knowledge sia su technology sia ai decisori sociali.
 
-\section{Problem}\label{problem}
+\chapter{Problem}\label{problem}
 
 Foresight
 
-\section{Solutions}\label{solutions}
+\chapter{Solutions}\label{solutions}
 
 \begin{figure}
 
@@ -148,16 +148,16 @@ Foresight
 \caption{A general workflow for the process of data analysis. Readapted from Wickham (2016)}\label{fig:mainworkflow}
 \end{figure}
 
-\section{Challenges: Understanding and
+\chapter{Challenges: Understanding and
 Programming}\label{challenges-understanding-and-programming}
 
-\subsection{Understanding}\label{understanding}
+\section{Understanding}\label{understanding}
 
-\subsection{Programming}\label{programming}
+\section{Programming}\label{programming}
 
-\section{Research Questions}\label{research-questions}
+\chapter{Research Questions}\label{research-questions}
 
-\section{Stakeholders}\label{stakeholders}
+\chapter{Stakeholders}\label{stakeholders}
 
 Marketing
 
@@ -169,7 +169,7 @@ Human Resources
 
 Other Stakeholders
 
-\section{Knowledge Intensive Manegement
+\chapter{Knowledge Intensive Manegement
 Engineering}\label{knowledge-intensive-manegement-engineering}
 
 Tipicamente occupaimo di attività ad altà ripetitività. Ti porti dietro
@@ -185,7 +185,7 @@ essere usati in questi. La tesi ha l'obbiettivo di esploration and
 exploitation queste direzioni. Hon trovato nella data science è più
 nello specifico nel text mining gli strumenti adatti.
 
-\chapter{State of the Art}\label{sota}
+\part{State of the Art}\label{part-state-of-the-art}
 
 The analysis of technical documents require the design of processes that
 rely both on programming and Natural Language Processing techniques and
@@ -193,8 +193,8 @@ on the understanding and knowledge of field experts. While the first
 techniques are codified and explicit, the second are sometimes implicit
 and always harder to systematize. In this section i treat these two
 groups of techniques in the same way to give to the reader a systematic
-literature review on these topics. For this reason the sections of this
-chapter has the subsequent structure:
+literature review on these topics. For this reason the chapter of this
+part has the subsequent structure:
 
 \begin{itemize}
 \tightlist
@@ -232,7 +232,7 @@ chapter has the subsequent structure:
   \ref{sotadocumentspatents} to \ref{sotadocumentsjobs}.
 \end{itemize}
 
-\section{Phases, Tasks, and Techniques}\label{sotatools}
+\chapter{Phases, Tasks, and Techniques}\label{sotatools}
 
 In this section I make a review of the most important techniques for
 Natural Language Processing in the context of technical documents
@@ -245,7 +245,7 @@ tidyverse \citep{wickham2016r}. The algorithms i reviewed in this
 section are summmarised in table tot, where the reader can see the
 relationship between tasks and techniques.
 
-\subsection{Program}\label{sotatoolsprogram}
+\section{Program}\label{sotatoolsprogram}
 
 Programming is a key activity to perform in order to effectively and
 efficiently perform text mining. It is not a phases per se because each
@@ -275,7 +275,7 @@ Python has great performances in the deployment and implementation of
 machine learning at a large-scale. Furthermore, Python codes are easier
 to maintain and more robust than R.
 
-\subsection{Import}\label{sotatoolsimport}
+\section{Import}\label{sotatoolsimport}
 
 The first activities to perform in a text mining pipeline is to find all
 the documents that contains useful information for the analysis and then
@@ -284,7 +284,7 @@ present section is thus focused on techniques for document retrieval
 \ref{sotatoolsimportretrieval} and on the most popular documents digital
 formats \ref{sotatoolsimportformat}.
 
-\subsubsection{Document Retrieval}\label{sotatoolsimportretrieval}
+\subsection{Document Retrieval}\label{sotatoolsimportretrieval}
 
 Document retrieval is the process of matching a user query against a set
 of documents. A document retrieval system has two main tasks:
@@ -330,7 +330,7 @@ use the rules of query building are fundamental to the technical
 document analysis, since without a good query is rare to have a good set
 of documents to analyze.
 
-\subsubsection{Documents Format}\label{sotatoolsimportformat}
+\subsection{Documents Format}\label{sotatoolsimportformat}
 
 For the purpose of the present thesis documents are considered in a
 digital format, and there is no need to read it from a analogical
@@ -372,7 +372,7 @@ most common types of encoding are:
 For the R software there exist many packages that helps to import
 documents in several formats \citep{readr2017r}.
 
-\subsection{Tidy}\label{sotatoolstidy}
+\section{Tidy}\label{sotatoolstidy}
 
 After that data are imported they have to be processed in such a way
 that it would be possible to perform the main task of data analysis
@@ -428,7 +428,7 @@ simplifying representation of documents: a text is represented as the
 bag (multiset) of its words, disregarding grammar and even word order
 but keeping multiplicity \citep{mctear2016conversational}.
 
-\subsection{Transform}\label{sotatoolstransform}
+\section{Transform}\label{sotatoolstransform}
 
 Transforming in the context of Natural Language Processing is what in
 computational linguistic is called text normalization. Normalizing text
@@ -438,7 +438,7 @@ out or tokenizing sentences and words, strip suffixes from the end of
 the word, determining the root of a word or transform the text using
 regular expressions.
 
-\subsubsection{Sentence Splitting}\label{sentence-splitting}
+\subsection{Sentence Splitting}\label{sotatoolstransformsentencesplit}
 
 The analysis of technical documents require as first process, that the
 input text is segmented in sentences. Since documents do not encode this
@@ -460,7 +460,7 @@ systems uses this approach \citep[\citet{attardi2009reverse},
 algorithm is used for the most of the application presented in this
 Thesis.
 
-\subsubsection{Tokenization}\label{tokenization}
+\subsection{Tokenization}\label{tokenization}
 
 Since documents are unstructured information, these has to be divided
 into linguistic units. The definition of linguistic units is
@@ -477,7 +477,7 @@ regular expression defined in a configuration file. Among the others,
 rules are defined to tokenize words, acronyms, numbers, dates and
 equations.
 
-\subsubsection{Stemming}\label{sotatoolstransformstemming}
+\subsection{Stemming}\label{sotatoolstransformstemming}
 
 Stemming is a simpler but cruder methodology for chopping off of
 affixes. The goal of stemming is reducing inflected (or sometimes
@@ -487,7 +487,7 @@ that related words map to the same stem, even if this stem is not a
 valid root. One of the most widely used stemming is the simple and
 efficient Porter algorithm \citep{porter1980algorithm}.
 
-\subsubsection{Lemmatisation}\label{sotatoolstransformlemmatisation}
+\subsection{Lemmatisation}\label{sotatoolstransformlemmatisation}
 
 Lemmatization is the task of determining the root of a words. The output
 allow to find that two words have the same root, despite their surface
@@ -502,7 +502,7 @@ documents mentioning motors if the search is for motor. The most recent
 methods for lemmatization involve complete morphological parsing of the
 word \citep{hankamer1989morphological}.
 
-\subsubsection{Words importance metrics}\label{sotatoolstransformwi}
+\subsection{Words importance metrics}\label{sotatoolstransformwi}
 
 Once that a document has been tokenized and the tokens has been
 transformed, an analyst usually wants to measure how important a word is
@@ -539,7 +539,7 @@ are:
   documents; the weights hence tend to filter out common terms.
 \end{itemize}
 
-\subsubsection{Part-of-Speech Tagging}\label{sotatoolstransformpos}
+\subsection{Part-of-Speech Tagging}\label{sotatoolstransformpos}
 
 The part of speech plays an central role in technical document analysis
 since it provides very useful information concerning the morphological
@@ -566,7 +566,7 @@ This postagger uses a supervised training algorithm: given a set of
 features and a training corpus, the classifier creates a statistical
 model using the feature statistics extracted from the training corpus.
 
-\subsection{Model}\label{sotatoolsmodel}
+\section{Model}\label{sotatoolsmodel}
 
 The goal of a model is to provide a simple low-dimensional summary of a
 dataset \citep{wickham2016r}. Ideally, the model will capture patterns
@@ -583,7 +583,7 @@ classification and clustering to information extraction. The present
 section contains a review of the most used methods used to model textual
 information.
 
-\subsubsection{N-Grams}\label{sotatoolstransformngrams}
+\subsection{N-Grams}\label{sotatoolstransformngrams}
 
 An n-gram is a sequence of N n-gram words: a 2-gram (or bigram) is a
 two-word sequence of words like ``credit card'', ``3d printing'', or
@@ -613,7 +613,7 @@ representation is ready, it is possible to extract only certain
 sequences of part-of-speeches, the ones that whit an high level of
 confidence are n-grams.
 
-\subsubsection{Document Classification}\label{sotatoolsmodeldocclass}
+\subsection{Document Classification}\label{sotatoolsmodeldocclass}
 
 Classification is a general process that has the goal of taking an
 object, extract features, and assign to the observation one of a set of
@@ -724,7 +724,7 @@ Many kinds of machine learning algorithms are used to build classifiers
   \citep[\citet{kim2014convolutional}]{lai2015recurrent}.
 \end{itemize}
 
-\subsubsection{Sentiment Analsysis}\label{sotatoolsmodelsentanal}
+\subsection{Sentiment Analsysis}\label{sotatoolsmodelsentanal}
 
 Sentiment analysis techniques are algorithms able to measure from text,
 people's opinions and emotions toward events, topics, products and their
@@ -788,7 +788,7 @@ most interesting for technical documents analysis are:
   features and techniques in learning \citep{pang2008opinion}.
 \end{itemize}
 
-\subsubsection{Text Clustering}\label{sotatoolsmodelnetanal}
+\subsection{Text Clustering}\label{sotatoolsmodelnetanal}
 
 The goal of clustering methods is to find groups of similar objects in
 the data thanks to the measure of a similarity function
@@ -844,7 +844,7 @@ of specific algorithms text processing. The topic has been heavily
 studied in the information retrieval literature where many techniques
 have been proposed \citep{ricardo2011modern}.
 
-\subsubsection{Named Entity Recognition}\label{sotatoolsmodelner}
+\subsection{Named Entity Recognition}\label{sotatoolsmodelner}
 
 Named Entity Recognition is the task of identifying entity names like
 people, organizations, places, temporal expressions or numerical
@@ -886,7 +886,7 @@ Neural Networks \citep[\citet{misawa2017character}]{lample2016neural}
 are used to build a statistical model based on features that are
 extracted from the analyzed documents in the training phase.
 
-\subsubsection{Topic Modelling}\label{sotatoolsmodeltopicmodel}
+\subsection{Topic Modelling}\label{sotatoolsmodeltopicmodel}
 
 Topic modeling is a form of dimension reduction that uses probabilistic
 models to find the co-occurrence patterns of terms that correspond to
@@ -919,7 +919,7 @@ This allows documents to ``overlap'' each other in terms of content,
 rather than being separated into discrete groups, in a way that mirrors
 typical use of natural language.
 
-\subsection{Visualize}\label{sotatoolsvisualize}
+\section{Visualize}\label{sotatoolsvisualize}
 
 Traditionally, statistical training has focused primarily on
 mathematical derivations and proofs of statistical tests: the process of
@@ -1047,7 +1047,7 @@ audience. The process of trial and error to identify meaningful
 relationships and messages in the data is part of exploratory data
 analysis.
 
-\subsubsection{The Grammar of Graphics}\label{the-grammar-of-graphics}
+\subsection{The Grammar of Graphics}\label{the-grammar-of-graphics}
 
 Even if trial and error is and will remain an important part of data
 visualisation, some works as tried to give to data visualisation
@@ -1112,7 +1112,7 @@ patterns are the same or different across conditions. The faceting
 specification describes which variables should be used to split up the
 data, and how they should be arranged.
 
-\subsection{Comunicate}\label{sotatoolscomunicate}
+\section{Comunicate}\label{sotatoolscomunicate}
 
 The last task to perform in the process of knowledge extraction from
 technical documents is communications. If it means to comunicate the
@@ -1120,13 +1120,12 @@ results of an anlysis inside a team or to the world, it doesn not matter
 how great an analysis is unless it is impossibile to explain it to
 others \citep{wickham2016r}. For the purposes of the present thesis, the
 focus is on the review of technical mechanics of communication
-especialli in the R \citep{R-base} enviroment, which is used to perform
-most of the analysis showed in the next chapter (\ref{methods}). One of
-the most important innovation for the task of communication in data
-science is R Markdown \citep{R-rmarkdown}. R Markdown provides an
-unified authoring framework for data science, combining code, results,
-and comments. R Markdown documents are fully reproducible and support
-dozens of output formats, like PDFs, Word files, slideshows, and more.
+especialli in the R \citep{R-base} enviroment. One of the most important
+innovation for the task of communication in data science is R Markdown
+\citep{R-rmarkdown}. R Markdown provides an unified authoring framework
+for data science, combining code, results, and comments. R Markdown
+documents are fully reproducible and support dozens of output formats,
+like PDFs, Word files, slideshows, and more.
 
 R Markdown files are designed to be used in three ways:
 
@@ -1157,7 +1156,7 @@ has been developed many tools to help data scientist to make effective
 comunication graphs\citep[\citet{shiny2017}, \citet{plotly2017},
 \citet{ggprah2018}, \citet{ICWSM09154}]{wickham2016ggplot2} .
 
-\section{Documents}\label{sotadocuments}
+\chapter{Documents}\label{sotadocuments}
 
 In this section contains a review of the main classes of technical
 documents analyzed in the present work. The documents are patents,
@@ -1167,7 +1166,7 @@ techniques to perform knowledge extraction for these documents, the
 focus is on a task that has intentionally not been analyzed in section
 \ref{sotatools}: understanding.
 
-\subsection{Understand}\label{sotadocumentsunderstand}
+\section{Understand}\label{sotadocumentsunderstand}
 
 The most difficult challenge in technology intelligence is not how to
 detect the large trends- they are visible anyway. It is, rather, how to
@@ -1188,7 +1187,7 @@ Hypothesis
 
 postulation
 
-\subsubsection{Domain Expertise}\label{domain-expertise}
+\subsection{Domain Expertise}\label{domain-expertise}
 
 (collins)
 
@@ -1196,7 +1195,7 @@ Sheela Jasanow
 
 Taleb?
 
-\subsubsection{The problem of byases}\label{sotadocumentsunderstandbyas}
+\subsection{The problem of byases}\label{sotadocumentsunderstandbyas}
 
 Each site typically contains a huge volume of opinionated text that is
 not always easily deciphered in long forum postings and blogs. The
@@ -1211,10 +1210,10 @@ processed is large. Automated opinion mining and summarization systems
 are thus needed, as subjective biases and mental limitations can be
 overcome with an objective sentiment analysis system.
 
-\subsubsection{The Importance of Lexicons for Technical Documents
+\subsection{The Importance of Lexicons for Technical Documents
 Analysis}\label{sotadocumentsunderstandlexicons}
 
-\subsection{Patents}\label{sotadocumentspatents}
+\section{Patents}\label{sotadocumentspatents}
 
 Nowadays patent data can be used for planning technological strategy
 \citep{ernst2003patent}. The focus on the technological usefulness of
@@ -1335,7 +1334,7 @@ involved to solve the task. Choosing a good trade-off between these
 factors is a strict requirement in particular when analyzing big patent
 sets.
 
-\subsubsection{Metadata Approaches}\label{metadata-approaches}
+\subsection{Metadata Approaches}\label{metadata-approaches}
 
 Patent documents has the following metadata:
 
@@ -1548,7 +1547,7 @@ this technique, called author co-citation analysis
 authors. Co-citation analysis can also be used to create classification
 systems of patents \citep{lai2005using}.
 
-\subsubsection{Keywords Approaches}\label{keywords-approaches}
+\subsection{Keywords Approaches}\label{keywords-approaches}
 
 In the keyword based approach each patent is represented as a vector
 where each component measure the importance of a specific keyword, like
@@ -1647,7 +1646,7 @@ incorporate the previous patents, so that a comparison across time is
 not feasible. A new sub-class, B82Y, was introduced in 2011
 \citep{kreuchauff2017patent}.
 
-\subsubsection{Natural Language Processing
+\subsection{Natural Language Processing
 approaches}\label{natural-language-processing-approaches}
 
 The impressive advancements of computational linguistics in the last two
@@ -1832,9 +1831,9 @@ of the described systems is that many external resources, such as lists
 of chemicals or product names, are available: this external knowledge
 can not be fully exploited in generic system.
 
-\subsection{Papers}\label{sotadocumentspapers}
+\section{Papers}\label{sotadocumentspapers}
 
-\subsection{Wikipedia}\label{sotadocumentswiki}
+\section{Wikipedia}\label{sotadocumentswiki}
 
 The use of Wikipedia as source of knowledge started more than a decade
 ago and has been validated repeatedly in a variety of text mining
@@ -1898,7 +1897,7 @@ on experts' subjective views, but is endogenously generated by the
 technological community that writes the articles for the encyclopedia
 and includes hyperlinks in the text of newly added pages.
 
-\subsection{Social Media}\label{sotadocumentstwitter}
+\section{Social Media}\label{sotadocumentstwitter}
 
 Nowadays, more than ever before, companies, governments, and researchers
 can gather and access data about people on a massive scale. Monitoring
@@ -2062,7 +2061,7 @@ disciplines, here is exposed the main literature in the most technical
 related fields that are strongly related to social media analysis:
 economics and marketing.
 
-\subsubsection{Economics}\label{economics}
+\subsection{Economics}\label{economics}
 
 This domain has raised the great interest of researchers. The first
 studies focused especially on market fluctuation and on aggregated
@@ -2172,7 +2171,7 @@ product sales for up to at least 3 months in advance for well-known
 products such as Apple iPhone 4, Samsung Galaxy S 4G, and Samsung Galaxy
 S II, thus the predictive ability varies across products.
 
-\subsubsection{Marketing}\label{marketing}
+\subsection{Marketing}\label{marketing}
 
 Scholars had a great focus in the last years on using Social Media
 Information for marketing. Chen et al. \citep{chen2015making} conducted
@@ -2213,7 +2212,7 @@ improve the prediction performance. Even when just using Social Media
 information from the first three days of the project, they achieve an
 AUC of 0.90, reflecting very high classification performance.
 
-\subsection{Human Resources Documentation}\label{sotadocumentsjobs}
+\section{Human Resources Documentation}\label{sotadocumentsjobs}
 
 Text Mining has been used in the last years to manage human resources
 (HR) strategically, mainly with applications aiming at analyzing staff's
@@ -2315,7 +2314,7 @@ matching. However, once this search process is completed, the recruiter
 has to download all the search results and résumés and then read through
 all the documents to pick the most suitable candidates.
 
-\subsubsection{The Key Role of Skills
+\subsection{The Key Role of Skills
 Assessment}\label{the-key-role-of-skills-assessment}
 
 The term ``assessment'' indicates the action of assessing the potential,
@@ -2359,11 +2358,12 @@ skills that compete with machines, an increase in skills that complement
 machines; finally, an increase in skills where machines are not enough
 advanced \citep{maccrory2014racing}.
 
-\chapter{Case Studies: Methods and Results}\label{methods}
+\part{Case Studies: Methods and
+Results}\label{part-case-studies-methods-and-results}
 
 L'aprrocio metodologico generico\ldots{}
 
-This chapter describes the methods applied for the analysis of technical
+This part describes the methods applied for the analysis of technical
 documents. The methods are ensamble of Natural Language Processing (NLP)
 and Text Mining \emph{techniques} described in \ref{sotatools},
 re-designed depending on the analyzed document and the analysis goal.
@@ -2373,7 +2373,7 @@ table tot summarise the relations between the documents under analysis
 
 Table documents vs tools
 
-\section{Patents}\label{patents}
+\chapter{Patents}\label{patents}
 
 Patents contain a large quantity of information which is usually
 neglected. This information is hidden beneath technical and juridical
@@ -2389,7 +2389,7 @@ invention and trademarks contained in patents. The results of the
 methodologies are described, togheter with example of applications of
 the extracted entities for intelligence tasks.
 
-\subsection{Users}\label{usersresults}
+\section{Users}\label{usersresults}
 
 In this section we show the approach used to extract the users of the
 invention described in a patent. The proposed process is shown in figure
@@ -2445,8 +2445,7 @@ concept of \emph{user of the invetion} is explained by giving a
 definition of users and presenting the way that this concept is
 exploited in different knowledge fields.
 
-\subsubsection{Users: A key information hidden in
-patents}\label{userdef}
+\subsection{Users: A key information hidden in patents}\label{userdef}
 
 Patents are documents that must provide a detailed public disclosure of
 an invention \citep{wipo2}. An \emph{invention} is a new and useful
@@ -2498,9 +2497,10 @@ with a twofold aim: help the reader to understand how the concept of
 users is interpreted in different knowledge fields; explain the
 background of the methodology we adopted.
 
-\paragraph{Social sciences: social roles as
+\subsubsection*{Social sciences: social roles as
 users}\label{social-sciences-social-roles-as-users}
-\addcontentsline{toc}{paragraph}{Social sciences: social roles as users}
+\addcontentsline{toc}{subsubsection}{Social sciences: social roles as
+users}
 
 In social sciences \emph{social roles} are comparable with our
 definition of user. As defined in the psychological field
@@ -2532,10 +2532,10 @@ from the present study for what concerns the analyzed texts and the
 methods to extract the entities. Nevertheless, the extracted set of
 entities is consistent with our definition of user.
 
-\paragraph{Human Resources Management: workers as
+\subsubsection*{Human Resources Management: workers as
 users}\label{human-resources-management-workers-as-users}
-\addcontentsline{toc}{paragraph}{Human Resources Management: workers as
-users}
+\addcontentsline{toc}{subsubsection}{Human Resources Management: workers
+as users}
 
 In organizations, Human Resources Management is the function designed to
 maximize employees performance \citep{HRM}. Employees are key actors and
@@ -2551,19 +2551,19 @@ because, even if they represent just one subset of all the possible
 users, they contain valid information. Many institutions developed lists
 of jobs \citep{listjobs}.
 
-\paragraph{Medicine: patients as
+\subsubsection*{Medicine: patients as
 users}\label{medicine-patients-as-users}
-\addcontentsline{toc}{paragraph}{Medicine: patients as users}
+\addcontentsline{toc}{subsubsection}{Medicine: patients as users}
 
 Another field of interest is medicine, since patients can be considered
 users. Also in this case there are many lists of patients, illnesses and
 diseases \citep{cdcdiseases}, which are valuable in terms of information
 contained.
 
-\paragraph{Design and Marketing: between users and
+\subsubsection*{Design and Marketing: between users and
 customers}\label{design-and-marketing-between-users-and-customers}
-\addcontentsline{toc}{paragraph}{Design and Marketing: between users and
-customers}
+\addcontentsline{toc}{subsubsection}{Design and Marketing: between users
+and customers}
 
 In the field of \emph{Design} the concept of user plays a central role
 and it overlaps with our definition of user. Many tools and theories
@@ -2573,7 +2573,7 @@ the design process is proportional to the user needs' satisfaction. It
 implies that a designer has to understand the user needs; as a
 consequence he has to discover whom are potential users.
 
-\subsubsection{List of users generation}\label{sourc}
+\subsection{List of users generation}\label{sourc}
 
 To generate the input list of users, we used two different approaches: a
 bottom-up approach and a top-down approach. The bottom-up approach is
@@ -2639,7 +2639,7 @@ have intentionally \textbf{not} been introduced in the input list
 because we considered these terms as candidates to be extracted by the
 process in our case study .
 
-\subsubsection{Patent set selection}\label{patsel}
+\subsection{Patent set selection}\label{patsel}
 
 Our choice of patent sets aimed at challenging our system to find new
 users missing in the input list. To reproduce a patent set selection, we
@@ -2651,7 +2651,7 @@ IPC class A, which is the first level in IPC differentiation, is based
 on human necessities. For this reason, we assumed that in this class we
 would have found likely users from patents texts.
 
-\subsubsection{Patent text analysis}\label{patent-text-analysis}
+\subsection{Patent text analysis}\label{patent-text-analysis}
 
 Our Entity Extraction system is composed by a set of sequential phases.
 The first three phases are related to the linguistic annotation:
@@ -2710,7 +2710,7 @@ widely accepted BIO annotation scheme \cite{ramshaw}:
   \textbf{O}: for all the other cases.
 \end{itemize}
 
-\subsubsection{User Entity Extraction}\label{user-entity-extraction}
+\subsection{User Entity Extraction}\label{user-entity-extraction}
 
 The Users extraction problem is tackled by the implementation of a
 supervised classifier that is trained on an annotated patent set. Thus,
@@ -2766,7 +2766,7 @@ resulting user extraction system had a lower precision and an higher
 recall in the classification phase. We presumed to find new users not
 contained in the input seed list.
 
-\subsubsection{Manual Review of the new list of users}\label{manrev}
+\subsection{Manual Review of the new list of users}\label{manrev}
 
 It is still possible that the classification process creates false
 positive results (words labeled as users that do not match the
@@ -2774,7 +2774,7 @@ definition in section @ref\{theuse\}). Thus, it is necessary to make a
 manual review of the extracted entities with the aim of evaluating the
 output.
 
-\subsubsection{Results}\label{results}
+\subsection{Results}\label{results}
 
 The following section describes the performances of the automatic users
 extraction process on two different patent sets. To test the system four
@@ -3521,7 +3521,7 @@ users of the patent-set (like \emph{priest}, \emph{fund-raiser},
 \caption{Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.}\label{fig:patentsperuser}
 \end{figure}
 
-\subsection{Advantages and Drawbacks}\label{advdrwresults}
+\section{Advantages and Drawbacks}\label{advdrwresults}
 
 In this section we show the approach used to extract the advantages and
 the drawbacks of the invention described in a patent. More precisely,
@@ -3575,7 +3575,7 @@ Before the description of each phases, in section \ref{advdisdef} the
 concepts of \emph{advantages and disadvantages of an invention} are
 explained.
 
-\subsubsection{Advantages and drawbacks: an engineering point of
+\subsection{Advantages and drawbacks: an engineering point of
 view}\label{advdisdef}
 
 An effective development of new products or the redesign of an existing
@@ -3614,7 +3614,7 @@ process \footnote{The most precise couple of words is \textbf{advantage}
   very different words, therefore we decided to adopt the couple
   \textbf{advantage} and \textbf{drawback}.}
 
-\subsubsection{Clues of Advantages and drawbacks in
+\subsection{Clues of Advantages and drawbacks in
 patents}\label{clues-of-advantages-and-drawbacks-in-patents}
 
 First of all we have to define the concept of clue to an advantage or a
@@ -3644,7 +3644,7 @@ The three phrases of the example are three advantages. On the other hand
 clues are words that are likely to be contained in advantages or
 drawbacks phrases.
 
-\subsubsection{Advantages and Drawbacks Clue
+\subsection{Advantages and Drawbacks Clue
 Collection}\label{adv-drw-article-sourc}
 
 \begin{figure}
@@ -3742,8 +3742,7 @@ handbook''} thus indicating a product and not an advantage. Avoiding
 such ambiguities is a crucial aspect to produce an informative training
 set, so ambiguous words were avoided to be projected on patents.
 
-\subsubsection{Domain Clues
-Extraction}\label{advdrwarticledomaincluecoll}
+\subsection{Domain Clues Extraction}\label{advdrwarticledomaincluecoll}
 
 The domain-specific clues collection process takes in input the
 automatically annotated patent set 1. The analyzed patent set is
@@ -3874,9 +3873,9 @@ the recall, since semantically similar clues should have similar
 to the final feature vector in order to improve the accuracy
 classification of multi-word clues.
 
-\paragraph{Word2vec feature
+\subsubsection*{Word2vec feature
 computation}\label{word2vec-feature-computation}
-\addcontentsline{toc}{paragraph}{Word2vec feature computation}
+\addcontentsline{toc}{subsubsection}{Word2vec feature computation}
 
 While contextual, linguistic and compositional features are commonly
 used for entity extraction task in patents, from a computational
@@ -3930,7 +3929,7 @@ G08B13 & 4831 & 40.904.000\tabularnewline
 \bottomrule
 \end{longtable}
 
-\subsubsection{Clue validation using tweets sentiment
+\subsection{Clue validation using tweets sentiment
 analysis\}}\label{clue-validation-using-tweets-sentiment-analysis}
 
 \begin{figure}
@@ -3982,10 +3981,10 @@ the classifier are expected to have a positive polarity in the extracted
 tweets. Vice versa, entities tagged as drawbacks by the classifier are
 expected to have a negative polarity in the extracted tweets.
 
-\paragraph{Sentiment Classifier: features, classification model and
+\subsubsection*{Sentiment Classifier: features, classification model and
 performance
 evaluation}\label{sentiment-classifier-features-classification-model-and-performance-evaluation}
-\addcontentsline{toc}{paragraph}{Sentiment Classifier: features,
+\addcontentsline{toc}{subsubsection}{Sentiment Classifier: features,
 classification model and performance evaluation}
 
 In our sentiment classifier we focused on a wide set of features ranging
@@ -4051,9 +4050,9 @@ learning algorithm can be parametrized through a configuration file. For
 this work, we used a tandem Long Short Term Memory Recurrent Neural
 Network (LSTM) - Support Vector Machines (SVM) architecture.
 
-\paragraph{Validation of the extracted
+\subsubsection*{Validation of the extracted
 clues}\label{validation-of-the-extracted-clues}
-\addcontentsline{toc}{paragraph}{Validation of the extracted clues}
+\addcontentsline{toc}{subsubsection}{Validation of the extracted clues}
 
 The sentiment classifier is employed to validate the advantage and
 drawback clues which were previously extracted from patents by the clue
@@ -4098,7 +4097,7 @@ SVM-W2V & 87.71 & 89.89 & 91.29 & 90.57 & 83.35 & 80.66 &
 \bottomrule
 \end{longtable}
 
-\subsubsection{Advantages and Drawbacks sentences
+\subsection{Advantages and Drawbacks sentences
 extraction}\label{advantages-and-drawbacks-sentences-extraction}
 
 \begin{figure}
@@ -4151,7 +4150,7 @@ third level the same noun. This grouping procedure allows to easily
 represent the final output list in a tree structure which can be easily
 navigated by the end user of the system.
 
-\subsubsection{Results: case study}\label{results-case-study}
+\subsection{Results: case study}\label{results-case-study}
 
 In this section we describe the experimental use of the proposed process
 by applying it on four different patent sets.
@@ -4553,7 +4552,7 @@ such drawbacks.
 \caption{Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the drawback clue Damage. }\label{fig:processimagetest2}
 \end{figure}
 
-\subsection{Trademakrs}\label{trademakrs}
+\section{Trademakrs}\label{trademakrs}
 
 The market interest for both patents and trademarks has increased during
 the last decades, with a significant increase in filing for both types
@@ -4593,8 +4592,7 @@ phenomenon, worth of investigation and that should provide interesting
 insights about the mechanisms and strategies that companies adopt at the
 frontier between technical innovation and marketing.
 
-\subsubsection{The use of trademark symbols ™ and ® in patents from a
-legal
+\subsection{The use of trademark symbols ™ and ® in patents from a legal
 perspective}\label{the-use-of-trademark-symbols-and-in-patents-from-a-legal-perspective}
 
 It is evident from our preliminary analysis that there exist an high
@@ -4675,7 +4673,7 @@ followed by the generic name of the product or service. Furthermore when
 referring to the trademark there should also be a reference to the
 trademark owner.
 
-\subsubsection{Finding Tradenames from
+\subsection{Finding Tradenames from
 Patents}\label{finding-tradenames-from-patents}
 
 With respect to Users @ref(\#usersresults) and to Advantages and
@@ -4698,7 +4696,7 @@ aobut the activities see section \ref{sotatools}:
 After that is is possibile to identify tradenames searching for the
 symbols ™ and ®.
 
-\subsubsection{Trademarks and IPC
+\subsection{Trademarks and IPC
 Classes}\label{trademarks-and-ipc-classes}
 
 The first investigation has the aim of understanding if the ™ and ®
@@ -4767,7 +4765,7 @@ Average & 6.4 & 5.4\\
 \hline
 \end{tabular}
 
-\subsubsection{The Selected Tradenames}\label{the-selected-tradenames}
+\subsection{The Selected Tradenames}\label{the-selected-tradenames}
 
 We a set of popular tradenames referring to
 \citep{morris2016trademarks}. Then we filtered the ambigouus ones (the
@@ -4873,7 +4871,7 @@ not always used.
 \caption{Number of patents citing one of the 38 selected tradenames. The data are divided for any years, from 1995 to 2002 and from 2007 to 2014.}\label{fig:tmlistcpmplete}
 \end{figure}
 
-\subsubsection{Tradenames Usage in
+\subsection{Tradenames Usage in
 Patents}\label{tradenames-usage-in-patents}
 
 It is relevant to understand if there exists any difference between
@@ -4916,7 +4914,7 @@ have to be refined.
 \caption{Plot of the trade names correctly cited in patents with ® and ™ on the y-axis and the same trade names cited without using the proper symbol on the x-axes. Both axes are on a logaritmic scale.}\label{fig:tmcitedwell}
 \end{figure}
 
-\subsubsection{The Popularity of Tradenames in
+\subsection{The Popularity of Tradenames in
 Patens}\label{the-popularity-of-tradenames-in-patens}
 
 In figure \ref{fig:populartm} are plotted the trends of the numbers of
@@ -4957,7 +4955,7 @@ Some of them shows:
 \caption{Plot of the trade names correctly cited in patents from 2000 to 2014.}\label{fig:populartm}
 \end{figure}
 
-\subsubsection{The Similarity of Tradenames in
+\subsection{The Similarity of Tradenames in
 Patens}\label{the-similarity-of-tradenames-in-patens}
 
 Further informations can be derived by analysing the IPC classes where
@@ -4993,31 +4991,37 @@ the relationship. The main evidences are the following:
 \caption{Heat-map of the IPC-based similiraties between trademarks.}\label{fig:similartm}
 \end{figure}
 
-\section{Papers}\label{papers}
+\chapter{Papers}\label{papers}
 
-Papers are the main database of scientific knowledge. Recently, the
-volume of scientific literature has grown rapidly raising an imminent
-question about how to extract knowledge from this source. On the other
-hand, this tehcnical knowledge if managed, can be used to answer
-questions that 10 years ago would need the help of domain experts to be
-answered. In the present section is shown how text mining techniques can
-help to unswer some of this questions. In particular, it is an essential
-problem when different classification codes are used in order to
-organize scientific knowledge on a specific domain, becaues a specific
-categorization in a certain scientific field is missing. This leads to
-unnecessary complications in the researchers' aims who want to quickly
-and easily find literature on a specific topic among the large amount of
-scientific publications, or want to effectivelly position a new
-research. Text mining techniques, and in particular topic modelling, can
-help scholars in solving this problems, if properly used togheter with
-domain expertise.
+There are fields (mature technologies) where patents anticipate papers,
+while in others (basic research) the opposite happens. For this reason,
+scientific literature is the place where companies and scholars gather
+information about the problems that researchers are facing in the
+development of new technologies. Anyway, standard approaches of
+knowledge extraction from papers requires skilled personnel, they are
+time consuming and lacks in reproducibility. Furthemore, the volume of
+scientific literature has grown rapidly raising an imminent question
+about how to extract knowledge from this source. On the other hand, this
+tehcnical knowledge if managed, can be used to answer questions that 10
+years ago would need the help of domain experts to be answered. In the
+present section is shown how text mining techniques can help to unswer
+some of this questions. In particular, it is an essential problem when
+different classification codes are used in order to organize scientific
+knowledge on a specific domain, becaues a specific categorization in a
+certain scientific field is missing. This leads to unnecessary
+complications in the researchers' aims who want to quickly and easily
+find literature on a specific topic among the large amount of scientific
+publications, or want to effectivelly position a new research. Text
+mining techniques, and in particular topic modelling, can help scholars
+in solving this problems, if properly used togheter with domain
+expertise.
 
 In this section we present two methodologies capable of automatically
 segmenting a knowledge field. These selected knowledge field are:
 sustainable manufacturing and block-chain. The results of the
 methodologies are described, togheter with example of applications.
 
-\subsection{Sustainable Manufacturing}\label{sustainable-manufacturing}
+\section{Sustainable Manufacturing}\label{sustainable-manufacturing}
 
 One of the most important objectives of Sustainable Manufacturing (SM)
 is developing innovative and viable engineered materials, manufacturing
@@ -5088,7 +5092,7 @@ re-designing and/or even changing manufacturing practices to conceive
 new-generation products, as well as by creating a closed-loop of
 environmentally-friendly material flow.
 
-\subsubsection{The 6R Framework}\label{the-6r-framework}
+\subsection{The 6R Framework}\label{the-6r-framework}
 
 All the life-cycle stages of the product development (namely, design,
 production, use and post-use) should be considered carefully, with a
@@ -5186,7 +5190,7 @@ short concepts that can be related to sustainability, as it will be
 explained in the following paragraphs by also providing some sound
 examples from the italian point of view.
 
-\subsubsection{Sustainable Manufacturing: A text driven bottom-up
+\section{Sustainable Manufacturing: A text driven bottom-up
 definition}\label{smtextdrivenbottomup}
 
 In this section, we describe the process involved to analyse the papers
@@ -5200,9 +5204,8 @@ main activities of the process are four: Paper manual classification,
 Automatic Keywords Extraction, Keywords manual selection and Clustering.
 Each activity will be described in the next subsection.
 
-\paragraph{Assignment of 6R principle
+\subsection{Assignment of 6R principle
 meanings}\label{assignment-of-6r-principle-meanings}
-\addcontentsline{toc}{paragraph}{Assignment of 6R principle meanings}
 
 The first critical issue is the selection criteria of 6R principles for
 the assignment. This was done by trying to assign a semantic
@@ -5221,7 +5224,7 @@ each class, intended as an activity to be performed.
 \caption{Flowchart of the 6R papers analysis process. The white boxes represent the activities and the yellow boxes the predicted documents. In the figure are also highlighted the input and the main outputs of the process.}\label{fig:wfsm}
 \end{figure}
 
-\emph{Reuse}
+\textbf{Reuse}
 
 Reuse is the action or practice of using something again, whether for
 its original purpose (conventional reuse) or to fulfill a different
@@ -5233,7 +5236,7 @@ technologies can be also reused and readapted to different situations.
 In addition, reuse is important because it minimizes disposal needs and
 costs.
 
-\emph{Reduce}
+\textbf{Reduce}
 
 In pre-manufacturing it is possible to implement the reduction
 minimizing the use of resources. During the production phase, it refers
@@ -5245,7 +5248,7 @@ derived effect of this principle is to minimize and optimize performance
 in terms of cost, time and waste and it focuses primarily on the first
 three stages of the four life cycle of the product before recalled (§1).
 
-\emph{Recycle}
+\textbf{Recycle}
 
 Recycle involves the process of converting material that would otherwise
 be considered waste, into new products and it corresponds to the
@@ -5257,7 +5260,7 @@ pollution (from landfilling). Recyclable materials include many kinds of
 glass, paper and cardboard, metal, plastic, tires, textiles and
 electronics.
 
-\emph{Recover}
+\textbf{Recover}
 
 Product recovery operations refer to operational processes
 (e.g.~disassembling, sorting and cleaning) on products at the end of
@@ -5268,7 +5271,7 @@ use. The risks of implementing product recovery operations is the
 uncertainty of returned product quality and quantity and for this reason
 recovering activities have only recently been considered in manufacture.
 
-\emph{Redesign}
+\textbf{Redesign}
 
 The redesign activity involves the act of redesigning the next
 generation of products, which would use components, materials and
@@ -5277,7 +5280,7 @@ of products. It refers to the evaluation of ideas turning them into
 concrete innovative products obtained from products in their post-use
 phase.
 
-\emph{Remanufacture}
+\textbf{Remanufacture}
 
 Remanufacture involves the re-processing of used products, to restore
 them to their original like-new state through the reuse of as many parts
@@ -5295,10 +5298,8 @@ real classification of scientific papers. This is the first critical
 issue of the followed approach so far, that may be overcome by alignment
 sessions of the decision makers.
 
-\paragraph{Automatic Text analysis and Keywords
+\subsection{Automatic Text analysis and Keywords
 extraction}\label{automatic-text-analysis-and-keywords-extraction}
-\addcontentsline{toc}{paragraph}{Automatic Text analysis and Keywords
-extraction}
 
 In order to analyze the information coming from scientific papers
 belonging to topics encompassed within the 6R framework, we exploit text
@@ -5362,8 +5363,7 @@ details aobut the activities see section \ref{sotatools}:
   corresponding to the set of relevant stems.
 \end{itemize}
 
-\paragraph{Manual keywords selection}\label{manual-keywords-selection}
-\addcontentsline{toc}{paragraph}{Manual keywords selection}
+\subsection{Manual keywords selection}\label{manual-keywords-selection}
 
 Keyword selection procedure was performed by hand from a team of 4
 experts in the scientific field of sustainable manufacturing and with
@@ -5428,8 +5428,7 @@ meaningful group of combined words that, on the other hand, could become
 too specific to be significant for the training set of the search
 engines.
 
-\paragraph{Paper Clustering}\label{paper-clustering}
-\addcontentsline{toc}{paragraph}{Paper Clustering}
+\subsection{Paper Clustering}\label{paper-clustering}
 
 Document clustering is the application of the general process of cluster
 analysis to texts. The practical applications of document clustering
@@ -5463,19 +5462,19 @@ element and the closest prototype. This implies that the output of the
 algorithm is a membership matrix, in which each document is assigned to
 a certain prototype.
 
-\subsubsection{Results}\label{results-1}
+\subsection{Results}\label{results-1}
 
 In the present section, we describe the output of the application of the
-methodology described in section 2 on the 339 selected scientific papers
-on sustainable manufacturing extracted by the query
-\textless{}\textgreater{} in the paper search field of the SCOPUS®
-database. Accordingly, apart the deliberate selection of the source
-database, no other filter was applied in the journal selection and this
-guarantees the significance of the journal sample selected. The main
-output, as highlighted in Figure 1, is the distribution of documents
-among the 6R principles (i.e.~classes) as manually classified, the
-automatic keywords representations of the classes and the outputs of the
-clustering algorithm (which is an unsupervised assignment of the
+methodology described in section \ref{smtextdrivenbottomup} on the 339
+selected scientific papers on sustainable manufacturing extracted by the
+query ``sustainable manufacturing'' in the paper search field of the
+SCOPUS® database. Accordingly, apart the deliberate selection of the
+source database, no other filter was applied in the journal selection
+and this guarantees the significance of the journal sample selected. The
+main output, as highlighted in Figure 1, is the distribution of
+documents among the 6R principles (i.e.~classes) as manually classified,
+the automatic keywords representations of the classes and the outputs of
+the clustering algorithm (which is an unsupervised assignment of the
 documents) compared to the manual classification.
 
 The assignment of a paper to a class was made by recognizing the
@@ -5487,10 +5486,10 @@ from the beginning, how complex may be to recognize just one principle
 more than a multiple possibility to satisfy more principles. This fact
 will be discussed in the followings.
 
-\paragraph{Distributions of documents among the
+\subsubsection*{Distributions of documents among the
 6R}\label{distributions-of-documents-among-the-6r}
-\addcontentsline{toc}{paragraph}{Distributions of documents among the
-6R}
+\addcontentsline{toc}{subsubsection}{Distributions of documents among
+the 6R}
 
 The main point coming out from the histogram in Figure
 \ref{fig:smhistogram} is that the distribution of scientific papers
@@ -5523,9 +5522,10 @@ histogram would be expected to appear.
 \caption{Histogram of the number of papers manually assigned to each of the 6R principles.}\label{fig:smhistogram}
 \end{figure}
 
-\paragraph{Keyword vector representation of
+\subsubsection*{Keyword vector representation of
 6R}\label{keyword-vector-representation-of-6r}
-\addcontentsline{toc}{paragraph}{Keyword vector representation of 6R}
+\addcontentsline{toc}{subsubsection}{Keyword vector representation of
+6R}
 
 After the phases of automatic keyword extraction and manual keyword
 selection, we derived the paper/selected keywords matrix. A sample of
@@ -5581,9 +5581,9 @@ of keywords and their occurrency, reflects the distribution of figure
 \ref{fig:smhistogram} and cannot thus be significant for classification
 but only for clustering purposes at the present.
 
-\paragraph{Clusters/classes confusion
+\subsubsection*{Clusters/classes confusion
 matrix}\label{clustersclasses-confusion-matrix}
-\addcontentsline{toc}{paragraph}{Clusters/classes confusion matrix}
+\addcontentsline{toc}{subsubsection}{Clusters/classes confusion matrix}
 
 To analyze from a semantic dimension how well 6R framework represent
 sustainable manufacturing definition through the scientific papers
@@ -5606,7 +5606,7 @@ characterized by the related keywords.
 \caption{Matrix: comparing the manual classification and the clustering output.}\label{fig:clusterssm}
 \end{figure}
 
-\subsubsection{An extended mapping of the SM field
+\subsection{An extended mapping of the SM field
 worldwide}\label{an-extended-mapping-of-the-sm-field-worldwide}
 
 The methodology described in section \ref{smtextdrivenbottomup} has been
@@ -5636,19 +5636,21 @@ The process of topic extraction is composed by the sequent activities:
 
 Each activity is described in the sequent sections.
 
-\paragraph{Papers collection}\label{papers-collection}
-\addcontentsline{toc}{paragraph}{Papers collection}
+\subsubsection*{Papers collection}\label{papers-collection}
+\addcontentsline{toc}{subsubsection}{Papers collection}
 
 The analysis starts form a corpus of papers on sustainable
 manufacturing. The papers were downloaded from the Scopus database
 searching for the query:
 
-\_TITLE-ABS-KEY ( ``sustainable.*manufacturing``)\_
+\begin{equation*} 
+  TITLE-ABS-KEY("sustainable.*manufacturing")
+\end{equation*}
 
 At the date of 29/05/2018 the query results in 1,628 documents.
 
-\paragraph{Keyword extraction}\label{keyword-extraction}
-\addcontentsline{toc}{paragraph}{Keyword extraction}
+\subsubsection*{Keyword extraction}\label{keyword-extraction}
+\addcontentsline{toc}{subsubsection}{Keyword extraction}
 
 We represent each article as a set of keywords, merging Author Keywords
 and Index Keywords. The keywords are then ``sanitized'' following the
@@ -5679,7 +5681,7 @@ Finally, we compute the Keywords Term Matrix. The matrix is composed of
 representation of the documents allows us to apply standard mathematical
 techniques to them.
 
-\paragraph{Topic Modelling: Number of Topic Selection and LDA Model
+\subsubsection{Topic Modelling: Number of Topic Selection and LDA Model
 Fitting}\label{topic-modelling-number-of-topic-selection-and-lda-model-fitting}
 
 The goal of the present section is to compute a topic model based on the
@@ -5764,9 +5766,9 @@ belong.
 \caption{Content of the 12 topics. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term).}\label{fig:topicpicture}
 \end{figure}
 
-\paragraph{Manual Labelling of the
+\subsubsection*{Manual Labelling of the
 topics}\label{manual-labelling-of-the-topics}
-\addcontentsline{toc}{paragraph}{Manual Labelling of the topics}
+\addcontentsline{toc}{subsubsection}{Manual Labelling of the topics}
 
 To have a clearer representation of the topics, these were manually
 labelled by 6 independent experts in the field of manufacturing and
@@ -5813,29 +5815,459 @@ new group of tools and approaches belonging to the Industry 4.0 stream,
 thus defining specific contents and criteria useful to pursue the
 sustainability in manufacturing.
 
-\subsection{Block Chain}\label{block-chain}
+\section{Blockchain}\label{blockchain}
 
-\section{Wikipedia}\label{wikipedia}
+In section \ref{advdrwresults} has been proposed a new usage of
+sentiment analysis to extract advantages (considered synonym of the
+words benefit, gain or profit) and disadvantages (drawback, failure) of
+technologies from patents (Chiarello, 2017) with the aim of helping
+researchers and designers to effectively develop new products, analyzing
+positive and negative properties of an innovation.
 
-\section{Twitter}\label{twitter}
+The main contributions of the present analysis is to list the problems
+of a technological field. We want to understand which are the problems
+that research is trying to solve for a technology and if is there any
+focus from researchers on the solution of certain technical problem.
+Furthermore using text mining techniques it is possibile to correlate
+these problems between them and understand if is there any correlation
+between problems of technologies and if this map help researchers and
+companies to understand the research agenda.
 
-\section{Job Profiles}\label{job-profiles}
+This section thus proposes an innovative methodology for the
+(semi-automatic) extraction of technical knowledge from academic
+articles, using text mining techniques. Among many information related
+to technical knowledge, thw methodology focus on the collection and the
+analysis of the problems of a technology. The meaning of problems of a
+technology is related to the concept of disadvantages of a technology
+but with a broader sense. In fact, using papers as a source makes it
+possible to collect not only technical disadvantages (typically
+described in patents) but also, organizational, business or even social
+problems, since these are faced by different intellectual fields in the
+scientific literature. We also propose a case study on the application
+of the method to the field of \emph{block-chain}. We chose this
+technology because:
 
-\chapter{Future Developments}\label{future-developments}
+\begin{itemize}
+\tightlist
+\item
+  It is highly innovative
+\item
+  It is having an impact in many different field
+\item
+  The problems of this technology are both technical and managerial
+\end{itemize}
 
-\section{Marketing}\label{marketing-1}
+\subsection{How Blockchain Technology
+Works}\label{how-blockchain-technology-works}
 
-\section{Research and Development}\label{research-and-development}
+The blockchain can be exemplified as a process in which a set of
+subjects shares computer resources (memory, CPU, band) to make available
+all private users in which each participant has a copy of the data.
 
-\section{Design}\label{design}
+The use of cryptographic validation techniques generates the mutual
+trust of the participants in the data stored by the blockchain, which
+makes it comparable to the registries managed in a centralized manner by
+recognized and regulated authorities (banks, insurance companies, etc.)
+\citep{pilkington201611}.
 
-\section{Human Resources}\label{human-resources}
+A blockchain is an open and distributed register that can store
+transactions between parties in a safe, verifiable and permanent way.
+Once written, the data in a block can not be retroactively altered
+without the modification of all the subsequent blocks, and this, due to
+the nature of the protocol and the validation scheme, would require the
+consensus of the majority of the network. \citep{iansiti2017truth}
 
-\chapter{Conclusions}\label{conclusions}
+The blockchain is a continuously growing list of records, called blocks,
+which are linked to each other and made safe by the use of cryptography.
+Each block in the chain contains a hash pointer (that is a link to the
+previous block), a timestamp and the transaction data.
+
+The distributed nature and the cooperative model makes the validation
+process robust and secure, but it has considerable time and costs, due
+in large part to the \emph{price of the electricity} needed to validate
+the blocks \citep{underwood2016blockchain}. Authentication takes place
+through mass collaboration and is fueled by collective interests. The
+result of all this is a robust workflow where participants' data
+security expertise is not required. The use of this technology also
+makes it possible to overcome the problem of the infinite
+reproducibility of a digital asset and of the double expense without
+using a central server or an authority. \citep{karame2012double}
+
+There exist an overtrust about blochain technology for businesess, and
+there exist a growing interest about the drawbacks of this technology
+\citep[\citet{lin2017survey}, \citet{yli2016current}]{eyal2018majority}.
+Has been pointed out that a 51 percent attack 26 would be enough to
+access or control a private blockchain because, in most cases, the
+organization that controls it already controls one hundred percent of
+the block creation. In fact, if someone could attack or damage the
+blocking tool on a private company server, would be possibile to get
+complete management of the network and the ability to access and modify
+the data \citep{hampton2016understanding}. This is because the
+centralization due to the privatization of the blockchain leads to a
+single point of failure, or a central break point, which in a public
+blockchain could not happen as distributed, so there would be no central
+point to attack. This could have profound implications in financial
+crises or debt crises like the 2007-08 financial crisis.
+
+\subsection{Problems Extraction
+Methodology}\label{problems-extraction-methodology}
+
+Considering our objectives, the approach we adopted for paper analysis
+is radically new with respect to the one traditionally established in
+the literature (bibliometric analysis and keyword approaches). These
+approaches do not allow a deeper understanding of the technical content
+described in the text. For this reason, we relied on text mining
+techniques supported by our technical knowledge base. For the sentiment
+computation in fact, we used a technical sentiment lexicon developed by
+the authors that extracts advantages and disadvantages of inventions
+from patents (\ref{advdrwresults}) and a novel dictionary lookup
+approach that incorporates weighting for valence shifters. Following a
+bottom up-approach, we redesigned and updated these lexicons for an
+optimal application to paper documents.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/bcworkflow} 
+
+}
+
+\caption{Proposed workflow for the problem extraction from papers. }\label{fig:bcworkflow}
+\end{figure}
+
+The workflow of the proposed methodology is shown in figure
+\ref{fig:bcworkflow}. The process starts with the collection of
+abstracts belonging to the same technological field. The abstracts are
+downloaded using the Scopus API, extracting all the documents that
+contains keywords of the selected technology in the title, abstract or
+keywords fields. The texts are then pre-processed using state of the art
+natural language processing tools (sentence splitter, tokenizer,
+lemmatization). Then, for each sentence we computed a negative sentiment
+polarity and took into consideration only the sentences having a
+negative polarity score below a threshold level. We applied topic
+modelling algorithm on the negative sentences with the aim of
+clustering. The output of topic modelling is evaluated by technology
+domain experts with the aim of labeling the identified clusters.
+
+The application scenarios of our methodology have a wide range of users:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Companies that want to rapidly map a certain technological field
+\item
+  Policy maker that want to invest to solve problems of a technology to
+  boost its innovation
+\item
+  Journals, to understand the hot-topic of a specific field
+\item
+  Research networks, to exploit possible collaborations and synergies
+  between scholars.
+\end{enumerate}
+
+\subsubsection*{Document collection and
+selection}\label{document-collection-and-selection}
+\addcontentsline{toc}{subsubsection}{Document collection and selection}
+
+The documents were extracted from Scopus searching for the query:
+
+\begin{equation*} 
+  TITLE-ABS-KEY("blockchain" OR "block chain" OR "block-chain")
+\end{equation*}
+
+At the date of 29/05/2018 the query results in 1,628 documents.
+
+The term blockchain and its morphological variations is used in other
+fields different from computer science and economics, in particular in
+chemistry. For this reason we filtered from the data set all the papers
+belonging to one of the sequent All Science Journal Classification
+(ASJC) classes: chemistry, physics and astronomy, chemical engineering,
+biochemistry, genetics and molecular biology, pharmacology, toxicology
+and pharmaceutics, immunology and microbiology. The result of this lead
+us to a set of 1,364 papers.
+
+To have a dataset with an higher precision, we also filtered using rules
+based on the content of the abstracts, since many conferences do not
+have an ASJC class in scopus. This characteristic of the scopus database
+could lead to bias in the results, especially for innovative
+technologies like block-chain for which the scientific discussion is
+stronger in conferences then in more structured journals. For this
+reason we analyzed the abstracts of the 264 articles belonging to one of
+the ASJC classes listed above (chemistry related) extracting the most
+frequent words and filtering for a blacklist of generic words contained
+in scientific articles. This results in a dictionary of words that has
+ben used to search and filter al the papers containing in the abstract
+one or more of the words in the dictionary. The final number of selected
+papers is 1,276.
+
+\subsubsection*{Sentence Splitting}\label{sentence-splitting}
+\addcontentsline{toc}{subsubsection}{Sentence Splitting}
+
+A sentence splitter (for furhter details see setction
+\ref{sotatoolstransformsentencesplit}) is then applied to the abstract
+to divide the texts in sentences. From this step we had an output of
+8,406 sentences.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/length_histogram_bl} 
+
+}
+
+\caption{Histogram of the lengths of the sentences.}\label{fig:histbllength}
+\end{figure}
+
+The next step involved the measure of the sentences length. Some of the
+sentences in fact could be too long due to several fact for example the
+style of the author or an error in the sentences splitting phase). Since
+it is not a goal of the present work to analyze the style of the authors
+or to design a better sentence splitter, we decided to filter the
+sentences that are too long. The decision on the threshold level of
+number of word has been taken analyzing the distribution shown in figure
+\ref{fig:histbllength}. The 97\% of the population of sentences contain
+a number of words that is lower than 53. Thus all the sentences contain
+more than 53 words has been filtered. From this step we had an output of
+8143 sentences.
+
+\subsubsection*{Polarity Computation}\label{polarity-computation}
+\addcontentsline{toc}{subsubsection}{Polarity Computation}
+
+At this point has been possibile to apply a sentiment polarity
+measurement on the sentences \citep{sentimentr2018}. As output we had a
+polarity score between -1 (strongly negative) and 1 (strongly positive)
+for each sentence. Since we are interested in extracting the problems of
+the state-of-the-art blockchain systems, we visualize the distribution
+of the polarity scores of the sentences labeled as negative (having a
+polarity score lower then 0). The histogram of this distribution is
+shown in figure TOT. In this histogram are represented 1,108 different
+sentences. As we can see we have a distribution center in -0.2, with a
+tail that goes down to -0.8. This is an evidence that the system give a
+reasonable measures since it would be unreasonable to have more probable
+extreme values. Furthermore, the number of sentences having a polarity
+equal to 0 is 4,435 that is about the 50\% of the sentences and the
+number of sentences having a positive polarity is 2,700 : it is
+reasonable that the higher number of sentences falls in these classes
+since the scientific jargon has to be neutral. The positive bias has
+been seen also for patent documents (see section \ref{advdrwresults})).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/polarity_histogram_time_bl} 
+
+}
+
+\caption{Box plots of the distributions  by years of the polarities of the sentences having a negative polarity score.}\label{fig:sentintimebl}
+\end{figure}
+
+One interesting evidence we found is that the number of outliers (having
+a polarity values lower than the 95\% of the population) is growing over
+the year as shown in figure \ref{fig:sentintimebl}. Even if the mean
+remains near to -0.2, int he last five years the number of strongly
+negative sentences has increased. This shows how there has been a trend
+in the focus on the problems of blockchain.
+
+\subsubsection*{Tokenization and Token
+Filtering}\label{tokenization-and-token-filtering}
+\addcontentsline{toc}{subsubsection}{Tokenization and Token Filtering}
+
+In the next phase we apply a state of the art natural language
+processing pipeline (see section \ref{sotatools} for more details) to
+the 1,108 negative sentences.
+
+The tokenization process results in 220,094 tokens. To extract the
+meaningful words (words that adds information about the problem that the
+sentence is describing) we applied a series of filtering steps. As
+meaningful unit to analyze (token) we decided to use the lemma of the
+word. The filtering chain we applied is described in table
+\ref{tab:tableblfilter}- The 9,451 final token is a reasonable number
+considering the 1,108 sentences in input: we have a mean of 9 words per
+sentence. Considering the mean of 25 words per sentence shown in figure
+\ref{fig:histbllength}, we now have a summary of the sentences contains
+only the meaningful words. This output is a clean input for the topic
+modelling phase.
+
+Table: \label{tab:tableblfilter} Table of the filters applied to select the
+relevant tokens.
+
+\begin{tabular}{l|l|l|r}
+\hline
+Filter Description & Filter Type & Examples of filtered words & Number of token in output\\
+\hline
+Select only nouns, adjective and verbs & POS tagging based & the, a, anyway, with, because & 20.365\\
+\hline
+Filter words contained in the advantages and drawback lexicon & Stop-words & impossibile, problem, insufficient, challenge, issue, dangerous & 18.354\\
+\hline
+Filter words typical of scientific litterature & Stop-words & paper, study, work, research, review, discuss, find, focus & 14.505\\
+\hline
+Filter words contained in more than 10\% of the sentences & Frequency filter & block, chain, technology, be, have, datum & 12.473\\
+\hline
+Filter words contained in less than 0.1\% of the sentences & Frequency filter & philosophy, dialogue, prospect, liberalized, interorganizational, curriculum, multidimensional & 9.988\\
+\hline
+Filter all the token shorter than 3 character & Morphology filtering & a, b, c, ©, \%, us, bc & 9.451\\
+\hline
+\end{tabular}
+
+\subsection{Topic modelling}\label{topic-modelling}
+
+Topic modeling is a method for unsupervised classification of documents
+which finds groups of documents fitting a statistical model to the data.
+In other words, these models captures word correlations in a collection
+of documents with a set of topics. Latent Dirichlet allocation (LDA) is
+a particularly popular method for fitting a topic model. It treats each
+document as a mixture of topics, and each topic as a mixture of words.
+This allows documents to ``overlap'' each other in terms of content,
+rather than being separated into discrete groups, in a way that mirrors
+typical use of natural language (for further details see section
+\ref{sotatoolsmodeltopicmodel}). If the topic modelling process is good,
+we have as output a structure where every topic is an understandable,
+meaningful and compact semantic cluster that in our case clearly
+represent a state-of-the-art problem of block chain technology.
+
+\subsubsection*{Document Term Matrix}\label{document-term-matrix}
+\addcontentsline{toc}{subsubsection}{Document Term Matrix}
+
+The first step is to take in input the 9,451 tokens and count how many
+times each one occurs in the 1,108 sentences. In this way we obtain a
+document-term matrix (DTM) where the documents are the sentences and the
+terms are our tokens (the lemmas). In our case the DTM has 1077 rows
+representing the sentences (31 sentences did not contain any relevant
+tokens) and 1147 tokens.
+
+\subsubsection*{Definition of the Optimal Number of Topics: a
+Human-Machine Hybrid
+Approach}\label{definition-of-the-optimal-number-of-topics-a-human-machine-hybrid-approach}
+\addcontentsline{toc}{subsubsection}{Definition of the Optimal Number of
+Topics: a Human-Machine Hybrid Approach}
+
+To fit a LDA model we have to give as a parameter the number of topic k
+that we think that best represent the corpus in analysis. In literature
+there exists many measurement to compute an optimal value of k. However
+it is worth to keep in mind that these measures are not always
+correlated with expert judgement about topics interpretability and
+coherence. For this reason in the present paper we use an hybrid
+approach in which we find an optimal neighborhood of value using state
+of the art k tuning methods and then we compute a graphical output for
+the 5 best k values to be evaluated by 4 different experts.
+
+Several approaches tried to take the problem of automatically finding
+the right number of topics contained in a set of documents. Every
+approach follow the idea of computing distances (or similarities)
+between pair of topics varying the number of topics. We used four
+different methods to evaluate the output of a topic model for different
+value of k. These methods are:
+
+\begin{itemize}
+\tightlist
+\item
+  Caojuan2009 \citep{cao2009density}: Minimize the average cosine
+  distance between every pair of topics. The best topic number K has a
+  minimal final distance between topics in Latent Dirichlet Allocation
+\item
+  Arun2010 \citep{arun2010finding}: Minimize the symmetric KL-Divergence
+  of the salient distribution that are derived from the matrices of
+  factors. These matrices are the re-projections of the documents on the
+  topics and of the topics on the vocabulary (the selected tokens). The
+  divergence values are higher for non-optimal K values.
+\item
+  Griffiths2004 \citep{griffiths2004finding}: Maximize the likely of the
+  data given the model built considering K topics. This is a problem of
+  model selection using Bayesian statistics.
+\item
+  Deveaud2014 \citep{deveaud2014accurate}: Maximize the information
+  divergence between all pairs of topics. The optimal value k is the
+  value for which LDA modeled the most scattered topics.
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/FindTopicsNumber_plot_bl} 
+
+}
+
+\caption{Measures of quality of the topic modelling results for growing number of topics. The figure is divided in metrics to minimize (top figure) and to maximized (bottom figure).}\label{fig:topicnumsmbl}
+\end{figure}
+
+We computed these for measures fitting a LDA model for every K between 2
+and 30. We choose the higher value because we wanted to obtain a
+reasonable number of topics representing the problems of blockchain.
+After a brain storming with experts it emerges that there can not exists
+more than 15 classes of problems. We decide to take the double of this
+number to take in to consideration the biases of human experts. The
+results of the analysis are shown in figure \ref{fig:topicnumsmbl}. From
+this figure is evident how the measure we want to minimize interest each
+other at a value of 7 topics; the values we want to minimize are a
+little more unstable (especially Arun2010) and intersect both at level
+of 9 and 11. We thus decided to visualize and make choose the results of
+the LDA models for a number of topics k between 7 an 10.
+
+To help experts in their decision process, an interactive map of the
+problem hass been generated for 7, 8, 9, 10 and 11 topics. The map was
+created using Shiny \citep{shiny2017}. The interactive map of problems
+(a screen shot of the app is shown in figure
+\ref{fig:topicmodelschinybc}) helped experts to understand the
+relationships between the problems. Here a multidimensional scaling
+algorithm compute the inter-topic distance that permits to visualize the
+distribution of topics in two dimensions. Clicking on a topic the
+experts can see its content, and for each word can see both at the
+estimated term frequency within the selected topic and at the overall
+term frequency.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/bc_topicmodel_shiny} 
+
+}
+
+\caption{Screenshot of the shiny app used by experts to choose the optimal number of topcis. }\label{fig:topicmodelschinybc}
+\end{figure}
+
+The experts agreed for a total number of 8 topics as optimal.
+
+\subsubsection*{Topic Modelling Results}\label{topic-modelling-results}
+\addcontentsline{toc}{subsubsection}{Topic Modelling Results}
+
+The output topic modelling phase is show in figure
+\ref{fig:topicmodelsoutputbc}. The results of the topic modelling are
+visualized to make it possibile for the expert to explore and label the
+topic representing the problems of block chain technology. Each point is
+a word, and word belonging to the same topic are grouped. The size of
+the label is proportional to the probability ß that the word belong to
+that topic.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/output_bl_topicmodels} 
+
+}
+
+\caption{Content of the 8 topics of problems of blockchain. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term}\label{fig:topicmodelsoutputbc}
+\end{figure}
+
+\chapter{Wikipedia}\label{wikipedia}
+
+\chapter{Twitter}\label{twitter}
+
+\chapter{Job Profiles}\label{job-profiles}
+
+\part{Future Developments}\label{part-future-developments}
+
+\chapter{Marketing}\label{marketing-1}
+
+\chapter{Research and Development}\label{research-and-development}
+
+\chapter{Design}\label{design}
+
+\chapter{Human Resources}\label{human-resources}
+
+\chapter*{Conclusions}\label{conclusions}
+\addcontentsline{toc}{chapter}{Conclusions}
 
 We have finished a nice thesis
 
-\chapter{Glossary}\label{glossary}
+\chapter*{Glossary}\label{glossary}
+\addcontentsline{toc}{chapter}{Glossary}
+
+Generare automaticamente da wikipedia usando tagme.
 
 Morphology= the study of the way words are built up from smaller
 meaning-bearing units called morphemes.

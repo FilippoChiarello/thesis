@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mining Technical Knowledge from Texts</title>
+  <meta name="description" content="This document contains the PhD thesis of Filippo Chiarello.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Mining Technical Knowledge from Texts" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mining Technical Knowledge from Texts" />
+  
+  <meta name="twitter:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+<meta name="author" content="Filippo Chiarello">
+
+
+<meta name="date" content="2018-09-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="patents.html">
+<link rel="next" href="wikipedia.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Text Mining Techniques for Knowledge Extraction from Technical Documents</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="goal.html"><a href="goal.html"><i class="fa fa-check"></i><b>1</b> Goal</a></li>
+<li class="chapter" data-level="2" data-path="problem.html"><a href="problem.html"><i class="fa fa-check"></i><b>2</b> Problem</a></li>
+<li class="chapter" data-level="3" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>3</b> Solutions</a></li>
+<li class="chapter" data-level="4" data-path="challenges-understanding-and-programming.html"><a href="challenges-understanding-and-programming.html"><i class="fa fa-check"></i><b>4</b> Challenges: Understanding and Programming</a><ul>
+<li class="chapter" data-level="4.1" data-path="challenges-understanding-and-programming.html"><a href="challenges-understanding-and-programming.html#understanding"><i class="fa fa-check"></i><b>4.1</b> Understanding</a></li>
+<li class="chapter" data-level="4.2" data-path="challenges-understanding-and-programming.html"><a href="challenges-understanding-and-programming.html#programming"><i class="fa fa-check"></i><b>4.2</b> Programming</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="research-questions.html"><a href="research-questions.html"><i class="fa fa-check"></i><b>5</b> Research Questions</a></li>
+<li class="chapter" data-level="6" data-path="stakeholders.html"><a href="stakeholders.html"><i class="fa fa-check"></i><b>6</b> Stakeholders</a></li>
+<li class="chapter" data-level="7" data-path="knowledge-intensive-manegement-engineering.html"><a href="knowledge-intensive-manegement-engineering.html"><i class="fa fa-check"></i><b>7</b> Knowledge Intensive Manegement Engineering</a></li>
+<li class="part"><span><b>II State of the Art</b></span></li>
+<li class="chapter" data-level="8" data-path="sotatools.html"><a href="sotatools.html"><i class="fa fa-check"></i><b>8</b> Phases, Tasks, and Techniques</a><ul>
+<li class="chapter" data-level="8.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsprogram"><i class="fa fa-check"></i><b>8.1</b> Program</a></li>
+<li class="chapter" data-level="8.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimport"><i class="fa fa-check"></i><b>8.2</b> Import</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportretrieval"><i class="fa fa-check"></i><b>8.2.1</b> Document Retrieval</a></li>
+<li class="chapter" data-level="8.2.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportformat"><i class="fa fa-check"></i><b>8.2.2</b> Documents Format</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstidy"><i class="fa fa-check"></i><b>8.3</b> Tidy</a></li>
+<li class="chapter" data-level="8.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransform"><i class="fa fa-check"></i><b>8.4</b> Transform</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformsentencesplit"><i class="fa fa-check"></i><b>8.4.1</b> Sentence Splitting</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sotatools.html"><a href="sotatools.html#tokenization"><i class="fa fa-check"></i><b>8.4.2</b> Tokenization</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformstemming"><i class="fa fa-check"></i><b>8.4.3</b> Stemming</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformlemmatisation"><i class="fa fa-check"></i><b>8.4.4</b> Lemmatisation</a></li>
+<li class="chapter" data-level="8.4.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformwi"><i class="fa fa-check"></i><b>8.4.5</b> Words importance metrics</a></li>
+<li class="chapter" data-level="8.4.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformpos"><i class="fa fa-check"></i><b>8.4.6</b> Part-of-Speech Tagging</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodel"><i class="fa fa-check"></i><b>8.5</b> Model</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformngrams"><i class="fa fa-check"></i><b>8.5.1</b> N-Grams</a></li>
+<li class="chapter" data-level="8.5.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeldocclass"><i class="fa fa-check"></i><b>8.5.2</b> Document Classification</a></li>
+<li class="chapter" data-level="8.5.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelsentanal"><i class="fa fa-check"></i><b>8.5.3</b> Sentiment Analsysis</a></li>
+<li class="chapter" data-level="8.5.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelnetanal"><i class="fa fa-check"></i><b>8.5.4</b> Text Clustering</a></li>
+<li class="chapter" data-level="8.5.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelner"><i class="fa fa-check"></i><b>8.5.5</b> Named Entity Recognition</a></li>
+<li class="chapter" data-level="8.5.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeltopicmodel"><i class="fa fa-check"></i><b>8.5.6</b> Topic Modelling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsvisualize"><i class="fa fa-check"></i><b>8.6</b> Visualize</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="sotatools.html"><a href="sotatools.html#the-grammar-of-graphics"><i class="fa fa-check"></i><b>8.6.1</b> The Grammar of Graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="sotatools.html"><a href="sotatools.html#sotatoolscomunicate"><i class="fa fa-check"></i><b>8.7</b> Comunicate</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="sotadocuments.html"><a href="sotadocuments.html"><i class="fa fa-check"></i><b>9</b> Documents</a><ul>
+<li class="chapter" data-level="9.1" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentsunderstand"><i class="fa fa-check"></i><b>9.1</b> Understand</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="sotadocuments.html"><a href="sotadocuments.html#domain-expertise"><i class="fa fa-check"></i><b>9.1.1</b> Domain Expertise</a></li>
+<li class="chapter" data-level="9.1.2" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentsunderstandbyas"><i class="fa fa-check"></i><b>9.1.2</b> The problem of byases</a></li>
+<li class="chapter" data-level="9.1.3" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentsunderstandlexicons"><i class="fa fa-check"></i><b>9.1.3</b> The Importance of Lexicons for Technical Documents Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentspatents"><i class="fa fa-check"></i><b>9.2</b> Patents</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="sotadocuments.html"><a href="sotadocuments.html#metadata-approaches"><i class="fa fa-check"></i><b>9.2.1</b> Metadata Approaches</a></li>
+<li class="chapter" data-level="9.2.2" data-path="sotadocuments.html"><a href="sotadocuments.html#keywords-approaches"><i class="fa fa-check"></i><b>9.2.2</b> Keywords Approaches</a></li>
+<li class="chapter" data-level="9.2.3" data-path="sotadocuments.html"><a href="sotadocuments.html#natural-language-processing-approaches"><i class="fa fa-check"></i><b>9.2.3</b> Natural Language Processing approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentspapers"><i class="fa fa-check"></i><b>9.3</b> Papers</a></li>
+<li class="chapter" data-level="9.4" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentswiki"><i class="fa fa-check"></i><b>9.4</b> Wikipedia</a></li>
+<li class="chapter" data-level="9.5" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentstwitter"><i class="fa fa-check"></i><b>9.5</b> Social Media</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="sotadocuments.html"><a href="sotadocuments.html#economics"><i class="fa fa-check"></i><b>9.5.1</b> Economics</a></li>
+<li class="chapter" data-level="9.5.2" data-path="sotadocuments.html"><a href="sotadocuments.html#marketing"><i class="fa fa-check"></i><b>9.5.2</b> Marketing</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentsjobs"><i class="fa fa-check"></i><b>9.6</b> Human Resources Documentation</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="sotadocuments.html"><a href="sotadocuments.html#the-key-role-of-skills-assessment"><i class="fa fa-check"></i><b>9.6.1</b> The Key Role of Skills Assessment</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Case Studies: Methods and Results</b></span></li>
+<li class="chapter" data-level="10" data-path="patents.html"><a href="patents.html"><i class="fa fa-check"></i><b>10</b> Patents</a><ul>
+<li class="chapter" data-level="10.1" data-path="patents.html"><a href="patents.html#usersresults"><i class="fa fa-check"></i><b>10.1</b> Users</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="patents.html"><a href="patents.html#userdef"><i class="fa fa-check"></i><b>10.1.1</b> Users: A key information hidden in patents</a></li>
+<li class="chapter" data-level="10.1.2" data-path="patents.html"><a href="patents.html#sourc"><i class="fa fa-check"></i><b>10.1.2</b> List of users generation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="patents.html"><a href="patents.html#patsel"><i class="fa fa-check"></i><b>10.1.3</b> Patent set selection</a></li>
+<li class="chapter" data-level="10.1.4" data-path="patents.html"><a href="patents.html#patent-text-analysis"><i class="fa fa-check"></i><b>10.1.4</b> Patent text analysis</a></li>
+<li class="chapter" data-level="10.1.5" data-path="patents.html"><a href="patents.html#user-entity-extraction"><i class="fa fa-check"></i><b>10.1.5</b> User Entity Extraction</a></li>
+<li class="chapter" data-level="10.1.6" data-path="patents.html"><a href="patents.html#manrev"><i class="fa fa-check"></i><b>10.1.6</b> Manual Review of the new list of users</a></li>
+<li class="chapter" data-level="10.1.7" data-path="patents.html"><a href="patents.html#results"><i class="fa fa-check"></i><b>10.1.7</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="patents.html"><a href="patents.html#advdrwresults"><i class="fa fa-check"></i><b>10.2</b> Advantages and Drawbacks</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="patents.html"><a href="patents.html#advdisdef"><i class="fa fa-check"></i><b>10.2.1</b> Advantages and drawbacks: an engineering point of view</a></li>
+<li class="chapter" data-level="10.2.2" data-path="patents.html"><a href="patents.html#clues-of-advantages-and-drawbacks-in-patents"><i class="fa fa-check"></i><b>10.2.2</b> Clues of Advantages and drawbacks in patents</a></li>
+<li class="chapter" data-level="10.2.3" data-path="patents.html"><a href="patents.html#adv-drw-article-sourc"><i class="fa fa-check"></i><b>10.2.3</b> Advantages and Drawbacks Clue Collection</a></li>
+<li class="chapter" data-level="10.2.4" data-path="patents.html"><a href="patents.html#advdrwarticledomaincluecoll"><i class="fa fa-check"></i><b>10.2.4</b> Domain Clues Extraction</a></li>
+<li class="chapter" data-level="10.2.5" data-path="patents.html"><a href="patents.html#clue-validation-using-tweets-sentiment-analysis"><i class="fa fa-check"></i><b>10.2.5</b> Clue validation using tweets sentiment analysis}</a></li>
+<li class="chapter" data-level="10.2.6" data-path="patents.html"><a href="patents.html#advantages-and-drawbacks-sentences-extraction"><i class="fa fa-check"></i><b>10.2.6</b> Advantages and Drawbacks sentences extraction</a></li>
+<li class="chapter" data-level="10.2.7" data-path="patents.html"><a href="patents.html#results-case-study"><i class="fa fa-check"></i><b>10.2.7</b> Results: case study</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="patents.html"><a href="patents.html#trademakrs"><i class="fa fa-check"></i><b>10.3</b> Trademakrs</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="patents.html"><a href="patents.html#the-use-of-trademark-symbols-and-in-patents-from-a-legal-perspective"><i class="fa fa-check"></i><b>10.3.1</b> The use of trademark symbols ™ and ® in patents from a legal perspective</a></li>
+<li class="chapter" data-level="10.3.2" data-path="patents.html"><a href="patents.html#finding-tradenames-from-patents"><i class="fa fa-check"></i><b>10.3.2</b> Finding Tradenames from Patents</a></li>
+<li class="chapter" data-level="10.3.3" data-path="patents.html"><a href="patents.html#trademarks-and-ipc-classes"><i class="fa fa-check"></i><b>10.3.3</b> Trademarks and IPC Classes</a></li>
+<li class="chapter" data-level="10.3.4" data-path="patents.html"><a href="patents.html#the-selected-tradenames"><i class="fa fa-check"></i><b>10.3.4</b> The Selected Tradenames</a></li>
+<li class="chapter" data-level="10.3.5" data-path="patents.html"><a href="patents.html#tradenames-usage-in-patents"><i class="fa fa-check"></i><b>10.3.5</b> Tradenames Usage in Patents</a></li>
+<li class="chapter" data-level="10.3.6" data-path="patents.html"><a href="patents.html#the-popularity-of-tradenames-in-patens"><i class="fa fa-check"></i><b>10.3.6</b> The Popularity of Tradenames in Patens</a></li>
+<li class="chapter" data-level="10.3.7" data-path="patents.html"><a href="patents.html#the-similarity-of-tradenames-in-patens"><i class="fa fa-check"></i><b>10.3.7</b> The Similarity of Tradenames in Patens</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="papers.html"><a href="papers.html"><i class="fa fa-check"></i><b>11</b> Papers</a><ul>
+<li class="chapter" data-level="11.1" data-path="papers.html"><a href="papers.html#sustainable-manufacturing"><i class="fa fa-check"></i><b>11.1</b> Sustainable Manufacturing</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="papers.html"><a href="papers.html#the-6r-framework"><i class="fa fa-check"></i><b>11.1.1</b> The 6R Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="papers.html"><a href="papers.html#smtextdrivenbottomup"><i class="fa fa-check"></i><b>11.2</b> Sustainable Manufacturing: A text driven bottom-up definition</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="papers.html"><a href="papers.html#assignment-of-6r-principle-meanings"><i class="fa fa-check"></i><b>11.2.1</b> Assignment of 6R principle meanings</a></li>
+<li class="chapter" data-level="11.2.2" data-path="papers.html"><a href="papers.html#automatic-text-analysis-and-keywords-extraction"><i class="fa fa-check"></i><b>11.2.2</b> Automatic Text analysis and Keywords extraction</a></li>
+<li class="chapter" data-level="11.2.3" data-path="papers.html"><a href="papers.html#manual-keywords-selection"><i class="fa fa-check"></i><b>11.2.3</b> Manual keywords selection</a></li>
+<li class="chapter" data-level="11.2.4" data-path="papers.html"><a href="papers.html#paper-clustering"><i class="fa fa-check"></i><b>11.2.4</b> Paper Clustering</a></li>
+<li class="chapter" data-level="11.2.5" data-path="papers.html"><a href="papers.html#results-1"><i class="fa fa-check"></i><b>11.2.5</b> Results</a></li>
+<li class="chapter" data-level="11.2.6" data-path="papers.html"><a href="papers.html#an-extended-mapping-of-the-sm-field-worldwide"><i class="fa fa-check"></i><b>11.2.6</b> An extended mapping of the SM field worldwide</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="papers.html"><a href="papers.html#blockchain"><i class="fa fa-check"></i><b>11.3</b> Blockchain</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="papers.html"><a href="papers.html#how-blockchain-technology-works"><i class="fa fa-check"></i><b>11.3.1</b> How Blockchain Technology Works</a></li>
+<li class="chapter" data-level="11.3.2" data-path="papers.html"><a href="papers.html#problems-extraction-methodology"><i class="fa fa-check"></i><b>11.3.2</b> Problems Extraction Methodology</a></li>
+<li class="chapter" data-level="11.3.3" data-path="papers.html"><a href="papers.html#topic-modelling"><i class="fa fa-check"></i><b>11.3.3</b> Topic modelling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="wikipedia.html"><a href="wikipedia.html"><i class="fa fa-check"></i><b>12</b> Wikipedia</a></li>
+<li class="chapter" data-level="13" data-path="twitter.html"><a href="twitter.html"><i class="fa fa-check"></i><b>13</b> Twitter</a></li>
+<li class="chapter" data-level="14" data-path="job-profiles.html"><a href="job-profiles.html"><i class="fa fa-check"></i><b>14</b> Job Profiles</a></li>
+<li class="part"><span><b>IV Future Developments</b></span></li>
+<li class="chapter" data-level="15" data-path="marketing-1.html"><a href="marketing-1.html"><i class="fa fa-check"></i><b>15</b> Marketing</a></li>
+<li class="chapter" data-level="16" data-path="research-and-development.html"><a href="research-and-development.html"><i class="fa fa-check"></i><b>16</b> Research and Development</a></li>
+<li class="chapter" data-level="17" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>17</b> Design</a></li>
+<li class="chapter" data-level="18" data-path="human-resources.html"><a href="human-resources.html"><i class="fa fa-check"></i><b>18</b> Human Resources</a></li>
+<li class="chapter" data-level="" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i>Conclusions</a></li>
+<li class="chapter" data-level="" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i>Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mining Technical Knowledge from Texts</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="papers" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Papers</h1>
+<p>There are fields (mature technologies) where patents anticipate papers, while in others (basic research) the opposite happens. For this reason, scientific literature is the place where companies and scholars gather information about the problems that researchers are facing in the development of new technologies. Anyway, standard approaches of knowledge extraction from papers requires skilled personnel, they are time consuming and lacks in reproducibility. Furthemore, the volume of scientific literature has grown rapidly raising an imminent question about how to extract knowledge from this source. On the other hand, this tehcnical knowledge if managed, can be used to answer questions that 10 years ago would need the help of domain experts to be answered. In the present section is shown how text mining techniques can help to unswer some of this questions. In particular, it is an essential problem when different classification codes are used in order to organize scientific knowledge on a specific domain, becaues a specific categorization in a certain scientific field is missing. This leads to unnecessary complications in the researchers’ aims who want to quickly and easily find literature on a specific topic among the large amount of scientific publications, or want to effectivelly position a new research. Text mining techniques, and in particular topic modelling, can help scholars in solving this problems, if properly used togheter with domain expertise.</p>
+<p>In this section we present two methodologies capable of automatically segmenting a knowledge field. These selected knowledge field are: sustainable manufacturing and block-chain. The results of the methodologies are described, togheter with example of applications.</p>
+<div id="sustainable-manufacturing" class="section level2">
+<h2><span class="header-section-number">11.1</span> Sustainable Manufacturing</h2>
+<p>One of the most important objectives of Sustainable Manufacturing (SM) is developing innovative and viable engineered materials, manufacturing processes and systems to provide multiple life-cycle of products. In SM the old concept “from cradle to grave” is now transforming into “from cradle to cradle” <span class="citation">(Jawahir and Bradley <a href="#ref-jawahir2016technological">2016</a>)</span>, tending toward multiple product life-cycles or even a “near-perpetual” product/material life. Scientific contributions in the sustainable manufacturing field mostly deals with energy and resource consumption. In this respect, two different main fields of causes can be identified: the process level and the material efficiency one. As a matter of facts, manufacturing processes have a significant role also in putting in place material efficiency strategies <span class="citation">(Ingarao <a href="#ref-ingarao2017manufacturing">2017</a>)</span>. As far as the processes are concerned, a first classification of research contributions was discussed in the CIRP General Assembly <span class="citation">(Duflou et al. <a href="#ref-duflou2012towards">2012</a>)</span>. There the authors state that research in manufacturing field, oriented to environmental impact reduction, can be clustered in 5 main sub-classes:</p>
+<ol style="list-style-type: decimal">
+<li>unit process level (Individual device or machine tool in the manufacturing system)</li>
+<li>manufacturing system level,</li>
+<li>facility,</li>
+<li>multi-factory system up to considering the whole</li>
+<li>supply chain level.</li>
+</ol>
+<p>Another review paper was presented at the ASME international manufacturing science and engineering conference <span class="citation">(Haapala et al. <a href="#ref-haapala2013review">2013</a>)</span>. In that paper the authors scrutinize the research papers focusing more on the differentiation between manufacturing processes and manufacturing system. Considering the process level, Ingarao <span class="citation">(Ingarao <a href="#ref-ingarao2017manufacturing">2017</a>)</span> clustered the scientific papers in 4 subsections: 1. effect of process parameters 2. role of machine tool architecture and related technology 3. applied process 4. manufacturing approach selection.</p>
+<p>As concerns material efficiency options, a framework is presented by <span class="citation">(Allwood <a href="#ref-allwood2014squaring">2014</a>)</span>. The authors there provide strategies within three main classes corresponding to principles: reduce, reuse and recycling. Within each class guidelines for material efficiency practices are detailed. As concerns material efficiency options, a framework is presented by Allwood <span class="citation">(Allwood <a href="#ref-allwood2014squaring">2014</a>)</span>. There the authors provide strategies within three main classes (i.e. principle): reduce, reuse and recycling. Within each classes guideline for material efficiency practices are detailed. A good framework of all the possible reuses of materials is provided by Coopper <span class="citation">(Cooper and Allwood <a href="#ref-cooper2012reusing">2012</a>)</span>. In this research the authors identify four main reuse strategies for metals: Remanufacture, Reshape (applying metal shaping processes, additive, subtractive, mass conserving) to obtain a new geometry, Relocate: (recovering component and applying little refurbishment, components reused in the same type of products), Cascade: recovering component and use it in another less demanding use (downgrading). The role of manufacturing processes in putting in place material efficiency/reuse strategy was also outlined by Ingarao <span class="citation">(Ingarao <a href="#ref-ingarao2017manufacturing">2017</a>)</span>. In fact, manufacturing processes deserve to be considered as means for enabling material efficiency strategies. SM may be pursued by several strategies, such as re-designing and/or even changing manufacturing practices to conceive new-generation products, as well as by creating a closed-loop of environmentally-friendly material flow.</p>
+<div id="the-6r-framework" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> The 6R Framework</h3>
+<p>All the life-cycle stages of the product development (namely, design, production, use and post-use) should be considered carefully, with a particular attention to the design phase. This represents the real difference introduced by sustainable manufacturing concept with respect to traditional manufacturing, to lean manufacturing or even to green manufacturing, precursors of the SM. In a word, SM paradigm embraces those principles belonging to the 6R framework, namely: Reduce, Reuse, Recycle, Recover, Redesign and Remanufacture. The latter three principles where not included into the previous 3R framework. To a certain extent, it appears that the better definition of sustainability for any manufacturing operation provided so far is the extent to these principles are applied. This statement justifies because in the search to find a common rationale behind the mess of SM applications, one possible way is to find common roots in the principles that inspired the same applications: namely principles, which allows to the decision maker either an effective way to search for new sustainable solutions or to a certain extent measure the “degree of sustainability”. The higher the number of principles that are satisfied, the higher the potential positive impact on sustainability can be for a given adopted solution. In this sense, far from stating that the 6R framework is a widespread and commonly adopted metric of SM, the starting assumption in this paper is that 6R is the only approach, to the author’s knowledge, that provides a criteria of classification and selection of solution, and thus indirectly to provide a clear definition of what a SM application may look like. The true question nowadays is <em>if the 6R framework may capture the essence of SM</em>, provided that it is really critical to clearly define the SM paradigm rationale to the scientific community. This paper aims to stimulate the reflection from the Italian perspective to this point, with a particular concern to the production technology side, by using an automatic classification of papers within the 6R framework and then by benchmarking approaches followed by the Italian Technologist research-network SOSTNERE on SM issues.</p>
+<p>Sustainability (from sustain plus ability) refers to the set of properties of a given system (either natural or artificial), which allows the same system to maintain itself for an almost indefinite period of time. This concept was officially introduced in a document of the World Commission on Environment and Development (WCED) entitled “Our Common Future”, where the Sustainable Development was defined as follows: <em>“Sustainable development is development that meets the needs of the present without compromising the ability of future generations to meet their own needs”</em><span class="citation">(WCED <a href="#ref-wced1987world">1987</a>)</span>. Starting from this general definition, further conceptualizations have been produced for manufacturing activities and/or processes, as here briefly recalled. According to the Organization for Economic Co-operation and Development, Sustainable manufacturing is a formal name for an exciting new way of doing business and creating value. Different statements of sustainability in literature<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a> share the same focus on the following three aspects: economy, environment and society. It is thus possible to summarize from the literature analyzed a possible definition for sustainable manufactured processes/products, according to the following set of prescriptions:</p>
+<ul>
+<li>(-) minimize business risk;</li>
+<li>(-) minimize negative environmental impacts;</li>
+<li>(-) conserve energy and natural resources;</li>
+<li>(-) are safe for employees, communities and consumers;<br />
+</li>
+<li>(-) are economically sound;</li>
+<li>(+) a new way of creating value;</li>
+<li>(+) are socially and creatively rewarding for all working people;</li>
+<li>(+) providing access to basic services, green and decent jobs and a better quality of life for all ;</li>
+<li>(+) adopt sustainable infrastructures.</li>
+</ul>
+<p>where the (-) sign stands for those prescriptions oriented to preservation of resources without any significant change of the present condition, while the (+) sign indicates those prescriptions aiming at ameliorating/modification of the trends with respect to traditionally manufactured processes/products. To summarize simplifying, sustainable manufacturing is all about minimizing business risks of any manufacturing operation while maximizing the new opportunities that arise from improving processes and products.<br />
+Fascinating in principle, these general statements are really difficult to deploy into real operations and production settings. The focus of the present analysis is to derive a clear definition of the concept of manufacturing sustainability based on clear and paper based evidences, rather than referring to general ethical or social principles, which appear to be a <strong>top down</strong> definition. Conversely, information extracted from all the scientific papers available on SM can provide a sort of <strong>bottom up</strong> statement. Evidences are relevant words and short concepts that can be related to sustainability, as it will be explained in the following paragraphs by also providing some sound examples from the italian point of view.</p>
+</div>
+</div>
+<div id="smtextdrivenbottomup" class="section level2">
+<h2><span class="header-section-number">11.2</span> Sustainable Manufacturing: A text driven bottom-up definition</h2>
+<p>In this section, we describe the process involved to analyse the papers in the sustainable manufacturing field. To give a more detailed vision of the topic, we consider this field divided in 6 sub-classes (one for each principle), adopting the well know 6R framework. The goal of the process is both to identify which the topics in each of the 6R are, then to accurately measure the way this framework corresponds to the topics of sustainable manufacturing. As seen in the flowchart of figure 1 the main activities of the process are four: Paper manual classification, Automatic Keywords Extraction, Keywords manual selection and Clustering. Each activity will be described in the next subsection.</p>
+<div id="assignment-of-6r-principle-meanings" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Assignment of 6R principle meanings</h3>
+<p>The first critical issue is the selection criteria of 6R principles for the assignment. This was done by trying to assign a semantic specification of each R principle, as below explicated, built by summarizing all the possible definitions and concepts extracted by the selected bibliography (partially cited in the present paper). The semantic specification provided below refers to the functional scope of each class, intended as an activity to be performed.</p>
+<div class="figure" style="text-align: center"><span id="fig:wfsm"></span>
+<img src="_bookdown_files/figures/workflow_sm.png" alt="Flowchart of the 6R papers analysis process. The white boxes represent the activities and the yellow boxes the predicted documents. In the figure are also highlighted the input and the main outputs of the process." width="80%" />
+<p class="caption">
+Figure 11.1: Flowchart of the 6R papers analysis process. The white boxes represent the activities and the yellow boxes the predicted documents. In the figure are also highlighted the input and the main outputs of the process.
+</p>
+</div>
+<p><strong>Reuse</strong></p>
+<p>Reuse is the action or practice of using something again, whether for its original purpose (conventional reuse) or to fulfill a different function (creative reuse or repurposing). Reuse involves taking, but not reprocessing, previously used items in order to save time, money, energy, and resources. In particular reuse is useful for machineries, especially when they are expensive, and for their components. Besides, technologies can be also reused and readapted to different situations. In addition, reuse is important because it minimizes disposal needs and costs.</p>
+<p><strong>Reduce</strong></p>
+<p>In pre-manufacturing it is possible to implement the reduction minimizing the use of resources. During the production phase, it refers to the use of energy and material, for example, it may involve the use of lower cost materials, the elimination of unnecessary product characteristics, the reduction of overhead costs or the readjustment of product processes. It implies a decrease of costs. As a consequence, the derived effect of this principle is to minimize and optimize performance in terms of cost, time and waste and it focuses primarily on the first three stages of the four life cycle of the product before recalled (§1).</p>
+<p><strong>Recycle</strong></p>
+<p>Recycle involves the process of converting material that would otherwise be considered waste, into new products and it corresponds to the breaking down of used items to make raw materials for the manufacture of new goods. Recycling can prevent the waste of potentially useful materials and reduce the consumption of fresh raw materials, thereby decreasing: energy usage, air pollution (from incineration) and water pollution (from landfilling). Recyclable materials include many kinds of glass, paper and cardboard, metal, plastic, tires, textiles and electronics.</p>
+<p><strong>Recover</strong></p>
+<p>Product recovery operations refer to operational processes (e.g. disassembling, sorting and cleaning) on products at the end of their use, in order to make them usable in n subsequent life-cycles. Differently from recycling, the product life-cycle is shortened, skipping all that phases of retreatment of wastes up to their second use. The risks of implementing product recovery operations is the uncertainty of returned product quality and quantity and for this reason recovering activities have only recently been considered in manufacture.</p>
+<p><strong>Redesign</strong></p>
+<p>The redesign activity involves the act of redesigning the next generation of products, which would use components, materials and resources recovered from the previous life-cycle or previous generation of products. It refers to the evaluation of ideas turning them into concrete innovative products obtained from products in their post-use phase.</p>
+<p><strong>Remanufacture</strong></p>
+<p>Remanufacture involves the re-processing of used products, to restore them to their original like-new state through the reuse of as many parts as possible without loss of functionality. It includes and exceeds the activity of recovering, because a remanufactured product should match the same customer expectation as a new one.</p>
+<p>Despite this initial classification, some problem occurred for experts in assigning the papers to the different classes, due to the absence of the formalization that is needed to define unique criteria of belonging. This fact brought to the unbalance of the number of words within each class (corresponding to each principle), that drove to the fuzziness of the training set and, as a consequence, the difficulty in performing a real classification of scientific papers. This is the first critical issue of the followed approach so far, that may be overcome by alignment sessions of the decision makers.</p>
+</div>
+<div id="automatic-text-analysis-and-keywords-extraction" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> Automatic Text analysis and Keywords extraction</h3>
+<p>In order to analyze the information coming from scientific papers belonging to topics encompassed within the 6R framework, we exploit text mining techniques, which employ methods from different fields of data mining to extract meaningful information 8. The second activity in our analysis process is thus devoted to transforming the set of papers in a set of numeric vectors to be elaborated by the clustering algorithm. To this aim, some text mining techniques are applied in sequence 12 to automatically extract meaningful information and knowledge from unstructured texts. The text mining process performed is summarized in the following. First, the information content of the document is converted into a structured form (vector space representation). In fact, most of text mining techniques are based on the idea that a document can be faithfully represented by the set of words contained in it (bag-of-words representation 9). According to this representation, each document j of a collection of documents is represented as an M-dimensional vector, where M is the number of words defined in the document collection, and w(tji) specifies the weight of the word ti in document j. The simplest weighting method assigns a binary value to w(tji), thus indicating the absence or the presence of the word ti, while other methods assign a real value to w(tji).</p>
+<p>In the following, the text mining steps performed are described (for details aobut the activities see section <a href="sotatools.html#sotatools">8</a>:</p>
+<ul>
+<li><em>Tokenization</em> is the first step of our text mining process, and consists in transforming a string of characters into a string of processing units called tokens that could be syllables, words, or phrases. Typically, with tokenization other operations are performed with the aim of making the text cleaner. Such operations are the removal of punctuation and other non-text characters, and the normalization of symbols (e.g., accents, apostrophes, hyphens, tabs and spaces). In the proposed system, the tokenizer removes all punctuation marks and splits each text into tokens corresponding to words, bigrams and trigrams.</li>
+<li><em>Stop-word filtering</em> consists in eliminating the words which provide little or no information to the text analysis, or that, in our case, could make the clustering process fuzzier. Common stop-words belong to certain part of speech classes, such as articles, conjunctions, prepositions, pronouns, etc. Other stop-words are those that typically appear very often in sentences of the considered language (language-specific stop-words), or in the set of texts being analysed (domain-specific stop-words). In our case, this second group consists of typical words of the scientific articles such as “paper”, “state-of-the-art”, “present work”.</li>
+<li><em>Stemming</em> is the process of reducing each word (i.e., token) to its root form. The purpose of this step is to group words with the same theme having closely related semantics. In the proposed system, the stemmer exploits the Snowball Stemmer for the English language, based on the Porter’s algorithm.</li>
+<li><em>Feature representation</em> consists in building, for each text, the corresponding vector of numeric features. Indeed, in order to cluster the texts, we have to represent them in the same feature space. In particular, we consider the F- dimensional set of features corresponding to the set of relevant stems.</li>
+</ul>
+</div>
+<div id="manual-keywords-selection" class="section level3">
+<h3><span class="header-section-number">11.2.3</span> Manual keywords selection</h3>
+<p>Keyword selection procedure was performed by hand from a team of 4 experts in the scientific field of sustainable manufacturing and with consolidated expertise on research and innovation. In order to prevent misunderstandings and difference in the judgement, a preliminary analysis of the single attitudes to classification was statistically performed and misalignment were eliminated by a guided training, based on the contemporary evaluation of a same sample from different experts so as to align the judgement. This process was done, as above mentioned, based on the 6R explicit framework and sharing the meaning of each principle.</p>
+<p>It is clear that assignment of keywords to classes is not a trivial task and susceptible of interpretation. Disambiguation process would be required to explain the criteria of affinity to a given class, hopefully by referring to the functional scope of each class. Still an ambiguity may result, which can hardly be removed without a more profound specification with appropriate examples, which is out of the scope of the present paper.</p>
+<p>According to this procedure the 6R refer to the following keywords:</p>
+<ul>
+<li>RECOVER: recovery, planning processes, renewable resources, new approach, waste recovery; process scrap recovery; energy recovery; heat recovery; collection; separation; design for environment; material recover optimization; recovery logistics;</li>
+<li>RECYCLE: recycle, adhesive technologies, materials conversions, government regulation; (Advanced) recycling technologies; Recyclability; End of first life; Down cycle; New/Old process scraps; Material scraps; Landfill taxes; Recycling benefit awarding; Secondary material production; Embodied energy saving; Environmental legislation</li>
+<li>REDESIGN: machining, cutting, lubrication, environment technologies, cryogenic; Material-efficient design; Design for Environment; New Materials; Eco-friendly design; Eco-friendly materials; Material reduction; Light- weighting; Design for Disassembly</li>
+<li>REDUCE: reduce, optimize, waste minimization, consumption, energy payback, pollution, reduction, emission, saving; Energy reduction; Waste reduction; Resource reduction; Material usage reduction; Process sustainability optimization; Energy efficiency; Heat efficiency; Manufacturing efficiency; Doing with less;</li>
+<li>REMANUFACTURING: remanufacturing, material processing, eco-efficiency, renewable, innovations, nanocomposites; Product renewal; Product upgrade; Reconditioning; Part replacement; Modularity; Disassembly; Inspection; Separation; Re-Assembly; Design for Remanufacturing</li>
+<li>REUSE: reuse, replacing, material flow analysis, eco-efficiency; Component reuse; product re-conditioning; product upgrade; non-destructive recycling; reuse supply chain; product maintenance; product repair; product monitoring;</li>
+</ul>
+<p>It is clear that the keyword extraction is not a trivial task, since the outcome of the process may range from a useless single word to a meaningful group of combined words that, on the other hand, could become too specific to be significant for the training set of the search engines.</p>
+</div>
+<div id="paper-clustering" class="section level3">
+<h3><span class="header-section-number">11.2.4</span> Paper Clustering</h3>
+<p>Document clustering is the application of the general process of cluster analysis to texts. The practical applications of document clustering systems are several and vary from automatic document organization to automatic topic extraction. For further details see section <a href="sotatools.html#sotatoolsmodelnetanal">8.5.4</a>. Independently from the kind of algorithm, before the clustering phase, each document has to be represented as a set of features. These features are typically the n-grams contained in documents, so a critical activity for clustering effectiveness is the n-grams extraction (or feature selection). This goal is achieved with a series of sub-activity. These are typically tokenization (the process of parsing text data into smaller units), stemming and lemmatization (reducing all tokens to its semantic base), removing stop-words (less important words), and finally computing term frequencies (or other measures of the relationship between documents and words).</p>
+<p>To get an exploratory view of the degree of precision with which the 6R framework represents the papers in analysis, the manually classified documents were clustered using a clustering Spherical K-Means Clustering algorithm <span class="citation">(Buchta et al. <a href="#ref-buchta2012spherical">2012</a>)</span>. We will then compare the output of the algorithm with the manual classification in the following paragraph.</p>
+<p>Spherical k-means exploit cosine dissimilarities to perform prototype-based partitioning of term weight representations of the documents. Prototypes are centroids defined in the same feature space of the documents. The aim of the algorithm is to minimize, given a set of objects (documents in our case) and prototypes described in the same features space (the selected keywords) the cosine distance between each element and the closest prototype. This implies that the output of the algorithm is a membership matrix, in which each document is assigned to a certain prototype.</p>
+</div>
+<div id="results-1" class="section level3">
+<h3><span class="header-section-number">11.2.5</span> Results</h3>
+<p>In the present section, we describe the output of the application of the methodology described in section <a href="papers.html#smtextdrivenbottomup">11.2</a> on the 339 selected scientific papers on sustainable manufacturing extracted by the query “sustainable manufacturing” in the paper search field of the SCOPUS® database. Accordingly, apart the deliberate selection of the source database, no other filter was applied in the journal selection and this guarantees the significance of the journal sample selected. The main output, as highlighted in Figure 1, is the distribution of documents among the 6R principles (i.e. classes) as manually classified, the automatic keywords representations of the classes and the outputs of the clustering algorithm (which is an unsupervised assignment of the documents) compared to the manual classification.</p>
+<p>The assignment of a paper to a class was made by recognizing the application, or tools or scope of the paper to one 6R’s principles. In this sense, for instance, a paper belonging to a recover might have as scope, or keywords or approach or an activity performed with the principal task to assure the recovery of a give good. It is thus clear, from the beginning, how complex may be to recognize just one principle more than a multiple possibility to satisfy more principles. This fact will be discussed in the followings.</p>
+<div id="distributions-of-documents-among-the-6r" class="section level4 unnumbered">
+<h4>Distributions of documents among the 6R</h4>
+<p>The main point coming out from the histogram in Figure <a href="papers.html#fig:smhistogram">11.2</a> is that the distribution of scientific papers assigned to the 6R principles (classes) is not homogeneous. If the four classes Reduce, Recycle, Redesign and Remanufacture collect a comparable number of papers, the other two (Reuse, Recover) are poorly represented. One possible explanation of this is that cases of reuses or recoveries are less generalizable compared to other “R”, and thus potentially less interesting for conferences and journals. Recovery and reuse, in fact, often refers to specific functions embedded into the product, and finding a general rule for assessing or designing such processes might be more difficult. They rather might find room in technical magazines, not included in the present analysis as concern processes. It worth noting that reuse and recover here refers to product and not explicitly to materials. Different approach concerns the design for reuse, which to a certain extent would belong to remanufacturing, as in the most of papers discussed, to mention a few, in the Annals of CIRP 18,19,20. It is difficult to think that the classification criteria, which plays a critical role into the assignment to classes, contributed to this situation, depending on the meaning assigned to each principle. Whether a different combination of classed have been provided, a different histogram would be expected to appear.</p>
+<div class="figure" style="text-align: center"><span id="fig:smhistogram"></span>
+<img src="_bookdown_files/figures/sm_histogram.png" alt="Histogram of the number of papers manually assigned to each of the 6R principles." width="80%" />
+<p class="caption">
+Figure 11.2: Histogram of the number of papers manually assigned to each of the 6R principles.
+</p>
+</div>
+</div>
+<div id="keyword-vector-representation-of-6r" class="section level4 unnumbered">
+<h4>Keyword vector representation of 6R</h4>
+<p>After the phases of automatic keyword extraction and manual keyword selection, we derived the paper/selected keywords matrix. A sample of the elements of this matrix (keyword and their occurrency) is:</p>
+<ul>
+<li><em>RECOVER</em>: Life cycle 5, environmental impact 4, raw material 3, cycle assessement 3, tossii fuel 3, energy payback 2, cleaner products 2, energy cost 2, energy usage 2, pv System 2, product process 2, managements System 2, new technologies 2, energy save 2, climate change 2, risk assessements 2</li>
+<li><em>RECYCLE</em>:lite cycle 40, environmental impact 31, waste management 30, resource conservation recycle 25, solid waste 21, lite cycle assessement 18, recycle material 14, recycle process 12, reuse recycle 11, electronic equipement 11, global warm 9, waste disposai 9, heavy metal 8, environment friendly 8, waste treatment 8, waste stream 8</li>
+<li><em>REDESIGN</em>: manufacturing process 20, lite cycle assess 19, sustainable manufacturing 17, machine tool 14, naturai gas 14, cutting tool 13, raw material 13, tool life 13, cutting fluid 13, tool wear 13, mechanical engineering 12, System boundaries 11, machining process 11, manufacturing System 11, cutting speed 11, cutting zone 10</li>
+<li><em>REDUCE</em>: life cycle 40, environment impact 38, energy consumption 31, life cycle assessment 28, energy usage 22, energy requirements 18, solar energy 15, cleaner product 13, global warm 13, climate changes 12, solid waste 12, gas emission 11, solar celi 11, cutting conditions 11, co2 emissions 10, environmental management 10</li>
+<li><em>REMANUFACTORING</em>: sustainable manufacturing 28, manufacturing process 22, remanufacture product 18, supply chain 16, new product development 16, climate change 12, business model 12, product remanufacturing 12, manufacturing System 11, environmental performances 10, remanufacturing industry 10, management System 9, waste generation 9, design for environment 9, remanufacture and recycle 8, automotive industry 7</li>
+<li><em>REUSE</em>: life cycle 7, environment impact 7, energy usage 4, mechanical engineering 4, industriai ecology 4, cleaner product 3, life cycle assessement 3, environment management 3, design for manufacturing 3, environment protection agency 3, waste management 3, united nation 3, environment management System 2, process design 2, sustainable manufacturing 2, green chemistry 2</li>
+</ul>
+<p>The keywords were divided according to the 6R principles (i.e. class), listing the number of the paper belonging to each class.The sample list of keywords and their occurrency, reflects the distribution of figure <a href="papers.html#fig:smhistogram">11.2</a> and cannot thus be significant for classification but only for clustering purposes at the present.</p>
+</div>
+<div id="clustersclasses-confusion-matrix" class="section level4 unnumbered">
+<h4>Clusters/classes confusion matrix</h4>
+<p>To analyze from a semantic dimension how well 6R framework represent sustainable manufacturing definition through the scientific papers considered, the manually classified documents were clustered using a clustering Spherical K-Means Clustering algorithm. The results (the assignments of each paper to a cluster) was then compared with the manual classification. The number of resulted clusters was 6, having this number of clusters no specific relation with the number of 6R classes. The output of the clustering process is thus a 6x6 Matrix (Class(row)/Cluster (column)) shown in Figure <a href="papers.html#fig:clusterssm">11.3</a>. Numbers in the cells of the matrix represents centroids that can be characterized by the related keywords.</p>
+<div class="figure" style="text-align: center"><span id="fig:clusterssm"></span>
+<img src="_bookdown_files/figures/heat_map_sm.png" alt="Matrix: comparing the manual classification and the clustering output." width="60%" />
+<p class="caption">
+Figure 11.3: Matrix: comparing the manual classification and the clustering output.
+</p>
+</div>
+</div>
+</div>
+<div id="an-extended-mapping-of-the-sm-field-worldwide" class="section level3">
+<h3><span class="header-section-number">11.2.6</span> An extended mapping of the SM field worldwide</h3>
+<p>The methodology described in section <a href="papers.html#smtextdrivenbottomup">11.2</a> has been then re-adapted to give an extended anlysis of the 6R framework from a bottom-up perspective. In the present section, we map the state of the art of Sustainable Manufacturing using topic modelling, a widely used text mining techniques. The aim is to give a broad overview of how this knowledge field is approached world-wide and then, in section 3, to have a deeper look at the Italian way to sustainable manufacturing.</p>
+<p>The process of topic extraction is composed by the sequent activities:</p>
+<ol style="list-style-type: decimal">
+<li><em>Papers Collection</em></li>
+<li><em>Keyword Extraction</em></li>
+<li><em>Topic Modelling:</em> Number of topic selection</li>
+<li><em>Topic Modelling:</em> LDA Model fitting</li>
+<li><em>Manual topic labelling</em></li>
+</ol>
+<p>Each activity is described in the sequent sections.</p>
+<div id="papers-collection" class="section level4 unnumbered">
+<h4>Papers collection</h4>
+<p>The analysis starts form a corpus of papers on sustainable manufacturing. The papers were downloaded from the Scopus database searching for the query:</p>
+<span class="math display">\[\begin{equation*} 
+  TITLE-ABS-KEY(&quot;sustainable.*manufacturing&quot;)
+\end{equation*}\]</span>
+<p>At the date of 29/05/2018 the query results in 1,628 documents.</p>
+</div>
+<div id="keyword-extraction" class="section level4 unnumbered">
+<h4>Keyword extraction</h4>
+<p>We represent each article as a set of keywords, merging Author Keywords and Index Keywords. The keywords are then “sanitized” following the sequent rules:</p>
+<ul>
+<li>Eliminate duplicated keywords</li>
+<li>Eliminate brackets and its content</li>
+<li>Substitute non-alphanumeric character with a blank space</li>
+<li>Merge synonyms, alternative spelling and keywords pointing to similar concepts</li>
+<li>Eliminate scientific literature specific keywords like “article” and “review”</li>
+<li>Filter the generic keywords. The metrics for the threshold is the percentage of papers that contains the keywords. The value has been set to 7.5%.</li>
+</ul>
+<p>Finally, we compute the Keywords Term Matrix. The matrix is composed of 1,628 documents and 26,272 keywords. Having a mathematical representation of the documents allows us to apply standard mathematical techniques to them.</p>
+</div>
+<div id="topic-modelling-number-of-topic-selection-and-lda-model-fitting" class="section level4">
+<h4><span class="header-section-number">11.2.6.1</span> Topic Modelling: Number of Topic Selection and LDA Model Fitting</h4>
+<p>The goal of the present section is to compute a topic model based on the keyword representation of the papers. A topic model allows examining a set of documents and discovering, based on the statistics of the words in each, what the topics might be and what each document’s balance of topics is. To deploy it for the purposes of the present paper, keywords will cluster to form a topic: each topic will represent a different view (say, principle) of sustainable manufacturing. This approach brings a new perspective to the definition of sustainable manufacturing with respect to the 6R’s framework.</p>
+<p>To compute the topic model, we use the Latent Dirichlet Allocation (LDA) algorithm. To select the number of topics for LDA, the most efficient and effective way is to calculate multiple metrics of the quality of the results in function of the number of topics. All existing methods require to train multiple LDA models to select one with the best performance. Several approaches tried to take the problem of automatically finding the right number of topics contained in a set of documents. Every approach follows the idea of computing distances (or similarities) between pair of topics varying the number of topics. We used four different methods to evaluate the output of a topic model for different value of k. These methods are:</p>
+<ul>
+<li>Caojuan2009 <span class="citation">(Cao et al. <a href="#ref-cao2009density">2009</a>)</span>: Minimize the average cosine distance between every pair of topics. The best topic number K has a minimal final distance between topics in Latent Dirichlet Allocation</li>
+<li>Arun2010 <span class="citation">(Arun et al. <a href="#ref-arun2010finding">2010</a>)</span>: Minimize the symmetric KL-Divergence of the salient distribution that are derived from the matrices of factors. These matrices are the re-projections of the documents on the topics and of the topics on the vocabulary (the selected tokens). The divergence values are higher for non-optimal K values.</li>
+<li>Griffiths2004 <span class="citation">(Griffiths and Steyvers <a href="#ref-griffiths2004finding">2004</a>)</span>: Maximize the likely of the data given the model built considering K topics. This is a problem of model selection using Bayesian statistics.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:topicnumsm"></span>
+<img src="_bookdown_files/figures/Griffithsetc.pdf" alt="Relationship between the measures of the quality of the topic modelling output and the number of topics." width="60%" />
+<p class="caption">
+Figure 11.4: Relationship between the measures of the quality of the topic modelling output and the number of topics.
+</p>
+</div>
+<p>We computed these for measures fitting a LDA model for every K between 2 and 20. We choose the higher value because we wanted to obtain a reasonable number of topics representing the concepts (or we may say, principles) behind sustainable manufacturing. The results of the analysis are shown in figure <a href="papers.html#fig:topicnumsm">11.4</a>. From this figure is evident how the measure we want to minimize intersect each other at a value between 11 and 12 topics. We thus decided to visualize the results of the LDA models for a number of topics k between 7 and 15: the expert panel interviewed then allowed to decide that the best results was at 12 topics.</p>
+<p>We then extract the one-topic-per-term-per-row probabilities, beta. Beta measures what is the probability for each topic to produce a term. Figure <a href="papers.html#fig:topicpicture">11.5</a> shows the top 5 terms for each topic. Here each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term). It is possible for some keywords to belong to multiple topics: for example, optimization belongs to topic 1 and 9. It is easy to spot these keywords because typically (belonging to two different topics) are far from the group of keywords of the topics they belong.</p>
+<div class="figure" style="text-align: center"><span id="fig:topicpicture"></span>
+<img src="_bookdown_files/figures/geom_point_topic.pdf" alt="Content of the 12 topics. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term)." width="60%" />
+<p class="caption">
+Figure 11.5: Content of the 12 topics. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term).
+</p>
+</div>
+</div>
+<div id="manual-labelling-of-the-topics" class="section level4 unnumbered">
+<h4>Manual Labelling of the topics</h4>
+<p>To have a clearer representation of the topics, these were manually labelled by 6 independent experts in the field of manufacturing and sustainability. Then a seventh experts took in input the results of the manual naming and synthetized the label. The final results are the names of the 12 topics. These names are:</p>
+<ol style="list-style-type: decimal">
+<li>Smartness for Sustainability</li>
+<li>Sustainable Machining</li>
+<li>Manufacturing Environmental Efficiency</li>
+<li>Modelling Manufacturing Sustainability</li>
+<li>Welding Sustainability</li>
+<li>AM Sustainability</li>
+<li>Life-cycle Product Management</li>
+<li>Advanced Material Sustainability</li>
+<li>Production Management for Sustainability</li>
+<li>Sustainable Energies</li>
+<li>Innovation for Sustainability</li>
+<li>Sustainable Logistic</li>
+</ol>
+<p>This final picture provides a clear representation of how topics recognized are mostly homogeneous, provided there are few outlier keywords per each topic, as in figure <a href="papers.html#fig:topicpicture">11.5</a>. This “new perspective” of sustainable manufacturing represents a way of defining its contents by the grace of the tools or domain of interest involved. For instance, topic n.1 (smart sustainability) refers to the use of the new group of tools and approaches belonging to the Industry 4.0 stream, thus defining specific contents and criteria useful to pursue the sustainability in manufacturing.</p>
+</div>
+</div>
+</div>
+<div id="blockchain" class="section level2">
+<h2><span class="header-section-number">11.3</span> Blockchain</h2>
+<p>In section <a href="patents.html#advdrwresults">10.2</a> has been proposed a new usage of sentiment analysis to extract advantages (considered synonym of the words benefit, gain or profit) and disadvantages (drawback, failure) of technologies from patents (Chiarello, 2017) with the aim of helping researchers and designers to effectively develop new products, analyzing positive and negative properties of an innovation.</p>
+<p>The main contributions of the present analysis is to list the problems of a technological field. We want to understand which are the problems that research is trying to solve for a technology and if is there any focus from researchers on the solution of certain technical problem. Furthermore using text mining techniques it is possibile to correlate these problems between them and understand if is there any correlation between problems of technologies and if this map help researchers and companies to understand the research agenda.</p>
+<p>This section thus proposes an innovative methodology for the (semi-automatic) extraction of technical knowledge from academic articles, using text mining techniques. Among many information related to technical knowledge, thw methodology focus on the collection and the analysis of the problems of a technology. The meaning of problems of a technology is related to the concept of disadvantages of a technology but with a broader sense. In fact, using papers as a source makes it possible to collect not only technical disadvantages (typically described in patents) but also, organizational, business or even social problems, since these are faced by different intellectual fields in the scientific literature. We also propose a case study on the application of the method to the field of <em>block-chain</em>. We chose this technology because:</p>
+<ul>
+<li>It is highly innovative</li>
+<li>It is having an impact in many different field</li>
+<li>The problems of this technology are both technical and managerial</li>
+</ul>
+<div id="how-blockchain-technology-works" class="section level3">
+<h3><span class="header-section-number">11.3.1</span> How Blockchain Technology Works</h3>
+<p>The blockchain can be exemplified as a process in which a set of subjects shares computer resources (memory, CPU, band) to make available all private users in which each participant has a copy of the data.</p>
+<p>The use of cryptographic validation techniques generates the mutual trust of the participants in the data stored by the blockchain, which makes it comparable to the registries managed in a centralized manner by recognized and regulated authorities (banks, insurance companies, etc.) <span class="citation">(Pilkington <a href="#ref-pilkington201611">2016</a>)</span>.</p>
+<p>A blockchain is an open and distributed register that can store transactions between parties in a safe, verifiable and permanent way. Once written, the data in a block can not be retroactively altered without the modification of all the subsequent blocks, and this, due to the nature of the protocol and the validation scheme, would require the consensus of the majority of the network. <span class="citation">(Iansiti and Lakhani <a href="#ref-iansiti2017truth">2017</a>)</span></p>
+<p>The blockchain is a continuously growing list of records, called blocks, which are linked to each other and made safe by the use of cryptography. Each block in the chain contains a hash pointer (that is a link to the previous block), a timestamp and the transaction data.</p>
+<p>The distributed nature and the cooperative model makes the validation process robust and secure, but it has considerable time and costs, due in large part to the <em>price of the electricity</em> needed to validate the blocks <span class="citation">(Underwood <a href="#ref-underwood2016blockchain">2016</a>)</span>. Authentication takes place through mass collaboration and is fueled by collective interests. The result of all this is a robust workflow where participants’ data security expertise is not required. The use of this technology also makes it possible to overcome the problem of the infinite reproducibility of a digital asset and of the double expense without using a central server or an authority. <span class="citation">(Karame, Androulaki, and Capkun <a href="#ref-karame2012double">2012</a>)</span></p>
+<p>There exist an overtrust about blochain technology for businesess, and there exist a growing interest about the drawbacks of this technology <span class="citation">(Eyal and Sirer <a href="#ref-eyal2018majority">2018</a>. <span class="citation">Lin and Liao (<a href="#ref-lin2017survey">2017</a>)</span>, <span class="citation">Yli-Huumo et al. (<a href="#ref-yli2016current">2016</a>)</span>)</span>. Has been pointed out that a 51 percent attack 26 would be enough to access or control a private blockchain because, in most cases, the organization that controls it already controls one hundred percent of the block creation. In fact, if someone could attack or damage the blocking tool on a private company server, would be possibile to get complete management of the network and the ability to access and modify the data <span class="citation">(Hampton <a href="#ref-hampton2016understanding">2016</a>)</span>. This is because the centralization due to the privatization of the blockchain leads to a single point of failure, or a central break point, which in a public blockchain could not happen as distributed, so there would be no central point to attack. This could have profound implications in financial crises or debt crises like the 2007-08 financial crisis.</p>
+</div>
+<div id="problems-extraction-methodology" class="section level3">
+<h3><span class="header-section-number">11.3.2</span> Problems Extraction Methodology</h3>
+<p>Considering our objectives, the approach we adopted for paper analysis is radically new with respect to the one traditionally established in the literature (bibliometric analysis and keyword approaches). These approaches do not allow a deeper understanding of the technical content described in the text. For this reason, we relied on text mining techniques supported by our technical knowledge base. For the sentiment computation in fact, we used a technical sentiment lexicon developed by the authors that extracts advantages and disadvantages of inventions from patents (<a href="patents.html#advdrwresults">10.2</a>) and a novel dictionary lookup approach that incorporates weighting for valence shifters. Following a bottom up-approach, we redesigned and updated these lexicons for an optimal application to paper documents.</p>
+<div class="figure" style="text-align: center"><span id="fig:bcworkflow"></span>
+<img src="_bookdown_files/figures/bcworkflow.png" alt="Proposed workflow for the problem extraction from papers. " width="80%" />
+<p class="caption">
+Figure 11.6: Proposed workflow for the problem extraction from papers.
+</p>
+</div>
+<p>The workflow of the proposed methodology is shown in figure <a href="papers.html#fig:bcworkflow">11.6</a>. The process starts with the collection of abstracts belonging to the same technological field. The abstracts are downloaded using the Scopus API, extracting all the documents that contains keywords of the selected technology in the title, abstract or keywords fields. The texts are then pre-processed using state of the art natural language processing tools (sentence splitter, tokenizer, lemmatization). Then, for each sentence we computed a negative sentiment polarity and took into consideration only the sentences having a negative polarity score below a threshold level. We applied topic modelling algorithm on the negative sentences with the aim of clustering. The output of topic modelling is evaluated by technology domain experts with the aim of labeling the identified clusters.</p>
+<p>The application scenarios of our methodology have a wide range of users:</p>
+<ol style="list-style-type: decimal">
+<li>Companies that want to rapidly map a certain technological field</li>
+<li>Policy maker that want to invest to solve problems of a technology to boost its innovation</li>
+<li>Journals, to understand the hot-topic of a specific field</li>
+<li>Research networks, to exploit possible collaborations and synergies between scholars.</li>
+</ol>
+<div id="document-collection-and-selection" class="section level4 unnumbered">
+<h4>Document collection and selection</h4>
+<p>The documents were extracted from Scopus searching for the query:</p>
+<span class="math display">\[\begin{equation*} 
+  TITLE-ABS-KEY(&quot;blockchain&quot; OR &quot;block chain&quot; OR &quot;block-chain&quot;)
+\end{equation*}\]</span>
+<p>At the date of 29/05/2018 the query results in 1,628 documents.</p>
+<p>The term blockchain and its morphological variations is used in other fields different from computer science and economics, in particular in chemistry. For this reason we filtered from the data set all the papers belonging to one of the sequent All Science Journal Classification (ASJC) classes: chemistry, physics and astronomy, chemical engineering, biochemistry, genetics and molecular biology, pharmacology, toxicology and pharmaceutics, immunology and microbiology. The result of this lead us to a set of 1,364 papers.</p>
+<p>To have a dataset with an higher precision, we also filtered using rules based on the content of the abstracts, since many conferences do not have an ASJC class in scopus. This characteristic of the scopus database could lead to bias in the results, especially for innovative technologies like block-chain for which the scientific discussion is stronger in conferences then in more structured journals. For this reason we analyzed the abstracts of the 264 articles belonging to one of the ASJC classes listed above (chemistry related) extracting the most frequent words and filtering for a blacklist of generic words contained in scientific articles. This results in a dictionary of words that has ben used to search and filter al the papers containing in the abstract one or more of the words in the dictionary. The final number of selected papers is 1,276.</p>
+</div>
+<div id="sentence-splitting" class="section level4 unnumbered">
+<h4>Sentence Splitting</h4>
+<p>A sentence splitter (for furhter details see setction <a href="sotatools.html#sotatoolstransformsentencesplit">8.4.1</a>) is then applied to the abstract to divide the texts in sentences. From this step we had an output of 8,406 sentences.</p>
+<div class="figure" style="text-align: center"><span id="fig:histbllength"></span>
+<img src="_bookdown_files/figures/length_histogram_bl.pdf" alt="Histogram of the lengths of the sentences." width="80%" />
+<p class="caption">
+Figure 11.7: Histogram of the lengths of the sentences.
+</p>
+</div>
+<p>The next step involved the measure of the sentences length. Some of the sentences in fact could be too long due to several fact for example the style of the author or an error in the sentences splitting phase). Since it is not a goal of the present work to analyze the style of the authors or to design a better sentence splitter, we decided to filter the sentences that are too long. The decision on the threshold level of number of word has been taken analyzing the distribution shown in figure <a href="papers.html#fig:histbllength">11.7</a>. The 97% of the population of sentences contain a number of words that is lower than 53. Thus all the sentences contain more than 53 words has been filtered. From this step we had an output of 8143 sentences.</p>
+</div>
+<div id="polarity-computation" class="section level4 unnumbered">
+<h4>Polarity Computation</h4>
+<p>At this point has been possibile to apply a sentiment polarity measurement on the sentences <span class="citation">(Rinker <a href="#ref-sentimentr2018">2018</a>)</span>. As output we had a polarity score between -1 (strongly negative) and 1 (strongly positive) for each sentence. Since we are interested in extracting the problems of the state-of-the-art blockchain systems, we visualize the distribution of the polarity scores of the sentences labeled as negative (having a polarity score lower then 0). The histogram of this distribution is shown in figure TOT. In this histogram are represented 1,108 different sentences. As we can see we have a distribution center in -0.2, with a tail that goes down to -0.8. This is an evidence that the system give a reasonable measures since it would be unreasonable to have more probable extreme values. Furthermore, the number of sentences having a polarity equal to 0 is 4,435 that is about the 50% of the sentences and the number of sentences having a positive polarity is 2,700 : it is reasonable that the higher number of sentences falls in these classes since the scientific jargon has to be neutral. The positive bias has been seen also for patent documents (see section <a href="patents.html#advdrwresults">10.2</a>)).</p>
+<div class="figure" style="text-align: center"><span id="fig:sentintimebl"></span>
+<img src="_bookdown_files/figures/polarity_histogram_time_bl.pdf" alt="Box plots of the distributions  by years of the polarities of the sentences having a negative polarity score." width="80%" />
+<p class="caption">
+Figure 11.8: Box plots of the distributions by years of the polarities of the sentences having a negative polarity score.
+</p>
+</div>
+<p>One interesting evidence we found is that the number of outliers (having a polarity values lower than the 95% of the population) is growing over the year as shown in figure <a href="papers.html#fig:sentintimebl">11.8</a>. Even if the mean remains near to -0.2, int he last five years the number of strongly negative sentences has increased. This shows how there has been a trend in the focus on the problems of blockchain.</p>
+</div>
+<div id="tokenization-and-token-filtering" class="section level4 unnumbered">
+<h4>Tokenization and Token Filtering</h4>
+<p>In the next phase we apply a state of the art natural language processing pipeline (see section <a href="sotatools.html#sotatools">8</a> for more details) to the 1,108 negative sentences.</p>
+<p>The tokenization process results in 220,094 tokens. To extract the meaningful words (words that adds information about the problem that the sentence is describing) we applied a series of filtering steps. As meaningful unit to analyze (token) we decided to use the lemma of the word. The filtering chain we applied is described in table <a href="papers.html#tab:tableblfilter">11.1</a>- The 9,451 final token is a reasonable number considering the 1,108 sentences in input: we have a mean of 9 words per sentence. Considering the mean of 25 words per sentence shown in figure <a href="papers.html#fig:histbllength">11.7</a>, we now have a summary of the sentences contains only the meaningful words. This output is a clean input for the topic modelling phase.</p>
+<table>
+<caption><span id="tab:tableblfilter">Table 11.1: </span> Table of the filters applied to select the relevant tokens.</caption>
+<thead>
+<tr class="header">
+<th align="left">Filter Description</th>
+<th align="left">Filter Type</th>
+<th align="left">Examples of filtered words</th>
+<th align="right">Number of token in output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Select only nouns, adjective and verbs</td>
+<td align="left">POS tagging based</td>
+<td align="left">the, a, anyway, with, because</td>
+<td align="right">20.365</td>
+</tr>
+<tr class="even">
+<td align="left">Filter words contained in the advantages and drawback lexicon</td>
+<td align="left">Stop-words</td>
+<td align="left">impossibile, problem, insufficient, challenge, issue, dangerous</td>
+<td align="right">18.354</td>
+</tr>
+<tr class="odd">
+<td align="left">Filter words typical of scientific litterature</td>
+<td align="left">Stop-words</td>
+<td align="left">paper, study, work, research, review, discuss, find, focus</td>
+<td align="right">14.505</td>
+</tr>
+<tr class="even">
+<td align="left">Filter words contained in more than 10% of the sentences</td>
+<td align="left">Frequency filter</td>
+<td align="left">block, chain, technology, be, have, datum</td>
+<td align="right">12.473</td>
+</tr>
+<tr class="odd">
+<td align="left">Filter words contained in less than 0.1% of the sentences</td>
+<td align="left">Frequency filter</td>
+<td align="left">philosophy, dialogue, prospect, liberalized, interorganizational, curriculum, multidimensional</td>
+<td align="right">9.988</td>
+</tr>
+<tr class="even">
+<td align="left">Filter all the token shorter than 3 character</td>
+<td align="left">Morphology filtering</td>
+<td align="left">a, b, c, ©, %, us, bc</td>
+<td align="right">9.451</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="topic-modelling" class="section level3">
+<h3><span class="header-section-number">11.3.3</span> Topic modelling</h3>
+<p>Topic modeling is a method for unsupervised classification of documents which finds groups of documents fitting a statistical model to the data. In other words, these models captures word correlations in a collection of documents with a set of topics. Latent Dirichlet allocation (LDA) is a particularly popular method for fitting a topic model. It treats each document as a mixture of topics, and each topic as a mixture of words. This allows documents to “overlap” each other in terms of content, rather than being separated into discrete groups, in a way that mirrors typical use of natural language (for further details see section <a href="sotatools.html#sotatoolsmodeltopicmodel">8.5.6</a>). If the topic modelling process is good, we have as output a structure where every topic is an understandable, meaningful and compact semantic cluster that in our case clearly represent a state-of-the-art problem of block chain technology.</p>
+<div id="document-term-matrix" class="section level4 unnumbered">
+<h4>Document Term Matrix</h4>
+<p>The first step is to take in input the 9,451 tokens and count how many times each one occurs in the 1,108 sentences. In this way we obtain a document-term matrix (DTM) where the documents are the sentences and the terms are our tokens (the lemmas). In our case the DTM has 1077 rows representing the sentences (31 sentences did not contain any relevant tokens) and 1147 tokens.</p>
+</div>
+<div id="definition-of-the-optimal-number-of-topics-a-human-machine-hybrid-approach" class="section level4 unnumbered">
+<h4>Definition of the Optimal Number of Topics: a Human-Machine Hybrid Approach</h4>
+<p>To fit a LDA model we have to give as a parameter the number of topic k that we think that best represent the corpus in analysis. In literature there exists many measurement to compute an optimal value of k. However it is worth to keep in mind that these measures are not always correlated with expert judgement about topics interpretability and coherence. For this reason in the present paper we use an hybrid approach in which we find an optimal neighborhood of value using state of the art k tuning methods and then we compute a graphical output for the 5 best k values to be evaluated by 4 different experts.</p>
+<p>Several approaches tried to take the problem of automatically finding the right number of topics contained in a set of documents. Every approach follow the idea of computing distances (or similarities) between pair of topics varying the number of topics. We used four different methods to evaluate the output of a topic model for different value of k. These methods are:</p>
+<ul>
+<li>Caojuan2009 <span class="citation">(Cao et al. <a href="#ref-cao2009density">2009</a>)</span>: Minimize the average cosine distance between every pair of topics. The best topic number K has a minimal final distance between topics in Latent Dirichlet Allocation</li>
+<li>Arun2010 <span class="citation">(Arun et al. <a href="#ref-arun2010finding">2010</a>)</span>: Minimize the symmetric KL-Divergence of the salient distribution that are derived from the matrices of factors. These matrices are the re-projections of the documents on the topics and of the topics on the vocabulary (the selected tokens). The divergence values are higher for non-optimal K values.</li>
+<li>Griffiths2004 <span class="citation">(Griffiths and Steyvers <a href="#ref-griffiths2004finding">2004</a>)</span>: Maximize the likely of the data given the model built considering K topics. This is a problem of model selection using Bayesian statistics.</li>
+<li>Deveaud2014 <span class="citation">(Deveaud, SanJuan, and Bellot <a href="#ref-deveaud2014accurate">2014</a>)</span>: Maximize the information divergence between all pairs of topics. The optimal value k is the value for which LDA modeled the most scattered topics.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:topicnumsmbl"></span>
+<img src="_bookdown_files/figures/FindTopicsNumber_plot_bl.pdf" alt="Measures of quality of the topic modelling results for growing number of topics. The figure is divided in metrics to minimize (top figure) and to maximized (bottom figure)." width="60%" />
+<p class="caption">
+Figure 11.9: Measures of quality of the topic modelling results for growing number of topics. The figure is divided in metrics to minimize (top figure) and to maximized (bottom figure).
+</p>
+</div>
+<p>We computed these for measures fitting a LDA model for every K between 2 and 30. We choose the higher value because we wanted to obtain a reasonable number of topics representing the problems of blockchain. After a brain storming with experts it emerges that there can not exists more than 15 classes of problems. We decide to take the double of this number to take in to consideration the biases of human experts. The results of the analysis are shown in figure <a href="papers.html#fig:topicnumsmbl">11.9</a>. From this figure is evident how the measure we want to minimize interest each other at a value of 7 topics; the values we want to minimize are a little more unstable (especially Arun2010) and intersect both at level of 9 and 11. We thus decided to visualize and make choose the results of the LDA models for a number of topics k between 7 an 10.</p>
+<p>To help experts in their decision process, an interactive map of the problem hass been generated for 7, 8, 9, 10 and 11 topics. The map was created using Shiny <span class="citation">(Chang et al. <a href="#ref-shiny2017">2017</a>)</span>. The interactive map of problems (a screen shot of the app is shown in figure <a href="papers.html#fig:topicmodelschinybc">11.10</a>) helped experts to understand the relationships between the problems. Here a multidimensional scaling algorithm compute the inter-topic distance that permits to visualize the distribution of topics in two dimensions. Clicking on a topic the experts can see its content, and for each word can see both at the estimated term frequency within the selected topic and at the overall term frequency.</p>
+<div class="figure" style="text-align: center"><span id="fig:topicmodelschinybc"></span>
+<img src="_bookdown_files/figures/bc_topicmodel_shiny.png" alt="Screenshot of the shiny app used by experts to choose the optimal number of topcis. " width="60%" />
+<p class="caption">
+Figure 11.10: Screenshot of the shiny app used by experts to choose the optimal number of topcis.
+</p>
+</div>
+<p>The experts agreed for a total number of 8 topics as optimal.</p>
+</div>
+<div id="topic-modelling-results" class="section level4 unnumbered">
+<h4>Topic Modelling Results</h4>
+<p>The output topic modelling phase is show in figure <a href="papers.html#fig:topicmodelsoutputbc">11.11</a>. The results of the topic modelling are visualized to make it possibile for the expert to explore and label the topic representing the problems of block chain technology. Each point is a word, and word belonging to the same topic are grouped. The size of the label is proportional to the probability ß that the word belong to that topic.</p>
+<div class="figure" style="text-align: center"><span id="fig:topicmodelsoutputbc"></span>
+<img src="_bookdown_files/figures/output_bl_topicmodels.png" alt="Content of the 8 topics of problems of blockchain. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term" width="60%" />
+<p class="caption">
+Figure 11.11: Content of the 8 topics of problems of blockchain. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-jawahir2016technological">
+<p>Jawahir, IS, and Ryan Bradley. 2016. “Technological Elements of Circular Economy and the Principles of 6r-Based Closed-Loop Material Flow in Sustainable Manufacturing.” <em>Procedia Cirp</em> 40. Elsevier: 103–8.</p>
+</div>
+<div id="ref-ingarao2017manufacturing">
+<p>Ingarao, Giuseppe. 2017. “Manufacturing Strategies for Efficiency in Energy and Resources Use: The Role of Metal Shaping Processes.” <em>Journal of Cleaner Production</em> 142. Elsevier: 2872–86.</p>
+</div>
+<div id="ref-duflou2012towards">
+<p>Duflou, Joost R, John W Sutherland, David Dornfeld, Christoph Herrmann, Jack Jeswiet, Sami Kara, Michael Hauschild, and Karel Kellens. 2012. “Towards Energy and Resource Efficient Manufacturing: A Processes and Systems Approach.” <em>CIRP Annals-Manufacturing Technology</em> 61 (2). Elsevier: 587–609.</p>
+</div>
+<div id="ref-haapala2013review">
+<p>Haapala, Karl R, Fu Zhao, Jaime Camelio, John W Sutherland, Steven J Skerlos, David A Dornfeld, IS Jawahir, Andres F Clarens, and Jeremy L Rickli. 2013. “A Review of Engineering Research in Sustainable Manufacturing.” <em>Journal of Manufacturing Science and Engineering</em> 135 (4). American Society of Mechanical Engineers: 041013.</p>
+</div>
+<div id="ref-allwood2014squaring">
+<p>Allwood, Julian M. 2014. “Squaring the Circular Economy: The Role of Recycling Within a Hierarchy of Material Management Strategies.” In <em>Handbook of Recycling</em>, 445–77. Elsevier.</p>
+</div>
+<div id="ref-cooper2012reusing">
+<p>Cooper, Daniel R, and Julian M Allwood. 2012. “Reusing Steel and Aluminum Components at End of Product Life.” <em>Environmental Science &amp; Technology</em> 46 (18). ACS Publications: 10334–40.</p>
+</div>
+<div id="ref-wced1987world">
+<p>WCED, SPECIAL WORKING SESSION. 1987. “World Commission on Environment and Development.” <em>Our Common Future</em>. Oxford University Press London.</p>
+</div>
+<div id="ref-buchta2012spherical">
+<p>Buchta, Christian, Martin Kober, Ingo Feinerer, and Kurt Hornik. 2012. “Spherical K-Means Clustering.” <em>Journal of Statistical Software</em> 50 (10). American Statistical Association: 1–22.</p>
+</div>
+<div id="ref-cao2009density">
+<p>Cao, Juan, Tian Xia, Jintao Li, Yongdong Zhang, and Sheng Tang. 2009. “A Density-Based Method for Adaptive Lda Model Selection.” <em>Neurocomputing</em> 72 (7-9). Elsevier: 1775–81.</p>
+</div>
+<div id="ref-arun2010finding">
+<p>Arun, Rajkumar, Venkatasubramaniyan Suresh, CE Veni Madhavan, and MN Narasimha Murthy. 2010. “On Finding the Natural Number of Topics with Latent Dirichlet Allocation: Some Observations.” In <em>Pacific-Asia Conference on Knowledge Discovery and Data Mining</em>, 391–402. Springer.</p>
+</div>
+<div id="ref-griffiths2004finding">
+<p>Griffiths, Thomas L, and Mark Steyvers. 2004. “Finding Scientific Topics.” <em>Proceedings of the National Academy of Sciences</em> 101 (suppl 1). National Acad Sciences: 5228–35.</p>
+</div>
+<div id="ref-pilkington201611">
+<p>Pilkington, Marc. 2016. “11 Blockchain Technology: Principles and Applications.” <em>Research Handbook on Digital Transformations</em>. Edward Elgar Publishing, 225.</p>
+</div>
+<div id="ref-iansiti2017truth">
+<p>Iansiti, Marco, and Karim R Lakhani. 2017. “The Truth About Blockchain.” <em>Harvard Business Review</em> 95 (1): 118–27.</p>
+</div>
+<div id="ref-underwood2016blockchain">
+<p>Underwood, Sarah. 2016. “Blockchain Beyond Bitcoin.” <em>Communications of the ACM</em> 59 (11). ACM: 15–17.</p>
+</div>
+<div id="ref-karame2012double">
+<p>Karame, Ghassan O, Elli Androulaki, and Srdjan Capkun. 2012. “Double-Spending Fast Payments in Bitcoin.” In <em>Proceedings of the 2012 Acm Conference on Computer and Communications Security</em>, 906–17. ACM.</p>
+</div>
+<div id="ref-eyal2018majority">
+<p>Eyal, Ittay, and Emin Gun Sirer. 2018. “Majority Is Not Enough: Bitcoin Mining Is Vulnerable.” <em>Communications of the ACM</em> 61 (7). ACM: 95–102.</p>
+</div>
+<div id="ref-lin2017survey">
+<p>Lin, Iuon-Chang, and Tzu-Chun Liao. 2017. “A Survey of Blockchain Security Issues and Challenges.” <em>IJ Network Security</em> 19 (5): 653–59.</p>
+</div>
+<div id="ref-yli2016current">
+<p>Yli-Huumo, Jesse, Deokyoon Ko, Sujin Choi, Sooyong Park, and Kari Smolander. 2016. “Where Is Current Research on Blockchain Technology?—a Systematic Review.” <em>PloS One</em> 11 (10). Public Library of Science: e0163477.</p>
+</div>
+<div id="ref-hampton2016understanding">
+<p>Hampton, Nikolai. 2016. “Understanding the Blockchain Hype: Why Much of It Is Nothing More Than Snake Oil and Spin.” <em>Computerworld</em> 5.</p>
+</div>
+<div id="ref-sentimentr2018">
+<p>Rinker, Tyler W. 2018. <em>sentimentr: Calculate Text Polarity Sentiment</em>. Buffalo, New York. <a href="http://github.com/trinker/sentimentr" class="uri">http://github.com/trinker/sentimentr</a>.</p>
+</div>
+<div id="ref-deveaud2014accurate">
+<p>Deveaud, Romain, Eric SanJuan, and Patrice Bellot. 2014. “Accurate and Effective Latent Concept Modeling for Ad Hoc Information Retrieval.” <em>Document Numerique</em> 17 (1). Lavoisier: 61–84.</p>
+</div>
+<div id="ref-shiny2017">
+<p>Chang, Winston, Joe Cheng, JJ Allaire, Yihui Xie, and Jonathan McPherson. 2017. <em>Shiny: Web Application Framework for R</em>. <a href="https://CRAN.R-project.org/package=shiny" class="uri">https://CRAN.R-project.org/package=shiny</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="11">
+<li id="fn11"><p><a href="http://www.trade.gov/green/sm-101-module.asp" class="uri">http://www.trade.gov/green/sm-101-module.asp</a><a href="papers.html#fnref11">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="patents.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="wikipedia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["thesis_source.pdf", "thesis_source.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

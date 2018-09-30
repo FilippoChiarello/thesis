@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mining Technical Knowledge from Texts</title>
+  <meta name="description" content="This document contains the PhD thesis of Filippo Chiarello.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Mining Technical Knowledge from Texts" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mining Technical Knowledge from Texts" />
+  
+  <meta name="twitter:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+<meta name="author" content="Filippo Chiarello">
+
+
+<meta name="date" content="2018-09-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="solutions.html">
+<link rel="next" href="research-questions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Text Mining Techniques for Knowledge Extraction from Technical Documents</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="goal.html"><a href="goal.html"><i class="fa fa-check"></i><b>1</b> Goal</a></li>
+<li class="chapter" data-level="2" data-path="problem.html"><a href="problem.html"><i class="fa fa-check"></i><b>2</b> Problem</a></li>
+<li class="chapter" data-level="3" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>3</b> Solutions</a></li>
+<li class="chapter" data-level="4" data-path="challenges-understanding-and-programming.html"><a href="challenges-understanding-and-programming.html"><i class="fa fa-check"></i><b>4</b> Challenges: Understanding and Programming</a><ul>
+<li class="chapter" data-level="4.1" data-path="challenges-understanding-and-programming.html"><a href="challenges-understanding-and-programming.html#understanding"><i class="fa fa-check"></i><b>4.1</b> Understanding</a></li>
+<li class="chapter" data-level="4.2" data-path="challenges-understanding-and-programming.html"><a href="challenges-understanding-and-programming.html#programming"><i class="fa fa-check"></i><b>4.2</b> Programming</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="research-questions.html"><a href="research-questions.html"><i class="fa fa-check"></i><b>5</b> Research Questions</a></li>
+<li class="chapter" data-level="6" data-path="stakeholders.html"><a href="stakeholders.html"><i class="fa fa-check"></i><b>6</b> Stakeholders</a></li>
+<li class="chapter" data-level="7" data-path="knowledge-intensive-manegement-engineering.html"><a href="knowledge-intensive-manegement-engineering.html"><i class="fa fa-check"></i><b>7</b> Knowledge Intensive Manegement Engineering</a></li>
+<li class="part"><span><b>II State of the Art</b></span></li>
+<li class="chapter" data-level="8" data-path="sotatools.html"><a href="sotatools.html"><i class="fa fa-check"></i><b>8</b> Phases, Tasks, and Techniques</a><ul>
+<li class="chapter" data-level="8.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsprogram"><i class="fa fa-check"></i><b>8.1</b> Program</a></li>
+<li class="chapter" data-level="8.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimport"><i class="fa fa-check"></i><b>8.2</b> Import</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportretrieval"><i class="fa fa-check"></i><b>8.2.1</b> Document Retrieval</a></li>
+<li class="chapter" data-level="8.2.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportformat"><i class="fa fa-check"></i><b>8.2.2</b> Documents Format</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstidy"><i class="fa fa-check"></i><b>8.3</b> Tidy</a></li>
+<li class="chapter" data-level="8.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransform"><i class="fa fa-check"></i><b>8.4</b> Transform</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformsentencesplit"><i class="fa fa-check"></i><b>8.4.1</b> Sentence Splitting</a></li>
+<li class="chapter" data-level="8.4.2" data-path="sotatools.html"><a href="sotatools.html#tokenization"><i class="fa fa-check"></i><b>8.4.2</b> Tokenization</a></li>
+<li class="chapter" data-level="8.4.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformstemming"><i class="fa fa-check"></i><b>8.4.3</b> Stemming</a></li>
+<li class="chapter" data-level="8.4.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformlemmatisation"><i class="fa fa-check"></i><b>8.4.4</b> Lemmatisation</a></li>
+<li class="chapter" data-level="8.4.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformwi"><i class="fa fa-check"></i><b>8.4.5</b> Words importance metrics</a></li>
+<li class="chapter" data-level="8.4.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformpos"><i class="fa fa-check"></i><b>8.4.6</b> Part-of-Speech Tagging</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodel"><i class="fa fa-check"></i><b>8.5</b> Model</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformngrams"><i class="fa fa-check"></i><b>8.5.1</b> N-Grams</a></li>
+<li class="chapter" data-level="8.5.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeldocclass"><i class="fa fa-check"></i><b>8.5.2</b> Document Classification</a></li>
+<li class="chapter" data-level="8.5.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelsentanal"><i class="fa fa-check"></i><b>8.5.3</b> Sentiment Analsysis</a></li>
+<li class="chapter" data-level="8.5.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelnetanal"><i class="fa fa-check"></i><b>8.5.4</b> Text Clustering</a></li>
+<li class="chapter" data-level="8.5.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelner"><i class="fa fa-check"></i><b>8.5.5</b> Named Entity Recognition</a></li>
+<li class="chapter" data-level="8.5.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeltopicmodel"><i class="fa fa-check"></i><b>8.5.6</b> Topic Modelling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsvisualize"><i class="fa fa-check"></i><b>8.6</b> Visualize</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="sotatools.html"><a href="sotatools.html#the-grammar-of-graphics"><i class="fa fa-check"></i><b>8.6.1</b> The Grammar of Graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="sotatools.html"><a href="sotatools.html#sotatoolscomunicate"><i class="fa fa-check"></i><b>8.7</b> Comunicate</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="sotadocuments.html"><a href="sotadocuments.html"><i class="fa fa-check"></i><b>9</b> Documents</a><ul>
+<li class="chapter" data-level="9.1" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentsunderstand"><i class="fa fa-check"></i><b>9.1</b> Understand</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="sotadocuments.html"><a href="sotadocuments.html#domain-expertise"><i class="fa fa-check"></i><b>9.1.1</b> Domain Expertise</a></li>
+<li class="chapter" data-level="9.1.2" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentsunderstandbyas"><i class="fa fa-check"></i><b>9.1.2</b> The problem of byases</a></li>
+<li class="chapter" data-level="9.1.3" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentsunderstandlexicons"><i class="fa fa-check"></i><b>9.1.3</b> The Importance of Lexicons for Technical Documents Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentspatents"><i class="fa fa-check"></i><b>9.2</b> Patents</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="sotadocuments.html"><a href="sotadocuments.html#metadata-approaches"><i class="fa fa-check"></i><b>9.2.1</b> Metadata Approaches</a></li>
+<li class="chapter" data-level="9.2.2" data-path="sotadocuments.html"><a href="sotadocuments.html#keywords-approaches"><i class="fa fa-check"></i><b>9.2.2</b> Keywords Approaches</a></li>
+<li class="chapter" data-level="9.2.3" data-path="sotadocuments.html"><a href="sotadocuments.html#natural-language-processing-approaches"><i class="fa fa-check"></i><b>9.2.3</b> Natural Language Processing approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentspapers"><i class="fa fa-check"></i><b>9.3</b> Papers</a></li>
+<li class="chapter" data-level="9.4" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentswiki"><i class="fa fa-check"></i><b>9.4</b> Wikipedia</a></li>
+<li class="chapter" data-level="9.5" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentstwitter"><i class="fa fa-check"></i><b>9.5</b> Social Media</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="sotadocuments.html"><a href="sotadocuments.html#economics"><i class="fa fa-check"></i><b>9.5.1</b> Economics</a></li>
+<li class="chapter" data-level="9.5.2" data-path="sotadocuments.html"><a href="sotadocuments.html#marketing"><i class="fa fa-check"></i><b>9.5.2</b> Marketing</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentsjobs"><i class="fa fa-check"></i><b>9.6</b> Human Resources Documentation</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="sotadocuments.html"><a href="sotadocuments.html#the-key-role-of-skills-assessment"><i class="fa fa-check"></i><b>9.6.1</b> The Key Role of Skills Assessment</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Case Studies: Methods and Results</b></span></li>
+<li class="chapter" data-level="10" data-path="patents.html"><a href="patents.html"><i class="fa fa-check"></i><b>10</b> Patents</a><ul>
+<li class="chapter" data-level="10.1" data-path="patents.html"><a href="patents.html#usersresults"><i class="fa fa-check"></i><b>10.1</b> Users</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="patents.html"><a href="patents.html#userdef"><i class="fa fa-check"></i><b>10.1.1</b> Users: A key information hidden in patents</a></li>
+<li class="chapter" data-level="10.1.2" data-path="patents.html"><a href="patents.html#sourc"><i class="fa fa-check"></i><b>10.1.2</b> List of users generation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="patents.html"><a href="patents.html#patsel"><i class="fa fa-check"></i><b>10.1.3</b> Patent set selection</a></li>
+<li class="chapter" data-level="10.1.4" data-path="patents.html"><a href="patents.html#patent-text-analysis"><i class="fa fa-check"></i><b>10.1.4</b> Patent text analysis</a></li>
+<li class="chapter" data-level="10.1.5" data-path="patents.html"><a href="patents.html#user-entity-extraction"><i class="fa fa-check"></i><b>10.1.5</b> User Entity Extraction</a></li>
+<li class="chapter" data-level="10.1.6" data-path="patents.html"><a href="patents.html#manrev"><i class="fa fa-check"></i><b>10.1.6</b> Manual Review of the new list of users</a></li>
+<li class="chapter" data-level="10.1.7" data-path="patents.html"><a href="patents.html#results"><i class="fa fa-check"></i><b>10.1.7</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="patents.html"><a href="patents.html#advdrwresults"><i class="fa fa-check"></i><b>10.2</b> Advantages and Drawbacks</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="patents.html"><a href="patents.html#advdisdef"><i class="fa fa-check"></i><b>10.2.1</b> Advantages and drawbacks: an engineering point of view</a></li>
+<li class="chapter" data-level="10.2.2" data-path="patents.html"><a href="patents.html#clues-of-advantages-and-drawbacks-in-patents"><i class="fa fa-check"></i><b>10.2.2</b> Clues of Advantages and drawbacks in patents</a></li>
+<li class="chapter" data-level="10.2.3" data-path="patents.html"><a href="patents.html#adv-drw-article-sourc"><i class="fa fa-check"></i><b>10.2.3</b> Advantages and Drawbacks Clue Collection</a></li>
+<li class="chapter" data-level="10.2.4" data-path="patents.html"><a href="patents.html#advdrwarticledomaincluecoll"><i class="fa fa-check"></i><b>10.2.4</b> Domain Clues Extraction</a></li>
+<li class="chapter" data-level="10.2.5" data-path="patents.html"><a href="patents.html#clue-validation-using-tweets-sentiment-analysis"><i class="fa fa-check"></i><b>10.2.5</b> Clue validation using tweets sentiment analysis}</a></li>
+<li class="chapter" data-level="10.2.6" data-path="patents.html"><a href="patents.html#advantages-and-drawbacks-sentences-extraction"><i class="fa fa-check"></i><b>10.2.6</b> Advantages and Drawbacks sentences extraction</a></li>
+<li class="chapter" data-level="10.2.7" data-path="patents.html"><a href="patents.html#results-case-study"><i class="fa fa-check"></i><b>10.2.7</b> Results: case study</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="patents.html"><a href="patents.html#trademakrs"><i class="fa fa-check"></i><b>10.3</b> Trademakrs</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="patents.html"><a href="patents.html#the-use-of-trademark-symbols-and-in-patents-from-a-legal-perspective"><i class="fa fa-check"></i><b>10.3.1</b> The use of trademark symbols ™ and ® in patents from a legal perspective</a></li>
+<li class="chapter" data-level="10.3.2" data-path="patents.html"><a href="patents.html#finding-tradenames-from-patents"><i class="fa fa-check"></i><b>10.3.2</b> Finding Tradenames from Patents</a></li>
+<li class="chapter" data-level="10.3.3" data-path="patents.html"><a href="patents.html#trademarks-and-ipc-classes"><i class="fa fa-check"></i><b>10.3.3</b> Trademarks and IPC Classes</a></li>
+<li class="chapter" data-level="10.3.4" data-path="patents.html"><a href="patents.html#the-selected-tradenames"><i class="fa fa-check"></i><b>10.3.4</b> The Selected Tradenames</a></li>
+<li class="chapter" data-level="10.3.5" data-path="patents.html"><a href="patents.html#tradenames-usage-in-patents"><i class="fa fa-check"></i><b>10.3.5</b> Tradenames Usage in Patents</a></li>
+<li class="chapter" data-level="10.3.6" data-path="patents.html"><a href="patents.html#the-popularity-of-tradenames-in-patens"><i class="fa fa-check"></i><b>10.3.6</b> The Popularity of Tradenames in Patens</a></li>
+<li class="chapter" data-level="10.3.7" data-path="patents.html"><a href="patents.html#the-similarity-of-tradenames-in-patens"><i class="fa fa-check"></i><b>10.3.7</b> The Similarity of Tradenames in Patens</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="papers.html"><a href="papers.html"><i class="fa fa-check"></i><b>11</b> Papers</a><ul>
+<li class="chapter" data-level="11.1" data-path="papers.html"><a href="papers.html#sustainable-manufacturing"><i class="fa fa-check"></i><b>11.1</b> Sustainable Manufacturing</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="papers.html"><a href="papers.html#the-6r-framework"><i class="fa fa-check"></i><b>11.1.1</b> The 6R Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="papers.html"><a href="papers.html#smtextdrivenbottomup"><i class="fa fa-check"></i><b>11.2</b> Sustainable Manufacturing: A text driven bottom-up definition</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="papers.html"><a href="papers.html#assignment-of-6r-principle-meanings"><i class="fa fa-check"></i><b>11.2.1</b> Assignment of 6R principle meanings</a></li>
+<li class="chapter" data-level="11.2.2" data-path="papers.html"><a href="papers.html#automatic-text-analysis-and-keywords-extraction"><i class="fa fa-check"></i><b>11.2.2</b> Automatic Text analysis and Keywords extraction</a></li>
+<li class="chapter" data-level="11.2.3" data-path="papers.html"><a href="papers.html#manual-keywords-selection"><i class="fa fa-check"></i><b>11.2.3</b> Manual keywords selection</a></li>
+<li class="chapter" data-level="11.2.4" data-path="papers.html"><a href="papers.html#paper-clustering"><i class="fa fa-check"></i><b>11.2.4</b> Paper Clustering</a></li>
+<li class="chapter" data-level="11.2.5" data-path="papers.html"><a href="papers.html#results-1"><i class="fa fa-check"></i><b>11.2.5</b> Results</a></li>
+<li class="chapter" data-level="11.2.6" data-path="papers.html"><a href="papers.html#an-extended-mapping-of-the-sm-field-worldwide"><i class="fa fa-check"></i><b>11.2.6</b> An extended mapping of the SM field worldwide</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="papers.html"><a href="papers.html#blockchain"><i class="fa fa-check"></i><b>11.3</b> Blockchain</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="papers.html"><a href="papers.html#how-blockchain-technology-works"><i class="fa fa-check"></i><b>11.3.1</b> How Blockchain Technology Works</a></li>
+<li class="chapter" data-level="11.3.2" data-path="papers.html"><a href="papers.html#problems-extraction-methodology"><i class="fa fa-check"></i><b>11.3.2</b> Problems Extraction Methodology</a></li>
+<li class="chapter" data-level="11.3.3" data-path="papers.html"><a href="papers.html#topic-modelling"><i class="fa fa-check"></i><b>11.3.3</b> Topic modelling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="wikipedia.html"><a href="wikipedia.html"><i class="fa fa-check"></i><b>12</b> Wikipedia</a></li>
+<li class="chapter" data-level="13" data-path="twitter.html"><a href="twitter.html"><i class="fa fa-check"></i><b>13</b> Twitter</a></li>
+<li class="chapter" data-level="14" data-path="job-profiles.html"><a href="job-profiles.html"><i class="fa fa-check"></i><b>14</b> Job Profiles</a></li>
+<li class="part"><span><b>IV Future Developments</b></span></li>
+<li class="chapter" data-level="15" data-path="marketing-1.html"><a href="marketing-1.html"><i class="fa fa-check"></i><b>15</b> Marketing</a></li>
+<li class="chapter" data-level="16" data-path="research-and-development.html"><a href="research-and-development.html"><i class="fa fa-check"></i><b>16</b> Research and Development</a></li>
+<li class="chapter" data-level="17" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>17</b> Design</a></li>
+<li class="chapter" data-level="18" data-path="human-resources.html"><a href="human-resources.html"><i class="fa fa-check"></i><b>18</b> Human Resources</a></li>
+<li class="chapter" data-level="" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i>Conclusions</a></li>
+<li class="chapter" data-level="" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i>Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mining Technical Knowledge from Texts</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="challenges-understanding-and-programming" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Challenges: Understanding and Programming</h1>
+<div id="understanding" class="section level2">
+<h2><span class="header-section-number">4.1</span> Understanding</h2>
+</div>
+<div id="programming" class="section level2">
+<h2><span class="header-section-number">4.2</span> Programming</h2>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="solutions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="research-questions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["thesis_source.pdf", "thesis_source.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
