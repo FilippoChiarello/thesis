@@ -24,7 +24,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Text Mining Techniques for Knowledge Extraction from Technical Documents},
+            pdftitle={Mining Technical Knowledge from Texts},
             pdfauthor={Filippo Chiarello},
             pdfborder={0 0 0},
             breaklinks=true}
@@ -77,7 +77,7 @@
 
 \setlength{\droptitle}{-2em}
 
-  \title{Text Mining Techniques for Knowledge Extraction from Technical Documents}
+  \title{Mining Technical Knowledge from Texts}
     \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
     \author{Filippo Chiarello}
@@ -85,7 +85,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-09-27}
+    \date{2018-09-30}
 
 \usepackage{booktabs}
 
@@ -98,6 +98,8 @@
 }
 \chapter*{Preface}\label{preface}
 \addcontentsline{toc}{chapter}{Preface}
+
+Text Mining Techniques for Knowledge Extraction from Technical Documents
 
 \chapter{Introduction}\label{introduction}
 
@@ -1119,13 +1121,12 @@ how great an analysis is unless it is impossibile to explain it to
 others \citep{wickham2016r}. For the purposes of the present thesis, the
 focus is on the review of technical mechanics of communication
 especialli in the R \citep{R-base} enviroment, which is used to perform
-most of the analysis showed in the next chapters (\ref{methods},
-\ref{applications}. One of the most important innovation for the task of
-communication in data science is R Markdown \citep{R-rmarkdown}. R
-Markdown provides an unified authoring framework for data science,
-combining code, results, and comments. R Markdown documents are fully
-reproducible and support dozens of output formats, like PDFs, Word
-files, slideshows, and more.
+most of the analysis showed in the next chapter (\ref{methods}). One of
+the most important innovation for the task of communication in data
+science is R Markdown \citep{R-rmarkdown}. R Markdown provides an
+unified authoring framework for data science, combining code, results,
+and comments. R Markdown documents are fully reproducible and support
+dozens of output formats, like PDFs, Word files, slideshows, and more.
 
 R Markdown files are designed to be used in three ways:
 
@@ -2212,8 +2213,6 @@ improve the prediction performance. Even when just using Social Media
 information from the first three days of the project, they achieve an
 AUC of 0.90, reflecting very high classification performance.
 
-\subsection{Publicly Funded Projects}\label{sotadocumentsprojects}
-
 \subsection{Human Resources Documentation}\label{sotadocumentsjobs}
 
 Text Mining has been used in the last years to manage human resources
@@ -2381,15 +2380,16 @@ neglected. This information is hidden beneath technical and juridical
 jargon and therefore so many potential readers cannot take advantage of
 it. State of the art natural language processing tools and in particular
 named entity recognition tools, could be used to detect valuable
-concepts in patent documents. In this section we present three
-methodologies capable of automatically detecting and extracting threee
-of the multiple entities hidden in patents: the users of the invention,
-advantages and drawbacks of the invention and trademarks contained in
-patents. The results of the methodologies are described, togheter with
-example of applications of the extracted entities for intelligence
-tasks.
+concepts in patent documents.
 
-\subsection{Users}\label{users}
+In this section we present three methodologies capable of automatically
+detecting and extracting threee of the multiple entities hidden in
+patents: the users of the invention, advantages and drawbacks of the
+invention and trademarks contained in patents. The results of the
+methodologies are described, togheter with example of applications of
+the extracted entities for intelligence tasks.
+
+\subsection{Users}\label{usersresults}
 
 In this section we show the approach used to extract the users of the
 invention described in a patent. The proposed process is shown in figure
@@ -3521,7 +3521,7 @@ users of the patent-set (like \emph{priest}, \emph{fund-raiser},
 \caption{Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.}\label{fig:patentsperuser}
 \end{figure}
 
-\subsection{Advantages and Drawbacks}\label{advantages-and-drawbacks}
+\subsection{Advantages and Drawbacks}\label{advdrwresults}
 
 In this section we show the approach used to extract the advantages and
 the drawbacks of the invention described in a patent. More precisely,
@@ -3830,7 +3830,7 @@ employed in the classification of unseen patents: it extracts new domain
 specific clues from patents and assigns them a probability score whether
 they are an advantage or a drawback. In our experiments the classifier
 has been trained using the Support Vector Machines (SVM) learning
-algorithm using the LIBSVM \citep{ibsvm} library configured to use a
+algorithm using the LIBSVM \citep{svm} library configured to use a
 linear kernel. The classifier uses two different kinds of features that
 are extracted from the text:
 
@@ -4555,9 +4555,1265 @@ such drawbacks.
 
 \subsection{Trademakrs}\label{trademakrs}
 
+The market interest for both patents and trademarks has increased during
+the last decades, with a significant increase in filing for both types
+of Intellectual Property. The academia also took attention to patent
+data and trademark data, but with different and (almost) disconnected
+research approaches. Furthermore, the analysis of patents to study R\&D
+is predominant while less attention has been paid to trademarks
+\citep{griliches1981market}. Indeed, very few are the works where
+patents and trademarks are investigated together and not generically
+cited together as parts of the intellectual property right framework.
+Moreover cultural differences exist between United States and Europe (at
+least) and practical consequences can be observed in daily life: for
+example, even if Europe had an earlier and more enduring interest in
+trademarking than the US the presence of the symbols ® and ™ in the
+product labels are more common in US than in Europe
+\citep{mercer2010reading}. The difference exists also from an industrial
+perspective, across different sectors \citep{baroncelli2004global}.
+Indeed, trademarks have their larger use worldwide in the R\&D intensive
+scientific equipment, pharmaceuticals sector and advertising intensive
+manufacturing industries (clothing, footwear, detergents and food
+products).
+
+The present chapter studies the usage (if any) of \emph{trademarks} and
+\emph{trade symbols} within patent texts. The aim is to investigate
+possible indicators about IP strategies and innovation output utilizing
+information about the interlink between patents and trademarks. An
+additional goal is to understand if patent applicants makes a right use
+of trademarks and trade symbols when writing a patent document. The
+analysis clearly stands at the boundary between patent and trademark
+research areas, and since such intermediate territory has not been
+investigated in depth, there are several research questions we would
+like to answer. The starting point is a sheer numerical evidence: we
+have found out that, at the date of 01/09/2017, a total of 2.162.962
+patents worldwide (for details about the database and its coverage see
+section 3) contain a trademark symbol. It is therefore a not negligible
+phenomenon, worth of investigation and that should provide interesting
+insights about the mechanisms and strategies that companies adopt at the
+frontier between technical innovation and marketing.
+
+\subsubsection{The use of trademark symbols ™ and ® in patents from a
+legal
+perspective}\label{the-use-of-trademark-symbols-and-in-patents-from-a-legal-perspective}
+
+It is evident from our preliminary analysis that there exist an high
+number of patent documents containing a trademark indication. In the
+present section we investigate what is the legal perspective of this
+usage.
+
+In \citep{butler1969rules} the authors published a series of rules to
+standardize the use of trade terms in patents. They also specifies
+different rules in the case of use of trade terms in specifications and
+the use of trade terms in patent claims. The rules are:
+
+1- A trade term is properly used in a specification if those skilled in
+the art can make the product designated by the trade term at the time
+the application is filed, using the specification and/or published
+literature that is implicated by the specification. 2- A trade term is
+also properly used in a specification if the product is generally known
+to persons skilled in the art and is readily obtainable at the time the
+application is filed, provided the composition of the product is a trade
+secret and there is reason to believe that whenever the composition of
+the product is modified the trade term will also be changed. 3- A trade
+term is also properly used in a specification if it designates a
+component of the embodiment which is not essential to the invention. 4-
+A trade term can be used in a claim only if its meaning has been
+adequately defined in the specifications, whereby it imparts specific
+limitations to the claim.''
+
+The second rule is particularly interesting because it seems preventing
+early patenting or patenting before having produced and used a trade
+name. Rule number two is even more interesting since it contains a case
+of a product that is a trade secret used to build another product
+subject to patent application.
+
+Similar guidelines are contained in the European patent convention
+\citep{hall2018impact}. Here is state that is not desirable to use
+trademarks or trade names if such words merely denote origin or where
+they may relate to a range of different products. Anyway trademarks
+could be used in patent application to satisfy art.83, that states that
+the application shall disclose the invention in a manner sufficiently
+clear and complete for it to be carried out by a person skilled in the
+art. In this case the product must be sufficiently identified, without
+reliance upon the word. A special case are such words that have become
+internationally accepted as standard descriptive terms and have acquired
+a precise meaning (e.g. ``Bowden'' cable, ``Belleville'' washer,
+``Panhard'' rod, ``caterpillar'' belt). In this case they may be allowed
+without further identification of the product to which they relate. It
+is clear specifications afflicts the analysis that we want to carry out.
+Always in the same document are given also guidelines for the usage of
+trademarks in claims. These are, as expected, different from the
+specifications. For claims we have the problem that it may not be
+guaranteed that the product or feature referred to is not modified while
+maintaining its name during the term of the patent. They may be allowed
+exceptionally if their use is unavoidable and they are generally
+recognised as having a precise meaning. It is the applicant's
+responsibility then to ensure that registered trademarks are
+acknowledged as such in the description. From that we can deduce that
+the presence of a trademark in patents and more specifically in claims
+decreases the reproducibility of the invention and thus the quality of
+the patent. Also the the US patent legislation \citep{jaffe2000us}
+focuses on the use of trademarks in patents claims. Here the presence of
+a trademark or trade name in a claim is not considered improper but the
+examiner should analyze the claim to determine how the mark or name is
+used. In fact, the trademark or trade name should identify a source of
+goods, and not the goods themselves. In this case the claim scope is
+uncertain since the trademark or trade name cannot be used properly to
+identify any particular material or product. In fact, the value of a
+trademark would be lost to the extent that it became descriptive of a
+product, rather than used as an identification of a source or origin of
+a product. Thus, the use of a trademark or trade name in a claim to
+identify or describe a material or product would not only render a claim
+indefinite, but would also constitute an improper use of the trademark
+or trade name.
+
+Finally, in \citep{pressman2018nolo} the authors gives some guidelines
+on how to introduce trademarks when it is unavoidable. First, the
+trademark should be capitalized and used as an adjective (not a noun),
+followed by the generic name of the product or service. Furthermore when
+referring to the trademark there should also be a reference to the
+trademark owner.
+
+\subsubsection{Finding Tradenames from
+Patents}\label{finding-tradenames-from-patents}
+
+With respect to Users @ref(\#usersresults) and to Advantages and
+Distadvantages @ref(\#advdrwresults) the process to extract tradenames
+from patents is trivial. The main activity performed are (for details
+aobut the activities see section \ref{sotatools}:
+
+\begin{itemize}
+\tightlist
+\item
+  Sentence splitting
+\item
+  Tokenization
+\item
+  Part-of-speech tagging
+\item
+  Lemmatization
+\end{itemize}
+
+After that is is possibile to identify tradenames searching for the
+symbols ™ and ®.
+
+\subsubsection{Trademarks and IPC
+Classes}\label{trademarks-and-ipc-classes}
+
+The first investigation has the aim of understanding if the ™ and ®
+symbols has different content depending on different IPC \citep{wipo1}
+classes. The IPC classes are: The main evidence in figure
+\ref{fig:histtm} is that ® is used more than ™ in patent, with and
+average percent of presence of 7.4\% and 5.6\% respectively. The reason
+of this evidence could be that patents contains unregistered trademarks
+that are never converted to registered trademarks; another reason is the
+confusion between the ® and ™ symbol, usually considered as synonymous.
+Furthermore the writer will use the symbol only if he/she knows that the
+mark is protected, otherwise he/she will not indicate any symbols or
+will use ™ or ® without checking the right use. Another possible problem
+is that the word has become of common use and thus usually used without
+symbols. Furthemore, classes A (Human Necessities) and C (Chemistry;
+Metallurgy) clearly has more trade symbols than the other classes.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/hist_tm} 
+
+}
+
+\caption{Histogram of the percentage of ® and ™ in patentes for each IPC class (limited to US patents). A (Human Necessities); B (Performing Operations; Transporting); C (Chemistry; Metallurgy); D (Textiles; Paper); E (Fixed Constructions); F (Mechanical Engineering; Lighting; Heating; Weapons; Blasting); G (Physics); H (Electricity).}\label{fig:histtm}
+\end{figure}
+
+Secondly, from table \ref{tab:ipcclassestm} it is evident that the
+average ratio is 6.4 for ® (the usage is 6.4 times higher in the year
+span 2007-2014 than the span 1995-2002) and 5.4 for ™ (the usage is 5.4
+times higher in the year span 2007-2014 than the span 1995-2002) thus
+the usage of trade-symbols in patent is growing and the presence of ® is
+increasing faster than the presence of ™. From the present results is
+not possible to say if this effect is due to an higher quality of the
+process of patent application (and thus an higher awareness of applicant
+and examiner) or of a positive trend in trademark registration. In
+particular for the IPC class E (fields constructions) the number of ®
+and ™ has increased 10.5 and 9.0 times respectively. This could be an
+evidence of the fact that the number of trademark in the field of fixed
+constructions is increasing.
+
+Table: \label{tab:ipcclassestm} For each IPC class the ratio of the
+percentage of patents containing at least one ® or ™ character is
+computed for two patents sets 1995 to 2002 and from 2007 to 2014.
+
+\begin{tabular}{l|l|l}
+\hline
+IPC Classes & Ratio ® 2007-2014 over ® 1995-2002   & Ratio ™ 2007-2014 over ™ 1995-2002  \\
+\hline
+A & 5.9 & 5.0\\
+\hline
+B & 6.2 & 5.4\\
+\hline
+C & 5.9 & 5.2\\
+\hline
+D & 5.6 & 5.7\\
+\hline
+E & 10.5 & 9.0\\
+\hline
+F & 7.5 & 6.2\\
+\hline
+G & 4.6 & 3.2\\
+\hline
+H & 5.1 & 3.2\\
+\hline
+Average & 6.4 & 5.4\\
+\hline
+\end{tabular}
+
+\subsubsection{The Selected Tradenames}\label{the-selected-tradenames}
+
+We a set of popular tradenames referring to
+\citep{morris2016trademarks}. Then we filtered the ambigouus ones (the
+one that can refer to surnames), because this can create an
+onverstimation of the number of patent citing it witouth the tradenames.
+The total namber of tradenames is 38 and these are:
+
+\begin{itemize}
+\tightlist
+\item
+  amazon®
+\item
+  blackberry®
+\item
+  bose®
+\item
+  budweiser®
+\item
+  chiquita®
+\item
+  chrome®
+\item
+  coca-cola®
+\item
+  ebay®
+\item
+  facebook®
+\item
+  fender®
+\item
+  firefox®
+\item
+  gibson®
+\item
+  gillette®
+\item
+  heineken®
+\item
+  ibanez®
+\item
+  intel®
+\item
+  iphone®
+\item
+  kellog®
+\item
+  kodak®
+\item
+  lego®
+\item
+  marlboro®
+\item
+  matlab®
+\item
+  mcdonald's®
+\item
+  nitinol®
+\item
+  nutella®
+\item
+  nylon®
+\item
+  photoshop®
+\item
+  polaroid®
+\item
+  post-it®
+\item
+  powerpoint®
+\item
+  prozac®
+\item
+  sennheiser®
+\item
+  spotify®
+\item
+  teflon®
+\item
+  velcro®
+\item
+  whatsapp®
+\item
+  xanax®
+\end{itemize}
+
+In figure \ref{fig:tmlistcpmplete} are shown the number of patent
+containing the tradenames with and withouht ™ and ®; furthermore the
+information is divided for all the years, from 1995 to 2002 and from
+2007 to 2014. In the previous analysis we noticed that ® is generally
+more used than ™. Now the goal is to understand if patent writers uses
+tradesymbols or not when citing tradenames, if there are any differences
+between different tradenames and if we can notice different behaviours
+in recent years. From figure \ref{fig:tmlistcpmplete} is evident that
+despite the fact that it is mandatory to use ™ o ®, these symbols are
+not always used.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/table_all_tradenames} 
+
+}
+
+\caption{Number of patents citing one of the 38 selected tradenames. The data are divided for any years, from 1995 to 2002 and from 2007 to 2014.}\label{fig:tmlistcpmplete}
+\end{figure}
+
+\subsubsection{Tradenames Usage in
+Patents}\label{tradenames-usage-in-patents}
+
+It is relevant to understand if there exists any difference between
+different tradenames in the correct usage of trade symbols (a trade name
+has been cited in the patent texts with the trade symbol). Figure
+\ref{fig:tmcitedwell} illustrates in a bi-logaritmic plot the
+distribution of trade names correctly cited in patents with ® and ™
+(Y-axis) versus the same trade names cited without using the proper
+symbol. Most of trade names are located under the diagonal. Those around
+the diagonal are those we can considered as well known trademarks and
+not so subject to genericization phenomena (green area). Conversely on
+the right we can find a read area where the ratio is even more shifted
+toward the absence of any indication of protected trademark. In the
+middle the orange area where many of the most famous trademarks fall
+down and that could be in phase of generalisation or conversely, since
+the trademark of a product is totally entangled with the owner
+(Iphone-Apple; Intel), inventors do not feel the reason to cite them as
+a trademark. A remark on Figure \ref{fig:tmcitedwell} is necessary: the
+plot presents a correct measurement of trademarks with ® and ™ plotted
+in the y axis, while the search for trademark with missing trademark
+symbols in some case can introduce undesired errors and include other
+meaning of the word. Take for example the case of Blackberry®: the datum
+is referring to mobile phones and accessories or software applications.
+In all the cases where ® or ™ are correctly written, it is probably true
+that the inventor is referring to the Blackberry® mobile phones, but
+machines for jam or juice production extracted out of the blackberry
+introduce false positive examples. Similarly Fender is probably located
+too far on the right because it is also a part of a car, bike,
+motorbike, boat, etc.. and Gibson could introduce citations of works
+performed by someone called Gibson, therefore if cleaned results are
+necessary the searching strategies for the trademarks without symbols
+have to be refined.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/TrendsMarks.001} 
+
+}
+
+\caption{Plot of the trade names correctly cited in patents with ® and ™ on the y-axis and the same trade names cited without using the proper symbol on the x-axes. Both axes are on a logaritmic scale.}\label{fig:tmcitedwell}
+\end{figure}
+
+\subsubsection{The Popularity of Tradenames in
+Patens}\label{the-popularity-of-tradenames-in-patens}
+
+In figure \ref{fig:populartm} are plotted the trends of the numbers of
+patents that correctly cites a tradenames. We anlyzed 12 different
+tradenames, divided in couples: each couple belong to a similar sector.
+We make use of a generalized additive model fitting function to better
+analyze the results and to make more easily to understand and compare
+the two element of each pair.
+
+Each pair has been chosen to compare trademarks in homogeneous markets.
+Some of them shows:
+
+\begin{itemize}
+\item
+  (d, e) similar trends but different incidence;
+\item
+  (a, c) dissimilar behaviours (Amazon vs Ebay, Blackberry vs.~Iphone:
+  linear vs.~exponential);
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{5}
+  \tightlist
+  \item
+    similar results (e.g.~Gibson vs Fender in the music market have
+    almost the same behaviour and a reduced presence in patents)
+  \end{enumerate}
+\item
+  similar behaviour but shifted in time (e.g.~Firefox vs Chrome).
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/Marks_Years} 
+
+}
+
+\caption{Plot of the trade names correctly cited in patents from 2000 to 2014.}\label{fig:populartm}
+\end{figure}
+
+\subsubsection{The Similarity of Tradenames in
+Patens}\label{the-similarity-of-tradenames-in-patens}
+
+Further informations can be derived by analysing the IPC classes where
+the patent have been chosen by the assignees-attorneys-examiners.The
+choice of a class is not only matter of market segment but rather of
+market use. Moreover it is necessary to remark that from a formal point
+of view the IPC classes form a feature vector, denoted y ∈ N639. IPC
+classes form a complete dataset of 639 elements of such feature vector.
+Each tradename is represented in such a feature vector where the number
+of patents in each class constitutes the length of the vector along that
+direction (feature). Our training data is therefore D = (x,y,z), where
+x∈{[}1, .., 12{]}, y∈{[}1, .., 639{]}, and z represents the patent
+numerosity z∈{[}0..15*106{]}. This dataset contains information about
+how z varies as a function of x and y. The matrix is quite empty since
+each product/brand addresses needs of specific market/s, after cleaning
+of the totally empty columns the matrix reduces to the dimensions of
+12x479 and demonstrates a correct choice of the trademarks since they
+covered almost 75\% of the IPC space.
+
+With such a dataset a series of computations can be performed: here we
+show the results of the correlation analysis among the chosen trademarks
+to analyse their relative positioning on the invention landscape (not
+only the market); Correlation analysis is shown in Figure
+\ref{fig:similartm} The matrix is triangular owing to the symmetry of
+the relationship. The main evidences are the following:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/correlation_matrix_tm} 
+
+}
+
+\caption{Heat-map of the IPC-based similiraties between trademarks.}\label{fig:similartm}
+\end{figure}
+
 \section{Papers}\label{papers}
 
-\section{Projects}\label{projects}
+Papers are the main database of scientific knowledge. Recently, the
+volume of scientific literature has grown rapidly raising an imminent
+question about how to extract knowledge from this source. On the other
+hand, this tehcnical knowledge if managed, can be used to answer
+questions that 10 years ago would need the help of domain experts to be
+answered. In the present section is shown how text mining techniques can
+help to unswer some of this questions. In particular, it is an essential
+problem when different classification codes are used in order to
+organize scientific knowledge on a specific domain, becaues a specific
+categorization in a certain scientific field is missing. This leads to
+unnecessary complications in the researchers' aims who want to quickly
+and easily find literature on a specific topic among the large amount of
+scientific publications, or want to effectivelly position a new
+research. Text mining techniques, and in particular topic modelling, can
+help scholars in solving this problems, if properly used togheter with
+domain expertise.
+
+In this section we present two methodologies capable of automatically
+segmenting a knowledge field. These selected knowledge field are:
+sustainable manufacturing and block-chain. The results of the
+methodologies are described, togheter with example of applications.
+
+\subsection{Sustainable Manufacturing}\label{sustainable-manufacturing}
+
+One of the most important objectives of Sustainable Manufacturing (SM)
+is developing innovative and viable engineered materials, manufacturing
+processes and systems to provide multiple life-cycle of products. In SM
+the old concept ``from cradle to grave'' is now transforming into ``from
+cradle to cradle'' \citep{jawahir2016technological}, tending toward
+multiple product life-cycles or even a ``near-perpetual''
+product/material life. Scientific contributions in the sustainable
+manufacturing field mostly deals with energy and resource consumption.
+In this respect, two different main fields of causes can be identified:
+the process level and the material efficiency one. As a matter of facts,
+manufacturing processes have a significant role also in putting in place
+material efficiency strategies \citep{ingarao2017manufacturing}. As far
+as the processes are concerned, a first classification of research
+contributions was discussed in the CIRP General Assembly
+\citep{duflou2012towards}. There the authors state that research in
+manufacturing field, oriented to environmental impact reduction, can be
+clustered in 5 main sub-classes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  unit process level (Individual device or machine tool in the
+  manufacturing system)
+\item
+  manufacturing system level,
+\item
+  facility,
+\item
+  multi-factory system up to considering the whole
+\item
+  supply chain level.
+\end{enumerate}
+
+Another review paper was presented at the ASME international
+manufacturing science and engineering conference
+\citep{haapala2013review}. In that paper the authors scrutinize the
+research papers focusing more on the differentiation between
+manufacturing processes and manufacturing system. Considering the
+process level, Ingarao \citep{ingarao2017manufacturing} clustered the
+scientific papers in 4 subsections: 1. effect of process parameters 2.
+role of machine tool architecture and related technology 3. applied
+process 4. manufacturing approach selection.
+
+As concerns material efficiency options, a framework is presented by
+\citep{allwood2014squaring}. The authors there provide strategies within
+three main classes corresponding to principles: reduce, reuse and
+recycling. Within each class guidelines for material efficiency
+practices are detailed. As concerns material efficiency options, a
+framework is presented by Allwood \citep{allwood2014squaring}. There the
+authors provide strategies within three main classes (i.e.~principle):
+reduce, reuse and recycling. Within each classes guideline for material
+efficiency practices are detailed. A good framework of all the possible
+reuses of materials is provided by Coopper \citep{cooper2012reusing}. In
+this research the authors identify four main reuse strategies for
+metals: Remanufacture, Reshape (applying metal shaping processes,
+additive, subtractive, mass conserving) to obtain a new geometry,
+Relocate: (recovering component and applying little refurbishment,
+components reused in the same type of products), Cascade: recovering
+component and use it in another less demanding use (downgrading). The
+role of manufacturing processes in putting in place material
+efficiency/reuse strategy was also outlined by Ingarao
+\citep{ingarao2017manufacturing}. In fact, manufacturing processes
+deserve to be considered as means for enabling material efficiency
+strategies. SM may be pursued by several strategies, such as
+re-designing and/or even changing manufacturing practices to conceive
+new-generation products, as well as by creating a closed-loop of
+environmentally-friendly material flow.
+
+\subsubsection{The 6R Framework}\label{the-6r-framework}
+
+All the life-cycle stages of the product development (namely, design,
+production, use and post-use) should be considered carefully, with a
+particular attention to the design phase. This represents the real
+difference introduced by sustainable manufacturing concept with respect
+to traditional manufacturing, to lean manufacturing or even to green
+manufacturing, precursors of the SM. In a word, SM paradigm embraces
+those principles belonging to the 6R framework, namely: Reduce, Reuse,
+Recycle, Recover, Redesign and Remanufacture. The latter three
+principles where not included into the previous 3R framework. To a
+certain extent, it appears that the better definition of sustainability
+for any manufacturing operation provided so far is the extent to these
+principles are applied. This statement justifies because in the search
+to find a common rationale behind the mess of SM applications, one
+possible way is to find common roots in the principles that inspired the
+same applications: namely principles, which allows to the decision maker
+either an effective way to search for new sustainable solutions or to a
+certain extent measure the ``degree of sustainability''. The higher the
+number of principles that are satisfied, the higher the potential
+positive impact on sustainability can be for a given adopted solution.
+In this sense, far from stating that the 6R framework is a widespread
+and commonly adopted metric of SM, the starting assumption in this paper
+is that 6R is the only approach, to the author's knowledge, that
+provides a criteria of classification and selection of solution, and
+thus indirectly to provide a clear definition of what a SM application
+may look like. The true question nowadays is \emph{if the 6R framework
+may capture the essence of SM}, provided that it is really critical to
+clearly define the SM paradigm rationale to the scientific community.
+This paper aims to stimulate the reflection from the Italian perspective
+to this point, with a particular concern to the production technology
+side, by using an automatic classification of papers within the 6R
+framework and then by benchmarking approaches followed by the Italian
+Technologist research-network SOSTNERE on SM issues.
+
+Sustainability (from sustain plus ability) refers to the set of
+properties of a given system (either natural or artificial), which
+allows the same system to maintain itself for an almost indefinite
+period of time. This concept was officially introduced in a document of
+the World Commission on Environment and Development (WCED) entitled
+``Our Common Future'', where the Sustainable Development was defined as
+follows: \emph{``Sustainable development is development that meets the
+needs of the present without compromising the ability of future
+generations to meet their own needs''}\citep{wced1987world}. Starting
+from this general definition, further conceptualizations have been
+produced for manufacturing activities and/or processes, as here briefly
+recalled. According to the Organization for Economic Co-operation and
+Development, Sustainable manufacturing is a formal name for an exciting
+new way of doing business and creating value. Different statements of
+sustainability in literature \footnote{\url{http://www.trade.gov/green/sm-101-module.asp}}
+share the same focus on the following three aspects: economy,
+environment and society. It is thus possible to summarize from the
+literature analyzed a possible definition for sustainable manufactured
+processes/products, according to the following set of prescriptions:
+
+\begin{itemize}
+\tightlist
+\item
+  (-) minimize business risk;
+\item
+  (-) minimize negative environmental impacts;
+\item
+  (-) conserve energy and natural resources;
+\item
+  (-) are safe for employees, communities and consumers;\\
+\item
+  (-) are economically sound;
+\item
+  (+) a new way of creating value;
+\item
+  (+) are socially and creatively rewarding for all working people;
+\item
+  (+) providing access to basic services, green and decent jobs and a
+  better quality of life for all ;
+\item
+  (+) adopt sustainable infrastructures.
+\end{itemize}
+
+where the (-) sign stands for those prescriptions oriented to
+preservation of resources without any significant change of the present
+condition, while the (+) sign indicates those prescriptions aiming at
+ameliorating/modification of the trends with respect to traditionally
+manufactured processes/products. To summarize simplifying, sustainable
+manufacturing is all about minimizing business risks of any
+manufacturing operation while maximizing the new opportunities that
+arise from improving processes and products.\\
+Fascinating in principle, these general statements are really difficult
+to deploy into real operations and production settings. The focus of the
+present analysis is to derive a clear definition of the concept of
+manufacturing sustainability based on clear and paper based evidences,
+rather than referring to general ethical or social principles, which
+appear to be a \textbf{top down} definition. Conversely, information
+extracted from all the scientific papers available on SM can provide a
+sort of \textbf{bottom up} statement. Evidences are relevant words and
+short concepts that can be related to sustainability, as it will be
+explained in the following paragraphs by also providing some sound
+examples from the italian point of view.
+
+\subsubsection{Sustainable Manufacturing: A text driven bottom-up
+definition}\label{smtextdrivenbottomup}
+
+In this section, we describe the process involved to analyse the papers
+in the sustainable manufacturing field. To give a more detailed vision
+of the topic, we consider this field divided in 6 sub-classes (one for
+each principle), adopting the well know 6R framework. The goal of the
+process is both to identify which the topics in each of the 6R are, then
+to accurately measure the way this framework corresponds to the topics
+of sustainable manufacturing. As seen in the flowchart of figure 1 the
+main activities of the process are four: Paper manual classification,
+Automatic Keywords Extraction, Keywords manual selection and Clustering.
+Each activity will be described in the next subsection.
+
+\paragraph{Assignment of 6R principle
+meanings}\label{assignment-of-6r-principle-meanings}
+\addcontentsline{toc}{paragraph}{Assignment of 6R principle meanings}
+
+The first critical issue is the selection criteria of 6R principles for
+the assignment. This was done by trying to assign a semantic
+specification of each R principle, as below explicated, built by
+summarizing all the possible definitions and concepts extracted by the
+selected bibliography (partially cited in the present paper). The
+semantic specification provided below refers to the functional scope of
+each class, intended as an activity to be performed.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/workflow_sm} 
+
+}
+
+\caption{Flowchart of the 6R papers analysis process. The white boxes represent the activities and the yellow boxes the predicted documents. In the figure are also highlighted the input and the main outputs of the process.}\label{fig:wfsm}
+\end{figure}
+
+\emph{Reuse}
+
+Reuse is the action or practice of using something again, whether for
+its original purpose (conventional reuse) or to fulfill a different
+function (creative reuse or repurposing). Reuse involves taking, but not
+reprocessing, previously used items in order to save time, money,
+energy, and resources. In particular reuse is useful for machineries,
+especially when they are expensive, and for their components. Besides,
+technologies can be also reused and readapted to different situations.
+In addition, reuse is important because it minimizes disposal needs and
+costs.
+
+\emph{Reduce}
+
+In pre-manufacturing it is possible to implement the reduction
+minimizing the use of resources. During the production phase, it refers
+to the use of energy and material, for example, it may involve the use
+of lower cost materials, the elimination of unnecessary product
+characteristics, the reduction of overhead costs or the readjustment of
+product processes. It implies a decrease of costs. As a consequence, the
+derived effect of this principle is to minimize and optimize performance
+in terms of cost, time and waste and it focuses primarily on the first
+three stages of the four life cycle of the product before recalled (§1).
+
+\emph{Recycle}
+
+Recycle involves the process of converting material that would otherwise
+be considered waste, into new products and it corresponds to the
+breaking down of used items to make raw materials for the manufacture of
+new goods. Recycling can prevent the waste of potentially useful
+materials and reduce the consumption of fresh raw materials, thereby
+decreasing: energy usage, air pollution (from incineration) and water
+pollution (from landfilling). Recyclable materials include many kinds of
+glass, paper and cardboard, metal, plastic, tires, textiles and
+electronics.
+
+\emph{Recover}
+
+Product recovery operations refer to operational processes
+(e.g.~disassembling, sorting and cleaning) on products at the end of
+their use, in order to make them usable in n subsequent life-cycles.
+Differently from recycling, the product life-cycle is shortened,
+skipping all that phases of retreatment of wastes up to their second
+use. The risks of implementing product recovery operations is the
+uncertainty of returned product quality and quantity and for this reason
+recovering activities have only recently been considered in manufacture.
+
+\emph{Redesign}
+
+The redesign activity involves the act of redesigning the next
+generation of products, which would use components, materials and
+resources recovered from the previous life-cycle or previous generation
+of products. It refers to the evaluation of ideas turning them into
+concrete innovative products obtained from products in their post-use
+phase.
+
+\emph{Remanufacture}
+
+Remanufacture involves the re-processing of used products, to restore
+them to their original like-new state through the reuse of as many parts
+as possible without loss of functionality. It includes and exceeds the
+activity of recovering, because a remanufactured product should match
+the same customer expectation as a new one.
+
+Despite this initial classification, some problem occurred for experts
+in assigning the papers to the different classes, due to the absence of
+the formalization that is needed to define unique criteria of belonging.
+This fact brought to the unbalance of the number of words within each
+class (corresponding to each principle), that drove to the fuzziness of
+the training set and, as a consequence, the difficulty in performing a
+real classification of scientific papers. This is the first critical
+issue of the followed approach so far, that may be overcome by alignment
+sessions of the decision makers.
+
+\paragraph{Automatic Text analysis and Keywords
+extraction}\label{automatic-text-analysis-and-keywords-extraction}
+\addcontentsline{toc}{paragraph}{Automatic Text analysis and Keywords
+extraction}
+
+In order to analyze the information coming from scientific papers
+belonging to topics encompassed within the 6R framework, we exploit text
+mining techniques, which employ methods from different fields of data
+mining to extract meaningful information 8. The second activity in our
+analysis process is thus devoted to transforming the set of papers in a
+set of numeric vectors to be elaborated by the clustering algorithm. To
+this aim, some text mining techniques are applied in sequence 12 to
+automatically extract meaningful information and knowledge from
+unstructured texts. The text mining process performed is summarized in
+the following. First, the information content of the document is
+converted into a structured form (vector space representation). In fact,
+most of text mining techniques are based on the idea that a document can
+be faithfully represented by the set of words contained in it
+(bag-of-words representation 9). According to this representation, each
+document j of a collection of documents is represented as an
+M-dimensional vector, where M is the number of words defined in the
+document collection, and w(tji) specifies the weight of the word ti in
+document j. The simplest weighting method assigns a binary value to
+w(tji), thus indicating the absence or the presence of the word ti,
+while other methods assign a real value to w(tji).
+
+In the following, the text mining steps performed are described (for
+details aobut the activities see section \ref{sotatools}:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Tokenization} is the first step of our text mining process, and
+  consists in transforming a string of characters into a string of
+  processing units called tokens that could be syllables, words, or
+  phrases. Typically, with tokenization other operations are performed
+  with the aim of making the text cleaner. Such operations are the
+  removal of punctuation and other non-text characters, and the
+  normalization of symbols (e.g., accents, apostrophes, hyphens, tabs
+  and spaces). In the proposed system, the tokenizer removes all
+  punctuation marks and splits each text into tokens corresponding to
+  words, bigrams and trigrams.
+\item
+  \emph{Stop-word filtering} consists in eliminating the words which
+  provide little or no information to the text analysis, or that, in our
+  case, could make the clustering process fuzzier. Common stop-words
+  belong to certain part of speech classes, such as articles,
+  conjunctions, prepositions, pronouns, etc. Other stop-words are those
+  that typically appear very often in sentences of the considered
+  language (language-specific stop-words), or in the set of texts being
+  analysed (domain-specific stop-words). In our case, this second group
+  consists of typical words of the scientific articles such as
+  ``paper'', ``state-of-the-art'', ``present work''.
+\item
+  \emph{Stemming} is the process of reducing each word (i.e., token) to
+  its root form. The purpose of this step is to group words with the
+  same theme having closely related semantics. In the proposed system,
+  the stemmer exploits the Snowball Stemmer for the English language,
+  based on the Porter's algorithm.
+\item
+  \emph{Feature representation} consists in building, for each text, the
+  corresponding vector of numeric features. Indeed, in order to cluster
+  the texts, we have to represent them in the same feature space. In
+  particular, we consider the F- dimensional set of features
+  corresponding to the set of relevant stems.
+\end{itemize}
+
+\paragraph{Manual keywords selection}\label{manual-keywords-selection}
+\addcontentsline{toc}{paragraph}{Manual keywords selection}
+
+Keyword selection procedure was performed by hand from a team of 4
+experts in the scientific field of sustainable manufacturing and with
+consolidated expertise on research and innovation. In order to prevent
+misunderstandings and difference in the judgement, a preliminary
+analysis of the single attitudes to classification was statistically
+performed and misalignment were eliminated by a guided training, based
+on the contemporary evaluation of a same sample from different experts
+so as to align the judgement. This process was done, as above mentioned,
+based on the 6R explicit framework and sharing the meaning of each
+principle.
+
+It is clear that assignment of keywords to classes is not a trivial task
+and susceptible of interpretation. Disambiguation process would be
+required to explain the criteria of affinity to a given class, hopefully
+by referring to the functional scope of each class. Still an ambiguity
+may result, which can hardly be removed without a more profound
+specification with appropriate examples, which is out of the scope of
+the present paper.
+
+According to this procedure the 6R refer to the following keywords:
+
+\begin{itemize}
+\tightlist
+\item
+  RECOVER: recovery, planning processes, renewable resources, new
+  approach, waste recovery; process scrap recovery; energy recovery;
+  heat recovery; collection; separation; design for environment;
+  material recover optimization; recovery logistics;
+\item
+  RECYCLE: recycle, adhesive technologies, materials conversions,
+  government regulation; (Advanced) recycling technologies;
+  Recyclability; End of first life; Down cycle; New/Old process scraps;
+  Material scraps; Landfill taxes; Recycling benefit awarding; Secondary
+  material production; Embodied energy saving; Environmental legislation
+\item
+  REDESIGN: machining, cutting, lubrication, environment technologies,
+  cryogenic; Material-efficient design; Design for Environment; New
+  Materials; Eco-friendly design; Eco-friendly materials; Material
+  reduction; Light- weighting; Design for Disassembly
+\item
+  REDUCE: reduce, optimize, waste minimization, consumption, energy
+  payback, pollution, reduction, emission, saving; Energy reduction;
+  Waste reduction; Resource reduction; Material usage reduction; Process
+  sustainability optimization; Energy efficiency; Heat efficiency;
+  Manufacturing efficiency; Doing with less;
+\item
+  REMANUFACTURING: remanufacturing, material processing, eco-efficiency,
+  renewable, innovations, nanocomposites; Product renewal; Product
+  upgrade; Reconditioning; Part replacement; Modularity; Disassembly;
+  Inspection; Separation; Re-Assembly; Design for Remanufacturing
+\item
+  REUSE: reuse, replacing, material flow analysis, eco-efficiency;
+  Component reuse; product re-conditioning; product upgrade;
+  non-destructive recycling; reuse supply chain; product maintenance;
+  product repair; product monitoring;
+\end{itemize}
+
+It is clear that the keyword extraction is not a trivial task, since the
+outcome of the process may range from a useless single word to a
+meaningful group of combined words that, on the other hand, could become
+too specific to be significant for the training set of the search
+engines.
+
+\paragraph{Paper Clustering}\label{paper-clustering}
+\addcontentsline{toc}{paragraph}{Paper Clustering}
+
+Document clustering is the application of the general process of cluster
+analysis to texts. The practical applications of document clustering
+systems are several and vary from automatic document organization to
+automatic topic extraction. For further details see section
+\ref{sotatoolsmodelnetanal}. Independently from the kind of algorithm,
+before the clustering phase, each document has to be represented as a
+set of features. These features are typically the n-grams contained in
+documents, so a critical activity for clustering effectiveness is the
+n-grams extraction (or feature selection). This goal is achieved with a
+series of sub-activity. These are typically tokenization (the process of
+parsing text data into smaller units), stemming and lemmatization
+(reducing all tokens to its semantic base), removing stop-words (less
+important words), and finally computing term frequencies (or other
+measures of the relationship between documents and words).
+
+To get an exploratory view of the degree of precision with which the 6R
+framework represents the papers in analysis, the manually classified
+documents were clustered using a clustering Spherical K-Means Clustering
+algorithm \citep{buchta2012spherical}. We will then compare the output
+of the algorithm with the manual classification in the following
+paragraph.
+
+Spherical k-means exploit cosine dissimilarities to perform
+prototype-based partitioning of term weight representations of the
+documents. Prototypes are centroids defined in the same feature space of
+the documents. The aim of the algorithm is to minimize, given a set of
+objects (documents in our case) and prototypes described in the same
+features space (the selected keywords) the cosine distance between each
+element and the closest prototype. This implies that the output of the
+algorithm is a membership matrix, in which each document is assigned to
+a certain prototype.
+
+\subsubsection{Results}\label{results-1}
+
+In the present section, we describe the output of the application of the
+methodology described in section 2 on the 339 selected scientific papers
+on sustainable manufacturing extracted by the query
+\textless{}\textgreater{} in the paper search field of the SCOPUS®
+database. Accordingly, apart the deliberate selection of the source
+database, no other filter was applied in the journal selection and this
+guarantees the significance of the journal sample selected. The main
+output, as highlighted in Figure 1, is the distribution of documents
+among the 6R principles (i.e.~classes) as manually classified, the
+automatic keywords representations of the classes and the outputs of the
+clustering algorithm (which is an unsupervised assignment of the
+documents) compared to the manual classification.
+
+The assignment of a paper to a class was made by recognizing the
+application, or tools or scope of the paper to one 6R's principles. In
+this sense, for instance, a paper belonging to a recover might have as
+scope, or keywords or approach or an activity performed with the
+principal task to assure the recovery of a give good. It is thus clear,
+from the beginning, how complex may be to recognize just one principle
+more than a multiple possibility to satisfy more principles. This fact
+will be discussed in the followings.
+
+\paragraph{Distributions of documents among the
+6R}\label{distributions-of-documents-among-the-6r}
+\addcontentsline{toc}{paragraph}{Distributions of documents among the
+6R}
+
+The main point coming out from the histogram in Figure
+\ref{fig:smhistogram} is that the distribution of scientific papers
+assigned to the 6R principles (classes) is not homogeneous. If the four
+classes Reduce, Recycle, Redesign and Remanufacture collect a comparable
+number of papers, the other two (Reuse, Recover) are poorly represented.
+One possible explanation of this is that cases of reuses or recoveries
+are less generalizable compared to other ``R'', and thus potentially
+less interesting for conferences and journals. Recovery and reuse, in
+fact, often refers to specific functions embedded into the product, and
+finding a general rule for assessing or designing such processes might
+be more difficult. They rather might find room in technical magazines,
+not included in the present analysis as concern processes. It worth
+noting that reuse and recover here refers to product and not explicitly
+to materials. Different approach concerns the design for reuse, which to
+a certain extent would belong to remanufacturing, as in the most of
+papers discussed, to mention a few, in the Annals of CIRP 18,19,20. It
+is difficult to think that the classification criteria, which plays a
+critical role into the assignment to classes, contributed to this
+situation, depending on the meaning assigned to each principle. Whether
+a different combination of classed have been provided, a different
+histogram would be expected to appear.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/sm_histogram} 
+
+}
+
+\caption{Histogram of the number of papers manually assigned to each of the 6R principles.}\label{fig:smhistogram}
+\end{figure}
+
+\paragraph{Keyword vector representation of
+6R}\label{keyword-vector-representation-of-6r}
+\addcontentsline{toc}{paragraph}{Keyword vector representation of 6R}
+
+After the phases of automatic keyword extraction and manual keyword
+selection, we derived the paper/selected keywords matrix. A sample of
+the elements of this matrix (keyword and their occurrency) is:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{RECOVER}: Life cycle 5, environmental impact 4, raw material 3,
+  cycle assessement 3, tossii fuel 3, energy payback 2, cleaner products
+  2, energy cost 2, energy usage 2, pv System 2, product process 2,
+  managements System 2, new technologies 2, energy save 2, climate
+  change 2, risk assessements 2
+\item
+  \emph{RECYCLE}:lite cycle 40, environmental impact 31, waste
+  management 30, resource conservation recycle 25, solid waste 21, lite
+  cycle assessement 18, recycle material 14, recycle process 12, reuse
+  recycle 11, electronic equipement 11, global warm 9, waste disposai 9,
+  heavy metal 8, environment friendly 8, waste treatment 8, waste stream
+  8
+\item
+  \emph{REDESIGN}: manufacturing process 20, lite cycle assess 19,
+  sustainable manufacturing 17, machine tool 14, naturai gas 14, cutting
+  tool 13, raw material 13, tool life 13, cutting fluid 13, tool wear
+  13, mechanical engineering 12, System boundaries 11, machining process
+  11, manufacturing System 11, cutting speed 11, cutting zone 10
+\item
+  \emph{REDUCE}: life cycle 40, environment impact 38, energy
+  consumption 31, life cycle assessment 28, energy usage 22, energy
+  requirements 18, solar energy 15, cleaner product 13, global warm 13,
+  climate changes 12, solid waste 12, gas emission 11, solar celi 11,
+  cutting conditions 11, co2 emissions 10, environmental management 10
+\item
+  \emph{REMANUFACTORING}: sustainable manufacturing 28, manufacturing
+  process 22, remanufacture product 18, supply chain 16, new product
+  development 16, climate change 12, business model 12, product
+  remanufacturing 12, manufacturing System 11, environmental
+  performances 10, remanufacturing industry 10, management System 9,
+  waste generation 9, design for environment 9, remanufacture and
+  recycle 8, automotive industry 7
+\item
+  \emph{REUSE}: life cycle 7, environment impact 7, energy usage 4,
+  mechanical engineering 4, industriai ecology 4, cleaner product 3,
+  life cycle assessement 3, environment management 3, design for
+  manufacturing 3, environment protection agency 3, waste management 3,
+  united nation 3, environment management System 2, process design 2,
+  sustainable manufacturing 2, green chemistry 2
+\end{itemize}
+
+The keywords were divided according to the 6R principles (i.e.~class),
+listing the number of the paper belonging to each class.The sample list
+of keywords and their occurrency, reflects the distribution of figure
+\ref{fig:smhistogram} and cannot thus be significant for classification
+but only for clustering purposes at the present.
+
+\paragraph{Clusters/classes confusion
+matrix}\label{clustersclasses-confusion-matrix}
+\addcontentsline{toc}{paragraph}{Clusters/classes confusion matrix}
+
+To analyze from a semantic dimension how well 6R framework represent
+sustainable manufacturing definition through the scientific papers
+considered, the manually classified documents were clustered using a
+clustering Spherical K-Means Clustering algorithm. The results (the
+assignments of each paper to a cluster) was then compared with the
+manual classification. The number of resulted clusters was 6, having
+this number of clusters no specific relation with the number of 6R
+classes. The output of the clustering process is thus a 6x6 Matrix
+(Class(row)/Cluster (column)) shown in Figure \ref{fig:clusterssm}.
+Numbers in the cells of the matrix represents centroids that can be
+characterized by the related keywords.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/heat_map_sm} 
+
+}
+
+\caption{Matrix: comparing the manual classification and the clustering output.}\label{fig:clusterssm}
+\end{figure}
+
+\subsubsection{An extended mapping of the SM field
+worldwide}\label{an-extended-mapping-of-the-sm-field-worldwide}
+
+The methodology described in section \ref{smtextdrivenbottomup} has been
+then re-adapted to give an extended anlysis of the 6R framework from a
+bottom-up perspective. In the present section, we map the state of the
+art of Sustainable Manufacturing using topic modelling, a widely used
+text mining techniques. The aim is to give a broad overview of how this
+knowledge field is approached world-wide and then, in section 3, to have
+a deeper look at the Italian way to sustainable manufacturing.
+
+The process of topic extraction is composed by the sequent activities:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Papers Collection}
+\item
+  \emph{Keyword Extraction}
+\item
+  \emph{Topic Modelling:} Number of topic selection
+\item
+  \emph{Topic Modelling:} LDA Model fitting
+\item
+  \emph{Manual topic labelling}
+\end{enumerate}
+
+Each activity is described in the sequent sections.
+
+\paragraph{Papers collection}\label{papers-collection}
+\addcontentsline{toc}{paragraph}{Papers collection}
+
+The analysis starts form a corpus of papers on sustainable
+manufacturing. The papers were downloaded from the Scopus database
+searching for the query:
+
+\_TITLE-ABS-KEY ( ``sustainable.*manufacturing``)\_
+
+At the date of 29/05/2018 the query results in 1,628 documents.
+
+\paragraph{Keyword extraction}\label{keyword-extraction}
+\addcontentsline{toc}{paragraph}{Keyword extraction}
+
+We represent each article as a set of keywords, merging Author Keywords
+and Index Keywords. The keywords are then ``sanitized'' following the
+sequent rules:
+
+\begin{itemize}
+\tightlist
+\item
+  Eliminate duplicated keywords
+\item
+  Eliminate brackets and its content
+\item
+  Substitute non-alphanumeric character with a blank space
+\item
+  Merge synonyms, alternative spelling and keywords pointing to similar
+  concepts
+\item
+  Eliminate scientific literature specific keywords like ``article'' and
+  ``review''
+\item
+  Filter the generic keywords. The metrics for the threshold is the
+  percentage of papers that contains the keywords. The value has been
+  set to 7.5\%.
+\end{itemize}
+
+Finally, we compute the Keywords Term Matrix. The matrix is composed of
+1,628 documents and 26,272 keywords. Having a mathematical
+representation of the documents allows us to apply standard mathematical
+techniques to them.
+
+\paragraph{Topic Modelling: Number of Topic Selection and LDA Model
+Fitting}\label{topic-modelling-number-of-topic-selection-and-lda-model-fitting}
+
+The goal of the present section is to compute a topic model based on the
+keyword representation of the papers. A topic model allows examining a
+set of documents and discovering, based on the statistics of the words
+in each, what the topics might be and what each document's balance of
+topics is. To deploy it for the purposes of the present paper, keywords
+will cluster to form a topic: each topic will represent a different view
+(say, principle) of sustainable manufacturing. This approach brings a
+new perspective to the definition of sustainable manufacturing with
+respect to the 6R's framework.
+
+To compute the topic model, we use the Latent Dirichlet Allocation (LDA)
+algorithm. To select the number of topics for LDA, the most efficient
+and effective way is to calculate multiple metrics of the quality of the
+results in function of the number of topics. All existing methods
+require to train multiple LDA models to select one with the best
+performance. Several approaches tried to take the problem of
+automatically finding the right number of topics contained in a set of
+documents. Every approach follows the idea of computing distances (or
+similarities) between pair of topics varying the number of topics. We
+used four different methods to evaluate the output of a topic model for
+different value of k. These methods are:
+
+\begin{itemize}
+\tightlist
+\item
+  Caojuan2009 \citep{cao2009density}: Minimize the average cosine
+  distance between every pair of topics. The best topic number K has a
+  minimal final distance between topics in Latent Dirichlet Allocation
+\item
+  Arun2010 \citep{arun2010finding}: Minimize the symmetric KL-Divergence
+  of the salient distribution that are derived from the matrices of
+  factors. These matrices are the re-projections of the documents on the
+  topics and of the topics on the vocabulary (the selected tokens). The
+  divergence values are higher for non-optimal K values.
+\item
+  Griffiths2004 \citep{griffiths2004finding}: Maximize the likely of the
+  data given the model built considering K topics. This is a problem of
+  model selection using Bayesian statistics.
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/Griffithsetc} 
+
+}
+
+\caption{Relationship between the measures of the quality of the topic modelling output and the number of topics.}\label{fig:topicnumsm}
+\end{figure}
+
+We computed these for measures fitting a LDA model for every K between 2
+and 20. We choose the higher value because we wanted to obtain a
+reasonable number of topics representing the concepts (or we may say,
+principles) behind sustainable manufacturing. The results of the
+analysis are shown in figure \ref{fig:topicnumsm}. From this figure is
+evident how the measure we want to minimize intersect each other at a
+value between 11 and 12 topics. We thus decided to visualize the results
+of the LDA models for a number of topics k between 7 and 15: the expert
+panel interviewed then allowed to decide that the best results was at 12
+topics.
+
+We then extract the one-topic-per-term-per-row probabilities, beta. Beta
+measures what is the probability for each topic to produce a term.
+Figure \ref{fig:topicpicture} shows the top 5 terms for each topic. Here
+each topic has a different vertical position and a different color. Each
+topic is represented by a set of keywords and each keyword has a
+different position on the y axes. For each intersection topic/keyword,
+the dimension of a circle represent beta (what is the probability that
+topic to produce that term). It is possible for some keywords to belong
+to multiple topics: for example, optimization belongs to topic 1 and 9.
+It is easy to spot these keywords because typically (belonging to two
+different topics) are far from the group of keywords of the topics they
+belong.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/geom_point_topic} 
+
+}
+
+\caption{Content of the 12 topics. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term).}\label{fig:topicpicture}
+\end{figure}
+
+\paragraph{Manual Labelling of the
+topics}\label{manual-labelling-of-the-topics}
+\addcontentsline{toc}{paragraph}{Manual Labelling of the topics}
+
+To have a clearer representation of the topics, these were manually
+labelled by 6 independent experts in the field of manufacturing and
+sustainability. Then a seventh experts took in input the results of the
+manual naming and synthetized the label. The final results are the names
+of the 12 topics. These names are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Smartness for Sustainability
+\item
+  Sustainable Machining
+\item
+  Manufacturing Environmental Efficiency
+\item
+  Modelling Manufacturing Sustainability
+\item
+  Welding Sustainability
+\item
+  AM Sustainability
+\item
+  Life-cycle Product Management
+\item
+  Advanced Material Sustainability
+\item
+  Production Management for Sustainability
+\item
+  Sustainable Energies
+\item
+  Innovation for Sustainability
+\item
+  Sustainable Logistic
+\end{enumerate}
+
+This final picture provides a clear representation of how topics
+recognized are mostly homogeneous, provided there are few outlier
+keywords per each topic, as in figure \ref{fig:topicpicture}. This ``new
+perspective'' of sustainable manufacturing represents a way of defining
+its contents by the grace of the tools or domain of interest involved.
+For instance, topic n.1 (smart sustainability) refers to the use of the
+new group of tools and approaches belonging to the Industry 4.0 stream,
+thus defining specific contents and criteria useful to pursue the
+sustainability in manufacturing.
+
+\subsection{Block Chain}\label{block-chain}
 
 \section{Wikipedia}\label{wikipedia}
 
