@@ -29,12 +29,6 @@ knitr::include_graphics("_bookdown_files/figures/main_work_flow.png")
 
 ```
 
-# Challenges: Understanding and Programming
-
-## Understanding
-
-## Programming
-
 # Research Questions
 
 # Stakeholders

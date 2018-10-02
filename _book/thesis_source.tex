@@ -85,7 +85,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-09-30}
+    \date{2018-10-02}
 
 \usepackage{booktabs}
 
@@ -147,13 +147,6 @@ Foresight
 
 \caption{A general workflow for the process of data analysis. Readapted from Wickham (2016)}\label{fig:mainworkflow}
 \end{figure}
-
-\chapter{Challenges: Understanding and
-Programming}\label{challenges-understanding-and-programming}
-
-\section{Understanding}\label{understanding}
-
-\section{Programming}\label{programming}
 
 \chapter{Research Questions}\label{research-questions}
 
@@ -229,7 +222,7 @@ part has the subsequent structure:
 \item
   Finally, always section \ref{sotadocuments} has a subsection for each
   of the anlyzed technical \emph{documents}. These subsections goes from
-  \ref{sotadocumentspatents} to \ref{sotadocumentsjobs}.
+  \ref{sotadocumentspatents} to \ref{sotadocumentstwitter}.
 \end{itemize}
 
 \chapter{Phases, Tasks, and Techniques}\label{sotatools}
@@ -2212,154 +2205,7 @@ improve the prediction performance. Even when just using Social Media
 information from the first three days of the project, they achieve an
 AUC of 0.90, reflecting very high classification performance.
 
-\section{Human Resources Documentation}\label{sotadocumentsjobs}
-
-Text Mining has been used in the last years to manage human resources
-(HR) strategically, mainly with applications aiming at analyzing staff's
-opinions, monitoring the level of employee satisfaction, as well as
-reading and storing CVs for the selection of new personnel. In the
-context of human resources management, the text mining techniques are
-often utilized to monitor the state of health of a company by means of
-the systematic analysis of informal documents. These documents are both
-internal (e.g.~curricula, job description) and external (e.g.~Linkedin,
-social networks).
-
-Nowadays in fact HR experts started to use text mining technique also
-with intelligence purposes. For this reason companies has to collect
-information about their employees, the HR market and their competitors,
-and to analyze enormous amount of documents. The aim of Competitive
-Intelligence in HR \citep{bolasco2005understanding} is to select
-relevant information by automatic reading of this documents Once the
-material has been collected, it is classified into categories to develop
-a database, and analyzing the database to get answers to specific and
-crucial information for HR company strategies.
-
-The typical queries to collect the documents, concern the skills or the
-technological sectors of the competitors or the names of the employees
-of a company with a certain profile of competences. This is not a
-trivial task, and before the introduction of Text Minig, there was a
-division that was entirely dedicated to the continuous monitoring of
-information and answering the queries coming from other sectors of the
-company. In these cases the return on investment by the use of automatic
-document analysis technologies was self evident when compared to results
-previously achieved by manual operators. In some cases, if a scheme of
-categories is not defined a priori, clusterization algotyrhm
-(\ref{sotatoolsmodelnetanal}) are used to classify the set of documents
-(considered) relevant with regard to a certain topic, in clusters of
-documents with similar contents. The analysis of the key concepts
-present in the single clusters gives an overall vision of the subjects
-dealt with in the single texts \citep{gupta2009survey}.
-
-Futhermore it has to be considered that as intellectual capital has
-become one of the most strategic assets of successful organizations, the
-ability to manage the expertise, skills, and experience of employees has
-become a key factor in overcoming the increasing competitiveness of the
-global market \citep{colucci2003formal}. In today's competitive business
-environment, companies need to accurately grasp the competency of their
-HR in order to be successful \citep{fazel2009semantic}.
-
-As evidence of the increasing interest of TM techniques fot HR, an
-increasing number of publications are providing new research paths
-\citep[\citet{al2011investigating}, \citet{zhao2008empirical},
-\citet{ccelik2012ontology}, \citet{veit2001matchmaking},
-\citet{han2016preliminary}]{strohmeier2013domain}. One study introduced
-an approach to improve the matching of profiles by searching job
-descriptions and applicant profiles using filters that represent the
-relevant skills and competencies \citep{paoletti2015extending}.
-Nevertheless, several studies have found that résumés and work
-experience lists, which are composed of brief words or short sentences,
-are limited and have tried to improve HR solutions by adopting a
-semantic system approach, such as ontologies and text-mining methods. An
-example is the On-To-Knowledge project. The OnTo-Knowledge project
-focuses on the application-driven development of ontologies during the
-introduction of ontology-based knowledge management systems
-\citep{lau2002introducing}. One research study has suggested that a
-possible approach could be addressing an intelligent decision support
-system composed of case-based reasoning and ontology
-\citep{zhukova2014intelligent}. Another research stressed the importance
-of HR recruiting, selecting individuals for teams based on different
-skills and qualifications, determining who to train and what training
-programs to offer, and recommending the right expert to individuals for
-acquiring information or learning from within the organization
-\citep{fazel2009semantic}. Another example of TM techniques often
-utilized to monitor the state of health of a company by means of the
-systematic analysis of informal documents is the case of ConocoPhilips,
-a fast-moving American company, which developed an internal system - the
-VSM (Virtual Signs Monitor) - able to find the intangible but crucial
-aspects of company life, the degree of experience and knowledge and the
-``productive'' abilities. The approach chosen by Conoco was that of
-measuring the company mood by means of state of the art indicators
-\citep{ghoshal1997individualized}, which contrasts a new model based on
-completely different pillars, like stretch, discipline, trust and
-reciprocal support with the traditional managerial model founded on
-concepts of constraint, contract, control and compliance. This
-managerial model, according to Ghoshal's formulation encourages the
-cooperation and collaboration between the elements of an organisation,
-improving its results. Its collaboration with Temis enabled Conoco to
-refine its system for the monitoring of textual sources like e-mails,
-internal surveys of employees' opinions, declarations of the management,
-internal and external chat lines, all representing important means for
-sounding the evolution of company culture.
-
-Furthrmore, Web-Based Human Resources Systems had a strong impact on the
-HR processes. The most widely well-known web-based HR systems are
-Linkedin and OilandGas \citep{walker2001web}. Their search systems are
-designed so that a user can input a query and look at the search results
-of résumés through keyword matching. With the special services of
-Linked-In (accessible to premium users only), users can also search for
-specialists and candidates from various industries. The OilandGas
-service is specialized for searching for experts in the oil and gas
-industry, using basically the same concept of discrete keywords
-matching. However, once this search process is completed, the recruiter
-has to download all the search results and résumés and then read through
-all the documents to pick the most suitable candidates.
-
-\subsection{The Key Role of Skills
-Assessment}\label{the-key-role-of-skills-assessment}
-
-The term ``assessment'' indicates the action of assessing the potential,
-the skills, the attitudes and the adequacy of a professional profile.
-
-With the advent of the Fourth industrial revolution, it is increasingly
-important to carry out a continuous and precise assessment of skills. At
-the same time, it is essential to verify that the resources within the
-company are enough prepared to manage the phenomenon, or it is necessary
-to recruit new staff to face the challenge 4.0. Undoubtedly, the future
-demand for professional profiles will be conditioned by digital
-innovation and the ever more radical integration of new technologies.
-For these reasons, it is particularly sensitive to change.
-
-The literature is very focused on identifying the professional profiles
-that will survive during the epochal change and which instead will be
-eliminated. Osborne and Frey's research is emblematic: they tried to
-define which would be the jobs that will resist and which not, according
-to the substitutability of individual skills \citep{frey2017future}. The
-results are quite pessimist: they distinguished between High, Medium and
-Low risk of computerisation, and, according to their estimates, around
-the 47\% of jobs is in the high risk category.
-
-Moreover, there are opposing views on the social effects that the
-revolution will cause. Caruso outlines that the technological innovation
-could not improve worker' conditions, performances and relationships
-because they cannot be determined by any technical innovation in itself,
-being it always socially shaped \citep{caruso2017digital}. On the other
-hand, the new technologies could represent an opportunity for the labour
-market and they could have positive impact on employment. The reason why
-it would probably happens is that 3d printing, Internet of Things,
-Augmented reality and Big data analytics demand a large quantity of new
-skills to be properly managed \citep{freddi2017digitalisation}.
-Furthermore, MacCrory et al., performed a data analysis on occupational
-skill requirements of 674 occupations to study the effects of recent
-changes in automation. They identified the three main consequences of
-technological innovation, which could be summarized in: a significant
-reduction in skills that compete with automation; a significant increase
-in skills which complement machines; : ``a significant reduction in
-skills that compete with machines, an increase in skills that complement
-machines; finally, an increase in skills where machines are not enough
-advanced \citep{maccrory2014racing}.
-
-\part{Case Studies: Methods and
-Results}\label{part-case-studies-methods-and-results}
+\part{Methods and Results}\label{part-methods-and-results}
 
 L'aprrocio metodologico generico\ldots{}
 
@@ -2372,6 +2218,11 @@ table tot summarise the relations between the documents under analysis
 (introduced in section \ref{sotadocuments}) and the NLP techniques.
 
 Table documents vs tools
+
+Each chapter starts with a brief description of the field of applicaton
+of the method and with the framing of the problem to be solved. Then the
+methodlogy to solve the prolbem is described. Each chapter closes with
+the results.
 
 \chapter{Patents}\label{patents}
 
@@ -2392,62 +2243,6 @@ methodologies are described, togheter with example of applications of
 the extracted entities for intelligence tasks.
 
 \section{Users}\label{usersresults}
-
-In this section we show the approach used to extract the users of the
-invention described in a patent. The proposed process is shown in figure
-\ref{fig:procesuser} and its phases are:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \emph{Generation of an input list of users}: search all possible
-  sources with the aim of creating an input list of users with the
-  largest possible coverage (section \ref{sourc});
-\item
-  \emph{Patent set selection}: select the set of documents from which
-  extract the users (section \ref{patsel});
-\item
-  \emph{Patent text pre-processing}: application of natural language
-  processing tools on the documents with the aim of preparing them for
-  the automatic user extraction;
-\item
-  \emph{Automatic patent set annotation 1}: projection of the input list
-  of users on the text to generate the Automatically Annotated Patent
-  Set 1;
-\item
-  \emph{Relevant sentences extraction}: selection of sentences
-  containing at least one user to generate an informative training set;
-\item
-  \emph{Automatic patent set annotation 2}: generation of a statistical
-  model by a machine learning algorithm based on the training set
-  sentences and automatically tagging the patent set to generate the
-  Automatically Annotated Patent Set 2;
-\item
-  \emph{Difference computation}: generation of the new list of users by
-  computing the difference between the lists of users found in the
-  automatically annotated patent set 1 and 2;
-\item
-  \emph{Manual review}: manual selection of the entities that, in the
-  new list of users, are effectively users. This new list will enrich
-  the original list of users. This phase is described in section
-  \ref{manrev}.
-\end{enumerate}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/Process} 
-
-}
-
-\caption{Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.}\label{fig:procesuser}
-\end{figure}
-
-Before the description of each phases, in section \ref{userdef} the
-concept of \emph{user of the invetion} is explained by giving a
-definition of users and presenting the way that this concept is
-exploited in different knowledge fields.
-
-\subsection{Users: A key information hidden in patents}\label{userdef}
 
 Patents are documents that must provide a detailed public disclosure of
 an invention \citep{wipo2}. An \emph{invention} is a new and useful
@@ -2575,7 +2370,65 @@ the design process is proportional to the user needs' satisfaction. It
 implies that a designer has to understand the user needs; as a
 consequence he has to discover whom are potential users.
 
-\subsection{List of users generation}\label{sourc}
+\subsection{Method}\label{method}
+
+In this section we show the approach used to extract the users of the
+invention described in a patent. The proposed process is shown in figure
+\ref{fig:procesuser} and its phases are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Generation of an input list of users}: search all possible
+  sources with the aim of creating an input list of users with the
+  largest possible coverage (section \ref{sourc});
+\item
+  \emph{Patent set selection}: select the set of documents from which
+  extract the users (section \ref{patsel});
+\item
+  \emph{Patent text pre-processing}: application of natural language
+  processing tools on the documents with the aim of preparing them for
+  the automatic user extraction;
+\item
+  \emph{Automatic patent set annotation 1}: projection of the input list
+  of users on the text to generate the Automatically Annotated Patent
+  Set 1;
+\item
+  \emph{Relevant sentences extraction}: selection of sentences
+  containing at least one user to generate an informative training set;
+\item
+  \emph{Automatic patent set annotation 2}: generation of a statistical
+  model by a machine learning algorithm based on the training set
+  sentences and automatically tagging the patent set to generate the
+  Automatically Annotated Patent Set 2;
+\item
+  \emph{Difference computation}: generation of the new list of users by
+  computing the difference between the lists of users found in the
+  automatically annotated patent set 1 and 2;
+\item
+  \emph{Manual review}: manual selection of the entities that, in the
+  new list of users, are effectively users. This new list will enrich
+  the original list of users. This phase is described in section
+  \ref{manrev}.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/Process} 
+
+}
+
+\caption{Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.}\label{fig:procesuser}
+\end{figure}
+
+Before the description of each phases, in section \ref{userdef} the
+concept of \emph{user of the invetion} is explained by giving a
+definition of users and presenting the way that this concept is
+exploited in different knowledge fields.
+
+\subsubsection*{List of users
+generation}\label{list-of-users-generation}
+\addcontentsline{toc}{subsubsection}{List of users generation}
 
 To generate the input list of users, we used two different approaches: a
 bottom-up approach and a top-down approach. The bottom-up approach is
@@ -2641,7 +2494,8 @@ have intentionally \textbf{not} been introduced in the input list
 because we considered these terms as candidates to be extracted by the
 process in our case study .
 
-\subsection{Patent set selection}\label{patsel}
+\subsubsection*{Patent set selection}\label{patent-set-selection}
+\addcontentsline{toc}{subsubsection}{Patent set selection}
 
 Our choice of patent sets aimed at challenging our system to find new
 users missing in the input list. To reproduce a patent set selection, we
@@ -2653,7 +2507,8 @@ IPC class A, which is the first level in IPC differentiation, is based
 on human necessities. For this reason, we assumed that in this class we
 would have found likely users from patents texts.
 
-\subsection{Patent text analysis}\label{patent-text-analysis}
+\subsubsection*{Patent text analysis}\label{patent-text-analysis}
+\addcontentsline{toc}{subsubsection}{Patent text analysis}
 
 Our Entity Extraction system is composed by a set of sequential phases.
 The first three phases are related to the linguistic annotation:
@@ -2712,7 +2567,8 @@ widely accepted BIO annotation scheme \cite{ramshaw}:
   \textbf{O}: for all the other cases.
 \end{itemize}
 
-\subsection{User Entity Extraction}\label{user-entity-extraction}
+\subsubsection*{User Entity Extraction}\label{user-entity-extraction}
+\addcontentsline{toc}{subsubsection}{User Entity Extraction}
 
 The Users extraction problem is tackled by the implementation of a
 supervised classifier that is trained on an annotated patent set. Thus,
@@ -2768,7 +2624,10 @@ resulting user extraction system had a lower precision and an higher
 recall in the classification phase. We presumed to find new users not
 contained in the input seed list.
 
-\subsection{Manual Review of the new list of users}\label{manrev}
+\subsubsection*{Manual Review of the new list of
+users}\label{manual-review-of-the-new-list-of-users}
+\addcontentsline{toc}{subsubsection}{Manual Review of the new list of
+users}
 
 It is still possible that the classification process creates false
 positive results (words labeled as users that do not match the
@@ -3525,6 +3384,44 @@ users of the patent-set (like \emph{priest}, \emph{fund-raiser},
 
 \section{Advantages and Drawbacks}\label{advdrwresults}
 
+An effective development of new products or the redesign of an existing
+one require the analysis of its positive and negative properties. Due to
+that, advantages and drawbacks of products are extremely valuable
+information for companies. Unfortunately, this information is not easy
+to obtain and manage: a strong evidence of that is the effort in the
+development of tools able to manage this information
+\citep[\citet{ulrich2003product}]{pahl2013engineering}. Companies
+frequently make use of Quality Functional Deployment (QFD) and
+requisites lists, users' needs, users' requirements with the purpose of
+tracking advantages \citep{carnevalli2008review}. On the other hand,
+companies use Failure mode and effects analysis (FMEA) to gather and
+study drawbacks, failure modes and their effects and causes
+\citep{liu2013risk} However, product developers can acquire QFD and FMEA
+data only from the users of the invention: this leads to the need of
+expensive processes of customer's voice listening whose results are
+often unclear. Moreover, this information is not disclosed to
+researchers since this is part of the company know-how.
+
+The description of the brought advantages and solved drawbacks are
+critical requirements for the patentability of a product, as stated by
+the politics and the guidelines given by World Intellectual Property
+Organization (WIPO) on writing patents \citep{world2004wipo}. As stated
+by WIPO, an invention is a \emph{solution} to a specific \emph{problem}
+. The problem that an invention solves is a negative effect that
+state-of-the-art technologies can not fully overcome; on the other side,
+a solution is a way to solve this problem. A solution can lead to some
+advantages with respect to the known art. Thus, starting from the
+definition of invention, it is clear how it can be characterized by the
+advantages that it brings and by the problems that it solves. Also, it
+is reasonable to assume that having a clear picture of both advantages
+and drawbacks of a technology is important for an effective design
+process \footnote{The most precise couple of words is \textbf{advantage}
+  and \textbf{disadvantage}, but the reading is facilitated by using two
+  very different words, therefore we decided to adopt the couple
+  \textbf{advantage} and \textbf{drawback}.}
+
+\subsection{Methodology}\label{methodology}
+
 In this section we show the approach used to extract the advantages and
 the drawbacks of the invention described in a patent. More precisely,
 the system identifies textual elements which represent the advantages or
@@ -3573,51 +3470,10 @@ The proposed extraction process is shown in figure
 \caption{Main overview of the advantages and drawbacks extraction process from patents.}\label{fig:advdrwprocessgeneral}
 \end{figure}
 
-Before the description of each phases, in section \ref{advdisdef} the
-concepts of \emph{advantages and disadvantages of an invention} are
-explained.
-
-\subsection{Advantages and drawbacks: an engineering point of
-view}\label{advdisdef}
-
-An effective development of new products or the redesign of an existing
-one require the analysis of its positive and negative properties. Due to
-that, advantages and drawbacks of products are extremely valuable
-information for companies. Unfortunately, this information is not easy
-to obtain and manage: a strong evidence of that is the effort in the
-development of tools able to manage this information
-\citep[\citet{ulrich2003product}]{pahl2013engineering}. Companies
-frequently make use of Quality Functional Deployment (QFD) and
-requisites lists, users' needs, users' requirements with the purpose of
-tracking advantages \citep{carnevalli2008review}. On the other hand,
-companies use Failure mode and effects analysis (FMEA) to gather and
-study drawbacks, failure modes and their effects and causes
-\citep{liu2013risk} However, product developers can acquire QFD and FMEA
-data only from the users of the invention: this leads to the need of
-expensive processes of customer's voice listening whose results are
-often unclear. Moreover, this information is not disclosed to
-researchers since this is part of the company know-how.
-
-The description of the brought advantages and solved drawbacks are
-critical requirements for the patentability of a product, as stated by
-the politics and the guidelines given by World Intellectual Property
-Organization (WIPO) on writing patents \citep{world2004wipo}. As stated
-by WIPO, an invention is a \emph{solution} to a specific \emph{problem}
-. The problem that an invention solves is a negative effect that
-state-of-the-art technologies can not fully overcome; on the other side,
-a solution is a way to solve this problem. A solution can lead to some
-advantages with respect to the known art. Thus, starting from the
-definition of invention, it is clear how it can be characterized by the
-advantages that it brings and by the problems that it solves. Also, it
-is reasonable to assume that having a clear picture of both advantages
-and drawbacks of a technology is important for an effective design
-process \footnote{The most precise couple of words is \textbf{advantage}
-  and \textbf{disadvantage}, but the reading is facilitated by using two
-  very different words, therefore we decided to adopt the couple
-  \textbf{advantage} and \textbf{drawback}.}
-
-\subsection{Clues of Advantages and drawbacks in
+\subsubsection*{Clues of Advantages and drawbacks in
 patents}\label{clues-of-advantages-and-drawbacks-in-patents}
+\addcontentsline{toc}{subsubsection}{Clues of Advantages and drawbacks
+in patents}
 
 First of all we have to define the concept of clue to an advantage or a
 drawback. To describe with a certain degree of precision an advantage or
@@ -3646,8 +3502,10 @@ The three phrases of the example are three advantages. On the other hand
 clues are words that are likely to be contained in advantages or
 drawbacks phrases.
 
-\subsection{Advantages and Drawbacks Clue
-Collection}\label{adv-drw-article-sourc}
+\subsubsection*{Advantages and Drawbacks Clue
+Collection}\label{advantages-and-drawbacks-clue-collection}
+\addcontentsline{toc}{subsubsection}{Advantages and Drawbacks Clue
+Collection}
 
 \begin{figure}
 
@@ -3744,7 +3602,8 @@ handbook''} thus indicating a product and not an advantage. Avoiding
 such ambiguities is a crucial aspect to produce an informative training
 set, so ambiguous words were avoided to be projected on patents.
 
-\subsection{Domain Clues Extraction}\label{advdrwarticledomaincluecoll}
+\subsubsection*{Domain Clues Extraction}\label{domain-clues-extraction}
+\addcontentsline{toc}{subsubsection}{Domain Clues Extraction}
 
 The domain-specific clues collection process takes in input the
 automatically annotated patent set 1. The analyzed patent set is
@@ -3931,8 +3790,10 @@ G08B13 & 4831 & 40.904.000\tabularnewline
 \bottomrule
 \end{longtable}
 
-\subsection{Clue validation using tweets sentiment
-analysis\}}\label{clue-validation-using-tweets-sentiment-analysis}
+\subsubsection*{Clue validation using tweets sentiment
+analysis}\label{clue-validation-using-tweets-sentiment-analysis}
+\addcontentsline{toc}{subsubsection}{Clue validation using tweets
+sentiment analysis}
 
 \begin{figure}
 
@@ -4099,8 +3960,10 @@ SVM-W2V & 87.71 & 89.89 & 91.29 & 90.57 & 83.35 & 80.66 &
 \bottomrule
 \end{longtable}
 
-\subsection{Advantages and Drawbacks sentences
+\subsubsection*{Advantages and Drawbacks sentences
 extraction}\label{advantages-and-drawbacks-sentences-extraction}
+\addcontentsline{toc}{subsubsection}{Advantages and Drawbacks sentences
+extraction}
 
 \begin{figure}
 
@@ -4152,7 +4015,7 @@ third level the same noun. This grouping procedure allows to easily
 represent the final output list in a tree structure which can be easily
 navigated by the end user of the system.
 
-\subsection{Results: case study}\label{results-case-study}
+\subsection{Results}\label{results-1}
 
 In this section we describe the experimental use of the proposed process
 by applying it on four different patent sets.
@@ -4594,8 +4457,11 @@ phenomenon, worth of investigation and that should provide interesting
 insights about the mechanisms and strategies that companies adopt at the
 frontier between technical innovation and marketing.
 
-\subsection{The use of trademark symbols ™ and ® in patents from a legal
+\subsubsection*{The use of trademark symbols ™ and ® in patents from a
+legal
 perspective}\label{the-use-of-trademark-symbols-and-in-patents-from-a-legal-perspective}
+\addcontentsline{toc}{subsubsection}{The use of trademark symbols ™ and
+® in patents from a legal perspective}
 
 It is evident from our preliminary analysis that there exist an high
 number of patent documents containing a trademark indication. In the
@@ -4675,8 +4541,7 @@ followed by the generic name of the product or service. Furthermore when
 referring to the trademark there should also be a reference to the
 trademark owner.
 
-\subsection{Finding Tradenames from
-Patents}\label{finding-tradenames-from-patents}
+\subsection{Methodology}\label{methodology-1}
 
 With respect to Users @ref(\#usersresults) and to Advantages and
 Distadvantages @ref(\#advdrwresults) the process to extract tradenames
@@ -4698,8 +4563,7 @@ aobut the activities see section \ref{sotatools}:
 After that is is possibile to identify tradenames searching for the
 symbols ™ and ®.
 
-\subsection{Trademarks and IPC
-Classes}\label{trademarks-and-ipc-classes}
+\subsection{Results}\label{results-2}
 
 The first investigation has the aim of understanding if the ™ and ®
 symbols has different content depending on different IPC \citep{wipo1}
@@ -4767,7 +4631,8 @@ Average & 6.4 & 5.4\\
 \hline
 \end{tabular}
 
-\subsection{The Selected Tradenames}\label{the-selected-tradenames}
+\subsubsection*{The Selected Tradenames}\label{the-selected-tradenames}
+\addcontentsline{toc}{subsubsection}{The Selected Tradenames}
 
 We a set of popular tradenames referring to
 \citep{morris2016trademarks}. Then we filtered the ambigouus ones (the
@@ -4873,8 +4738,9 @@ not always used.
 \caption{Number of patents citing one of the 38 selected tradenames. The data are divided for any years, from 1995 to 2002 and from 2007 to 2014.}\label{fig:tmlistcpmplete}
 \end{figure}
 
-\subsection{Tradenames Usage in
+\subsubsection*{Tradenames Usage in
 Patents}\label{tradenames-usage-in-patents}
+\addcontentsline{toc}{subsubsection}{Tradenames Usage in Patents}
 
 It is relevant to understand if there exists any difference between
 different tradenames in the correct usage of trade symbols (a trade name
@@ -4916,8 +4782,10 @@ have to be refined.
 \caption{Plot of the trade names correctly cited in patents with ® and ™ on the y-axis and the same trade names cited without using the proper symbol on the x-axes. Both axes are on a logaritmic scale.}\label{fig:tmcitedwell}
 \end{figure}
 
-\subsection{The Popularity of Tradenames in
+\subsubsection*{The Popularity of Tradenames in
 Patens}\label{the-popularity-of-tradenames-in-patens}
+\addcontentsline{toc}{subsubsection}{The Popularity of Tradenames in
+Patens}
 
 In figure \ref{fig:populartm} are plotted the trends of the numbers of
 patents that correctly cites a tradenames. We anlyzed 12 different
@@ -4957,8 +4825,10 @@ Some of them shows:
 \caption{Plot of the trade names correctly cited in patents from 2000 to 2014.}\label{fig:populartm}
 \end{figure}
 
-\subsection{The Similarity of Tradenames in
+\subsubsection*{The Similarity of Tradenames in
 Patens}\label{the-similarity-of-tradenames-in-patens}
+\addcontentsline{toc}{subsubsection}{The Similarity of Tradenames in
+Patens}
 
 Further informations can be derived by analysing the IPC classes where
 the patent have been chosen by the assignees-attorneys-examiners.The
@@ -5025,7 +4895,8 @@ segmenting a knowledge field. These selected knowledge field are:
 sustainable manufacturing and block-chain. The results of the
 methodologies are described, togheter with example of applications.
 
-\section{Sustainable Manufacturing}\label{sustainable-manufacturing}
+\section{Sustainable Manufacturing: an Analysis of the 6R
+Framework}\label{sustainable-manufacturing-an-analysis-of-the-6r-framework}
 
 One of the most important objectives of Sustainable Manufacturing (SM)
 is developing innovative and viable engineered materials, manufacturing
@@ -5096,7 +4967,8 @@ re-designing and/or even changing manufacturing practices to conceive
 new-generation products, as well as by creating a closed-loop of
 environmentally-friendly material flow.
 
-\subsection{The 6R Framework}\label{the-6r-framework}
+\subsubsection*{The 6R Framework}\label{the-6r-framework}
+\addcontentsline{toc}{subsubsection}{The 6R Framework}
 
 All the life-cycle stages of the product development (namely, design,
 production, use and post-use) should be considered carefully, with a
@@ -5194,8 +5066,7 @@ short concepts that can be related to sustainability, as it will be
 explained in the following paragraphs by also providing some sound
 examples from the italian point of view.
 
-\section{Sustainable Manufacturing: A text driven bottom-up
-definition}\label{smtextdrivenbottomup}
+\subsection{Methodology}\label{methodology-2}
 
 In this section, we describe the process involved to analyse the papers
 in the sustainable manufacturing field. To give a more detailed vision
@@ -5208,8 +5079,10 @@ main activities of the process are four: Paper manual classification,
 Automatic Keywords Extraction, Keywords manual selection and Clustering.
 Each activity will be described in the next subsection.
 
-\subsection{Assignment of 6R principle
+\subsubsection*{Assignment of 6R principle
 meanings}\label{assignment-of-6r-principle-meanings}
+\addcontentsline{toc}{subsubsection}{Assignment of 6R principle
+meanings}
 
 The first critical issue is the selection criteria of 6R principles for
 the assignment. This was done by trying to assign a semantic
@@ -5302,8 +5175,10 @@ real classification of scientific papers. This is the first critical
 issue of the followed approach so far, that may be overcome by alignment
 sessions of the decision makers.
 
-\subsection{Automatic Text analysis and Keywords
+\subsubsection*{Automatic Text analysis and Keywords
 extraction}\label{automatic-text-analysis-and-keywords-extraction}
+\addcontentsline{toc}{subsubsection}{Automatic Text analysis and
+Keywords extraction}
 
 In order to analyze the information coming from scientific papers
 belonging to topics encompassed within the 6R framework, we exploit text
@@ -5367,7 +5242,9 @@ details aobut the activities see section \ref{sotatools}:
   corresponding to the set of relevant stems.
 \end{itemize}
 
-\subsection{Manual keywords selection}\label{manual-keywords-selection}
+\subsubsection*{Manual keywords
+selection}\label{manual-keywords-selection}
+\addcontentsline{toc}{subsubsection}{Manual keywords selection}
 
 Keyword selection procedure was performed by hand from a team of 4
 experts in the scientific field of sustainable manufacturing and with
@@ -5432,7 +5309,8 @@ meaningful group of combined words that, on the other hand, could become
 too specific to be significant for the training set of the search
 engines.
 
-\subsection{Paper Clustering}\label{paper-clustering}
+\subsubsection*{Paper Clustering}\label{paper-clustering}
+\addcontentsline{toc}{subsubsection}{Paper Clustering}
 
 Document clustering is the application of the general process of cluster
 analysis to texts. The practical applications of document clustering
@@ -5466,7 +5344,7 @@ element and the closest prototype. This implies that the output of the
 algorithm is a membership matrix, in which each document is assigned to
 a certain prototype.
 
-\subsection{Results}\label{results-1}
+\subsection{Results}\label{results-3}
 
 In the present section, we describe the output of the application of the
 methodology described in section \ref{smtextdrivenbottomup} on the 339
@@ -5610,8 +5488,8 @@ characterized by the related keywords.
 \caption{Matrix: comparing the manual classification and the clustering output.}\label{fig:clusterssm}
 \end{figure}
 
-\subsection{An extended mapping of the SM field
-worldwide}\label{an-extended-mapping-of-the-sm-field-worldwide}
+\section{Sustainable Manufacturing: An Extended
+Mapping}\label{sustainable-manufacturing-an-extended-mapping}
 
 The methodology described in section \ref{smtextdrivenbottomup} has been
 then re-adapted to give an extended anlysis of the 6R framework from a
@@ -5620,6 +5498,8 @@ art of Sustainable Manufacturing using topic modelling, a widely used
 text mining techniques. The aim is to give a broad overview of how this
 knowledge field is approached world-wide and then, in section 3, to have
 a deeper look at the Italian way to sustainable manufacturing.
+
+\subsection{Methodology}\label{methodology-3}
 
 The process of topic extraction is composed by the sequent activities:
 
@@ -5685,8 +5565,9 @@ Finally, we compute the Keywords Term Matrix. The matrix is composed of
 representation of the documents allows us to apply standard mathematical
 techniques to them.
 
-\subsubsection{Topic Modelling: Number of Topic Selection and LDA Model
-Fitting}\label{topic-modelling-number-of-topic-selection-and-lda-model-fitting}
+\subsubsection*{Number of Topic
+Selection}\label{number-of-topic-selection}
+\addcontentsline{toc}{subsubsection}{Number of Topic Selection}
 
 The goal of the present section is to compute a topic model based on the
 keyword representation of the papers. A topic model allows examining a
@@ -5747,6 +5628,8 @@ value between 11 and 12 topics. We thus decided to visualize the results
 of the LDA models for a number of topics k between 7 and 15: the expert
 panel interviewed then allowed to decide that the best results was at 12
 topics.
+
+\subsection{Results}\label{results-4}
 
 We then extract the one-topic-per-term-per-row probabilities, beta. Beta
 measures what is the probability for each topic to produce a term.
@@ -5861,8 +5744,9 @@ technology because:
   The problems of this technology are both technical and managerial
 \end{itemize}
 
-\subsection{How Blockchain Technology
+\subsubsection*{How Blockchain Technology
 Works}\label{how-blockchain-technology-works}
+\addcontentsline{toc}{subsubsection}{How Blockchain Technology Works}
 
 The blockchain can be exemplified as a process in which a set of
 subjects shares computer resources (memory, CPU, band) to make available
@@ -5913,8 +5797,7 @@ blockchain could not happen as distributed, so there would be no central
 point to attack. This could have profound implications in financial
 crises or debt crises like the 2007-08 financial crisis.
 
-\subsection{Problems Extraction
-Methodology}\label{problems-extraction-methodology}
+\subsection{Methodology}\label{methodology-4}
 
 Considering our objectives, the approach we adopted for paper analysis
 is radically new with respect to the one traditionally established in
@@ -6111,7 +5994,8 @@ Filter all the token shorter than 3 character & Morphology filtering & a, b, c, 
 \hline
 \end{tabular}
 
-\subsection{Topic modelling}\label{topic-modelling}
+\subsubsection*{Topic modelling}\label{topic-modelling}
+\addcontentsline{toc}{subsubsection}{Topic modelling}
 
 Topic modeling is a method for unsupervised classification of documents
 which finds groups of documents fitting a statistical model to the data.
@@ -6227,8 +6111,7 @@ term frequency.
 
 The experts agreed for a total number of 8 topics as optimal.
 
-\subsubsection*{Topic Modelling Results}\label{topic-modelling-results}
-\addcontentsline{toc}{subsubsection}{Topic Modelling Results}
+\subsection{Results}\label{results-5}
 
 The output topic modelling phase is show in figure
 \ref{fig:topicmodelsoutputbc}. The results of the topic modelling are
@@ -6246,6 +6129,225 @@ that topic.
 
 \caption{Content of the 8 topics of problems of blockchain. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term}\label{fig:topicmodelsoutputbc}
 \end{figure}
+
+\section{Precision Agriculture}\label{precision-agriculture}
+
+The agriculture is facing rapidly changing economic, social and
+environmental scenarios in 21st Century. Forecasts on worldwide
+population estimate that it might increase at about 9 billion by 2050
+and led the Food and Agriculture Organization of the United Nations
+(FAO) to underline the growth of food needs of about 60\% if compared to
+the annual average calculated between 2005 and 2007. The Committee on
+Agriculture and Rural Development of the European Parliament confirms
+these figures. In this regard, FAO focuses on how global agricultural
+and food systems can support the subsistence needs of the worldwide
+population according to different cultures and dietary habits of both
+developed and emerging countries.
+
+Compared to past agricultural policies, nowadays trends related to
+technological evolution, socio-political changes, water shortages, as
+well as the increase in energy needs and the emergence of new pests and
+diseases that affect agricultural production acquire greater importance
+in the discussion between policy makers and companies concerning the
+future of agricultural activities.
+
+In particular, technological innovation is necessary for the development
+of companies which aim to strengthen their production processes and
+organizational structures by exploiting automation and ICT within the
+cultivation and commercialization processes. Thus, digital technologies
+at the base of Precision Agriculture are the assets to leverage to deal
+with two major challenges for modern agriculture. On one hand, the need
+for an increase in production quantity by optimizing production factors.
+On the other hand, complying with production standards by combining
+appropriate quality levels and limited environmental impact. Precision
+Agriculture is a modern approach for agricultural management that
+exploits cutting-edge technologies to monitor and optimize agricultural
+production processes.
+
+The concept of Precision Agriculture was born in the United States in
+the early nineties, where the House of Representatives
+\citep{liaghat2010review} defines it as ``an integrated information- and
+production-based farming system that is designed to increase long term,
+site-specific and whole farm production efficiency, productivity and
+profitability while minimizing unintended impacts on wildlife and the
+environment''. Although it is a relatively well-known concept, Precision
+Agriculture still presents a low rate of adoption as reported by both
+academic surveys and professional reports \citep{pierpaoli2013drivers}.
+
+Different definitions given by researchers, practitioners and policy
+makers have gradually allowed to deepen the understanding of the
+constituent elements of the concept as shown in the following table.
+Table 1 presents a literature review carried out on the Scopus database
+focusing on the analysis of the definitions of the concept of Precision
+Agriculture, and shows how technology emerges as the enabling aspect of
+Precision Agriculture. Anyway, authors focused also on other elements
+that refers to Precision Agriculture.
+
+Pierce and Nowak \citep{pierce1999aspects} highlight the centrality of
+Technology and Benefits as the two key elements of Precision
+Agriculture. Zhang et al. \citep{zhang2002precision} strengthen these
+two distinctive elements, which compare in all subsequent analyses
+\citep[\citet{kirchmann2000challenging}]{stafford2000implementing},
+until the introduction of the concept of Sustainability
+\citep{bongiovanni2004precision}. Indeed, Bongiovanni emphasizes the
+environmental topic by underlining the role of Precision Agriculture to
+manage harvest production inputs in an environmentally friendly manner.
+Finally, Gertsis et al. \citep{gertsis2018lisa}, define Precision
+Agriculture as ``A modern farming management concept using digital
+techniques to monitor and optimize agricultural production processes''.
+They introduce the concepts of digital techniques and optimization of
+production processes by highlighting some possible concrete applications
+of Precision Agriculture. As emerged from the previous analysis, a
+fundamental role for the implementation of Precision Agriculture is
+played by digital technologies. In particular, object identification,
+georeferencing, measurement of physical and chemical parameters,
+satellite navigation, connectivity, data storage and analysis, process
+automation and vehicle driving are the most adopted
+\citep{schrijver2016precision}. Precision agriculture is then based on a
+cyclical process of observation and acquisition of data, followed by an
+interpretation and evaluation of the information acquired, and by the
+implementation of a series of decisions that respond to them. Thanks to
+these technologies, farmers can increase production, optimize resources
+consumption (workforce included), costs and quantitative and qualitative
+production possibilities, according to the specific characteristics of
+the soil and cultivation. \citep{sawant2016organized} shows that the
+implementation of digital technology in agriculture can increase total
+profitability from \$ 55 to \$ 110 per acre (1 acre = 4046.87 m²).
+
+However, whether the Precision Agriculture is still far from being
+widely adopted \citep[\citet{tey2012factors}]{pierpaoli2013drivers}.
+Indeed, the implementation difficulties related to the high initial
+investments and the lack of suitable skills among the farmers identified
+still represent significant obstacles. In fact, a study conducted by
+Pierpaoli et al. \citep{pierpaoli2013drivers} identifies the so-called
+``non-adopters'' farmers, (e.g.~those who do not have sufficient skills
+or financial resources to manage the PA's instruments). For these
+reasons measuring the concrete benefits of Precision Agriculture is not
+an easy task. However, Precision Agriculture is an increasingly
+pervasive concept within the agricultural sector and the constant
+evolution of technologies linked to it generates many opportunities
+which have not been fully explored yet.
+
+Technologies advancements are directly linked also to another pervasive
+innovative concept in worldwide economy: Industry 4.0. This new paradigm
+grounds on the exploitation of digital technologies in the development
+of business processes and its enabling technologies are also used in
+Precision Agriculture . For example, Cyber-Physical Systems can be seen
+as one of the cornerstones for the development of innovative solutions
+to monitor and manage processes in agricultural businesses.
+
+Starting from this relationship, the present chapter aims at analysing
+the technologies at the bases of the two domains to identify possible
+overlaps between Precision Agriculture and Industry 4.0.
+
+\subsection{Methodology}\label{methodology-5}
+
+The work focuses on the creation of a dictionary which identifies the
+most innovative technologies that are applied in Precision Agriculture
+by investigating the overlaps with Industry 4.0 technologies to create
+clusters and to analyze the connections between them. The dictionary
+aims to analyze the technologies related to the Precision Agriculture
+domain and to identify those belonging also to the Industry 4.0
+paradigm. Concretely, the dictionary is a list of Precision Agriculture
+technologies that were identified by analysing papers retrieved from the
+international database. First of all, the twenty-five most cited
+scientific papers were identified by using the query ``precision
+agriculture'', among those published between 2002 and 2017. Secondly, a
+text mining analysis on the 25 papers was conducted to identify the
+technologies mentioned and belonging to the Precision Agriculture
+domain. However, this list of technologies was not to considered
+exhaustive because of the reduced number of analyzed sources, which
+however provided the basic information to build the analysis context. To
+face this limitation, and given the proximity of the founding concepts
+of Industry 4.0 and Precision Agriculture, the Technimetro® was used to
+expand the list of technologies at the base of the dictionary.
+Technimetro® (Chiarello et al., 2018) is a dictionary that contains over
+1500 technologies belonging to the Industry 4.0 paradigm and was created
+by selecting the Industry 4.0 technologies found in manuals, technical
+documents and scientific publications on Scopus. The relationships
+between these technologies were studied through a text mining activity
+to describe possible clusters and to understand how technologies are
+linked one-another. Therefore, the present work attempted to understand
+if the Technimetro® contains other Precision Agriculture technologies
+that were not identified with the analysis of the papers. To answer this
+question, all abstracts of the publications on Precision Agriculture
+(published on SCOPUS from 2002 to 2017 for a total number of 4320
+papers) were analyzed using the software ``R''. In this way,
+technologies belonging to the Technimetro® that were mentioned in the
+Precision Agriculture publications were identified. Therefore,
+technologies extracted through the Technimetro® have been checked to
+manually eliminate not applicable terms. Technologies ware removed with
+the help of control groups. Finally, the new list of technologies
+obtained, was compared to the list of technologies identified at the
+beginning with the analysis of twenty-five papers for removing
+duplicates, so the dictionary was ready to use. On one hand, this
+analysis confirmed the relationship between Industry 4.0 and Precision
+Agriculture domains, on the other hand, it allowed to create a list of
+over 1000 technologies referring to the Precision Agriculture domain, by
+expanding the list generated thanks to the analysis of the 25 most cited
+papers on Precision Agriculture. This analysis shows how the
+intersection between the technologies belonging to Industry 4.0 and
+Precision Agriculture is very broad and makes the two concepts very
+close from a technological point of view. To investigate the presence of
+possible technological clusters, a text mining on abstracts of papers
+belonging to the ``Precision Agriculture'' domain was performed. The
+block diagram in Figure \ref{fig:precisionwf} describes the process to
+create the dictionary.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/precisionwf} 
+
+}
+
+\caption{Process to create Precision Agriculture dictionary.}\label{fig:precisionwf}
+\end{figure}
+
+\subsection{Results}\label{results-6}
+
+The dictionary of Precision Agricultural Technologies includes 324
+terms. Thanks to a graph, the most cited technologies and the
+connections between them allowed to identify at least 6 technology
+clusters. The graph in Figure \ref{fig:precisiongraph} shows the
+structure of the dictionary containing the technologies related to
+Precision Agriculture and the relationships between the technologies
+that compose it. This representation allows to deepen the connections
+between the different clusters and technologies. The connections are
+represented by the lines that join the different nodes (which represent
+Precision Agriculture technologies) of the graph. The size of the nodes
+varies proportionally to the number of papers they are cited in, instead
+their position depends on the number of connections between the
+different technologies: the most connected ones acquire a more central
+position into the graph and vice versa. THe content of each cluster is
+swhon in Table \ref{tab:patab1}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/precisiongraph} 
+
+}
+
+\end{figure}
+
+Table: \label{tab:patab1} Clusters in the Precision Agriculture dictionary.
+
+\begin{tabular}{l|l}
+\hline
+CLUSTER & TECHNOLOGIES\\
+\hline
+Monitoring & GPS, GIS, Data processing, GSM, Satellite, Ultrasound, Lidar, Broadband, Cellular, …\\
+\hline
+IoT & Wireless sensor network, Internet of things, RFID, Bluetooth, Zigbee, Wi-fi, Microcontroller, Arduino, …\\
+\hline
+Automation & Autonomous vehicle, Mobile Robot, Unmanned aerial vehicle, Agricultural robot, Computer vision, Data management, …\\
+\hline
+Decision & Artificial intelligence, Data mining, Expert systems, Forecasting, Machine learning, Semantic web, Smart grid, …\\
+\hline
+Hardware & Embedded system, Cyber-physical system, Manure spreader, Raspberry pi, CMOS, FPGA, …\\
+\hline
+Laser & Laser, Laser transmitter, Laser receiver, Laser surveying, Optical fiber, Photonic sensor, …\\
+\hline
+\end{tabular}
 
 \chapter{Wikipedia}\label{wikipedia}
 
@@ -6267,8 +6369,8 @@ analysing this content. The results of the methodologies are described,
 togheter with example of applications of the extracted entities for
 intelligence tasks.
 
-\section{Extracting and mapping industry 4.0
-technologies}\label{extracting-and-mapping-industry-4.0-technologies}
+\section{Industry 4.0: Extracting and Mapping
+Technologies}\label{technimetrochap}
 
 Industry 4.0 is getting the center of the scene with respect to the
 future of production systems in advanced countries and to its economic
@@ -6332,8 +6434,10 @@ of the approach are as follows:
   in the perimeter.
 \end{enumerate}
 
-\subsection{Industry 4.0 as a multi-technology multi-stakeholder
+\subsubsection*{Industry 4.0 as a multi-technology multi-stakeholder
 field}\label{industry-4.0-as-a-multi-technology-multi-stakeholder-field}
+\addcontentsline{toc}{subsubsection}{Industry 4.0 as a multi-technology
+multi-stakeholder field}
 
 Industry 4.0 is the main keyword used by researchers, policy makers and
 entrepreneurs when describing how worldwide industrial systems will
@@ -6538,8 +6642,10 @@ characterizes industry 4.0 technologies, the present methodology is
 designed to be a bottom-up and continuous evolving tool. The structure
 and measurements made on the tool refer to July 2017.
 
-\subsection{Mapping and Clustering a complex emerging
+\subsubsection*{Mapping and Clustering a complex emerging
 technology}\label{mapping-and-clustering-a-complex-emerging-technology}
+\addcontentsline{toc}{subsubsection}{Mapping and Clustering a complex
+emerging technology}
 
 The first task for mapping a new technology is field delineation, or the
 definition of the perimeter of the field. Industry 4.0 is not a new
@@ -6726,8 +6832,7 @@ Summing up, a consistent literature in the field of computational
 linguistics and text mining supports the notion that the use of
 Wikipedia articles as a knowledge base is justified and promising.
 
-\subsection{Method for Extracting and Mapping
-Technologies}\label{method-for-extracting-and-mapping-technologies}
+\subsection{Methodology}\label{methodology-6}
 
 In this section we give evidence of the methodological steps undertaken
 to build up the enriched dictionary referred to Industry 4.0. The
@@ -6924,7 +7029,7 @@ entries that are added to the body of knowledge.
 \caption{Sample of enabling technologies showing the table structure of dictionary.}\label{fig:technimetrosample}
 \end{figure}
 
-\subsection{Results}\label{results-2}
+\subsection{Results}\label{results-7}
 
 The dictionary is composed of 1.211 terms and 39.078 relationships
 between them. This generates a graph in which the node represents a
@@ -7078,23 +7183,929 @@ of the nodes as shown in Figure \ref{fig:identificationspec}.
 \caption{ Wordcloud of the words belonging to the class 11 labelled as Identification. In this figure the size is proportional to the logarithm of the in- degree of each node that represents a word.}\label{fig:identificationspec}
 \end{figure}
 
-\section{Industry 4.0 and Industrie 4.0: how different countries see the
-4th industrial
-revolution.}\label{industry-4.0-and-industrie-4.0-how-different-countries-see-the-4th-industrial-revolution.}
+\section{Industry 4.0: a Comparison with Industrie
+4.0}\label{industry-4.0-a-comparison-with-industrie-4.0}
 
-\chapter{Twitter}\label{twitter}
+The Industry 4.0 paradygim can be understood and implemented differently
+in different industrial eco-systems, depending on the country in which
+it is adopted. In the present section we make use of Wikipedia to build
+a network of pages regarding industry 4.0 in such a way taht it is
+possible to map how a country is actually implementing the industry 4.0
+paradigm. To analyze the differences between the industry 4.0 concept in
+the country of origin (Germany) and the rest of the world, our approach
+is thus to investigate the Wikipedia pages of Industrie 4.0 and Industry
+4.0 and the pages they are connected to. Using clustering algorithm it
+is then possible to explore the different focus that countries have on
+different technological sub-field of Industry 4.0.
 
-\chapter{Job Profiles}\label{job-profiles}
+All aspects during our analyses and the description of the project,
+e.g.~page names, consist of two parts: one in English and one in German.
+For simplicity and better understandability, we well mostly refer to
+everything only by the English name.
 
-\part{Future Developments}\label{part-future-developments}
+\subsection{Methodology}\label{methodology-7}
+
+In the present section we explain the methodology we adopted to build
+and analyze the two graphs of Wikipedia pages representing the concepts
+linked to industry 4.0 in Germany and in the rest of the world. As a
+proxy of the world-wide vision of industry 4.0 we analyzed the English
+version of Wikipedia. The main steps of our methods are represented in
+the workflow of figure \ref{fig:industriewf} The first step consisted of
+extracting all pages of interest from Wikipedia. Then the pages and
+their connections were used to build two graphs (the German and English
+version). The nodes of the graphs were then cleaned using a novel
+approach based on the categories of the Wikipedia pages. Finally a
+clustering algorithm was used to illustrate communities within the
+graph. These steps are described in the following sections.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/industrie_wf} 
+
+}
+
+\caption{The workflow shows the steps we followed to generate the two graphs of industry 4.0 related concepts.}\label{fig:industriewf}
+\end{figure}
+
+\subsubsection*{Wikipedia Pages
+Collection}\label{wikipedia-pages-collection}
+\addcontentsline{toc}{subsubsection}{Wikipedia Pages Collection}
+
+To list the pages connected to the concept of Industry 4.0, all
+Wikipedia pages that are linked to the page of Industry 4.0 (and
+Industrie 4.0) were downloaded. We will refer to these pages as level 1
+connection. Then all the pages linked to the level 1 pages are collected
+and marked as level 2 pages. This process can be continued until a
+wanted level is reached: for the purposes of the present work we decided
+to show the effectiveness of the process stopping at level two. For each
+page, we collected the links to other pages and the categoriess of the
+page.
+
+\subsubsection*{Graph Generation}\label{graph-generation}
+\addcontentsline{toc}{subsubsection}{Graph Generation}
+
+Two pages that are linked by a link within Wikipedia shares a certain
+relations of which we ignore the meaning. Thus, it is possible that the
+approach we described until now, also collects pages that are not
+relevant for the analysis. In our case, this means that some of the
+extracted pages are not technologically related to the subject of
+Industry 4.0. Thus, the list of entries had to be cleaned from these
+non-relevant ones. To make the filtering process more efficient, we
+filtered considering the categories that had been extracted together
+with the pages. We considered as relevant all the categories of the
+pages of level 1. Then the level 2 pages were automatically considered
+to be relevant if they were in one of the formerly marked categories.
+For the nodes selection we also used a black-list of non-relevant
+Wikipedia pages (e.g.~International Standard Name Identifier,
+International Standard Book Number, Digital object identifier, ISBN),
+previously developed by the authors in (see chapter
+\ref{technimetrochap}). This list has been traduced in German for the
+purposes of the present work.
+
+\subsubsection*{Clustering}\label{clustering}
+\addcontentsline{toc}{subsubsection}{Clustering}
+
+In order to identify macro topics in the formerly created graphs, we
+applied clustering methods. The most beneficial results were found to be
+generated by applying a spin glass algorithm, which employs the spin
+glass model and uses simulated annealing to find communities in networks
+\citep{reichardt2006statistical}. In this approach the community
+structure of the network is interpreted as the spin configuration that
+minimizes the energy of the spin glass with the spin states being the
+community indices.
+
+\subsection{Results}\label{results-8}
+
+In this section we will focus on describing the differences that emerges
+between the two national technological approaches of industry 4.0 in
+Germany and in the rest of the world.
+
+\subsubsection*{The collected pages}\label{the-collected-pages}
+\addcontentsline{toc}{subsubsection}{The collected pages}
+
+We collect 97 pages for the German graph and 95 pages for the English
+graph. Table \ref{tab:industrietab1} list a sample of forty pages per
+language, alphabetically ordered.
+
+Table: \label{tab:industrietab1} For each IPC class the ratio of the
+percentage of patents containing at least one ® or ™ character is
+computed for two patents sets 1995 to 2002 and from 2007 to 2014.
+
+\begin{tabular}{l|l}
+\hline
+German Version & English Version\\
+\hline
+Absatzwirtschaft & Adaptive system\\
+\hline
+Automatisierung & Agent-assisted automation\\
+\hline
+Automatisierungsgrad & Ambient intelligence\\
+\hline
+Automatisierungstechnik & AmbieSense\\
+\hline
+Autonomic Computing & Analytics\\
+\hline
+Autopoiesis & Artificial intelligence\\
+\hline
+Betriebswirtschaftslehre & Automated reasoning\\
+\hline
+Corporate Evolution & Automation\\
+\hline
+Cyber-physisches System & Autonomic computing\\
+\hline
+Dataset & Autonomous car\\
+\hline
+Daten & Big data\\
+\hline
+Datenabgleich & Big Data Maturity Model\\
+\hline
+Datenarchitektur & Big memory\\
+\hline
+Datenaustausch & Carrier cloud\\
+\hline
+Datenbasis & Cloud-based design and manufacturing\\
+\hline
+Datenelement & Cloud analytics\\
+\hline
+Datenfeld & Cloud collaboration\\
+\hline
+Datenmanagement & Cloud computing\\
+\hline
+Datenmodell & Cloud computing comparison\\
+\hline
+Datenmodellierung & Cloud computing security\\
+\hline
+Datensicherung & Cloud database\\
+\hline
+Datenstruktur & Cloud engineering\\
+\hline
+Datentyp & Cloud Foundry\\
+\hline
+Denken & Cloud management\\
+\hline
+Dienst (Informatik) & Cloud manufacturing\\
+\hline
+Dienstleistung & Cloud research\\
+\hline
+Digitales Objektgedächtnis & Cognitive computer\\
+\hline
+Elektronische Datenverarbeitung & Cognitive computing\\
+\hline
+Erfahrungskurve & Community cloud\\
+\hline
+Erinnerungsvermögen & Competitions and prizes in artificial intelligence\\
+\hline
+Feld (Datentyp) & Computer-aided engineering\\
+\hline
+Feldgerät & Computer-aided technologies\\
+\hline
+Fertigungslinie & Computer-integrated manufacturing\\
+\hline
+Fließbandabstimmung & Computer vision\\
+\hline
+Fließbandfertigung & Continuous analytics\\
+\hline
+Gegenwart & Control loop\\
+\hline
+Geschichte der Produktionstechnik & Control system\\
+\hline
+Glauben & Cyber-physical system\\
+\hline
+Gruppenfertigung & Cyber manufacturing\\
+\hline
+Halbzeug & Datafication\\
+\hline
+\end{tabular}
+
+\subsubsection*{The Graphs}\label{the-graphs}
+\addcontentsline{toc}{subsubsection}{The Graphs}
+
+The dimension of the graphs in terms of nodes, links and categories are
+shown in Figure \ref{fig:graphmetricsindustrie}. From this figure is
+evident how the two graphs has almost the same number of nodes; by the
+way, the mean number of categories for the German version is close to
+0.5 while its 0.3 for the English version. Beside these measure, as it
+would be even more evident from further analysis, there is the broader
+approach to industry 4.0 in the rest world with respect to the more
+focused vision that Germany has.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/graph_metrics_industrie} 
+
+}
+
+\caption{Number of nodes, links and categories for the German version of the graph (left) and the English version (right)}\label{fig:graphmetricsindustrie}
+\end{figure}
+
+The resulting graphs are shown in figure \ref{fig:graphindustrie1}
+(respectively the German version on the left and the English version on
+the right). Here the vertices of the graphs represent the Wikipedia
+entries, while the links are depicted by arcs that are directed from the
+originating page to the linked page. The structures of the two graphs
+and the difference in the number of links gives an evidence of the more
+focused network of concepts in Germany: the number of links is in fact
+lower for Germany, creating a more clustered graph.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/graph_1_industrie} 
+
+}
+
+\caption{The German version (left) and the English version (right) of the Industry 4.0 related graphs.}\label{fig:graphindustrie1}
+\end{figure}
+
+\subsubsection*{Graph metrics}\label{graph-metrics}
+\addcontentsline{toc}{subsubsection}{Graph metrics}
+
+In this section we analyze the graphs using standard metrics. These
+measures allow investigations about relevant topology and specific
+features of a given graph. More precisely, we looked at the following
+measures: - Graph diameter: calculates the longest shortest path in a
+graph, thus, the minimal distance between two nodes that are the
+furthest away from each other. - Nodes Degree: Shows the number of nodes
+that every node is connected to. The mean value of the degree for the
+whole graph shows how interconnected the graph is: the higher the value,
+the more connections the nodes have with each other. - Nodes Distance:
+Gives back the minimum number of edges that connect one node with each
+other. Here again, the mean value shows the interconnectivity of the
+graph: A lower value means that the way from one node to another is
+shorter, thus that the graph is more highly connected.
+
+The results of these metrics for the two graphs are shown in table
+\ref{tab:industrietab2}. From the diameter measure we can see that all
+of the pages are connected through a maximum of 4 edges. This is not
+surprising, since it was a premise of the method when setting the level
+to 2. Considering the mean degree, a level of 2.38 for the German
+version and 3.29 for the English version shows how the nodes of the
+English graph are more interconnected. This can also be qualitative
+observed when looking at the figures 3. Finally, the average distance
+from one node to another is higher in the German graph, supporting the
+finding of the measures discussed above. These findings goes in line
+with what is said by a study of Acatech \citep{kagermann2006industry}:
+in the USA, for example, the term Industry 4.0 is understood in a much
+wider meaning. Furthermore, Acatech study say that in Germany, the focus
+is mostly on technological dimensions, while in the USA, the development
+of the new business models in the area of big data analytics play a
+greater role, among others.
+
+Table: \label{tab:industrietab2} For each IPC class the ratio of the
+percentage of patents containing at least one ® or ™ character is
+computed for two patents sets 1995 to 2002 and from 2007 to 2014.
+
+\begin{tabular}{l|l|l}
+\hline
+Measures & German & English\\
+\hline
+Diameter & 4 & 4\\
+\hline
+Mean Degree & 2.38 & 3.29\\
+\hline
+Mean Distance & 3.25 & 3\\
+\hline
+\end{tabular}
+
+\subsubsection*{Clustering}\label{clustering-1}
+\addcontentsline{toc}{subsubsection}{Clustering}
+
+Figure \ref{fig:industrieclusters} shows the outcomes of the clustering
+process: the vertices of the graphs represent the Wikipedia pages, the
+links are depicted by arcs that are directed from the originating page
+to the linked page and the clusters are represented by the different
+colors of the nodes. In order to make these clusters comparable, the
+label of the German version are translated in English. The resulting,
+corresponding groups as well as the number of nodes they contain can be
+found in table \ref{tab:industrietab3}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/industrie_clusters} 
+
+}
+
+\caption{The German version (left) and the English version (right) of the Industry 4.0 clustered graphs.}\label{fig:industrieclusters}
+\end{figure}
+
+Considering together figure 4 and table 3, it is evident how the central
+node of the graph(Industry 4.0) is contained in the first cluster
+Internet of things \& manufacturing for both the graphs. It is also by
+design connected to all other clusters, so that no cluster is isolated
+from Industry 4.0 node. As evident from table 3, the clusters in the two
+graphs are similar. We have the same five clusters in both graphs and a
+different one for each language. This shows that Industry 4.0 framework
+if considered at a more abstract level, is similar in different
+countries. This is not surprising, since there must be something that
+made policy and industry call it the same name, but it is a strong
+result for our methods, able to map bottom-up this phenomenon.
+
+However, when looking at the clusters more closely, some interesting
+differences get clear. The cluster production, product life circle \&
+flow production, which is completely missing in the English graph, is
+the one with the higher number of nodes in the German one. This shows
+how the topic of Industry 4.0 in Germany is much more concentrated on
+production than elsewhere. In the study of acatech
+\citep{kagermann2006industry}, it is also explicitly stated that in
+Germany `` {[}\ldots{}{]} the focus is on optimizing production
+processes in terms of quality, price and flexibility and delivering
+better financial returns overall''. The focus on production for Germany
+is also confirmed by a monitor paper written by the by the European
+Commission \citep{industrie2016eu}. To give a clearer view of this
+phenomena, we have to consider that the word production is very similar
+in meaning to manufacturing. The cluster including the latter (internet
+of things \& manufacturing) has more than the double number of nodes in
+the English graph with respect to the German one, so it might be that it
+is rather the wording that makes the difference. Anyway, by looking at
+the the disposition of the cluster (see figure
+\ref{fig:industrieclusters}) internet of things \& manufacturing in the
+two graphs, it can be observed that in the English version the cluster
+is strongly integrated with ITC-related topics (Data processing \&
+Analytics, Cognition and Cloud Computing), adding the adjective cyber to
+the topic of manufacturing.
+
+Table: \label{tab:industrietab3} Clusters names and number of nodes per
+cluster for each version of the Industry Graph 4.0.
+
+\begin{tabular}{r|l|l|l}
+\hline
+Cluster Number & Cluster name & Number of Nodes (German Version) & Number of Nodes (English Version)\\
+\hline
+1 & Internet of things \& manufacturing & 12 & 28\\
+\hline
+2 & Cognition & 23 & 7\\
+\hline
+3 & Data, processing \& analytics & 23 & 19\\
+\hline
+4 & Automation & 12 & 20\\
+\hline
+5 & Cloud computing & - & 21\\
+\hline
+6 & Production, product life circle \& flow production & 27 & -\\
+\hline
+\end{tabular}
+
+Additionally, also automation has more entries in the English version
+and is highly connected not only to internet of things \& manufacturing,
+but also to could computing, which does not even exist in the German
+version of the graph: it is well known that Germany is not at the front
+when it comes to the integration of ICT in Industry 4.0. This found is
+again confirmed by the study of Acatech \citep{kagermann2006industry},
+where it is said that ``Germany is currently lagging behind with regard
+to data-driven business models and the development of large platform
+ecosystems''.
+
+The fact that cloud computing does not show up in the German graph is
+examined more closely. In fact, a Wikipedia page about this topic does
+exist in the German version of Wikipedia, but is not linked to the
+Industrie 4.0 page. As stated in section 4.3, contributors of the German
+version of Wikipedia tend to add only the most important connections
+between pages. This again shows that integrated ICT is not the most
+important topic in Germany now.
+
+Another great difference in the number of nodes is in the cluster
+cognition, which seems to be more important in the German version of the
+graph. The German Wikipedia page describes this as a processing and
+rearrangement of information between a human and a system. Acatech study
+\citep{kagermann2006industry} does the same observation: ``In Germany in
+particular, the focus is on integrating information, communication and
+manufacturing technologies''. This could explain even better the finding
+that the German graph lacks on the ICT side, giving a new
+interpretation: in Germany there is a different interpretation of the
+meaning of cognitive computing with respect to the rest of the world.
+Finally, while the group of data, processing and analytics nearly has
+the same amount of nodes, the links of this cluster with the other
+clusters is quite different in the two graphs and also its content
+changes from on nation to the other. Words like big data does not even
+exist in the list of German pages related to industry 4.0 where it is
+limited to just data. This emphasizes the careful approach of Germany
+with this topic, which was also observed in \citep{wee2015industry}.
+Germany seems to be rather conservative when it comes to new emerging
+technological trends or even buzz-worlds like Big Data.
+
+\chapter{Social Media}\label{social-media}
+
+The technical knowledge generated by Social Media remains largely
+untapped. Some researchers proved that social media have been a valuable
+source to predict the future outcomes of some events such as box-office
+movie revenues or political elections. Social media are nowadays also
+used by companies to measure the sentiment of customers about their
+brand and products.
+
+This chpater proposes a new social media based model to measure how
+users perceive new products from a technical point of view. This model
+relies on the analysis of advantages and drawbacks of products, which
+are both important aspects evaluated by consumers during the buying
+decision process. This model is based on a lexicon developed in a
+related work (see chapter \ref{advdrwresults}) to analyse patents and
+detect advantages and drawbacks connected to a certain technology.
+
+The results show that when a product has a certain technological
+complexity and fuels a more technical debate, advantages and drawbacks
+analysis is more efficient than sentiment analysis in producing
+technical-functional judgements.
+
+\section{Technical Sentiment
+Analysis}\label{technical-sentiment-analysis}
+
+Nowadays, social media have become an inseparable part of modern life,
+providing a vast record of mankind's everyday thoughts, feelings and
+actions. For this reason, there has been an increasing interest in
+research of exploiting social media as information source of knowledge
+although extracting a valuable signal is not a trivial task since social
+media data is noisy and must be filtered before proceeding with the
+analysis. In this domain, sentiment analysis, which aims to determine
+the sentiment content of a text unit, is considered one of the best data
+mining method. It relies on different approaches
+\citep{collomb2014study} and it has been used to answer research
+questions in a variety of fields comprised the measure of customers
+perception of new products \citep{mirtalaie2018extracting}. In this
+section, we try to understand if sentiment analysis is really the best
+available method to analyse consumer's perception of products, expecialy
+when we want to measure the perception of the technical content of the
+product. Thus we compare State of the art sentiment analysis techniques
+with a lexicon of advantages and drawbacks related to products.
+
+\subsection{Methodology}\label{methodology-8}
+
+Our work started with the selection of an event able to polarise Twitter
+users' attention and products to analyse. In particular, we chose a
+premiere tradeshow for the video game industry, and two video game
+consoles disclosed during the event. We collected about 7 milions tweets
+about products published before, during and after the tradeshow. Since
+social media data is noisy (for example it may contains spam and
+advertising), before proceeding with the analyses, we filtered our
+dataset. In particular, after removing too short and non-English tweets,
+we manually classified a randomly extracted subset of posts to train a
+classifier which provide us the cleansed dataset. Then we conducted a
+sentiment analysis of the tweets using state of the art machine learning
+techniques. We classified each tweet as positive, negative or neutral.
+At this point we applied our lexicon identifying advantages tweets and
+drawbacks tweets. Finally we compared the outputs of the two analyses
+for the two product-related clusters of tweets. We found consistent
+differences between the extractions. The results shows that when a
+product has a certain technological complexity and fuels a more
+technical debate, advantages and drawbacks analysis is more able than
+sentiment in producing technical-functional judgements. For this reason
+we think that the proposed methodology peforms better then standard
+sentiment analysis techniques when a product has a certain technological
+complexity and fuels a more technical social media discourse.
+
+\subsubsection*{Selection of a triggering event and
+products}\label{selection-of-a-triggering-event-and-products}
+\addcontentsline{toc}{subsubsection}{Selection of a triggering event and
+products}
+
+We chose the Electronic Entertainment Expo as event able to polarise
+users' attention. Commonly referred to as E3, it is a premier trade
+event for the video game industry, presented by the Entertainment
+Software Association (ESA). We chose two new video game consoles,
+disclosed at E3 2017, as products of which predicting the success or
+failure. The first is Xbox One X, a new high-end version of Xbox One
+with upgraded hardware and the other product is New Nintendo 2DS XL, a
+streamlined version of the handheld console New Nintendo 3DS XL.
+
+\subsubsection*{Data collection}\label{data-collection}
+\addcontentsline{toc}{subsubsection}{Data collection}
+
+Twitter provides two possible ways to gather tweets: the Streaming
+Application Programming Interface (API) and the Search API. The first
+one allows user to obtain real-time access to tweets from an input
+query. The user first requests a connection to a stream of tweets from
+the server. Then, the server opens a streaming connections and tweets
+are streamed in as they occur, to the user. However, there are a few
+limitations of the Streaming API. First, language is not specifiable,
+resulting in a stream that contains tweets of all languages, including a
+few non-Latin-based alphabets, that complicates further analysis.
+Instead, Twitter Search API is a Representational State Transfer API
+which allows users to request specific queries of recent tweets. It
+allows filtering based on language, region, geolocation, and time.
+Unfortunately, using the Search API is expensive and there is a rate
+limit associated with the query. Because of these issues, we decided to
+go with the Twitter Streaming API instead. For each product, we detected
+related hashtags and keywords an constructed a query to download
+relevant tweets. We chose to collect tweets not only after the
+tradeshow, but also before. For these reason, we initially identified
+some products keywords with their provisional names and we updated them
+at a later stage. Tweets have been downloaded from CNR (Consiglio
+Nazionale delle Ricerche, Istituto di Informatica e Telematica, Area di
+Pisa) since 11th June 2017 h. 10:00 to 31th July 2017 h. 15:00.
+
+\subsubsection*{Data filtering}\label{data-filtering}
+\addcontentsline{toc}{subsubsection}{Data filtering}
+
+The initial dataset resulted to be very noisy, containing tweets written
+in different languages, advertising and posts related to different
+products or subjects. We chose to keep into account only English tweets
+because sentiment and advantages/drawbacks lexicon is in this language.
+The data set is filtered removing tweets with less than five words and
+non-English posts with a language classifier. We obtained 7.165.216 of
+filtered tweets.\\
+At this point we created a golden set of relevant tweet to train a
+Supported Vector Machine classifier able to recognize relevant and
+unrelevant tweets. We defined characteristics that make a tweet: (i)
+relevant (posted by users or containing words or opinions related to our
+products of interests and their functionalities), (ii) irrelevant
+(tweets containing advertisings, links to e-commerce websites or
+messages related to other products or subjects). A researcher manually
+classified a subset made up of randomly extracted tweets. In particular,
+we exctract a subset composed of 6.500 finding 105 positive results and
+6.395 negative. SVM model was then trained using this dataset, and
+computed a probability for each tweet to be relevant or irrelevant. A
+threshold of 0.7 has been chosen to label a tweet as relevant. The final
+dataset of filtered tweets, made up of 66.796 posts. We clustered tweets
+using product-related keywords. Clustering posts allowed us to further
+filter the final dataset which contained a small number of irrelevant
+tweets (Table \ref{tab:tweetab1}).
+
+\begin{longtable}[]{@{}lrr@{}}
+\caption{\label{tab:tweetab1} Clusters of tweets.}\tabularnewline
+\toprule
+& N° of tweets & \% of tweets\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+& N° of tweets & \% of tweets\tabularnewline
+\midrule
+\endhead
+Xbox One X & 64885 & 0.9714\tabularnewline
+New N2DS & 1706 & 0.0255\tabularnewline
+Irrelevant tweets & 198 & 0.0030\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection*{Sentiment analysis}\label{sentiment-analysis}
+\addcontentsline{toc}{subsubsection}{Sentiment analysis}
+
+Table \ref{tab:tweetab2} presents the results of the sentiment analysis.
+We classified each tweet according to its sentiment into positive,
+negative, or neutral. We used an established methodology developed by
+\citep{cimino2014linguistically}. We pre-processed the tweets by
+removing mentions (@ character), URLs, product hashtags, emoticons and
+single characters. As a result, for each tweet we obtained a probability
+of belonging to a mood class. After a manual analysis, we used a class
+prediction probability threshold of 0.6 to filter out low confidence
+prediction, i.e.~tweets that cannot be classified as positive or
+negative with a high confidence are classified as neutral instead.
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{\label{tab:tweetab2} Clusters of tweets.}\tabularnewline
+\toprule
+& Positive & Negative & Neutral\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+& Positive & Negative & Neutral\tabularnewline
+\midrule
+\endhead
+Xbox One X & 0.3599 & 0.0465 & 0.5937\tabularnewline
+New N2DS & 0.5299 & 0.0158 & 0.4543\tabularnewline
+Overall & 0.3642 & 0.0457 & 0.5901\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection*{Advantages and drawbacks
+analysis}\label{advantages-and-drawbacks-analysis}
+\addcontentsline{toc}{subsubsection}{Advantages and drawbacks analysis}
+
+To extract technical advantages and drawbacks from tweets we used the
+lexicon developed in chapter \ref{advdrwresults} that contains 657
+Advantages words and 297 Drawbacks clues. These words are searched on
+our dataset finding different percentages of tweets with words from the
+lexicon in the two product-related clusters of tweets. Table
+\ref{tab:tweetab3} reports the results.
+
+\begin{longtable}[]{@{}lrrrrr@{}}
+\caption{\label{tab:tweetab3} Percentages of tweets containing or not words
+from our lexicon.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
+Tweets with adv\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
+Tweets with drw\strut
+\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\raggedleft\strut
+Tweets with adv \& drw\strut
+\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedleft\strut
+Tweets with no adv or drw\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedleft\strut
+Tweets with adv or drw\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
+Tweets with adv\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
+Tweets with drw\strut
+\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\raggedleft\strut
+Tweets with adv \& drw\strut
+\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedleft\strut
+Tweets with no adv or drw\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedleft\strut
+Tweets with adv or drw\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+Xbox One X\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.0884\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.0374\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedleft\strut
+0.0037\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedleft\strut
+0.8705\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedleft\strut
+0.1295\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+New N2DS XL\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.0662\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.0094\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedleft\strut
+0.0000\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedleft\strut
+0.9244\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedleft\strut
+0.0756\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Results}\label{results-9}
+
+We adapted the advantages \& drawbacks analysis to give as output a
+classification ef each tweet. We classified data coming from the latter
+analysis in this way:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  positive (tweets containing only advantages words)
+\item
+  negative (tweets containing only drawbacks)
+\item
+  neutral (tweets with no words of our lexicon or controversial tweets)
+\end{enumerate}
+
+As we can see in figure \ref{fig:tweetsentres}, sentiment analysis is
+more able to polarise tweets. In fact, with this analysis we found lower
+levels of neutral tweets, respectively 59.37 \% for Xbox One X and
+45.43\% for the New Nintendo 2DS XL.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/tweet_sent_res} 
+
+}
+
+\caption{Comparison between Sentiment analysis and Advantages/Drawbacks analysis.}\label{fig:tweetsentres}
+\end{figure}
+
+This was an expected result since this kind of analysis is designed to
+deal with colloquial language while our lexicon is technical, being
+derived from patents analysis. What surprised us is the different
+polarisation of the products that we see comparing the two analyses. In
+fact, while with sentiment analysis Nintendo achieves lower percentages
+of neutral tweets, with advantages and drawbacks analysis is the
+opposite, since Xbox tweets are more polarised. We also noted that we
+found more tweets with words of our lexicon in the Xbox subset than in
+the Nintendo one (\ref{tab:tweetab3}). We did the hypothesis that the
+differences between the percentages of tweets with words found for each
+product, and the differences of polarisation between the two analyses
+depend on the different marketing focus, target customer, and
+technological complexity of the two new video game consoles. Xbox One X
+targets hard-core gamers who really wants a premium experience
+\footnote{\url{http://www.businessinsider.com/why-xbox-one-x-costs-500-2017-6?IR=T}
+  (last access: 17/11/2017)}. With its marketing campaign, Microsoft
+pushed the technical supremacy of its new machine over the competitors'
+products, fuelling a debate about its technical features amongst the
+potential users.
+
+As a result, the campaign produced a more technical social discourse
+that allowed us achieving better results. Instead, the new Nintendo
+handheld console has been developed targeting children and families
+providing a model that falls somewhere in the middle of the line of 3DS
+consoles \footnote{\url{http://www.nintendolife.com/news/2017/05/reggie_explains_the_reasoning_behind_the_new_2ds_xl}
+  (last access: 17/11/2017)}. We initially checked our hypothesis using
+Google Trend to compare users' search interest about technical review of
+the two products during the data collection period (Figure
+\ref{fig:tweetsearchinterest}). Then, we analysed the number of
+technical articles related to the new products published by the 25 most
+popular video games and technology websites in the U.S, according to the
+ranking of SimilarWeb, a digital marketing intelligence company which
+publishes insights about websites. We entered the queries
+
+\begin{equation*} 
+  allintitle: (4k OR hdr OR hardware OR graphics OR review OR resolution OR fps OR fast OR comparison OR frame OR enhanced OR performance OR cpu OR gpu OR ram) AND ("xbox one x") site: ign.com
+\end{equation*}
+
+and
+
+\begin{equation*} 
+allintitle: (graphics OR review OR screen OR comparison OR enhanced OR performance OR cpu OR gpu OR ram OR battery OR weight) AND “new nintendo 2ds xl” site: ign.com
+\end{equation*}
+
+into Google search engine to retrieve technical article within the web
+domains previously identified: we obtained 1.117 articles about Xbox and
+only 52 about Nintendo, proving that technical debate concerning Xbox is
+greater. This is and evidence of the fact that when a product has a
+certain technological complexity and fuels a more technical debate,
+advantages and drawbacks analysis is more able than sentiment in
+producing technical-functional judgements. The greater number of neutral
+tweets found with advantages and drawbacks analysis can also be
+explained with the Means-end chain model \citep{reynolds1995means}.
+Consumers express themselves basing on personal consequences linked with
+product use or basing on personal values satisfied by the product
+itself. For these reasons, tweets contain a more colloquial language
+which sentiment analysis is more able to interpret than the latter tool.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/tweet_search_interest} 
+
+}
+
+\caption{Google Trends comparison of search-terms “Xbox One X review” and “New Nintendo 2DS XL review” during the data collection period, since 11th June 2017 to 31st July 2017. Values on the vertical axis depict search interest compared to the highest point in the graph during the observation time. A value of 100 is the peak popularity for the term. On average, users searched for Xbox reviews with an approximately five times higher frequency.}\label{fig:tweetsearchinterest}
+\end{figure}
+
+\part{Impacts and Future
+Developments}\label{part-impacts-and-future-developments}
+
+\chapter{Policy Making}\label{policy-making}
+
+\section{Impact of research from the perspective of
+users.}\label{impact-of-research-from-the-perspective-of-users.}
 
 \chapter{Marketing}\label{marketing-1}
 
+\section{The User Side of
+Competition}\label{the-user-side-of-competition}
+
 \chapter{Research and Development}\label{research-and-development}
+
+\section{Clustering technologies: Keywords, topic modeling, enriched
+dictionaries}\label{clustering-technologies-keywords-topic-modeling-enriched-dictionaries}
 
 \chapter{Design}\label{design}
 
+\section{Exploiting patent information in novel
+ways}\label{exploiting-patent-information-in-novel-ways}
+
 \chapter{Human Resources}\label{human-resources}
+
+Text Mining has been used in the last years to manage human resources
+(HR) strategically, mainly with applications aiming at analyzing staff's
+opinions, monitoring the level of employee satisfaction, as well as
+reading and storing CVs for the selection of new personnel. In the
+context of human resources management, the text mining techniques are
+often utilized to monitor the state of health of a company by means of
+the systematic analysis of informal documents. These documents are both
+internal (e.g.~curricula, job description) and external (e.g.~Linkedin,
+social networks).
+
+Nowadays in fact HR experts started to use text mining technique also
+with intelligence purposes. For this reason companies has to collect
+information about their employees, the HR market and their competitors,
+and to analyze enormous amount of documents. The aim of Competitive
+Intelligence in HR \citep{bolasco2005understanding} is to select
+relevant information by automatic reading of this documents Once the
+material has been collected, it is classified into categories to develop
+a database, and analyzing the database to get answers to specific and
+crucial information for HR company strategies.
+
+The typical queries to collect the documents, concern the skills or the
+technological sectors of the competitors or the names of the employees
+of a company with a certain profile of competences. This is not a
+trivial task, and before the introduction of Text Minig, there was a
+division that was entirely dedicated to the continuous monitoring of
+information and answering the queries coming from other sectors of the
+company. In these cases the return on investment by the use of automatic
+document analysis technologies was self evident when compared to results
+previously achieved by manual operators. In some cases, if a scheme of
+categories is not defined a priori, clusterization algotyrhm
+(\ref{sotatoolsmodelnetanal}) are used to classify the set of documents
+(considered) relevant with regard to a certain topic, in clusters of
+documents with similar contents. The analysis of the key concepts
+present in the single clusters gives an overall vision of the subjects
+dealt with in the single texts \citep{gupta2009survey}.
+
+Futhermore it has to be considered that as intellectual capital has
+become one of the most strategic assets of successful organizations, the
+ability to manage the expertise, skills, and experience of employees has
+become a key factor in overcoming the increasing competitiveness of the
+global market \citep{colucci2003formal}. In today's competitive business
+environment, companies need to accurately grasp the competency of their
+HR in order to be successful \citep{fazel2009semantic}.
+
+As evidence of the increasing interest of TM techniques fot HR, an
+increasing number of publications are providing new research paths
+\citep[\citet{al2011investigating}, \citet{zhao2008empirical},
+\citet{ccelik2012ontology}, \citet{veit2001matchmaking},
+\citet{han2016preliminary}]{strohmeier2013domain}. One study introduced
+an approach to improve the matching of profiles by searching job
+descriptions and applicant profiles using filters that represent the
+relevant skills and competencies \citep{paoletti2015extending}.
+Nevertheless, several studies have found that résumés and work
+experience lists, which are composed of brief words or short sentences,
+are limited and have tried to improve HR solutions by adopting a
+semantic system approach, such as ontologies and text-mining methods. An
+example is the On-To-Knowledge project. The OnTo-Knowledge project
+focuses on the application-driven development of ontologies during the
+introduction of ontology-based knowledge management systems
+\citep{lau2002introducing}. One research study has suggested that a
+possible approach could be addressing an intelligent decision support
+system composed of case-based reasoning and ontology
+\citep{zhukova2014intelligent}. Another research stressed the importance
+of HR recruiting, selecting individuals for teams based on different
+skills and qualifications, determining who to train and what training
+programs to offer, and recommending the right expert to individuals for
+acquiring information or learning from within the organization
+\citep{fazel2009semantic}. Another example of TM techniques often
+utilized to monitor the state of health of a company by means of the
+systematic analysis of informal documents is the case of ConocoPhilips,
+a fast-moving American company, which developed an internal system - the
+VSM (Virtual Signs Monitor) - able to find the intangible but crucial
+aspects of company life, the degree of experience and knowledge and the
+``productive'' abilities. The approach chosen by Conoco was that of
+measuring the company mood by means of state of the art indicators
+\citep{ghoshal1997individualized}, which contrasts a new model based on
+completely different pillars, like stretch, discipline, trust and
+reciprocal support with the traditional managerial model founded on
+concepts of constraint, contract, control and compliance. This
+managerial model, according to Ghoshal's formulation encourages the
+cooperation and collaboration between the elements of an organisation,
+improving its results. Its collaboration with Temis enabled Conoco to
+refine its system for the monitoring of textual sources like e-mails,
+internal surveys of employees' opinions, declarations of the management,
+internal and external chat lines, all representing important means for
+sounding the evolution of company culture.
+
+Finally, Web-Based Human Resources Systems had a strong impact on the HR
+processes. The most widely well-known web-based HR systems are Linkedin
+and OilandGas \citep{walker2001web}. Their search systems are designed
+so that a user can input a query and look at the search results of
+résumés through keyword matching. With the special services of Linked-In
+(accessible to premium users only), users can also search for
+specialists and candidates from various industries. The OilandGas
+service is specialized for searching for experts in the oil and gas
+industry, using basically the same concept of discrete keywords
+matching. However, once this search process is completed, the recruiter
+has to download all the search results and résumés and then read through
+all the documents to pick the most suitable candidates.
+
+Furthermore, in HR nowadays the theme of Skills Assessment is of great
+interest. The term ``assessment'' indicates the action of assessing the
+potential, the skills, the attitudes and the adequacy of a professional
+profile.
+
+With the advent of the Fourth industrial revolution, it is increasingly
+important to carry out a continuous and precise assessment of skills. At
+the same time, it is essential to verify that the resources within the
+company are enough prepared to manage the phenomenon, or it is necessary
+to recruit new staff to face the challenge 4.0. Undoubtedly, the future
+demand for professional profiles will be conditioned by digital
+innovation and the ever more radical integration of new technologies.
+For these reasons, it is particularly sensitive to change.
+
+The literature is very focused on identifying the professional profiles
+that will survive during the epochal change and which instead will be
+eliminated. Osborne and Frey's research is emblematic: they tried to
+define which would be the jobs that will resist and which not, according
+to the substitutability of individual skills \citep{frey2017future}. The
+results are quite pessimist: they distinguished between High, Medium and
+Low risk of computerisation, and, according to their estimates, around
+the 47\% of jobs is in the high risk category.
+
+Moreover, there are opposing views on the social effects that the
+revolution will cause. Caruso outlines that the technological innovation
+could not improve worker' conditions, performances and relationships
+because they cannot be determined by any technical innovation in itself,
+being it always socially shaped \citep{caruso2017digital}. On the other
+hand, the new technologies could represent an opportunity for the labour
+market and they could have positive impact on employment. The reason why
+it would probably happens is that 3d printing, Internet of Things,
+Augmented reality and Big data analytics demand a large quantity of new
+skills to be properly managed \citep{freddi2017digitalisation}.
+Furthermore, MacCrory et al., performed a data analysis on occupational
+skill requirements of 674 occupations to study the effects of recent
+changes in automation. They identified the three main consequences of
+technological innovation, which could be summarized in: a significant
+reduction in skills that compete with automation; a significant increase
+in skills which complement machines; : ``a significant reduction in
+skills that compete with machines, an increase in skills that complement
+machines; finally, an increase in skills where machines are not enough
+advanced \citep{maccrory2014racing}.
+
+\section{Defining industry 4.0 professional
+archetypes}\label{defining-industry-4.0-professional-archetypes}
 
 \chapter*{Conclusions}\label{conclusions}
 \addcontentsline{toc}{chapter}{Conclusions}
