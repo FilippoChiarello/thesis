@@ -1,5 +1,6 @@
 --- 
-title: "Mining Technical Knowledge from Texts"
+title: "Knowledge Mining"
+subtitle: "Engineering Management Methods & Natural Language Processing Techniques"
 author: "Filippo Chiarello"
 date: "`r Sys.Date()`"
 bibliography:
@@ -13,4 +14,8 @@ biblio-style: apalike
 
 # Preface {-}
 
-Text Mining Techniques for Knowledge Extraction from Technical Documents
+Athore Titles
+
+- Text Mining Techniques for Knowledge Extraction from Technical Documents
+
+- Mining Technical Knowledge from Texts

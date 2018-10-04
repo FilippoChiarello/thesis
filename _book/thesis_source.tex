@@ -24,7 +24,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Mining Technical Knowledge from Texts},
+            pdftitle={Knowledge Mining},
             pdfauthor={Filippo Chiarello},
             pdfborder={0 0 0},
             breaklinks=true}
@@ -77,15 +77,16 @@
 
 \setlength{\droptitle}{-2em}
 
-  \title{Mining Technical Knowledge from Texts}
+  \title{Knowledge Mining}
     \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-    \author{Filippo Chiarello}
+  \subtitle{Engineering Management Methods \& Natural Language Processing Techniques}
+  \author{Filippo Chiarello}
     \preauthor{\centering\large\emph}
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-10-03}
+    \date{2018-10-04}
 
 \usepackage{booktabs}
 
@@ -99,11 +100,186 @@
 \chapter*{Preface}\label{preface}
 \addcontentsline{toc}{chapter}{Preface}
 
-Text Mining Techniques for Knowledge Extraction from Technical Documents
+Athore Titles
+
+\begin{itemize}
+\item
+  Text Mining Techniques for Knowledge Extraction from Technical
+  Documents
+\item
+  Mining Technical Knowledge from Texts
+\end{itemize}
 
 \part{Introduction}\label{part-introduction}
 
-\chapter{Goal}\label{goal}
+\chapter{Problem}\label{problem}
+
+\section{Big Data, Many Information, Less
+Knowledge?}\label{big-data-many-information-less-knowledge}
+
+Se l'ambiente informativo in cui viviamo è radicalmente cambianto negli
+ultimi anni, con evidenti impatti su cultura, società, politica e
+salute, l'impatto che ha avuto sulle aziende è ancora più forte. Una
+persona infatti può raggiungere i suoi obiettivi anche senza il bisogno
+di gestire questa informazione, fatto non vero per le aziende: a causa
+anche dei recenti cambiamenti di mercato, per sopravviere ed essere
+competitive le aziende hanno la necessità di avere dei chiari metodi e
+strumenti per risolvere il problema della information overload.
+
+Per capire cosa devono affrontare le aziende oggi, dobbiamo inanzitutto
+svolgere un esercizio di immedesimazione nei loro confronti. Immaginiamo
+che le la quantità di informazione che potenzialmente ci interessa e che
+proviene dall'ambiente nel quale viviamo (le informazioni tattili,
+spaziali e sonore, cio che dicono le persone con le quali interagiamo,
+il contenuto dei documenti importanti per il lavoro che svogliamo ecc..)
+inizi velocemente ad aumentare. Per sopravvivere in un ambiente di
+questo genere, avremmo bisogno di sensi più potenti o forse di nuovi;
+potremmo inoltre aver necessità sistemi esterni che ci aiutino nel
+compito della processazione delle informazioni.
+
+Misurando la quantità di informazione digitale prodotta negli ultimi 10
+anni, notiamo come la situazione ipotetica precedentemente descritta è
+simile a quella che le aziende stanno vivendo: si ritrovano in un
+universo digitale caotico ed in continua espansione. Questo universo
+digitale crescerà di un fattore di 300 dal 2005 al 2020, da 130 exabytes
+a 40,000 exabytes (40 zettabytes) \citep{gantz2012digital}, come
+mostrato in figura \ref{fig:biginfo}.
+
+Le nuove tecnologie digitali inoltre non stanno avendo un impatto solo
+fuori le aziende, ma anche dentro di esse. Grazie ad industria 4.0 è
+infatti diventato possibile creare a poco prezzo un duale digitale
+dell'azienda, o in altri termini è economicamente fattibile oggi
+estrarre informazione da qualsiasi processo aziendale. Questo che pare
+essere un enorme vantaggio per le aziende, crea il problema di una
+information overload anche interna, che necessità di essere gestita
+proprio come quella esterna.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{thesis_source_files/figure-latex/biginfo-1} 
+
+}
+
+\end{figure}
+
+Un primo problema in tale contesto di pressione informativa crescente, è
+la difficoltà nel capire quali informazioni hanno valore per una
+azienda. Per valore qui si intende tutte le informazioni che possono
+aiutare l'azienda a costruire conoscenza che possa aiutarla a perseguire
+la propia mission. Questo tipo di analisi richiede infatti sia una
+profonda comprensione delle tecnologie digitali, che di business acumen:
+non tutte le aziende sono in grado di avere al proprio interno o
+comunque di procurarsi queste capacità, considerando inoltre che il
+business acumen è fortemente dipendere dal settore nel quale si lavora.
+Come conseguenza è stato stimato che solo una piccola frazione
+dell'unvierso digitale è stato esplorato con l'obiettivo di estrarre
+vantaggio competitivo \citep{data2012bigger}. La percenutale di dati
+ancora untapped è stimata essere del 25\% ed è destinata a cresce al
+33\% entro il 2020. Questo valore untapped può essere trovato in pattern
+nascosti nei social media, correlazioni fra studi scientifici, studi
+medici intersecati con studi sociologici, dall'analisi massima di
+documenti legislativi e così via.
+
+In seconda istanza, note le potenziali fonti di informazione che possono
+portare valore, è necessario capire quali strumenti è possibile
+utilizzare per estrarre questo valore sotto forma di conoscenza. Come
+mostrato nell'esempio precedente, una azienda si trova in una posizione
+di pericolo se la crescita di informazione sorpassa la propria capacità
+di processarla. In altri termini, l'aumento di informazione mostrato in
+figura \ref{fig:biginfo} non implica un aumento di conoscenza, ma al
+contrario è probabile che contribuisca ad impedirne la crescita. Un
+celebre esempio di tale fenomeno è il computer boom dei decenni 1970 e
+1980, il quale implicò un declinio temporaneo nella produttività
+generale sia economica che scentifica. Tale fenomeno viene identificato
+con il nome di productivity paradox.
+
+Dal punto di vista economico, evidenza di ciò è che i computer in quel
+periodo ebbero impatti su molti indicatori ma non su quelli di
+produttività economica (Robert Solow in 1987), e che gli stati uniti
+furono vittima di quattro recessioni tra il 1969 ed il 1982.
+
+Il progresso scientifico è più difficile da misurare di quello
+economico. Non è infatti chiaro che misure possano essere utilizzate per
+misurare quanto uno stato sia efficace nel creare conoscenza, nonostante
+la letteratura sterminata su tale tema. Una proxy largamente utilizzata
+per effettuare tale misura, è il numero di brevetti prodotti, letto in
+proporzione rispetto a l'investimento in ricerca e sviluppo: se diventa
+meno costoso per le aziende innovare, questo suggerisce che le aziende
+stanno usando le informazioni che hanno a disposizione in maniera più
+efficiente e che sono in grado di trasformarle in conoscenza utilie
+all'innovazione. Per misurare tale costo, si può vedere quanto una
+nazione spende ogni anno per produrre in media un brevetto. Nel 1960 ad
+esempio gli stati uniti hanno speso \$1000 (aggiustati per
+l'infalizione) per ogni patent application. Tale spesa inizialmente
+scende, poi sale anzichè scendere con l'arrivo dei computers con un
+picco di 735\$ nel 1986 (Signal Noise). La produttività ha nuovamente un
+crescita negli anni '90, quando ormai i computer erano diventati di
+largo utilizzo non solo per il business ma anche per applicazioni di
+tutti i giorni.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{thesis_source_files/figure-latex/bigexpendifure-1} 
+
+}
+
+\end{figure}
+
+Oggi, nell'era dei big data, le aziende (ma anche le università) hanno
+dunque bisogno di nuovi ``sensi'' ed ``aiutanti'' che le assistano nella
+estrazione e consolidazione della conoscenza. La presente tesi ha come
+obiettivo comprendere quali fonti di informazioni ad oggi contengono
+maggiore valore ancora non dischiuso e quali metodologie e strumenti
+posso essere utilizzati a tale scopo.
+
+\section{A New Challenge for Management
+Engineers}\label{a-new-challenge-for-management-engineers}
+
+Tipicamente ci occupaimo di attività ad altà ripetitività. Ti porti
+dietro metodologie ingegneristiche applicate a sistemi inernti, andnano
+a operare in sistemi socio-tecnici. Hai fatto il tuo mestieri (ricerca
+operativa ecc..). Negli ultimi anni però le aziende le attività a
+maggior valore aggiunto sono non ripetitive. R\&S, Design, marketing, HR
+ecc.. e quindi gestione della conoscena. Su situazione che sembrano
+uniche il gestionale rischia di perdere rispetto al creativo. Come
+disciplina voglio presidiare queste aree: non ci occupaimo di casi
+unici, ma costruire modelli in grado di incorporare conoscenza per
+essere usati in questi.
+
+La tesi ha l'obbiettivo di esploration and exploitation queste
+direzioni.
+
+\chapter{Solutions}\label{solutions}
+
+\section{A Process for Knowledge
+Creation}\label{a-process-for-knowledge-creation}
+
+Modello generico di come un sistema (uomo, macchina, azienda\ldots{})
+genera conoscenza. Immagine + spiegazione
+
+Un modello più actionable: data science. Immagine + spiegazione
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/main_work_flow} 
+
+}
+
+\caption{A general workflow for the process of data analysis. Readapted from Wickham (2016)}\label{fig:mainworkflow}
+\end{figure}
+
+\section{Text Mining}\label{text-mining}
+
+Istanza di data science e zona a maggior valore per estrazione
+conoscenza.
+
+Importanza di definire documenti dai quali fare mining. Come si decide
+dove sta la conoscenza per l'azienda? Di quali documenti l'azienda è
+stakeholder?
+
+\section{Human \& Machines}\label{human-machines}
+
+Datascience e text mining non fattibile da sole macchine\ldots{}
 
 Il problema non è sostituire domain knowledge. Idea vecchia ha fallito.
 E' insostibuibile perchè:
@@ -124,6 +300,10 @@ Inoltre ho text mining, capaità di processare testi. Parte di
 intelligenza artificiale. Questi fenomeni non sostituioscono l'esperto
 ma ne cambiano il modo di operare.
 
+Si ha vantaggio su mitigazione bias se sistemi disegnati bene.
+
+Il pericolo delle black boxes.
+
 Oggi si integra. Vogliamo un esperto di dominio che faccia meglio il suo
 mestiere.
 
@@ -133,50 +313,14 @@ Oltre ad efficienza e potenza nel correggere gli errori. Ora c'è anche
 la possibilità dio maggiore specificità. L'obiettivo è qiuindi poratre
 domain knowledge sia su technology sia ai decisori sociali.
 
-\chapter{Problem}\label{problem}
+\chapter{Scope and Stakeholders}\label{scope-and-stakeholders}
 
-Foresight
+Alcuni documenti in analisi, alcuni stakeholders
 
-\chapter{Solutions}\label{solutions}
+Research and Development, Design, Marketing, Human Resources. Policy
+makers.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/main_work_flow} 
-
-}
-
-\caption{A general workflow for the process of data analysis. Readapted from Wickham (2016)}\label{fig:mainworkflow}
-\end{figure}
-
-\chapter{Research Questions}\label{research-questions}
-
-\chapter{Stakeholders}\label{stakeholders}
-
-Marketing
-
-Research and Development
-
-Design
-
-Human Resources
-
-Other Stakeholders
-
-\chapter{Knowledge Intensive Manegement
-Engineering}\label{knowledge-intensive-manegement-engineering}
-
-Tipicamente occupaimo di attività ad altà ripetitività. Ti porti dietro
-metodologie ingegneristiche applicate a sistemi inernti, andnano a
-operare in sistemi socio-tecnici. Hai fatto il tuo mestieri (ricerca
-operativa ecc..). Negli ultimi anni però le aziende le attività a
-maggior valore aggiunto sono non ripetitive. R\&S, Design, marketing, HR
-ecc.. e quindi gestione della conoscena. Su situazione che sembrano
-uniche il gestionale rischia di perdere rispetto al creativo. Come
-disciplina voglio presidiare queste aree: non ci occupaimo di casi
-unici, ma costruire modelli in grado di incorporare conoscenza per
-essere usati in questi. La tesi ha l'obbiettivo di esploration and
-exploitation queste direzioni. Hon trovato nella data science è più
-nello specifico nel text mining gli strumenti adatti.
+\chapter{Structure and rationale}\label{structure-and-rationale}
 
 \part{State of the Art}\label{part-state-of-the-art}
 
@@ -7932,8 +8076,8 @@ which sentiment analysis is more able to interpret than the latter tool.
 \caption{Google Trends comparison of search-terms “Xbox One X review” and “New Nintendo 2DS XL review” during the data collection period, since 11th June 2017 to 31st July 2017. Values on the vertical axis depict search interest compared to the highest point in the graph during the observation time. A value of 100 is the peak popularity for the term. On average, users searched for Xbox reviews with an approximately five times higher frequency.}\label{fig:tweetsearchinterest}
 \end{figure}
 
-\part{Impacts in Different Knowledge
-Fields}\label{part-impacts-in-different-knowledge-fields}
+\part{Impacts for Different
+Stakeholders}\label{part-impacts-for-different-stakeholders}
 
 \chapter{Marketing: The User Side of
 Competition}\label{marketing-the-user-side-of-competition}
@@ -9035,8 +9179,11 @@ skills that compete with machines, an increase in skills that complement
 machines; finally, an increase in skills where machines are not enough
 advanced \citep{maccrory2014racing}.
 
-\chapter*{Conclusions}\label{conclusions}
-\addcontentsline{toc}{chapter}{Conclusions}
+\chapter*{Conclusions and Future
+Developments}\label{conclusions-and-future-developments}
+\addcontentsline{toc}{chapter}{Conclusions and Future Developments}
+
+Quali altri stakeholders (quindi testi)
 
 We have finished a nice thesis
 
