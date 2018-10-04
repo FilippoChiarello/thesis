@@ -138,10 +138,11 @@ This paper has proposed a method to extract and summarize sentences that describ
 
 In the future, we want to focus on the application of the proposed ADIO framework to a wider number of patents set and hopefully we would like to automate the classification of advantages and drawbacks. Furthermore we want to focus on the extraction of new entities of interest for designers, and to understand which other groups of words contained in patents texts can add value to the design process.
 
-
 # Research and Development: Enriched dictionaries for Innovation
 
-# Marketing: The User Side of Competition
+
+
+# Marketing: The User Side of Innovation
 
 # Policy Making: Impact of research from the perspective of users.
 
