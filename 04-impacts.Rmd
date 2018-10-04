@@ -1,0 +1,471 @@
+# (PART) Impacts for Different Stakeholders {-}
+
+# Design: Exploiting patent information in novel ways
+
+Due to the complexity and volatility of user needs, companies increasingly ask product designers and engineers to create ideas that meet needs in novel and better ways, rather than just making existing technologies more attractive [@brown2010design]. As a matter of fact, these professionals are nowadays involved in the process of understanding in depth what users want and desire [@haley1968benefit; @day1979customer].
+Unfortunately, it is well known that user needs are usually examined in separate business departments, such as marketing or business development, and are described in a language that is remote from the professional practice of product designers and engineers. The relation between the understanding of user needs by marketing departments and the development of new products by technical departments is a deeply troubled one. There is a large agreement within the design community that this state of affairs is not optimal and that dedicated efforts should be made to reconcile the engineering approach with a more articulated understanding of user needs, particularly of consumer needs [@pahl2013engineering; @eppinger1995product].
+
+A promising approach is based on the description of products in terms of advantages and disadvantages, or drawbacks. Users typically choose an artifact considering the advantages that it brings and the disadvantages that it solves. Advantages and drawbacks exist if they have an impact on the user and if they affect the product in terms of effectiveness (the level at which the product reaches its goals) and efficiency (how many resources does the product have to consume to reach its goals).
+
+At the state of the art, the two main tools to manage advantages and drawbacks developed by the design community are QFD and FMEA/FMECA. Companies frequently make use of Quality Function Deployment (QFD) in order to generate lists of requisites, users' needs, users' requirements and to guide the design process [@carnevalli2008review]. They use FMEA/FMECA to gather and study drawbacks, failure modes and their effects and causes [@liu2013risk]. On the other hand, the notion of advantages is also at the core of marketing techniques used in the segmentation of markets (benefit segmentation) and in the identification of alternative design solutions to achieve desired benefits (means-and-ends-chain analysis).
+
+The interest in the description in terms of advantages and drawbacks is that it can be interpreted smoothly from the two sides of this troubled relationship: engineers can easily link them to performance specifications (usually described with a functional language) and hence technical specifications, while marketing experts can read them with the language of social sciences (for example, psychology, semiotics, sociology or anthropology). Given the promise of this description, why is it used so rarely?
+
+There are several reasons. First, information on user needs is typically owned by users, and is stored in implicit and non codified formats. Second, and consequently, in order to access this information product developers must enter into direct and personal contact with users, listening and understanding the voice of the customer. Not only this is very expensive, but the experience shows that the earlier the stage of development of needs, the more ambiguous, fuzzy and uncertain the information obtained by users. Third, most of this information is not publicly disclosed but is kept confidential as company know-how. Researchers have hard time to access structured analyses of products based on advantages, even more so for descriptions based on drawbacks. Thus the goal of building up full scale descriptions based on advantages and drawbacks is still elusive.
+
+In the present work we consider patents as a possible alternative information source for advantages and drawbacks. As stated by the World Intellectual Property Organization (WIPO), an invention is a solution to a specific technological problem [@world2004wipo]. The problem that an invention solves in a technological field is a certain negative effect that the state-of-the-art technologies cannot overcome; on the other side, a solution is the way to solve this problem. A solution can lead to some advantages with respect to the known state of the art. Thus, starting from the definition of invention, it is clear how it can be characterized by its advantages and the problems it solves. Based on these definitions, the WIPO explicitly suggests as a guideline for applicants to write patents in this language. The applicant (the person or company that applies for the patent) is led to include this information in patent documents in order to have more chances of success in the patenting phase.
+
+An important feature that makes patent information valuable is that the information that is contained in these documents today will be contained in other documents, like manuals, handbooks and market reports, to which designers are more accustomed, in the future: information anticipates availability of products on the market by a factor varying from 6 to 18 months [@golzio2012]. In addition, these documents are freely accessible by many different databases nowadays [@kim2015patent].
+
+To claim that patents include descriptions in terms of advantages and drawbacks is one thing, to show how this information can be used effectively, however, is a completely different business. To test the hypothesis of the presence of advantages and drawbacks information in patents and to exploit this information for design purposed, there is a need to overcome two main problems:
+
+- analyzing patents requires skilled personnel and long time [@leon2007trends]
+- due to the increase in the number of patent publications, there is a massive information overflow [@bergmann2008evaluating].
+
+In this chapter we present a methodology for the extraction of information on advantages and drawbacks of technologies from patents, that is able to fully overcome these problems (as demonstrated in section \@ref(advdrwresults)) and with the final goal to make available patent-based structured information to the design community. 
+
+## Towards formal definitions of Advantages and Drawbacks
+
+Referring to section \@ref(advdrwresults), we propose that all useful definitions of advantages and drawbacks can be collapsed into three categories, each with a positive or negative sign, as follows:
+
+1. more/less wanted output obtained . A wanted output is a desired effect of the system.
+2. more/less unwanted output obtained. An unwanted output is undesired effect of the system.
+3. more/less resources needed. More resources needed to achieve a desired effect imply less efficiency.
+
+This classification can be labelled ADIO classification (Advantages-Disadvantages-Input.Output).
+The operationalization of this classification for purposes of automatic information extraction and processing is the object of the rest of the paper. 
+
+## Methodology
+
+The goal of our system is to automatically extract short sentences that contain information about the advantages and the drawbacks of the technology from patent texts. Furthermore we propose a taxonomy that organizes the output of the system focusing on advantages and drawbacks that have impacts on the systems thus influencing its input or output.
+A flow diagram representing the adopted method for the automatic ADIO extraction and classification of a technology is shown in Figure \@ref(fig:adioworkflow).
+The method takes as entry a patent set representing the technology to analyze. The patent set and the list of advantages and drawbacks clues are entries of the process of advantages and drawbacks extraction and generate the phrases containing the advantages and the drawbacks. Than they become the entry of the process of Advantages and Drawbacks classification that exploits human knowledge to classify the technology according to the ADIO representation.
+
+```{r adioworkflow, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Work flow diagram followed to extract the ADIO technology repres- entation from a patent set.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/adioworkflow.png")
+
+```
+
+### Advantages and drawbacks extraction
+
+The process of advantages and drawbacks extraction is the first of the two-macro processes used in our system. The first process starts from a patent set containing patents inherent to a technology and extract relevant sentences in output. Each sentence describes an advantage or a drawback of the specific technology. All steps of this process are fully automatic. The patent set should be very large, in the order of several hundred (in our case study n > 1000 items).
+To describe with a certain degree of precision an advantage or a drawback, patent applicants have to use sentences of a certain length. Since NER systems are designed to extract single words or short n- grams, we need to extract entities that are clues of the whole sentence that describes the advantage or the drawback. However our interest is not on the clue but rather on the words that follows the clue: the real advantage or the real drawback. We refer to these words as target. Considering the ADIO classification, proposed in the present work, these are words that help to classify whether the advantage or the drawback have an impact on the input (influencing efficiency) or the output (influencing effectiveness) of the system.
+The few examples above shows how clues are words that indicates a characteristic of a flow or its modification (positive or negative); the clue and target together specify the entity and direction of the modification of the flows that evolve within the system. A summary of these linguistic concepts and some examples are shown in figure \@ref(fig:audioexamplesent).
+
+```{r audioexamplesent, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Examples of advantage or drawback sentences divided in its clue and target.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/audioexamplesent.png")
+
+```
+
+As stated above, we introduce a crucial concept, that of a “clue” for the identification of a complex text structure describing advantages or drawbacks. We describe here the process for collecting clues. The process is not trivial because the sources are heterogeneous, fragmented and sparse. For example, we can find lists of failures in repositories published in the car industry, lists of diseases or infections in medical treatises, lists of positive and negative words in sentiment analysis tool-chains. Some of them are very accurate but extremely short, domain specific and rarely occurring in patents (e.g. new diseases), while others are broad but ambiguous thus introducing noise in the analysis (e.g. sentiment annotated words).
+We followed a twofold approach. The first approach consisted in the manual collection of clues of advantages and drawbacks directly from patent texts. This process was performed on 2000 patents in several patent classes. This has led to collect 3.254 advantage-clues and 5.142 drawback-clues.
+The second approach consisted in looking for alternative methods to indicate advantages or drawbacks clues, finding defined word patterns. The most relevant are the negations of advantages to obtain drawbacks, and the negation of drawbacks to obtain advantages. It is worth noting the cases of suffixes like as -less or -friendly, - free and the like, and prefixes like as anti-, dis- , de-, un- and the like, that allow a rapid and systematic expansion of the database.
+At the end of the process, advantages numbered 6.568 and the drawbacks numbered 14.809. This is a fairly large knowledge base for the system, and gave us a reasonable number of clues to be used in the next step of the process. Example of clues are shown in section \@ref(advdrwresults).
+The first approach has the limitation that lists were extracted from a random but relatively small sample of patents (n= 2000). Another limitation is that the rules used in the second approach are not exhaustive, and they can create non-sense clues, due to the possible combinations of words (e.g. “anti- ability” or “un-problem”). On the positive side, it is reasonable to assume that using these approaches it is possible to collect a large set of clues that are relatively independent from the patent set. In addition, it is now clear how new clues could be easily extracted when changing patent sets. In order to obtain a larger and complete collection of clues it is unsuitable to use the manual extraction on each domain patent set. For this reason, new clues were iteratively used to train machine learning algorithms.
+
+#### New Clues Extraction {-}
+
+In this section we briefly describe the system used to automatically extract new word clues from patent texts. The system is based on the work discussed in section \@ref(advdrwresults). This process takes in input a corpus of patent documents regarding a certain technology. After the tokenization of the corpus, each token (word or n-gram) is represented by series of features. Then the advantage and drawback clues are re-projected on the text, generating a training set of words to be given as an input to a classifier system.
+The classifier builds a model able to detect words that have similar behavior (in terms of the selected features) with respect to the behavior described in the training set. The model is used to classify the words contained in patents as potential new advantages or drawbacks word clues. These new words clues are technology specific clues or generic clues that did not belong to the starting list of advantages and drawbacks generic word clues.
+
+#### Advantages and Drawbacks Phrases extraction {-}
+
+Once all the new advantages and drawbacks clues are extracted, these are merged with the ones belonging to the original knowledge base, obtaining a final list which will be processed by the advantages and drawbacks sentences extractor.
+The advantages and drawbacks sentences extraction is the activity through which the system catches the shortest informative sentence containing each word clues. To do that the patents are processed through a phase of part-of-speech tagging (POS tagging). Starting from the clues, only the POS sequences that match a certain pattern were extracted. The pattern, expressed using a regex regular expression is:
+
+\begin{equation*} 
+(Clue) + Noun.* Noun.* Noun.*
+\end{equation*}
+
+This structure has proven to be able to catch a reasonable number of words of the target, exhaustively expressing an advantage or a drawback without catching very long phrases.
+
+###  Advantages and Drawbacks ADIO classification
+
+The process of advantages and drawbacks classification is the second of the two macro processes involved in our system. This process takes in input the advantages and drawback sentences extracted in the advantages and drawback extraction process and gives in output the ADIO representation of the technology.
+
+####  Sentences Selection {-}
+
+As stated above, we suggest a clear classification of advantages and drawbacks in a 3*2 structure. After the extraction each sentence is assigned to one of the following classes:
+
+1. more/less wanted output obtained. A wanted output is a desired effect of the system.
+2. more/less unwanted output obtained. An unwanted output is undesired effect of the system. 
+3. more/less resources needed.
+
+If a sentence does not belong to one of these classes it is not taken in to consideration for the next analysis, even if expresses advantages or the drawbacks of the invention. This classification makes it possible to represent the technology using the ADIO representation.
+
+#### ADIO Technology Representation {-}
+
+Given the classification described above, we obtain three possible kind of advantages and three possible kinds of drawbacks. Considering a wanted or desired output, the achievement or the increase is an advantage, while the negation or the reduction is a drawback. On the other side, considering an input to the system or an unwanted output, negation and reduction constitute an advantage, while achievement and increase are clearly a drawback. It is important to specify that the both the input or the output (wanted or unwanted) could involve flows of matter, energy, or signal.
+
+## Results
+
+### Patent set 
+
+To test the proposed process, we selected a patent set composed of a sample of 3,000 patents. The patent sets belongs to the A47J37 IPC patent class defined as _“Baking; Roasting; Grilling; Frying”_. We will refer to this patent set as cookers set.
+
+### Extraction of Advantages and Drawbacks 
+
+Total extracted advantages numbered 4129, drawbacks numbered 1835. After manual review of sentences the total number went to 2509 and 1532, respectively. During the manual review phase each sentence was assigned to one of the three classes of the taxonomy, considering the target of the sentence. The system itself decides if a sentence indicates an advantage or a drawback, considering the clue. The results in terms of cardinality of the classes of the taxonomy are shown in Table \@ref(tab:adiotableresults). As we can see from this table, the sentences review process has led to a balance between the extracted advantages and drawbacks. It is interesting to see how the wanted outputs are more likely expressed as advantages (1786 sentences are advantageous wanted output while 660 are drawbacks); the situation is reversed for the unwanted output (431 sentences or that advantages and 682 for the drawbacks).
+
+Table: (\#tab:adiotableresults) Examples of clues of advantages and drawbacks extracted manually from patents.
+
+```{r adiotableresults2code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/adiotableresults.xlsx")
+  )
+
+```
+
+### A-D-I-O Representation
+
+The two ADIO schemes for the advantages and drawbacks of cookers are shown respectively in Figure \@ref(fig:adiorapresentationout). The sentences shown in this figure are a sample of all of the 2662 extracted sentences. Furthermore these sentences are taken as-is from patents, misprints and errors included.
+
+```{r adiorapresentationout, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Examples of advantage or drawback sentences divided in its clue and target.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/adiorapresentationout.png")
+
+```
+
+
+Both the results are promising for future applications in the design fields. In particular Figure \@ref(fig:adiorapresentationout) (a) allows designers to focus on the positive side of the effects provided by the product and to better meet the explicit and implicit user needs. Similarly, Figure \@ref(fig:adiorapresentationout) (b) helps designers to redesign of the product in a proactive way, to keep attention to the critical issues identified by the drawbacks and to conceive possible corrective actions to solve such drawbacks.
+
+## Discussion
+
+This paper has proposed a method to extract and summarize sentences that describe advantages and drawbacks of technologies from patents. Advantages and drawbacks are considered as phenomena that influence the efficiency or the effectiveness of products by modifying their inputs or their outputs. Advantages and drawbacks information are useful for designers who want to design new products or to redesign old ones so to meet user needs in novel and better ways. The proposed approach allows patent readers to analyze a massive quantity of patents and to reduce the time needed for research and analysis.
+
+In the future, we want to focus on the application of the proposed ADIO framework to a wider number of patents set and hopefully we would like to automate the classification of advantages and drawbacks. Furthermore we want to focus on the extraction of new entities of interest for designers, and to understand which other groups of words contained in patents texts can add value to the design process.
+
+
+# Research and Development: Enriched dictionaries for Innovation
+
+# Marketing: The User Side of Competition
+
+# Policy Making: Impact of research from the perspective of users.
+
+A substantive interest has been developed in the last 15 years on the so-called “impact revolution”, namely the increasing demand for showcasing the results of publicly funded research in order to justify public expenditure. Public funders are increasingly required to demonstrate the relevance of funded research not only for scientific communities but also for the economy and society at large. In other words, there is an increasing demand to prove that the users and beneficiaries of research results are not only the traditional academic audience - researchers and university students - but include a large number of social actors. Let use use here the concept of “societal impact”, as opposed to academic impact, to include all dimensions of impact on the society and economy that are realized through impact pathways that go beyond the institutional research and teaching activities.
+
+The issue of societal impact of public research has gained prominence in the specialized literature since the start of the century and has accelerated in recent years [@van2000evaluation, @erno2011measuring, @bornmann2013societal, @bornmann2014evaluate, @bornmann2017does]. Indeed, a quick look at the most important journals in the field of innovation, research policy and research evaluation shows that the most largely cited, downloaded or read articles in the last five years are almost invariably dedicated to the issue of societal impact.
+
+This follows from the adoption of societal impact of research as one dimension of evalution of research, both ex ante and ex post, in many advanced countries.
+
+As discussed by several authors, societal impact has become one of the criteria of ex ante project selection in several institutions and countries [@kanninen2006methods, @dance2013impact]. It is also a crucial chapter in the ex post research assessment in some countries, such as United Kingdom. Within the UK Research Excellence Framework (REF) the assessment of societal impact has been responsible for 20% of the total score, while an increase to 25% has been announced in September 2017 for the future exercise. The publication of REF case studies of societal impact has fueled a field of analysis [@derrick2014unwrapping, @samuel2015societal, @khazragui2014measuring]. Some authors advocate impact analysis as a way to examine the effects of research agenda on the societal priorities [@cozzens2002evaluating].
+
+This surge of policy interest, however, comes in a period in which the scientific analysis of the concept of societal impact and of the potential and limits of existing methodologies has not yet come to a general agreement. As succinctly stated by Lutz Bornmann, impact evaluation is “still in the infant stage” [@bornmann2013societal]. And Bozeman and Sarewitz [@bozeman2011public] explained that “there has been remarkably little progress in the ability to measure directly, systematically, and validly the impacts of research on social change”, so that “we have no satisfactory analytical tools for characterizing the social impact (of research)” [@bozeman2011public].
+
+This paper is a contribution to the substantive and methodological work on the assessment of societal impact of research. From the substantive point of view, it introduces the notion of target group, or group of potential users of research, as a necessary component of the design and implementation of research projects. From the methodological point of view, the paper strongly supports the idea, already advanced in the literature, that Text mining techniques are promising in this field, but suggests a major modification by introducing the Enriched dictionary methodology.
+
+To be more precise we argue that a necessary component for impact assessment is the definition of users of research at a granular level. In addition, we suggest that the more researchers are able to define precisely their target groups the more they are likely to reach them effectively and to increase the impact. We develop a full scale, replicable and scalable methodology to identify the user groups mentioned in research-based texts, such as research proposals (ex ante), impact case studies (ex post), or publications. We test the methodology on the collection of case studies developed under the Research Excellence Framework (REF) in the United Kingdom. We examine three main dimensions of user target groups (frequency, intensity and specificity) and disaggregate the data by broad discipline. 
+
+## Methodological challenges
+
+### Variability in the identification of outcomes and users
+
+A first methodological issue is that in order to assess the societal impact of research, there is a need not only to identify observable elements that can be considered as an outcome of the research process, but also to define the actors that are affected, or benefit, from those outcomes. It turns that these elements are subject to huge variability across disciplines.
+Consequently, there are areas in which methodologies are more sophisticated and largely tested, and others in which there is remarkable lack of experience and methodological work [@stern2013long, @mitton2007knowledge, @cturcan2015national]
+
+Among the former the health care sector is probably the one in which the impact assessment of research has made the largest progresses: a number of well structured research impact assessment methodologies have been developed and implemented. There in fact are as many as 16 different impact assessment models, according to Milat, Bauman and Redman [@milat2015narrative]. An important reason for this accumulation of experience and knowledge is that the outcomes that demonstrate the expected impact are clearly identified and standardized, and the categories of users are clearly observed, given a high degree of professionalism. 
+
+At the opposite side of the spectrum, there is still much uncertainty about the way in which the societal impact of research in social sciences and humanities (SSH) could be defined and observed, even less quantified and measured. The challenges associated with identifying the impact of outputs from these fields stem from a number of issues, most of which have been noted in earlier evaluation-based literatures. According to certain theoretical perspectives the very notion of impact is problematic for SSH [@blasi2018ssh].
+From a historical perspective, it has become increasingly clear that research across SSH has had a large influence on modern societies on a long time scale [@bod2013new]. It should be recognised therefore that a certain share of research need not be asked to demonstrate any impact, but be valued for its own sake [@small2013value]. It is part of the millennial history of humankind that some people, some ages of life, some resources are dedicated to the search for intangible and priceless goals such as beauty or truth. Research from the arts and humanities is needed in order to preserve in society the ability to interpret, appreciate, enjoy and valorize symbolic values inherited from the past. Should the many scholars from this field be interrupted or deprived, modern societies would rapidly become unable to coordinate, administer and govern themselves.
+
+
+Consider the problem from the perspective of potential users of SSH research: the results or products are not necessarily used on the basis of direct access to scientific sources (as it happens more frequently with technological and biomedical research), but after some transformation and intermediation by specialised actors (e.g. journalists of popular magazines; social media). Furthermore they do not necessarily take the form of compelling evidence, or ultimate scientific authority, but enter into a social arena for public and political conversations and debate, where arguments may be advanced and refuted. In addition, audiences may be dispersed, non-institutionalized, or even transient (e.g. issue-based) and not professional. Finally, social behaviors are by definition slow to change, thus the impact of research is likely to be seen only after a long delay. This means that both outcomes and categories of users are much more difficult to identify and define.
+
+### Sources of information 
+
+Current approaches can be classified, according to Morton [@morton2015progressing], as forward tracking, backward tracking, and evaluation of mechanisms. In forward tracking, researchers are asked to reconstruct the ways in which their research might be useful for given categories of users. Alternatively, users are asked to declare which kind of research results they are likely to utilize [@tang2000pilot]. The strong limitation of this approach is that it relies heavily on the researcher’s and research user’s own recollections of research use [@nutley2007using, @donovan2011state]. In some sense, this is also the limitation of the use of case studies of research impact: it is difficult to verify whether they are a random collection or they are biased in one way or another. 
+Backward tracking suffers less from these subjective biases. If the sample of final outcomes is well designed, it can offer important lessons for researchers and policy makers. However, it comes with long delays with respect to actual research results.
+
+It should be noted that this methodology is the one largely adopted in impact assessment of health-related research: once it is agreed that clinical guidelines are a suitable candidate for assessment, it is possible to trace back the impact using the citations to the medical literature.
+Evaluation of mechanisms is a partial methodology, which describes in great detail the pathways in which research results are channeled from their origin to the endpoint.
+
+### Text-based impact assessment
+
+More recently, an interesting alternative approach has been suggested. Based on the availbility of Machine learning and Text mining techniques, it has been argued that the evidence for the impact of research might be traced by extracting selected expressions from certain kinds of documents. We may distinguish between two kinds of documents: (a) produced by users of research; (b) produced by researchers themselves. 
+There are several suggestions to use documents produced by users of research. In one of the most developed efforts to conceptualize the social impact of research, called Public Value Mapping (PVM) Bozeman and Sarewitz [@bozeman2011public] suggested the use of three main sources of statements, from which it could be possible to trace the impact of research: government statements, academic literature, and public opinion polls containing public statements. More recently, Bornmann, Haunschild and Marx [@bornmann2016policy] have suggested to use the frequency of occurrence of policy-related words in policy documents as evidence of impact of research. In this paper we will make these suggestions operational. 
+
+Yet another approach in the same line is to examine the documents produced within social media. A prominent approach is based on Altmetrics measures. The main tenet of Altmetrics is that citations, the basic unit of analysis of bibliometrics, capture only part of the impact of published research, so that “citation tracking has never been able to follow the less visible- but often more important- threads of invisible colleges, woven through personal connections and informal communications” [@priem2012altmetrics]. By accessing data on the personal use of published materials “Altmetrics could deliver information about impacts on diverse audiences, like clinicians, practitioners, and the general public, as well as help to track the use of diverse research products like datasets, software, and blog posts” (ib.). Sibele et al. [@fausto2012research] examine in this light the phenomenon of research blogging. There are however severe limitations that might make Altmetrics problematic. The extent to which Altmetrics can capture traces of societal impact has recently been seriously contested [@bornmann2014evaluate]. Social media are used more for internal discussions within scientific communities, rather than a bridge between the research community and society at large. According to Haustein there is lack of evidence that social media events can serve as appropriate indicators of societal impact [@haustein2016tweets].
+
+Among the documents produced by researchers, we might further distinguish between: (a) research proposals (ex ante documents) and (b) case studies produced after the realization of research projects (ex post, or documents produced within the research assessment process).
+It is this type of documents we suggest to examine as a novel methodology to assess the potential societal impact of research. In this paper we follow type (b) documents and use the collection of case studies produced by UK researchers under the REF exercise. In future studies we plan to use archives of proposals made available in public sources in order to examine the ex ante representation of researchers.
+The REF impact case studies, as already noted, have been the object of a large literature in recent years. Among these studies, King’s College and Digital Science [@king2015nature] have indeed produced, using Text mining techniques, an interesting analysis of beneficiaries of UK research, publishing a fascinating infographics. This analysis, however, lists only a fairly small set of research users, most of which are defined with generic terms. It is our contention that much further work should be done in this direction. We propose a new lexicon-based methodology, called Enriched dictionary (see below), which allows a much more fine-grained analysis.
+
+## Methodology
+
+Basically we suggest to examine carefully the full text of documents produced by researchers and extract, in a highly structured and theory-dependent way, information on potential users of research. Users are defined as categories of human agents that share some characteristics that are relevant with respect to the object of interest. In the present context users are social groups, or target groups, that are potentially affected by research results and that use these results for their own purposes.
+Before entering into a technical description of the methodology let us address the rationale of assuming users as an important dimension of research impact.
+
+There are several compelling theoretical reasons for this choice.
+First, the literature has strongly underlined the interactive nature of societal research impact. As discussed above, the most recent literature and practice strongly suggest to abandon a unilinear model of impact, in which it is expected that researchers produce results, diffuse them in various channels, and see the results taken up by interested users. Let us call this approach a “percolation model”: researchers produce results that eventually percolate down into society, but without knowing the ways in which they flow, the obstacles they meet, the timing of the process, or the final destination of the flows. On the contrary, it is strongly suggested to adopt an interactive model of interaction, in which researchers actively engage into systematic relation with potential users.
+In an interactive model there must be a reflexive activity on one side about the nature (characteristics, interests, behavior, style) of the other side. Researchers must build up a representation of their potential users, and vice versa. How could researchers engage with users if they do not know them? And how they could know potential users if they do not engage into some sort of analysis, even as simple as description and characterization? For interaction to take place, there must be some preliminary recognition of the existence, nature, attitudes of those that may utilize the research results.
+According to our methodological suggestion, it is this representation that is the preliminary object of interest for impact assessment. If researchers have a representation of their potential users, they will leave traces of this representation in their written texts. When they write research proposals they will promise to address the issues of these users, and when they write case studies of research impact they will report on the takeup or use of their research activities by these users. 
+Second, it has been shown that research activities have a huge variety of impact pahways, largely dependent on the scientific discipline. In turn, this implies that disciplines have at least partially different target groups. Research in political science is different from research in oncology not only because their scientific foundations, methods, objects and cognitive styles are different, but also because they talk to different user groups. The texts produced by researchers themselves are a necessary starting point to reconstruct the various impact pathways.
+Third, focusing on user groups has the advantage of shifting away the attention from discrete events or products to long term processes of interaction between research and society. The focus on discrete events or products is a typical feature of the narrow definition of research impact cultivated since long time in the so called “valorization of research”. This impact is defined and measured with reference to highly stylized entiities, such as patents, licensing contracts, research contracts, and spinoff companies. These are clearly defined, legally enforced, highly visible and measurable entities. Defining and measuring impact is easier by focusing on these entities because they convey the meaning of knowledge transfer from research to the market, and because the final outcome can be defined in monetary terms.
+We suggest to focus on user groups as a relatively permanent social entity, which is defined by a specific combination of social status, needs, culture, practices and routines. User groups survive the individual personality of people. They are a permanent, although often entirely informal, characterization of society.
+Finally, our methodology allows the large scale automatic analysis of large corpora. This means that the inevitable subjectivity in the reconstruction of impact by researchers in writing their proposals and/or impact case studies can be mitigated by examining large scale patterns.
+It is important to remark that the notion of users is consistent with other suggestions in the literature that adopt different definitions, such as stakeholders, constituencies, interest groups. Our definition is broader and admits more internal variability, as discussed below.
+
+### Operationalizing user groups using Natural Language Processing techniques
+
+A simple implication of our methodology is that researchers “leave a trace” of their representation of users, or the groups of social agents that are most likely to use or uptake the results of their research activity. By using state-of-the-art Text mining technologies we are able to identify these traces in written texts and to give them unambiguous meaning.
+By assuming target groups as units of analysis we suggest to introduce a number of concepts, from which suitable indicators can be derived. 
+
+_Definition 1_
+Stakeholders are entities influenced by the research activity. This definition covers all possible entities that engage an active or passive relation with the research activity.
+
+_Definition 2_
+Target groups are entities or groups of entities on which researchers claim to have an effect.
+
+Given definition 2, it is clear that every target group is also a stakeholder, while the reverse does not hold true. Non-target stakeholders include the proponents themselves, managing autorities, funding agencies and so on. We need a formal technique for identifying target groups in the text of research documents. This technique as been developed as described in section \@ref(usersresults).
+
+Dictionaries are a peculiar type of written text, characterized by authoritativeness, saturation and update. In other words, a dictionary must be composed of entries established by some authority, most often an academic one and/or an authority established since long time by reputation (e.g. editorial initiatives of prestigious publishers). Saturation means that all words that are related to the domain of the dictionary must be included. It is a major flaw of a dictionary the lack of important entries. A dictionary is characterized by a property of semantic saturation: all words that have a meaning associated to a given field are included in the dictionary. Using this tool it will be possible to count the occurrences of target groups, and develop indicators of frequency and intensity. Finally, update means that dictionaries have an internal organization (for example, an editorial board) that examines all new expressions, discusses their acceptability in the dictionary, and make official and authoritative decisions about inclusion or exclusions.
+
+These formal requisites, that used to be appropriate only for established dictionaries, are currently satisfied by a larger variety of sources. In particular, the huge power of Text mining techniques has made it possible to automatize at least some of the steps needed to create a formal dictionary. Section \@ref(usersresults) illustrates the steps undertaken in order to build up an Enriched dictionary of users. It currently includes 76.857 entries, that have been shown to saturate the semantic field of users. It includes, among others, all jobs, work positions, professions, hobbys, patient roles, sports, creative and enterteinment roles, political, institutional and organizational roles, social roles, that have been classified in hundreds of official sources. In particular, this includes all stakeholders and target groups, as defined above.
+
+Our Natural Language Processing (NLP) system follows the following steps.
+- Sentence splitting and Tokenization: this process splits the text into sentences and then segments each sentence in orthographic units called tokens. Sentence splitting plays a key role since thanks to a given word, it is possible to find all sentences in which the word is used.
+-	POS tagging and Lemmatization: The Part-Of-Speech tagging (or POS tagging) is the process of assigning unambiguous grammatical categories to words in a specific context. It plays a key role in NLP and in many language technology systems. Once the computation of the POS-tagged text is completed, the text is lemmatized according to the result of this analysis.
+-	Target groups Annotation: The Target groups Extraction tool is based on lexicon methods. Among the various lexicon methods we adopt, as stated above, the Enriched dictionary approach. With respect to users, we use a lexicon composed of 76.857 entries. By launching this Extracion tool we are able to capture all the different ways in which each target group can be expressed in a research document.
+
+Table \@ref(tab:impact1) shows the output of the NLP procedure for a sentence contained in the corpus (“Each year, in England alone, approximately 152,000 people suffer a stroke.”). As it can be seen, the automatic annotation system isolates the only word (“people”) that may be part of a target group.
+
+Table: (\#tab:impact1) Tokenization, lemmatization and annotation of a sentence in the corpus.
+
+```{r impact1code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/impact_1.xlsx")
+  )
+
+```
+
+## From text extraction to indicators
+
+After having extracted all possible expression of target groups in research documents, we are in a position to develop indicators with suitable statistical properties. They are defined as follows.
+
+### Frequency {-}
+
+For a given document J, let us define T_j (number of target groups contained in J) and W_j (number of words contained in J). We then define:
+
+
+\begin{equation*} 
+F_j= \frac{T_j}{W_j}*100
+\end{equation*} 
+
+The frequency F of a document measures the percentage of words that are target groups. If a document shows high frequency it means that it cites many times target groups, even if it/they are always the same and they are generic. For example, an impact description that repeats many times the target group people will show high frequency.
+
+### Diversity {-}
+
+For a given document J, let us define Tu_j (number of different target groups contained in J) and Wu_j (number of different words contained in J). We then define:
+
+\begin{equation*} 
+D_j= \frac{Tu_j}{Wu_j}*100
+\end{equation*} 
+
+The diversity D of a document measures the percentage ratio of different words that are target groups. If a document has a high diversity it means that it cites many different target groups, even if they are generic.
+
+### Specificity {-}
+
+For a given target group i, let us define N (number of document in the corpus) and ni (number of documents that contains the target group i). We then define Si, the specificity of the target group i as:
+
+\begin{equation*} 
+S_i= \frac{log(N/n_i)}{log(N)}
+\end{equation*} 
+
+The Specificity of a target group Si measures how rare, and thus specific, is a target group in the overall corpus. The specificity diminishes for target groups that occur very frequently in the corpus and increases for target groups that occur rarely (more specific target group). Let us take the example before, in which the annotation system identifies people as a target group. There will be a large amount of documents in which the word people will occur, so that the ratio between the total number of documents in the corpus and the number of those that include the word people will be close to one. On the contrary, highly specific words (say, free climbers) will occur less frequently, so that the above ratio will increase.
+Since we are interested in giving a measure for each document, having defined Si for each target group, if the document j contains k different target groups, we have that the specificity of the document j is:
+
+\begin{equation*} 
+Sj=\sum_{i=1}^{k}Si,j/k
+\end{equation*} 
+
+The specificity of a document Sj measures how rare, and thus specific, are the target groups contained in that document and it is the mean of the specificity of all the target groups that it contains. If a document contains only rare target group (not cited by other impact descriptions) that document exhibits high specificity. For the previous example, suppose we have a document repeating many times that the research has an impact on people. Since the target group people is a common one (thus having a low specificity Si itself) the measure of the specificity of the document, resulting from the sum of low specificity values, will be low.
+
+An interesting example of application of these principles comes from the scientific study of popular science, or divulgation. In these fields authors use a language which must be understood by lay people, not by professional scientists. For this reason they tend to use generic words, rather than highly specific and professional words. This is, incidentally, one of the reasons why professional scientists ofte disregard popular science as a literary genre: they perceive the generic nature of language used as too coarse. Scholars of popular science have used quantitative linguistic techniques to distinguish between generic and specific terms in the same semantic field [@jacobi1999communication]
+
+### The meaning of Frequency, Diversity and Specificity indicators for the analysis of research impact
+
+The above definitions are building blocks of a model of engagement of researchers with their potential users.
+At the outset, it is important to examine whether researchers include users in their representation of research activity at all. Thanks to the use of an Enriched dictionary, which by definition saturates the semantic field, we are in a position to establish whether user-related expressions are found in researchers’ texts or not. Since in this paper we use the impact case studies produced under the REF, the minimum level is by definition satisfied, as it was the condition for submitting the case study. At the same time, this indicator will be extremely useful for the ex ante evaluation of research proposals. The appropriateness of this indicator and its policy implications will be the object of future research. Authors of the REF documents are by definition aware of the existence of target groups of users.
+
+Once the awareness level is satisfied, frequency comes into play. Frequency is a standard measure in computational linguistics and Text mining techniques, since it gives evidence of the relative importance of words or expressions. The frequency by which target groups are mentioned in a document is a measure of their perceived importance. We are keen to examine the frequency by which users, or target groups, are mentioned in documents produced by researchers.
+Yet researchers may cite repeatedly a target group, but consider them as a unique entity. This approach is reasonable when the target group does not have internal differentiation (i.e. it is not segmented) and when the results of the research are equally useful for all its members. 
+
+But in many relevant cases this undifferentiated approach does not work. Representing and addressing users as a single target group may weaken the potential for impact.
+
+There are two directions in which researchers can deepen their representation of target groups, and hence their impact. One is to address different target groups. This is similar to the notion of segmentation in consumer psychology: if target groups have sufficiently dissimilar characteristics with respect to the activity (in this case, the use of reserch results), then it is better to treat them differently. The other is to go in depth in addressing each of the target group, by refining their approach, using fine grained representations of the needs of the users. We capture these two directions by measuring diversity and specificity. It is our contention that the language used by reseachers is a clear signal of their approach to research impact. A high level of diversity implies that researchers understand the need to mention, identify, enumerate target groups that have different names. They stop using generic words (say, people) and start to introduce some of the many criteria for segmentation. In addition, or in alternative, they discover that within their target groups it is possible to go deep in the fine grained representation, by adding specificity.
+
+A spatial metaphor may help to capture the point: by increasing diversity of target groups researchers move horizontally, defining new regions of the space, while by increasing specificity they move vertically, drilling the ground in each of the regions. Frequency, diversity and specificity are not necessarily correlated. An interesting empirical issue is the relation between these two dimensions.
+
+
+Let us articulate an example. Suppose an expected impact of a given research is on policy making. A low specificity situation arises when researchers speak about “policy makers”, or “government”. A more mature and engaged approach should articulate the policy making process by identifying several specific user groups in addition to the various layers of political and legislative decision making. For example, interest groups. These social actors are extremely important in shaping the policy agenda. A well developed body of research in political theory has examined the way in which new policy issues are generated, framed in the public conversation, and pushed forward in the policy arena until they become established in the policy agenda (Sabatier, 1987). Pittman (2006) argues that the most important factors leading to government interest there is the role of domestic advocacy, as well as the interest in their international standing. Second, intermediary organizations or boundary organizations, such as technical agencies and regulatory bodies (Agrawale, Broad and Guston, 2001). Third, opinion-makers such as think tanks should be included. Many other examples could be added. These actors would be mentioned with more specific expressions.
+
+Finally, researchers may engage into identifying user groups “by name and surname”, that is, as concrete and localized actors with whom they plan to enter into interaction. Counting or measuring them would be the final stage of maturity of research engagement with users.
+
+## Data
+
+### Description of the corpus
+
+The corpus is composed of 6637 REF impact case studies. They generally follow a template illustrated in the REF criteria. The template has a Title and five main text sections, plus the name of the Submitting Institution and the Unit of Assessment. In addition to the Title of the case study, the text sections of the template and the indicative lengths, as recommended in the REF criteria are:
+
+1.	Summary of the impact, 100 words
+2.	Underpinning research, 500 words
+3.	References to the research, 6 references
+4.	Details of the impact, 750 words
+5.	Sources to corroborate the impact, 10 references
+
+We take into consideration the sections Summary of the impact and Details of the impact. It is common practice in computational linguistics to examine the length of documents to be included in a corpus in order to ensure comparability. Figure \@ref(fig:impacthistogramslength) shows that the limits established by the REF criteria are not always respected. Nevertheless, since the distribution of the length is almost normal and there are not outliers it is appropriate to include all documents in the corpus.
+
+```{r impacthistogramslength, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Distribution of number of words in relevant sections of the REF impact case studies.', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/impact_histograms_length.png")
+
+```
+
+Within the REF repository projects are classified using three criteria:
+
+-	Impact type: There are eight Summary Impact Types. These follow the PESTLE convention (Political, Economic, Societal, Technological, Legal, and Environmental) widely used in government policy development, with the addition of Health and Cultural impact types.
+-	Units of assessment (UOA): Institutions were invited to make REF submissions in 36 subject areas, called units of assessment (UOAs), each of which had a separate expert panel. 
+-	Research subject areas: The REF Impact case studies are assigned to one or more Research Subject Areas (to a maximum of three) by text analysis of the ‘Underpinning research’ (Section 2 of the Impact case study template). This is a guide to text search that uses a disciplinary structure that is more fine-grained than the one in the 36 Units of assessment.
+
+Figure \@ref(fig:impactmetadataanalysis) shows the number of documents per Unit of assessment.
+
+```{r impactmetadataanalysis, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Number of documents per Unit of assessment (UoA) in REF impact case studies.', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/impact_metadata_analysis.png")
+
+```
+
+### Preliminary analysis of the corpus
+
+In this section we present a descriptive analysis of the content of the documents to give an evidence of two important facts: 
+1. The description of the impact contains target groups;
+2. This information is enough to make a significant statistical analysis.
+
+The corpus contains 8.230.598 words in total and 141.705 different words. By annotating the entire corpus with the entries of the Enriched dictionary we find that the total number of words referring to target groups is 169.037, while the number of different target groups is 1830, or 1.3% of different words.The number of documents that contain at least one target group is 6628, or 99,9% of the total. Only for nine documents we were unable to locate any word referring to a target group. 
+
+Figure \@ref(fig:impactusersdistributions) offers a vivid demonstration of the issue of specificity of words referring to target groups. As many as 37% of all projects include people, and as many as 25% mention company as isolated words. Among the top 20 occurrences we find extremely generic words such as public, community, individual, organization, user, or society. Slightly more specific are the words referring to the school or youth context (child, school, student, teacher) or the health context (patient, patients). In order to find more specific words we have to go further down the ranking. Please note that in all these cases these words do not appear in combination with other that might increase the specificity, but in isolation. Should the same word appear in combination with other more semantically connotated words, they would form a separate target group. As an example, the word people is considered part of a separate expression in the following examples: people with cystic fibrosis, people with primordial dwarfism, people with rheumatoid arthritis, ordinary people in extraordinary situation, people in senior management, people from different background, key policy people in uk government, specific community of people, young people in deprived community in Glasgow. Each of these expressions is considered as a separate target group and their Specificity is computed according to the formula above.
+
+```{r impactusersdistributions, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Top 20 occorrences of words referring to target groups in the corpus of REF impact case studies.', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/impact_users_distributions.png")
+
+```
+
+To see the difference in the use of words in sentences consider the following examples from REF case studies: “The validation of the exit poll forecast allowed people to see the power of social scientific methods, and may have helped them to establish a level of trust in evidence-based information” (generic use of the word people) and “Key components of this are nurturing people with cross-cultural understanding, diversity in thinking and global leadership skills” (more specific use). The NLP procedure developed for this analysis is able to accurately distinguish these situations.
+
+## Results
+
+### Descriptive analysis
+
+Table \@ref(tab:impact2) offers a snapshot of the value of indicators calculated across the entire corpus. The minimum value of indicators (zero) is represented by the 9 documents without target groups. On average the REF impact case studies contain words that represent target groups as 2% of total words, and words that represent distinct target groups as 2.5% of different words. In absolute terms, the median REF impact case study contains 10 different words thet refer to target groups, repeated 22 times in total. 
+
+Table: (\#tab:impact2) Descriptive statistics of indicators of target groups in the corpus of REF impact case studies.
+
+```{r impact2code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/impact_2.xlsx")
+  )
+
+```
+
+There is not large variability in the number of different target groups, as the first and third quartile at 7 and 14 are close to the median value. Interestingly, all distributions are close to the normal. A small number of documents use words that refer to target groups with much larger frequency and diversity. The document with maximum use of target groups identifies as many as 34 different words or combination of words. In terms of repetition, the document with the largest number of words uses 115 times a word representing target groups. When coming to specificity, the mean value of 0.659 implies a good level of specificity, given the range of the indicator.
+Figure \@ref(fig:impactusersfreqcomparison) shows the distribution of documents by indicators.
+
+```{r impactusersfreqcomparison, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Top 20 occorrences of words referring to target groups in the corpus of REF impact case studies.', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/impact_users_freq_comparison.png")
+
+```
+
+###	Findings by subject area
+
+We disaggregate the indicators with respect to the subject areas, or the Units of assessment (UoA), according to the REF nomenclature. This analysis offers a new perspective on the way in which he various disciplines describe their impact pathways. We use the conventional boxplot representation.
+
+Figure \@ref(fig:impactfrequency) shows a surprising finding. On top of the ranking by frequency of occurrence of words that refer to target groups of users we find Humanities: not only Education (which by nature refers to children, students and teachers as user groups), but also Music and drama, Classics, Language and literatire, and History. Or, in other words, disciplines that are not oriented towards users, but rather cultivate the goal of knowledge per se. At the bottom of the ranking we find, again surprisingly, Engineering disciplines, with a number of specializations, and Economics, that is, disciplines that, on the contrary, have a pragmatic orientation towards various target groups of users.
+
+```{r impactfrequency, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Boxplot of the Frequency indicator in the corpus of REF impact case studies by subject area (Unit of assessment)', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/impact_frequency.png")
+
+```
+
+Figure \@ref(fig:impactdiversity) confirms a similar ranking by subject area when we use the Diversity indicator, with slight variations. In the case of diversity we find also Theology and religious studies, as well as Art and design. Almost all subject areas in Humanities consistently show up at the top when we investigate the frequency by which they mention users of research and the number of different target groups they are able to identify. This is a remarkable finding. It is true that this comes from documents that are themselves retrospective reconstruction of impact, but this feature applies to all subject areas in the same way.
+
+This finding sheds light on one of the controversial issues in the literature on impact evaluation, that is, the role of Humanities and Arts. It seems that one of the tenets of the argument that Humanities and Arts are not sensitive to the audiences, or users, of their research results, is simply false. When asked to reflexively reconstruct their impact, they are systematically able to mention their target groups.
+
+
+```{r impactdiversity, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Boxplot of the Diversity indicator in the corpus of REF impact case studies by subject area (Unit of assessment)', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/impact_diversity.png")
+
+```
+
+This comes at a cost, however. Humanities rank top in the Frequency and Diversity of target groups, but rank at the bottom when coming to their Specificity. Figure \@ref(fig:impactspecificity) shows an almost reverse ranking of subject areas when the indicator chosen is Specificity.
+At the top of the Specificity ranking we find Social Sciences, such as Economics, Politics, Anthropology and Law. This is another interesting finding. These disciplines have been able to target highly specific groups of users, following a process of academic specialization. They have low Frequency and low Diversity- that is, do not spend much emphasis on their target users, but have high Specificity- that is, they know whom to target.
+
+Large part of Humanities are found at the bottom: Psychology, Education, Philosophy, Language and literature, Art and design. Engineering disciplines are more scattered.
+
+Finally, by combining the three indicators it is possible to examine more closely the pattern of impact of subject areas.
+
+```{r impactspecificity, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Boxplot of the Specificiy indicator in the corpus of REF impact case studies by subject area (Unit of assessment)', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/impact_specificity.png")
+
+```
+
+Frequency and Diversity are highly correlated (\@ref(fig:impactfrequencydiversity)). Humanities rank top in both indicators and are located in the top right region of the graph. Almost all disciplines in Engineering and Economics and Econometrics lie at the opposite corner.
+When coming to Specificity, correlation with the other indicators is on the contrary extremely low and is negative (- 0.016 with Intensity, - 0.146 with Diversity).
+
+```{r impactfrequencydiversity, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Scatterplot of the relation between Frequency and Diversity indicators in the corpus of REF impact case studies by subject area (Unit of assessment)', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/impact_frequency_diversity.png")
+
+```
+
+## Discussion
+
+The data show an intriguing disciplinary pattern: Humanities and Arts show remarkably higher frequency of terms related to users, but a significantly lower specificity. The opposite is found for many areas of STEM, namely Engineering and several Natural science disciplines.
+
+The results for Humanities are very intriguing. Research in Humanities is often considered as pure, abstract, not engaged with society. This representation is used by those governments that argue that research funding in these areas should be cut because their impact on society cannot be demonstrated. For Social Sciences the situation is slightly different, but there is a presumption that only a few social sciences have an impact, in particular those with instrumental value, such as Economics.
+Our data tell a different story. When asked to demonstrate the impact of their research, scholars in Humanities and Arts use a very rich vocabulary of users and mention users very frequently, twice as much as scholars in STEM. At the same time, they are less capable to transform their orientation in operational terms, by definining, identifying, targeting specific groups or audiences.
+At the opposite extreme, it seems that scholars in STEM mention very precise and well defined groups of users. This might be a result of the nature of their studies: researchers in Medicine follow specific targets in terms of disease and patients, or technologists have narrow industrial applications. 
+This remarkable difference may create an imbalance in the assessment of research impact.
+
+Research in STEM finds more easily and unambiguously the groups of potential users, so that its impact is easier to observe and operationalize. As it has been noted by the studies on REF, evaluators may find it easier to use concepts drawn from STEM to evaluate all types of research, simply because they point to more observable and discrete products of research. From the field of social studies of evaluation it is well known that measurements lead to a feedback loop so that the immediate availability of indicators may lead to believe that important things are only those that can be measured.
+
+The notion of impact of research deserves further and intense research effort in the near future. We see several directions of research. First, apply the methodology to ex ante research documents, such as research proposals: do they include users? do they identify target groups with adequate Diversity and/or Specificity? Second, test whether there is a relation between the Specificity of identification of target groups and the assessment of the research, either ex ante (approval of a proposal) and ex post (score obtained in research assessment exercises). Third, extend the methodology to other kinds of documents.
+
+
+
+
+# Human Resources: Defining industry 4.0 professional archetypes
+
+Text Mining has been used in the last years to manage human resources (HR) strategically, mainly with applications aiming at analyzing staff’s opinions, monitoring the level of employee satisfaction, as well as reading and storing CVs for the selection of new personnel. In the context of human resources management, the text mining techniques are often utilized to monitor the state of health of a company by means of the systematic analysis of informal documents. These documents are both internal (e.g. curricula, job description) and external  (e.g. Linkedin, social networks). 
+
+Nowadays in fact HR experts started to use text mining technique also with intelligence purposes. For this reason companies has to collect information about their employees, the HR market and their competitors, and to analyze enormous amount of documents. The aim of Competitive Intelligence in HR [@bolasco2005understanding] is to select relevant information by automatic reading of this documents Once the material has been collected, it is classified into categories to develop a database, and analyzing the database to get answers to specific and crucial information for HR company strategies. 
+
+The typical queries to collect the documents, concern the skills or the technological sectors of the competitors or the names of the employees of a company with a certain profile of competences. This is not a trivial task, and before the introduction of Text Minig, there was a division that was entirely dedicated to the continuous monitoring of information and answering the queries coming from other sectors of the company. In these cases the return on investment by the use of automatic document analysis technologies was self evident when compared to results previously achieved by manual operators.  In some cases, if a scheme of categories is not defined a priori, clusterization algotyrhm (\@ref(sotatoolsmodelnetanal)) are used to classify the set of documents (considered) relevant with regard to a certain topic, in clusters of documents with similar contents. The analysis of the key concepts present in the single clusters gives an overall vision of the subjects dealt with in the single texts [@gupta2009survey].
+
+Futhermore it has to be considered that as intellectual capital has become one of the most strategic assets of successful organizations, the ability to manage the expertise, skills, and experience of employees has become a key factor in overcoming the increasing competitiveness of the global market [@colucci2003formal]. In today’s competitive business environment, companies need to accurately grasp the competency of their HR in order to be successful [@fazel2009semantic].
+
+As evidence of the increasing interest of TM techniques fot HR, an increasing number of publications are providing new research paths [@strohmeier2013domain, @al2011investigating, @zhao2008empirical, @ccelik2012ontology, @veit2001matchmaking, @han2016preliminary]. 
+One study introduced an approach to improve the matching of profiles by searching job descriptions and applicant profiles using filters that represent the relevant skills and competencies [@paoletti2015extending]. Nevertheless, several studies have found that résumés and work experience lists, which are composed of brief words or short sentences, are limited and have tried to improve HR solutions by adopting a semantic system approach, such as ontologies and text-mining methods.  An example is the On-To-Knowledge project. The OnTo-Knowledge project focuses on the application-driven development of ontologies during the introduction of ontology-based knowledge management systems [@lau2002introducing]. One research study has suggested that a possible approach could be addressing an intelligent decision support system composed of case-based reasoning and ontology [@zhukova2014intelligent].  Another research stressed the importance of HR recruiting, selecting individuals for teams based on different skills and qualifications, determining who to train and what training programs to offer, and recommending the right expert to individuals for acquiring information or learning from within the organization [@fazel2009semantic]. 
+Another example of TM techniques often utilized to monitor the state of health of a company by means of the systematic analysis of informal documents is the case of ConocoPhilips, a fast-moving American company, which developed an internal system - the VSM (Virtual Signs Monitor) - able to find the intangible but crucial aspects of company life, the degree of experience and knowledge and the “productive” abilities. The approach chosen by Conoco was that of measuring the company mood by means of state of the art indicators [@ghoshal1997individualized], which contrasts a new model based on completely different pillars, like stretch, discipline, trust and reciprocal support with the traditional managerial model founded on concepts of constraint, contract, control and compliance. This managerial model, according to Ghoshal’s formulation encourages the cooperation and collaboration between the elements of an organisation, improving its results. Its collaboration with Temis enabled Conoco to refine its system for the monitoring of textual sources like e-mails, internal surveys of employees’ opinions, declarations of the management, internal and external chat lines, all representing important means for sounding the evolution of company culture. 
+
+Finally, Web-Based Human Resources Systems had a strong impact on the HR processes. The most widely well-known web-based HR systems are Linkedin and OilandGas [@walker2001web]. Their search systems are designed so that a user can input a query and look at the search results of résumés through keyword matching.  With the special services of Linked-In (accessible to premium users only), users can also search for specialists and candidates from various industries. The OilandGas service is specialized for searching for experts in the oil and gas industry, using basically the same concept of discrete keywords matching. However, once this search process is completed, the recruiter has to download all the search results and résumés and then read through all the documents to pick the most suitable candidates.
+
+Furthermore, in HR nowadays the theme of Skills Assessment is of great interest. The term "assessment" indicates the action of assessing the potential, the skills, the attitudes and the adequacy of a professional profile.
+
+With the advent of the Fourth industrial revolution, it is increasingly important to carry out a continuous and precise assessment of skills. At the same time, it is essential to verify that the resources within the company are enough prepared to manage the phenomenon, or it is necessary to recruit new staff to face the challenge 4.0. Undoubtedly, the future demand for professional profiles will be conditioned by digital innovation and the ever more radical integration of new technologies. For these reasons, it is particularly sensitive to change.
+
+The literature is very focused on identifying the professional profiles that will survive during the epochal change and which instead will be eliminated. Osborne and Frey's research is emblematic: they tried to define which would be the jobs that will resist and which not, according to the substitutability of individual skills [@frey2017future]. The results are quite pessimist: they distinguished between High, Medium and Low risk of computerisation, and, according to their estimates, around the 47% of jobs is in the high risk category.
+
+Moreover, there are opposing views on the social effects that the revolution will cause. Caruso outlines that the technological innovation could not improve worker’ conditions, performances and relationships because they cannot be determined by any technical innovation in itself, being it always socially shaped [@caruso2017digital].
+On the other hand, the new technologies could represent an opportunity for the labour market and they could have positive impact on employment. The reason why it would probably happens is that 3d printing, Internet of Things, Augmented reality and Big data analytics demand a large quantity of new skills to be properly managed [@freddi2017digitalisation].
+Furthermore, MacCrory et al., performed a data analysis on occupational skill requirements of 674 occupations to study the effects of recent changes in automation. They identified the three main consequences of technological innovation, which could be summarized in: a significant reduction in skills that compete with automation; a significant increase in skills which complement machines;  : “a  significant reduction in skills that compete with machines, an increase in skills that complement machines; finally, an increase in skills where machines are not enough advanced [@maccrory2014racing].
+
