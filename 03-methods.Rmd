@@ -1194,7 +1194,7 @@ We computed these for measures fitting a LDA model for every K between 2 and 20.
 We then extract the one-topic-per-term-per-row probabilities, beta. Beta measures what is the probability for each topic to produce a term. Figure \@ref(fig:topicpicture) shows the top 5 terms for each topic. Here each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term). It is possible for some keywords to belong to multiple topics: for example, optimization belongs to topic 1 and 9. It is easy to spot these keywords because typically (belonging to two different topics) are far from the group of keywords of the topics they belong. 
 
 
-```{r topicpicture, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Content of the 12 topics. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term).', message=FALSE, warning=FALSE, out.width='60%'}
+```{r topicpicture, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Content of the 12 topics. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term).', message=FALSE, warning=FALSE, out.width='100%'}
 
 
 knitr::include_graphics("_bookdown_files/figures/geom_point_topic.pdf")
@@ -1322,12 +1322,12 @@ Table: (\#tab:tableblfilter) Table of the filters applied to select the relevant
  
 ```{r tableblfiltercode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
 
-
 knitr::kable(
   readxl::read_xlsx("_bookdown_files/tables/table_bl_filter.xlsx")
   )
 
 ```
+
 
 #### Topic modelling {-}
 
