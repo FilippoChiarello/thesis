@@ -1,6 +1,6 @@
-# (PART) Impacts for Different Stakeholders {-}
+# (PART) Applications of the Results {-}
 
-# Design: Exploiting patent information in novel ways
+# Exploiting patent information in novel ways
 
 Due to the complexity and volatility of user needs, companies increasingly ask product designers and engineers to create ideas that meet needs in novel and better ways, rather than just making existing technologies more attractive [@brown2010design]. As a matter of fact, these professionals are nowadays involved in the process of understanding in depth what users want and desire [@haley1968benefit; @day1979customer].
 Unfortunately, it is well known that user needs are usually examined in separate business departments, such as marketing or business development, and are described in a language that is remote from the professional practice of product designers and engineers. The relation between the understanding of user needs by marketing departments and the development of new products by technical departments is a deeply troubled one. There is a large agreement within the design community that this state of affairs is not optimal and that dedicated efforts should be made to reconcile the engineering approach with a more articulated understanding of user needs, particularly of consumer needs [@pahl2013engineering; @eppinger1995product].
@@ -111,13 +111,15 @@ Total extracted advantages numbered 4129, drawbacks numbered 1835. After manual 
 
 Table: (\#tab:adiotableresults) Examples of clues of advantages and drawbacks extracted manually from patents.
 
-```{r adiotableresults2code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
 
-knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/adiotableresults.xlsx")
-  )
+|Class           | Number of Advantages Sentences| Number of Drawback Sentences|
+|:---------------|------------------------------:|----------------------------:|
+|Input           |                            292|                          190|
+|Wanted Output   |                           1786|                          660|
+|Unwanted Output |                            431|                          682|
+|TOT             |                           2509|                         1532|
 
-```
+
 
 ### A-D-I-O Representation
 
@@ -138,21 +140,335 @@ This paper has proposed a method to extract and summarize sentences that describ
 
 In the future, we want to focus on the application of the proposed ADIO framework to a wider number of patents set and hopefully we would like to automate the classification of advantages and drawbacks. Furthermore we want to focus on the extraction of new entities of interest for designers, and to understand which other groups of words contained in patents texts can add value to the design process.
 
-# Research and Development: Enriched dictionaries for Innovation
+# Enriched dictionaries for Innovation
+
+The demand for intelligence and foresight of technologies is increasing due to the need of companies and governments to make sense of the rapidly changing technology landscape and to make better decisions. In particular, emerging technologies exhibit not only rapid growth, but also strong conditions of technology and market uncertainty, so that traditional techniques of technology intelligence are challenged [@rotolo2015emerging].
+
+Technology intelligence makes large use of a statistical procedure called clustering. This multivariate technique is commonly used to place entities into relatively homogeneous groups, maximizing the difference with other groups, when entities are not subject to an existing classification. In technology intelligence this is the most interesting situation: if technologies were already fully classified, then they would already be established or mature.
+
+It is important to remark that clustering, in one way or another, is almost a necessity in technology intelligence. The amount of data available on technologies, even on the last generation of technologies, is so large that a preliminary effort of clustering and profiling is generally considered a preliminary step for the analysis.
+
+In technology intelligence the formation of clusters is generally based on words extracted from relevant documents (scientific publications, patents, technical standards). There are two main approaches to the extraction of words from documents: extracting from the metadata associated to the document, or extracting from the full text of the document. Examples of metadata are authors, affiliations, inventors, assignees, keywords, titles. This approach has generated a large literature that uses metadata in order to extract usable knowledge. Within this literature, a notable stream of studies has extracted usable knowledge from documents by clustering the metadata in order to obtain meaningful structures. This method is associated to the use of keywords, as we will see below.
+
+More recently, a different approach has been introduced, based on the processing of the full text of documents. Following the remarkable advancements in computational linguistics, it has become possible to process the entire text of publications, patents, or technical standards to a large scale. Here the clustering exercise does not take place on metadata, but on words, or their combinations, included in the text of documents. The topic modeling is the most used approach. Topic modeling is a tool to extract structures of text from corpora without the help of external sources of knowledge [@blei2003latent].  Once the words have been extracted from metadata or the full text, a clustering strategy must be designed based on an appropriate definition of similarity. 
+
+We then suggest the exploration of a novel approach, one that combines domain knowledge with powerful data science techniques, called _enriched dictionaries_. These are large and highly structured collections of words, associated to formal definitions and internal linkages, that are produced on the basis of domain knowledge of various kinds. In some cases they are publicly available, in othr cases they are the resuld of dedicated and idiosincratic research efforts. These dictionaries can be used in order to “filter” the semantic content of the full text of documents according to pre-defined structures, generated within the domain knowledge and validated at the state of the art. They can be used, therefore, within the so called supervised text mining approach.
+This paper has two objectives: introducing the methodology of enriched dictionaries, and showing that it allows the joint use of several, and complementary, perspectives: one based on the abstract engineering principles of technologies (functional view), another on the advantages delivered by the technology (advantage view). These dimensions are kept separate in the literature and clustering exercises do not combine them. We show the power of clustering technologies using these views in a combined way.
+
+## An overview of dictionaries for technology intelligence
+
+### Publicly available dictionaries
+
+One of the advantages of the dictionary approach is the possibility to utilize publicly available dictionaries, that is, available online with unrestricted, free access.
+We made systematic use of Wordnet, a large dictionary in English language made available and curated by Princeton University. Wordnet is a standard reference in computational linguistics.
+
+Upon the basic Wordnet dictionary, several specialized or dedicated dictionaries have then been developed, which are also available with unrestricted, free access.
+We made use of the following dictionaries.
+
+- Artifacts: a collection of terms referring to objects, inventions and tools. The dictionary is one of the Name categories available in the Wordnet-based categorization dictionary from Provalis, free to download ^[https://provalisresearch.com/products/content-analysis-software/wordstat-dictionary/wordnet-based-categorization-dictionary]. Artifacts were chosen to explore texts in order to find structural indications for the components of an invention. 
+
+- Acts: a collection of terms referring to generic actions. This is another Name category from the Wordnet dictionary. Acts were selected in order to find verbal expressions referable to functions carried out by the objects described therein.
+
+### Research-based dictionaries
+
+The dictionary methodology offers the flexibility to build up dedicated or specialized dictionaries, that represent the state of the art of a given knowledge domain. We make use of two dedicated dictionaries recently developed by the authors in an academic research context.
+Needless to say, in these cases the authors must give the readers or users of the dictionary full proof of the completeness of the dictionary, or the compliance with formal criteria for the definition of a dictionary. These proofs have been offered in a number of papers cited below.
+
+- Functional verbs: list of verbal expressions describing functions, or actions performed by artifacts on given objects [@fantoni2013automatic; @apreda2016functional].
+
+- Advantages and Disadvantages: list of terms referring to measurable benefits or drawbacks related to an object, chosen for their capacity to represent applications of an invention (see section \@ref(advdrwresults)).
+
+Table \@ref(tab:dictex1) offers an overview of the dictionaries used for this analysis, with a few examples of terms.
+
+Table: (\#tab:dictex1)  Sources and main characteristics of dictionaries.
+
+|Dictionary               | Numberof entries|Examples of chunks                                                                           |
+|:------------------------|----------------:|:--------------------------------------------------------------------------------------------|
+|Artifacts                |            12374|Acetanilid, Actuator, Aerogenerator, Agglomerator                                            |
+|Acts                     |             5527|Abduction, Abidance, Accenting, Acquiring                                                    |
+|Functional Verbs         |            11256|Abrade, Absorb, Abut, Accelerate                                                             |
+|Advantages/Disadvantages |            29902|Ability, Accelerate, Acceptance, Accessibility, Accident, Accidents, Aggravated, Aggravation |
+
+```{r dictex1code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/dictex1.xlsx")
+  )
+
+```
+
+## The value added of enriched dictionaries 
+
+In order to illustrate the original contribution of the enriched dictionary approach, it is useful to refer to similar approaches, recently introduced in the literature. The starting point of this literature is similar to the one advocated in this paper, i.e. the need to supervise the full text mining with the help of list of words that reflect domain knowledge.
+
+A natural candidate here is the list of words that describe technical functions, or the abstract characterization of the working principles of technologies [@cascini2004natural; @dewulf2006directed; @cascini2007computer; @cascini2008measuring]. The pioneering approach in this field is TRIZ, the patent-based methodology that has identified a number of abstract inventive principles [@petrov2002laws], whose application to patent texts has permitted the detection of evolutionary trends in specific technologies [@verhaegen2009relating; @wang2010identifying; @yoon2011automated; @park2013identification]. A variant of this approach combines the functional approach with lists of product attributes or properties [@yoon2012detecting; @yoon2011invention; @kim2010cause]. More recently, a similar approach has been introduced, suggesting that subject-action-object (SAO) linguistic patterns can be derived automatically from the full text of patents [@yoon2011identifying; @choi2012sao; @park2011identifying]. A SAO textual sequence is considered an indication of the engineering principle that describes an action that is changing an object. Choi et al [@choi2012sao] reviews the state of the art of function-based technology databases (in particular, TRIZ and Creax) but suggest that SAO structures are more versatile and flexible in order to apply Natural Language Processing techniques.
+
+Within this line of investigation the notion of technology tree (Tech Tree) has been introduced [@choi2012sao]. It combines within a single representation taxonomies of products, technologies, and abstract functions. Similarity matrices are built along these dimensions and aggregated. 
+
+While these two approaches have generated a large and interesting literature, their main limitation is the lack of transparency. The queries obtained from the TRIZ inventive principles have not been published and there is no demonstration of their reliability (i.e. replicability under controlled conditions) with respect to all semantic variations of words. Similarly, the SAO queries, although intuitively clear, leave the readers and users with the problem of establishing the semantic content in the engineering sense, given that the notion of “action” may cover, in fact, many different meanings.
+
+## Methodology
+
+The cited studies have suggested that a mixed approach to the clustering problem could be the best solution to achieve good results. In particular there is a need for placing more domain knowledge into the analysis, while keeping the enormous advantages of text mining and automatic knowledge representation techniques.
+
+This is the starting point of the dictionary approach we propose. It suggests that the full text of technical documents is searched by using a structured list of words, generated from a substantive body of domain knowledge, formally defined, and organized in a hierarchical way.
+
+A dictionary, in substance, is a collection of terms pertaining to a precise context and then selected following a logical pattern. The content of a dictionary may sensibly vary from case to case, comprising terms related to a precise technology, a technical field, a social group, or more generic parts-of-speech such as particular kinds of actions or nouns, and so on.
+
+The main difference between a dictionary and a mere collection of keywords is in their respective scope, which is, for a dictionary, wider and far more complete, including all the synonyms, hypernyms and hyponyms of a term. By definition, a dictionary must include all the definitions and terms referring to the chosen context. The completeness has an important consequence for text mining applications. When a dictionary is used as a tool to filter the content in a collection of texts, the query is formed not only by principal words, but also by secondary words, such as synonyms. These secondary words would be lost if the analysis were based on words and keywords. Therefore dictionaries contribute to overcoming the biases introduced in the analysis by the subjective choice of keywords by experts.
+
+To start with, the dictionary method was combined with topic modelling techniques in order to overcome one of the main limitations of topic modeling, that is, the extraction of irrelevant topics.
+
+The starting assumption is the possibility of representing a document using the main topics cited in it. A topic is, basically, a collection of terms that delineate and describe an argument. Topics may be identified by using unsupervised or supervised methods. The unsupervised application of the method will have the result of giving generic topics, often irrelevant in specialized analysis. This outcome can be mitigated, but not eliminated, by the application of ranking techniques, such as Term Frequency-Inverse Document Frequency (TF-IDF), that allow the identification of coherent topics. Alternatively, analysts may refer to supervised methods, which are however resource-consuming in their design and implementation.
+The dictionary approach offers an excellent solution to the trade-off between relevance and precision of the search, which plays in favor of supervised methods, and the parsimony of the analysis, which on the contrary militates for the adoption of unsupervised methods.
+
+In addition, if topics are clearly delineated, it becomes possible to identify similarities between documents that refer to technologies with a transversal, or cross-domain, potential for application. 
+Dictionaries can be used for different purposes and help to identify latent structures from a variety of perspectives. We advocate the use of several dictionaries in parallel, on the same collection of texts, as a way to examine technologies with a variety of perspectives. Figure \@ref(fig:dictwf) illustrates the main steps of the methodology.
+
+```{r dictwf, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Steps of the dictionary approach to the text mining of patents.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/dictwf.png")
+
+```
 
 
+The basic idea of the process is that a document can be represented by the set of terms, numbers, graphic symbols and punctuation that compose meaningful sentences. The "technical" objects belonging to this set are named Features. 
+Starting from selected patent sets, a Document-Feature Matrix is created using different dictionaries as filters to select only the desired features; the obtained matrices are then used as the starting point to perform a topics number evaluation algorithm, based on the connections between documents with same or similar features. Topics are formally clusters of features, coupled because of their pertinence to the same concept; measuring the percentage of cohesion of a document to each topic recognized is, then, a method to collect informations about the contents of the document itself.
 
-# Marketing: The User Side of Innovation
+#### Creation of the Document-Feature Matrix {-}
 
-# Policy Making: Impact of research from the perspective of users.
+A patent can be represented by a vector exhibiting the number of occurrences, if a given feature is included, and 0 otherwise. Since these features are ordered within dictionaries, all patents in a patent set can be represented with similar vectors. A collection of texts can be therefore represented as a matrix called Document-Feature. A Document Feature Matrix (DFM) is a algebraic matrix with N rows, corresponding to individual documents in the corpus, and M columns representing the features. With this formalization it is possible to measure the occurrences of features in every document contained in the corpus. It is a powerful tool to get a fast quantitative information about a document set, counting the features originated in the dictionaries, with the opportunity of selecting (or removing) some of them.
+
+Each patent in the patent set is filtered using one of the four dictionaries at a time.
+The resulting list of words was processed in order to eliminate the generic words, or those words that, being diffused across most documents, do not have specific semantic content. This is done by using the stopwords labelled SMART in the text mining literature, in combination with a list of stopwords extracted from the text of patents and including some generic words in the legal language of patents (or “Patentese”), such as claim, invention, right, tool etc.
+
+Due to the large number of entries in dictionaries and the exploratory nature of this work, we restricted the number of features considered for each of the DFMs to 500. The selection was made automatically, by selecting the top 500 terms in terms of share of documents in which they appear.
+In some cases the selected patent text delivered no matching with the selected features. In this case the patents were eliminated. Thus the fina DFM only includes documents with positive entries from the lists of features extracted from the analysis.
+It must be noted that DFMs are sparse matrices: sparsity is a mathematical parameter, varying from 0 to 1, that indicates how much systems are loosely coupled. In particular, it is a measure of the Z zero-valued elements in a matrix divided by the N x M total number of elements. Thus, a sparse matrix is a matrix in which large part of elements in cells are zeroes. Sparsity it is a good measure of how documents in a corpus differ from each other with respect to their Features.
+
+Documents are iteratively examined in pairs: if two documents share a feature they are considered similar. Various metrics of similarity can be defined and computed. After a measure of similarity is defined, various clustering techniques can be applied as well. In this application we use the cosine similarity, which is largely adopted in the field.
+Cosine similarity is a measure of similarity between two non-zero vectors, that computes the cosine of the angle between them in an inner product space. Each document in the Document-feature Matrix is characterized by a vector where the value of each dimension corresponds to the number of times the feature appears in the document. Two documents, then, are similar if their cosine similarity is near to 1.
+
+Given two n-dimensional vectors of attributes, x and y, their cosine similarity is calculated by the dot product of them, normalized by the product of the vector lengths.
+Results of the similarity measures are stored in a N x N matrix, in which documents are both upon rows and columns. It is a squared matrix with ones on its diagonal, indicating identities between patents and themselves, and the upper (or lower, for it is the same) half filled with similarity values for all the document
+couples. The most intuitive method to analyze which patents are more similar is to visualize them in a graph. To do so, it was used the igraph package , which contains a list of commands for creating and analyzing graphs. We can use our similarity matrices as a base to build the corresponding graphs, using them as they were adjacency matrices.
+
+#### Adjacency Matrix {-}
+
+An Adjacency Matrix is a square matrix that represents a finite graph. In this case, the similarity matrix has in position (i,j) the inverse of the distance between vertices vi and vj . This gives to the graph not only information about whether two vertices are connected, but also a measure of their connection. It was chosen to set a threshold t = 0.8 for similarities in order to avoid representation of loose relations between vertices. To better visualize results, graphs were migrated from R to Gephi, a visualization software that simplifies this kind of operations. Gephi makes possible to assign colours to nodes as an intuitive way to label them; in our graphs four different colours were used to partition patents in their class, then Force Atlas layout algorithm was performed to see how well the graphs were clustered.
+
+#### Optimal Number of Topics {-}
+
+Once created, a DFM can be interpreted as a graph showing similarity links between documents. In this context, in fact, similarity can be defined in terms of the percentage of total features that are shared between documents. Features can also be grouped in topics. In turn, similarity between documents can be defined in terms of the percentage of topics shared between documents.
+Finally, documents that refer to the same topic, hence are similar among them, can be grouped in cluster. Within a cluster it is possible to define a metrics of cohesiveness: the larger the number of topics shared by documents, the larger the cohesiveness of the cluster they belong to.
+
+The optimal number of topics is not defined once and for all, but it depends in subtle ways from the characteristics of the documents in the set and the list of features. Thus the optimal number is the result of an experimental approach. The R package ldatuning calculates several metrics and then delivers an estimate on the optimal number of topics for Latent Dirichlet Allocation (LDA) models. In our application, we chose the CAOJUAN metric to evaluate the number of topics. The decision to use just one metric was made due to computational reasons; we selected the model proposed by Cao Juan, since he demonstrated that LDA models perform in an optimal way when the average cosine distance of topics reaches the minimum. Starting from the assumption that less correlated topics are more independent, the author defined average dispersion  as a metric to measure the topic structure, using cosine distance. A smaller average dispersion denotes a more stable topic structure, that is, a topic model which is defined in a better way.
+
+## Results
+
+We now turn to the analysis of the topics resulting from the filtering procedure based on dictionaries, the construction of the DFM, the measurement of cosine similarity.
+We will use four measures to highlight the content of the patent sets:
+
+-	Average cosine distance of topics
+-	Average number of topics
+-	Average sparsity of DFM
+
+The dictionaries were divided in two macro-classes, due to their nature: Non-Technical Dictionaries (Acts and Artifacts) versus Technical Dictionaries (Functional Verbs and Advantages & Disadvantages). The Blacklist set, filtered with canonical and “Patentese” stopwords, will be useful for a more complete understanding of the findings.
+
+In order to test the dictionary approach to clustering, we trained the algorithm on a standard patent set, formed by patents belonging to four IPC classes whose technologies are largely known. Table \@ref(tab:dicpatents) illustrates the International Patent Classification (IPC) classes included in the analysis (a random sample of 2.000 patents each).
+
+Table: (\#tab:dicpatents) Patent sets under examination .
+
+```{r dicpatentscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/dicpatents.xlsx")
+  )
+
+```
+
+The technologies examined are largely mature. As it is shown in Figure \@ref(fig:dicttrendsipc), in some of them the patenting activity started as early as XIX century. The maturity of these technologies is a good starting condition for the training set: similarities and dissimilarities of the patents should be clearly visible.
+
+By placing them together in the same patent set we deliberately include very different technologies. We ask the algorithm based on dictionaries to be able to discriminate technologies in a patent set which is, by construction, highly heterogeneous.
+
+
+```{r dicttrendsipc, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Technological history of the technologies in the selected patent sets.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/dicttrendsipc.png")
+
+```
+
+Table \@ref(tab:dictmetrix) offers a summary of measures derived from the application of dictionaries to the four patent sets combined together. 
+
+Table: (\#tab:dictmetrix) Summary of findings from the application of dictionaries to the combined patent sets.
+
+```{r dictmetrixcode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/dictmetrix.xlsx")
+  )
+
+```
+
+Two findings are visible in Table \@ref(tab:dictmetrix). First, there is large difference in the cohesiveness of the clustering based on Technical and Non-technical dictionaries. The average cosine distance calculated with the Artifacts and Acts dictionaries is ten times smaller than the average cosine distance for Advantages & disadvantages and the Functional dictionary. Second, Non-technical dictionaries give origin to a much smaller number of topics.
+
+Let us examine the differences between dictionaries more in detail. We start by examining the performance of each dictionary in extracting and clustering topics.
+
+#### Non-technical Dictionaries {-}
+
+Table \@ref(tab:dictactsresults) shows the results of the application of the Acts dictionary to the four separate patent sets, while Table \@ref(tab:dictartsresults) shows the same for the Artifacts dictionary.
+
+
+Table: (\#tab:dictactsresults) Findings from the application of the __Acts__ dictionary to selected patent sets.
+
+```{r dictactsresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/dictactsresults.xlsx")
+  )
+
+```
+
+
+Table: (\#tab:dictartsresults) Findings from the application of the __Artifacts__ dictionary to selected patent sets.
+
+
+```{r dictartsresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/dictartsresults.xlsx")
+  )
+
+```
+
+These two dictionaries were retrieved from the Wordnet categorization dictionary, which is a tool for linguistic analysis; thus, the terms comprised in them are of common use, and their suitability for the description of patents is not guaranteed.
+Taken together the Non-technical dictionaries deliver two main results. First, there is a difference in the optimal number of topics between simple technologies (Burners and Toothbrushes) and more complex and articulated technologies (Prosthesis and Funeral devices). In the case of the Acts dictionary, the optimal number of topics is 2-6 for the former technologies and 18-16 for the latter. Second, Non-technical dictionaries deliver clusters with an extremely low cosine distance, that is, with strong internal cohesiveness.
+In other words, Non-technical dictionaries produce an excellent clustering of documents. This suggests that they can be used to obtain a small number of non-technical topics, that allow a general identification of the content of documents, but not the identification of technical similarities and differences.
+
+To provide an example of the potential of the dictionary methodology we show in Tables \@ref(tab:acttopicresults) and \@ref(tab:arttopicresults) the top ten words found in a selection of the topics extracted with the Non-technical dictionaries in the patent set Prosthesis. We need to test whether Non-technical dictionaries deliver topics that are satisfactory with respect to their potential to describe technologies.
+
+Table: (\#tab:acttopicresults) Top ten words in selected topics extracted in the patent set __Prosthesis__ with the aid of the __Acts__ dictionary.
+
+```{r acttopicresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/acttopicresults.xlsx")
+  )
+
+```
+
+Table: (\#tab:arttopicresults) Top ten words in selected topics extracted in the patent set __Prosthesis__ with the aid of the __Artifacts__ dictionary.
+
+```{r arttopicresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/arttopicresults.xlsx")
+  )
+
+```
+
+In the case of the Artifacts dictionary, Topic 5 gives us information on components related to the body part interested by the prosthesis, while Topic 14 tells us about electrical tools and sensors that are involved in the invention. Also in this case, the two groups are useful to gather information about the basic composition of the set, but not enough on focus to have a satisfactory definition of the technologies.
+
+
+#### Technical Dictionaries {-}
+
+Table \@ref(tab:dictadvsresults) shows the results of the application of the Advantages & Disadvantages dictionary to the four separate patent sets, while Table \@ref(tab:dictfunctsresults) shows the same for the Functional dictionary.
+
+Table: (\#tab:dictadvsresults) Findings from the application of the __Advantages and Disadvantages__ dictionary to selected patent sets.
+
+```{r dictadvsresultsscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/dictadvsresults.xlsx")
+  )
+
+```
+
+Table: (\#tab:dictfunctsresults) Findings from the application of the __Functional__ dictionary to selected patent sets.
+
+```{r dictfunctsresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/dictfunctsresults.xlsx")
+  )
+
+```
+
+The technical dictionaries applied contain a large number of features, generating a large DFM. An overall look at Tables \@ref(tab:dictadvsresults) and \@ref(tab:dictfunctsresults) shows several interesting findings. First of all, the technical dictionaries allow the identification of a much larger number of topics with respect to non-technical dictionaries: the average number is 32 for the Advantages & Disadvantages, and 37 for the Functional dictionary. This means that technical dictionaries show a higher power of discrimination of semantic content. This is an important finding for Technology intelligence, since a larger number of internally coherent topics is an extremely useful starting point for the interpretation of their content.
+
+Second, in the case of the Functional dictionary the Document-Feature Matrix (DFMs) is less sparse: the average sparsity index is 73,8%, as opposed to around 98% for the non-technical dictionaries and 94,3% for the Advantages & Disadvantages dictionary.
+Third, the total number of documents used, i.e. the documents in which there is at least one matching between the words and the features of the dictionary, is larger in the case of technical dictionaries (in particular, it is 498 out of 500 for the Functional dictionary).
+
+Fourth, the cosine distance of topics is approximately ten times larger in the case of technical dictionaries, meaning that clusters enjoy a ower cohesiveness.
+These findings point to an important contribution of technical dictionaries, and in particular of the Functional dictionary, to Technology intelligence, that is, technology mapping, clustering, interpretation, and foresight.
+
+The Functional dictionary offers a large number of features that find a matching with the text of the patents, so that the resulting DFM is less sparse. The fact that the total number of topics is larger also means that each of the topics is populated by a smaller number of features. Each topic, therefore, lends itself to a clear understanding of the technical content. The differences between topics have also a clear technical interpretation.
+
+It can be said that technical dictionaries, as opposed to non-technical dictionaries, allow a fine-grained intelligence of the technical content of patent sets. This is in itself an important achievement, given that the topic modelling algorithm has not been previously trained, but is only filtered by the dictionary. In practice we achieve the precise results of supervised topic modeling with an effort which is more similar to that of the unsupervised approach.
+
+In order to give a better understanding of the potential of the technical dictionary approach, let us examine more in detail in table \@ref(tab:advtopicresults) and \@ref(tab:functtopicresults) the top 10 words in some of the topics identified in one of the four patent sets examined, namely Prosthesis.
+
+Table: (\#tab:advtopicresults) Top ten words in selected topics extracted in the patent set __Prosthesis__ with the aid of the __Advantages & Disadvantages dictionary__.
+
+```{r advtopicresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/advtopicresults.xlsx")
+  )
+
+```
+
+Table: (\#tab:functtopicresults) Top ten words in selected topics extracted in the patent set __Prosthesis__ with the aid of the __Functional dictionary__.
+
+```{r functtopicresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/functtopicresults.xlsx")
+  )
+
+```
+
+In Table \@ref(tab:advtopicresults) Topic 6 calls the attention to features of the prosthesis such as adjustability, facilitation and stability, that is, on ergonomic features. Topic 28 emphasizes comfort (as an advantage made possible by the invention) or discomfort (as a disadvantage addressed by the invention). The content of these topics, thanks to the power of the technical dictionary, is crystal clear.
+
+In Table \@ref(tab:functtopicresults) we see, in topic 15, the positioning of prosthesis on the neck of patients, and in topic 20, the orientation of arms with the support of prosthesis. Both these topics deal with the issue of placing the prosthesis around or over various parts of the human body.
+It is important to underline that, once generated, topics can also be combined together in further steps of the analysis. 
+
+#### Blacklist {-}
+  
+Finally, the information power of technical dictionaries can be appreciated by comparing the results with those that would be obtained by filtering the texts with semantically poor words, such as generic words (stopwords) and “patentese” generic words. As stated above, the combination between generic and patentese stopwords is labelled Blacklist.
+
+Table: (\#tab:dictblacklist) Top ten words in selected topics extracted in the four patent sets with the aid of the __Blacklist__.
+
+```{r dictblacklistcode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/dictblacklist.xlsx")
+  )
+
+```
+
+The Table \@ref(tab:dictblacklist) shows the clustering results using as filter a blacklist, composed by traditional and patentese stopwords. The following observations are in order. First, we observe a remarkable flatness in the number of topics: it equals 40, which is the maximum value that can be achieved by the algorithm. Second, Burners and Toothbrushes have a smaller distance value, confirming that these two patent sets are composed by more homogeneous types of features.
+
+Summing up, it seems that the dictionaries deliver different results. On the one hand, Non-technical dictionaries include more generic word expressions. Non-technical dictionaries deliver better performance if the goal is to provide a global representation of the technological field, since they generate a smaller number of topics and better indicators of effectiveness of clustering.
+
+On the other hand, if the goal is to detect novelty and technological trends, or to identify the areas of exploration of emerging technologies, then Technical dictionaries perform better, as they generate a larger number of topics. Analysing these topics it is possible to get insights on technological differences among patents in the same patent set and to produce detailed technology maps. This is particularly important for innovations in the pre-paradigmatic stage.
+
+## Conclusions
+
+Patent clustering is a standard application in technology intelligence and has been common practice in the professional IP industry. In recent years, patent clustering based on text mining has gained large acceptance. In this paper we have introduced a novel methodology to cluster patents.
+With respect to the existing literature we give a contribution by testing the use of dictionaries as a structured list of words to filter patent data and build up clusters. 
+The clustering based on dictionaries is significantly different from the one provided by IPC classification. We have tested the use of multiple dictionaries on the same patent set. The resulting clusters allow a fine-grained interpretation, which is illuminating for purposes of technology intelligence.
+Kreuchauff and Korzinov [@kreuchauff2017patent] have developed a set of performance criteria to compare and evaluate the identification approaches proposed in the literature. These criteria include: degree of intervention of experts, portability, transparency, replicability, adaptability, updating capacity, and finally extent and relevance of data obtained. We suggest that the enriched dictionary approach satisfies all these criteria: it does not involve the role of experts, is portable and transparent (after publication of the dictionary in the open literature), it is therefore replicable to any technology, is adaptable and has capacity to update (particularly if based on Wikipedia), and offers broad and relevant data.
+
+# Impact of Research from the Perspective of Users.
 
 A substantive interest has been developed in the last 15 years on the so-called “impact revolution”, namely the increasing demand for showcasing the results of publicly funded research in order to justify public expenditure. Public funders are increasingly required to demonstrate the relevance of funded research not only for scientific communities but also for the economy and society at large. In other words, there is an increasing demand to prove that the users and beneficiaries of research results are not only the traditional academic audience - researchers and university students - but include a large number of social actors. Let use use here the concept of “societal impact”, as opposed to academic impact, to include all dimensions of impact on the society and economy that are realized through impact pathways that go beyond the institutional research and teaching activities.
 
-The issue of societal impact of public research has gained prominence in the specialized literature since the start of the century and has accelerated in recent years [@van2000evaluation, @erno2011measuring, @bornmann2013societal, @bornmann2014evaluate, @bornmann2017does]. Indeed, a quick look at the most important journals in the field of innovation, research policy and research evaluation shows that the most largely cited, downloaded or read articles in the last five years are almost invariably dedicated to the issue of societal impact.
+The issue of societal impact of public research has gained prominence in the specialized literature since the start of the century and has accelerated in recent years [@van2000evaluation; @erno2011measuring; @bornmann2013societal; @bornmann2014evaluate; @bornmann2017does]. Indeed, a quick look at the most important journals in the field of innovation, research policy and research evaluation shows that the most largely cited, downloaded or read articles in the last five years are almost invariably dedicated to the issue of societal impact.
 
 This follows from the adoption of societal impact of research as one dimension of evalution of research, both ex ante and ex post, in many advanced countries.
 
-As discussed by several authors, societal impact has become one of the criteria of ex ante project selection in several institutions and countries [@kanninen2006methods, @dance2013impact]. It is also a crucial chapter in the ex post research assessment in some countries, such as United Kingdom. Within the UK Research Excellence Framework (REF) the assessment of societal impact has been responsible for 20% of the total score, while an increase to 25% has been announced in September 2017 for the future exercise. The publication of REF case studies of societal impact has fueled a field of analysis [@derrick2014unwrapping, @samuel2015societal, @khazragui2014measuring]. Some authors advocate impact analysis as a way to examine the effects of research agenda on the societal priorities [@cozzens2002evaluating].
+As discussed by several authors, societal impact has become one of the criteria of ex ante project selection in several institutions and countries [@kanninen2006methods; @dance2013impact]. It is also a crucial chapter in the ex post research assessment in some countries, such as United Kingdom. Within the UK Research Excellence Framework (REF) the assessment of societal impact has been responsible for 20% of the total score, while an increase to 25% has been announced in September 2017 for the future exercise. The publication of REF case studies of societal impact has fueled a field of analysis [@derrick2014unwrapping; @samuel2015societal; @khazragui2014measuring]. Some authors advocate impact analysis as a way to examine the effects of research agenda on the societal priorities [@cozzens2002evaluating].
 
 This surge of policy interest, however, comes in a period in which the scientific analysis of the concept of societal impact and of the potential and limits of existing methodologies has not yet come to a general agreement. As succinctly stated by Lutz Bornmann, impact evaluation is “still in the infant stage” [@bornmann2013societal]. And Bozeman and Sarewitz [@bozeman2011public] explained that “there has been remarkably little progress in the ability to measure directly, systematically, and validly the impacts of research on social change”, so that “we have no satisfactory analytical tools for characterizing the social impact (of research)” [@bozeman2011public].
 
@@ -165,7 +481,7 @@ To be more precise we argue that a necessary component for impact assessment is 
 ### Variability in the identification of outcomes and users
 
 A first methodological issue is that in order to assess the societal impact of research, there is a need not only to identify observable elements that can be considered as an outcome of the research process, but also to define the actors that are affected, or benefit, from those outcomes. It turns that these elements are subject to huge variability across disciplines.
-Consequently, there are areas in which methodologies are more sophisticated and largely tested, and others in which there is remarkable lack of experience and methodological work [@stern2013long, @mitton2007knowledge, @cturcan2015national]
+Consequently, there are areas in which methodologies are more sophisticated and largely tested, and others in which there is remarkable lack of experience and methodological work [@stern2013long; @mitton2007knowledge, @cturcan2015national]
 
 Among the former the health care sector is probably the one in which the impact assessment of research has made the largest progresses: a number of well structured research impact assessment methodologies have been developed and implemented. There in fact are as many as 16 different impact assessment models, according to Milat, Bauman and Redman [@milat2015narrative]. An important reason for this accumulation of experience and knowledge is that the outcomes that demonstrate the expected impact are clearly identified and standardized, and the categories of users are clearly observed, given a high degree of professionalism. 
 
@@ -177,7 +493,7 @@ Consider the problem from the perspective of potential users of SSH research: th
 
 ### Sources of information 
 
-Current approaches can be classified, according to Morton [@morton2015progressing], as forward tracking, backward tracking, and evaluation of mechanisms. In forward tracking, researchers are asked to reconstruct the ways in which their research might be useful for given categories of users. Alternatively, users are asked to declare which kind of research results they are likely to utilize [@tang2000pilot]. The strong limitation of this approach is that it relies heavily on the researcher’s and research user’s own recollections of research use [@nutley2007using, @donovan2011state]. In some sense, this is also the limitation of the use of case studies of research impact: it is difficult to verify whether they are a random collection or they are biased in one way or another. 
+Current approaches can be classified, according to Morton [@morton2015progressing], as forward tracking, backward tracking, and evaluation of mechanisms. In forward tracking, researchers are asked to reconstruct the ways in which their research might be useful for given categories of users. Alternatively, users are asked to declare which kind of research results they are likely to utilize [@tang2000pilot]. The strong limitation of this approach is that it relies heavily on the researcher’s and research user’s own recollections of research use [@nutley2007using; @donovan2011state]. In some sense, this is also the limitation of the use of case studies of research impact: it is difficult to verify whether they are a random collection or they are biased in one way or another. 
 Backward tracking suffers less from these subjective biases. If the sample of final outcomes is well designed, it can offer important lessons for researchers and policy makers. However, it comes with long delays with respect to actual research results.
 
 It should be noted that this methodology is the one largely adopted in impact assessment of health-related research: once it is agreed that clinical guidelines are a suitable candidate for assessment, it is possible to trace back the impact using the citations to the medical literature.
@@ -441,32 +757,267 @@ Research in STEM finds more easily and unambiguously the groups of potential use
 
 The notion of impact of research deserves further and intense research effort in the near future. We see several directions of research. First, apply the methodology to ex ante research documents, such as research proposals: do they include users? do they identify target groups with adequate Diversity and/or Specificity? Second, test whether there is a relation between the Specificity of identification of target groups and the assessment of the research, either ex ante (approval of a proposal) and ex post (score obtained in research assessment exercises). Third, extend the methodology to other kinds of documents.
 
+# Defining Industry 4.0 Professional Archetypes
+
+Worldwide industrial systems are evolving by leveraging Internet connected technologies to generate new added values for organizations and society. Researchers, policy makers and entrepreneurs refer to such phenomenon with the name of Industry 4.0.
+
+An increasing number experts from different fields are focusing on this topic, bringing their contribution in terms of new technologies and methods. As a consequence of this process, the companies that are embracing the new paradigm need to manage new technologies  and the new relations among them with a multidisciplinary approach. The result is an emerging need of new professional figures able to bridge the different fields.
+
+Moreover, while the scientific interest in technological aspects of Industry 4.0 is constantly growing, the understanding of the future works and professional roles is slowed down by the heterogeneity, complexity and static nature of job description systems. These issues are usually addressed by qualitative methods thus making the results uncertain and partial.
+
+The first step of the present chapter is to develop a data driven mapping of 4.0 competencies which benefit (rather than being disadvantaged) by the heterogeneity of the entities to map.
+Then we propose a classification of the groups of competencies with the aim of identifying and defining the archetypes of Industry 4.0 workers. Given the bottom-up process we adopted to reach our goal, also the relationships between them can be described.
+
+## Digital Competences Development
+
+The radical technological change is going to affect the whole industrial environment and will radically transform, in several different ways,  the world we live in (see section \@ref(technimetrochap)). 
+Consequently, the revolution is not just referred to the availability of new sophisticated machines, but also to the deep reconsideration of worker roles it brings with.
+On the one hand Industry 4.0 implementation may have negative impact on specific professional figures, which could be substituted by robots. In support of this theory, Osborne & Frey implemented a methodology to estimate the probability of job computerization using a Gaussian classifier [@frey2017future]. The results are quite pessimist: they distinguished between High, Medium and Low risk of computerization: according to their estimates around the 47% of jobs is in the high risk category.
+On the other hand, another possible impact is represented by a significant increase of worker competences and the emersion of new professional profiles: our research mostly focused on the second prospect.
+
+## Methodology 
+
+In this chapter we show the process to built the graph of Wikipedia pages related to Industry 4.0. This graph will be then used by expert to define 4.0 workers archetypes. 
+Figure 1 shows the process we adopted. The whole process takes in input a set of linked entities (e.g. Wikipedia pages) and gives as output a clustered graph. 
+
+```{r archewf, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Flow diagram of the process of 4.0 Archetypes definition.', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/archewf.png")
+
+```
+
+#### Wikipedia Pages Collection {-}
+
+The process takes as input a set of entities linked between them. A link between two entities represent the existence of a relation between them. Here the concept of relation is intended as the sharing of a topic. In other words, two entities has to be connected if they belong to the same topic. Any entities-links structure that meets this requirements can be used as input for the proposed process. For the purpose of the present work, we decided to use the free encyclopedia Wikipedia . 
+Wikipedia is structured in such a way that each page contains links to other Wikipedia pages. The links from page to page are manually assigned by the contributors, so the structure of the links evolves dynamically. Furthermore each page is labeled by the contributors through categories with the intent of grouping together pages on similar subjects. To collect industry 4.0 related wikipedia pages we exploit this information and structure.  In the date of 23/11/17 we collected three levels of pages typologies for a total of 4739 pages:
+
+- L1, The Wikipedia page of industry 4.0 ^[https://en.wikipedia.org/wiki/Industry_4.0] _(1 page)_
+- L2, All the pages linked to L1 _(39 pages)_
+- L3, All the pages linked to L2 _(4699 pages)_
+
+For each page we collected the page name, the links and the categories. 
+
+#### Pages Graph Generation {-}
+
+Once we collected all the pages and the links between them, we represent this structure as a directed graph (S). It is composed of:
+
+-	A set of nodes (N): the Wikipedia pages. 
+-	A set of edges (E): the links between the pages (considering also the direction of the edge)
+
+S has 4739 nodes and 194.299 edges. 
+
+#### Nodes filtering on 4.0 Categories {-}
+
+
+Considering the content of Wikipedia, it is reasonable to assume that not all of the 4.739 pages are related to Industry 4.0. 
+
+To sanitize the set of nodes N we adopted a series of filtering rules based on the categories of the pages. The steps we followed were:
+
+-	Count the occurrence of each category we extracted. At this step we had 14.711 categories.
+-	Filter the categories having an occurrence minor or equal to 3. This threshold level has been chosen looking at the distribution of the occurrences (the number of pages per category). A change in the central node could make changes on the selection of this threshold level. At this step we had 1.605 categories. 
+-	Manually screen the categories and select those related to industry 4.0, taken in to consideration the definition of Industry 4.0. At this step we had 337 categories. 
+-	Selecting the nodes that contains at least one of the 337 categories.
+
+As an example, the top 10 categories in terms of occurrence and the relative occurrences are: production and manufacturing (51), parallel computing (42), manufacturing (37), business terms (33), management (31), process management (29), engineering disciplines (28), internet of things(28), technology in society (26) and cloud computing (25). This list shows how the process is able to make categories correlated to Industry 4.0 emerge.
+We thus obtain a new graph S’ that is a subgraph of S (all the nodes N’ and the edges E’ are a subset of N and E respectively).  S’ has 645 nodes and 703 edges.
+Of these nodes 75 are disconnected from the graph (both in-degree and out-degree equals to zero) and are thus not useful for the analysis we will conduct in section 3.4 . These nodes are filtered, obtaining a definitive S’ having 570 nodes. 
+
+#### Clustering {-}
+
+We can assume that S’ gives us a reasonable representation of Industry 4.0 related wikipedia pages in terms of precision and recall. 
+
+It is thus possible now to analyze if the pages are arranged in clusters, or in other words, if there exists groups of similar pages. 
+
+To understand the concept of similarity we need to consider the nodes N1 and N2, and the sets of all nodes connected to N1 and N2, respectively L1 and L2. The similarity of N1 and N2 is proportional to the module of the intersection between L1 and L2. To investigate this similarity and to find clusters of similar pages, we grouped similar nodes via short random walks. The algorithm is described in [Durrett, R.: “Random Walks. Random Graph Dynamics”, 153-186. 
+].  The approach finds ways to compute an intimacy relation between the nodes incident to each of the graph’s edges. The process is non-supervised so it makes an optimal decision on the number of clusters. The output was 9 different communities. 
+
+The obtained graph is shown in Figure \@ref(fig:archeout). The figure shows the nodes, the edges and the label of the nodes. The dimension of the nodes is proportional to the out-degree of each one (the number of tail edges adjacent to the vertex) and the color represent the community to which it belongs to. The label of the nodes (as center of the clusters) are shown for those having an out degree greater than 4. The table shows the correspondence between the community, the colors and the percentage of nodes per community. 
+
+```{r archeout, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Representation of the graph S’. The nodes are the Wikipedia pages related to Industry 4.0. The arch between two nodes exists if there is a link between the pages. The labels of the nodes are shown only for nodes having an out-degree (number of tail edges adjacent to the vertex) greater than 4. The color of each node represent the community to which the node belongs. The table in the low-left shows the percentages of nodes for each community.', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/archeout.png")
+
+```
+
+#### Workers 4.0 Archetypes Definition {-}
+
+The authors generated a list representing the “Industry 4.0 workers archetypes” based on Wikipedia. The bias due to the profile of people writing this kind of Wikipedia pages does not reduce the importance of this exercise, but it is fundamental to understand why the reader will find such a great emphasis on technologies, methodologies and tools as pages describing the archetypes in section 4. Skills, competences and professional figures (in the strict sense) are then behind and beyond the archetypes, which represent just the attitudinal profile of the workers that will be soon seek by companies adopting Industry 4.0 paradigm.  
+
+Table of Figure \@ref(fig:archeouttab) shows the relation between the Archetypes and the communities (created by the text-mining procedure presented above). It also shows the total number of nodes per archetypes and per community. 	
+
+```{r archeouttab, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Table of the accordance between the archetypes and communities. The total of pages for each archetypes is shown in the last column, the total of pages for each community is shown in the last row. ', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/archeouttab.png")
+
+```
+
+From this table it emerges that:
+
+-	Group 1 (75 pages) has two nodes/centers: the page “Big Data” and the page “Analytics”. This is why from Group 1 derives two different Archetypes: “the Architect” (44 pages, centered in Big Data) and “the Prophet” (21, centered in Analytics). This is an evidence of the fact that these two archetypes are strongly related between them, since they belong differently from all the other groups.
+
+-	More than 80% of the pages referred to Group 2 (centered in the page “SCADA” and “Industrial Control system) were used for creating the Archetype of “the Perfectionist”. It is important to underline that the page SCADA - acronym of Supervisory control and data acquisition- being a specific control system architecture, was discarded from the assignation to a specific archetypes. Our focus for designing “the Perfectionist” was the generic page “Industrial Control System”. 
+
+-	Group 3, Group 4 and Group 9 are composed of pages we linked to the same Archetype: “The Geek”. In respect of Group 1, we made a different choice: we referred the most part of these three groups’ pages to just one Archetype, “nuanced” on the basis of the nearest technologies in the graph: “Cloud Computing”, “Automation” and “Internet of Things”.  As the Geek was created starting from three different groups, it has three different declinations as shown in Figure \@ref(fig:archecoolout). The geek, as will be explained in section 4, has to be seen as the expert of a specific family of similar technologies strongly related to industry 4.0. 
+
+-	Group 6 is composed of 26 pages, that were referred to almost all the Archetypes. These pages are general purpose, and referring to Figure \@ref(fig:archeout), this is also evident from their central position in the graph (there are related to every community). The predominance of pages referred to one Archetype (the Geek) didn’t allow us to consider this Group, centered in the page “Computer Integrated Manufacturing”, as another nuance of “the Geek”. Moreover, Group 6 is strictly related to Group 9, as the proximity of the clusters in the graph can easily show. 
+
+-	In group 7, centered in “Root Cause Analysis” page, we found 100% of pages referable to the Archetype we called “The Investigator”.
+
+-	As in the previous group, also in Group 8 (centered in “Value Chain” page) the 100% of pages were referable to one Archetype: “the Strategist”
+
+Figure \@ref(fig:archecoolout) shows the same graph of Figure \@ref(fig:archeout), associating to each group an Archetype. In this new version of the graph it is possible to identify the centers of each cluster, the position of the clusters (and the related archetype) in respect of the others, the interrelation among the clusters/archetypes. 
+
+```{r archecoolout, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='The different professional archetypes associated with each technological cluster.', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/archecoolout.png")
+
+```
+
+## The Archetypes
+
+The term "archetype" has its origins in the Greek word “archein”, which means "original or old" and “typos” "pattern, model or type". It is thus etymologically referred to the "original pattern" from which all other similar persons are derived, modeled or emulated. In this work we consider this etymological meaning, discarding any philosophical or psychoanalytic references which would mislead our research.
+As regards the personality many theories have been proposed over the years [11,12], but a common vision at the academic level has not been reached yet. Both Jung’s theory of personality types [13] and the Myers-Briggs indicator (MBTI) in the field of work psychology [14] come to several psychological types defined through descriptions and traits. Some of them (e.g. the 16 psychological types of MBTI) are a standard for Human Resource managers and are largely used for resource classification and selection.
+It is important to underline that in the present work i) technologies and skills have been extracted in a scientific and repeatable manner, ii) they have been clustered following a well-known and accepted algorithm. Conversely, archetypes’ names have been chosen with the intent to better communicate the research outcomes.
+
+
+The archetype description sections are built following a common structure:
+
+1.	_The name of the archetype._ The choice of the name was made by the authors in order to have an evocative impact on the reader and reaching a communication goal. In some cases, the names are deliberatively imaginative, renouncing to respect a rigid scientific approach with the aim of charming and interesting the reader
+
+2.	_The list of the Wikipedia pages selected._ The pages represent the elements considered by the authors for defining the archetypes. The selection of the pages was done referring to the clusters identified with the data-mining as shown in section 3. All the Archetypes are referred at least to one group, with the exception of group 1, from which two different Archetypes were created, and groups 3,4 and 9, which all together participated in the creation of another Archetype (even if with three different declinations). In many cases the pages reported in the box are related to technologies, methodologies, tools: evidently the authors of Wikipedia pages related to Industry 4.0 are more interested in “hard” rather than “soft” topics, such as competencies or cultural aspects of the new paradigm.
+
+3.	_Industry 4.0 Emerging needs._ The authors presented shortly the needs that the companies face when introducing Industry 4.0 applications. The needs are mainly based upon the interpretation given by the acatech study [15], which represent one of the most effective key for understanding the new paradigm [16].
+
+4. _The archetype._ We have already explained what we meant with the word “archetype” and the rationale behind the choice of the specific names. The explanation of the archetype given in this section is based on the interpretation of the Wikipedia pages selected and on the semantic fields they refer to. We tried to describe the inner nature of the individuals referable to each specific archetype, defining the peculiar traits of their mindset and their most marked features. The aim was also to describe them so to make them recognizable in our daily experience.
+
+5.	_Keywords._ The keywords are taken from the column “categories” of the clustered list of selected Wikipedia pages as shown in section 3.2. Strikethrough in the body of the text indicates where the authors decided of deleting misleading words: we kept them for making clear and transparent the procedure behind this cleaning activity. The reasons for deleting some words were: a) they were too generic and did not characterize the archetype, b) they were too specific and they made the archetype losing its capacity of encompassing more aspects, c) even if they survived to the “cleaning” after the data-mining, they were referred to another semantic field (disambiguation).
+ 
+#### The Architect {-}
+
+_The Wikipedia pages selected_: Big data; Data blending; Data quality; Cognitive computing; Data fusion; Data science; Unstructured data; Data lake; Data set; Data; Data lineage; Data transmission; Radio-frequency identification; Data philanthropy; Datafication
+
+_Industry 4.0 Emerging needs_
+
+When taking a decision in Industry 4.0 paradigm it is more important than ever that the individuals can access, collect and process data and information. Data can be gathered from  machinery, equipment and tools thanks to sensors, actuators and information processing systems, linked to a communication layer. Big data is a buzzword usually linked to Industry 4.0 and used to describe mass data that cannot be analyzed adopting common procedures, but requires advanced applications and technologies. Thus, in the new paradigm, it is important not just collecting the data, but also collecting and processing them in an innovative way and shaping them in a form that make them usable for the company decision-makers and other employees.
+
+_The archetype: The Architect_
+
+The Architect is the individual that is at ease in managing, transforming and processing data. He/she has a clear idea of the importance of data and understand which data are useful, in which context and for who. The Architect likes formalized information and the possibility of shaping them, has an innate capacity of breaking the problems and find the best solutions: this capacity is fundamental when having to deal with different sources of information and numerous data and inputs. He/she is precise and reliable, has a great aptitude for visualization and for problem solving.
+
+_Key words_: big data; data management; distributed computing problems; technology forecasting; transaction processing, artificial intelligence; cognitive science
+business intelligence; data; information technology management, computer data, automatic identification and data capture; privacy; radio-frequency identification; ubiquitous computing; wireless, big data, types of analytics, online analytical processing
+
+#### The Prophet {-}
+
+_The Wikipedia pages selected_: Analytics; User behavior analytics; Business analytics; Data mining; Data analysis; Continuous analytics; Machine learning; Data visualization; Cultural analytics; Predictive analytics; Natural language processing; Customer analytics; Business intelligence; Analytic applications; News analytics; Statistics; Behavioral analytics; Predictive engineering analytics
+
+_Industry 4.0 Emerging needs_
+
+The implementation process of the Industry 4.0 paradigm involves different stages. At one advanced stage of this process the company should be able, starting from the data collected, to simulate future scenarios and select the most likely one [15]. To do so the company needs to have analyzed and assessed a number of data and projected the “digital shadow” of its assets in the future. Forecasting and the recommendations based on it became the key elements on which building the development of the company. The analysis of the different scenarios is the basis for building the business success. For reaching these targets it is fundamental to have constructed proper “digital shadows” of the assets and have understood the interactions among them.
+
+_The archetype: The Prophet_
+
+The Prophet is an individual with strong analytical thinking skills, able to examine in details specific situations in a critical way. He/she has a future-oriented mindset: is at ease in thinking about next steps, possible scenarios and with a medium-to-long-term vision.
+Starting from the analysis of data and adopting also statistical methods, the Prophet investigate the problems (creative thinking) and identify possible solutions (complex problem solving) in order to reach the best case scenario he designed.
+ 
+_Key words_: analytics; business intelligence; business terms; financial data analysis; formal sciences; data mining; formal sciences; cybernetics; learning; machine learning; actuarial science; big data; business intelligence; financial crime prevention; prediction; statistical analysis; types of analytics; financial technology; information management; data; formal sciences; information; mathematical and quantitative methods (economics); research methods; statistics; artificial intelligence; computer security; human behavior; machine learning; computational fields of study; data analysis; particle physics; scientific method; data; information technology governance; statistical charts and diagrams; visualization (graphic); artificial intelligence; computational fields of study; computational linguistics; natural language processing; speech recognition; business intelligence; business software stubs; applied data mining; business analytics; market research; marketing performance measurement
+
+#### The Perfectionist {-}
+
+_The Wikipedia pages selected_: Industrial control system; Instrumentation; Control valve; Overall equipment effectiveness; Enterprise resource planning; Distributed control system; Control system; Lean manufacturing; Total productive maintenance; Programmable logic controller; Risk; Control System Security; Control loop
+
+_Industry 4.0 Emerging needs_
+
+Since the First Industrial Revolution, quality improvement has been one of the critical aspects for developing any business. In the current age of high competition and mass production, this has become, along with price strategies, the main element for expanding the market. Thus, quality control has become a central issue to consider before establishing any industrial undertaking and the best way for ensuring the best allocation of resources and highest level of production. In Industry 4.0 paradigm quality has become even more important, mainly because the increased flexibility of machinery, processes and procedures allow to intervene continuously for analyzing the parameters, identify machine faults or quality issues with a high degree of confidence and in advance. Flexibility and agility (which denotes the ability to implement changes in real-time, including changes to the company’s business model) are two key factors that allow a constant improvement.
+ 
+_The archetype: the Perfectionist_
+
+The Perfectionist is the individual who is never satisfied of the actual conditions: it could be his/her current personal situation, the preparation for an exam, the functioning of a process or a machinery. He/she always thinks that things can be done better, in a shorter time, with less resources, involving different teams, collaborating more (or less). The Perfectionist likes tests: he/she tries, monitors, checks the results, thinks about it (possibly analyzing data and empirical results) and then suggests - or decides - how to make things work right.
+ 
+_Key words_: control engineering; industrial automation; industry; manufacturing; telemetry; lean manufacturing; automation; control theory; systems engineering; systems theory; industrial computing; programmable logic controllers; measuring instruments; sensors; business terms; computer-aided engineering; erp software; enterprise resource planning terminology; information technology management; management; production and manufacturing; supply chain management terms; commercial item transport and distribution; inventory; management; process management; production and manufacturing; actuarial science; environmental social science concepts; financial risk; risk; applications of distributed computing; control engineering; industrial automation; control devices; valves; applications of distributed computing; control engineering; industrial automation; business terms; commercial item transport and distribution; computer security; computer security procedures
+
+#### The Geek {-}
+ 
+_The Wikipedia pages selected_: Cloud computing; Smart grid; Productivity; Cyber manufacturing; Artificial intelligence; Embedded system; Cyber-physical system; Cybernetics; system; Manufacturing; Computer network; Cloud manufacturing; Computer security; Internet of things; Information technology; Distributed computing; Service-oriented architecture; Automation; Adaptable robotics; Automation Technician; Developmental robotics; Industrial Engineering 
+
+_Industry 4.0 Emerging needs_
+
+Beside the aspects related to a new organizational structure and a different work culture, Industry 4.0 is strongly determined by the new technologies, both hardware and software. It is impossible to implement Industry 4.0 applications without considering technical aspects. The enabling technologies (Clouds, Augmented reality, Simulation, IoT, etc.) must be known in the company in order to make the new paradigm real. Technologies are so specific and so many, that it is important to have an extensive knowledge of them (even if not deep) and be able to integrate them for finding the most effective custom-made solution to solve specific problems.
+ 
+_The archetype: the Geek_
+
+The Geek is the archetype of an individual extremely passionate in new technologies and its applications. He/she is interested in everything is new and innovative, in seeing beyond and within things: how technological applications work, why and at what extend their capacities can be brought. Integration is always an important aspect: the Geek appreciate the ideas of combining, breaking and keeping just some aspects for recombining and then creating something new. He/she has a kinesthetic learning (or tactile learning) and has a kinesthetic approach to the work: he/she needs make tests (rather than thinking or planning), piloting solutions (rather than have someone else doing the job) and working on the field. The geek is always up-to-date on the newest technology and is always willing to be the first in creating something new. As the number of pages referable to the Geek were numerous, the authors decided to create three different nuances represented by three different logos, one for each field of expertise of the Geeks. 
+
+_Key words_: ambient intelligence; emerging technologies; internet of things; computers; information-theoretically secure algorithms; information technology; media technology decentralization; distributed computing; architectural pattern (computer science); enterprise application integration; service-oriented (business computing); software design patterns; web services; cloud computing; cloud infrastructure; big data; industrial revolution; industrial automation; industrial computing; technology forecasting; computer systems; industrial computing; industry; internet companies; manufacturing; computer systems; physical systems industry; manufacturing ambient intelligence; emerging technologies; smart grid; artificial intelligence; computational fields of study; computational neuroscience; cybernetics; formal sciences; technology in society; unsolved problems in computer science; cybernetics computer networking; computer networks; telecommunications engineering; computer network security; crime prevention; cryptography; cybercrime; cyberwarfare; e-commerce; information governance; national security; secure communication; security technology; weapons countermeasures; economic growth; industry; production and manufacturing; production economics; electrical engineering; embedded systems; cloud computing; automation; engineering disciplines; adaptable robotics; robot kits; robotics stubs; industrial automation; technicians; machine learning; robot control; engineering disciplines; industrial engineering; operations research; production and manufacturing
+
+#### The Investigator {-}
+
+_The Wikipedia pages selected_: Root cause analysis; A3 problem solving; Failure mode and effects analysis; Quality control; Business process mapping; Forensic engineering; Business process; DMAIC; Incident management; Value stream mapping; Design of experiments; Pareto chart; 5S (methodology)
+
+_Industry 4.0 Emerging needs_
+
+Industry 4.0 paradigm enables to a constant check on procedures, processes and systems, as they are all integrated and all the information are conveyed to a same “repository” (the communication layer). All these aspects can be then monitored in a totally new way: it is possible, for example, to have data in real time and the decisions can be taken according to information which can be transferred almost at the same time they are created by one or more devices or tools. Thanks to the high amount of information than can be analyzed, also mistakes can be treated in a different way: in Industry 4.0 it becomes easier to focus and investigate on the causes of a failure – and solve it -, rather than on finding out who is to blame.
+ 
+_The archetype: the Investigator_
+
+The Investigator is the individual who is naturally curious: as a proper scout he/she wants to understand what is working and what is not. He/she is never satisfied with the explanation he/she receives and is always searching for a mistake, a bug or just another way for reaching at the same conclusion. The Investigator is eager for analyzing what is already known and what is new, he/she likes going into details and understanding how things works and how they could work in a different way. When identified the problem the Investigator is not necessarily interested in finding the fix, he/she rather prefer to have some other problems to break and leaving someone else the possibility of coming up with a solution (that he/she would love to analyze again).
+ 
+_Key word_: business terms; problem solving; process management; production and manufacturing; quality; quality management; six sigma; design for x; management; quality control; statistical process control; business process; enterprise modelling; process management; lean manufacturing; commercial item transport and distribution; inventory; japanese business terms; lean manufacturing; manufacturing; methodology; process management; quality control tools;
+business process; data management; design of experiments; experiments; industrial engineering; quantitative research; statistical theory; systems engineering; reliability analysis; reliability engineering; systems analysis; engineering disciplines; engineering failures; forensic disciplines; materials science; business software; disaster preparedness; enterprise modelling; firefighting in the united states; itil; incident management; categorical data; statistical charts and diagrams
+
+#### The Strategist {-}
+
+_The Wikipedia pages selected_: Value chain; Core competency; SWOT analysis; Business model; Delta Model; Strategic management; Balanced scorecard; Game theory; Strategic planning; Control (management); Porter's five forces analysis; Strategic thinking
+
+_Industry 4.0 Emerging needs_
+
+If Industry 4.0 allows the companies to foresee different scenario based on data and information, it doesn’t not guarantee to the entrepreneurs to select the right one or take the correct decision. Data should be read correctly, but also the strategy for reaching the preferred scenario should be decided in the proper way. In particular, one of the most dangerous risk is not being able to redefine properly the company business model, which should be constantly monitored, assessed and, according to the most updated information, modified.
+
+_The archetype: the Strategist_
+
+The Strategist is the individual who has a mind wide open: he/she thinks to the outcomes of each activity and reflect on the different ways for reaching the target. Strategic thinking, strategic management and planning are its most marked qualities: he likes thinking to all the possible outputs in a comparative way. He/she is also a pragmatist, as starting from the analysis of the current situation he/she doesn’t like to create different scenarios (as the Prophet does) but rather reaching the result established in the more effective way. Even if the Strategist is not an entrepreneur, he has some of its qualities and this is why this archetype can be referred to the “entrepreneurial mindset”. The Strategist is visionary, risk-taker, creative, with a strong willingness to challenge the status quo and he has diplomatic and leadership skills.
+ 
+_Key words_: distribution (business); michael porter; process management; supply chain management; value proposition; business models; management; strategic management; types of marketing; business planning; business software; business terms; management; control (social and political); control theory; artificial intelligence; formal sciences; game theory; john von neumann; mathematical economics; business terms; strategic management; business intelligence; strategy; systems thinking
+
+## Conclusion
+
+The present section can be seen as a first step of a long journey. As stated in introduction our Archetypes are intended in the etymological sense, as original models, and we assume that they are emerging in the digital economy. Thanks to the data-mining exercise we were able to place the clusters of Wikipedia pages in a graph, analyzing them according to the contents, the position in the graph and the relation among them. 
+This recurrence of same pages in almost all the clusters let us concluding that some topics are common to all the Archetypes, independently to the cluster they were originated. For example, being able to read and exploit data is a transversal issue and all the Archetypes (and all the workers referable to them) should be used to work with them. Another constant in all the cluster is the reference to technologies: they are central in the new paradigm, it is unavoidable for a digital worker knowing them. Even if the “Fourth Industrial Revolution” doesn’t end with a bunch of IT tools, they are at the center of the new paradigm and workers must be used to play with them [17]. 
+
+To conclude and anticipate the further developments, in figure \@ref(fig:archeporter) we give an interpretation of the position of the archetypes in  the graph. We can cluster the Archetypes according to the general company area they could be referred. The areas are: 
+
+1.	Business. The Strategist and the Investigator are the main actors. In this area the decision regarding the future and the strategy of the company are taken: it is important to have people who have always the big picture clear in their mind (the Strategists) and are good in analyzing the situation for what it is (the Investigator). 
+2.	Data. The Architect and the Prophet suits well here. This area is referred to the acquisition, collection and management of data. This area is perfectly suitable for someone who is comfortable in analyzing and structuring data (the Architect) and for who has a future-oriented mindset, always based on the actual inputs  coming from the company functions (the Prophet). 
+3.	Process. The Geek (automation) is the only major player in this area. The process area is where the core activities of a company are performed.
+
+The connection between the three areas are ensured by three Archetypes:
+
+-	The Perfectionist, is the bridge between the process area and the business area: in both of them is useful to have someone who is comfortable in solving problems and making things work always better. 
+-	The Geek (cloud) is the bridge among the Data area, where he/she contribute with the knowledge of technologies, and the Business area, where Archetypes will benefits from these technologies for new business development.
+-	Finally, the Geek (IoT) is the connection among the Process area and the Data area, representing the bridge between the core activities and the usage of information coming from them.
+
+A possible next step of our study will be identifying at which function of the Porter value chain model each Archetype suits better. Then, having placed the Archetypes in their most suitable function, it will be then possible to allocate for each Archetype the most appropriate 4.0 professional profiles, so to follow their attitudes and exploit better their skills. 
+At this stage, as the new paradigm is still emerging, we cannot go further in our research, but the road-map is now clear and the first step is taken. 
+
+```{r archeporter, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='The Archetypes grouped by business areas. The image also shows the strategic roles of Perfectionist, Cloud Geek and IOT Geek, who represent the bridges between different functions.', message=FALSE, warning=FALSE, out.width='100%'}
+
+knitr::include_graphics("_bookdown_files/figures/archeporter.png")
+
+```
 
 
 
-# Human Resources: Defining industry 4.0 professional archetypes
 
-Text Mining has been used in the last years to manage human resources (HR) strategically, mainly with applications aiming at analyzing staff’s opinions, monitoring the level of employee satisfaction, as well as reading and storing CVs for the selection of new personnel. In the context of human resources management, the text mining techniques are often utilized to monitor the state of health of a company by means of the systematic analysis of informal documents. These documents are both internal (e.g. curricula, job description) and external  (e.g. Linkedin, social networks). 
 
-Nowadays in fact HR experts started to use text mining technique also with intelligence purposes. For this reason companies has to collect information about their employees, the HR market and their competitors, and to analyze enormous amount of documents. The aim of Competitive Intelligence in HR [@bolasco2005understanding] is to select relevant information by automatic reading of this documents Once the material has been collected, it is classified into categories to develop a database, and analyzing the database to get answers to specific and crucial information for HR company strategies. 
 
-The typical queries to collect the documents, concern the skills or the technological sectors of the competitors or the names of the employees of a company with a certain profile of competences. This is not a trivial task, and before the introduction of Text Minig, there was a division that was entirely dedicated to the continuous monitoring of information and answering the queries coming from other sectors of the company. In these cases the return on investment by the use of automatic document analysis technologies was self evident when compared to results previously achieved by manual operators.  In some cases, if a scheme of categories is not defined a priori, clusterization algotyrhm (\@ref(sotatoolsmodelnetanal)) are used to classify the set of documents (considered) relevant with regard to a certain topic, in clusters of documents with similar contents. The analysis of the key concepts present in the single clusters gives an overall vision of the subjects dealt with in the single texts [@gupta2009survey].
 
-Futhermore it has to be considered that as intellectual capital has become one of the most strategic assets of successful organizations, the ability to manage the expertise, skills, and experience of employees has become a key factor in overcoming the increasing competitiveness of the global market [@colucci2003formal]. In today’s competitive business environment, companies need to accurately grasp the competency of their HR in order to be successful [@fazel2009semantic].
 
-As evidence of the increasing interest of TM techniques fot HR, an increasing number of publications are providing new research paths [@strohmeier2013domain, @al2011investigating, @zhao2008empirical, @ccelik2012ontology, @veit2001matchmaking, @han2016preliminary]. 
-One study introduced an approach to improve the matching of profiles by searching job descriptions and applicant profiles using filters that represent the relevant skills and competencies [@paoletti2015extending]. Nevertheless, several studies have found that résumés and work experience lists, which are composed of brief words or short sentences, are limited and have tried to improve HR solutions by adopting a semantic system approach, such as ontologies and text-mining methods.  An example is the On-To-Knowledge project. The OnTo-Knowledge project focuses on the application-driven development of ontologies during the introduction of ontology-based knowledge management systems [@lau2002introducing]. One research study has suggested that a possible approach could be addressing an intelligent decision support system composed of case-based reasoning and ontology [@zhukova2014intelligent].  Another research stressed the importance of HR recruiting, selecting individuals for teams based on different skills and qualifications, determining who to train and what training programs to offer, and recommending the right expert to individuals for acquiring information or learning from within the organization [@fazel2009semantic]. 
-Another example of TM techniques often utilized to monitor the state of health of a company by means of the systematic analysis of informal documents is the case of ConocoPhilips, a fast-moving American company, which developed an internal system - the VSM (Virtual Signs Monitor) - able to find the intangible but crucial aspects of company life, the degree of experience and knowledge and the “productive” abilities. The approach chosen by Conoco was that of measuring the company mood by means of state of the art indicators [@ghoshal1997individualized], which contrasts a new model based on completely different pillars, like stretch, discipline, trust and reciprocal support with the traditional managerial model founded on concepts of constraint, contract, control and compliance. This managerial model, according to Ghoshal’s formulation encourages the cooperation and collaboration between the elements of an organisation, improving its results. Its collaboration with Temis enabled Conoco to refine its system for the monitoring of textual sources like e-mails, internal surveys of employees’ opinions, declarations of the management, internal and external chat lines, all representing important means for sounding the evolution of company culture. 
 
-Finally, Web-Based Human Resources Systems had a strong impact on the HR processes. The most widely well-known web-based HR systems are Linkedin and OilandGas [@walker2001web]. Their search systems are designed so that a user can input a query and look at the search results of résumés through keyword matching.  With the special services of Linked-In (accessible to premium users only), users can also search for specialists and candidates from various industries. The OilandGas service is specialized for searching for experts in the oil and gas industry, using basically the same concept of discrete keywords matching. However, once this search process is completed, the recruiter has to download all the search results and résumés and then read through all the documents to pick the most suitable candidates.
 
-Furthermore, in HR nowadays the theme of Skills Assessment is of great interest. The term "assessment" indicates the action of assessing the potential, the skills, the attitudes and the adequacy of a professional profile.
 
-With the advent of the Fourth industrial revolution, it is increasingly important to carry out a continuous and precise assessment of skills. At the same time, it is essential to verify that the resources within the company are enough prepared to manage the phenomenon, or it is necessary to recruit new staff to face the challenge 4.0. Undoubtedly, the future demand for professional profiles will be conditioned by digital innovation and the ever more radical integration of new technologies. For these reasons, it is particularly sensitive to change.
 
-The literature is very focused on identifying the professional profiles that will survive during the epochal change and which instead will be eliminated. Osborne and Frey's research is emblematic: they tried to define which would be the jobs that will resist and which not, according to the substitutability of individual skills [@frey2017future]. The results are quite pessimist: they distinguished between High, Medium and Low risk of computerisation, and, according to their estimates, around the 47% of jobs is in the high risk category.
 
-Moreover, there are opposing views on the social effects that the revolution will cause. Caruso outlines that the technological innovation could not improve worker’ conditions, performances and relationships because they cannot be determined by any technical innovation in itself, being it always socially shaped [@caruso2017digital].
-On the other hand, the new technologies could represent an opportunity for the labour market and they could have positive impact on employment. The reason why it would probably happens is that 3d printing, Internet of Things, Augmented reality and Big data analytics demand a large quantity of new skills to be properly managed [@freddi2017digitalisation].
-Furthermore, MacCrory et al., performed a data analysis on occupational skill requirements of 674 occupations to study the effects of recent changes in automation. They identified the three main consequences of technological innovation, which could be summarized in: a significant reduction in skills that compete with automation; a significant increase in skills which complement machines;  : “a  significant reduction in skills that compete with machines, an increase in skills that complement machines; finally, an increase in skills where machines are not enough advanced [@maccrory2014racing].
+
+
+
 

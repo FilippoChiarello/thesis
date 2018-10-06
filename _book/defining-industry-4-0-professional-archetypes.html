@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mining Technical Knowledge from Texts</title>
+  <meta name="description" content="This document contains the PhD thesis of Filippo Chiarello.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Mining Technical Knowledge from Texts" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mining Technical Knowledge from Texts" />
+  
+  <meta name="twitter:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+<meta name="author" content="Filippo Chiarello">
+
+
+<meta name="date" content="2018-10-06">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="impact-of-research-from-the-perspective-of-users-.html">
+<link rel="next" href="conclusions-and-future-developments.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Text Mining Techniques for Knowledge Extraction from Technical Documents</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="problem.html"><a href="problem.html"><i class="fa fa-check"></i><b>1</b> Problem</a><ul>
+<li class="chapter" data-level="1.1" data-path="problem.html"><a href="problem.html#big-data-many-information-less-knowledge"><i class="fa fa-check"></i><b>1.1</b> Big Data, Many Information, Less Knowledge?</a></li>
+<li class="chapter" data-level="1.2" data-path="problem.html"><a href="problem.html#a-new-challenge-for-management-engineers"><i class="fa fa-check"></i><b>1.2</b> A New Challenge for Management Engineers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>2</b> Solutions</a><ul>
+<li class="chapter" data-level="2.1" data-path="solutions.html"><a href="solutions.html#a-process-for-knowledge-creation"><i class="fa fa-check"></i><b>2.1</b> A Process for Knowledge Creation</a></li>
+<li class="chapter" data-level="2.2" data-path="solutions.html"><a href="solutions.html#text-mining"><i class="fa fa-check"></i><b>2.2</b> Text Mining</a></li>
+<li class="chapter" data-level="2.3" data-path="solutions.html"><a href="solutions.html#human-machines"><i class="fa fa-check"></i><b>2.3</b> Human &amp; Machines</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="scope-and-stakeholders.html"><a href="scope-and-stakeholders.html"><i class="fa fa-check"></i><b>3</b> Scope and Stakeholders</a></li>
+<li class="chapter" data-level="4" data-path="structure-and-rationale.html"><a href="structure-and-rationale.html"><i class="fa fa-check"></i><b>4</b> Structure and rationale</a></li>
+<li class="part"><span><b>II State of the Art</b></span></li>
+<li class="chapter" data-level="5" data-path="sotatools.html"><a href="sotatools.html"><i class="fa fa-check"></i><b>5</b> Phases, Tasks, and Techniques</a><ul>
+<li class="chapter" data-level="5.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsprogram"><i class="fa fa-check"></i><b>5.1</b> Program</a></li>
+<li class="chapter" data-level="5.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimport"><i class="fa fa-check"></i><b>5.2</b> Import</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportretrieval"><i class="fa fa-check"></i><b>5.2.1</b> Document Retrieval</a></li>
+<li class="chapter" data-level="5.2.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportformat"><i class="fa fa-check"></i><b>5.2.2</b> Documents Format</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstidy"><i class="fa fa-check"></i><b>5.3</b> Tidy</a></li>
+<li class="chapter" data-level="5.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransform"><i class="fa fa-check"></i><b>5.4</b> Transform</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformsentencesplit"><i class="fa fa-check"></i><b>5.4.1</b> Sentence Splitting</a></li>
+<li class="chapter" data-level="5.4.2" data-path="sotatools.html"><a href="sotatools.html#tokenization"><i class="fa fa-check"></i><b>5.4.2</b> Tokenization</a></li>
+<li class="chapter" data-level="5.4.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformstemming"><i class="fa fa-check"></i><b>5.4.3</b> Stemming</a></li>
+<li class="chapter" data-level="5.4.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformlemmatisation"><i class="fa fa-check"></i><b>5.4.4</b> Lemmatisation</a></li>
+<li class="chapter" data-level="5.4.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformwi"><i class="fa fa-check"></i><b>5.4.5</b> Words importance metrics</a></li>
+<li class="chapter" data-level="5.4.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformpos"><i class="fa fa-check"></i><b>5.4.6</b> Part-of-Speech Tagging</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodel"><i class="fa fa-check"></i><b>5.5</b> Model</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformngrams"><i class="fa fa-check"></i><b>5.5.1</b> N-Grams</a></li>
+<li class="chapter" data-level="5.5.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeldocclass"><i class="fa fa-check"></i><b>5.5.2</b> Document Classification</a></li>
+<li class="chapter" data-level="5.5.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelsentanal"><i class="fa fa-check"></i><b>5.5.3</b> Sentiment Analsysis</a></li>
+<li class="chapter" data-level="5.5.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelnetanal"><i class="fa fa-check"></i><b>5.5.4</b> Text Clustering</a></li>
+<li class="chapter" data-level="5.5.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelner"><i class="fa fa-check"></i><b>5.5.5</b> Named Entity Recognition</a></li>
+<li class="chapter" data-level="5.5.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeltopicmodel"><i class="fa fa-check"></i><b>5.5.6</b> Topic Modelling</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsvisualize"><i class="fa fa-check"></i><b>5.6</b> Visualize</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="sotatools.html"><a href="sotatools.html#the-grammar-of-graphics"><i class="fa fa-check"></i><b>5.6.1</b> The Grammar of Graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="sotatools.html"><a href="sotatools.html#sotatoolscomunicate"><i class="fa fa-check"></i><b>5.7</b> Comunicate</a></li>
+<li class="chapter" data-level="5.8" data-path="sotatools.html"><a href="sotatools.html#sotadocumentsunderstand"><i class="fa fa-check"></i><b>5.8</b> Understand</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="sotatools.html"><a href="sotatools.html#domain-expertise"><i class="fa fa-check"></i><b>5.8.1</b> Domain Expertise</a></li>
+<li class="chapter" data-level="5.8.2" data-path="sotatools.html"><a href="sotatools.html#sotadocumentsunderstandbyas"><i class="fa fa-check"></i><b>5.8.2</b> The problem of byases</a></li>
+<li class="chapter" data-level="5.8.3" data-path="sotatools.html"><a href="sotatools.html#sotadocumentsunderstandlexicons"><i class="fa fa-check"></i><b>5.8.3</b> The Importance of Lexicons for Technical Documents Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sotadocuments.html"><a href="sotadocuments.html"><i class="fa fa-check"></i><b>6</b> Documents</a><ul>
+<li class="chapter" data-level="6.1" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentspatents"><i class="fa fa-check"></i><b>6.1</b> Patents</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="sotadocuments.html"><a href="sotadocuments.html#metadata-approaches"><i class="fa fa-check"></i><b>6.1.1</b> Metadata Approaches</a></li>
+<li class="chapter" data-level="6.1.2" data-path="sotadocuments.html"><a href="sotadocuments.html#keywords-approaches"><i class="fa fa-check"></i><b>6.1.2</b> Keywords Approaches</a></li>
+<li class="chapter" data-level="6.1.3" data-path="sotadocuments.html"><a href="sotadocuments.html#natural-language-processing-approaches"><i class="fa fa-check"></i><b>6.1.3</b> Natural Language Processing approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentspapers"><i class="fa fa-check"></i><b>6.2</b> Papers</a></li>
+<li class="chapter" data-level="6.3" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentswiki"><i class="fa fa-check"></i><b>6.3</b> Wikipedia</a></li>
+<li class="chapter" data-level="6.4" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentstwitter"><i class="fa fa-check"></i><b>6.4</b> Social Media</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="sotadocuments.html"><a href="sotadocuments.html#economics"><i class="fa fa-check"></i><b>6.4.1</b> Economics</a></li>
+<li class="chapter" data-level="6.4.2" data-path="sotadocuments.html"><a href="sotadocuments.html#marketing"><i class="fa fa-check"></i><b>6.4.2</b> Marketing</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Methods and Results</b></span></li>
+<li class="chapter" data-level="7" data-path="patents.html"><a href="patents.html"><i class="fa fa-check"></i><b>7</b> Patents</a><ul>
+<li class="chapter" data-level="7.1" data-path="patents.html"><a href="patents.html#usersresults"><i class="fa fa-check"></i><b>7.1</b> Users</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="patents.html"><a href="patents.html#method"><i class="fa fa-check"></i><b>7.1.1</b> Method</a></li>
+<li class="chapter" data-level="7.1.2" data-path="patents.html"><a href="patents.html#results"><i class="fa fa-check"></i><b>7.1.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="patents.html"><a href="patents.html#advdrwresults"><i class="fa fa-check"></i><b>7.2</b> Advantages and Drawbacks</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="patents.html"><a href="patents.html#methodology"><i class="fa fa-check"></i><b>7.2.1</b> Methodology</a></li>
+<li class="chapter" data-level="7.2.2" data-path="patents.html"><a href="patents.html#results-1"><i class="fa fa-check"></i><b>7.2.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="patents.html"><a href="patents.html#trademakrs"><i class="fa fa-check"></i><b>7.3</b> Trademakrs</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="patents.html"><a href="patents.html#methodology-1"><i class="fa fa-check"></i><b>7.3.1</b> Methodology</a></li>
+<li class="chapter" data-level="7.3.2" data-path="patents.html"><a href="patents.html#results-2"><i class="fa fa-check"></i><b>7.3.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="papers.html"><a href="papers.html"><i class="fa fa-check"></i><b>8</b> Papers</a><ul>
+<li class="chapter" data-level="8.1" data-path="papers.html"><a href="papers.html#sustainable-manufacturing-an-analysis-of-the-6r-framework"><i class="fa fa-check"></i><b>8.1</b> Sustainable Manufacturing: an Analysis of the 6R Framework</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="papers.html"><a href="papers.html#methodology-2"><i class="fa fa-check"></i><b>8.1.1</b> Methodology</a></li>
+<li class="chapter" data-level="8.1.2" data-path="papers.html"><a href="papers.html#results-3"><i class="fa fa-check"></i><b>8.1.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="papers.html"><a href="papers.html#sustainable-manufacturing-an-extended-mapping"><i class="fa fa-check"></i><b>8.2</b> Sustainable Manufacturing: An Extended Mapping</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="papers.html"><a href="papers.html#methodology-3"><i class="fa fa-check"></i><b>8.2.1</b> Methodology</a></li>
+<li class="chapter" data-level="8.2.2" data-path="papers.html"><a href="papers.html#results-4"><i class="fa fa-check"></i><b>8.2.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="papers.html"><a href="papers.html#blockchain"><i class="fa fa-check"></i><b>8.3</b> Blockchain</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="papers.html"><a href="papers.html#methodology-4"><i class="fa fa-check"></i><b>8.3.1</b> Methodology</a></li>
+<li class="chapter" data-level="8.3.2" data-path="papers.html"><a href="papers.html#results-5"><i class="fa fa-check"></i><b>8.3.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="papers.html"><a href="papers.html#precision-agriculture"><i class="fa fa-check"></i><b>8.4</b> Precision Agriculture</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="papers.html"><a href="papers.html#methodology-5"><i class="fa fa-check"></i><b>8.4.1</b> Methodology</a></li>
+<li class="chapter" data-level="8.4.2" data-path="papers.html"><a href="papers.html#results-6"><i class="fa fa-check"></i><b>8.4.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wikipedia.html"><a href="wikipedia.html"><i class="fa fa-check"></i><b>9</b> Wikipedia</a><ul>
+<li class="chapter" data-level="9.1" data-path="wikipedia.html"><a href="wikipedia.html#technimetrochap"><i class="fa fa-check"></i><b>9.1</b> Industry 4.0: Extracting and Mapping Technologies</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="wikipedia.html"><a href="wikipedia.html#methodology-6"><i class="fa fa-check"></i><b>9.1.1</b> Methodology</a></li>
+<li class="chapter" data-level="9.1.2" data-path="wikipedia.html"><a href="wikipedia.html#results-7"><i class="fa fa-check"></i><b>9.1.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="wikipedia.html"><a href="wikipedia.html#industry-4.0-a-comparison-with-industrie-4.0"><i class="fa fa-check"></i><b>9.2</b> Industry 4.0: a Comparison with Industrie 4.0</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="wikipedia.html"><a href="wikipedia.html#methodology-7"><i class="fa fa-check"></i><b>9.2.1</b> Methodology</a></li>
+<li class="chapter" data-level="9.2.2" data-path="wikipedia.html"><a href="wikipedia.html#results-8"><i class="fa fa-check"></i><b>9.2.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="social-media.html"><a href="social-media.html"><i class="fa fa-check"></i><b>10</b> Social Media</a><ul>
+<li class="chapter" data-level="10.1" data-path="social-media.html"><a href="social-media.html#technical-sentiment-analysis"><i class="fa fa-check"></i><b>10.1</b> Technical Sentiment Analysis</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="social-media.html"><a href="social-media.html#methodology-8"><i class="fa fa-check"></i><b>10.1.1</b> Methodology</a></li>
+<li class="chapter" data-level="10.1.2" data-path="social-media.html"><a href="social-media.html#results-9"><i class="fa fa-check"></i><b>10.1.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Applications of the Results</b></span></li>
+<li class="chapter" data-level="11" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html"><i class="fa fa-check"></i><b>11</b> Exploiting patent information in novel ways</a><ul>
+<li class="chapter" data-level="11.1" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html#towards-formal-definitions-of-advantages-and-drawbacks"><i class="fa fa-check"></i><b>11.1</b> Towards formal definitions of Advantages and Drawbacks</a></li>
+<li class="chapter" data-level="11.2" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html#methodology-9"><i class="fa fa-check"></i><b>11.2</b> Methodology</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html#advantages-and-drawbacks-extraction"><i class="fa fa-check"></i><b>11.2.1</b> Advantages and drawbacks extraction</a></li>
+<li class="chapter" data-level="11.2.2" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html#advantages-and-drawbacks-adio-classification"><i class="fa fa-check"></i><b>11.2.2</b> Advantages and Drawbacks ADIO classification</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html#results-10"><i class="fa fa-check"></i><b>11.3</b> Results</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html#patent-set"><i class="fa fa-check"></i><b>11.3.1</b> Patent set</a></li>
+<li class="chapter" data-level="11.3.2" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html#extraction-of-advantages-and-drawbacks"><i class="fa fa-check"></i><b>11.3.2</b> Extraction of Advantages and Drawbacks</a></li>
+<li class="chapter" data-level="11.3.3" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html#a-d-i-o-representation"><i class="fa fa-check"></i><b>11.3.3</b> A-D-I-O Representation</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="exploiting-patent-information-in-novel-ways.html"><a href="exploiting-patent-information-in-novel-ways.html#discussion"><i class="fa fa-check"></i><b>11.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html"><i class="fa fa-check"></i><b>12</b> Enriched dictionaries for Innovation</a><ul>
+<li class="chapter" data-level="12.1" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#an-overview-of-dictionaries-for-technology-intelligence"><i class="fa fa-check"></i><b>12.1</b> An overview of dictionaries for technology intelligence</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#publicly-available-dictionaries"><i class="fa fa-check"></i><b>12.1.1</b> Publicly available dictionaries</a></li>
+<li class="chapter" data-level="12.1.2" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#research-based-dictionaries"><i class="fa fa-check"></i><b>12.1.2</b> Research-based dictionaries</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#the-value-added-of-enriched-dictionaries"><i class="fa fa-check"></i><b>12.2</b> The value added of enriched dictionaries</a></li>
+<li class="chapter" data-level="12.3" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#methodology-10"><i class="fa fa-check"></i><b>12.3</b> Methodology</a></li>
+<li class="chapter" data-level="12.4" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#results-11"><i class="fa fa-check"></i><b>12.4</b> Results</a></li>
+<li class="chapter" data-level="12.5" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#conclusions"><i class="fa fa-check"></i><b>12.5</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html"><i class="fa fa-check"></i><b>13</b> Impact of Research from the Perspective of Users.</a><ul>
+<li class="chapter" data-level="13.1" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#methodological-challenges"><i class="fa fa-check"></i><b>13.1</b> Methodological challenges</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#variability-in-the-identification-of-outcomes-and-users"><i class="fa fa-check"></i><b>13.1.1</b> Variability in the identification of outcomes and users</a></li>
+<li class="chapter" data-level="13.1.2" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#sources-of-information"><i class="fa fa-check"></i><b>13.1.2</b> Sources of information</a></li>
+<li class="chapter" data-level="13.1.3" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#text-based-impact-assessment"><i class="fa fa-check"></i><b>13.1.3</b> Text-based impact assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#methodology-11"><i class="fa fa-check"></i><b>13.2</b> Methodology</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#operationalizing-user-groups-using-natural-language-processing-techniques"><i class="fa fa-check"></i><b>13.2.1</b> Operationalizing user groups using Natural Language Processing techniques</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#from-text-extraction-to-indicators"><i class="fa fa-check"></i><b>13.3</b> From text extraction to indicators</a><ul>
+<li class="chapter" data-level="" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#frequency"><i class="fa fa-check"></i>Frequency</a></li>
+<li class="chapter" data-level="" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#diversity"><i class="fa fa-check"></i>Diversity</a></li>
+<li class="chapter" data-level="" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#specificity"><i class="fa fa-check"></i>Specificity</a></li>
+<li class="chapter" data-level="13.3.1" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#the-meaning-of-frequency-diversity-and-specificity-indicators-for-the-analysis-of-research-impact"><i class="fa fa-check"></i><b>13.3.1</b> The meaning of Frequency, Diversity and Specificity indicators for the analysis of research impact</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#data"><i class="fa fa-check"></i><b>13.4</b> Data</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#description-of-the-corpus"><i class="fa fa-check"></i><b>13.4.1</b> Description of the corpus</a></li>
+<li class="chapter" data-level="13.4.2" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#preliminary-analysis-of-the-corpus"><i class="fa fa-check"></i><b>13.4.2</b> Preliminary analysis of the corpus</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#results-12"><i class="fa fa-check"></i><b>13.5</b> Results</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#descriptive-analysis"><i class="fa fa-check"></i><b>13.5.1</b> Descriptive analysis</a></li>
+<li class="chapter" data-level="13.5.2" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#findings-by-subject-area"><i class="fa fa-check"></i><b>13.5.2</b> Findings by subject area</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="impact-of-research-from-the-perspective-of-users-.html"><a href="impact-of-research-from-the-perspective-of-users-.html#discussion-1"><i class="fa fa-check"></i><b>13.6</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html"><i class="fa fa-check"></i><b>14</b> Defining Industry 4.0 Professional Archetypes</a><ul>
+<li class="chapter" data-level="14.1" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html#digital-competences-development"><i class="fa fa-check"></i><b>14.1</b> Digital Competences Development</a></li>
+<li class="chapter" data-level="14.2" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html#methodology-12"><i class="fa fa-check"></i><b>14.2</b> Methodology</a></li>
+<li class="chapter" data-level="14.3" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html#the-archetypes"><i class="fa fa-check"></i><b>14.3</b> The Archetypes</a></li>
+<li class="chapter" data-level="14.4" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html#conclusion"><i class="fa fa-check"></i><b>14.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusions-and-future-developments.html"><a href="conclusions-and-future-developments.html"><i class="fa fa-check"></i>Conclusions and Future Developments</a></li>
+<li class="chapter" data-level="" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i>Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mining Technical Knowledge from Texts</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="defining-industry-4.0-professional-archetypes" class="section level1">
+<h1><span class="header-section-number">Chapter 14</span> Defining Industry 4.0 Professional Archetypes</h1>
+<p>Worldwide industrial systems are evolving by leveraging Internet connected technologies to generate new added values for organizations and society. Researchers, policy makers and entrepreneurs refer to such phenomenon with the name of Industry 4.0.</p>
+<p>An increasing number experts from different fields are focusing on this topic, bringing their contribution in terms of new technologies and methods. As a consequence of this process, the companies that are embracing the new paradigm need to manage new technologies and the new relations among them with a multidisciplinary approach. The result is an emerging need of new professional figures able to bridge the different fields.</p>
+<p>Moreover, while the scientific interest in technological aspects of Industry 4.0 is constantly growing, the understanding of the future works and professional roles is slowed down by the heterogeneity, complexity and static nature of job description systems. These issues are usually addressed by qualitative methods thus making the results uncertain and partial.</p>
+<p>The first step of the present chapter is to develop a data driven mapping of 4.0 competencies which benefit (rather than being disadvantaged) by the heterogeneity of the entities to map. Then we propose a classification of the groups of competencies with the aim of identifying and defining the archetypes of Industry 4.0 workers. Given the bottom-up process we adopted to reach our goal, also the relationships between them can be described.</p>
+<div id="digital-competences-development" class="section level2">
+<h2><span class="header-section-number">14.1</span> Digital Competences Development</h2>
+<p>The radical technological change is going to affect the whole industrial environment and will radically transform, in several different ways, the world we live in (see section <a href="wikipedia.html#technimetrochap">9.1</a>). Consequently, the revolution is not just referred to the availability of new sophisticated machines, but also to the deep reconsideration of worker roles it brings with. On the one hand Industry 4.0 implementation may have negative impact on specific professional figures, which could be substituted by robots. In support of this theory, Osborne &amp; Frey implemented a methodology to estimate the probability of job computerization using a Gaussian classifier <span class="citation">(Frey and Osborne <a href="#ref-frey2017future">2017</a>)</span>. The results are quite pessimist: they distinguished between High, Medium and Low risk of computerization: according to their estimates around the 47% of jobs is in the high risk category. On the other hand, another possible impact is represented by a significant increase of worker competences and the emersion of new professional profiles: our research mostly focused on the second prospect.</p>
+</div>
+<div id="methodology-12" class="section level2">
+<h2><span class="header-section-number">14.2</span> Methodology</h2>
+<p>In this chapter we show the process to built the graph of Wikipedia pages related to Industry 4.0. This graph will be then used by expert to define 4.0 workers archetypes. Figure 1 shows the process we adopted. The whole process takes in input a set of linked entities (e.g. Wikipedia pages) and gives as output a clustered graph.</p>
+<div class="figure" style="text-align: center"><span id="fig:archewf"></span>
+<img src="_bookdown_files/figures/archewf.png" alt="Flow diagram of the process of 4.0 Archetypes definition." width="100%" />
+<p class="caption">
+Figure 14.1: Flow diagram of the process of 4.0 Archetypes definition.
+</p>
+</div>
+<div id="wikipedia-pages-collection-1" class="section level4 unnumbered">
+<h4>Wikipedia Pages Collection</h4>
+<p>The process takes as input a set of entities linked between them. A link between two entities represent the existence of a relation between them. Here the concept of relation is intended as the sharing of a topic. In other words, two entities has to be connected if they belong to the same topic. Any entities-links structure that meets this requirements can be used as input for the proposed process. For the purpose of the present work, we decided to use the free encyclopedia Wikipedia . Wikipedia is structured in such a way that each page contains links to other Wikipedia pages. The links from page to page are manually assigned by the contributors, so the structure of the links evolves dynamically. Furthermore each page is labeled by the contributors through categories with the intent of grouping together pages on similar subjects. To collect industry 4.0 related wikipedia pages we exploit this information and structure. In the date of 23/11/17 we collected three levels of pages typologies for a total of 4739 pages:</p>
+<ul>
+<li>L1, The Wikipedia page of industry 4.0<a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a> <em>(1 page)</em></li>
+<li>L2, All the pages linked to L1 <em>(39 pages)</em></li>
+<li>L3, All the pages linked to L2 <em>(4699 pages)</em></li>
+</ul>
+<p>For each page we collected the page name, the links and the categories.</p>
+</div>
+<div id="pages-graph-generation" class="section level4 unnumbered">
+<h4>Pages Graph Generation</h4>
+<p>Once we collected all the pages and the links between them, we represent this structure as a directed graph (S). It is composed of:</p>
+<ul>
+<li>A set of nodes (N): the Wikipedia pages.</li>
+<li>A set of edges (E): the links between the pages (considering also the direction of the edge)</li>
+</ul>
+<p>S has 4739 nodes and 194.299 edges.</p>
+</div>
+<div id="nodes-filtering-on-4.0-categories" class="section level4 unnumbered">
+<h4>Nodes filtering on 4.0 Categories</h4>
+<p>Considering the content of Wikipedia, it is reasonable to assume that not all of the 4.739 pages are related to Industry 4.0.</p>
+<p>To sanitize the set of nodes N we adopted a series of filtering rules based on the categories of the pages. The steps we followed were:</p>
+<ul>
+<li>Count the occurrence of each category we extracted. At this step we had 14.711 categories.</li>
+<li>Filter the categories having an occurrence minor or equal to 3. This threshold level has been chosen looking at the distribution of the occurrences (the number of pages per category). A change in the central node could make changes on the selection of this threshold level. At this step we had 1.605 categories.</li>
+<li>Manually screen the categories and select those related to industry 4.0, taken in to consideration the definition of Industry 4.0. At this step we had 337 categories.</li>
+<li>Selecting the nodes that contains at least one of the 337 categories.</li>
+</ul>
+<p>As an example, the top 10 categories in terms of occurrence and the relative occurrences are: production and manufacturing (51), parallel computing (42), manufacturing (37), business terms (33), management (31), process management (29), engineering disciplines (28), internet of things(28), technology in society (26) and cloud computing (25). This list shows how the process is able to make categories correlated to Industry 4.0 emerge. We thus obtain a new graph S’ that is a subgraph of S (all the nodes N’ and the edges E’ are a subset of N and E respectively). S’ has 645 nodes and 703 edges. Of these nodes 75 are disconnected from the graph (both in-degree and out-degree equals to zero) and are thus not useful for the analysis we will conduct in section 3.4 . These nodes are filtered, obtaining a definitive S’ having 570 nodes.</p>
+</div>
+<div id="clustering-2" class="section level4 unnumbered">
+<h4>Clustering</h4>
+<p>We can assume that S’ gives us a reasonable representation of Industry 4.0 related wikipedia pages in terms of precision and recall.</p>
+<p>It is thus possible now to analyze if the pages are arranged in clusters, or in other words, if there exists groups of similar pages.</p>
+<p>To understand the concept of similarity we need to consider the nodes N1 and N2, and the sets of all nodes connected to N1 and N2, respectively L1 and L2. The similarity of N1 and N2 is proportional to the module of the intersection between L1 and L2. To investigate this similarity and to find clusters of similar pages, we grouped similar nodes via short random walks. The algorithm is described in [Durrett, R.: “Random Walks. Random Graph Dynamics”, 153-186. ]. The approach finds ways to compute an intimacy relation between the nodes incident to each of the graph’s edges. The process is non-supervised so it makes an optimal decision on the number of clusters. The output was 9 different communities.</p>
+<p>The obtained graph is shown in Figure <a href="defining-industry-4-0-professional-archetypes.html#fig:archeout">14.2</a>. The figure shows the nodes, the edges and the label of the nodes. The dimension of the nodes is proportional to the out-degree of each one (the number of tail edges adjacent to the vertex) and the color represent the community to which it belongs to. The label of the nodes (as center of the clusters) are shown for those having an out degree greater than 4. The table shows the correspondence between the community, the colors and the percentage of nodes per community.</p>
+<div class="figure" style="text-align: center"><span id="fig:archeout"></span>
+<img src="_bookdown_files/figures/archeout.png" alt="Representation of the graph S’. The nodes are the Wikipedia pages related to Industry 4.0. The arch between two nodes exists if there is a link between the pages. The labels of the nodes are shown only for nodes having an out-degree (number of tail edges adjacent to the vertex) greater than 4. The color of each node represent the community to which the node belongs. The table in the low-left shows the percentages of nodes for each community." width="100%" />
+<p class="caption">
+Figure 14.2: Representation of the graph S’. The nodes are the Wikipedia pages related to Industry 4.0. The arch between two nodes exists if there is a link between the pages. The labels of the nodes are shown only for nodes having an out-degree (number of tail edges adjacent to the vertex) greater than 4. The color of each node represent the community to which the node belongs. The table in the low-left shows the percentages of nodes for each community.
+</p>
+</div>
+</div>
+<div id="workers-4.0-archetypes-definition" class="section level4 unnumbered">
+<h4>Workers 4.0 Archetypes Definition</h4>
+<p>The authors generated a list representing the “Industry 4.0 workers archetypes” based on Wikipedia. The bias due to the profile of people writing this kind of Wikipedia pages does not reduce the importance of this exercise, but it is fundamental to understand why the reader will find such a great emphasis on technologies, methodologies and tools as pages describing the archetypes in section 4. Skills, competences and professional figures (in the strict sense) are then behind and beyond the archetypes, which represent just the attitudinal profile of the workers that will be soon seek by companies adopting Industry 4.0 paradigm.</p>
+<p>Table of Figure <a href="defining-industry-4-0-professional-archetypes.html#fig:archeouttab">14.3</a> shows the relation between the Archetypes and the communities (created by the text-mining procedure presented above). It also shows the total number of nodes per archetypes and per community.</p>
+<div class="figure" style="text-align: center"><span id="fig:archeouttab"></span>
+<img src="_bookdown_files/figures/archeouttab.png" alt="Table of the accordance between the archetypes and communities. The total of pages for each archetypes is shown in the last column, the total of pages for each community is shown in the last row. " width="100%" />
+<p class="caption">
+Figure 14.3: Table of the accordance between the archetypes and communities. The total of pages for each archetypes is shown in the last column, the total of pages for each community is shown in the last row.
+</p>
+</div>
+<p>From this table it emerges that:</p>
+<ul>
+<li><p>Group 1 (75 pages) has two nodes/centers: the page “Big Data” and the page “Analytics”. This is why from Group 1 derives two different Archetypes: “the Architect” (44 pages, centered in Big Data) and “the Prophet” (21, centered in Analytics). This is an evidence of the fact that these two archetypes are strongly related between them, since they belong differently from all the other groups.</p></li>
+<li><p>More than 80% of the pages referred to Group 2 (centered in the page “SCADA” and “Industrial Control system) were used for creating the Archetype of “the Perfectionist”. It is important to underline that the page SCADA - acronym of Supervisory control and data acquisition- being a specific control system architecture, was discarded from the assignation to a specific archetypes. Our focus for designing “the Perfectionist” was the generic page “Industrial Control System”.</p></li>
+<li><p>Group 3, Group 4 and Group 9 are composed of pages we linked to the same Archetype: “The Geek”. In respect of Group 1, we made a different choice: we referred the most part of these three groups’ pages to just one Archetype, “nuanced” on the basis of the nearest technologies in the graph: “Cloud Computing”, “Automation” and “Internet of Things”. As the Geek was created starting from three different groups, it has three different declinations as shown in Figure <a href="defining-industry-4-0-professional-archetypes.html#fig:archecoolout">14.4</a>. The geek, as will be explained in section 4, has to be seen as the expert of a specific family of similar technologies strongly related to industry 4.0.</p></li>
+<li><p>Group 6 is composed of 26 pages, that were referred to almost all the Archetypes. These pages are general purpose, and referring to Figure <a href="defining-industry-4-0-professional-archetypes.html#fig:archeout">14.2</a>, this is also evident from their central position in the graph (there are related to every community). The predominance of pages referred to one Archetype (the Geek) didn’t allow us to consider this Group, centered in the page “Computer Integrated Manufacturing”, as another nuance of “the Geek”. Moreover, Group 6 is strictly related to Group 9, as the proximity of the clusters in the graph can easily show.</p></li>
+<li><p>In group 7, centered in “Root Cause Analysis” page, we found 100% of pages referable to the Archetype we called “The Investigator”.</p></li>
+<li><p>As in the previous group, also in Group 8 (centered in “Value Chain” page) the 100% of pages were referable to one Archetype: “the Strategist”</p></li>
+</ul>
+<p>Figure <a href="defining-industry-4-0-professional-archetypes.html#fig:archecoolout">14.4</a> shows the same graph of Figure <a href="defining-industry-4-0-professional-archetypes.html#fig:archeout">14.2</a>, associating to each group an Archetype. In this new version of the graph it is possible to identify the centers of each cluster, the position of the clusters (and the related archetype) in respect of the others, the interrelation among the clusters/archetypes.</p>
+<div class="figure" style="text-align: center"><span id="fig:archecoolout"></span>
+<img src="_bookdown_files/figures/archecoolout.png" alt="The different professional archetypes associated with each technological cluster." width="100%" />
+<p class="caption">
+Figure 14.4: The different professional archetypes associated with each technological cluster.
+</p>
+</div>
+</div>
+</div>
+<div id="the-archetypes" class="section level2">
+<h2><span class="header-section-number">14.3</span> The Archetypes</h2>
+<p>The term “archetype” has its origins in the Greek word “archein”, which means “original or old” and “typos” “pattern, model or type”. It is thus etymologically referred to the “original pattern” from which all other similar persons are derived, modeled or emulated. In this work we consider this etymological meaning, discarding any philosophical or psychoanalytic references which would mislead our research. As regards the personality many theories have been proposed over the years [11,12], but a common vision at the academic level has not been reached yet. Both Jung’s theory of personality types [13] and the Myers-Briggs indicator (MBTI) in the field of work psychology [14] come to several psychological types defined through descriptions and traits. Some of them (e.g. the 16 psychological types of MBTI) are a standard for Human Resource managers and are largely used for resource classification and selection. It is important to underline that in the present work i) technologies and skills have been extracted in a scientific and repeatable manner, ii) they have been clustered following a well-known and accepted algorithm. Conversely, archetypes’ names have been chosen with the intent to better communicate the research outcomes.</p>
+<p>The archetype description sections are built following a common structure:</p>
+<ol style="list-style-type: decimal">
+<li><p><em>The name of the archetype.</em> The choice of the name was made by the authors in order to have an evocative impact on the reader and reaching a communication goal. In some cases, the names are deliberatively imaginative, renouncing to respect a rigid scientific approach with the aim of charming and interesting the reader</p></li>
+<li><p><em>The list of the Wikipedia pages selected.</em> The pages represent the elements considered by the authors for defining the archetypes. The selection of the pages was done referring to the clusters identified with the data-mining as shown in section 3. All the Archetypes are referred at least to one group, with the exception of group 1, from which two different Archetypes were created, and groups 3,4 and 9, which all together participated in the creation of another Archetype (even if with three different declinations). In many cases the pages reported in the box are related to technologies, methodologies, tools: evidently the authors of Wikipedia pages related to Industry 4.0 are more interested in “hard” rather than “soft” topics, such as competencies or cultural aspects of the new paradigm.</p></li>
+<li><p><em>Industry 4.0 Emerging needs.</em> The authors presented shortly the needs that the companies face when introducing Industry 4.0 applications. The needs are mainly based upon the interpretation given by the acatech study [15], which represent one of the most effective key for understanding the new paradigm [16].</p></li>
+<li><p><em>The archetype.</em> We have already explained what we meant with the word “archetype” and the rationale behind the choice of the specific names. The explanation of the archetype given in this section is based on the interpretation of the Wikipedia pages selected and on the semantic fields they refer to. We tried to describe the inner nature of the individuals referable to each specific archetype, defining the peculiar traits of their mindset and their most marked features. The aim was also to describe them so to make them recognizable in our daily experience.</p></li>
+<li><p><em>Keywords.</em> The keywords are taken from the column “categories” of the clustered list of selected Wikipedia pages as shown in section 3.2. Strikethrough in the body of the text indicates where the authors decided of deleting misleading words: we kept them for making clear and transparent the procedure behind this cleaning activity. The reasons for deleting some words were: a) they were too generic and did not characterize the archetype, b) they were too specific and they made the archetype losing its capacity of encompassing more aspects, c) even if they survived to the “cleaning” after the data-mining, they were referred to another semantic field (disambiguation).</p></li>
+</ol>
+<div id="the-architect" class="section level4 unnumbered">
+<h4>The Architect</h4>
+<p><em>The Wikipedia pages selected</em>: Big data; Data blending; Data quality; Cognitive computing; Data fusion; Data science; Unstructured data; Data lake; Data set; Data; Data lineage; Data transmission; Radio-frequency identification; Data philanthropy; Datafication</p>
+<p><em>Industry 4.0 Emerging needs</em></p>
+<p>When taking a decision in Industry 4.0 paradigm it is more important than ever that the individuals can access, collect and process data and information. Data can be gathered from machinery, equipment and tools thanks to sensors, actuators and information processing systems, linked to a communication layer. Big data is a buzzword usually linked to Industry 4.0 and used to describe mass data that cannot be analyzed adopting common procedures, but requires advanced applications and technologies. Thus, in the new paradigm, it is important not just collecting the data, but also collecting and processing them in an innovative way and shaping them in a form that make them usable for the company decision-makers and other employees.</p>
+<p><em>The archetype: The Architect</em></p>
+<p>The Architect is the individual that is at ease in managing, transforming and processing data. He/she has a clear idea of the importance of data and understand which data are useful, in which context and for who. The Architect likes formalized information and the possibility of shaping them, has an innate capacity of breaking the problems and find the best solutions: this capacity is fundamental when having to deal with different sources of information and numerous data and inputs. He/she is precise and reliable, has a great aptitude for visualization and for problem solving.</p>
+<p><em>Key words</em>: big data; data management; distributed computing problems; technology forecasting; transaction processing, artificial intelligence; cognitive science business intelligence; data; information technology management, computer data, automatic identification and data capture; privacy; radio-frequency identification; ubiquitous computing; wireless, big data, types of analytics, online analytical processing</p>
+</div>
+<div id="the-prophet" class="section level4 unnumbered">
+<h4>The Prophet</h4>
+<p><em>The Wikipedia pages selected</em>: Analytics; User behavior analytics; Business analytics; Data mining; Data analysis; Continuous analytics; Machine learning; Data visualization; Cultural analytics; Predictive analytics; Natural language processing; Customer analytics; Business intelligence; Analytic applications; News analytics; Statistics; Behavioral analytics; Predictive engineering analytics</p>
+<p><em>Industry 4.0 Emerging needs</em></p>
+<p>The implementation process of the Industry 4.0 paradigm involves different stages. At one advanced stage of this process the company should be able, starting from the data collected, to simulate future scenarios and select the most likely one [15]. To do so the company needs to have analyzed and assessed a number of data and projected the “digital shadow” of its assets in the future. Forecasting and the recommendations based on it became the key elements on which building the development of the company. The analysis of the different scenarios is the basis for building the business success. For reaching these targets it is fundamental to have constructed proper “digital shadows” of the assets and have understood the interactions among them.</p>
+<p><em>The archetype: The Prophet</em></p>
+<p>The Prophet is an individual with strong analytical thinking skills, able to examine in details specific situations in a critical way. He/she has a future-oriented mindset: is at ease in thinking about next steps, possible scenarios and with a medium-to-long-term vision. Starting from the analysis of data and adopting also statistical methods, the Prophet investigate the problems (creative thinking) and identify possible solutions (complex problem solving) in order to reach the best case scenario he designed.</p>
+<p><em>Key words</em>: analytics; business intelligence; business terms; financial data analysis; formal sciences; data mining; formal sciences; cybernetics; learning; machine learning; actuarial science; big data; business intelligence; financial crime prevention; prediction; statistical analysis; types of analytics; financial technology; information management; data; formal sciences; information; mathematical and quantitative methods (economics); research methods; statistics; artificial intelligence; computer security; human behavior; machine learning; computational fields of study; data analysis; particle physics; scientific method; data; information technology governance; statistical charts and diagrams; visualization (graphic); artificial intelligence; computational fields of study; computational linguistics; natural language processing; speech recognition; business intelligence; business software stubs; applied data mining; business analytics; market research; marketing performance measurement</p>
+</div>
+<div id="the-perfectionist" class="section level4 unnumbered">
+<h4>The Perfectionist</h4>
+<p><em>The Wikipedia pages selected</em>: Industrial control system; Instrumentation; Control valve; Overall equipment effectiveness; Enterprise resource planning; Distributed control system; Control system; Lean manufacturing; Total productive maintenance; Programmable logic controller; Risk; Control System Security; Control loop</p>
+<p><em>Industry 4.0 Emerging needs</em></p>
+<p>Since the First Industrial Revolution, quality improvement has been one of the critical aspects for developing any business. In the current age of high competition and mass production, this has become, along with price strategies, the main element for expanding the market. Thus, quality control has become a central issue to consider before establishing any industrial undertaking and the best way for ensuring the best allocation of resources and highest level of production. In Industry 4.0 paradigm quality has become even more important, mainly because the increased flexibility of machinery, processes and procedures allow to intervene continuously for analyzing the parameters, identify machine faults or quality issues with a high degree of confidence and in advance. Flexibility and agility (which denotes the ability to implement changes in real-time, including changes to the company’s business model) are two key factors that allow a constant improvement.</p>
+<p><em>The archetype: the Perfectionist</em></p>
+<p>The Perfectionist is the individual who is never satisfied of the actual conditions: it could be his/her current personal situation, the preparation for an exam, the functioning of a process or a machinery. He/she always thinks that things can be done better, in a shorter time, with less resources, involving different teams, collaborating more (or less). The Perfectionist likes tests: he/she tries, monitors, checks the results, thinks about it (possibly analyzing data and empirical results) and then suggests - or decides - how to make things work right.</p>
+<p><em>Key words</em>: control engineering; industrial automation; industry; manufacturing; telemetry; lean manufacturing; automation; control theory; systems engineering; systems theory; industrial computing; programmable logic controllers; measuring instruments; sensors; business terms; computer-aided engineering; erp software; enterprise resource planning terminology; information technology management; management; production and manufacturing; supply chain management terms; commercial item transport and distribution; inventory; management; process management; production and manufacturing; actuarial science; environmental social science concepts; financial risk; risk; applications of distributed computing; control engineering; industrial automation; control devices; valves; applications of distributed computing; control engineering; industrial automation; business terms; commercial item transport and distribution; computer security; computer security procedures</p>
+</div>
+<div id="the-geek" class="section level4 unnumbered">
+<h4>The Geek</h4>
+<p><em>The Wikipedia pages selected</em>: Cloud computing; Smart grid; Productivity; Cyber manufacturing; Artificial intelligence; Embedded system; Cyber-physical system; Cybernetics; system; Manufacturing; Computer network; Cloud manufacturing; Computer security; Internet of things; Information technology; Distributed computing; Service-oriented architecture; Automation; Adaptable robotics; Automation Technician; Developmental robotics; Industrial Engineering</p>
+<p><em>Industry 4.0 Emerging needs</em></p>
+<p>Beside the aspects related to a new organizational structure and a different work culture, Industry 4.0 is strongly determined by the new technologies, both hardware and software. It is impossible to implement Industry 4.0 applications without considering technical aspects. The enabling technologies (Clouds, Augmented reality, Simulation, IoT, etc.) must be known in the company in order to make the new paradigm real. Technologies are so specific and so many, that it is important to have an extensive knowledge of them (even if not deep) and be able to integrate them for finding the most effective custom-made solution to solve specific problems.</p>
+<p><em>The archetype: the Geek</em></p>
+<p>The Geek is the archetype of an individual extremely passionate in new technologies and its applications. He/she is interested in everything is new and innovative, in seeing beyond and within things: how technological applications work, why and at what extend their capacities can be brought. Integration is always an important aspect: the Geek appreciate the ideas of combining, breaking and keeping just some aspects for recombining and then creating something new. He/she has a kinesthetic learning (or tactile learning) and has a kinesthetic approach to the work: he/she needs make tests (rather than thinking or planning), piloting solutions (rather than have someone else doing the job) and working on the field. The geek is always up-to-date on the newest technology and is always willing to be the first in creating something new. As the number of pages referable to the Geek were numerous, the authors decided to create three different nuances represented by three different logos, one for each field of expertise of the Geeks.</p>
+<p><em>Key words</em>: ambient intelligence; emerging technologies; internet of things; computers; information-theoretically secure algorithms; information technology; media technology decentralization; distributed computing; architectural pattern (computer science); enterprise application integration; service-oriented (business computing); software design patterns; web services; cloud computing; cloud infrastructure; big data; industrial revolution; industrial automation; industrial computing; technology forecasting; computer systems; industrial computing; industry; internet companies; manufacturing; computer systems; physical systems industry; manufacturing ambient intelligence; emerging technologies; smart grid; artificial intelligence; computational fields of study; computational neuroscience; cybernetics; formal sciences; technology in society; unsolved problems in computer science; cybernetics computer networking; computer networks; telecommunications engineering; computer network security; crime prevention; cryptography; cybercrime; cyberwarfare; e-commerce; information governance; national security; secure communication; security technology; weapons countermeasures; economic growth; industry; production and manufacturing; production economics; electrical engineering; embedded systems; cloud computing; automation; engineering disciplines; adaptable robotics; robot kits; robotics stubs; industrial automation; technicians; machine learning; robot control; engineering disciplines; industrial engineering; operations research; production and manufacturing</p>
+</div>
+<div id="the-investigator" class="section level4 unnumbered">
+<h4>The Investigator</h4>
+<p><em>The Wikipedia pages selected</em>: Root cause analysis; A3 problem solving; Failure mode and effects analysis; Quality control; Business process mapping; Forensic engineering; Business process; DMAIC; Incident management; Value stream mapping; Design of experiments; Pareto chart; 5S (methodology)</p>
+<p><em>Industry 4.0 Emerging needs</em></p>
+<p>Industry 4.0 paradigm enables to a constant check on procedures, processes and systems, as they are all integrated and all the information are conveyed to a same “repository” (the communication layer). All these aspects can be then monitored in a totally new way: it is possible, for example, to have data in real time and the decisions can be taken according to information which can be transferred almost at the same time they are created by one or more devices or tools. Thanks to the high amount of information than can be analyzed, also mistakes can be treated in a different way: in Industry 4.0 it becomes easier to focus and investigate on the causes of a failure – and solve it -, rather than on finding out who is to blame.</p>
+<p><em>The archetype: the Investigator</em></p>
+<p>The Investigator is the individual who is naturally curious: as a proper scout he/she wants to understand what is working and what is not. He/she is never satisfied with the explanation he/she receives and is always searching for a mistake, a bug or just another way for reaching at the same conclusion. The Investigator is eager for analyzing what is already known and what is new, he/she likes going into details and understanding how things works and how they could work in a different way. When identified the problem the Investigator is not necessarily interested in finding the fix, he/she rather prefer to have some other problems to break and leaving someone else the possibility of coming up with a solution (that he/she would love to analyze again).</p>
+<p><em>Key word</em>: business terms; problem solving; process management; production and manufacturing; quality; quality management; six sigma; design for x; management; quality control; statistical process control; business process; enterprise modelling; process management; lean manufacturing; commercial item transport and distribution; inventory; japanese business terms; lean manufacturing; manufacturing; methodology; process management; quality control tools; business process; data management; design of experiments; experiments; industrial engineering; quantitative research; statistical theory; systems engineering; reliability analysis; reliability engineering; systems analysis; engineering disciplines; engineering failures; forensic disciplines; materials science; business software; disaster preparedness; enterprise modelling; firefighting in the united states; itil; incident management; categorical data; statistical charts and diagrams</p>
+</div>
+<div id="the-strategist" class="section level4 unnumbered">
+<h4>The Strategist</h4>
+<p><em>The Wikipedia pages selected</em>: Value chain; Core competency; SWOT analysis; Business model; Delta Model; Strategic management; Balanced scorecard; Game theory; Strategic planning; Control (management); Porter’s five forces analysis; Strategic thinking</p>
+<p><em>Industry 4.0 Emerging needs</em></p>
+<p>If Industry 4.0 allows the companies to foresee different scenario based on data and information, it doesn’t not guarantee to the entrepreneurs to select the right one or take the correct decision. Data should be read correctly, but also the strategy for reaching the preferred scenario should be decided in the proper way. In particular, one of the most dangerous risk is not being able to redefine properly the company business model, which should be constantly monitored, assessed and, according to the most updated information, modified.</p>
+<p><em>The archetype: the Strategist</em></p>
+<p>The Strategist is the individual who has a mind wide open: he/she thinks to the outcomes of each activity and reflect on the different ways for reaching the target. Strategic thinking, strategic management and planning are its most marked qualities: he likes thinking to all the possible outputs in a comparative way. He/she is also a pragmatist, as starting from the analysis of the current situation he/she doesn’t like to create different scenarios (as the Prophet does) but rather reaching the result established in the more effective way. Even if the Strategist is not an entrepreneur, he has some of its qualities and this is why this archetype can be referred to the “entrepreneurial mindset”. The Strategist is visionary, risk-taker, creative, with a strong willingness to challenge the status quo and he has diplomatic and leadership skills.</p>
+<p><em>Key words</em>: distribution (business); michael porter; process management; supply chain management; value proposition; business models; management; strategic management; types of marketing; business planning; business software; business terms; management; control (social and political); control theory; artificial intelligence; formal sciences; game theory; john von neumann; mathematical economics; business terms; strategic management; business intelligence; strategy; systems thinking</p>
+</div>
+</div>
+<div id="conclusion" class="section level2">
+<h2><span class="header-section-number">14.4</span> Conclusion</h2>
+<p>The present section can be seen as a first step of a long journey. As stated in introduction our Archetypes are intended in the etymological sense, as original models, and we assume that they are emerging in the digital economy. Thanks to the data-mining exercise we were able to place the clusters of Wikipedia pages in a graph, analyzing them according to the contents, the position in the graph and the relation among them. This recurrence of same pages in almost all the clusters let us concluding that some topics are common to all the Archetypes, independently to the cluster they were originated. For example, being able to read and exploit data is a transversal issue and all the Archetypes (and all the workers referable to them) should be used to work with them. Another constant in all the cluster is the reference to technologies: they are central in the new paradigm, it is unavoidable for a digital worker knowing them. Even if the “Fourth Industrial Revolution” doesn’t end with a bunch of IT tools, they are at the center of the new paradigm and workers must be used to play with them [17].</p>
+<p>To conclude and anticipate the further developments, in figure <a href="defining-industry-4-0-professional-archetypes.html#fig:archeporter">14.5</a> we give an interpretation of the position of the archetypes in the graph. We can cluster the Archetypes according to the general company area they could be referred. The areas are:</p>
+<ol style="list-style-type: decimal">
+<li>Business. The Strategist and the Investigator are the main actors. In this area the decision regarding the future and the strategy of the company are taken: it is important to have people who have always the big picture clear in their mind (the Strategists) and are good in analyzing the situation for what it is (the Investigator).</li>
+<li>Data. The Architect and the Prophet suits well here. This area is referred to the acquisition, collection and management of data. This area is perfectly suitable for someone who is comfortable in analyzing and structuring data (the Architect) and for who has a future-oriented mindset, always based on the actual inputs coming from the company functions (the Prophet).</li>
+<li>Process. The Geek (automation) is the only major player in this area. The process area is where the core activities of a company are performed.</li>
+</ol>
+<p>The connection between the three areas are ensured by three Archetypes:</p>
+<ul>
+<li>The Perfectionist, is the bridge between the process area and the business area: in both of them is useful to have someone who is comfortable in solving problems and making things work always better.</li>
+<li>The Geek (cloud) is the bridge among the Data area, where he/she contribute with the knowledge of technologies, and the Business area, where Archetypes will benefits from these technologies for new business development.</li>
+<li>Finally, the Geek (IoT) is the connection among the Process area and the Data area, representing the bridge between the core activities and the usage of information coming from them.</li>
+</ul>
+<p>A possible next step of our study will be identifying at which function of the Porter value chain model each Archetype suits better. Then, having placed the Archetypes in their most suitable function, it will be then possible to allocate for each Archetype the most appropriate 4.0 professional profiles, so to follow their attitudes and exploit better their skills. At this stage, as the new paradigm is still emerging, we cannot go further in our research, but the road-map is now clear and the first step is taken.</p>
+<div class="figure" style="text-align: center"><span id="fig:archeporter"></span>
+<img src="_bookdown_files/figures/archeporter.png" alt="The Archetypes grouped by business areas. The image also shows the strategic roles of Perfectionist, Cloud Geek and IOT Geek, who represent the bridges between different functions." width="100%" />
+<p class="caption">
+Figure 14.5: The Archetypes grouped by business areas. The image also shows the strategic roles of Perfectionist, Cloud Geek and IOT Geek, who represent the bridges between different functions.
+</p>
+</div>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-frey2017future">
+<p>Frey, Carl Benedikt, and Michael A Osborne. 2017. “The Future of Employment: How Susceptible Are Jobs to Computerisation?” <em>Technological Forecasting and Social Change</em> 114. Elsevier: 254–80.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="16">
+<li id="fn16"><p><a href="https://en.wikipedia.org/wiki/Industry_4.0" class="uri">https://en.wikipedia.org/wiki/Industry_4.0</a><a href="defining-industry-4-0-professional-archetypes.html#fnref16">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="impact-of-research-from-the-perspective-of-users-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusions-and-future-developments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["thesis_source.pdf", "thesis_source.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

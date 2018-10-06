@@ -1,5 +1,0 @@
-# Glossary {-}
-
-Generare automaticamente da wikipedia usando tagme.
-
-Morphology= the study of the way words are built up from smaller meaning-bearing units called morphemes.
