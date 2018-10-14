@@ -84,6 +84,20 @@
     \predate{}\postdate{}
   
 \usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
 
 \begin{document}
 
@@ -240,7 +254,8 @@ anche per applicazioni di tutti i giorni. In altri termini, la gobba
 presente intorno al decennio '80 nel grafico in figura
 \ref{fig:bigexpendifure} mostra come il sistema Ameica è stato meno
 efficente nel produrre nuova conoscenza a seguito dell'introduzione dei
-computer nelle aziende.
+computer nelle aziende. Un simile effetto è inoltre visibile quando nei
+primi anni del 2000 internet è entrato di fatto in tutte le aziende.
 
 \begin{figure}
 
@@ -472,7 +487,7 @@ Furthrmore the thesis has been developed following the guidelines of
 design-science research. Hevner et al. \citep{bichler2006design} provide
 a set of seven guidelines which help information systems researchers
 conduct, evaluate and present design-science research. The guidelines
-are summarise in table \ref{tab:introdesignscience}.
+are summarised in table \ref{tab:introdesignscience}.
 
 As previously discussed, design science is a problem solving pradigm.
 The fundamental principle of design-science research is that is the
@@ -511,28 +526,25 @@ based research has to be comprensible and usable to:
   their organizations).
 \end{itemize}
 
-Table: \label{tab:introdesignscience} Design-Science Research Guidelines
-(from \citep{bichler2006design}).
+\begin{table}
 
-\begin{tabular}{l|l}
-\hline
+\caption{\label{tab:introdesignscience}Design-Science Research Guidelines}
+\centering
+\begin{tabular}[t]{>{}l>{\em\raggedright\arraybackslash}p{30em}}
+\toprule
 Guideline & Description\\
-\hline
-Guideline 1: Design as an Artifact & Design-science research must produce a viable artifact in the form of a construct, a model, a method, or an instantiation.\\
-\hline
-Guideline 2: Problem Relevance & The objective of design-science research is to develop technology-based solutions to important and relevant business problems.\\
-\hline
-Guideline 3: Design Evaluation & The utility, quality, and efficacy of a design artifact must be rigorously demonstrated via well-executed evaluation methods.\\
-\hline
-Guideline 4: Research Contributions & Effective design-science research must provide clear and verifiable contributions in the areas of the design artifact, design foundations, and/or design methodologies.\\
-\hline
-Guideline 5: Research Rigor & Design-science research relies upon the application of rigorous methods in both the construction and evaluation of the design artifact.\\
-\hline
-Guideline 6: Design as a Search Process & The search for an effective artifact requires utilizing available means to reach desired ends while satisfying laws in the problem environment.\\
-\hline
-Guideline 7: Communication of Research & Design-science research must be presented effectively both to technology-oriented as well as management-oriented audiences.\\
-\hline
+\midrule
+Design as an Artifact & Design-science research must produce a viable artifact in the form of a construct, a model, a method, or an instantiation.\\
+Problem Relevance & The objective of design-science research is to develop technology-based solutions to important and relevant business problems.\\
+Design Evaluation & The utility, quality, and efficacy of a design artifact must be rigorously demonstrated via well-executed evaluation methods.\\
+Research Contributions & Effective design-science research must provide clear and verifiable contributions in the areas of the design artifact, design foundations, and/or design methodologies.\\
+Research Rigor & Design-science research relies upon the application of rigorous methods in both the construction and evaluation of the design artifact.\\
+\addlinespace
+Design as a Search Process & The search for an effective artifact requires utilizing available means to reach desired ends while satisfying laws in the problem environment.\\
+Communication of Research & Design-science research must be presented effectively both to technology-oriented as well as management-oriented audiences.\\
+\bottomrule
 \end{tabular}
+\end{table}
 
 \section{Design Processes for Knowledge Extraction: the Data Science
 Workflow}\label{design-processes-for-knowledge-extraction-the-data-science-workflow}
@@ -3095,57 +3107,65 @@ there is a strong correlation between the amount of attention a given
 topic has (in this case a forthcoming movie) and its ranking in the
 future. They also analysed the sentiments present in tweets and
 demonstrated their efficacy at improving predictions after a movie has
-released. Cheng et al. \citep{cheng2013predicting} obtained mixed
-results developing a model for predicting TV audience rating. They
-accumulated the broadcasted TV programs' word-of-mouse on Facebook and
-apply the Back-propagation Network to predict the latest program
-audience rating. They also presented the audience rating trend analysis
-on demo system which is used to describe the relation between predictive
-audience rating and Nielsen TV rating. Kim et al.
-\citep{kim2014nowplaying} investigated the relationship between music
-listening behavior in Twitter and the Billboard rankings. They found
-that the play-counts extracted from tweets have strong relationships
-with the Billboard rank, whereas, interestingly, the artist popularity
-extracted from tweets has a weak correlation with future chart rankings.
-In addition, the number of weeks on chart information alone was
-insufficient to predict rank alone. With the features extracted from
-tweets, They built three regression models to predict the ranking. Among
-the proposed models, SVR (Support Vector Machine) showed the highest
-squared correlation coefficient (0.75). Although the combined model with
-the number of weeks on chart performed the best in rank prediction, the
-music listening behavior available in Twitter can generate an
-outstanding predictive model. They also built a hit prediction
-classifier with the features acquired in tweets and the number of weeks
-on chart. They classified the hit and non-hit songs in the Billboard Hot
-100 and obtained a value of 83.9\% accuracy, 83\% precision, and 85.3\%
-recall for classifying a hit song over the whole data set. The proposed
-feature showed a high performance both for rank prediction and hit
-classification. The previous week's twitter features and the number of
-weeks on chart are effective for predicting the Billboard rank of a
-song. Ahn et al. \citep{ahn2014sales} focused on periodic forecasting
-problems of product sales based on social media analysis and time-series
-analysis. In particular, they presented a predictive model of monthly
-automobile sales using sentiment and topical keyword frequencies related
-to the target brand over time on social media. Their predictive model
-illustrates how different time scale-based predictors derived from
-sentiment and topical keyword frequencies can improve the prediction of
-the future sales. Tuarob et al. \citep{tuarob2013fad} proposed a
-Knowledge Discovery in Databases (KDD) model for predicting product
-market adoption and longevity using large scale, social media data. In
-particular, the authors analysed the sentiment in tweets and use the
-results to predict product sales. The authors presented a mathematical
-model that can quantify the correlations between social media sentiment
-and product market adoption in an effort to compute the ability to stay
-in the market of individual products. The proposed technique involves
-computing the Subjectivity, Polarity, and Favorability of the product.
-Finally, the authors utilised Information Retrieval techniques to mine
-users' opinions about strong, weak, and controversial features of a
-given product model. The authors evaluated their approaches using the
+released.
+
+Cheng et al. \citep{cheng2013predicting} obtained mixed results
+developing a model for predicting TV audience rating. They accumulated
+the broadcasted TV programs' word-of-mouse on Facebook and apply the
+Back-propagation Network to predict the latest program audience rating.
+They also presented the audience rating trend analysis on demo system
+which is used to describe the relation between predictive audience
+rating and Nielsen TV rating.
+
+Kim et al. \citep{kim2014nowplaying} investigated the relationship
+between music listening behavior in Twitter and the Billboard rankings.
+They found that the play-counts extracted from tweets have strong
+relationships with the Billboard rank, whereas, interestingly, the
+artist popularity extracted from tweets has a weak correlation with
+future chart rankings. In addition, the number of weeks on chart
+information alone was insufficient to predict rank alone.
+
+With the features extracted from tweets, They built three regression
+models to predict the ranking. Among the proposed models, SVR (Support
+Vector Machine) showed the highest squared correlation coefficient
+(0.75). Although the combined model with the number of weeks on chart
+performed the best in rank prediction, the music listening behavior
+available in Twitter can generate an outstanding predictive model. They
+also built a hit prediction classifier with the features acquired in
+tweets and the number of weeks on chart. They classified the hit and
+non-hit songs in the Billboard Hot 100 and obtained a value of 83.9\%
+accuracy, 83\% precision, and 85.3\% recall for classifying a hit song
+over the whole data set. The proposed feature showed a high performance
+both for rank prediction and hit classification. The previous week's
+twitter features and the number of weeks on chart are effective for
+predicting the Billboard rank of a song. Ahn et al. \citep{ahn2014sales}
+focused on periodic forecasting problems of product sales based on
+social media analysis and time-series analysis. In particular, they
+presented a predictive model of monthly automobile sales using sentiment
+and topical keyword frequencies related to the target brand over time on
+social media. Their predictive model illustrates how different time
+scale-based predictors derived from sentiment and topical keyword
+frequencies can improve the prediction of the future sales.
+
+Tuarob et al. \citep{tuarob2013fad} proposed a Knowledge Discovery in
+Databases (KDD) model for predicting product market adoption and
+longevity using large scale, social media data. In particular, the
+authors analysed the sentiment in tweets and use the results to predict
+product sales. The authors presented a mathematical model that can
+quantify the correlations between social media sentiment and product
+market adoption in an effort to compute the ability to stay in the
+market of individual products. The proposed technique involves computing
+the Subjectivity, Polarity, and Favorability of the product. Finally,
+the authors utilised Information Retrieval techniques to mine users'
+opinions about strong, weak, and controversial features of a given
+product model. The authors evaluated their approaches using the
 real-world smartphone data, which are obtained from www.statista.com and
-www.gsmarena.com. The findings show that tweets can be used to predict
-product sales for up to at least 3 months in advance for well-known
-products such as Apple iPhone 4, Samsung Galaxy S 4G, and Samsung Galaxy
-S II, thus the predictive ability varies across products.
+www.gsmarena.com.
+
+The findings show that tweets can be used to predict product sales for
+up to at least 3 months in advance for well-known products such as Apple
+iPhone 4, Samsung Galaxy S 4G, and Samsung Galaxy S II, thus the
+predictive ability varies across products.
 
 \subsection{Marketing}\label{marketing}
 
@@ -3174,19 +3194,21 @@ Kick-starter (a popular crowd-funding platform) projects and 116
 thousand corresponding tweets collected from Twitter. While the day of
 success is considered to be the time to reach an event, the failed
 projects are considered to be censored since the day of success is not
-known. They performed rigorous analysis of the Kick-starter
-crowd-funding domain to reveal unique insights about factors that impact
-the success of projects. Their experimental results show that
-incorporation of failed projects (censored information) can
-significantly help in building a robust prediction model. Additionally,
-they also created several Twitter-based features to study the impact of
-social network on the crowd-funding domain. Their study shows that these
-social network-based features can help in improving the prediction
-performance. They found that the temporal features obtained at the
-beginning stage (first 3 days) of each project will significantly
-improve the prediction performance. Even when just using Social Media
-information from the first three days of the project, they achieve an
-AUC of 0.90, reflecting very high classification performance.
+known.
+
+They performed rigorous analysis of the Kick-starter crowd-funding
+domain to reveal unique insights about factors that impact the success
+of projects. Their experimental results show that incorporation of
+failed projects (censored information) can significantly help in
+building a robust prediction model. Additionally, they also created
+several Twitter-based features to study the impact of social network on
+the crowd-funding domain. Their study shows that these social
+network-based features can help in improving the prediction performance.
+They found that the temporal features obtained at the beginning stage
+(first 3 days) of each project will significantly improve the prediction
+performance. Even when just using Social Media information from the
+first three days of the project, they achieve an AUC of 0.90, reflecting
+very high classification performance.
 
 \part{Methods and Results}\label{part-methods-and-results}
 
@@ -3362,10 +3384,10 @@ invention described in a patent. The proposed process is shown in figure
 \item
   \emph{Generation of an input list of users}: search all possible
   sources with the aim of creating an input list of users with the
-  largest possible coverage (section \ref{sourc});
+  largest possible coverage;
 \item
   \emph{Patent set selection}: select the set of documents from which
-  extract the users (section \ref{patsel});
+  extract the users;
 \item
   \emph{Patent text pre-processing}: application of natural language
   processing tools on the documents with the aim of preparing them for
@@ -3389,23 +3411,17 @@ invention described in a patent. The proposed process is shown in figure
 \item
   \emph{Manual review}: manual selection of the entities that, in the
   new list of users, are effectively users. This new list will enrich
-  the original list of users. This phase is described in section
-  \ref{manrev}.
+  the original list of users.
 \end{enumerate}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/Process} 
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/Process} 
 
 }
 
 \caption{Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.}\label{fig:procesuser}
 \end{figure}
-
-Before the description of each phases, in section \ref{userdef} the
-concept of \emph{user of the invetion} is explained by giving a
-definition of users and presenting the way that this concept is
-exploited in different knowledge fields.
 
 \subsubsection*{List of users
 generation}\label{list-of-users-generation}
@@ -4356,11 +4372,11 @@ users of the patent-set (like \emph{priest}, \emph{fund-raiser},
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/user_rank} 
+{\centering \includegraphics[width=0.6\linewidth]{_bookdown_files/figures/user_rank} 
 
 }
 
-\caption{Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.}\label{fig:patentsperuser}
+\caption{Distribution of the number of patents per user.}\label{fig:patentsperuser}
 \end{figure}
 
 \section{Advantages and Drawbacks}\label{advdrwresults}
@@ -5329,13 +5345,6 @@ Then, after the re-projection of the extracted clues on the text, the
 regular expression described in section is used to extract the sentences
 highlighted by the clues.
 
-The number of advantages and drawbacks sentences extracted from each
-patent are shown in table \ref{tab:advantagedrawbackssentences}. The
-table shows that the occurrence of sentences describing an advantage is
-higher than the ones containing a drawback \ref{tab:infogain1}. This
-result may be due to the fact that the applicant is minded to describe
-the invention by highlighting the positive effects of the invention.
-
 \begin{longtable}[]{@{}ccc@{}}
 \caption{\label{tab:advantagedrawbackssentences} Number of sentences
 containing advantages and drawbacks for each analyzed patent
@@ -5357,6 +5366,13 @@ sentences}\tabularnewline
 \emph{Total} & 38,239 & 5,745\tabularnewline
 \bottomrule
 \end{longtable}
+
+The number of advantages and drawbacks sentences extracted from each
+patent are shown in table \ref{tab:advantagedrawbackssentences}. The
+table shows that the occurrence of sentences describing an advantage is
+higher than the ones containing a drawback \ref{tab:infogain1}. This
+result may be due to the fact that the applicant is minded to describe
+the invention by highlighting the positive effects of the invention.
 
 Figure \ref{fig:processimagetest1} and \ref{fig:processimagetest2} show
 two subsets of the taxonomies obtained by the extraction of the
@@ -5382,7 +5398,7 @@ such drawbacks.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/improve} 
+{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/improve} 
 
 }
 
@@ -5391,7 +5407,7 @@ such drawbacks.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/damage} 
+{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/damage} 
 
 }
 
@@ -5584,33 +5600,96 @@ and ™ has increased 10.5 and 9.0 times respectively. This could be an
 evidence of the fact that the number of trademark in the field of fixed
 constructions is increasing.
 
-Table: \label{tab:ipcclassestm} For each IPC class the ratio of the
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:ipcclassestm} For each IPC class the ratio of the
 percentage of patents containing at least one ® or ™ character is
-computed for two patents sets 1995 to 2002 and from 2007 to 2014.
-
-\begin{tabular}{l|l|l}
-\hline
-IPC Classes & Ratio ® 2007-2014 over ® 1995-2002   & Ratio ™ 2007-2014 over ™ 1995-2002  \\
-\hline
-A & 5.9 & 5.0\\
-\hline
-B & 6.2 & 5.4\\
-\hline
-C & 5.9 & 5.2\\
-\hline
-D & 5.6 & 5.7\\
-\hline
-E & 10.5 & 9.0\\
-\hline
-F & 7.5 & 6.2\\
-\hline
-G & 4.6 & 3.2\\
-\hline
-H & 5.1 & 3.2\\
-\hline
-Average & 6.4 & 5.4\\
-\hline
-\end{tabular}
+computed for two patents sets 1995 to 2002 and from 2007 to
+2014.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
+IPC Classes\strut
+\end{minipage} & \begin{minipage}[b]{0.39\columnwidth}\raggedright\strut
+Ratio ® 2007-2014 over ® 1995-2002 ~\strut
+\end{minipage} & \begin{minipage}[b]{0.39\columnwidth}\raggedright\strut
+Ratio ™ 2007-2014 over ™ 1995-2002 ~\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
+IPC Classes\strut
+\end{minipage} & \begin{minipage}[b]{0.39\columnwidth}\raggedright\strut
+Ratio ® 2007-2014 over ® 1995-2002 ~\strut
+\end{minipage} & \begin{minipage}[b]{0.39\columnwidth}\raggedright\strut
+Ratio ™ 2007-2014 over ™ 1995-2002 ~\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+A\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+5.9\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+5.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+B\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+6.2\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+5.4\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+C\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+5.9\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+5.2\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+D\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+5.6\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+5.7\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+E\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+10.5\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+9.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+F\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+7.5\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+6.2\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+G\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+4.6\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+3.2\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+H\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+5.1\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+3.2\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+Average\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+6.4\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright\strut
+5.4\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 \subsubsection*{The Selected Tradenames}\label{the-selected-tradenames}
 \addcontentsline{toc}{subsubsection}{The Selected Tradenames}
@@ -5619,85 +5698,13 @@ We a set of popular tradenames referring to
 \citep{morris2016trademarks}. Then we filtered the ambigouus ones (the
 one that can refer to surnames), because this can create an
 onverstimation of the number of patent citing it witouth the tradenames.
-The total namber of tradenames is 38 and these are:
-
-\begin{itemize}
-\tightlist
-\item
-  amazon®
-\item
-  blackberry®
-\item
-  bose®
-\item
-  budweiser®
-\item
-  chiquita®
-\item
-  chrome®
-\item
-  coca-cola®
-\item
-  ebay®
-\item
-  facebook®
-\item
-  fender®
-\item
-  firefox®
-\item
-  gibson®
-\item
-  gillette®
-\item
-  heineken®
-\item
-  ibanez®
-\item
-  intel®
-\item
-  iphone®
-\item
-  kellog®
-\item
-  kodak®
-\item
-  lego®
-\item
-  marlboro®
-\item
-  matlab®
-\item
-  mcdonald's®
-\item
-  nitinol®
-\item
-  nutella®
-\item
-  nylon®
-\item
-  photoshop®
-\item
-  polaroid®
-\item
-  post-it®
-\item
-  powerpoint®
-\item
-  prozac®
-\item
-  sennheiser®
-\item
-  spotify®
-\item
-  teflon®
-\item
-  velcro®
-\item
-  whatsapp®
-\item
-  xanax®
-\end{itemize}
+The total namber of tradenames is 38 and these are: amazon®,
+blackberry®, bose®, budweiser®, chiquita®, chrome®, cocacola®, ebay®,
+facebook®, fender®, firefox®, gibson®, gillette®, heineken®, ibanez®,
+intel®, iphone®, kellog®, kodak®, lego®, marlboro®, matlab®,
+mcdonald's®, nitinol®, nutella®, nylon®, photoshop®, polaroid®, postit®,
+powerpoint®, prozac®, sennheiser®, spotify®, teflon®, velcro®, whatsapp®
+and xanax®.
 
 In figure \ref{fig:tmlistcpmplete} are shown the number of patent
 containing the tradenames with and withouht ™ and ®; furthermore the
@@ -5756,7 +5763,7 @@ have to be refined.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{_bookdown_files/figures/TrendsMarks.001} 
+{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/TrendsMarks.001} 
 
 }
 
@@ -5832,12 +5839,12 @@ With such a dataset a series of computations can be performed: here we
 show the results of the correlation analysis among the chosen trademarks
 to analyse their relative positioning on the invention landscape (not
 only the market); Correlation analysis is shown in Figure
-\ref{fig:similartm} The matrix is triangular owing to the symmetry of
-the relationship. The main evidences are the following:
+\ref{fig:similartm}. The matrix is triangular owing to the symmetry of
+the relationship.
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/correlation_matrix_tm} 
+{\centering \includegraphics[width=0.7\linewidth]{_bookdown_files/figures/correlation_matrix_tm} 
 
 }
 
@@ -7447,73 +7454,59 @@ identify field specific-technologies that refers just to one or few
 sectors/business areas, and general purpose technologies that can be
 exploited in several sectors/business areas.
 
-Table: \label{tab:tabletech40scopus} Breakdown of industry 4.0 papers per
-research field. Source: SCOPUS date: 06/06/2017
+\begin{table}
 
-\begin{tabular}{l|r}
-\hline
+\caption{\label{tab:tabletech40scopus}Breakdown of industry 4.0 papers per research field. Source: SCOPUS date: 06/06/2017}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
 Subject Area & Number of Publications\\
-\hline
+\midrule
 Engineering & 645\\
-\hline
 Computer Science & 410\\
-\hline
 Business, Management and Accounting & 185\\
-\hline
 Decision Science & 134\\
-\hline
 Material Science & 90\\
-\hline
+\addlinespace
 Mathematics & 87\\
-\hline
 Chemistry & 52\\
-\hline
 Physics And Astronomy & 45\\
-\hline
 Social Sciences & 34\\
-\hline
 Energy & 30\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
 Formulated initially in Germany in 2011, the Industry 4.0 paradigm has
 been quickly translated, adapted and reinterpreted in developed and
-developing countries. Table \ref(tab:tabledocs40scopus) offers a
-compilation of official documents of governments, agencies and
-international organizations that in a few years after the initial
-formulation have embraced the concept. {[}FILIPPO, cerca articoli e
-cita, leva tabella{]}
+developing countries. Table \ref(tabledocs40scopus) offers a compilation
+of official documents of governments, agencies and international
+organizations that in a few years after the initial formulation have
+embraced the concept.
 
-Table: \label{tab:tabledocs40scopus} Technical document and Scientific
-articles used to create the Technology Seed List.
+\begin{table}
 
-\begin{tabular}{l|l|r|l|r|l|l}
-\hline
+\caption{\label{tab:tabledocs40scopus}Technical document and Scientific articles used to create the Technology Seed List.}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}>{\em\raggedright\arraybackslash}p{10em}r>{\raggedright\arraybackslash}p{5em}r>{\em\raggedright\arraybackslash}p{5em}l}
+\toprule
 Author(s) & Name/title of the source & Pages & Country & Year & Publisher & Typology\\
-\hline
+\midrule
 France Government & New Industrial France - Building France’s industrial future & 112 & France & 2016 & French Government & Technical Document\\
-\hline
 Geissbauer et al. & Industry 4.0: Building the digital enterprise - Global Industry Survey & 36 & United Kingdom & 2016 & Price Watehouse \& Coopers & Technical Document\\
-\hline
 German Trade \& Invest & Industrie 4.0 - Smart manufacturing for the future & 40 & Germany & 2014 & German Trade \& Invest & Technical Document\\
-\hline
 Heng, S. & Industry 4.0 - Upgrading of Germany’s industrial capabilities on the horizon & 16 & Germany & 2014 & Deutsche Bank & Technical Document\\
-\hline
 National Intelligent Factories Cluster & Research andInnovation Roadmap & 88 & Italy & 2015 & National Intelligent Factories Cluster & Technical Document\\
-\hline
+\addlinespace
 Rüßmann et al. & Industry 4.0 - The future of productivity and growth in manufacturing industries & 20 & United Sates & 2015 & Boston Consulting Group & Technical Document\\
-\hline
 Siemens & On the Way to Industrie 4.0 – The Digital Enterprise & 27 & Germany & 2015 & Siemens & Technical Document\\
-\hline
 Smit et al. & Industry 4.0 - Study for the ITRE Committee. & 94 & Europe & 2016 & European Parliament & Technical Document\\
-\hline
 The Government Office for Science & The future of manufacturing: a new era of opportunity and challenge for the UK & 250 & United Kingdom & 2016 & The Government Office for Science & Technical Document\\
-\hline
 Wee et al. & Industry 4.0 - How to navigate digitization of the manufacturing sector & 62 & United States & 2015 & McKinsey Company & Technical Document\\
-\hline
 Gorecky et al. & Human-machine-interaction in the industry 4.0 era & 6 & Germany & 2014 & Industrial Informatics (INDIN) - 2014 12th IEEE International Conference & Scientific Article\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
 Despite this rapid and impressive convergence of interest (in itself a
 clear demonstration of the interdependence of policies across the
@@ -8290,98 +8283,38 @@ Germany and in the rest of the world.
 \addcontentsline{toc}{subsubsection}{The collected pages}
 
 We collect 97 pages for the German graph and 95 pages for the English
-graph. Table \ref{tab:industrietab1} list a sample of forty pages per
-language, alphabetically ordered.
+graph. A list of a sample of forty pages per language, alphabetically
+ordered is:
 
-Table: \label{tab:industrietab1} For each IPC class the ratio of the
-percentage of patents containing at least one ® or ™ character is
-computed for two patents sets 1995 to 2002 and from 2007 to 2014.
-
-\begin{tabular}{l|l}
-\hline
-German Version & English Version\\
-\hline
-Absatzwirtschaft & Adaptive system\\
-\hline
-Automatisierung & Agent-assisted automation\\
-\hline
-Automatisierungsgrad & Ambient intelligence\\
-\hline
-Automatisierungstechnik & AmbieSense\\
-\hline
-Autonomic Computing & Analytics\\
-\hline
-Autopoiesis & Artificial intelligence\\
-\hline
-Betriebswirtschaftslehre & Automated reasoning\\
-\hline
-Corporate Evolution & Automation\\
-\hline
-Cyber-physisches System & Autonomic computing\\
-\hline
-Dataset & Autonomous car\\
-\hline
-Daten & Big data\\
-\hline
-Datenabgleich & Big Data Maturity Model\\
-\hline
-Datenarchitektur & Big memory\\
-\hline
-Datenaustausch & Carrier cloud\\
-\hline
-Datenbasis & Cloud-based design and manufacturing\\
-\hline
-Datenelement & Cloud analytics\\
-\hline
-Datenfeld & Cloud collaboration\\
-\hline
-Datenmanagement & Cloud computing\\
-\hline
-Datenmodell & Cloud computing comparison\\
-\hline
-Datenmodellierung & Cloud computing security\\
-\hline
-Datensicherung & Cloud database\\
-\hline
-Datenstruktur & Cloud engineering\\
-\hline
-Datentyp & Cloud Foundry\\
-\hline
-Denken & Cloud management\\
-\hline
-Dienst (Informatik) & Cloud manufacturing\\
-\hline
-Dienstleistung & Cloud research\\
-\hline
-Digitales Objektgedächtnis & Cognitive computer\\
-\hline
-Elektronische Datenverarbeitung & Cognitive computing\\
-\hline
-Erfahrungskurve & Community cloud\\
-\hline
-Erinnerungsvermögen & Competitions and prizes in artificial intelligence\\
-\hline
-Feld (Datentyp) & Computer-aided engineering\\
-\hline
-Feldgerät & Computer-aided technologies\\
-\hline
-Fertigungslinie & Computer-integrated manufacturing\\
-\hline
-Fließbandabstimmung & Computer vision\\
-\hline
-Fließbandfertigung & Continuous analytics\\
-\hline
-Gegenwart & Control loop\\
-\hline
-Geschichte der Produktionstechnik & Control system\\
-\hline
-Glauben & Cyber-physical system\\
-\hline
-Gruppenfertigung & Cyber manufacturing\\
-\hline
-Halbzeug & Datafication\\
-\hline
-\end{tabular}
+\begin{itemize}
+\item
+  \textbf{German Version}: Absatzwirtschaft, Automatisierung,
+  Automatisierungsgrad, Automatisierungstechnik, Autonomic Computing,
+  Autopoiesis, Betriebswirtschaftslehre, Corporate Evolution,
+  Cyber-physisches System, Dataset, Daten, Datenabgleich,
+  Datenarchitektur, Datenaustausch, Datenbasis, Datenelement, Datenfeld,
+  Datenmanagement, Datenmodell, Datenmodellierung, Datensicherung,
+  Datenstruktur, Datentyp, Denken, Dienst (Informatik), Dienstleistung,
+  Digitales Objektgedächtnis, Elektronische Datenverarbeitung,
+  Erfahrungskurve, Erinnerungsvermögen, Feld (Datentyp), Feldgerät,
+  Fertigungslinie, Fließbandabstimmung, Fließbandfertigung, Gegenwart,
+  Geschichte der Produktionstechnik, Glauben, Gruppenfertigung,
+  Halbzeug.
+\item
+  \textbf{English Version}: Adaptive system, Agent-assisted automation,
+  Ambient intelligence, AmbieSense, Analytics, Artificial intelligence,
+  Automated reasoning, Automation, Autonomic computing, Autonomous car,
+  Big data, Big Data Maturity Model, Big memory, Carrier cloud,
+  Cloud-based design and manufacturing, Cloud analytics, Cloud
+  collaboration, Cloud computing, Cloud computing comparison, Cloud
+  computing security, Cloud database, Cloud engineering, Cloud Foundry,
+  Cloud management, Cloud manufacturing, Cloud research, Cognitive
+  computer, Cognitive computing, Community cloud, Competitions and
+  prizes in artificial intelligence, Computer-aided engineering,
+  Computer-aided technologies, Computer-integrated manufacturing,
+  Computer vision, Continuous analytics, Control loop, Control system,
+  Cyber-physical system, Cyber manufacturing, Datafication.
+\end{itemize}
 
 \subsubsection*{The Graphs}\label{the-graphs}
 \addcontentsline{toc}{subsubsection}{The Graphs}
@@ -8437,40 +8370,32 @@ the more connections the nodes have with each other. - Nodes Distance:
 Gives back the minimum number of edges that connect one node with each
 other. Here again, the mean value shows the interconnectivity of the
 graph: A lower value means that the way from one node to another is
-shorter, thus that the graph is more highly connected.
+shorter, thus that the graph is more highly connected. The results of
+these metrics for the two graphs are:
 
-The results of these metrics for the two graphs are shown in table
-\ref{tab:industrietab2}. From the diameter measure we can see that all
-of the pages are connected through a maximum of 4 edges. This is not
-surprising, since it was a premise of the method when setting the level
-to 2. Considering the mean degree, a level of 2.38 for the German
-version and 3.29 for the English version shows how the nodes of the
-English graph are more interconnected. This can also be qualitative
-observed when looking at the figures 3. Finally, the average distance
-from one node to another is higher in the German graph, supporting the
-finding of the measures discussed above. These findings goes in line
-with what is said by a study of Acatech \citep{kagermann2006industry}:
-in the USA, for example, the term Industry 4.0 is understood in a much
-wider meaning. Furthermore, Acatech study say that in Germany, the focus
-is mostly on technological dimensions, while in the USA, the development
-of the new business models in the area of big data analytics play a
-greater role, among others.
+\begin{itemize}
+\item
+  German Version: Diameter= 4, Mean Degree= 2.38, Mean Distance= 3.25
+\item
+  English Version: Diameter= 4, Mean Degree= 3.29, Mean Distance= 3
+\end{itemize}
 
-Table: \label{tab:industrietab2} For each IPC class the ratio of the
-percentage of patents containing at least one ® or ™ character is
-computed for two patents sets 1995 to 2002 and from 2007 to 2014.
+From the diameter measure we can see that all of the pages are connected
+through a maximum of 4 edges. This is not surprising, since it was a
+premise of the method when setting the level to 2. Considering the mean
+degree, a level of 2.38 for the German version and 3.29 for the English
+version shows how the nodes of the English graph are more
+interconnected. This can also be qualitative observed when looking at
+the figures 3. Finally, the average distance from one node to another is
+higher in the German graph, supporting the finding of the measures
+discussed above.
 
-\begin{tabular}{l|l|l}
-\hline
-Measures & German & English\\
-\hline
-Diameter & 4 & 4\\
-\hline
-Mean Degree & 2.38 & 3.29\\
-\hline
-Mean Distance & 3.25 & 3\\
-\hline
-\end{tabular}
+These findings goes in line with what is said by a study of Acatech
+\citep{kagermann2006industry}: in the USA, for example, the term
+Industry 4.0 is understood in a much wider meaning. Furthermore, Acatech
+study say that in Germany, the focus is mostly on technological
+dimensions, while in the USA, the development of the new business models
+in the area of big data analytics play a greater role, among others.
 
 \subsubsection*{Clustering}\label{clustering-1}
 \addcontentsline{toc}{subsubsection}{Clustering}
@@ -8484,20 +8409,13 @@ label of the German version are translated in English. The resulting,
 corresponding groups as well as the number of nodes they contain can be
 found in table \ref{tab:industrietab3}.
 
-\begin{figure}
+Considering together figure \ref{fig:industrieclusters} and table
+\ref{tab:industrietab3}, it is evident how the central node of the graph
+(Industry 4.0) is contained in the first cluster Internet of things \&
+manufacturing for both the graphs. It is also by design connected to all
+other clusters, so that no cluster is isolated from Industry 4.0 node.
 
-{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/industrie_clusters} 
-
-}
-
-\caption{The German version (left) and the English version (right) of the Industry 4.0 clustered graphs.}\label{fig:industrieclusters}
-\end{figure}
-
-Considering together figure 4 and table 3, it is evident how the central
-node of the graph(Industry 4.0) is contained in the first cluster
-Internet of things \& manufacturing for both the graphs. It is also by
-design connected to all other clusters, so that no cluster is isolated
-from Industry 4.0 node. As evident from table 3, the clusters in the two
+As evident from table \ref{tab:industrietab3}, the clusters in the two
 graphs are similar. We have the same five clusters in both graphs and a
 different one for each language. This shows that Industry 4.0 framework
 if considered at a more abstract level, is similar in different
@@ -8529,27 +8447,6 @@ is strongly integrated with ITC-related topics (Data processing \&
 Analytics, Cognition and Cloud Computing), adding the adjective cyber to
 the topic of manufacturing.
 
-\begin{longtable}[]{@{}lll@{}}
-\caption{\label{tab:industrietab3} Clusters names and number of nodes per
-cluster for each version of the Industry Graph 4.0.}\tabularnewline
-\toprule
-Cluster & \# Nodes German & \# Nodes English\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-Cluster & \# Nodes German & \# Nodes English\tabularnewline
-\midrule
-\endhead
-1- Internet of things \& manufacturing & 12 & 28\tabularnewline
-2- Cognition & 23 & 7\tabularnewline
-3- Data, processing \& analytics & 23 & 19\tabularnewline
-4- Automation & 12 & 20\tabularnewline
-5- Cloud computing & - & 21\tabularnewline
-6- Production, product life circle and flow production & 27 &
--\tabularnewline
-\bottomrule
-\end{longtable}
-
 Additionally, also automation has more entries in the English version
 and is highly connected not only to internet of things \& manufacturing,
 but also to could computing, which does not even exist in the German
@@ -8578,6 +8475,7 @@ manufacturing technologies''. This could explain even better the finding
 that the German graph lacks on the ICT side, giving a new
 interpretation: in Germany there is a different interpretation of the
 meaning of cognitive computing with respect to the rest of the world.
+
 Finally, while the group of data, processing and analytics nearly has
 the same amount of nodes, the links of this cluster with the other
 clusters is quite different in the two graphs and also its content
@@ -8587,6 +8485,36 @@ limited to just data. This emphasizes the careful approach of Germany
 with this topic, which was also observed in \citep{wee2015industry}.
 Germany seems to be rather conservative when it comes to new emerging
 technological trends or even buzz-worlds like Big Data.
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:industrietab3} Clusters names and number of nodes per
+cluster for each version of the Industry Graph 4.0.}\tabularnewline
+\toprule
+Cluster & \# Nodes German & \# Nodes English\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Cluster & \# Nodes German & \# Nodes English\tabularnewline
+\midrule
+\endhead
+1- Internet of things \& manufacturing & 12 & 28\tabularnewline
+2- Cognition & 23 & 7\tabularnewline
+3- Data, processing \& analytics & 23 & 19\tabularnewline
+4- Automation & 12 & 20\tabularnewline
+5- Cloud computing & - & 21\tabularnewline
+6- Production, product life circle and flow production & 27 &
+-\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{_bookdown_files/figures/industrie_clusters} 
+
+}
+
+\caption{The German version (left) and the English version (right) of the Industry 4.0 clustered graphs.}\label{fig:industrieclusters}
+\end{figure}
 
 \chapter{Social Media}\label{social-media}
 
@@ -9432,21 +9360,6 @@ dictionary, or the compliance with formal criteria for the definition of
 a dictionary. These proofs have been offered in a number of papers cited
 below.
 
-\begin{itemize}
-\item
-  Functional verbs: list of verbal expressions describing functions, or
-  actions performed by artifacts on given objects
-  \citep{fantoni2013automatic, apreda2016functional}.
-\item
-  Advantages and Disadvantages: list of terms referring to measurable
-  benefits or drawbacks related to an object, chosen for their capacity
-  to represent applications of an invention (see section
-  \ref{advdrwresults}).
-\end{itemize}
-
-Table \ref{tab:dictex1} offers an overview of the dictionaries used for
-this analysis, with a few examples of terms.
-
 \begin{longtable}[]{@{}lrl@{}}
 \caption{\label{tab:dictex1} Sources and main characteristics of
 dictionaries.}\tabularnewline
@@ -9502,19 +9415,20 @@ Aggravated, Aggravation\strut
 \bottomrule
 \end{longtable}
 
-\begin{tabular}{l|r|l}
-\hline
-Dictionary & Numberof entries & Examples of chunks\\
-\hline
-Artifacts & 12374 & Acetanilid, Actuator, Aerogenerator, Agglomerator\\
-\hline
-Acts & 5527 & Abduction, Abidance, Accenting, Acquiring\\
-\hline
-Functional Verbs & 11256 & Abrade, Absorb, Abut, Accelerate\\
-\hline
-Advantages/Disadvantages & 29902 & Ability, Accelerate, Acceptance, Accessibility, Accident, Accidents, Aggravated, Aggravation\\
-\hline
-\end{tabular}
+\begin{itemize}
+\item
+  Functional verbs: list of verbal expressions describing functions, or
+  actions performed by artifacts on given objects
+  \citep{fantoni2013automatic, apreda2016functional}.
+\item
+  Advantages and Disadvantages: list of terms referring to measurable
+  benefits or drawbacks related to an object, chosen for their capacity
+  to represent applications of an invention (see section
+  \ref{advdrwresults}).
+\end{itemize}
+
+Table \ref{tab:dictex1} offers an overview of the dictionaries used for
+this analysis, with a few examples of terms.
 
 \section{The value added of enriched
 dictionaries}\label{the-value-added-of-enriched-dictionaries}
@@ -9796,21 +9710,21 @@ IPC classes whose technologies are largely known. Table
 (IPC) classes included in the analysis (a random sample of 2.000 patents
 each).
 
-Table: \label{tab:dicpatents} Patent sets under examination .
+\begin{table}
 
-\begin{tabular}{l|l}
-\hline
+\caption{\label{tab:dicpatents}Patent sets under examination.}
+\centering
+\begin{tabular}[t]{>{}l>{\em\raggedright\arraybackslash}p{30em}}
+\toprule
 IPC Class & IPC Definition\\
-\hline
+\midrule
 A47J37 & KITCHEN EQUIPMENT; BAKING DEVICES; ROASTING DEVICES; GRILLING DEVICES; FRYING DEVICES\\
-\hline
 A61C15 & DENTISTRY; APPARATUS OR METHODS FOR ORAL OR DENTAL HYGIENE\\
-\hline
 A61G13 & TRANSPORT, PERSONAL CONVEYANCES, OR ACCOMMODATION SPECIALLY ADAPTED FOR PATIENTS OR DISABLED PERSONS; OPERATING TABLES OR CHAIRS; CHAIRS FOR DENTISTRY; FUNERAL DEVICES\\
-\hline
 A61H & PHYSICAL THERAPY APPARATUS, e.g. DEVICES FOR LOCATING OR STIMULATING REFLEX POINTS IN THE BODY; ARTIFICIAL RESPIRATION; MASSAGE; BATHING DEVICES FOR SPECIAL THERAPEUTIC OR HYGIENIC PURPOSES OR SPECIFIC PARTS OF THE BODY\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
 The technologies examined are largely mature. As it is shown in Figure
 \ref{fig:dicttrendsipc}, in some of them the patenting activity started
@@ -9835,24 +9749,22 @@ construction, highly heterogeneous.
 Table \ref{tab:dictmetrix} offers a summary of measures derived from the
 application of dictionaries to the four patent sets combined together.
 
-Table: \label{tab:dictmetrix} Summary of findings from the application of
-dictionaries to the combined patent sets.
+\begin{table}
 
-\begin{tabular}{l|r|r|r}
-\hline
+\caption{\label{tab:dictmetrix}Summary of findings from the application of dictionaries to the combined patent sets.}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{10em}>{\raggedleft\arraybackslash}p{10em}>{\raggedleft\arraybackslash}p{10em}>{\raggedleft\arraybackslash}p{10em}}
+\toprule
 Dictionary & Average cosine distance of topics & Average number of topics & Average sparsity of the DFM\\
-\hline
+\midrule
 Artifacts & 0.002 & 16 & 98.3\\
-\hline
 Acts & 0.004 & 11 & 97.9\\
-\hline
 Advantages and Disadvantages & 0.016 & 32 & 94.3\\
-\hline
 Functional Verbs & 0.029 & 37 & 73.8\\
-\hline
 Blacklist & 0.031 & 40 & 63.3\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
 Two findings are visible in Table \ref{tab:dictmetrix}. First, there is
 large difference in the cohesiveness of the clustering based on
@@ -9874,43 +9786,53 @@ Table \ref{tab:dictactsresults} shows the results of the application of
 the Acts dictionary to the four separate patent sets, while Table
 \ref{tab:dictartsresults} shows the same for the Artifacts dictionary.
 
-Table: \label{tab:dictactsresults} Findings from the application of the
-\textbf{Acts} dictionary to selected patent sets.
+\rowcolors{2}{gray!6}{white}
 
-\begin{tabular}{l|r|r|r|r|r}
-\hline
+\begin{table}
+
+\caption{\label{tab:dictactsresults}Findings from the application of the Acts dictionary to selected patent sets.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lrrrrr}
+\hiderowcolors
+\toprule
 Dataset & Number of topics & Cosine distance of topics & Number of documents & Number of features & Average sparsity of the DFM (\%)\\
-\hline
+\midrule
+\showrowcolors
 Burners & 2 & 0.001 & 496 & 306 & 97.8\\
-\hline
 Toothbrushes & 6 & 0.002 & 494 & 311 & 97.8\\
-\hline
 Prosthesis & 18 & 0.005 & 491 & 493 & 97.9\\
-\hline
 Funeral Dev. & 16 & 0.007 & 491 & 470 & 98.2\\
-\hline
 Mean & 11 & 0.004 & 493 & 395 & 97.9\\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabular}}
+\end{table}
 
-Table: \label{tab:dictartsresults} Findings from the application of the
-\textbf{Artifacts} dictionary to selected patent sets.
+\rowcolors{2}{white}{white}
 
-\begin{tabular}{l|r|r|r|r|r}
-\hline
+\rowcolors{2}{gray!6}{white}
+
+\begin{table}
+
+\caption{\label{tab:dictartsresults}Findings from the application of the Artifacts dictionary to selected patent sets.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lrrrrr}
+\hiderowcolors
+\toprule
 Dataset & Number of topics & Cosine distance of topics & Number of documents & Number of features & Average sparsity of the DFM (\%)\\
-\hline
+\midrule
+\showrowcolors
 Burners & 6 & 0.001 & 495 & 397 & 98.4\\
-\hline
 Toothbrushes & 16 & 0.001 & 469 & 500 & 98.8\\
-\hline
 Prosthesis & 18 & 0.003 & 487 & 500 & 98.0\\
-\hline
 Funeral Dev. & 22 & 0.002 & 485 & 500 & 98.1\\
-\hline
 Mean & 16 & 0.002 & 484 & 474 & 98.3\\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\rowcolors{2}{white}{white}
 
 These two dictionaries were retrieved from the Wordnet categorization
 dictionary, which is a tool for linguistic analysis; thus, the terms
@@ -9936,65 +9858,51 @@ Non-technical dictionaries in the patent set Prosthesis. We need to test
 whether Non-technical dictionaries deliver topics that are satisfactory
 with respect to their potential to describe technologies.
 
-Table: \label{tab:acttopicresults} Top ten words in selected topics
-extracted in the patent set \textbf{Prosthesis} with the aid of the
-\textbf{Acts} dictionary.
+\begin{table}
 
-\begin{tabular}{l|l|l|l}
-\hline
+\caption{\label{tab:acttopicresults}Top ten words in selected topics extracted in the patent set Prosthesis with the aid of the Acts dictionary.}
+\centering
+\begin{tabular}[t]{>{\em\raggedright\arraybackslash}p{10em}l>{\em\raggedright\arraybackslash}p{10em}l}
+\toprule
 Topic 3: Term & Topic 3: Beta & Topic 7: Term & Topic 7: Beta\\
-\hline
+\midrule
 Measuring & 0.322 & Manipulation & 0.160\\
-\hline
 Measurement & 0.217 & Steering & 0.152\\
-\hline
 Detecting & 0.210 & Dialysis & 0.145\\
-\hline
 Performing & 0.033 & Cycling & 0.063\\
-\hline
 Sending & 0.031 & Deactivation & 0.060\\
-\hline
+\addlinespace
 Calibration & 0.030 & Dampening & 0.049\\
-\hline
 Supplying & 0.024 & Shearing & 0.047\\
-\hline
 Repositioning & 0.024 & Logging & 0.032\\
-\hline
 Causing & 0.009 & Exercising & 0.029\\
-\hline
 Comparing & 0.009 & Reaching & 0.023\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
-Table: \label{tab:arttopicresults} Top ten words in selected topics
-extracted in the patent set \textbf{Prosthesis} with the aid of the
-\textbf{Artifacts} dictionary.
+\begin{table}
 
-\begin{tabular}{l|l|l|l}
-\hline
+\caption{\label{tab:arttopicresults}Top ten words in selected topics extracted in the patent set Prosthesis with the aid of the Artifacts dictionary.}
+\centering
+\begin{tabular}[t]{>{\em\raggedright\arraybackslash}p{10em}l>{\em\raggedright\arraybackslash}p{10em}l}
+\toprule
 Topic 5: Term & Topic 5: Beta & Topic 14: Term & Topic 14: Beta\\
-\hline
+\midrule
 Backrest & 0.498 & Electrode & 0.405\\
-\hline
 Eyewash & 0.092 & Catheter & 0.233\\
-\hline
 Armrest & 0.085 & Circuitry & 0.106\\
-\hline
 Gasket & 0.060 & Sensor & 0.026\\
-\hline
 Capacitor & 0.052 & Housing & 0.025\\
-\hline
+\addlinespace
 Arms & 0.048 & Converter & 0.025\\
-\hline
 Gurney & 0.045 & Emitter & 0.021\\
-\hline
 Footplate & 0.025 & Cathode & 0.018\\
-\hline
 Eyepiece & 0.019 & Anode & 0.018\\
-\hline
 Headrest & 0.011 & Reflector & 0.011\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
 In the case of the Artifacts dictionary, Topic 5 gives us information on
 components related to the body part interested by the prosthesis, while
@@ -10009,58 +9917,65 @@ focus to have a satisfactory definition of the technologies.
 Table \ref{tab:dictadvsresults} shows the results of the application of
 the Advantages \& Disadvantages dictionary to the four separate patent
 sets, while Table \ref{tab:dictfunctsresults} shows the same for the
-Functional dictionary.
+Functional dictionary. The technical dictionaries applied contain a
+large number of features, generating a large DFM. An overall look at
+Tables \ref{tab:dictadvsresults} and \ref{tab:dictfunctsresults} shows
+several interesting findings. First of all, the technical dictionaries
+allow the identification of a much larger number of topics with respect
+to non-technical dictionaries: the average number is 32 for the
+Advantages \& Disadvantages, and 37 for the Functional dictionary. This
+means that technical dictionaries show a higher power of discrimination
+of semantic content. This is an important finding for Technology
+intelligence, since a larger number of internally coherent topics is an
+extremely useful starting point for the interpretation of their content.
 
-Table: \label{tab:dictadvsresults} Findings from the application of the
-\textbf{Advantages and Disadvantages} dictionary to selected patent
-sets.
+\rowcolors{2}{gray!6}{white}
 
-\begin{tabular}{l|r|r|r|r|r}
-\hline
+\begin{table}
+
+\caption{\label{tab:dictadvsresults}Findings from the application of the Advantages and Disadvantages dictionary to selected patent sets.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lrrrrr}
+\hiderowcolors
+\toprule
 Dataset & Number of topics & Cosine distance of topics & Number of documents & Number of features & Average sparsity of the DFM (\%)\\
-\hline
+\midrule
+\showrowcolors
 Burners & 32 & 0.015 & 500 & 500 & 95.9\\
-\hline
 Toothbrushes & 30 & 0.014 & 500 & 500 & 95.0\\
-\hline
 Prosthesis & 32 & 0.021 & 497 & 500 & 92.3\\
-\hline
 Funeral Dev. & 34 & 0.014 & 495 & 500 & 94.0\\
-\hline
 Mean & 32 & 0.016 & 498 & 500 & 94.3\\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabular}}
+\end{table}
 
-Table: \label{tab:dictfunctsresults} Findings from the application of the
-\textbf{Functional} dictionary to selected patent sets.
+\rowcolors{2}{white}{white}
 
-\begin{tabular}{l|r|r|r|r|r}
-\hline
+\rowcolors{2}{gray!6}{white}
+
+\begin{table}
+
+\caption{\label{tab:dictfunctsresults}Findings from the application of the Functional dictionary to selected patent sets.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lrrrrr}
+\hiderowcolors
+\toprule
 Dataset & Number of topics & Cosine distance of topics & Number of documents & Number of features & Average sparsity of the DFM (\%)\\
-\hline
+\midrule
+\showrowcolors
 Burners & 38 & 0.021 & 500 & 500 & 76.6\\
-\hline
 Toothbrushes & 36 & 0.022 & 500 & 500 & 75.5\\
-\hline
 Prosthesis & 34 & 0.032 & 497 & 500 & 70.6\\
-\hline
 Funeral Dev. & 38 & 0.041 & 495 & 500 & 72.4\\
-\hline
 Mean & 37 & 0.029 & 498 & 500 & 73.8\\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabular}}
+\end{table}
 
-The technical dictionaries applied contain a large number of features,
-generating a large DFM. An overall look at Tables
-\ref{tab:dictadvsresults} and \ref{tab:dictfunctsresults} shows several
-interesting findings. First of all, the technical dictionaries allow the
-identification of a much larger number of topics with respect to
-non-technical dictionaries: the average number is 32 for the Advantages
-\& Disadvantages, and 37 for the Functional dictionary. This means that
-technical dictionaries show a higher power of discrimination of semantic
-content. This is an important finding for Technology intelligence, since
-a larger number of internally coherent topics is an extremely useful
-starting point for the interpretation of their content.
+\rowcolors{2}{white}{white}
 
 Second, in the case of the Functional dictionary the Document-Feature
 Matrix (DFMs) is less sparse: the average sparsity index is 73,8\%, as
@@ -10100,65 +10015,51 @@ technical dictionary approach, let us examine more in detail in table
 words in some of the topics identified in one of the four patent sets
 examined, namely Prosthesis.
 
-Table: \label{tab:advtopicresults} Top ten words in selected topics
-extracted in the patent set \textbf{Prosthesis} with the aid of the
-\textbf{Advantages \& Disadvantages dictionary}.
+\begin{table}
 
-\begin{tabular}{l|l|l|l}
-\hline
+\caption{\label{tab:advtopicresults}Top ten words in selected topics extracted in the patent set Prosthesis with the aid of the Advantages and Disadvantages dictionary.}
+\centering
+\begin{tabular}[t]{>{\em\raggedright\arraybackslash}p{10em}l>{\em\raggedright\arraybackslash}p{10em}l}
+\toprule
 Topic 6: Term & Topic 6: Beta & Topic 28: Term & Topic 28: Beta\\
-\hline
+\midrule
 Adjustable & 0.564 & Worn & 0.155\\
-\hline
 Accommodate & 0.046 & Comfort & 0.086\\
-\hline
 Ergonomic & 0.032 & Wearing & 0.077\\
-\hline
 Securely & 0.022 & Comfortable & 0.058\\
-\hline
 Adjustability & 0.020 & Injury & 0.043\\
-\hline
+\addlinespace
 Ability & 0.017 & Discomfort & 0.031\\
-\hline
 Facilitate & 0.016 & Increase & 0.029\\
-\hline
 Stabilizing & 0.011 & Reduce & 0.026\\
-\hline
 Comfort & 0.010 & Uncomfortable & 0.025\\
-\hline
 Stability & 0.010 & Tear & 0.024\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
-Table: \label{tab:functtopicresults} Top ten words in selected topics
-extracted in the patent set \textbf{Prosthesis} with the aid of the
-\textbf{Functional dictionary}.
+\begin{table}
 
-\begin{tabular}{l|l|l|l}
-\hline
+\caption{\label{tab:functtopicresults}Top ten words in selected topics extracted in the patent set Prosthesis with the aid of the Functional dictionary.}
+\centering
+\begin{tabular}[t]{>{\em\raggedright\arraybackslash}p{10em}l>{\em\raggedright\arraybackslash}p{10em}l}
+\toprule
 Topic 15: Term & Topic 15: Beta & Topic 20: Term & Topic 20 :Beta\\
-\hline
+\midrule
 Distance & 0.054 & Arm & 0.238\\
-\hline
 Coupling & 0.053 & Exercise & 0.082\\
-\hline
 Position & 0.052 & Arms & 0.060\\
-\hline
 Neck & 0.043 & Stretching & 0.042\\
-\hline
 Line & 0.041 & Left & 0.025\\
-\hline
+\addlinespace
 Parallel & 0.030 & View & 0.024\\
-\hline
 View & 0.021 & Orientation & 0.023\\
-\hline
 Form & 0.019 & Stretch & 0.021\\
-\hline
 Orientation & 0.016 & Angle & 0.019\\
-\hline
 Contact & 0.013 & Tension & 0.017\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
 In Table \ref{tab:advtopicresults} Topic 6 calls the attention to
 features of the prosthesis such as adjustability, facilitation and
@@ -10185,24 +10086,29 @@ words (stopwords) and ``patentese'' generic words. As stated above, the
 combination between generic and patentese stopwords is labelled
 Blacklist.
 
-Table: \label{tab:dictblacklist} Top ten words in selected topics extracted
-in the four patent sets with the aid of the \textbf{Blacklist}.
+\rowcolors{2}{gray!6}{white}
 
-\begin{tabular}{l|r|r|r|r|r}
-\hline
+\begin{table}
+
+\caption{\label{tab:dictblacklist}Top ten words in selected topics extracted in the four patent sets with the aid of the Blacklist.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lrrrrr}
+\hiderowcolors
+\toprule
 Dataset & Number of topics & Cosine Distance of Topics & Number of documents & Number of features & Average sparsity of the DFM (\%)\\
-\hline
+\midrule
+\showrowcolors
 Burners & 40 & 0.016 & 500 & 500 & 66.5\\
-\hline
 Toothbrushes & 40 & 0.025 & 500 & 500 & 65.7\\
-\hline
 Prosthesis & 40 & 0.040 & 500 & 500 & 59.2\\
-\hline
 Funeral Dev. & 40 & 0.042 & 500 & 500 & 61.6\\
-\hline
 Mean & 40 & 0.031 & 500 & 500 & 63.3\\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\rowcolors{2}{white}{white}
 
 The Table \ref{tab:dictblacklist} shows the clustering results using as
 filter a blacklist, composed by traditional and patentese stopwords. The
@@ -10432,6 +10338,7 @@ it has been argued that the evidence for the impact of research might be
 traced by extracting selected expressions from certain kinds of
 documents. We may distinguish between two kinds of documents: (a)
 produced by users of research; (b) produced by researchers themselves.
+
 There are several suggestions to use documents produced by users of
 research. In one of the most developed efforts to conceptualize the
 social impact of research, called Public Value Mapping (PVM) Bozeman and
@@ -10469,17 +10376,19 @@ as appropriate indicators of societal impact \citep{haustein2016tweets}.
 Among the documents produced by researchers, we might further
 distinguish between: (a) research proposals (ex ante documents) and (b)
 case studies produced after the realization of research projects (ex
-post, or documents produced within the research assessment process). It
-is this type of documents we suggest to examine as a novel methodology
-to assess the potential societal impact of research. In this paper we
-follow type (b) documents and use the collection of case studies
-produced by UK researchers under the REF exercise. In future studies we
-plan to use archives of proposals made available in public sources in
-order to examine the ex ante representation of researchers. The REF
-impact case studies, as already noted, have been the object of a large
-literature in recent years. Among these studies, King's College and
-Digital Science \citep{king2015nature} have indeed produced, using Text
-mining techniques, an interesting analysis of beneficiaries of UK
+post, or documents produced within the research assessment process).
+
+It is this type of documents we suggest to examine as a novel
+methodology to assess the potential societal impact of research. In this
+paper we follow type (b) documents and use the collection of case
+studies produced by UK researchers under the REF exercise. In future
+studies we plan to use archives of proposals made available in public
+sources in order to examine the ex ante representation of researchers.
+
+The REF impact case studies, as already noted, have been the object of a
+large literature in recent years. Among these studies, King's College
+and Digital Science \citep{king2015nature} have indeed produced, using
+Text mining techniques, an interesting analysis of beneficiaries of UK
 research, publishing a fascinating infographics. This analysis, however,
 lists only a fairly small set of research users, most of which are
 defined with generic terms. It is our contention that much further work
@@ -10528,36 +10437,39 @@ users, they will leave traces of this representation in their written
 texts. When they write research proposals they will promise to address
 the issues of these users, and when they write case studies of research
 impact they will report on the takeup or use of their research
-activities by these users. Second, it has been shown that research
-activities have a huge variety of impact pahways, largely dependent on
-the scientific discipline. In turn, this implies that disciplines have
-at least partially different target groups. Research in political
-science is different from research in oncology not only because their
-scientific foundations, methods, objects and cognitive styles are
-different, but also because they talk to different user groups. The
-texts produced by researchers themselves are a necessary starting point
-to reconstruct the various impact pathways. Third, focusing on user
-groups has the advantage of shifting away the attention from discrete
-events or products to long term processes of interaction between
-research and society. The focus on discrete events or products is a
-typical feature of the narrow definition of research impact cultivated
-since long time in the so called ``valorization of research''. This
-impact is defined and measured with reference to highly stylized
-entiities, such as patents, licensing contracts, research contracts, and
-spinoff companies. These are clearly defined, legally enforced, highly
-visible and measurable entities. Defining and measuring impact is easier
-by focusing on these entities because they convey the meaning of
-knowledge transfer from research to the market, and because the final
-outcome can be defined in monetary terms. We suggest to focus on user
-groups as a relatively permanent social entity, which is defined by a
-specific combination of social status, needs, culture, practices and
-routines. User groups survive the individual personality of people. They
-are a permanent, although often entirely informal, characterization of
-society. Finally, our methodology allows the large scale automatic
-analysis of large corpora. This means that the inevitable subjectivity
-in the reconstruction of impact by researchers in writing their
-proposals and/or impact case studies can be mitigated by examining large
-scale patterns. It is important to remark that the notion of users is
+activities by these users.
+
+Second, it has been shown that research activities have a huge variety
+of impact pahways, largely dependent on the scientific discipline. In
+turn, this implies that disciplines have at least partially different
+target groups. Research in political science is different from research
+in oncology not only because their scientific foundations, methods,
+objects and cognitive styles are different, but also because they talk
+to different user groups. The texts produced by researchers themselves
+are a necessary starting point to reconstruct the various impact
+pathways. Third, focusing on user groups has the advantage of shifting
+away the attention from discrete events or products to long term
+processes of interaction between research and society. The focus on
+discrete events or products is a typical feature of the narrow
+definition of research impact cultivated since long time in the so
+called ``valorization of research''. This impact is defined and measured
+with reference to highly stylized entiities, such as patents, licensing
+contracts, research contracts, and spinoff companies. These are clearly
+defined, legally enforced, highly visible and measurable entities.
+Defining and measuring impact is easier by focusing on these entities
+because they convey the meaning of knowledge transfer from research to
+the market, and because the final outcome can be defined in monetary
+terms. We suggest to focus on user groups as a relatively permanent
+social entity, which is defined by a specific combination of social
+status, needs, culture, practices and routines. User groups survive the
+individual personality of people. They are a permanent, although often
+entirely informal, characterization of society.
+
+Finally, our methodology allows the large scale automatic analysis of
+large corpora. This means that the inevitable subjectivity in the
+reconstruction of impact by researchers in writing their proposals
+and/or impact case studies can be mitigated by examining large scale
+patterns. It is important to remark that the notion of users is
 consistent with other suggestions in the literature that adopt different
 definitions, such as stakeholders, constituencies, interest groups. Our
 definition is broader and admits more internal variability, as discussed
@@ -10644,42 +10556,33 @@ approximately 152,000 people suffer a stroke.''). As it can be seen, the
 automatic annotation system isolates the only word (``people'') that may
 be part of a target group.
 
-Table: \label{tab:impact1} Tokenization, lemmatization and annotation of a
-sentence in the corpus.
+\begin{table}
 
-\begin{tabular}{r|r|r|l|l|l|l}
-\hline
+\caption{\label{tab:impact1}Tokenization, lemmatization and annotation of a sentence in the corpus.}
+\centering
+\begin{tabular}[t]{rrrllll}
+\toprule
 Doc\_id & Sentence\_id & Token\_id & Token & Lemma & Xpos & Full\_target\_group\\
-\hline
+\midrule
 1855 & 1 & 1 & Each & Each & DT & NA\\
-\hline
 1855 & 1 & 2 & year & Year & NN & NA\\
-\hline
 1855 & 1 & 3 & , & , & , & NA\\
-\hline
 1855 & 1 & 4 & in & in & IN & NA\\
-\hline
 1855 & 1 & 5 & England & england & NN & NA\\
-\hline
+\addlinespace
 1855 & 1 & 6 & alone & alone & RB & NA\\
-\hline
 1855 & 1 & 7 & , & , & , & NA\\
-\hline
 1855 & 1 & 8 & approximately & approximately & RB & NA\\
-\hline
 1855 & 1 & 9 & 152 & 152 & CD & NA\\
-\hline
 1855 & 1 & 10 & people & people & NN & People\\
-\hline
+\addlinespace
 1855 & 1 & 11 & suffer & suffer & VBP & NA\\
-\hline
 1855 & 1 & 12 & a & A & DT & NA\\
-\hline
 1855 & 1 & 13 & stroke & stroke & NN & NA\\
-\hline
 1855 & 1 & 14 & . & . & . & NA\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
 \section{From text extraction to
 indicators}\label{from-text-extraction-to-indicators}
@@ -11007,24 +10910,22 @@ groups as 2.5\% of different words. In absolute terms, the median REF
 impact case study contains 10 different words thet refer to target
 groups, repeated 22 times in total.
 
-Table: \label{tab:impact2} Descriptive statistics of indicators of target
-groups in the corpus of REF impact case studies.
+\begin{table}
 
-\begin{tabular}{l|r|l|l|l|l|l}
-\hline
+\caption{\label{tab:impact2}Descriptive statistics of indicators of target groups in the corpus of REF impact case studies.}
+\centering
+\begin{tabular}[t]{lrlllll}
+\toprule
 Indicator & Minimum & Maximum & 1st quartile & 3rd quartile & Mean & Median\\
-\hline
+\midrule
 Frequency:indicator & 0 & 9.2 & 1.2 & 2.7 & 2 & 1.9\\
-\hline
 Frequency: absolute value & 0 & 115 & 14 & 34 & 25469 & 22\\
-\hline
 Diversity: indicator & 0 & 7.6 & 1.8 & 3.2 & 2.5 & 2.4\\
-\hline
 Diversity: absolute value & 0 & 34 & 7 & 14 & 10518 & 10\\
-\hline
 Specificity & 0 & 1 & 0.59 & 0.731 & 0.659 & 0.656\\
-\hline
+\bottomrule
 \end{tabular}
+\end{table}
 
 There is not large variability in the number of different target groups,
 as the first and third quartile at 7 and 14 are close to the median
@@ -11963,8 +11864,8 @@ Developments}\label{limitations-and-future-developments}
 
 Quali altri stakeholders (quindi testi)
 
-\chapter{The Importance of Lexicons Design for Technical Documents
-Analysis}\label{sotadocumentsunderstandlexicons}
+\chapter{Lexicons Design for Mining Technical
+Knowledge}\label{sotadocumentsunderstandlexicons}
 
 Passaggio da design a descriptive. Si intravede che i lexicon posso
 essere tool efficace ed efficiente per le aziende.

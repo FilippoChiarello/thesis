@@ -114,7 +114,7 @@ The _design-science paradigm_ is a problemsolving paradigm andhas its roots in e
 
 Since Design science creates and evaluates IT artifacts intended to solve identified organizational problems, the present thesis belongs to this second paradigm. In Design Science, such artifacts are represented in a structured form that may vary from software, formal logic, and rigorous mathematics to informal natural language descriptions. We will use all these rapresentations at different level, for the different applications described in this thesis. 
 
-Furthrmore the thesis has been developed following the guidelines of design-science research. Hevner et al. [@bichler2006design] provide a set of seven guidelines which help information systems researchers conduct, evaluate and present design-science research. The guidelines are summarise in table \@ref(tab:introdesignscience).
+Furthrmore the thesis has been developed following the guidelines of design-science research. Hevner et al. [@bichler2006design] provide a set of seven guidelines which help information systems researchers conduct, evaluate and present design-science research. The guidelines are summarised in table \@ref(tab:introdesignscience).
 
 As previously discussed, design science is a problem solving pradigm. The fundamental principle of design-science research is that is the building and application of an artifact that permits to the researcher to gain new knowledge and understanding of a design problem and its solution. From this foundamental principle the seven guidelines are derived. That is, design-science research must end and must have as goal the _creation of an innovative, purposeful artifact (Guideline 1)_ for a specified _problem domain (Guideline 2)_. Because the artifact has to be purposeful, researcher has to measure its utility for the specified problem: this imply that _evaluation of the artifact is crucial (Guideline 3)_. Novelty is similarly crucial since the artifact must _solve an unsolved problem or solving a known problem in a more effective or efficient manner (Guideline 4)_. In this way, design-science research is differentiated from the practice of design since artifact itself must be _rigorously defined, formally represented, coherent, and internally consistent (Guideline 5)_. The process of design of the artificat and also artifact itself, incorporates a search process whereby _a problem space is constructed and a mechanism posed or enacted to find an effective (not necessarely otpimal) solution (Guideline 6)_. Finally, the results of the _design-science research must be communicated effectively (Guideline 7)_.
 
@@ -123,13 +123,16 @@ The comunication phase is crucial, and the results of a design science based res
 - a technical audience (researchers who will extend them and practitioners who will implement them) 
 - a managerial audience (researchers who will study them in context and practitioners who will decide if they should be implemented within their organizations).
 
-Table: (\#tab:introdesignscience) Design-Science Research Guidelines (from [@bichler2006design]).
 
-```{r introdesignsciencecode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+```{r introdesignscience, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
+
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/introdesignscience.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/introdesignscience.xlsx"), "latex", booktabs = T,caption = "Design-Science Research Guidelines" ) %>%      kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::column_spec(1) %>% 
+  kableExtra::column_spec(2, italic=T, width = "30em")
+  
 
 ```
 

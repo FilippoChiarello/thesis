@@ -176,12 +176,6 @@ We made use of the following dictionaries.
 The dictionary methodology offers the flexibility to build up dedicated or specialized dictionaries, that represent the state of the art of a given knowledge domain. We make use of two dedicated dictionaries recently developed by the authors in an academic research context.
 Needless to say, in these cases the authors must give the readers or users of the dictionary full proof of the completeness of the dictionary, or the compliance with formal criteria for the definition of a dictionary. These proofs have been offered in a number of papers cited below.
 
-- Functional verbs: list of verbal expressions describing functions, or actions performed by artifacts on given objects [@fantoni2013automatic; @apreda2016functional].
-
-- Advantages and Disadvantages: list of terms referring to measurable benefits or drawbacks related to an object, chosen for their capacity to represent applications of an invention (see section \@ref(advdrwresults)).
-
-Table \@ref(tab:dictex1) offers an overview of the dictionaries used for this analysis, with a few examples of terms.
-
 Table: (\#tab:dictex1)  Sources and main characteristics of dictionaries.
 
 |Dictionary               | Numberof entries|Examples of chunks                                                                           |
@@ -191,13 +185,12 @@ Table: (\#tab:dictex1)  Sources and main characteristics of dictionaries.
 |Functional Verbs         |            11256|Abrade, Absorb, Abut, Accelerate                                                             |
 |Advantages/Disadvantages |            29902|Ability, Accelerate, Acceptance, Accessibility, Accident, Accidents, Aggravated, Aggravation |
 
-```{r dictex1code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
 
-knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/dictex1.xlsx")
-  )
+- Functional verbs: list of verbal expressions describing functions, or actions performed by artifacts on given objects [@fantoni2013automatic; @apreda2016functional].
 
-```
+- Advantages and Disadvantages: list of terms referring to measurable benefits or drawbacks related to an object, chosen for their capacity to represent applications of an invention (see section \@ref(advdrwresults)).
+
+Table \@ref(tab:dictex1) offers an overview of the dictionaries used for this analysis, with a few examples of terms.
 
 ## The value added of enriched dictionaries 
 
@@ -279,15 +272,20 @@ The dictionaries were divided in two macro-classes, due to their nature: Non-Tec
 
 In order to test the dictionary approach to clustering, we trained the algorithm on a standard patent set, formed by patents belonging to four IPC classes whose technologies are largely known. Table \@ref(tab:dicpatents) illustrates the International Patent Classification (IPC) classes included in the analysis (a random sample of 2.000 patents each).
 
-Table: (\#tab:dicpatents) Patent sets under examination .
+```{r dicpatents, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
 
-```{r dicpatentscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/dicpatents.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/dicpatents.xlsx"), "latex", booktabs = T,caption = "Patent sets under examination." ) %>%     
+  kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::column_spec(1) %>% 
+  kableExtra::column_spec(2, italic=T, width = "30em")
+  
 
 ```
+
+
 
 The technologies examined are largely mature. As it is shown in Figure \@ref(fig:dicttrendsipc), in some of them the patenting activity started as early as XIX century. The maturity of these technologies is a good starting condition for the training set: similarities and dissimilarities of the patents should be clearly visible.
 
@@ -302,15 +300,22 @@ knitr::include_graphics("_bookdown_files/figures/dicttrendsipc.png")
 
 Table \@ref(tab:dictmetrix) offers a summary of measures derived from the application of dictionaries to the four patent sets combined together. 
 
-Table: (\#tab:dictmetrix) Summary of findings from the application of dictionaries to the combined patent sets.
 
-```{r dictmetrixcode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+```{r dictmetrix, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
+
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/dictmetrix.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/dictmetrix.xlsx"), "latex", booktabs = T,
+  caption = "Summary of findings from the application of dictionaries to the combined patent sets." ) %>%     
+  kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::column_spec(1, width = "10em") %>% 
+  kableExtra::column_spec(2, width = "10em") %>% 
+  kableExtra::column_spec(3, width = "10em") %>% 
+  kableExtra::column_spec(4, width = "10em")
 
 ```
+
 
 Two findings are visible in Table \@ref(tab:dictmetrix). First, there is large difference in the cohesiveness of the clustering based on Technical and Non-technical dictionaries. The average cosine distance calculated with the Artifacts and Acts dictionaries is ten times smaller than the average cosine distance for Advantages & disadvantages and the Functional dictionary. Second, Non-technical dictionaries give origin to a much smaller number of topics.
 
@@ -321,27 +326,28 @@ Let us examine the differences between dictionaries more in detail. We start by 
 Table \@ref(tab:dictactsresults) shows the results of the application of the Acts dictionary to the four separate patent sets, while Table \@ref(tab:dictartsresults) shows the same for the Artifacts dictionary.
 
 
-Table: (\#tab:dictactsresults) Findings from the application of the __Acts__ dictionary to selected patent sets.
+```{r dictactsresults, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
 
-```{r dictactsresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/dictactsresults.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/dictactsresults.xlsx"), "latex", booktabs = T,
+  caption = "Findings from the application of the Acts dictionary to selected patent sets." ) %>%     
+  kableExtra::kable_styling(latex_options = c("striped", "scale_down"))
+```
+
+
+
+```{r dictartsresults, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/dictartsresults.xlsx"), "latex", booktabs = T,
+  caption = "Findings from the application of the Artifacts dictionary to selected patent sets." ) %>%     
+  kableExtra::kable_styling(latex_options = c("striped", "scale_down"))
 
 ```
 
 
-Table: (\#tab:dictartsresults) Findings from the application of the __Artifacts__ dictionary to selected patent sets.
-
-
-```{r dictartsresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
-
-knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/dictartsresults.xlsx")
-  )
-
-```
 
 These two dictionaries were retrieved from the Wordnet categorization dictionary, which is a tool for linguistic analysis; thus, the terms comprised in them are of common use, and their suitability for the description of patents is not guaranteed.
 Taken together the Non-technical dictionaries deliver two main results. First, there is a difference in the optimal number of topics between simple technologies (Burners and Toothbrushes) and more complex and articulated technologies (Prosthesis and Funeral devices). In the case of the Acts dictionary, the optimal number of topics is 2-6 for the former technologies and 18-16 for the latter. Second, Non-technical dictionaries deliver clusters with an extremely low cosine distance, that is, with strong internal cohesiveness.
@@ -349,60 +355,68 @@ In other words, Non-technical dictionaries produce an excellent clustering of do
 
 To provide an example of the potential of the dictionary methodology we show in Tables \@ref(tab:acttopicresults) and \@ref(tab:arttopicresults) the top ten words found in a selection of the topics extracted with the Non-technical dictionaries in the patent set Prosthesis. We need to test whether Non-technical dictionaries deliver topics that are satisfactory with respect to their potential to describe technologies.
 
-Table: (\#tab:acttopicresults) Top ten words in selected topics extracted in the patent set __Prosthesis__ with the aid of the __Acts__ dictionary.
 
-```{r acttopicresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+```{r acttopicresults, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
 
-knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/acttopicresults.xlsx")
-  )
-
-```
-
-Table: (\#tab:arttopicresults) Top ten words in selected topics extracted in the patent set __Prosthesis__ with the aid of the __Artifacts__ dictionary.
-
-```{r arttopicresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/arttopicresults.xlsx")
-  )
-
+  readxl::read_xlsx("_bookdown_files/tables/acttopicresults.xlsx"), "latex", booktabs = T,
+  caption = "Top ten words in selected topics extracted in the patent set Prosthesis with the aid of the Acts dictionary." ) %>%      
+  kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::column_spec(1, italic=T, width = "10em") %>% 
+  kableExtra::column_spec(3, italic=T, width = "10em")
+  
 ```
+
+
+
+
+```{r arttopicresults, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
+
+library(magrittr)
+
+knitr::kable(
+  readxl::read_xlsx("_bookdown_files/tables/arttopicresults.xlsx"), "latex", booktabs = T,
+  caption = "Top ten words in selected topics extracted in the patent set Prosthesis with the aid of the Artifacts dictionary." ) %>%      
+  kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::column_spec(1, italic=T, width = "10em") %>% 
+  kableExtra::column_spec(3, italic=T, width = "10em")
+  
+```
+
 
 In the case of the Artifacts dictionary, Topic 5 gives us information on components related to the body part interested by the prosthesis, while Topic 14 tells us about electrical tools and sensors that are involved in the invention. Also in this case, the two groups are useful to gather information about the basic composition of the set, but not enough on focus to have a satisfactory definition of the technologies.
 
 
 #### Technical Dictionaries {-}
 
-Table \@ref(tab:dictadvsresults) shows the results of the application of the Advantages & Disadvantages dictionary to the four separate patent sets, while Table \@ref(tab:dictfunctsresults) shows the same for the Functional dictionary.
+Table \@ref(tab:dictadvsresults) shows the results of the application of the Advantages & Disadvantages dictionary to the four separate patent sets, while Table \@ref(tab:dictfunctsresults) shows the same for the Functional dictionary. The technical dictionaries applied contain a large number of features, generating a large DFM. An overall look at Tables \@ref(tab:dictadvsresults) and \@ref(tab:dictfunctsresults) shows several interesting findings. First of all, the technical dictionaries allow the identification of a much larger number of topics with respect to non-technical dictionaries: the average number is 32 for the Advantages & Disadvantages, and 37 for the Functional dictionary. This means that technical dictionaries show a higher power of discrimination of semantic content. This is an important finding for Technology intelligence, since a larger number of internally coherent topics is an extremely useful starting point for the interpretation of their content.
 
-Table: (\#tab:dictadvsresults) Findings from the application of the __Advantages and Disadvantages__ dictionary to selected patent sets.
 
-```{r dictadvsresultsscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+```{r dictadvsresults, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/dictadvsresults.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/dictadvsresults.xlsx"), "latex", booktabs = T,
+  caption = "Findings from the application of the Advantages and Disadvantages dictionary to selected patent sets." ) %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "scale_down"))
 
 ```
 
-Table: (\#tab:dictfunctsresults) Findings from the application of the __Functional__ dictionary to selected patent sets.
 
-```{r dictfunctsresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+```{r dictfunctsresults, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/dictfunctsresults.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/dictfunctsresults.xlsx"), "latex", booktabs = T,
+  caption = "Findings from the application of the Functional dictionary to selected patent sets." ) %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "scale_down"))
 
 ```
-
-The technical dictionaries applied contain a large number of features, generating a large DFM. An overall look at Tables \@ref(tab:dictadvsresults) and \@ref(tab:dictfunctsresults) shows several interesting findings. First of all, the technical dictionaries allow the identification of a much larger number of topics with respect to non-technical dictionaries: the average number is 32 for the Advantages & Disadvantages, and 37 for the Functional dictionary. This means that technical dictionaries show a higher power of discrimination of semantic content. This is an important finding for Technology intelligence, since a larger number of internally coherent topics is an extremely useful starting point for the interpretation of their content.
 
 Second, in the case of the Functional dictionary the Document-Feature Matrix (DFMs) is less sparse: the average sparsity index is 73,8%, as opposed to around 98% for the non-technical dictionaries and 94,3% for the Advantages & Disadvantages dictionary.
 Third, the total number of documents used, i.e. the documents in which there is at least one matching between the words and the features of the dictionary, is larger in the case of technical dictionaries (in particular, it is 498 out of 500 for the Functional dictionary).
 
-Fourth, the cosine distance of topics is approximately ten times larger in the case of technical dictionaries, meaning that clusters enjoy a ower cohesiveness.
-These findings point to an important contribution of technical dictionaries, and in particular of the Functional dictionary, to Technology intelligence, that is, technology mapping, clustering, interpretation, and foresight.
+Fourth, the cosine distance of topics is approximately ten times larger in the case of technical dictionaries, meaning that clusters enjoy a ower cohesiveness. These findings point to an important contribution of technical dictionaries, and in particular of the Functional dictionary, to Technology intelligence, that is, technology mapping, clustering, interpretation, and foresight.
 
 The Functional dictionary offers a large number of features that find a matching with the text of the patents, so that the resulting DFM is less sparse. The fact that the total number of topics is larger also means that each of the topics is populated by a smaller number of features. Each topic, therefore, lends itself to a clear understanding of the technical content. The differences between topics have also a clear technical interpretation.
 
@@ -410,24 +424,30 @@ It can be said that technical dictionaries, as opposed to non-technical dictiona
 
 In order to give a better understanding of the potential of the technical dictionary approach, let us examine more in detail in table \@ref(tab:advtopicresults) and \@ref(tab:functtopicresults) the top 10 words in some of the topics identified in one of the four patent sets examined, namely Prosthesis.
 
-Table: (\#tab:advtopicresults) Top ten words in selected topics extracted in the patent set __Prosthesis__ with the aid of the __Advantages & Disadvantages dictionary__.
+```{r advtopicresults, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
 
-```{r advtopicresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/advtopicresults.xlsx")
-  )
-
+  readxl::read_xlsx("_bookdown_files/tables/advtopicresults.xlsx"), "latex", booktabs = T,
+  caption = "Top ten words in selected topics extracted in the patent set Prosthesis with the aid of the Advantages and Disadvantages dictionary." ) %>%      
+  kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::column_spec(1, italic=T, width = "10em") %>% 
+  kableExtra::column_spec(3, italic=T, width = "10em")
+  
 ```
 
-Table: (\#tab:functtopicresults) Top ten words in selected topics extracted in the patent set __Prosthesis__ with the aid of the __Functional dictionary__.
+```{r functtopicresults, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
 
-```{r functtopicresultscode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/functtopicresults.xlsx")
-  )
-
+  readxl::read_xlsx("_bookdown_files/tables/functtopicresults.xlsx"), "latex", booktabs = T,
+  caption = "Top ten words in selected topics extracted in the patent set Prosthesis with the aid of the Functional dictionary." ) %>%      
+  kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::column_spec(1, italic=T, width = "10em") %>% 
+  kableExtra::column_spec(3, italic=T, width = "10em")
+  
 ```
 
 In Table \@ref(tab:advtopicresults) Topic 6 calls the attention to features of the prosthesis such as adjustability, facilitation and stability, that is, on ergonomic features. Topic 28 emphasizes comfort (as an advantage made possible by the invention) or discomfort (as a disadvantage addressed by the invention). The content of these topics, thanks to the power of the technical dictionary, is crystal clear.
@@ -439,15 +459,16 @@ It is important to underline that, once generated, topics can also be combined t
   
 Finally, the information power of technical dictionaries can be appreciated by comparing the results with those that would be obtained by filtering the texts with semantically poor words, such as generic words (stopwords) and “patentese” generic words. As stated above, the combination between generic and patentese stopwords is labelled Blacklist.
 
-Table: (\#tab:dictblacklist) Top ten words in selected topics extracted in the four patent sets with the aid of the __Blacklist__.
 
-```{r dictblacklistcode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+```{r dictblacklist, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/dictblacklist.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/dictblacklist.xlsx"), "latex", booktabs = T,
+  caption = "Top ten words in selected topics extracted in the four patent sets with the aid of the Blacklist." ) %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "scale_down"))
 
 ```
+
 
 The Table \@ref(tab:dictblacklist) shows the clustering results using as filter a blacklist, composed by traditional and patentese stopwords. The following observations are in order. First, we observe a remarkable flatness in the number of topics: it equals 40, which is the maximum value that can be achieved by the algorithm. Second, Burners and Toothbrushes have a smaller distance value, confirming that these two patent sets are composed by more homogeneous types of features.
 
@@ -504,12 +525,15 @@ Evaluation of mechanisms is a partial methodology, which describes in great deta
 ### Text-based impact assessment
 
 More recently, an interesting alternative approach has been suggested. Based on the availbility of Machine learning and Text mining techniques, it has been argued that the evidence for the impact of research might be traced by extracting selected expressions from certain kinds of documents. We may distinguish between two kinds of documents: (a) produced by users of research; (b) produced by researchers themselves. 
+
 There are several suggestions to use documents produced by users of research. In one of the most developed efforts to conceptualize the social impact of research, called Public Value Mapping (PVM) Bozeman and Sarewitz [@bozeman2011public] suggested the use of three main sources of statements, from which it could be possible to trace the impact of research: government statements, academic literature, and public opinion polls containing public statements. More recently, Bornmann, Haunschild and Marx [@bornmann2016policy] have suggested to use the frequency of occurrence of policy-related words in policy documents as evidence of impact of research. In this paper we will make these suggestions operational. 
 
 Yet another approach in the same line is to examine the documents produced within social media. A prominent approach is based on Altmetrics measures. The main tenet of Altmetrics is that citations, the basic unit of analysis of bibliometrics, capture only part of the impact of published research, so that “citation tracking has never been able to follow the less visible- but often more important- threads of invisible colleges, woven through personal connections and informal communications” [@priem2012altmetrics]. By accessing data on the personal use of published materials “Altmetrics could deliver information about impacts on diverse audiences, like clinicians, practitioners, and the general public, as well as help to track the use of diverse research products like datasets, software, and blog posts” (ib.). Sibele et al. [@fausto2012research] examine in this light the phenomenon of research blogging. There are however severe limitations that might make Altmetrics problematic. The extent to which Altmetrics can capture traces of societal impact has recently been seriously contested [@bornmann2014evaluate]. Social media are used more for internal discussions within scientific communities, rather than a bridge between the research community and society at large. According to Haustein there is lack of evidence that social media events can serve as appropriate indicators of societal impact [@haustein2016tweets].
 
 Among the documents produced by researchers, we might further distinguish between: (a) research proposals (ex ante documents) and (b) case studies produced after the realization of research projects (ex post, or documents produced within the research assessment process).
+
 It is this type of documents we suggest to examine as a novel methodology to assess the potential societal impact of research. In this paper we follow type (b) documents and use the collection of case studies produced by UK researchers under the REF exercise. In future studies we plan to use archives of proposals made available in public sources in order to examine the ex ante representation of researchers.
+
 The REF impact case studies, as already noted, have been the object of a large literature in recent years. Among these studies, King’s College and Digital Science [@king2015nature] have indeed produced, using Text mining techniques, an interesting analysis of beneficiaries of UK research, publishing a fascinating infographics. This analysis, however, lists only a fairly small set of research users, most of which are defined with generic terms. It is our contention that much further work should be done in this direction. We propose a new lexicon-based methodology, called Enriched dictionary (see below), which allows a much more fine-grained analysis.
 
 ## Methodology
@@ -521,9 +545,11 @@ There are several compelling theoretical reasons for this choice.
 First, the literature has strongly underlined the interactive nature of societal research impact. As discussed above, the most recent literature and practice strongly suggest to abandon a unilinear model of impact, in which it is expected that researchers produce results, diffuse them in various channels, and see the results taken up by interested users. Let us call this approach a “percolation model”: researchers produce results that eventually percolate down into society, but without knowing the ways in which they flow, the obstacles they meet, the timing of the process, or the final destination of the flows. On the contrary, it is strongly suggested to adopt an interactive model of interaction, in which researchers actively engage into systematic relation with potential users.
 In an interactive model there must be a reflexive activity on one side about the nature (characteristics, interests, behavior, style) of the other side. Researchers must build up a representation of their potential users, and vice versa. How could researchers engage with users if they do not know them? And how they could know potential users if they do not engage into some sort of analysis, even as simple as description and characterization? For interaction to take place, there must be some preliminary recognition of the existence, nature, attitudes of those that may utilize the research results.
 According to our methodological suggestion, it is this representation that is the preliminary object of interest for impact assessment. If researchers have a representation of their potential users, they will leave traces of this representation in their written texts. When they write research proposals they will promise to address the issues of these users, and when they write case studies of research impact they will report on the takeup or use of their research activities by these users. 
+
 Second, it has been shown that research activities have a huge variety of impact pahways, largely dependent on the scientific discipline. In turn, this implies that disciplines have at least partially different target groups. Research in political science is different from research in oncology not only because their scientific foundations, methods, objects and cognitive styles are different, but also because they talk to different user groups. The texts produced by researchers themselves are a necessary starting point to reconstruct the various impact pathways.
 Third, focusing on user groups has the advantage of shifting away the attention from discrete events or products to long term processes of interaction between research and society. The focus on discrete events or products is a typical feature of the narrow definition of research impact cultivated since long time in the so called “valorization of research”. This impact is defined and measured with reference to highly stylized entiities, such as patents, licensing contracts, research contracts, and spinoff companies. These are clearly defined, legally enforced, highly visible and measurable entities. Defining and measuring impact is easier by focusing on these entities because they convey the meaning of knowledge transfer from research to the market, and because the final outcome can be defined in monetary terms.
 We suggest to focus on user groups as a relatively permanent social entity, which is defined by a specific combination of social status, needs, culture, practices and routines. User groups survive the individual personality of people. They are a permanent, although often entirely informal, characterization of society.
+
 Finally, our methodology allows the large scale automatic analysis of large corpora. This means that the inevitable subjectivity in the reconstruction of impact by researchers in writing their proposals and/or impact case studies can be mitigated by examining large scale patterns.
 It is important to remark that the notion of users is consistent with other suggestions in the literature that adopt different definitions, such as stakeholders, constituencies, interest groups. Our definition is broader and admits more internal variability, as discussed below.
 
@@ -551,13 +577,16 @@ Our Natural Language Processing (NLP) system follows the following steps.
 
 Table \@ref(tab:impact1) shows the output of the NLP procedure for a sentence contained in the corpus (“Each year, in England alone, approximately 152,000 people suffer a stroke.”). As it can be seen, the automatic annotation system isolates the only word (“people”) that may be part of a target group.
 
-Table: (\#tab:impact1) Tokenization, lemmatization and annotation of a sentence in the corpus.
 
-```{r impact1code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+```{r impact1, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
+
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/impact_1.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/impact_1.xlsx"), "latex", booktabs = T,
+  caption = "Tokenization, lemmatization and annotation of a sentence in the corpus." ) %>% 
+  kableExtra::kable_styling(full_width = F)
 
 ```
 
@@ -682,15 +711,20 @@ To see the difference in the use of words in sentences consider the following ex
 
 Table \@ref(tab:impact2) offers a snapshot of the value of indicators calculated across the entire corpus. The minimum value of indicators (zero) is represented by the 9 documents without target groups. On average the REF impact case studies contain words that represent target groups as 2% of total words, and words that represent distinct target groups as 2.5% of different words. In absolute terms, the median REF impact case study contains 10 different words thet refer to target groups, repeated 22 times in total. 
 
-Table: (\#tab:impact2) Descriptive statistics of indicators of target groups in the corpus of REF impact case studies.
 
-```{r impact2code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+```{r impact2, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
+
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/impact_2.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/impact_2.xlsx"), "latex", booktabs = T,
+  caption = "Descriptive statistics of indicators of target groups in the corpus of REF impact case studies." ) %>% 
+  kableExtra::kable_styling(full_width = F)
 
 ```
+
+
 
 There is not large variability in the number of different target groups, as the first and third quartile at 7 and 14 are close to the median value. Interestingly, all distributions are close to the normal. A small number of documents use words that refer to target groups with much larger frequency and diversity. The document with maximum use of target groups identifies as many as 34 different words or combination of words. In terms of repetition, the document with the largest number of words uses 115 times a word representing target groups. When coming to specificity, the mean value of 0.659 implies a good level of specificity, given the range of the indicator.
 Figure \@ref(fig:impactusersfreqcomparison) shows the distribution of documents by indicators.

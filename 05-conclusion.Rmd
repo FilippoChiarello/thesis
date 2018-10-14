@@ -6,7 +6,7 @@ Riassunto della tesi, cosa è stato fatto vedere.
 
 Quali altri stakeholders (quindi testi)
 
-# The Importance of Lexicons Design for Technical Documents Analysis  {#sotadocumentsunderstandlexicons}
+# Lexicons Design for Mining Technical Knowledge  {#sotadocumentsunderstandlexicons}
 
 Passaggio da design a descriptive. Si intravede che i lexicon posso essere tool efficace ed efficiente per le aziende. 
 

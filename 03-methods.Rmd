@@ -59,9 +59,9 @@ In the field of _Design_ the concept of user plays a central role and it overlap
 
 In this section we show the approach used to extract the users of the invention described in a patent. The proposed process is shown in figure \@ref(fig:procesuser) and its phases are:
 
-1. _Generation of an input list of users_: search all possible sources with the aim of creating an input list of users with the largest possible coverage (section \@ref(sourc));
+1. _Generation of an input list of users_: search all possible sources with the aim of creating an input list of users with the largest possible coverage;
 
-2. _Patent set selection_: select the set of documents from which extract the users (section \@ref(patsel));
+2. _Patent set selection_: select the set of documents from which extract the users;
 
 3. _Patent text pre-processing_: application of natural language processing tools on the documents with the aim of preparing them for the automatic user extraction;
 
@@ -73,16 +73,14 @@ In this section we show the approach used to extract the users of the invention 
 
 7. _Difference computation_: generation of the new list of users by computing the difference between the lists of users found in the automatically annotated patent set 1 and 2;
 
-8. _Manual review_: manual selection of the entities that, in the new list of users, are effectively users. This new list will enrich the original list of users. This phase is described in section \@ref(manrev).
+8. _Manual review_: manual selection of the entities that, in the new list of users, are effectively users. This new list will enrich the original list of users. 
 
 
-```{r procesuser, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.', message=FALSE, warning=FALSE, out.width='80%'}
+```{r procesuser, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.', message=FALSE, warning=FALSE, out.width='60%'}
 
 knitr::include_graphics("_bookdown_files/figures/Process.pdf")
 
 ```
-
-Before the description of each phases, in section \@ref(userdef) the concept of _user of the invetion_ is explained by giving a definition of users and presenting the way that this concept is exploited in different knowledge fields.
 
 #### List of users generation {-}
 
@@ -400,7 +398,7 @@ In figure \@ref(fig:patentsperuser) for each user on the x axes is shown the num
 Further research means to study how these users differ from patent set to patent set. We expect to see similar distribution but with different content of users. Frequent and non-specific users comprise Group A: in other patent set we could see differences in terms of entities contained in this class but its content will stay non-specific. These results seem to be generic social roles indicating the gender or the age of a person. Group B is composed of mainly non-specific users and some specific users that change from patent set to patent set. This class helps to identify the core users of the patent set. Lastly, Group C contains non-frequent users that are both specific and non-specific, making it the most interesting of the three for the purposes of our work. In this group we find users that are market niches, so the patent that contains these users is of great interest for marketers and designers. These are both samples of the more generic users (for example a _mother_ is a _female_ and a _hockey player_ is a _player_) or  specific users of the patent-set (like _priest_, _fund-raiser_, _doll_, _spouse_ and _clergy member_. 
 
 
-```{r patentsperuser, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Process flow diagram of the proposed automatic user extraction system from patents. The diagram contains the representation of the documents and the operations performed on them. The process takes in input a patent set and a list of users and produces a list of new users as output.', message=FALSE, warning=FALSE, out.width='80%'}
+```{r patentsperuser, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Distribution of the number of patents per user.', message=FALSE, warning=FALSE, out.width='60%'}
 
 knitr::include_graphics("_bookdown_files/figures/user_rank.png")
 
@@ -709,7 +707,7 @@ Table: (\#tab:infogain1)  Information gained by applying the extraction process 
 
 Tables \@ref(tab:advantageclueextracted) and \@ref(tab:drawbacksclueextracted) show the frequencies of a randomly chosen set of the new extracted advantages and drawbacks domain specific clues for each of the four analyzed patent sets. The results show that the domain specific clues clearly characterize the different technical areas of the patent sets. It is thus interesting to notice how valuable information is contained in the context specific clues them self. Further research can decide to stop here the process, without extracting the whole sentence. 
 
-Table: (\#tab:advantageclueextracted)  Extracted domain specific advantages clues with the measures of occurrences for each patent set.
+Table: (\#tab:advantageclueextracted) Extracted domain specific advantages clues with the measures of occurrences for each patent set.
 
 |                 |                          |                         |                           |
 |:---------------:|:------------------------:|:-----------------------:|:-------------------------:|
@@ -745,10 +743,7 @@ Table: (\#tab:drawbacksclueextracted)  Extracted domain specific drawbacks clues
 
 Then, after the re-projection of the extracted clues on the text, the regular expression described in section  is used to extract the sentences highlighted by the clues. 
 
-The number of advantages and drawbacks sentences extracted from each patent are shown in table \@ref(tab:advantagedrawbackssentences). The table shows that the occurrence of sentences describing an advantage is higher than the ones containing a drawback \@ref(tab:infogain1). This result may be due to the fact that the applicant is minded to describe the invention by highlighting the positive effects of the invention.
-
-
-Table: (\#tab:advantagedrawbackssentences)  Number of sentences containing advantages and drawbacks for each analyzed patent set.
+Table: (\#tab:advantagedrawbackssentences) Number of sentences containing advantages and drawbacks for each analyzed patent set.
         
 | *Patent class* | \# *Advantage sentences* | \# *Drawbacks sentences* |
 |:--------------:|:------------------------:|:------------------------:|
@@ -759,19 +754,22 @@ Table: (\#tab:advantagedrawbackssentences)  Number of sentences containing advan
 |     *Total*    |          38,239          |           5,745          |
 
 
+The number of advantages and drawbacks sentences extracted from each patent are shown in table \@ref(tab:advantagedrawbackssentences). The table shows that the occurrence of sentences describing an advantage is higher than the ones containing a drawback \@ref(tab:infogain1). This result may be due to the fact that the applicant is minded to describe the invention by highlighting the positive effects of the invention.
+
+
 Figure \@ref(fig:processimagetest1) and \@ref(fig:processimagetest2) show two subsets of the taxonomies obtained by the extraction of the advantages and drawbacks for each of the four analyzed patent sets. The two figures respectively refers to a subset of the leaves linked to the advantage clue _Improve_ and a subset of the leaves linked to the drawback clue _Damage.
 In both cases an additional trimming action is performed by removing those branches or leaves containing terms belonging to the stop-word list typical of patent lexicon (e.g. claim, embodiment, invention, comprise, figure, etc..).
 The figure shows that our process can extract highly informative sentences also starting from generic and non-contextual clues like  _improve_ or _damage_. Moreover the words that follow the generic clues are specific of the technical field of the analyzed products.
 Both the results are promising for future applications, especially for the design fields. In particular figure \@ref(fig:processimagetest1) allows designers to focus on the positive side of the effects provided by the product and to better meet the explicit and implicit user needs. Similarly, figure \@ref(fig:processimagetest2) helps designers to redesign of the product in a proactive way, to keep attention to the critical issues identified by the drawbacks and to conceive possible corrective actions to solve such drawbacks.
 
 
-```{r processimagetest1, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the advantage clue Improve', message=FALSE, warning=FALSE, out.width='80%'}
+```{r processimagetest1, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the advantage clue Improve', message=FALSE, warning=FALSE, out.width='100%'}
 
 knitr::include_graphics("_bookdown_files/figures/improve.png")
 
 ```
 
-```{r processimagetest2, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the drawback clue Damage. ', message=FALSE, warning=FALSE, out.width='80%'}
+```{r processimagetest2, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the drawback clue Damage. ', message=FALSE, warning=FALSE, out.width='100%'}
 
 knitr::include_graphics("_bookdown_files/figures/damage.png")
 
@@ -836,54 +834,15 @@ Table: (\#tab:ipcclassestm)  For each IPC class the ratio of the percentage of p
  
 ```{r ipcclassestmcode, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
 
-
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/table_trademarks_1.xlsx")
+  readxl::read_xlsx("_bookdown_files/tables/table_trademarks_1.xlsx"), "markdown", booktabs = T
   )
 
 ```
 
 #### The Selected Tradenames {-}
 
-We a set of popular tradenames referring to [@morris2016trademarks]. Then we filtered the ambigouus ones (the one that can refer to surnames), because this can create an onverstimation of the number of patent citing it witouth the tradenames. The total namber of tradenames is 38 and these are:
-
-- amazon®
-- blackberry®
-- bose®
-- budweiser®
-- chiquita®
-- chrome®
-- coca-cola®
-- ebay®
-- facebook®
-- fender®
-- firefox®
-- gibson®
-- gillette®
-- heineken®
-- ibanez®
-- intel®
-- iphone®
-- kellog®
-- kodak®
-- lego®
-- marlboro®
-- matlab®
-- mcdonald’s®
-- nitinol®
-- nutella®
-- nylon®
-- photoshop®
-- polaroid®
-- post-it®
-- powerpoint®
-- prozac®
-- sennheiser®
-- spotify®
-- teflon®
-- velcro®
-- whatsapp®
-- xanax®
+We a set of popular tradenames referring to [@morris2016trademarks]. Then we filtered the ambigouus ones (the one that can refer to surnames), because this can create an onverstimation of the number of patent citing it witouth the tradenames. The total namber of tradenames is 38 and these are: amazon®, blackberry®, bose®, budweiser®, chiquita®, chrome®, cocacola®, ebay®, facebook®, fender®, firefox®, gibson®, gillette®, heineken®, ibanez®, intel®, iphone®, kellog®, kodak®, lego®, marlboro®, matlab®, mcdonald’s®, nitinol®, nutella®, nylon®, photoshop®, polaroid®, postit®, powerpoint®, prozac®, sennheiser®, spotify®, teflon®, velcro®, whatsapp® and xanax®.
 
 In figure \@ref(fig:tmlistcpmplete) are shown the number of patent containing the tradenames with and withouht ™ and ®; furthermore the information is divided for all the years, from 1995 to 2002 and from 2007 to 2014. 
 In the previous analysis we noticed that ® is generally more used than ™. Now the goal is to understand if patent writers uses tradesymbols or not when citing tradenames, if there are any differences between different tradenames and if we can notice different behaviours in recent years. From figure \@ref(fig:tmlistcpmplete) is evident that despite the fact that it is mandatory to use ™ o ®, these symbols are not always used.
@@ -901,7 +860,7 @@ knitr::include_graphics("_bookdown_files/figures/table_all_tradenames.png")
 It is relevant to understand if there exists any difference between different tradenames in the correct usage of trade symbols (a trade name has been cited in the patent texts with the trade symbol). Figure \@ref(fig:tmcitedwell) illustrates in a bi-logaritmic plot the distribution of trade names correctly cited in patents with ® and ™ (Y-axis) versus the same trade names cited without using the proper symbol. Most of trade names are located under the diagonal. Those around the diagonal are those we can considered as well known trademarks and not so subject to genericization phenomena (green area). Conversely on the right we can find a read area where the ratio is even more shifted toward the absence of any indication of protected trademark. In the middle the orange area where many of the most famous trademarks fall down and that could be in phase of generalisation or conversely, since the trademark of a product is totally entangled with the owner (Iphone-Apple; Intel), inventors do not feel the reason to cite them as a trademark. 
 A remark on Figure \@ref(fig:tmcitedwell) is necessary: the plot presents a correct measurement of trademarks with ® and ™ plotted in the y axis, while the search for trademark with missing trademark symbols in some case can introduce undesired errors and include other meaning of the word. Take for example the case of Blackberry®: the datum is referring to mobile phones and accessories or software applications. In all the cases where ® or ™ are correctly written, it is probably true that the inventor is referring to the Blackberry® mobile phones, but machines for jam or juice production extracted out of the blackberry introduce false positive examples. Similarly Fender is probably located too far on the right because it is also a part of a car, bike, motorbike, boat, etc.. and Gibson could introduce citations of works performed by someone called Gibson, therefore if cleaned results are necessary the searching strategies for the trademarks without symbols have to be refined. 
 
-```{r tmcitedwell, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Plot of the trade names correctly cited in patents with ® and ™ on the y-axis and the same trade names cited without using the proper symbol on the x-axes. Both axes are on a logaritmic scale.', message=FALSE, warning=FALSE, out.width='80%'}
+```{r tmcitedwell, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Plot of the trade names correctly cited in patents with ® and ™ on the y-axis and the same trade names cited without using the proper symbol on the x-axes. Both axes are on a logaritmic scale.', message=FALSE, warning=FALSE, out.width='100%'}
 
 
 knitr::include_graphics("_bookdown_files/figures/TrendsMarks.001.jpeg")
@@ -933,10 +892,10 @@ knitr::include_graphics("_bookdown_files/figures/Marks_Years.jpeg")
 Further informations can be derived by analysing the IPC classes where the patent have been chosen by the assignees-attorneys-examiners.The choice of a class is not only matter of market segment but rather of market use. Moreover it is necessary to remark that  from a formal point of view the IPC classes form a feature vector, denoted y ∈ N639. IPC classes form a complete dataset of 639 elements of such feature vector. Each tradename is represented in such a feature vector where the number of patents in each class constitutes the length of the vector along that direction (feature). Our training data is therefore D = (x,y,z), where x∈[1, .., 12], y∈[1, .., 639], and z represents the patent numerosity z∈[0..15*106]. This dataset contains information about how z varies as a function of x and y. The matrix is quite empty since each product/brand addresses needs of specific market/s, after cleaning of the totally empty columns the matrix reduces to the dimensions of 12x479 and demonstrates a correct choice of the trademarks since they covered almost 75% of the IPC space.
 
 With such a dataset a series of computations can be performed: here we show the results of the correlation analysis among the chosen trademarks to analyse their relative positioning on the invention landscape (not only the market);
-Correlation analysis is shown in Figure \@ref(fig:similartm) The matrix is triangular owing to the symmetry of the relationship. The main evidences are the following:
+Correlation analysis is shown in Figure \@ref(fig:similartm). The matrix is triangular owing to the symmetry of the relationship.
 
 
-```{r similartm, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Heat-map of the IPC-based similiraties between trademarks.', message=FALSE, warning=FALSE, out.width='100%'}
+```{r similartm, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Heat-map of the IPC-based similiraties between trademarks.', message=FALSE, warning=FALSE, out.width='70%'}
 
 
 knitr::include_graphics("_bookdown_files/figures/correlation_matrix_tm.png")
@@ -1473,25 +1432,38 @@ knitr::include_graphics("_bookdown_files/figures/nofpapers190917.png")
 
 Table \@ref(tab:tabletech40scopus) shows how the scientific production on Industry 4.0 is divided among the main research fields (multiple attributions are possible in Scopus). In particular, it is possible to identify field specific-technologies that refers just to one or few sectors/business areas, and general purpose technologies that can be exploited in several sectors/business areas.
 
-Table: (\#tab:tabletech40scopus) Breakdown of industry 4.0 papers per research field. Source: SCOPUS date: 06/06/2017
- 
-```{r 401tmp, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+
+
+```{r tabletech40scopus, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
+
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/table_1_tech40.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/table_1_tech40.xlsx"), "latex", booktabs = T,
+  caption = "Breakdown of industry 4.0 papers per research field. Source: SCOPUS date: 06/06/2017" ) %>%     
+  kableExtra::kable_styling(full_width = F) 
+  
 
 ```
 
-Formulated initially in Germany in 2011, the Industry 4.0 paradigm has been quickly translated, adapted and reinterpreted in developed and developing countries. Table \ref(tab:tabledocs40scopus) offers a compilation of official documents of governments, agencies and international organizations that in a few years after the initial formulation have embraced the concept. [FILIPPO, cerca articoli e cita, leva tabella]
 
-Table: (\#tab:tabledocs40scopus) Technical document and Scientific articles used to create the Technology Seed List.
 
-```{r 402tmp, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='', message=FALSE, warning=FALSE, out.width='80%'}
+Formulated initially in Germany in 2011, the Industry 4.0 paradigm has been quickly translated, adapted and reinterpreted in developed and developing countries. Table \ref(tabledocs40scopus) offers a compilation of official documents of governments, agencies and international organizations that in a few years after the initial formulation have embraced the concept.
+
+
+
+```{r tabledocs40scopus, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
+
+library(magrittr)
 
 knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/table_2_tech40.xlsx")
-  )
+  readxl::read_xlsx("_bookdown_files/tables/table_2_tech40.xlsx"), "latex", booktabs = T,
+  caption = "Technical document and Scientific articles used to create the Technology Seed List." ) %>%   
+  kableExtra::column_spec(1, width = "5em") %>% 
+  kableExtra::column_spec(2, italic=T, width = "10em") %>% 
+  kableExtra::column_spec(4, width = "5em") %>% 
+  kableExtra::column_spec(6, italic=T, width = "5em")
+  
 
 ```
 
@@ -1754,18 +1726,13 @@ In this section we will focus on describing the differences that emerges between
 
 #### The collected pages {-}
 
-We collect 97 pages for the German graph and 95 pages for the English graph. Table \@ref(tab:industrietab1) list a sample of forty pages per language, alphabetically ordered.
+We collect 97 pages for the German graph and 95 pages for the English graph. A list of a sample of forty pages per language, alphabetically ordered is:
+
+- __German Version__: Absatzwirtschaft, Automatisierung, Automatisierungsgrad, Automatisierungstechnik, Autonomic Computing, Autopoiesis, Betriebswirtschaftslehre, Corporate Evolution, Cyber-physisches System, Dataset, Daten, Datenabgleich, Datenarchitektur, Datenaustausch, Datenbasis, Datenelement, Datenfeld, Datenmanagement, Datenmodell, Datenmodellierung, Datensicherung, Datenstruktur, Datentyp, Denken, Dienst (Informatik), Dienstleistung, Digitales Objektgedächtnis, Elektronische Datenverarbeitung, Erfahrungskurve, Erinnerungsvermögen, Feld (Datentyp), Feldgerät, Fertigungslinie, Fließbandabstimmung, Fließbandfertigung, Gegenwart, Geschichte der Produktionstechnik, Glauben, Gruppenfertigung, Halbzeug.
+
+- __English Version__: Adaptive system, Agent-assisted automation, Ambient intelligence, AmbieSense, Analytics, Artificial intelligence, Automated reasoning, Automation, Autonomic computing, Autonomous car, Big data, Big Data Maturity Model, Big memory, Carrier cloud, Cloud-based design and manufacturing, Cloud analytics, Cloud collaboration, Cloud computing, Cloud computing comparison, Cloud computing security, Cloud database, Cloud engineering, Cloud Foundry, Cloud management, Cloud manufacturing, Cloud research, Cognitive computer, Cognitive computing, Community cloud, Competitions and prizes in artificial intelligence, Computer-aided engineering, Computer-aided technologies, Computer-integrated manufacturing, Computer vision, Continuous analytics, Control loop, Control system, Cyber-physical system, Cyber manufacturing, Datafication. 
 
 
-Table: (\#tab:industrietab1) For each IPC class the ratio of the percentage of patents containing at least one ® or ™ character is computed for two patents sets 1995 to 2002 and from 2007 to 2014.
-
-```{r industrietab1code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Sample of the collected Wikipedia pages for the German and for the English version of the graphs', message=FALSE, warning=FALSE, out.width='80%'}
-
-knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/industrie_tab1.xlsx")
-  )
-
-```
 
 #### The Graphs {-}
 
@@ -1793,39 +1760,37 @@ In this section we analyze the graphs using standard metrics. These measures all
 More precisely, we looked at the following measures: 
 - Graph diameter: calculates the longest shortest path in a graph, thus, the minimal distance between two nodes that are the furthest away from each other. 
 - Nodes Degree: Shows the number of nodes that every node is connected to. The mean value of the degree for the whole graph shows how interconnected the graph is: the higher the value, the more connections the nodes have with each other.
-- Nodes Distance: Gives back the minimum number of edges that connect one node with each other. Here again, the mean value shows the interconnectivity of the graph: A lower value means that the way from one node to another is shorter, thus that the graph is more highly connected.
+- Nodes Distance: Gives back the minimum number of edges that connect one node with each other. Here again, the mean value shows the interconnectivity of the graph: A lower value means that the way from one node to another is shorter, thus that the graph is more highly connected. The results of these metrics for the two graphs are:
 
+- German Version: Diameter= 4, Mean Degree= 2.38, Mean Distance= 3.25
 
-The results of these metrics for the two graphs are shown in table \@ref(tab:industrietab2). From the diameter measure we can see that all of the pages are connected through a maximum of 4 edges. This is not surprising, since it was a premise of the method when setting the level to 2. Considering the mean degree, a level of 2.38 for the German version and 3.29 for the English version shows how the nodes of the English graph are more interconnected. This can also be qualitative observed when looking at the figures 3. Finally, the average distance from one node to another is higher in the German graph, supporting the finding of the measures discussed above. 
+- English Version: Diameter= 4, Mean Degree= 3.29, Mean Distance= 3
+
+From the diameter measure we can see that all of the pages are connected through a maximum of 4 edges. This is not surprising, since it was a premise of the method when setting the level to 2. Considering the mean degree, a level of 2.38 for the German version and 3.29 for the English version shows how the nodes of the English graph are more interconnected. This can also be qualitative observed when looking at the figures 3. Finally, the average distance from one node to another is higher in the German graph, supporting the finding of the measures discussed above. 
+
 These findings goes in line with what is said by a study of Acatech [@kagermann2006industry]: in the USA, for example, the term Industry 4.0 is understood in a much wider meaning. Furthermore, Acatech study say that in Germany, the focus is mostly on technological dimensions, while in the USA, the development of the new business models in the area of big data analytics play a greater role, among others.
 
-Table: (\#tab:industrietab2) For each IPC class the ratio of the percentage of patents containing at least one ® or ™ character is computed for two patents sets 1995 to 2002 and from 2007 to 2014.
 
-```{r industrietab2code, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Graph metrics comparisons for the two Industry 4.0 related graphs.', message=FALSE, warning=FALSE, out.width='80%'}
-
-knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/industrie_tab2.xlsx")
-  )
-
-```
 
 #### Clustering {-}
 
 Figure \@ref(fig:industrieclusters) shows the outcomes of the clustering process: the vertices of the graphs represent the Wikipedia pages, the links are depicted by arcs that are directed from the originating page to the linked page and the clusters are represented by the different colors of the nodes. In order to make these clusters comparable, the label of the German version are translated in English. The resulting, corresponding groups as well as the number of nodes they contain can be found in table \@ref(tab:industrietab3).
 
-```{r industrieclusters, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='The German version (left) and the English version (right) of the Industry 4.0 clustered graphs.', message=FALSE, warning=FALSE, out.width='100%'}
+Considering together figure \@ref(fig:industrieclusters) and table \@ref(tab:industrietab3), it is evident how the central node of the graph (Industry 4.0) is contained in the first cluster Internet of things & manufacturing for both the graphs. It is also by design connected to all other clusters, so that no cluster is isolated from Industry 4.0 node. 
 
-knitr::include_graphics("_bookdown_files/figures/industrie_clusters.png")
-
-```
-
-
-Considering together figure 4 and table 3, it is evident how the central node of the graph(Industry 4.0) is contained in the first cluster Internet of things & manufacturing for both the graphs. It is also by design connected to all other clusters, so that no cluster is isolated from Industry 4.0 node. 
-As evident from table 3, the clusters in the two graphs are similar. We have the same five clusters in both graphs and a different one for each language. This shows that Industry 4.0 framework if considered at a more abstract level, is similar in different countries. This is not surprising, since there must be something that made policy and industry call it the same name, but it is a strong result for our methods, able to map bottom-up this phenomenon. 
+As evident from table \@ref(tab:industrietab3), the clusters in the two graphs are similar. We have the same five clusters in both graphs and a different one for each language. This shows that Industry 4.0 framework if considered at a more abstract level, is similar in different countries. This is not surprising, since there must be something that made policy and industry call it the same name, but it is a strong result for our methods, able to map bottom-up this phenomenon. 
 
 However, when looking at the clusters more closely, some interesting differences get clear. 
 The cluster production, product life circle & flow production, which is completely missing in the English graph, is the one with the higher number of nodes in the German one. This shows how the topic of Industry 4.0 in Germany is much more concentrated on production than elsewhere. In the study of acatech [@kagermann2006industry], it is also explicitly stated that in Germany “ […] the focus is on optimizing production processes in terms of quality, price and flexibility and delivering better financial returns overall”. The focus on production for Germany is also confirmed by a monitor paper written by the by the European Commission [@industrie2016eu].
 To give a clearer view of this phenomena, we have to consider that the word production is very similar in meaning to manufacturing. The cluster including the latter (internet of things & manufacturing) has more than the double number of nodes in the English graph with respect to the German one, so it might be that it is rather the wording that makes the difference. Anyway, by looking at the the disposition of the cluster (see figure \@ref(fig:industrieclusters)) internet of things & manufacturing in the two graphs, it can be observed that in the English version the cluster is strongly integrated with ITC-related topics (Data processing & Analytics, Cognition and Cloud Computing), adding the adjective cyber to the topic of manufacturing.
+
+Additionally, also automation has more entries in the English version and is highly connected not only to internet of things & manufacturing, but also to could computing, which does not even exist in the German version of the graph: it is well known that Germany is not at the front when it comes to the integration of ICT in Industry 4.0. This found is again confirmed by the study of Acatech [@kagermann2006industry], where it is said that “Germany is currently lagging behind with regard to data-driven business models and the development of large platform ecosystems”.
+
+The fact that cloud computing does not show up in the German graph is examined more closely. In fact, a Wikipedia page about this topic does exist in the German version of Wikipedia, but is not linked to the Industrie 4.0 page. As stated in section 4.3, contributors of the German version of Wikipedia tend to add only the most important connections between pages. This again shows that integrated ICT is not the most important topic in Germany now.
+
+Another great difference in the number of nodes is in the cluster cognition, which seems to be more important in the German version of the graph. The German Wikipedia page describes this as a processing and rearrangement of information between a human and a system. Acatech study [@kagermann2006industry] does the same observation: “In Germany in particular, the focus is on integrating information, communication and manufacturing technologies”. This could explain even better the finding that the German graph lacks on the ICT side, giving a new interpretation: in Germany there is a different interpretation of the meaning of cognitive computing with respect to the rest of the world.
+
+Finally, while the group of data, processing and analytics nearly has the same amount of nodes, the links of this cluster with the other clusters is quite different in the two graphs and also its content changes from on nation to the other. Words like big data does not even exist in the list of German pages related to industry 4.0 where it is limited to just data. This emphasizes the careful approach of Germany with this topic, which was also observed in [@wee2015industry]. Germany seems to be rather conservative when it comes to new emerging technological trends or even buzz-worlds like Big Data.
 
 
 Table: (\#tab:industrietab3) Clusters names and number of nodes per cluster for each version of the Industry Graph 4.0.
@@ -1841,12 +1806,12 @@ Table: (\#tab:industrietab3) Clusters names and number of nodes per cluster for 
 
 
 
-Additionally, also automation has more entries in the English version and is highly connected not only to internet of things & manufacturing, but also to could computing, which does not even exist in the German version of the graph: it is well known that Germany is not at the front when it comes to the integration of ICT in Industry 4.0. This found is again confirmed by the study of Acatech [@kagermann2006industry], where it is said that “Germany is currently lagging behind with regard to data-driven business models and the development of large platform ecosystems”.
+```{r industrieclusters, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='The German version (left) and the English version (right) of the Industry 4.0 clustered graphs.', message=FALSE, warning=FALSE, out.width='100%'}
 
-The fact that cloud computing does not show up in the German graph is examined more closely. In fact, a Wikipedia page about this topic does exist in the German version of Wikipedia, but is not linked to the Industrie 4.0 page. As stated in section 4.3, contributors of the German version of Wikipedia tend to add only the most important connections between pages. This again shows that integrated ICT is not the most important topic in Germany now.
+knitr::include_graphics("_bookdown_files/figures/industrie_clusters.png")
 
-Another great difference in the number of nodes is in the cluster cognition, which seems to be more important in the German version of the graph. The German Wikipedia page describes this as a processing and rearrangement of information between a human and a system. Acatech study [@kagermann2006industry] does the same observation: “In Germany in particular, the focus is on integrating information, communication and manufacturing technologies”. This could explain even better the finding that the German graph lacks on the ICT side, giving a new interpretation: in Germany there is a different interpretation of the meaning of cognitive computing with respect to the rest of the world.
-Finally, while the group of data, processing and analytics nearly has the same amount of nodes, the links of this cluster with the other clusters is quite different in the two graphs and also its content changes from on nation to the other. Words like big data does not even exist in the list of German pages related to industry 4.0 where it is limited to just data. This emphasizes the careful approach of Germany with this topic, which was also observed in [@wee2015industry]. Germany seems to be rather conservative when it comes to new emerging technological trends or even buzz-worlds like Big Data.
+```
+
 
 # Social Media
 

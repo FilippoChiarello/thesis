@@ -227,7 +227,7 @@
 </ul></li>
 <li class="part"><span><b>V Conclusions and Future Developments</b></span></li>
 <li class="chapter" data-level="14" data-path="limitations-and-future-developments.html"><a href="limitations-and-future-developments.html"><i class="fa fa-check"></i><b>14</b> Limitations and Future Developments</a></li>
-<li class="chapter" data-level="15" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html"><i class="fa fa-check"></i><b>15</b> The Importance of Lexicons Design for Technical Documents Analysis</a></li>
+<li class="chapter" data-level="15" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html"><i class="fa fa-check"></i><b>15</b> Lexicons Design for Mining Technical Knowledge</a></li>
 <li class="chapter" data-level="" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i>Glossary</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -272,11 +272,6 @@
 <div id="research-based-dictionaries" class="section level3">
 <h3><span class="header-section-number">11.1.2</span> Research-based dictionaries</h3>
 <p>The dictionary methodology offers the flexibility to build up dedicated or specialized dictionaries, that represent the state of the art of a given knowledge domain. We make use of two dedicated dictionaries recently developed by the authors in an academic research context. Needless to say, in these cases the authors must give the readers or users of the dictionary full proof of the completeness of the dictionary, or the compliance with formal criteria for the definition of a dictionary. These proofs have been offered in a number of papers cited below.</p>
-<ul>
-<li><p>Functional verbs: list of verbal expressions describing functions, or actions performed by artifacts on given objects <span class="citation">(Fantoni et al. <a href="#ref-fantoni2013automatic">2013</a>; Apreda et al. <a href="#ref-apreda2016functional">2016</a>)</span>.</p></li>
-<li><p>Advantages and Disadvantages: list of terms referring to measurable benefits or drawbacks related to an object, chosen for their capacity to represent applications of an invention (see section <a href="patents.html#advdrwresults">6.2</a>).</p></li>
-</ul>
-<p>Table <a href="enriched-dictionaries-for-innovation.html#tab:dictex1">11.1</a> offers an overview of the dictionaries used for this analysis, with a few examples of terms.</p>
 <table>
 <caption><span id="tab:dictex1">Table 11.1: </span> Sources and main characteristics of dictionaries.</caption>
 <colgroup>
@@ -314,37 +309,11 @@
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Dictionary</th>
-<th align="right">Numberof entries</th>
-<th align="left">Examples of chunks</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Artifacts</td>
-<td align="right">12374</td>
-<td align="left">Acetanilid, Actuator, Aerogenerator, Agglomerator</td>
-</tr>
-<tr class="even">
-<td align="left">Acts</td>
-<td align="right">5527</td>
-<td align="left">Abduction, Abidance, Accenting, Acquiring</td>
-</tr>
-<tr class="odd">
-<td align="left">Functional Verbs</td>
-<td align="right">11256</td>
-<td align="left">Abrade, Absorb, Abut, Accelerate</td>
-</tr>
-<tr class="even">
-<td align="left">Advantages/Disadvantages</td>
-<td align="right">29902</td>
-<td align="left">Ability, Accelerate, Acceptance, Accessibility, Accident, Accidents, Aggravated, Aggravation</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><p>Functional verbs: list of verbal expressions describing functions, or actions performed by artifacts on given objects <span class="citation">(Fantoni et al. <a href="#ref-fantoni2013automatic">2013</a>; Apreda et al. <a href="#ref-apreda2016functional">2016</a>)</span>.</p></li>
+<li><p>Advantages and Disadvantages: list of terms referring to measurable benefits or drawbacks related to an object, chosen for their capacity to represent applications of an invention (see section <a href="patents.html#advdrwresults">6.2</a>).</p></li>
+</ul>
+<p>Table <a href="enriched-dictionaries-for-innovation.html#tab:dictex1">11.1</a> offers an overview of the dictionaries used for this analysis, with a few examples of terms.</p>
 </div>
 </div>
 <div id="the-value-added-of-enriched-dictionaries" class="section level2">
@@ -397,34 +366,8 @@ Figure 11.1: Steps of the dictionary approach to the text mining of patents.
 <li>Average sparsity of DFM</li>
 </ul>
 <p>The dictionaries were divided in two macro-classes, due to their nature: Non-Technical Dictionaries (Acts and Artifacts) versus Technical Dictionaries (Functional Verbs and Advantages &amp; Disadvantages). The Blacklist set, filtered with canonical and “Patentese” stopwords, will be useful for a more complete understanding of the findings.</p>
-<p>In order to test the dictionary approach to clustering, we trained the algorithm on a standard patent set, formed by patents belonging to four IPC classes whose technologies are largely known. Table <a href="enriched-dictionaries-for-innovation.html#tab:dicpatents">11.2</a> illustrates the International Patent Classification (IPC) classes included in the analysis (a random sample of 2.000 patents each).</p>
-<table>
-<caption><span id="tab:dicpatents">Table 11.2: </span> Patent sets under examination .</caption>
-<thead>
-<tr class="header">
-<th align="left">IPC Class</th>
-<th align="left">IPC Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">A47J37</td>
-<td align="left">KITCHEN EQUIPMENT; BAKING DEVICES; ROASTING DEVICES; GRILLING DEVICES; FRYING DEVICES</td>
-</tr>
-<tr class="even">
-<td align="left">A61C15</td>
-<td align="left">DENTISTRY; APPARATUS OR METHODS FOR ORAL OR DENTAL HYGIENE</td>
-</tr>
-<tr class="odd">
-<td align="left">A61G13</td>
-<td align="left">TRANSPORT, PERSONAL CONVEYANCES, OR ACCOMMODATION SPECIALLY ADAPTED FOR PATIENTS OR DISABLED PERSONS; OPERATING TABLES OR CHAIRS; CHAIRS FOR DENTISTRY; FUNERAL DEVICES</td>
-</tr>
-<tr class="even">
-<td align="left">A61H</td>
-<td align="left">PHYSICAL THERAPY APPARATUS, e.g. DEVICES FOR LOCATING OR STIMULATING REFLEX POINTS IN THE BODY; ARTIFICIAL RESPIRATION; MASSAGE; BATHING DEVICES FOR SPECIAL THERAPEUTIC OR HYGIENIC PURPOSES OR SPECIFIC PARTS OF THE BODY</td>
-</tr>
-</tbody>
-</table>
+<p>In order to test the dictionary approach to clustering, we trained the algorithm on a standard patent set, formed by patents belonging to four IPC classes whose technologies are largely known. Table <a href="#tab:dicpatents"><strong>??</strong></a> illustrates the International Patent Classification (IPC) classes included in the analysis (a random sample of 2.000 patents each).</p>
+
 <p>The technologies examined are largely mature. As it is shown in Figure <a href="enriched-dictionaries-for-innovation.html#fig:dicttrendsipc">11.2</a>, in some of them the patenting activity started as early as XIX century. The maturity of these technologies is a good starting condition for the training set: similarities and dissimilarities of the patents should be clearly visible.</p>
 <p>By placing them together in the same patent set we deliberately include very different technologies. We ask the algorithm based on dictionaries to be able to discriminate technologies in a patent set which is, by construction, highly heterogeneous.</p>
 <div class="figure" style="text-align: center"><span id="fig:dicttrendsipc"></span>
@@ -433,642 +376,51 @@ Figure 11.1: Steps of the dictionary approach to the text mining of patents.
 Figure 11.2: Technological history of the technologies in the selected patent sets.
 </p>
 </div>
-<p>Table <a href="enriched-dictionaries-for-innovation.html#tab:dictmetrix">11.3</a> offers a summary of measures derived from the application of dictionaries to the four patent sets combined together.</p>
-<table>
-<caption><span id="tab:dictmetrix">Table 11.3: </span> Summary of findings from the application of dictionaries to the combined patent sets.</caption>
-<thead>
-<tr class="header">
-<th align="left">Dictionary</th>
-<th align="right">Average cosine distance of topics</th>
-<th align="right">Average number of topics</th>
-<th align="right">Average sparsity of the DFM</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Artifacts</td>
-<td align="right">0.002</td>
-<td align="right">16</td>
-<td align="right">98.3</td>
-</tr>
-<tr class="even">
-<td align="left">Acts</td>
-<td align="right">0.004</td>
-<td align="right">11</td>
-<td align="right">97.9</td>
-</tr>
-<tr class="odd">
-<td align="left">Advantages and Disadvantages</td>
-<td align="right">0.016</td>
-<td align="right">32</td>
-<td align="right">94.3</td>
-</tr>
-<tr class="even">
-<td align="left">Functional Verbs</td>
-<td align="right">0.029</td>
-<td align="right">37</td>
-<td align="right">73.8</td>
-</tr>
-<tr class="odd">
-<td align="left">Blacklist</td>
-<td align="right">0.031</td>
-<td align="right">40</td>
-<td align="right">63.3</td>
-</tr>
-</tbody>
-</table>
-<p>Two findings are visible in Table <a href="enriched-dictionaries-for-innovation.html#tab:dictmetrix">11.3</a>. First, there is large difference in the cohesiveness of the clustering based on Technical and Non-technical dictionaries. The average cosine distance calculated with the Artifacts and Acts dictionaries is ten times smaller than the average cosine distance for Advantages &amp; disadvantages and the Functional dictionary. Second, Non-technical dictionaries give origin to a much smaller number of topics.</p>
+<p>Table <a href="#tab:dictmetrix"><strong>??</strong></a> offers a summary of measures derived from the application of dictionaries to the four patent sets combined together.</p>
+
+<p>Two findings are visible in Table <a href="#tab:dictmetrix"><strong>??</strong></a>. First, there is large difference in the cohesiveness of the clustering based on Technical and Non-technical dictionaries. The average cosine distance calculated with the Artifacts and Acts dictionaries is ten times smaller than the average cosine distance for Advantages &amp; disadvantages and the Functional dictionary. Second, Non-technical dictionaries give origin to a much smaller number of topics.</p>
 <p>Let us examine the differences between dictionaries more in detail. We start by examining the performance of each dictionary in extracting and clustering topics.</p>
 <div id="non-technical-dictionaries" class="section level4 unnumbered">
 <h4>Non-technical Dictionaries</h4>
-<p>Table <a href="enriched-dictionaries-for-innovation.html#tab:dictactsresults">11.4</a> shows the results of the application of the Acts dictionary to the four separate patent sets, while Table <a href="enriched-dictionaries-for-innovation.html#tab:dictartsresults">11.5</a> shows the same for the Artifacts dictionary.</p>
-<table>
-<caption><span id="tab:dictactsresults">Table 11.4: </span> Findings from the application of the <strong>Acts</strong> dictionary to selected patent sets.</caption>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="right">Number of topics</th>
-<th align="right">Cosine distance of topics</th>
-<th align="right">Number of documents</th>
-<th align="right">Number of features</th>
-<th align="right">Average sparsity of the DFM (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Burners</td>
-<td align="right">2</td>
-<td align="right">0.001</td>
-<td align="right">496</td>
-<td align="right">306</td>
-<td align="right">97.8</td>
-</tr>
-<tr class="even">
-<td align="left">Toothbrushes</td>
-<td align="right">6</td>
-<td align="right">0.002</td>
-<td align="right">494</td>
-<td align="right">311</td>
-<td align="right">97.8</td>
-</tr>
-<tr class="odd">
-<td align="left">Prosthesis</td>
-<td align="right">18</td>
-<td align="right">0.005</td>
-<td align="right">491</td>
-<td align="right">493</td>
-<td align="right">97.9</td>
-</tr>
-<tr class="even">
-<td align="left">Funeral Dev.</td>
-<td align="right">16</td>
-<td align="right">0.007</td>
-<td align="right">491</td>
-<td align="right">470</td>
-<td align="right">98.2</td>
-</tr>
-<tr class="odd">
-<td align="left">Mean</td>
-<td align="right">11</td>
-<td align="right">0.004</td>
-<td align="right">493</td>
-<td align="right">395</td>
-<td align="right">97.9</td>
-</tr>
-</tbody>
-</table>
-<table>
-<caption><span id="tab:dictartsresults">Table 11.5: </span> Findings from the application of the <strong>Artifacts</strong> dictionary to selected patent sets.</caption>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="right">Number of topics</th>
-<th align="right">Cosine distance of topics</th>
-<th align="right">Number of documents</th>
-<th align="right">Number of features</th>
-<th align="right">Average sparsity of the DFM (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Burners</td>
-<td align="right">6</td>
-<td align="right">0.001</td>
-<td align="right">495</td>
-<td align="right">397</td>
-<td align="right">98.4</td>
-</tr>
-<tr class="even">
-<td align="left">Toothbrushes</td>
-<td align="right">16</td>
-<td align="right">0.001</td>
-<td align="right">469</td>
-<td align="right">500</td>
-<td align="right">98.8</td>
-</tr>
-<tr class="odd">
-<td align="left">Prosthesis</td>
-<td align="right">18</td>
-<td align="right">0.003</td>
-<td align="right">487</td>
-<td align="right">500</td>
-<td align="right">98.0</td>
-</tr>
-<tr class="even">
-<td align="left">Funeral Dev.</td>
-<td align="right">22</td>
-<td align="right">0.002</td>
-<td align="right">485</td>
-<td align="right">500</td>
-<td align="right">98.1</td>
-</tr>
-<tr class="odd">
-<td align="left">Mean</td>
-<td align="right">16</td>
-<td align="right">0.002</td>
-<td align="right">484</td>
-<td align="right">474</td>
-<td align="right">98.3</td>
-</tr>
-</tbody>
-</table>
+<p>Table <a href="#tab:dictactsresults"><strong>??</strong></a> shows the results of the application of the Acts dictionary to the four separate patent sets, while Table <a href="#tab:dictartsresults"><strong>??</strong></a> shows the same for the Artifacts dictionary.</p>
+
+
+
+
+
+
 <p>These two dictionaries were retrieved from the Wordnet categorization dictionary, which is a tool for linguistic analysis; thus, the terms comprised in them are of common use, and their suitability for the description of patents is not guaranteed. Taken together the Non-technical dictionaries deliver two main results. First, there is a difference in the optimal number of topics between simple technologies (Burners and Toothbrushes) and more complex and articulated technologies (Prosthesis and Funeral devices). In the case of the Acts dictionary, the optimal number of topics is 2-6 for the former technologies and 18-16 for the latter. Second, Non-technical dictionaries deliver clusters with an extremely low cosine distance, that is, with strong internal cohesiveness. In other words, Non-technical dictionaries produce an excellent clustering of documents. This suggests that they can be used to obtain a small number of non-technical topics, that allow a general identification of the content of documents, but not the identification of technical similarities and differences.</p>
-<p>To provide an example of the potential of the dictionary methodology we show in Tables <a href="enriched-dictionaries-for-innovation.html#tab:acttopicresults">11.6</a> and <a href="enriched-dictionaries-for-innovation.html#tab:arttopicresults">11.7</a> the top ten words found in a selection of the topics extracted with the Non-technical dictionaries in the patent set Prosthesis. We need to test whether Non-technical dictionaries deliver topics that are satisfactory with respect to their potential to describe technologies.</p>
-<table>
-<caption><span id="tab:acttopicresults">Table 11.6: </span> Top ten words in selected topics extracted in the patent set <strong>Prosthesis</strong> with the aid of the <strong>Acts</strong> dictionary.</caption>
-<thead>
-<tr class="header">
-<th align="left">Topic 3: Term</th>
-<th align="left">Topic 3: Beta</th>
-<th align="left">Topic 7: Term</th>
-<th align="left">Topic 7: Beta</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Measuring</td>
-<td align="left">0.322</td>
-<td align="left">Manipulation</td>
-<td align="left">0.160</td>
-</tr>
-<tr class="even">
-<td align="left">Measurement</td>
-<td align="left">0.217</td>
-<td align="left">Steering</td>
-<td align="left">0.152</td>
-</tr>
-<tr class="odd">
-<td align="left">Detecting</td>
-<td align="left">0.210</td>
-<td align="left">Dialysis</td>
-<td align="left">0.145</td>
-</tr>
-<tr class="even">
-<td align="left">Performing</td>
-<td align="left">0.033</td>
-<td align="left">Cycling</td>
-<td align="left">0.063</td>
-</tr>
-<tr class="odd">
-<td align="left">Sending</td>
-<td align="left">0.031</td>
-<td align="left">Deactivation</td>
-<td align="left">0.060</td>
-</tr>
-<tr class="even">
-<td align="left">Calibration</td>
-<td align="left">0.030</td>
-<td align="left">Dampening</td>
-<td align="left">0.049</td>
-</tr>
-<tr class="odd">
-<td align="left">Supplying</td>
-<td align="left">0.024</td>
-<td align="left">Shearing</td>
-<td align="left">0.047</td>
-</tr>
-<tr class="even">
-<td align="left">Repositioning</td>
-<td align="left">0.024</td>
-<td align="left">Logging</td>
-<td align="left">0.032</td>
-</tr>
-<tr class="odd">
-<td align="left">Causing</td>
-<td align="left">0.009</td>
-<td align="left">Exercising</td>
-<td align="left">0.029</td>
-</tr>
-<tr class="even">
-<td align="left">Comparing</td>
-<td align="left">0.009</td>
-<td align="left">Reaching</td>
-<td align="left">0.023</td>
-</tr>
-</tbody>
-</table>
-<table>
-<caption><span id="tab:arttopicresults">Table 11.7: </span> Top ten words in selected topics extracted in the patent set <strong>Prosthesis</strong> with the aid of the <strong>Artifacts</strong> dictionary.</caption>
-<thead>
-<tr class="header">
-<th align="left">Topic 5: Term</th>
-<th align="left">Topic 5: Beta</th>
-<th align="left">Topic 14: Term</th>
-<th align="left">Topic 14: Beta</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Backrest</td>
-<td align="left">0.498</td>
-<td align="left">Electrode</td>
-<td align="left">0.405</td>
-</tr>
-<tr class="even">
-<td align="left">Eyewash</td>
-<td align="left">0.092</td>
-<td align="left">Catheter</td>
-<td align="left">0.233</td>
-</tr>
-<tr class="odd">
-<td align="left">Armrest</td>
-<td align="left">0.085</td>
-<td align="left">Circuitry</td>
-<td align="left">0.106</td>
-</tr>
-<tr class="even">
-<td align="left">Gasket</td>
-<td align="left">0.060</td>
-<td align="left">Sensor</td>
-<td align="left">0.026</td>
-</tr>
-<tr class="odd">
-<td align="left">Capacitor</td>
-<td align="left">0.052</td>
-<td align="left">Housing</td>
-<td align="left">0.025</td>
-</tr>
-<tr class="even">
-<td align="left">Arms</td>
-<td align="left">0.048</td>
-<td align="left">Converter</td>
-<td align="left">0.025</td>
-</tr>
-<tr class="odd">
-<td align="left">Gurney</td>
-<td align="left">0.045</td>
-<td align="left">Emitter</td>
-<td align="left">0.021</td>
-</tr>
-<tr class="even">
-<td align="left">Footplate</td>
-<td align="left">0.025</td>
-<td align="left">Cathode</td>
-<td align="left">0.018</td>
-</tr>
-<tr class="odd">
-<td align="left">Eyepiece</td>
-<td align="left">0.019</td>
-<td align="left">Anode</td>
-<td align="left">0.018</td>
-</tr>
-<tr class="even">
-<td align="left">Headrest</td>
-<td align="left">0.011</td>
-<td align="left">Reflector</td>
-<td align="left">0.011</td>
-</tr>
-</tbody>
-</table>
+<p>To provide an example of the potential of the dictionary methodology we show in Tables <a href="#tab:acttopicresults"><strong>??</strong></a> and <a href="#tab:arttopicresults"><strong>??</strong></a> the top ten words found in a selection of the topics extracted with the Non-technical dictionaries in the patent set Prosthesis. We need to test whether Non-technical dictionaries deliver topics that are satisfactory with respect to their potential to describe technologies.</p>
+
+
 <p>In the case of the Artifacts dictionary, Topic 5 gives us information on components related to the body part interested by the prosthesis, while Topic 14 tells us about electrical tools and sensors that are involved in the invention. Also in this case, the two groups are useful to gather information about the basic composition of the set, but not enough on focus to have a satisfactory definition of the technologies.</p>
 </div>
 <div id="technical-dictionaries" class="section level4 unnumbered">
 <h4>Technical Dictionaries</h4>
-<p>Table <a href="enriched-dictionaries-for-innovation.html#tab:dictadvsresults">11.8</a> shows the results of the application of the Advantages &amp; Disadvantages dictionary to the four separate patent sets, while Table <a href="enriched-dictionaries-for-innovation.html#tab:dictfunctsresults">11.9</a> shows the same for the Functional dictionary.</p>
-<table>
-<caption><span id="tab:dictadvsresults">Table 11.8: </span> Findings from the application of the <strong>Advantages and Disadvantages</strong> dictionary to selected patent sets.</caption>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="right">Number of topics</th>
-<th align="right">Cosine distance of topics</th>
-<th align="right">Number of documents</th>
-<th align="right">Number of features</th>
-<th align="right">Average sparsity of the DFM (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Burners</td>
-<td align="right">32</td>
-<td align="right">0.015</td>
-<td align="right">500</td>
-<td align="right">500</td>
-<td align="right">95.9</td>
-</tr>
-<tr class="even">
-<td align="left">Toothbrushes</td>
-<td align="right">30</td>
-<td align="right">0.014</td>
-<td align="right">500</td>
-<td align="right">500</td>
-<td align="right">95.0</td>
-</tr>
-<tr class="odd">
-<td align="left">Prosthesis</td>
-<td align="right">32</td>
-<td align="right">0.021</td>
-<td align="right">497</td>
-<td align="right">500</td>
-<td align="right">92.3</td>
-</tr>
-<tr class="even">
-<td align="left">Funeral Dev.</td>
-<td align="right">34</td>
-<td align="right">0.014</td>
-<td align="right">495</td>
-<td align="right">500</td>
-<td align="right">94.0</td>
-</tr>
-<tr class="odd">
-<td align="left">Mean</td>
-<td align="right">32</td>
-<td align="right">0.016</td>
-<td align="right">498</td>
-<td align="right">500</td>
-<td align="right">94.3</td>
-</tr>
-</tbody>
-</table>
-<table>
-<caption><span id="tab:dictfunctsresults">Table 11.9: </span> Findings from the application of the <strong>Functional</strong> dictionary to selected patent sets.</caption>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="right">Number of topics</th>
-<th align="right">Cosine distance of topics</th>
-<th align="right">Number of documents</th>
-<th align="right">Number of features</th>
-<th align="right">Average sparsity of the DFM (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Burners</td>
-<td align="right">38</td>
-<td align="right">0.021</td>
-<td align="right">500</td>
-<td align="right">500</td>
-<td align="right">76.6</td>
-</tr>
-<tr class="even">
-<td align="left">Toothbrushes</td>
-<td align="right">36</td>
-<td align="right">0.022</td>
-<td align="right">500</td>
-<td align="right">500</td>
-<td align="right">75.5</td>
-</tr>
-<tr class="odd">
-<td align="left">Prosthesis</td>
-<td align="right">34</td>
-<td align="right">0.032</td>
-<td align="right">497</td>
-<td align="right">500</td>
-<td align="right">70.6</td>
-</tr>
-<tr class="even">
-<td align="left">Funeral Dev.</td>
-<td align="right">38</td>
-<td align="right">0.041</td>
-<td align="right">495</td>
-<td align="right">500</td>
-<td align="right">72.4</td>
-</tr>
-<tr class="odd">
-<td align="left">Mean</td>
-<td align="right">37</td>
-<td align="right">0.029</td>
-<td align="right">498</td>
-<td align="right">500</td>
-<td align="right">73.8</td>
-</tr>
-</tbody>
-</table>
-<p>The technical dictionaries applied contain a large number of features, generating a large DFM. An overall look at Tables <a href="enriched-dictionaries-for-innovation.html#tab:dictadvsresults">11.8</a> and <a href="enriched-dictionaries-for-innovation.html#tab:dictfunctsresults">11.9</a> shows several interesting findings. First of all, the technical dictionaries allow the identification of a much larger number of topics with respect to non-technical dictionaries: the average number is 32 for the Advantages &amp; Disadvantages, and 37 for the Functional dictionary. This means that technical dictionaries show a higher power of discrimination of semantic content. This is an important finding for Technology intelligence, since a larger number of internally coherent topics is an extremely useful starting point for the interpretation of their content.</p>
+<p>Table <a href="#tab:dictadvsresults"><strong>??</strong></a> shows the results of the application of the Advantages &amp; Disadvantages dictionary to the four separate patent sets, while Table <a href="#tab:dictfunctsresults"><strong>??</strong></a> shows the same for the Functional dictionary. The technical dictionaries applied contain a large number of features, generating a large DFM. An overall look at Tables <a href="#tab:dictadvsresults"><strong>??</strong></a> and <a href="#tab:dictfunctsresults"><strong>??</strong></a> shows several interesting findings. First of all, the technical dictionaries allow the identification of a much larger number of topics with respect to non-technical dictionaries: the average number is 32 for the Advantages &amp; Disadvantages, and 37 for the Functional dictionary. This means that technical dictionaries show a higher power of discrimination of semantic content. This is an important finding for Technology intelligence, since a larger number of internally coherent topics is an extremely useful starting point for the interpretation of their content.</p>
+
+
+
+
+
+
 <p>Second, in the case of the Functional dictionary the Document-Feature Matrix (DFMs) is less sparse: the average sparsity index is 73,8%, as opposed to around 98% for the non-technical dictionaries and 94,3% for the Advantages &amp; Disadvantages dictionary. Third, the total number of documents used, i.e. the documents in which there is at least one matching between the words and the features of the dictionary, is larger in the case of technical dictionaries (in particular, it is 498 out of 500 for the Functional dictionary).</p>
 <p>Fourth, the cosine distance of topics is approximately ten times larger in the case of technical dictionaries, meaning that clusters enjoy a ower cohesiveness. These findings point to an important contribution of technical dictionaries, and in particular of the Functional dictionary, to Technology intelligence, that is, technology mapping, clustering, interpretation, and foresight.</p>
 <p>The Functional dictionary offers a large number of features that find a matching with the text of the patents, so that the resulting DFM is less sparse. The fact that the total number of topics is larger also means that each of the topics is populated by a smaller number of features. Each topic, therefore, lends itself to a clear understanding of the technical content. The differences between topics have also a clear technical interpretation.</p>
 <p>It can be said that technical dictionaries, as opposed to non-technical dictionaries, allow a fine-grained intelligence of the technical content of patent sets. This is in itself an important achievement, given that the topic modelling algorithm has not been previously trained, but is only filtered by the dictionary. In practice we achieve the precise results of supervised topic modeling with an effort which is more similar to that of the unsupervised approach.</p>
-<p>In order to give a better understanding of the potential of the technical dictionary approach, let us examine more in detail in table <a href="enriched-dictionaries-for-innovation.html#tab:advtopicresults">11.10</a> and <a href="enriched-dictionaries-for-innovation.html#tab:functtopicresults">11.11</a> the top 10 words in some of the topics identified in one of the four patent sets examined, namely Prosthesis.</p>
-<table>
-<caption><span id="tab:advtopicresults">Table 11.10: </span> Top ten words in selected topics extracted in the patent set <strong>Prosthesis</strong> with the aid of the <strong>Advantages &amp; Disadvantages dictionary</strong>.</caption>
-<thead>
-<tr class="header">
-<th align="left">Topic 6: Term</th>
-<th align="left">Topic 6: Beta</th>
-<th align="left">Topic 28: Term</th>
-<th align="left">Topic 28: Beta</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Adjustable</td>
-<td align="left">0.564</td>
-<td align="left">Worn</td>
-<td align="left">0.155</td>
-</tr>
-<tr class="even">
-<td align="left">Accommodate</td>
-<td align="left">0.046</td>
-<td align="left">Comfort</td>
-<td align="left">0.086</td>
-</tr>
-<tr class="odd">
-<td align="left">Ergonomic</td>
-<td align="left">0.032</td>
-<td align="left">Wearing</td>
-<td align="left">0.077</td>
-</tr>
-<tr class="even">
-<td align="left">Securely</td>
-<td align="left">0.022</td>
-<td align="left">Comfortable</td>
-<td align="left">0.058</td>
-</tr>
-<tr class="odd">
-<td align="left">Adjustability</td>
-<td align="left">0.020</td>
-<td align="left">Injury</td>
-<td align="left">0.043</td>
-</tr>
-<tr class="even">
-<td align="left">Ability</td>
-<td align="left">0.017</td>
-<td align="left">Discomfort</td>
-<td align="left">0.031</td>
-</tr>
-<tr class="odd">
-<td align="left">Facilitate</td>
-<td align="left">0.016</td>
-<td align="left">Increase</td>
-<td align="left">0.029</td>
-</tr>
-<tr class="even">
-<td align="left">Stabilizing</td>
-<td align="left">0.011</td>
-<td align="left">Reduce</td>
-<td align="left">0.026</td>
-</tr>
-<tr class="odd">
-<td align="left">Comfort</td>
-<td align="left">0.010</td>
-<td align="left">Uncomfortable</td>
-<td align="left">0.025</td>
-</tr>
-<tr class="even">
-<td align="left">Stability</td>
-<td align="left">0.010</td>
-<td align="left">Tear</td>
-<td align="left">0.024</td>
-</tr>
-</tbody>
-</table>
-<table>
-<caption><span id="tab:functtopicresults">Table 11.11: </span> Top ten words in selected topics extracted in the patent set <strong>Prosthesis</strong> with the aid of the <strong>Functional dictionary</strong>.</caption>
-<thead>
-<tr class="header">
-<th align="left">Topic 15: Term</th>
-<th align="left">Topic 15: Beta</th>
-<th align="left">Topic 20: Term</th>
-<th align="left">Topic 20 :Beta</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Distance</td>
-<td align="left">0.054</td>
-<td align="left">Arm</td>
-<td align="left">0.238</td>
-</tr>
-<tr class="even">
-<td align="left">Coupling</td>
-<td align="left">0.053</td>
-<td align="left">Exercise</td>
-<td align="left">0.082</td>
-</tr>
-<tr class="odd">
-<td align="left">Position</td>
-<td align="left">0.052</td>
-<td align="left">Arms</td>
-<td align="left">0.060</td>
-</tr>
-<tr class="even">
-<td align="left">Neck</td>
-<td align="left">0.043</td>
-<td align="left">Stretching</td>
-<td align="left">0.042</td>
-</tr>
-<tr class="odd">
-<td align="left">Line</td>
-<td align="left">0.041</td>
-<td align="left">Left</td>
-<td align="left">0.025</td>
-</tr>
-<tr class="even">
-<td align="left">Parallel</td>
-<td align="left">0.030</td>
-<td align="left">View</td>
-<td align="left">0.024</td>
-</tr>
-<tr class="odd">
-<td align="left">View</td>
-<td align="left">0.021</td>
-<td align="left">Orientation</td>
-<td align="left">0.023</td>
-</tr>
-<tr class="even">
-<td align="left">Form</td>
-<td align="left">0.019</td>
-<td align="left">Stretch</td>
-<td align="left">0.021</td>
-</tr>
-<tr class="odd">
-<td align="left">Orientation</td>
-<td align="left">0.016</td>
-<td align="left">Angle</td>
-<td align="left">0.019</td>
-</tr>
-<tr class="even">
-<td align="left">Contact</td>
-<td align="left">0.013</td>
-<td align="left">Tension</td>
-<td align="left">0.017</td>
-</tr>
-</tbody>
-</table>
-<p>In Table <a href="enriched-dictionaries-for-innovation.html#tab:advtopicresults">11.10</a> Topic 6 calls the attention to features of the prosthesis such as adjustability, facilitation and stability, that is, on ergonomic features. Topic 28 emphasizes comfort (as an advantage made possible by the invention) or discomfort (as a disadvantage addressed by the invention). The content of these topics, thanks to the power of the technical dictionary, is crystal clear.</p>
-<p>In Table <a href="enriched-dictionaries-for-innovation.html#tab:functtopicresults">11.11</a> we see, in topic 15, the positioning of prosthesis on the neck of patients, and in topic 20, the orientation of arms with the support of prosthesis. Both these topics deal with the issue of placing the prosthesis around or over various parts of the human body. It is important to underline that, once generated, topics can also be combined together in further steps of the analysis.</p>
+<p>In order to give a better understanding of the potential of the technical dictionary approach, let us examine more in detail in table <a href="#tab:advtopicresults"><strong>??</strong></a> and <a href="#tab:functtopicresults"><strong>??</strong></a> the top 10 words in some of the topics identified in one of the four patent sets examined, namely Prosthesis.</p>
+
+
+<p>In Table <a href="#tab:advtopicresults"><strong>??</strong></a> Topic 6 calls the attention to features of the prosthesis such as adjustability, facilitation and stability, that is, on ergonomic features. Topic 28 emphasizes comfort (as an advantage made possible by the invention) or discomfort (as a disadvantage addressed by the invention). The content of these topics, thanks to the power of the technical dictionary, is crystal clear.</p>
+<p>In Table <a href="#tab:functtopicresults"><strong>??</strong></a> we see, in topic 15, the positioning of prosthesis on the neck of patients, and in topic 20, the orientation of arms with the support of prosthesis. Both these topics deal with the issue of placing the prosthesis around or over various parts of the human body. It is important to underline that, once generated, topics can also be combined together in further steps of the analysis.</p>
 </div>
 <div id="blacklist" class="section level4 unnumbered">
 <h4>Blacklist</h4>
 <p>Finally, the information power of technical dictionaries can be appreciated by comparing the results with those that would be obtained by filtering the texts with semantically poor words, such as generic words (stopwords) and “patentese” generic words. As stated above, the combination between generic and patentese stopwords is labelled Blacklist.</p>
-<table>
-<caption><span id="tab:dictblacklist">Table 11.12: </span> Top ten words in selected topics extracted in the four patent sets with the aid of the <strong>Blacklist</strong>.</caption>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="right">Number of topics</th>
-<th align="right">Cosine Distance of Topics</th>
-<th align="right">Number of documents</th>
-<th align="right">Number of features</th>
-<th align="right">Average sparsity of the DFM (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Burners</td>
-<td align="right">40</td>
-<td align="right">0.016</td>
-<td align="right">500</td>
-<td align="right">500</td>
-<td align="right">66.5</td>
-</tr>
-<tr class="even">
-<td align="left">Toothbrushes</td>
-<td align="right">40</td>
-<td align="right">0.025</td>
-<td align="right">500</td>
-<td align="right">500</td>
-<td align="right">65.7</td>
-</tr>
-<tr class="odd">
-<td align="left">Prosthesis</td>
-<td align="right">40</td>
-<td align="right">0.040</td>
-<td align="right">500</td>
-<td align="right">500</td>
-<td align="right">59.2</td>
-</tr>
-<tr class="even">
-<td align="left">Funeral Dev.</td>
-<td align="right">40</td>
-<td align="right">0.042</td>
-<td align="right">500</td>
-<td align="right">500</td>
-<td align="right">61.6</td>
-</tr>
-<tr class="odd">
-<td align="left">Mean</td>
-<td align="right">40</td>
-<td align="right">0.031</td>
-<td align="right">500</td>
-<td align="right">500</td>
-<td align="right">63.3</td>
-</tr>
-</tbody>
-</table>
-<p>The Table <a href="enriched-dictionaries-for-innovation.html#tab:dictblacklist">11.12</a> shows the clustering results using as filter a blacklist, composed by traditional and patentese stopwords. The following observations are in order. First, we observe a remarkable flatness in the number of topics: it equals 40, which is the maximum value that can be achieved by the algorithm. Second, Burners and Toothbrushes have a smaller distance value, confirming that these two patent sets are composed by more homogeneous types of features.</p>
+
+
+
+<p>The Table <a href="#tab:dictblacklist"><strong>??</strong></a> shows the clustering results using as filter a blacklist, composed by traditional and patentese stopwords. The following observations are in order. First, we observe a remarkable flatness in the number of topics: it equals 40, which is the maximum value that can be achieved by the algorithm. Second, Burners and Toothbrushes have a smaller distance value, confirming that these two patent sets are composed by more homogeneous types of features.</p>
 <p>Summing up, it seems that the dictionaries deliver different results. On the one hand, Non-technical dictionaries include more generic word expressions. Non-technical dictionaries deliver better performance if the goal is to provide a global representation of the technological field, since they generate a smaller number of topics and better indicators of effectiveness of clustering.</p>
 <p>On the other hand, if the goal is to detect novelty and technological trends, or to identify the areas of exploration of emerging technologies, then Technical dictionaries perform better, as they generate a larger number of topics. Analysing these topics it is possible to get insights on technological differences among patents in the same patent set and to produce detailed technology maps. This is particularly important for innovations in the pre-paradigmatic stage.</p>
 </div>
