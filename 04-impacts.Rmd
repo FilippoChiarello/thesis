@@ -1,5 +1,7 @@
 # (PART) Applications of the Results {-}
 
+It has been highlighted by the guidelines of design research [@bichler2006design] that effective design-science research must provide clear and verifiable contributions in the areas of the design artifact, design foundations, and/or design methodologies. For this reason the present section is a collection of projects that describes the applications and results of the methods designed in _Part 3 "Methods and Results"_.
+
 # Exploiting patent information in novel ways
 
 Due to the complexity and volatility of user needs, companies increasingly ask product designers and engineers to create ideas that meet needs in novel and better ways, rather than just making existing technologies more attractive [@brown2010design]. As a matter of fact, these professionals are nowadays involved in the process of understanding in depth what users want and desire [@haley1968benefit; @day1979customer].
@@ -453,14 +455,14 @@ Summing up, it seems that the dictionaries deliver different results. On the one
 
 On the other hand, if the goal is to detect novelty and technological trends, or to identify the areas of exploration of emerging technologies, then Technical dictionaries perform better, as they generate a larger number of topics. Analysing these topics it is possible to get insights on technological differences among patents in the same patent set and to produce detailed technology maps. This is particularly important for innovations in the pre-paradigmatic stage.
 
-## Conclusions
+## Discussions
 
 Patent clustering is a standard application in technology intelligence and has been common practice in the professional IP industry. In recent years, patent clustering based on text mining has gained large acceptance. In this paper we have introduced a novel methodology to cluster patents.
 With respect to the existing literature we give a contribution by testing the use of dictionaries as a structured list of words to filter patent data and build up clusters. 
 The clustering based on dictionaries is significantly different from the one provided by IPC classification. We have tested the use of multiple dictionaries on the same patent set. The resulting clusters allow a fine-grained interpretation, which is illuminating for purposes of technology intelligence.
 Kreuchauff and Korzinov [@kreuchauff2017patent] have developed a set of performance criteria to compare and evaluate the identification approaches proposed in the literature. These criteria include: degree of intervention of experts, portability, transparency, replicability, adaptability, updating capacity, and finally extent and relevance of data obtained. We suggest that the enriched dictionary approach satisfies all these criteria: it does not involve the role of experts, is portable and transparent (after publication of the dictionary in the open literature), it is therefore replicable to any technology, is adaptable and has capacity to update (particularly if based on Wikipedia), and offers broad and relevant data.
 
-# Impact of Research from the Perspective of Users.
+# Impact of Research from the Perspective of Users
 
 A substantive interest has been developed in the last 15 years on the so-called “impact revolution”, namely the increasing demand for showcasing the results of publicly funded research in order to justify public expenditure. Public funders are increasingly required to demonstrate the relevance of funded research not only for scientific communities but also for the economy and society at large. In other words, there is an increasing demand to prove that the users and beneficiaries of research results are not only the traditional academic audience - researchers and university students - but include a large number of social actors. Let use use here the concept of “societal impact”, as opposed to academic impact, to include all dimensions of impact on the society and economy that are realized through impact pathways that go beyond the institutional research and teaching activities.
 
@@ -979,7 +981,7 @@ The Strategist is the individual who has a mind wide open: he/she thinks to the 
  
 _Key words_: distribution (business); michael porter; process management; supply chain management; value proposition; business models; management; strategic management; types of marketing; business planning; business software; business terms; management; control (social and political); control theory; artificial intelligence; formal sciences; game theory; john von neumann; mathematical economics; business terms; strategic management; business intelligence; strategy; systems thinking
 
-## Conclusion
+## Discussions
 
 The present section can be seen as a first step of a long journey. As stated in introduction our Archetypes are intended in the etymological sense, as original models, and we assume that they are emerging in the digital economy. Thanks to the data-mining exercise we were able to place the clusters of Wikipedia pages in a graph, analyzing them according to the contents, the position in the graph and the relation among them. 
 This recurrence of same pages in almost all the clusters let us concluding that some topics are common to all the Archetypes, independently to the cluster they were originated. For example, being able to read and exploit data is a transversal issue and all the Archetypes (and all the workers referable to them) should be used to work with them. Another constant in all the cluster is the reference to technologies: they are central in the new paradigm, it is unavoidable for a digital worker knowing them. Even if the “Fourth Industrial Revolution” doesn’t end with a bunch of IT tools, they are at the center of the new paradigm and workers must be used to play with them [17]. 

@@ -24,8 +24,6 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Mining Technical Knowledge from Texts},
-            pdfauthor={Filippo Chiarello},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -77,72 +75,57 @@
 
 \setlength{\droptitle}{-2em}
 
-  \title{Mining Technical Knowledge from Texts}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  \subtitle{Engineering Management Methods \& Natural Language Processing Techniques}
-  \author{Filippo Chiarello}
-    \preauthor{\centering\large\emph}
-  \postauthor{\par}
-      \predate{\centering\large\emph}
-  \postdate{\par}
-    \date{2018-10-06}
-
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
 \usepackage{booktabs}
 
 \begin{document}
-\maketitle
 
 {
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\chapter*{Preface}\label{preface}
-\addcontentsline{toc}{chapter}{Preface}
-
-\begin{itemize}
-\tightlist
-\item
-  Text Mining Techniques for Knowledge Extraction from Technical
-  Documents
-\end{itemize}
-
 \part{Introduction}\label{part-introduction}
 
-\chapter{Problem}\label{problem}
+\chapter{Problems and Goals}\label{introproblems}
 
 \section{Big Data, Many Information, Less
 Knowledge?}\label{big-data-many-information-less-knowledge}
 
 Se l'ambiente informativo in cui noi esseri umani viviamo è radicalmente
 cambianto negli ultimi anni, con evidenti impatti su economia,
-tecnologia, cultura e società, l'impatto che ha avuto sulle aziende è
-ancora più
-forte\citep{Arun2006Firm, jin2015significance, degryse2016digitalisation, john2014big, o2016weapons}.
+tecnologia, cultura e società, l'impatto che ha avuto sui sistemi
+aziendali è ancora più forte
+\citep{Arun2006Firm, jin2015significance, degryse2016digitalisation, john2014big, o2016weapons}.
 Una persona infatti può raggiungere i suoi obiettivi anche senza il
-bisogno di gestire questa informazione (anche se con ormai alcune
-difficolà). Ciò non è vero per le aziende: per sopravviere ed essere
+bisogno di gestire questa informazione (anche se con ormai difficolà non
+trascurabili). Ciò non è vero per le aziende: per sopravviere ed essere
 competitive hanno la necessità di avere dei chiari metodi e strumenti
 per risolvere il problema della information overload
 \citep{levitin2014organized, feng2015competing}.
 
 Per capire le sfide che devono affrontare le aziende oggi, dobbiamo
 inanzitutto svolgere un esercizio di immedesimazione nei loro confronti.
-Immaginiamo che le la quantità di informazione che potenzialmente ci
-interessa e che proviene dall'ambiente nel quale viviamo (le
-informazioni tattili, spaziali e sonore, cio che dicono le persone con
-le quali interagiamo, il contenuto dei documenti importanti per il
-lavoro che svogliamo ecc..) inizi velocemente ad aumentare. Per
-sopravvivere in un ambiente di questo genere, avremmo bisogno di sensi
-più potenti o forse di nuovi; potremmo inoltre aver necessità sistemi
-esterni che ci aiutino nel compito della processazione delle
-informazioni. Misurando la quantità di informazione digitale prodotta
-negli ultimi 10 anni, notiamo come questa situazione è simile a quella
-che le aziende stanno vivendo: si ritrovano in un universo digitale
-caotico ed in continua espansione. Questo universo digitale crescerà di
-un fattore di 300 dal 2005 al 2020, da 130 exabytes a 40,000 exabytes
-(40 zettabytes) \citep{gantz2012digital}, come mostrato in figura
-\ref{fig:biginfo}.
+Immaginiamo che le la quantità di informazione di nostro interesse
+proveniente dall'ambiente nel quale viviamo (le informazioni visive,
+tattili e sonore, cio che dicono le persone con le quali interagiamo, il
+contenuto dei documenti importanti per il lavoro che svogliamo ecc..)
+inizi velocemente ad aumentare. Per sopravvivere in un ambiente di
+questo genere, avremmo bisogno di sensi più potenti o forse di nuovi;
+potremmo inoltre aver necessità sistemi esterni che ci aiutino nel
+compito della processazione delle informazioni. Misurando la quantità di
+informazione digitale prodotta negli ultimi 10 anni, notiamo come questa
+situazione è simile a quella che le aziende stanno vivendo: si ritrovano
+in un universo digitale caotico ed in continua espansione. Questo
+universo digitale crescerà di un fattore di 300 dal 2005 al 2020, da 130
+exabytes a 40,000 exabytes (40 zettabytes) \citep{gantz2012digital},
+come mostrato in figura \ref{fig:biginfo}.
 
 Le nuove tecnologie digitali inoltre non stanno avendo un impatto solo
 fuori le aziende, ma anche dentro di esse
@@ -168,11 +151,11 @@ Un primo problema in tale contesto di pressione informativa crescente, è
 la difficoltà nel capire quali informazioni hanno valore per una azienda
 \citep{larose2014discovering, chemchem2015data, kasemsap2015role} . Per
 valore qui si intende tutte le informazioni che possono aiutare
-l'azienda a costruire conoscenza in modo tale da perseguire la propia
-mission. Questo tipo di analisi richiede infatti sia una profonda
-comprensione delle tecnologie digitali, che di business acumen: non
-tutte le aziende sono in grado di avere al proprio interno (o comunque
-di procurarsi) queste skills
+l'azienda a costruire conoscenza in modo tale da raggiungere i propri
+obiettivi (sia in termini di vision che di mission). Questo tipo di
+analisi richiede infatti sia una profonda comprensione delle tecnologie
+digitali, che di business acumen: non tutte le aziende sono in grado di
+avere al proprio interno (o comunque di procurarsi) queste skills
 \citep{hecklau2016holistic, davenport2012data, provost2013data, van2014data},
 considerando inoltre che il business acumen è fortemente dipendente dal
 settore nel quale si lavora. Come conseguenza è stato stimato che solo
@@ -184,46 +167,53 @@ essere trovato in pattern nascosti nei social media, correlazioni fra
 studi scientifici, studi medici intersecati con studi sociologici,
 dall'analisi massima di documenti legislativi e così via.
 
-Sempre in relazione alla difficoltà del reperimento di informazioni a
-valore, va considerato il fatto che sempre più spesso le informazioni ad
-alto impatto non sono più di tipo settoriale (tipiche di un solo
-knowledge field), ma nascono in contesti multidisciplinari. Questo le
-rende ancora più difficile da individuare. Tali informazioni anche se
-accessibili dagli esperti di un certo settore sono di difficile
-comprensione, poichè per definizione lontane dal settore stesso. A
-dimostrazione di tale fenomeno sta il recente aggiornamento della CPC
-(Cooperative Patent Classification) nella quale è stata introdotta la
-classe B33 e B33Y sulle tecnologie di addive manufacturing conosciuta
-anche come 3d-printing \citep{cpc2014}, campo tecnologico ad alto
-contenuto multidisciplinare (scienze dei materiali, ingeria meccanica,
-informatica e robotica). Avere una nuova CPC significa un forte impatto
-sul patent officie, il quale deve foramre nuovi examiner per quella
-specifica CPC: questo è segno che i prcedenti examiner non avevano il
-range di competenze necessarie, e non è possibile a breve termine
-muoversi dall'interno di un dominio per conquistale.
+Sempre in relazione alla difficoltà del reperimento di valuable
+information, va considerato il fatto che sempre più spesso le
+informazioni ad alto impatto non sono più di tipo settoriale (tipiche di
+un solo knowledge field), ma nascono in contesti multidisciplinari
+rendendole ancora più difficili da individuare. Tali risorse anche se
+accessibili dagli esperti di un certo settore sono per essi di difficile
+comprensione, poichè per definizione lontane dal settore stesso e rese
+esplicite utilizzando un gergo che pesca da diversi settori
+disciplinari. A dimostrazione di tale fenomeno citiamo il recente
+aggiornamento della CPC (Cooperative Patent Classification) nella quale
+è stata introdotta la classe B33 sulle tecnologie di addive
+manufacturing \citep{cpc2014}, campo tecnologico ad alto contenuto
+multidisciplinare (scienze dei materiali, ingeria meccanica, informatica
+e robotica) \citep{mueller2012additive}. Avere una nuova CPC significa
+un forte impatto sul patent officie, il quale deve foramre nuovi
+examiner per quella specifica CPC: questo è segno che i prcedenti
+examiner non avevano il range di competenze necessarie, e non è
+possibile a breve termine muoversi dall'interno di un dominio per
+conquistale. Se i nuovi settori tecnologici ibridi hanno un impatto così
+forte sull'European Patent Office, che ha chiaramente un accesso
+priviligenta sia alla conoscenza su un certo settore sia alle risorse
+umane necessarie per gestirlo, possiamo immaginare quanto forte possa
+essere tale impatto su una azienda manifatturiera.
 
 In seconda istanza, note le potenziali fonti di informazione che possono
 portare valore, è necessario capire quali strumenti è possibile
-utilizzare per estrarre questo valore sotto forma di
-conoscenza\citep{hand2007principles, mining2006data} . Come mostrato
-nell'esempio precedente, una azienda si trova in una posizione di
-pericolo se la crescita di informazione sorpassa la propria capacità di
-processarla. In altri termini, l'aumento di informazione mostrato in
-figura \ref{fig:biginfo} non implica un aumento di conoscenza, ma al
-contrario è probabile che contribuisca ad impedirne la crescita
-\citep{allen2003information, herbig1994effect}. Un celebre esempio di
-tale fenomeno è il computer boom dei decenni 1970 e 1980, il quale
-implicò un declinio temporaneo nella produttività generale sia economica
-che scentifica \citep{solow1987we}. Tale fenomeno viene identificato con
-il nome di productivity paradox.
+utilizzare per estrarre questo valore sotto forma di conoscenza
+\citep{hand2007principles, mining2006data}. Come mostrato nell'esempio
+precedente, una azienda si trova in una posizione di pericolo se
+l'informazione cresce in quantità ed in direzioni tali da rendere
+impossibile un suo corretto processamento. In altri termini, l'aumento
+di informazione mostrato in figura \ref{fig:biginfo} non implica un
+aumento di conoscenza, ma al contrario è probabile che contribuisca ad
+impedirne la crescita \citep{allen2003information, herbig1994effect}. Un
+celebre esempio di tale fenomeno è il computer boom dei decenni 1970 e
+1980, il quale implicò un declinio temporaneo nella produttività
+generale sia \emph{economica} che \emph{scentifica} \citep{solow1987we}.
+Tale fenomeno viene identificato con il nome di productivity paradox.
 
-Dal punto di vista economico, evidenza di ciò è che i computer in quel
-periodo ebbero impatti su molti indicatori ma non su quelli di
+Dal punto di vista \emph{economico}, evidenza di ciò è che i computer in
+quel periodo ebbero impatti su molti indicatori ma non su quelli di
 produttività economica (Robert Solow in 1987), e che gli stati uniti
 furono vittima di quattro recessioni tra il 1969 ed il
 1982\citep{national2010us}.
 
-Il progresso scientifico è più difficile da misurare di quello economico
+Il progresso \emph{scientifico} è invece più difficile da misurare di
+quello economico
 \citep{hirsch2005index, hauschildt1991towards, van2000evaluation, erno2011measuring, bornmann2013societal, bornmann2014evaluate, bornmann2017does}.
 Non è infatti chiaro che misure possano essere utilizzate per misurare
 quanto uno stato sia efficace nel creare conoscenza, nonostante la
@@ -235,20 +225,22 @@ stanno usando le informazioni che hanno a disposizione in maniera più
 efficiente e che sono in grado di trasformarle in conoscenza utilie
 all'innovazione. Per misurare tale costo, si può vedere quanto una
 nazione spende ogni anno per produrre in media un brevetto. Tale metrica
-ha ovviamente una serie di problematiche (fra le quali gli investimenti
-per brevettare non provengono solo da fonti pubbliche, un brevetto può
-far parte di una famiglia di brevetti e la United Stated Patent Office
-può processare brevetti non sviluppati in America) ma è interessante
-notare come nel 1960 gli stati uniti hanno speso \$1000 (aggiustati per
-l'infalizione al 2015) per ogni patent application. Tale spesa
-inizialmente scende, poi sale anzichè scendere con l'arrivo dei
-computers con un picco di 735\$ nel 1986 \citep{silver2012signal}. La
+ha ovviamente una serie di problematiche (fra le quali il fatto che gli
+investimenti per brevettare non provengono solo da fonti pubbliche, un
+brevetto può far parte di una famiglia di brevetti e la United Stated
+Patent Office può processare brevetti non sviluppati in America) ma è
+interessante notare l'andamento che adotta nel grafico di figura
+\ref{fig:bigexpendifure}. Nel 1960 gli stati uniti infatti hanno speso
+\$1000 (aggiustati per l'infalizione al 2015) per ogni patent
+application. Tale spesa inizialmente scende, poi sale con l'arrivo dei
+computer nel 1986 con un picco di 735\$ \citep{silver2012signal}. La
 produttività ha nuovamente un crescita negli anni '90, quando ormai i
 computer erano diventati di largo utilizzo non solo per il business ma
-anche per applicazioni di tutti i giorni. La gobba presente intorno al
-decennio '80 nel grafico in figura \ref{fig:bigexpendifure} mostra come
-il sistema America è stato meno efficente nel produrre nuova conoscenza
-a seguito dell'introduzione dei computer nelle aziende.
+anche per applicazioni di tutti i giorni. In altri termini, la gobba
+presente intorno al decennio '80 nel grafico in figura
+\ref{fig:bigexpendifure} mostra come il sistema Ameica è stato meno
+efficente nel produrre nuova conoscenza a seguito dell'introduzione dei
+computer nelle aziende.
 
 \begin{figure}
 
@@ -261,38 +253,381 @@ a seguito dell'introduzione dei computer nelle aziende.
 
 Oggi, nell'era dei big data, le aziende (ma anche le università) hanno
 dunque bisogno di nuovi ``sensi'' ed ``aiutanti'' che le assistano nella
-estrazione e consolidazione della conoscenza. La presente tesi ha come
-obiettivo comprendere quali fonti di informazioni ad oggi contengono
-maggiore valore ancora non dischiuso e quali metodologie e strumenti
-posso essere utilizzati a tale scopo.
+estrazione e consolidazione della conoscenza dalle crescenti fonti di
+informazioni disponibili.
+
+La presente tesi ha come primo macro obiettivo comprendere quali fonti
+di informazioni ad oggi contengono maggiore valore ancora non dischiuso
+e quali metodologie e strumenti posso essere utilizzati a tale scopo.
 
 \section{A New Challenge for Management
 Engineers}\label{a-new-challenge-for-management-engineers}
 
-Tipicamente ci occupaimo di attività ad altà ripetitività. Ti porti
-dietro metodologie ingegneristiche applicate a sistemi inernti, andnano
-a operare in sistemi socio-tecnici. Hai fatto il tuo mestieri (ricerca
-operativa ecc..).
+Il problema del digital impact è stato già affrontato da molte
+discipline (management science, computer science, sociology,
+informatics) ma la presenti tesi offre (to our best knowledge) una
+visione nuova che cerca di tenere insieme metodologie di engineering
+management e di strumenti di natural language processing. L'ipotesi che
+nel presente documento si inizia ad indagare, è che esiste un ampio
+campo di applicazione per gli strumetni tipici del text mining alla
+soluzione di problemi proprio dell'engeneering management, come del
+resto è la digital transformation.
 
-Negli ultimi anni però le aziende le attività a maggior valore aggiunto
-sono non ripetitive. R\&S, Design, marketing, HR ecc.. e quindi gestione
-della conoscena. Su situazione che sembrano uniche il gestionale rischia
-di perdere rispetto al creativo. Come disciplina voglio presidiare
-queste aree: non ci occupaimo di casi unici, ma costruire modelli in
-grado di incorporare conoscenza per essere usati in questi.
+Sebbene ingegneria gestionale in quanto branca relativamente nuova
+dell'Ingegneria non sia universalmente strutturata in modo univoco,
+nella maggior parte delle Università essa nasce come un indirizzo
+economico-organizzativo di ingegneria industriale. Gli studi di
+ingegneria gestionale in Italia nascono molto tempo dopo la creazione
+del corso di laurea che nel resto del mondo (ed in particolare negli
+Stati Uniti d'America, dove il corso di laurea è nato degli anni '30 e
+si chiama ``Industrial Engineering'').
 
-La tesi ha l'obbiettivo di esploration and exploitation queste
-direzioni.
+L'ingegnere gestionale, in tutti i casi, riceve una preparazione
+focalizzata alla specializzazione nel campo della gestione della
+produzione industriale, in particolare nella pianificazione e
+programmazione integrata delle risorse dell'impresa . Parallelamente
+vengono impartiti corsi di gestione dei progetti (Project management),
+controllo statistico della qualità, logistica e ricerca operativa per la
+modellazione di problemi tipici delle imprese. Nell'ambito della
+gestione di impresa vengono studiate materie riguardanti la gestione
+dell'innovazione, delle risorse umane, il ridisegno dei processi
+aziendali nonché solide basi riguardanti il posizionamento strategico e
+tattico dell'impresa. Infine, alcuni corsi di studi negli ultimi anni,
+offrono particolare attenzione alla gestione delle informazioni
+aziendali mediante l'utilizzo dei sistemi informatici e le tecnologie di
+Business Intelligence.
+
+L'ingegneria Gestionale dunque nasce occupandosi di attività ad altà
+ripetitività. Tale disciplina si porta dietro metodologie
+ingegneristiche applicate a sistemi inernti, cercando di operare in
+sistemi socio-tecnici.
+
+Negli ultimi anni però, a causa della digitalization, le attività a
+maggiore valore aggiunto per le aziende sono scarsamente standardizzate
+e non ripetitive. La grande mole di informazioni che sta cambiando
+l'ambiente di vita delle aziende ha infatti un impatto enorme su
+Research and Development, Design, Marketing e Human Resources
+Management: in pratica tutte le funzioni a più alto contenuto strategico
+e quindi di knowledge. Su processi volatili, eterogenei e a scarsa
+ripetitività l'ingegnere gestionale rischia di non avere gli strumenti
+adatti.
+
+Il secodno macro obiettivo quindi è capire come l'ingegneria gestionale
+possa presidiare queste aree attraverso il design ti processi innovativi
+in grado di gestire la nuova complessità con la quale le aziende devo
+confrontarsi.
+
+\section{Human \& Machines}\label{human-machines}
+
+Quello che risulta chiaro è che Datascience non è fattibile da sole
+macchine. Un sistema in grado di estrarre conoscenza dalla grande mole
+di informazione nella quale le aziende sono immesrse, necessità di both
+men and machines.
+
+L'interazione uomo-computer (in inglese human-computer interaction, HCI)
+anche detta interazione uomo-macchina (traduzione di senso più ampio ma
+oramai ampiamente utilizzata in letteratura nel campo informatico) è lo
+studio dell'interazione tra le persone (utenti) e computer per la
+progettazione e lo sviluppo di sistemi interattivi che siano usabili,
+affidabili e che supportino e facilitino le attività umane.
+
+Lo studio approfondito dell'interazione copre aspetti di informatica,
+psicologia, scienze cognitive, ergonomia, design, scienza
+dell'informazione, intelligenza artificiale, linguaggio naturale ed
+altre materie.
+
+Il principale obiettivo di questa disciplina è l'usabilità. L'usabilità,
+secondo la norma ISO 9241 \citep{jokela2003standard} è la misura con cui
+un prodotto può essere usato da specifici utenti, per raggiungere
+specifici obiettivi con efficacia, efficienza e soddisfazione in uno
+specifico contesto d'uso. I motivi per cui l'usabilità è importante
+sono:
+
+\begin{itemize}
+\tightlist
+\item
+  aumenta l'efficienza degli utenti (più produttività)
+\item
+  si riducono gli errori (aumenta la sicurezza)
+\item
+  si riduce il bisogno di addestramento (meno costi)
+\item
+  si riduce il bisogno di supporto degli utenti
+\item
+  aumenta le vendite
+\end{itemize}
+
+In quest'ottica si apre ampio margine di operazione per l'ingegneria
+gestionale con l'obiettivo di saper mettere insieme la conoscenza degli
+esperti e la forza computazionale delle macchine. Questa deve essere una
+interazione, e non è pensabile in ambiti fortemente strategici delle
+aziende e ad alto contenuto di conoscenza di dominio, di sostituire
+progressivamente la domain knowledge con le macchine. Questa idea
+infatti ha ormai fallito.
+
+Interessante notare però come il modo in cui le aziende incorporano
+conoscenza nei propri sistemi sia radicalmente cambiato. Negli anni '90
+infatti l'approccio princinaple era quello della knowledge engineering:
+le macchine imparavano ad eseguire task di analisi sfruttando regole
+definite dagli esperti. Questa idea è fallita. In alcuni contesti, è
+impossibile rappresentare la conoscenza con regole.
+
+Per tale ragione negli ultimi anni si è svolta una inductive revolution:
+le macchine sono utilizzate per estrarre le regole che codificano la
+conoscenza direttamente grandi moli di dati che rappresentatno la
+realtà.
+
+Tale fenomeno a sua volta a creato un nuovo problema che la letteratura
+si trova a dover affrontare: quello delle balck-boxes. L'espressione
+black box è ormai di uso comune per indicare i casi in cui si fa uso di
+algoritmi e metodi computazionali di cui non si conoscono i meccanismi
+di funzionamento, ma solo input ed output.
+
+Un recente paper, pubblicato su Arxive da un team dell'Università di
+Pisa, prova a fare chiarezza sul problema della black box, oltre a
+suggerire alcune possibili soluzioni. Nel paper gli autori indicano
+alcune possibili strade per affrontare il problema, simili per certi
+aspetti al reversing informatico, nel quale si stimola un programma con
+vari input per studiarne gli output e dedurne così la logica.
+Analogamente, per studiare i meccanismi di un modello di machine
+learning, si può modificare solo leggermente il dato in input, e
+osservare il risultato. Oppure cercare di prevedere un input tale da
+fornire un output desiderato. Si tratta di un campo ancora
+all'avanguardia, ma di cui tanto si sta discutendo, aprendo strade di
+ricerca specifiche come l'intelligenza artificiale comprensibile
+(explainable AI).
+
+Terzo ed ultimo macro obiettivo della tesi è quello di progettare
+algoritmi di analisi che permettano un corretto scambio di conoscenza
+fra human e machine andando a:
+
+\begin{itemize}
+\tightlist
+\item
+  incorporare la conoscenza degli esperti nei sistemi di machine
+  learning,
+\item
+  far si che gli esperti possano utilizzare nel proprio processo di
+  decision making la conoscenza generata induttivamente dalle macchine.
+\end{itemize}
 
 \chapter{Solutions}\label{solutions}
 
-\section{A Process for Knowledge
-Creation}\label{a-process-for-knowledge-creation}
+\section{The Design Science Approach}\label{introdesres}
 
-Modello generico di come un sistema (uomo, macchina, azienda\ldots{})
-genera conoscenza. Immagine + spiegazione
+Knowledge extraction systems are implemented within an organization for
+the purpose of improving the probability for that organisation to reach
+its goals. A wide litterature exists on the design of these kind of
+systems and the main focus comes from information Systems (IS)
+discipline. It is incumbent upon researchers in the IS to further
+knowledge that aids in the productive application of information
+technology to human organizations and their management
+\citep{edit2002info} and to develop and communicate knowledge concerning
+both the management of information technology and the use of information
+technology for managerial and organizational purposes
+\citep{Zmud1997edit}. Since the the first main goal of this thesis is
+understand which sources of information contains the best value added
+for companies and which methodologies and tools can we use for this
+purpose, acquiring such knowledge is incumbet also for the present
+thesis.
 
-Un modello più actionable: data science. Immagine + spiegazione
+Hevner et al. \citep{bichler2006design} argues that acquiring such
+knowledge involves two complementary but distinct paradigms,
+\emph{behavioral science} and \emph{design science}
+\citep{march1995design}.
+
+The \emph{behavioral-science paradigm} has its roots in the research
+methodot of natural science. Its goal is to develop and justify theories
+that explain (or predict) organizational phenomena about the analysis,
+design, implementation, management, and use of information systems. Such
+theories inform researchers and companies of the interactions among
+humans, machines, and organizations that must be managed if an
+information system has to be effective. These theories interact with
+design decisions made with respect to the system development methodology
+used.
+
+The \emph{design-science paradigm} is a problemsolving paradigm andhas
+its roots in engineering and the sciences of the artificial
+\citep{simon1996sciences}. Its goal is to create innovations: define the
+ideas, practices, technical capabilities, and products through which the
+analysis, design, implementation, management, and use of information
+systems can be effectively and efficiently accomplished
+\citep{denning1997new, tsichritzis1997dynamics}. In this context the
+researchers switches his goal: the artifacts taht are created in the
+research process are not exempt from natural laws or behavioral theories
+but relies on existing kernel theories that are applied, tested,
+modified, and extended through the experience, creativity, intuition,
+and problem solving capabilities of the researcher
+\citep{markus2002design, walls1992building}.
+
+Since Design science creates and evaluates IT artifacts intended to
+solve identified organizational problems, the present thesis belongs to
+this second paradigm. In Design Science, such artifacts are represented
+in a structured form that may vary from software, formal logic, and
+rigorous mathematics to informal natural language descriptions. We will
+use all these rapresentations at different level, for the different
+applications described in this thesis.
+
+Furthrmore the thesis has been developed following the guidelines of
+design-science research. Hevner et al. \citep{bichler2006design} provide
+a set of seven guidelines which help information systems researchers
+conduct, evaluate and present design-science research. The guidelines
+are summarise in table \ref{tab:introdesignscience}.
+
+As previously discussed, design science is a problem solving pradigm.
+The fundamental principle of design-science research is that is the
+building and application of an artifact that permits to the researcher
+to gain new knowledge and understanding of a design problem and its
+solution. From this foundamental principle the seven guidelines are
+derived. That is, design-science research must end and must have as goal
+the \emph{creation of an innovative, purposeful artifact (Guideline 1)}
+for a specified \emph{problem domain (Guideline 2)}. Because the
+artifact has to be purposeful, researcher has to measure its utility for
+the specified problem: this imply that \emph{evaluation of the artifact
+is crucial (Guideline 3)}. Novelty is similarly crucial since the
+artifact must \emph{solve an unsolved problem or solving a known problem
+in a more effective or efficient manner (Guideline 4)}. In this way,
+design-science research is differentiated from the practice of design
+since artifact itself must be \emph{rigorously defined, formally
+represented, coherent, and internally consistent (Guideline 5)}. The
+process of design of the artificat and also artifact itself,
+incorporates a search process whereby \emph{a problem space is
+constructed and a mechanism posed or enacted to find an effective (not
+necessarely otpimal) solution (Guideline 6)}. Finally, the results of
+the \emph{design-science research must be communicated effectively
+(Guideline 7)}.
+
+The comunication phase is crucial, and the results of a design science
+based research has to be comprensible and usable to:
+
+\begin{itemize}
+\tightlist
+\item
+  a technical audience (researchers who will extend them and
+  practitioners who will implement them)
+\item
+  a managerial audience (researchers who will study them in context and
+  practitioners who will decide if they should be implemented within
+  their organizations).
+\end{itemize}
+
+Table: \label{tab:introdesignscience} Design-Science Research Guidelines
+(from \citep{bichler2006design}).
+
+\begin{tabular}{l|l}
+\hline
+Guideline & Description\\
+\hline
+Guideline 1: Design as an Artifact & Design-science research must produce a viable artifact in the form of a construct, a model, a method, or an instantiation.\\
+\hline
+Guideline 2: Problem Relevance & The objective of design-science research is to develop technology-based solutions to important and relevant business problems.\\
+\hline
+Guideline 3: Design Evaluation & The utility, quality, and efficacy of a design artifact must be rigorously demonstrated via well-executed evaluation methods.\\
+\hline
+Guideline 4: Research Contributions & Effective design-science research must provide clear and verifiable contributions in the areas of the design artifact, design foundations, and/or design methodologies.\\
+\hline
+Guideline 5: Research Rigor & Design-science research relies upon the application of rigorous methods in both the construction and evaluation of the design artifact.\\
+\hline
+Guideline 6: Design as a Search Process & The search for an effective artifact requires utilizing available means to reach desired ends while satisfying laws in the problem environment.\\
+\hline
+Guideline 7: Communication of Research & Design-science research must be presented effectively both to technology-oriented as well as management-oriented audiences.\\
+\hline
+\end{tabular}
+
+\section{Design Processes for Knowledge Extraction: the Data Science
+Workflow}\label{design-processes-for-knowledge-extraction-the-data-science-workflow}
+
+Since the second goal of the thesis is to understand how management
+engineering can control the new informative complexity with which
+companies have to deal with, there is the need of a clear framework that
+can help in the development of the tools able to solve this probleb. In
+other words, to design effective processes for knowledge extraction,
+there is the need for a more specific framework with respect to the
+design science paradigm, which gives a set of unvaluable guidelines but
+it is still to abstract to be usable for the present thesis.
+
+Many frameworks and models exists that describes the process of
+knowledge extraction from data \citep[\citet{bellinger2004data},
+\citet{ackoff1989data},
+\citet{liew2007understanding}]{kanehisa2013data}. All this models brings
+contribution to the litterature but with a focus on the
+\emph{behavioral-science paradigm}, thus with the goal to develop
+theories about the analysis, design, implementation, management, and use
+of data analysis systems.
+
+For the present thesis we adopted a more actionable framework popular in
+the field of data science: the Data Science Workflow described by
+Wickham \citep{wickham2016r}. We adopted this model becaues is a generic
+workflow that can be used as guideline to design any knowledge
+extraction system. The workflow is rapresented in figure
+\ref{fig:mainworkflow}.
+
+The workflow is a model of the tools needed in a typical data science
+project. Since data science is a huge field, and there's no way that a
+model can master it, the goal of the model is to give a solid foundation
+in the most important tools.These tools are used in every data science
+project, but for most projects they are not enough. The tools
+rapresented in the model has been chosen following a rough Pareto 80-20
+rule \citep{pareto1971manual}.
+
+The workflow is divided in the seguent tasks:
+
+\begin{itemize}
+\item
+  \emph{Import:} take data stored in a file, database, or web API, and
+  load it into a computer.
+\item
+  \emph{Tidy:} Tidying data means storing it in a consistent form that
+  matches the semantics of the dataset with the way it is stored. In
+  brief, when the data is tidy, each column is a variable, and each row
+  is an observation. Tidy data is important because the consistent
+  structure lets focus on questions about the data and not in its shape.
+\item
+  \emph{Transform:} Transformation includes narrowing in on observations
+  of interest, creating new variables that are functions of existing
+  variables, and calculating a set of summary statistics.
+\item
+  \emph{Visualize:} Visualisation is a fundamentally human activity. A
+  good visualisation will show unexpexted information, or raise new
+  questions about the data. A good visualisation might also hint that
+  the hypothesis is wrong, or there is the need to collect different
+  data. Visualisations can surprise, but do not scale particularly well
+  because they require a human to interpret them.
+\item
+  \emph{Model:} Model is complementary to visualize. Once the hypothesis
+  are sufficiently precise, a model can answer them. Models are a
+  fundamentally mathematical or computational tool, so they generally
+  scale well. Even when they don't, it's usually cheaper to buy more
+  computers than it is to buy more brains. But every model makes
+  assumptions, and by its very nature a model cannot question its own
+  assumptions. That means a model cannot fundamentally surprise.
+\item
+  \emph{Communicate}: The last step is communication, an absolutely
+  critical part of any project. As stated before comunication phase is
+  crucial, and the results of a design science based research has to be
+  comprensible and usable to a technical audience a managerial audience.
+\item
+  \emph{Program:} To design knowledge extraction tool programming is
+  nowadays essention. There is no need to be an expert programmer to
+  design effective knowledge extraction tool, but learning more about
+  programming allows to automate common tasks, and solve new problems
+  with greater ease.
+\item
+  \emph{Understand:} The greatest feature of a knowledge extraction
+  system is not to detect the large trends- they are visible anyway; it
+  is, rather, to detect weak signals, or information that initially
+  appears with low frequency \citep{apreda2016functional}. These signals
+  escape from traditional statistical detection techniques, exactly
+  because it is difficult to distinguish them from pure statistical
+  noise. It is hard to disntinguish weak-signals from noise only using
+  algorythms: understanding the problem to be solved and having domain
+  expertise is essential. For this reason \emph{understand} is not only
+  part of the process of analysis, but is maybe the most important task
+  with respect to the present thesis.
+\end{itemize}
+
+A full state of the art on all of these tasks as been conducted in
+section \ref{sotatools}.
 
 \begin{figure}
 
@@ -303,81 +638,126 @@ Un modello più actionable: data science. Immagine + spiegazione
 \caption{A general workflow for the process of data analysis. Readapted from Wickham (2016)}\label{fig:mainworkflow}
 \end{figure}
 
-\section{Text Mining}\label{text-mining}
+\section{The Exploitation of Natural Language Processing
+Techniques}\label{the-exploitation-of-natural-language-processing-techniques}
 
-Istanza di data science e zona a maggior valore per estrazione
-conoscenza.
+As stated before, the third macro objective of thesis (or at this point
+of the design output of the thesis) is to improve the comunication and
+the interaction between domain experts and computers to foster the
+correct exchange of knowledge between these two entities. In particular
+the focus of the present thesis is on the interaction between men and
+machines in the \emph{extraction of knowledge from technical documents}.
+This focus has two main reasons:
 
-Importanza di definire documenti dai quali fare mining. Come si decide
-dove sta la conoscenza per l'azienda? Di quali documenti l'azienda è
-stakeholder?
-
-\section{Human \& Machines}\label{human-machines}
-
-Datascience e text mining non fattibile da sole macchine\ldots{}
-
-Il problema non è sostituire domain knowledge. Idea vecchia ha fallito.
-E' insostibuibile perchè:
-
-\begin{itemize}
-\tightlist
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
-  Technology, interessa gli ingegneri
+  Documents written in natural language contains knowledge by design.
+  Their goal in fact is the explicitation of implicit knowledge
+  \citep[\citet{graesser1985structures}]{masters1992knowledge}. With the
+  growth of information of the last years also this kind of documents
+  growed in number and there exist a huge opportunity for business to
+  manage this knowledge.
 \item
-  Social Science, decision making
-\end{itemize}
+  Thank to the improvement in the Artificial Intelligence field, Natural
+  Language Processing has drammatically increased its effectivenes in
+  the last years \citep{russell2016artificial}. Now powerfull tools for
+  the analysis of documents are available to every one that has a litle
+  understaing of programming \citep[\citet{Kenneth2018spacyr},
+  \citet{Wijffels2018udpipe}]{Taylor2017Tidy}.
+\end{enumerate}
 
-Perchè fallita: da una parte è andata avanti la knowledge
-rappresentation. E' impossibile rappresentare la conoscenza con regole,
-ma con altri strumenti si può rappresentare (bottom-up).
+The design processes carried out in this thesis uses stated of the art
+Natural Language Processing techniques or algorythms that only in few
+cases has been deeply modified in the design proces. In other words the
+value of the output is not in the modified natural language algorythm
+but on the whole process of knowledge extraction that goes from the
+decision of which documents to analyze to the comunication of the
+results. In fact, great value is added to the design proces by the
+decision of which documents mine to extract knowledge. To maximize this
+value the problem space has to be searched in term of \emph{business
+relevant knowledge content of documents}. Since this problem space is
+huge (all the documents of which a company is stakeholder) the decision
+can be considered as a feature of the method, as valuable as (or even
+more in this case) the algorythm of natural language processing.
 
-Inoltre ho text mining, capaità di processare testi. Parte di
-intelligenza artificiale. Questi fenomeni non sostituioscono l'esperto
-ma ne cambiano il modo di operare.
-
-Si ha vantaggio su mitigazione bias se sistemi disegnati bene.
-
-Il pericolo delle black boxes.
-
-Oggi si integra. Vogliamo un esperto di dominio che faccia meglio il suo
-mestiere.
-
-Abbiamo oggi più potenza e correzione errori.
-
-Oltre ad efficienza e potenza nel correggere gli errori. Ora c'è anche
-la possibilità dio maggiore specificità. L'obiettivo è qiuindi poratre
-domain knowledge sia su technology sia ai decisori sociali.
-
-\chapter{Scope and Stakeholders}\label{scope-and-stakeholders}
-
-Algoritmi vecchi per domande nuove. Quale source per miglior precision
-noti gli algoritmi? Problema vincolato. Alcuni algoritmi.
-
-Alcuni documenti in analisi, alcuni stakeholders
-
-Research and Development, Design, Marketing, Human Resources. Policy
-makers.
+To decide the documents on which the thesis has the focus, section
+\ref{sotadocuments} contains a review of the characteristics and on the
+state of the art of the analysis on four different document types:
+patents, papers, wikipedia and social media.
 
 \chapter{Structure and rationale}\label{structure-and-rationale}
+
+The Design Science Approach, the Data Science Workflow and the
+exploitation of Natural Language Processing Techniques helps to explain
+the structure of this thesis, since the decision of using these paradigm
+and tools had a direct impact on the form and content of it.
+
+\begin{itemize}
+\item
+  \emph{Part Number 2 ``State of the Art''} makes a review of tools and
+  techniques for Natural Language Processing and shows the documents
+  used for knowledge extraction. In particular, the analysis of
+  technical documents require the design of processes that rely both on
+  Natural Language Processing techniques and on technical field
+  expertis. While the first techniques are codified and explicit, the
+  second are sometimes implicit and always hard to systematize. In the
+  State of the Art these two groups of techniques are treated in the
+  same way to give to the reader a systematic literature review on these
+  topics. Furthermore it is important to define the value in terms of
+  new knowlege that documents can bring to companies. The goal of this
+  state of the art is to demostrate that a large litterature on
+  Techniques able to solve the probles descripted in section
+  \ref{introproblems} exists, but week or no effort exist in the
+  litterature in the systemic integration of these tools and in the
+  design of holistic methods to solve these problems.
+\item
+  \emph{Part Number 3 ``Methods and Results''} is the core Part of the
+  thesis. This part describes the methods and processes designed for the
+  analysis of technical documents following the guidelines of design
+  research described in section \ref{introdesres}. Since design research
+  is a problem solving paradigm, each chapter (focalised on a different
+  kind of document) starts with a brief description of the field of
+  applicaton of the method and with the framing of the problem to be
+  solved. Then the methodlogy to solve the prolbem is described with the
+  goal of beeing clear to a technical audience and a managerial
+  audience. Each chapter closes with the results description that proves
+  the utility, quality, and efficacy of the design artifact.
+\item
+  \emph{Part Number 4 ``Applications of the Results''} is a collection
+  of projects that describes the applications and results of the methods
+  designed in \emph{Part 3 ``Methods and Results''}. The goal, again
+  following the the guidelines of design research
+  \citep{bichler2006design}, is to provide clear and verifiable
+  contributions in the areas of the design artifact, design foundations,
+  and/or design methodologies.
+\item
+  \emph{Part Number 5 ``Conclusions and Future Developments''}
+  summarises the thesis, its limitations and possibile future
+  developments. The thesis ends trough an abstraction process that gives
+  a more descriptive-science view of the results. In this last part we
+  give a general method that has proven to be effective in the major
+  part of the designs of the present thesis: \textbf{lexicons design}.
+\end{itemize}
 
 \part{State of the Art}\label{part-state-of-the-art}
 
 The analysis of technical documents require the design of processes that
-rely both on programming and Natural Language Processing techniques and
-on the understanding and knowledge of field experts. While the first
-techniques are codified and explicit, the second are sometimes implicit
-and always harder to systematize. In this section i treat these two
-groups of techniques in the same way to give to the reader a systematic
-literature review on these topics. For this reason the chapter of this
-part has the subsequent structure:
+rely both on Natural Language Processing techniques and on technical
+field expertis. While the first techniques are codified and explicit,
+the second are sometimes implicit and always hard to systematize. In
+this section i treat these two groups of techniques in the same way to
+give to the reader a systematic literature review on these topics.
+Furthermore it is important to define the value in terms of new knowlege
+that documents can bring to companies. For this reason the chapter of
+this part has the subsequent structure:
 
 \begin{itemize}
-\tightlist
 \item
   At a first level there are two sections \ref{sotatools} and
   \ref{sotadocuments}, reviewing respectively the processes of
-  \emph{programming and Natural Language Processing} and of
-  \emph{undestanding and knowldege of field experts application};
+  \emph{programming and Natural Language Processing} and the
+  \emph{documents};
 \item
   Section \ref{sotatools} has a subsection for each of the \emph{phases}
   showed in figure \ref{fig:mainworkflow}. These subsections goes from
@@ -395,17 +775,15 @@ part has the subsequent structure:
   perform that task. I use the word techniques to include mainly
   algorithms and procedures but also more generic methods or frameworks;
 \item
-  Since the second section \ref{sotadocuments} describes less systematic
-  phases, task and techniques this section opens with a first subsection
-  \ref{sotadocumentsunderstand} that focuses on the studies of the
-  problems of using expert knowledge in an analytic process and which
-  are the techniques to convert this knowledge in a format that is
-  usable in a Natural Language Processing workflow.
-\item
-  Finally, always section \ref{sotadocuments} has a subsection for each
-  of the anlyzed technical \emph{documents}. These subsections goes from
+  Finally, section \ref{sotadocuments} has a subsection for each of the
+  anlyzed technical \emph{documents}. These subsections goes from
   \ref{sotadocumentspatents} to \ref{sotadocumentstwitter}.
 \end{itemize}
+
+The goal of this state of the art is to demostrate that a large
+litterature on Techniques able to solve the probles descripted in
+section \ref{introproblems} exists, but week or no effort exist in the
+litterature in the systemic integration of these tools.
 
 \chapter{Phases, Tasks, and Techniques}\label{sotatools}
 
@@ -416,9 +794,7 @@ analysis. The techniques (mainly algorithms) are grouped in phases
 figure \ref{fig:mainworkflow} and each phases is dived in the NLP tasks
 that are the most important for the analysis of technical documents.
 This standard process has been disclosed in the framework of the
-tidyverse \citep{wickham2016r}. The algorithms i reviewed in this
-section are summmarised in table tot, where the reader can see the
-relationship between tasks and techniques.
+tidyverse \citep{wickham2016r}.
 
 \section{Program}\label{sotatoolsprogram}
 
@@ -1327,50 +1703,351 @@ graphs\citep{wickham2016ggplot2, shiny2017, plotly2017, ggprah2018, ICWSM09154}
 
 \section{Understand}\label{sotadocumentsunderstand}
 
-The most difficult challenge in technology intelligence is not how to
-detect the large trends- they are visible anyway. It is, rather, how to
-detect weak signals, or information that initially appears with low
-frequency, in unrelated or unexpected regions of the technology
-landscape, and associated with large noise (Apreda et al. 2016). These
-signals escape from traditional statistical detection techniques,
-exactly because it is difficult to distinguish them from pure
-statistical noise. Metadata are not the appropriate source of data for
-detecting weak signals. As a matter of fact, they can be detected only
-by using a fine-grained domain knowledge structure, or using the full
-text of documents. As an example, classification-based clustering has
-been shown to be flawed because the patent class used is usually only
-the first one listed in patents, generating loss of granularity (Benner
-and Waldfogel, 2008; Aharonson and Schilling, 2016).
+The harder challenge in technology intelligence is not how to detect the
+large trends- they are visible anyway; it is, rather, how to detect weak
+signals, or information that initially appears with low frequency, in
+unrelated or unexpected regions of the technology landscape, and
+associated with large noise \citep{apreda2016functional}. These signals
+escape from traditional statistical detection techniques, exactly
+because it is difficult to distinguish them from pure statistical noise.
+It is hard to disntinguish weak-signals from noise only using
+algorythms: understanding the problem to be solved and having domain
+expertise is essential. For this reason \emph{understand} is not only
+part of the process of analysis, but is maybe the most important task
+with respect to the present thesis.
 
-Hypothesis
+Unfortunately is difficult to design a process of analsysis in such a
+way that the source of domain knowledge and they way they impact the
+analysis is clear. According to the survey carried out by Popper
+\citep{popper2008foresight}, expert panels are the second most used
+methodology, after the survey of the literature (see section
+\ref{sotadocumentspapers} for automatic approach to this task). It is
+non-sense to gain technical knowledge that is valuable to carry on a
+text mining analysis by relying exclusively on algorythms, without the
+support of human experts that are acknowledgeable about the knowledge
+field, technologies, their inner functioning, and the range of practical
+problems they are intended to solve. Due to the ill-structured nature of
+knowledge field expertise systematisation in data science, it requires
+an extensive problem-formulation phase, which cannot be done by others
+than human experts \citep{bracken2013making}.
 
-postulation
+It is usually necessary to involve experts into panels or focus groups,
+in which they have face-to-face interaction (FTF). It is well known that
+experts have a preference for methods involving personal communication,
+such as FTF, but this method delivers the least reliable results, as
+compared to other methods such as prediction markets, nominal groups
+and, above all, the Delphi technique
+\citep{woudenberg1991evaluation, graefe2011comparing}.
 
-\subsection{Domain Expertise}\label{domain-expertise}
+Yet the use of experts creates a large number of problems. Even when
+experts are trained in data science, professionally engaged and
+personally committed to high standards of ethical integrity, they may
+introduce cognitive and motivational biases in the
+proces\citep{kahneman2011thinking}. A crucial point in the literature is
+that not only lay people but also experts are subject to \emph{cognitive
+biases}, and that cognitive abilities may moderate but not eliminate
+these effects \citep{stanovich2008relative}. Therefore the issue cannot
+be solved by selecting better experts \citep{taleb2007black}.
 
-(collins)
+In addition, experts often work in groups or panels, rather than in
+isolation or following the Delphi procedure, in which the revision of
+estimates is done separately and under the protection of anonymity
+\citep{meijering2016effect, makkonen2016policy}. The group decision
+making process may add other peculiar distortions to the knowledge
+extraction exercise, as shown by the large literature on groupthink
+\citep{janis1972victims, esser1998alive}. These biases are difficult to
+overcome and require a dedicated attention. As the Expert Group of the
+European Commission has recommended: ``in order to minimize cognitive
+bias in analysis, selection and interpretation of information, explicit
+tools and methodologies should be used'' \citep{tuomi2013next}.
 
-Sheela Jasanow
-
-Taleb?
+The issue of biases in data science technological analysis has been
+raised only recently in a few seminal papers, but it has not yet created
+a consistent literature, comparable to the large and robust literature
+in the field of forecasting and in many other areas of social sciences.
 
 \subsection{The problem of byases}\label{sotadocumentsunderstandbyas}
 
-Each site typically contains a huge volume of opinionated text that is
-not always easily deciphered in long forum postings and blogs. The
-average human reader will have difficulty identifying relevant sites and
-accurately summarizing the information and opinions contained in them.
-Moreover, it is also known that human analysis of text information is
-subject to considerable biases, e.g., people often pay greater attention
-to opinions that are consistent with their own preferences. People also
-have difficulty, owing to their mental and physical limitations,
-producing consistent results when the amount of information to be
-processed is large. Automated opinion mining and summarization systems
-are thus needed, as subjective biases and mental limitations can be
-overcome with an objective sentiment analysis system.
+The literature in the heuristic and biases tradition is now in the order
+of several thousand articles. A deliberately crude search for
+``heuristic and biases'' delivers more than 208,000 items in Google
+Scholar, a more sober 5,298 items in JSTOR, and 2,463 items in Scopus
+(accessed January 19, 2018). Even looking at specialized branches of the
+field we find references in the hundreds: in the EBSCO Business Source
+database the items are 453, in Pub Med they are 281. There is not a
+unique agreement on the terminology and the number. To make an example,
+Arnott \citep{arnott1998decision} mentions 37 heuristics and biases; a
+quite different list of 13 heuristics is discussed by Mousavi and
+Gigerenzer \citep{mousavi2014risk}. There is a minority opinion that has
+contested the overall Kahneman-Tversky \citep{kahneman2011thinking}
+paradigm, apparently without substituting it \citep{gigerenzer1991make}.
+There are several meta-analyses and systematic reviews that examine
+specific biases, which will be included in the reference list and in the
+discussion below.
 
-\subsection{The Importance of Lexicons for Technical Documents
-Analysis}\label{sotadocumentsunderstandlexicons}
+What follows is a selection of topics that might be important in data
+science, and in particular for knowledge extraction from technical
+documents. In the following we start from the biases suggested by
+Goodwin \citep{goodwin2015history} and we add a few ones, which we
+believe are relevant for the field. The list is not necessarily
+exhaustive but is focused on those biases that are more important for
+anticipating technological trends. We first describe the biases in
+general terms.
+
+\subsubsection*{Framing effect}\label{framing-effect}
+\addcontentsline{toc}{subsubsection}{Framing effect}
+
+According to a famous experiment by Tversky and Kahneman
+\citep{tversky1981framing} people react differently to a decision
+problem according to the way it is ``framed'' in the task description,
+ignoring the content. In particular, framing a problem in terms of
+losses induces more risk-taking than framing in terms of gains. Risk or
+loss aversion occurs when people prefer a small reward with greater
+certainty than a large reward with less certainty. Framing a problem in
+terms of gains, or improvement, activates a different response
+\citep{tversky1981framing}. This effect has been confirmed in a large
+number of studies. The literature review by Levin, Schneider and Gaeth
+\citep{levin1998all} suggests to distinguish the effects of framing on
+risky choices, on the evaluation of attributes of alternatives, and of
+goal-related attributes. Experts are subject to framing effects not
+differently than novices \citep{loke1992effects} while in high level
+cognitive tasks the differences are remarkable \citep{larkin1980expert}.
+
+Several studies suggest that the framing can be mitigated or reduced to
+zero by warning on the effect \citep{cheng2010debiasing}, using Decision
+Support Systems {[}bhandari2008debiasing{]}, creating heterogeneous
+groups \citep{yaniv2011group}, exposing people to dissenting minority
+views \citep{nemeth1988modelling}, or using deliberately devil's
+advocate or dialectical inquiry methods \citep{lord1984considering}.
+However, other studies underline the importance of real conflict, or
+minority views, as opposed to artificially created situations (such as
+the devil's advocate method, based on role playing)
+\citep{goodwin2010limits}. Exposure to dissent and disagreement reduces
+the confidence in one's own views, but also reduces the level of
+conformity and improves the accuracy \citep{nemeth2001devil}. At the
+same time, it is critical that the dissent is centered around factual
+data, so that the discussion does not degenerate into issues of
+personalities \citep{keay2012authorising}. It is also critical that the
+judgment is repeated, so that people come to weight information
+according to its accuracy, considering discordant opinions and not
+discounting them \citep{harries2004combining}.
+
+According to Burgman \citep{burgman2015trusting}, ``experts groups
+should be as diverse as possible, and systems for engagement should
+encourage people to listen and integrate information and reasoning from
+as many sources as possible, and to explore competing explanations''.
+
+different expert orientation than a framing in which gains and losses
+are compared and weighted. A related problem is that the framing of the
+problem may hinder the ability to identify rare events, or low
+predictability phenomena. A combination between quantitative modelling
+and scenario analysis is suggested to avoid blindness
+\citep{makridakis2009forecasting}.
+
+\subsubsection*{Anchoring}\label{anchoring}
+\addcontentsline{toc}{subsubsection}{Anchoring}
+
+In producing numeric estimates of unknown quantities, people are heavily
+influenced by the information provided in the task description, even
+when it is not consistent or realistic \citep{gigerenzer2015calculated}.
+In other words, according to Kahneman and Tversky
+\citep{tversky1974judgment}, people ``anchor'' their estimate to the
+number provided in the description and incorporate new information by
+``adjusting'' the estimate above and below the anchor. In this way
+people do not make efficient use of information available and may be
+distorted in their judgment \citep{thorsteinson2008anchoring}. Furnham
+and Boo \citep{furnham2011literature} offers a literature review. The
+effect seems to be originated from the confirmatory testing of
+hypothesis that selectively activates anchor-consistent information in
+memory \citep{block1991overconfidence, chapman1999anchoring}.
+
+In a classical experiment \citep{slovic2000violence} the authors asked
+thousands of forensic experts, trained formally in psychology and
+psychiatry, to estimate the probability that a given person with mental
+disorder would reiterate an offense after release from hospital. Two
+random assignments were used, one in which there was a suggestion to use
+a 1-40 scale to estimate probability, the other to use a 1-100 scale.
+Those using the 1-100 scale estimated that the probability to re-offend
+was approximately double than the one estimated by the other group.
+Another striking example was found by Ariely et al.
+\citep{ariely2003coherent}: the willingness to pay for consumption goods
+is influenced by an arbitrary anchor created by asking the subjects to
+remember the last two digits of their Social Security Number.
+
+The magnitude of the bias is a function of personality and motivational
+orientation \citep{eroglu2010biases} and of the social origin of the
+anchor value \citep{meub2015anchoring}, but not of cognitive abilities,
+so that experts are also subject to its effect
+\citep{mussweiler2000numeric, oechssler2009cognitive, bergman2010anchoring}.
+However, the level of knowledge of experts moderates the intensity of
+the anchoring effect \citep{wilson1996new, smith2013knowledge}.
+
+The extent to which the anchoring bias can be mitigated is the object of
+large research. George, Duffy and Auja \citep{george2000countering} and
+Legerstee and Franses \citep{legerstee2014experts} report that after a
+training on the feedback from automated statistical program the accuracy
+of experts improves substantially, while Mussweiler et al.
+\citep{mussweiler2002malleability} and Furnham and Boo
+\citep{furnham2011literature} suggest that using compensating
+strategies, such as consider-the-opposite strategy, may reduce the
+anchoring bias (see also Mussweiler and Strack
+\citep{mussweiler2001semantics}). Providing experts with a feedback that
+uses metric knowledge (but not mapping knowledge) reduces the anchoring
+bias \citep{smith2015resisting}. Experts may receive incentives for the
+accuracy of their predictions, so that a loss function is defined and
+implemented \citep{lawrence2005judgmental}. This does not eliminate
+biases in the adjustment: Franses, Legerstee and Paap
+\citep{franses2011estimating} show that the loss functions of experts is
+typically asymmetric, so that underprediction is penalized more.
+
+\subsubsection*{Overconfidence}\label{overconfidence}
+\addcontentsline{toc}{subsubsection}{Overconfidence}
+
+A pervasive effect observed in many settings is the inability of
+individuals to evaluate correctly the degree of knowledge they have
+about issues or facts on which their judgment is requested
+\citep{shanteau1992competence}. Moore and Healey
+\citep{moore2008trouble} review a large literature, starting from a
+pioneering observation by Oskamp \citep{oskamp1965overconfidence}. The
+dominant effect is that people overestimate their own ability to perform
+accurate judgments (precision or accuracy), that is, they exhibit
+overconfidence in the form of overprecision, or unwarranted certainty
+\citep{koriat1980reasons}. They also overestimate their absolute ability
+or performance (overestimation) and their relative comparison within a
+group (overplacement) \citep{kruger1999unskilled}.
+
+According to Plous ``no problem in judgment and decision making is more
+prevalent and more potentially catastrophic than overconfidence''
+\citep{plous1993psychology}. In technical terms, people are not good in
+defining appropriately the confidence interval they assign to their own
+estimates \citep{lichtenstein1977calibration}. If confidence is defined
+at 90\%, it means that about 90\% of the probability intervals provided
+by experts will include the observed (true) values. In a classical
+experiment, on the contrary, Russo and Schoemaker
+\citep{russo1992managing} found that only betwen 40\% an 60\% of the
+intervals suggested by managers included the true value of several
+economic variables, while respondents claimed they were 90\% confident
+about the estimate. The overconfidence leads to illusion of competence
+\citep{castel2007illusions}.
+
+Very importantly for our discussion, experts produce on average better
+estimates than non experts, but they are subject to overconfidence in
+the same way: ``Experts are good at reporting relatively narrow
+intervals centered on true values, but they are no better than novices
+at reporting well calibrated, high-confidence interval''
+\citep{mckenzie2008overconfidence}.
+
+It has also been suggested that the willingness of people to revise
+their judgment in the light of feedback depends on their power and
+egocentrism. People who self-perceive themselves as powerful tend to be
+more self-confident and do not adjust their own judgments following
+external feedback \citep{bonaccio2006advice}.
+
+\subsubsection*{Hindsight bias}\label{hindsight-bias}
+\addcontentsline{toc}{subsubsection}{Hindsight bias}
+
+Another distortion that makes it difficult to learn from past events and
+external knowledge is the hindsight bias. The hindsight bias, initially
+discussed by Fischhoff \citep{fischhoff2003hindsight}, is the
+unjustified increase in the perceived probability of an event due to the
+knowledge of how the event actually took place, or outcome knowledge
+\citep{hawkins1990hindsight}. People who know the outcome of an event
+find it difficult to report objectively the predictions they made before
+the knowledge of the outcome.
+
+For example, after the outcome of a disease, physicians may become
+unable to retrieve the reasons for their diagnosis, which at the time of
+execution was based on a prediction judgment
+\citep{arkes1980effect, arkes1981hindsight, arkes1984demonstration}. As
+another example, Herrmann and Choi \citep{herrmann2007prediction}
+examined the judgments of senior experts in foreign policy in Korea
+after the international political events were manifest and asked them to
+reconstruct their predictions, finding that ``experts tend to forget
+what they used to believe and conclude in hindsight that they understand
+the causal forces driving developments'' \citep{herrmann2007prediction}.
+Christensen-Szahansky and Willham \citep{christensen1991hindsight}
+offers a meta-analysis of 128 studies on the effect and Guilbault et al
+\citep{guilbault2004meta} update it.
+
+This effect is also labeled ``curse of knowledge'', or ``curse of
+expertise'', that is, the tendency to be biased by one's current
+knowledge in the evaluation of the knowledge of others (that is, the
+same person in an earlier perspective, or someone's else) or the
+difficulty in discounting one's privileged knowledge in judging what
+other people know or should know \citep{koriat2006illusions}.
+
+In other words, outcome knowledge compromises the ability of respondents
+to appreciate one's own prior knowledge and another person's naïve
+knowledge \citep{bernstein2012auditory} and therefore produces an
+exaggerated perception of the a priori predictability, or obviousness,
+of outcomes after they become known
+\citep{fessel2009hindsight, lassiter2010videotaped}, leading to the
+inability to learn from the past and the underestimation of the
+informativeness of facts \citep{mazursky1996knew}.
+
+Interestingly, expertise exacerbates the hindsight bias
+\citep{knoll2017effects}. Experts incorporate more easily new knowledge
+but tend to ``go beyond the information given''. This means that they
+erroneously infer information that was not actually presented or
+consider old the newly presented information
+\citep{arkes1984demonstration}. They tend to take for granted elements
+that are in their knowledge, failing to examine whether the same level
+of knowledge is available to others. As shown by Tetlock and Lebow
+\citep{tetlock2001poking}, experts that have a preference for
+explanatory closure and are theory-driven, tend to exaggerate the degree
+to which ``they knew it all along''.
+
+\subsubsection*{Desirability bias}\label{desirability-bias}
+\addcontentsline{toc}{subsubsection}{Desirability bias}
+
+One of the fundamental assumptions of rational decision theory is that
+people are able to separate the judgment from the motivation, that is,
+the estimation of the frequency or probability of an event, from the
+desirability of the event. Beliefs and desires should be a priori
+independent. A large and consistent literature shows that this is not
+the case: people systematically inflate the judged probability of
+desirable events, and diminish that of undesirable events. This is an
+example of motivational bias, or the influence of motivational factors,
+such as preferences or desires, on cognitive activities. This distortion
+is, in principle, of great importance if experts are asked to judge the
+future developments of techologies which they consider, for any possible
+reason, desirable. This seems to be plausible in data science, in which
+experts come from industry, academia, or consulting.
+
+Initially discovered in the `50s, the desirability bias has been the
+object of an extensive empirical research. It is considered a case of
+motivated reasoning \citep{kunda1990case}, or interdependence between
+cognitive and motivational factors, and is also labelled wishful
+thinking. People distort their evaluation of probability in the
+direction of their preferred decision alternative
+\citep{dekay2009distortion}. It has been found not only in lay people
+\citep{lench2012automatic}, but in experts in a variety of fields, from
+professional investors to price forecasters , from political election
+voters , to sport fans . Interestingly, people exhibit the desirability
+bias not only when they have preferences before the choice
+(disposition), but also when the preferences are acquired during the
+decision process \citep{russo1996distortion}.
+
+The explanations for this effect are multiple: people distort their
+judgment because the future prospects have an impact on their personal
+and affective future
+\citep{ayton1989psychological, wright1996role, lench2008automatic}, or
+because there is high uncertainty and large amount of guessing on future
+prospects \citep{windschitl2010desirability}, or because the prospect
+horizon is very far \citep{vosgerau2010prevalent}. A related distortion,
+called advocacy bias, refers to the consciuos over-estimation of the
+prospects for technologies of products, when there is competition for
+resources. Here experts may inflate the probability of success in order
+to actively champion some technologies.
+
+Of particular interest is the situation in which overoptimism, induced
+by the desirability bias, is associated to overconfidence, or the
+misplaced belief in the accuracy of one's own judgments. Several studies
+show that overconfidence is frequently found in people with top
+managerial responsibilities in companies \citep{hribar2016ceo}. It is
+not known to what extent people involved in data science are also
+subject to this effect, but this is clearly an area for further
+research.
 
 \chapter{Documents}\label{sotadocuments}
 
@@ -1859,16 +2536,18 @@ n-gram expressions requires large computational power. In addition, in
 the case of patents, claims are written in ``arcane legalese'' in order
 to hide critical elements and confound potential competitors. The
 challenge here is how to maximize the substantive knowledge that can be
-generated by automatic processing of the full text. It has been remarked
-since long time that a promising direction for research into technology
-intelligence and foresight lies in the combination of methods. This
-recommendation requires the combination between domain-knowledge and
-powerful computational approaches. It is this combination that holds the
-best promise to generate methods for the identification of emerging
-technologies, and more generally, for technology intelligence, that are
-able to identify high-granularity information producing weak signals,
-that is, to distinguish accurately the signal from the noise in
-turbulent and dynamic technological landscapes.
+generated by automatic processing of the full text.
+
+It has been remarked since long time that a promising direction for
+research into technology intelligence and data science lies in the
+combination of methods. This recommendation requires the combination
+between domain-knowledge and powerful computational approaches. It is
+this combination that holds the best promise to generate methods for the
+identification of emerging technologies, and more generally, for
+technology intelligence, that are able to identify high-granularity
+information producing weak signals, that is, to distinguish accurately
+the signal from the noise in turbulent and dynamic technological
+landscapes.
 
 By exploiting the information obtained by these steps, several
 information extraction tasks can be solved by other NLP tools such as: -
@@ -1994,6 +2673,135 @@ can not be fully exploited in generic system.
 
 \section{Papers}\label{sotadocumentspapers}
 
+Researchers are starting to increasingly design and rely on automated
+literature analysis using text mining techniques \citep{nuzzo2010text}.
+This task is particularly valuable in the starting stage of any study,
+when gathering knowledge about a scientific question or a problem is
+crucial in formulation of hypotheses and resaearch planning.
+Furthermore, even if research communities and publishing houses are
+putting increasing efforts in delivering scientific articles as
+structured texts \citep{poelmans2012text}, nowadays a considerable part
+of digital scientific literature is available in layout-oriented data
+formats, like PDF, lacking any explicit structural or semantic
+information. As a consequence the bootstrap of textual analysis of
+scientific papers is often a time-consuming activity.
+
+To understand how text minign techniques can help to extract knowledge
+from scientific papers, we can analyze the phases in wich the literature
+review process (the proces trough which researchers extract knowledge
+from a corpus of documents) consists of. The task are:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{locate} the best-available empirical evidence to answer specific
+  research questions
+\item
+  \emph{appraise} which documents are valuable for the research
+\item
+  \emph{synthesize} the information in such a way that the results of
+  the analysis are clear and can be comunicated to the scientific
+  community.
+\end{itemize}
+
+An ideal literature search would retrieve all relevant papers for
+inclusion (precision) and exclude all irrelevant papers (recall).
+However, researchers have proved that a lot of studies are not fully
+indexed, as well as a number of scientific papers are indexed
+incorrectly
+\citep{cooper1988structure, okoli2010guide15, edinger2013large}.
+
+In general an automatic systems able to extract knowledge from
+scientific papers and a process of litterature review are structured in
+a similar way. The steps for the first type of process (with a
+particular focus on paper classification, see section
+\ref{sotatoolsmodeldocclass}) can be divied in paper collection, text
+processing, data division, feature extraction, feature selection, data
+representation, classifier training, applying a classification model,
+and performance evaluation
+\citep{khorsheed2013comparative, weiss2010text, carlos2015text} (which
+are a subset of the generical tasks of natural language processing
+described in chapter \ref{sotatools}).
+
+Papers Collection has the aim of selecting all the papers that belong to
+a limited scientific domain, i.e., ``industry 4.0''
+\citep{weiss2015fundamentals, chiarello2018extracting}. This task is not
+trivial, and domain experts has to work with computer scientist with the
+goal of bulinding a query able to filter for all the relevant documents.
+Each sample text must then be labeled with one or more tags indicating a
+label to a certain class.
+
+\emph{Text preprocessing} has been discussed in section
+\ref{sotatoolstransform}. Actually preprocessing is in this context a
+way to improve text classification by removing useless information
+\citep[\citet{meyer2008text}]{weiss2010text}.
+
+In \emph{data division} papers are divided into two parts, training data
+and testing data. Based on training data, the classification statistical
+model will be trained. The testing data will be used to asses the
+performance of the resulting classification model. There is no ideal
+ratio of training data to testing data, but usually a split of 25\% for
+training and 75\% for testing is used.
+
+Then the process of \emph{feature extraction} is performed. Considering
+single words, the simplest of lexical features, as a representation
+feature in text classification has proven effective for a number of
+applications. The result of this step is a list of features and their
+corresponding frequency in the training data set \citep{weiss2010text}.
+
+The result of the previous step is a collection of features. Clearly not
+all of these features are good for classification. The main reasons are:
+
+\begin{itemize}
+\item
+  some classification algorithms are negatively affected when using many
+  features due to what is called ``curse of dimensionality''
+\item
+  the over-fitting problem may occur when the classification algorithm
+  is trained in all features
+\item
+  some other features are common in most of the classes and thus do not
+  add information to the classifier .
+\end{itemize}
+
+To solve these problems, there is the need of a \emph{feature
+selection}. Many methods were proposed to select the most representative
+features for each class in the training data set
+\citep{zhao2012r, weiss2010text, weiss2015fundamentals}.
+
+The features obtained from the previous step gives the possibility to
+\emph{rapresent the data} in matrix format, so that these can be used by
+the classification algorithm. Usually, the data are in the document-term
+matrix format with n rows and m columns wherein the columns correspond
+to the selected feature, and the rows correspond to the texts in the
+training data. Weighting methods, such as term frequency inverse
+document frequency (TFIDF) and term frequency (TF) are used to compute
+the value of each cell in this matrix, which represents the weight of
+the feature in the text \citep{meyer2008text}.
+
+At this point of the process the \emph{classifier can be trained}. The
+classification algorithm is trained using the document-term matrix. Many
+classical machine learning algorithms have been used in paper
+classification
+\citep{hotho2005brief, aphinyanaphongs2003text, zhao2012r}. The result
+is a classification model to be tested by means of the testing data.
+
+Finally, \emph{Classification model evaluation} techniques are assessed
+to estimate future performance by measures such as accuracy, recall,
+precision, and f-measure, and to maximize empirical results
+\citep{weiss2015fundamentals}.
+
+Researchers has also used unsupervised techniques to extract knowledge
+from papers corpora. In particular the interest have been increased
+about the manner in which important research topics evolve over time
+within the corpus of scientific literature \citep{zhou2017topic}. One of
+the main method used in this context is topic modelling (see section
+\ref{sotatoolsmodeltopicmodel}). Topic models identify and measure
+latent topics within a corpus of papers documents
+\citep{seaghdha2014unsupervised} in such a way that classes of topics
+has not to be decided apriori by researchers
+\citep{gargiulo2017deep, yang2016discriminative, paraschiv2015semantic}.
+
 \section{Wikipedia}\label{sotadocumentswiki}
 
 The use of Wikipedia as source of knowledge started more than a decade
@@ -2002,61 +2810,70 @@ applications (text annotation, categorization, indexing, clustering,
 searching \citep{milne2008learning}). In addition to the large and
 growing size in terms of number of articles, the structure of Wikipedia
 has a number of useful features that make it a good candidate for text
-mining applications. First, Wikipedia pages are considered reliable in
-many knowledge fields, including the ones more interesting for technical
-analysis, i.e.~engineering and computer science \citep{xu2015improving}.
-The pages are regularly and systematically updated by a large global
-community of contributors, which includes many scientific and industrial
-authorities in the field. The use of Wikipedia as knowledge source for
-computerized text mining tools is established in the literature
+mining applications.
+
+First, Wikipedia pages are considered reliable in many knowledge fields,
+including the ones more interesting for technical analysis,
+i.e.~engineering and computer science \citep{xu2015improving}. The pages
+are regularly and systematically updated by a large global community of
+contributors, which includes many scientific and industrial authorities
+in the field. The use of Wikipedia as knowledge source for computerized
+text mining tools is established in the literature
 \citep{ferragina2012fast}. In addition, it is powerful in disambiguation
 of terms, particularly through the use of redirect pages and
 disambiguation pages. This means that it can be used for detection and
-disambiguation of named entities \citep{bunescu2006using}. Second, the
-pages include links to other pages motivated by clear reasons on
-content. There are many links between Wikipedia pages, which are clues
-for semantic relations. This makes Wikipedia a densely connected
-structure, creating a classical small world effect: according to an
-often cited estimate, it takes on average 4.5 clicks to reach an article
-from any other article \citep{dolan2008six}. Unfortunately it is not
-possible to disentangle the kind of semantic relation, introducing a
+disambiguation of named entities \citep{bunescu2006using}.
+
+Second, the pages include links to other pages motivated by clear
+reasons on content. There are many links between Wikipedia pages, which
+are clues for semantic relations. This makes Wikipedia a densely
+connected structure, creating a classical small world effect: according
+to an often cited estimate, it takes on average 4.5 clicks to reach an
+article from any other article \citep{dolan2008six}. Unfortunately it is
+not possible to disentangle the kind of semantic relation, introducing a
 distinction between equivalent relations (synonymy), hierarchical
 relations (hyponymy/ hyperonimy) and associative relations, but this
-limitation is not relevant for our applications. Third, it makes use of
-categories which do not have a hierarchical structure, but a tree-like
-structure. Fourth, it has the ability to evolve quickly
-\citep{lih2004wikipedia}, particularly after the development of systems
-such as Wikify \citep{mihalcea2007wikify, cheng2013relational}.
-Wikipedia has by design a dynamic structure, since it is constantly
-growing in the number of entries and changing in their content, when
-this is needed due to the advancements of knowledge
-\citep{ponzetto2007knowledge}. Furthermore the new terms that appear on
-Wikipedia thanks to comprehensive contributions by volunteers around the
-world, cannot be found in other linguistic corpora, such as WordNet
-Miller, 1995. Indeed, Wikipedia is the expression of a large
-international community, that is, of a ``real community agreement''
-\citep{bizer2009dbpedia} or ``community consensus''
-\citep{hepp2007harvesting}, guaranteed by permanent collective
-monitoring of the quality and rigor of the entries
-\citep{bryant2005becoming}. Finally, Wikipedia is free-content and
-multilingual. This make it possible to freely collect the information
-contained in the web pages and allows the possibility for future
-developments of the dictionary in other languages. In our opinion
-multilanguage is an interesting feature for the dictionary, due to the
-fact that Industry 4.0 is a worldwide phenomena.
+limitation is not relevant for our applications.
+
+Third, it makes use of categories which do not have a hierarchical
+structure, but a tree-like structure.
+
+Fourth, it has the ability to evolve quickly \citep{lih2004wikipedia},
+particularly after the development of systems such as Wikify
+\citep{mihalcea2007wikify, cheng2013relational}. Wikipedia has by design
+a dynamic structure, since it is constantly growing in the number of
+entries and changing in their content, when this is needed due to the
+advancements of knowledge \citep{ponzetto2007knowledge}. Furthermore the
+new terms that appear on Wikipedia thanks to comprehensive contributions
+by volunteers around the world, cannot be found in other linguistic
+corpora, such as WordNet Miller, 1995. Indeed, Wikipedia is the
+expression of a large international community, that is, of a ``real
+community agreement'' \citep{bizer2009dbpedia} or ``community
+consensus'' \citep{hepp2007harvesting}, guaranteed by permanent
+collective monitoring of the quality and rigor of the entries
+\citep{bryant2005becoming}.
+
+Finally, Wikipedia is free-content and multilingual. This make it
+possible to freely collect the information contained in the web pages
+and allows the possibility for future developments of the dictionary in
+other languages. In our opinion multilanguage is an interesting feature
+for the dictionary, due to the fact that Industry 4.0 is a worldwide
+phenomena.
 
 These properties make Wikipedia the ideal candidate for the goal of
 extracting technical knowledge from texts. Technical fields are in fact
 comprehensive, dynamically updated, and, as far as possible,
-expert-independent. In particular, Wikipedia entries allow an endogenous
-measurement of semantic relatedness. This is an exceedingly important
-property for technical analysis: technologies can be mapped and can be
-defined as included in the perimeter of a knowledge field if and only it
-exhibits relatedness with other technologies already included in the
-perimeter. The inclusion of new technologies is therefore not dependent
-on experts' subjective views, but is endogenously generated by the
-technological community that writes the articles for the encyclopedia
-and includes hyperlinks in the text of newly added pages.
+expert-independent.
+
+In particular, Wikipedia entries allow an endogenous measurement of
+semantic relatedness. This is an exceedingly important property for
+technical analysis: technologies can be mapped and can be defined as
+included in the perimeter of a knowledge field if and only it exhibits
+relatedness with other technologies already included in the perimeter.
+The inclusion of new technologies is therefore not dependent on experts'
+subjective views, but is endogenously generated by the technological
+community that writes the articles for the encyclopedia and includes
+hyperlinks in the text of newly added pages.
 
 \section{Social Media}\label{sotadocumentstwitter}
 
@@ -2373,22 +3190,20 @@ AUC of 0.90, reflecting very high classification performance.
 
 \part{Methods and Results}\label{part-methods-and-results}
 
-L'aprrocio metodologico generico\ldots{}
+This part describes the methods and processes designed for the analysis
+of technical documents following the guidelines of design research
+described in section \ref{introdesres}. The methods are ensamble of
+Natural Language Processing (NLP) and Text Mining \emph{techniques}
+described in \ref{sotatools}, re-designed depending on the analyzed
+document and the analysis goal.
 
-This part describes the methods applied for the analysis of technical
-documents. The methods are ensamble of Natural Language Processing (NLP)
-and Text Mining \emph{techniques} described in \ref{sotatools},
-re-designed depending on the analyzed document and the analysis goal.
-Not all the \emph{techniques} have been applied to all the documents:
-table tot summarise the relations between the documents under analysis
-(introduced in section \ref{sotadocuments}) and the NLP techniques.
-
-Table documents vs tools
-
-Each chapter starts with a brief description of the field of applicaton
-of the method and with the framing of the problem to be solved. Then the
-methodlogy to solve the prolbem is described. Each chapter closes with
-the results.
+Since design research is a problem solving paradigm, each chapter starts
+with a brief description of the field of applicaton of the method and
+with the framing of the problem to be solved. Then the methodlogy to
+solve the prolbem is described with the goal of beeing clear to a
+technical audience and a managerial audience. Each chapter closes with
+the results description that proves the utility, quality, and efficacy
+of the design artifact.
 
 \chapter{Patents}\label{patents}
 
@@ -8071,6 +8886,14 @@ to interpret than the latter tool.
 \part{Applications of the
 Results}\label{part-applications-of-the-results}
 
+It has been highlighted by the guidelines of design research
+\citep{bichler2006design} that effective design-science research must
+provide clear and verifiable contributions in the areas of the design
+artifact, design foundations, and/or design methodologies. For this
+reason the present section is a collection of projects that describes
+the applications and results of the methods designed in \emph{Part 3
+``Methods and Results''}.
+
 \chapter{Exploiting patent information in novel
 ways}\label{exploiting-patent-information-in-novel-ways}
 
@@ -9404,7 +10227,7 @@ possible to get insights on technological differences among patents in
 the same patent set and to produce detailed technology maps. This is
 particularly important for innovations in the pre-paradigmatic stage.
 
-\section{Conclusions}\label{conclusions}
+\section{Discussions}\label{discussions}
 
 Patent clustering is a standard application in technology intelligence
 and has been common practice in the professional IP industry. In recent
@@ -9430,7 +10253,7 @@ technology, is adaptable and has capacity to update (particularly if
 based on Wikipedia), and offers broad and relevant data.
 
 \chapter{Impact of Research from the Perspective of
-Users.}\label{impact-of-research-from-the-perspective-of-users.}
+Users}\label{impact-of-research-from-the-perspective-of-users}
 
 A substantive interest has been developed in the last 15 years on the
 so-called ``impact revolution'', namely the increasing demand for
@@ -11046,7 +11869,7 @@ political); control theory; artificial intelligence; formal sciences;
 game theory; john von neumann; mathematical economics; business terms;
 strategic management; business intelligence; strategy; systems thinking
 
-\section{Conclusion}\label{conclusion}
+\section{Discussions}\label{discussions-1}
 
 The present section can be seen as a first step of a long journey. As
 stated in introduction our Archetypes are intended in the etymological
@@ -11130,13 +11953,23 @@ first step is taken.
 \caption{The Archetypes grouped by business areas. The image also shows the strategic roles of Perfectionist, Cloud Geek and IOT Geek, who represent the bridges between different functions.}\label{fig:archeporter}
 \end{figure}
 
-\chapter*{Conclusions and Future
-Developments}\label{conclusions-and-future-developments}
-\addcontentsline{toc}{chapter}{Conclusions and Future Developments}
+\part{Conclusions and Future
+Developments}\label{part-conclusions-and-future-developments}
+
+Riassunto della tesi, cosa è stato fatto vedere.
+
+\chapter{Limitations and Future
+Developments}\label{limitations-and-future-developments}
 
 Quali altri stakeholders (quindi testi)
 
-We have finished a nice thesis
+\chapter{The Importance of Lexicons Design for Technical Documents
+Analysis}\label{sotadocumentsunderstandlexicons}
+
+Passaggio da design a descriptive. Si intravede che i lexicon posso
+essere tool efficace ed efficiente per le aziende.
+
+Tesi Masino
 
 \chapter*{Glossary}\label{glossary}
 \addcontentsline{toc}{chapter}{Glossary}

@@ -1,6 +1,14 @@
-# Conclusions and Future Developments {-}
+# (PART) Conclusions and Future Developments {-}
+
+Riassunto della tesi, cosa è stato fatto vedere.
+
+# Limitations and Future Developments
 
 Quali altri stakeholders (quindi testi)
 
-We have finished a nice thesis
+# The Importance of Lexicons Design for Technical Documents Analysis  {#sotadocumentsunderstandlexicons}
+
+Passaggio da design a descriptive. Si intravede che i lexicon posso essere tool efficace ed efficiente per le aziende. 
+
+Tesi Masino
 

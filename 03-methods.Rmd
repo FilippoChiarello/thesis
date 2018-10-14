@@ -1,13 +1,8 @@
 # (PART) Methods and Results {-}
 
-L'aprrocio metodologico generico...
+This part describes the methods and processes designed for the analysis of technical documents following the guidelines of design research described in section \@ref(introdesres). The methods are ensamble of Natural Language Processing (NLP) and Text Mining _techniques_ described in \@ref(sotatools), re-designed depending on the analyzed document and the analysis goal. 
 
-This part describes the methods applied for the analysis of technical documents. The methods are ensamble of Natural Language Processing (NLP) and Text Mining _techniques_ described in \@ref(sotatools), re-designed depending on the analyzed document and the analysis goal.
-Not all the _techniques_ have been applied to all the documents: table tot summarise the relations between the documents under analysis (introduced in section \@ref(sotadocuments)) and the NLP techniques.
-
-Table documents vs tools
-
-Each chapter starts with a brief description of the field of applicaton of the method and with the framing of the problem to be solved. Then the methodlogy to solve the prolbem is described. Each chapter closes with the results. 
+Since design research is a problem solving paradigm,  each chapter starts with a brief description of the field of applicaton of the method and with the framing of the problem to be solved. Then the methodlogy to solve the prolbem is described with the goal of beeing clear to a technical audience and a managerial audience. Each chapter closes with the results description that proves the utility, quality, and efficacy of the design artifact.
 
 # Patents
 
