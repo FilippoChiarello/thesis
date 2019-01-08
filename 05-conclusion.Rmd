@@ -1,14 +1,120 @@
-# (PART) Conclusions and Future Developments {-}
+# (PART) Conclusions {-}
 
-Riassunto della tesi, cosa è stato fatto vedere.
+The thesis has faced the problem of Mining Technical Knowledge from documents with a particular focus on Engineering Management Methods and Natural Language Processing Techniques. Its main goals are three:
 
-# Limitations and Future Developments
+- understand which information sources contain the most untapped value and which methods and tools can be used to uncover that.
+- understand how management engineering can cover those areas.
+- designing analysis algorithms, which can provide correct knowledge exchange between human and machine, leading to incorporate knowledge of the experts inside machine-learning systems
+and improve the usage that experts’ makes of machine outputs in their process of decision making.
 
-Quali altri stakeholders (quindi testi)
+The designed solutions make large use of the Design Science Approach, the Data Science Workflow and Natural Language Processing Techniques.
+
+In _Part Number 2 "State of the Art"_ has made a review of tools and techniques for Natural Language Processing and shows the documents used for knowledge extraction. In particular, the analysis of technical documents require the design of processes that rely both on Natural Language Processing techniques and on technical field expertise. While the first techniques are codified and explicit, the second are sometimes implicit and always hard to systematize. In the State of the Art these two groups of techniques are treated in the same way to give to the reader a systematic literature review on these topics. Furthermore it is important to define the value in terms of new knowledge that documents can bring to companies. The goal of this state of the art is to demonstrate that a large literature on Techniques able to solve the problems discussed in section \@ref(introproblems) exists, but week or no effort exist in the literature in the systemic integration of these tools and in the design of holistic methods to solve these problems.
+
+ _Part Number 3 "Methods and Results"_ has been the core Part of the thesis. This part describes the methods and processes designed for the analysis of technical documents following the guidelines of design research described in section \@ref(introdesres). Since design research is a problem solving paradigm, each chapter (focalised on a different kind of document) starts with a brief description of the field of application of the method and with the framing of the problem to be solved.  Then the methodology to solve the problem is described with the goal of being clear to a technical audience and a managerial audience. Each chapter closes with the results description that proves the utility, quality, and efficacy of the design artifact.
+
+_Part Number 4 "Applications of the Results"_  is a collection of projects that describes the applications and results of the methods designed in _Part 3 "Methods and Results"_. The goal, again following the  the guidelines of design research [@bichler2006design], is to provide clear and verifiable contributions in the areas of the design artifact, design foundations, and/or design methodologies.
+
+In this Part  a brief summary of the thesis is made, and its future developments are described. Before that,  a more descriptive-science view of the results is given. In the next chapter  we give a general method that has proven to be effective in the major part of the designs of the present thesis: __lexicons design__.
 
 # Lexicons Design for Mining Technical Knowledge  {#sotadocumentsunderstandlexicons}
 
-Passaggio da design a descriptive. Si intravede che i lexicon posso essere tool efficace ed efficiente per le aziende. 
+In this work as been shown that text mining techniques are being adopted in many different fields to face the problem of extracting meaningful information hidden in unstructured data. Hybrid processes (human-machine) of knowledge extraction are usually the best solution for companies to achieve great results and to ensure the conformity of the output of the knowledge extraction process. Anyway, state-of-art literature on Natural Language Processing (NLP) lacks in process management studies. In particular, researchers have not yet studied the best way to integrate NLP outputs with human activities. To our best knowledge, the present thesis is a first step in the desired direction. Such a process and the design of new methods for human-machine (or better engineers machine) interaction , started with the present thesis, bring some valuable contribution to the literature:
 
-Tesi Masino
+- Minimize the introduction of errors and biases made by human intervention;
+
+- Maximize the human effort only on value added tasks such as knowledge validation
+and consolidation;
+
+- Decrease the overall time of the process.
+
+From this thesis emerges the fact that _Information Extraction from texts for developing technical dictionaries (a Knowledge Base), is a effective approach to follow in order to increase the knowledge base of a specific field._ Many of the designs presented in this thesis uses this approach. 
+
+In section \@ref(usersresults) a dictionary of _users of inventions_ has been developed, containing more than 76.000 entries, and this dictionary has been used to analyze projects texts \@(impactresuser). In section \@(advdrwresults) a dictionary of _advantages and drawbacks_ has been extracted from patents using twitter to validate its content. The dictionary contains a total of 6.568 advantages and the 14.809 drawbacks and has been used to classify problems of different technologies in patents \@ref(explpatentnovel) and papers \@ref(blockchainanalysis). This dictionary has also been used to design a novel technical sentiment analysis, which has been used to analyze the sentiment about two innovative products in section \@ref(techsentanal).
+
+
+Sections \@ref(smtextdrivenbottomup), \@ref(precisionagri) and \@ref(technimetrochap) developed dictionaries for respectively sustainable manufacturing, precision agriculture and industry 4.0 with the aim of giving a clear picture to both academics and practitioners about the state of the of art of technologies in these fields. In particular in section \@ref(technimetrochap) the dictionary is an enriched dictionary: the enriched dictionary can be defined as a set of enabling technologies for industry 4.0, associated to their definitions and to the linkages between them.
+
+In this final chapter of the thesis we give a descriptive-science view of the results. We thus present a general method that has proven to be effective in the major part of the designs of the present thesis: __lexicons design__.
+
+## The Knowledge Bases and Technical Lexicons
+
+A Knowledge Base is an organized repository of knowledge - in a computer system or an organization - consisting of concepts, data, objectives, requirements, rules, or specifications. Technical Lexicons (or Dictionaries) are lists of keywords and expressions linked to a specific topic and they are used to extract information through the research of these keywords in raw texts. All the methods that use these lists of keywords are named Dictionary-based Approaches.
+
+For using these approaches, the first thing to do is the construction of these dictionaries. For some applications - i.e. biomedical fields - there are already existing dictionaries that can be used for text mining; in other applications, these dictionaries need to be constructed. The development of dictionary is a task still too human-dependent: in fact, for building these lists, domain experts must select keywords from texts and clear them from words that are too general for that domain; this process must be repeated iteratively until a satisfactory result is achieved, in relation with the purpose. These tasks rely too much on the intervention of experts and the subsequent analysis are greatly influenced from their choices and opinions. Experts intervention is also too time consuming and expensive.
+
+Another way to increase the Knowledge Base is through the Named-Entity Recognition Techniques.
+Named-entity recognition (NER) - also known as entity identification, entity chunking and entity extraction- is a subtask of Information Extraction that seeks to locate and classify named entities in text into pre-defined categories as names, locations, quantity, and others. These techniques usually take an unlabeled text and produce an annotation on it, extracting the entities of some predefined categories. 
+
+## The history of Lexicons Design
+
+In order to map the main techniques used for Lexicons Design, 23 papers have been analysed and mapped.
+
+In 2014, Song et al [@song2015developing] developed a hybrid dictionary-based bio-entity recognition technique based on the expansion of the bio-entity dictionary by combining different data sources and using the approximate string matching technique and the shortest path edit distance algorithm. The technique also adopts text mining techniques in the merging stage of similar entities such as Part of Speech (POS) expansion, stemming, and the exploitation of the contextual cues to further improve the performance.
+
+In 2015, Yang and Garibaldi [@yang2015hybrid] described a hybrid information extraction system to automatically identify risk factors for heart disease in medical records. Their approaches rely on several natural language processing (NLP) techniques such as machine learning, rule-based methods, and dictionary-based keyword spotting to cope with complicated clinical contexts inherent in a wide variety of risk factors.
+
+In 2016, Arif-Uz-Zaman et al [@arif2017extracting] used text mining for industrial application, proposing a text mining approach to extract accurate failure time data from WOs (work orders which detail maintenance activities on the asset) and DD (downtime data which details when the asset was taken offline). Texts are pre-processed and the WOs are manually labeled as potential failure or non-failure. Then a keyword dictionary is developed from the WOs. Labels and the keyword dictionary are used to classify each DDs downtime event as a failure or non-failure.
+
+Kim and Joung [@joung2017monitoring] proposed a technical keyword-based analysis of patents to monitor emerging technologies, and used a keyword-based model in contents-based patent analysis. Technical keywords are extracted using a commercial NLP software package, then selected using a TF-IDF function. After that, a technical keyword-context matrix is constructed. The relatedness between pairs of keywords is then identified , and patent documents are clustered by using a hierarchical clustering algorithm based on patent document vectors. As a result, emerging technologies can be monitored by identifying clusters composed of technical keywords.
+
+In 2017, Rezaeian et al [@rezaeian2017science] described a three-step methodological framework for science foresight on the basis of published research papers, consisting of life-cycle analysis, text mining and knowledge gap identification by means of automated clustering. Moro et al  @amado2018research] presented a research literature analysis based on a text mining semi-automated approach with the goal of identifying the main trends in Big Data in Marketing. The study includes dictionaries built by keywords extraction, experts’ judgment and usage of sources as Bloomberg and Google Finance. Text mining results in a matrix structure used as input to the LDA algorithm of Topic Modeling, that groups articles in logical topics characterized by key relevant terms.
+
+Baechle et al [@baechle2017big] presented a method to examine several de-identified clinical notes and discover associations between Chronic Obstructive Pulmonary Disease and medical terms. A natural language processing system is leveraged to annotate and structure clinical notes. In order to analyse the performance of retrieved results, dictionaries of terms for diseases, medications, and symptoms have been created using clinical domain knowledge.
+
+Fan et al [@chen2017revealing] used a Bio-Dynamic Topic Modeling (DTM) for revealing topics and their evolution in biomedical literature. The system of Bio-DTM mainly includes four components, documents pre-processing, bio-dictionary construction with the use of medical sources, dynamic topic models, topics analysis and visualization.
+
+Finally, Karystianis et al [@karystianis2017evaluation] proposed a knowledge-driven, rule-based approach to identify targeted information from abstracts of epidemiological studies. Their methodology involved the design and implementation of generic rules that enable the recognition of mentions of elements in the right context in epidemiological study abstracts, using dictionaries of targeted elements. Since the dictionaries are concept specific for the outcomes and exposures, they are manually crafted because of their quickly development.
+
+Regarding the NER techniques, in 2008 Sasaki et al [@sasaki2008make] suggested a novel way to improve the NER performance by adding Named Entities (NEs) to an NE dictionary without retraining. In their approach, known NEs are identified in parallel with Part-of-Speech (POS) tagging based on a general word dictionary and an NE dictionary. Then, statistical NER is trained on the POS/PROTEIN tagger outputs with correct NE labels attached. In particular, they use CRF models to predict the label of entities.
+
+In 2009, Yang et al [@xu2009named] conducted a Named Entity Mining (NEM) by using click-through data collected at a web search engine, employing the Weak Supervised Latent Dirichlet Allocation (WS-LDA) topic model technique that generates the click-through data, and learning the topic model by weak supervision from humans. The method then applies the acquired patterns into the click-through data to mine new named entities. It outputs the top ranked named entities for each class, as well as patterns of each class.
+
+In 2014, Mahalakshmi et al [@mahalakshmi2018named] described a way for automating the test process from the early stages of requirement elicitation in the development of software. They proposed a semi- supervised technique to generate test cases by identifying named entities in the given set of use cases. The Named Entity Recognizer model used is Maximum Entropy Model (MEM), that is trained by a set of features extracted from the use cases. The Named Entities found are saved in the NE dictionary in their domain which can be referred in future for other set of use cases.
+
+Also in 2014, Konkol et al [@konkol2015latent] proposed a new feature for NER based on latent semantic and explored the effect of unsupervised morphological information on these methods and on the NER system in general. Rather than using gazetteers -lists of named entities of the same type- made by human experts as semantic features, they use words and phrases clusters and use word similarity based on semantic spaces to create these clusters. These clusters are then used to represent the local semantic information. They also used topic models - LDA in particular- and enrich features by a language-independent unsupervised stemming.
+In 2015, Chen et al [@liu2015effects] investigated the effect of semantic features based on word embeddings on DNR and compare them with semantic features based on three drug dictionaries. They propose a Conditional Random Fields-based system for Drug Name Recognition. Rather than using classical semantic features based on drug dictionaries manually constructed by experts, they use word embeddings. The skip-gram model, an unsupervised algorithm, is used to induce word embeddings on unlabelled biomedical texts.
+
+Song et al [@song2015pkde4j] presented a comprehensive text-mining system that integrates dictionary-based entity extraction and rule-based relation extraction in a highly flexible and extensible framework. They developed an extensible rule engine based on dependency parsing for relation extraction in order to develop a predictive model that was effective in general. A set of rules is applied to identify whether a relation exists in a sentence and to determine its relation type.
+
+In 2017, Natarajan et al [@murugesan2017bcc] described an hybrid named entity tagging composed of three modules: the first is for text processing, which includes basic NLP pre-processing, feature extraction, and feature selection; the second is for training and model building with bidirectional Conditional Random Fields to parse the text in both directions (forward and backward); the final module is for post-processing, which includes surrounding text features, parenthesis mismatching, and two-tier abbreviation algorithm.
+
+Rinaldi et al [@basaldella2017entity] showed an approach that uses a two-stage pipeline, combining a dictionary- based entity recognizer with a machine-learning classifier. First, the dictionary stage annotates the terms that appear in selected domain ontologies. Subsequently, the machine learning stage uses this information as a feature for two machine learning algorithms, Conditional Random Fields and Neural Networks, to select the relevant entities only.
+
+Unanue et al [@unanue2017recurrent] proposed two deep learning methods to create a highly accurate Drug Name Recognition and Clinical Concept Extraction system that avoids conventional, time-consuming feature engineering and to develop more specialized word embeddings by using health domain datasets. Two deep learning methods are the Bidirectional LSTM and the Bidirectional LSTM-CRF. A CRF model is set as the baseline to compare the deep learning systems to a traditional machine learning approach and the same features are used for all the models.
+
+To solve the issue of biomedical names ambiguity in knowledge extraction, Huang et al [@huang2018novel] presented a novel approach to disambiguating gene/protein names by using context graphs. In order to obtain the domain knowledge, a context graphs is built by examining the co- occurrence word relationship in a set of abstract of document, rather than by relying on expensive experts’ judgements. They propose a method that integrates the word frequency, dispersion degree and concentration degree. Finally, entity resolution is performed by applying a Support Vector Machine.
+
+Venkatasubramanian et al [@remolona2017hybrid] developed an approach that integrates a variety of machine learning and natural language processing methods to extract information from journal articles and store them semantically in an ontology. In this work, identification of key terms - such as chemicals, drugs, processes, anatomical entities, etc. - from abstracts, and the classification of these terms into 25 classes are presented. They tested two methods - a multi-class classifier (SVM) and a multi-label classifier (HOMER)- on an annotated data set for the pharmaceutical industry.
+
+In 2018, Gupta et al [@gupta2018automatic] propose a hybrid approach that combines dependency-based parse tree with distributed semantics for generating structured information frames about particular findings from the free-text mammography reports. To do this, they follow three steps: Extraction of relation through tokenization, sentence splitting, POS tagging, Dependency Parsing and Relation extraction; Clustering of relations through Word2Vec and k-means method; Association of relations with their arguments and construction of information frames. Chen et al [@wang2018information] present a workflow for information extraction and knowledge discovery from textual geoscience data. They set up a hybrid corpus combining the generic and geology terms from geology dictionaries to train word segmentation rules of the Conditional Random Fields model. Then, they parsed documents and get a corpus constituted of content-words. Finally, they use a statistical method to analyze the semantic links between content words, and they use a knowledge graph to visualize these links and to map a clear overview of key information in an unstructured document.
+Also in 2018, An et al [@an2018deriving] propose a novel approach based on preposition semantic analysis network, where a preposition is the word that defines the relationship between two neighbouring words. In the case of patents, prepositions aid in revealing the relationships between keywords related to technologies. Patent documents largely consist of technical terms and, if the relationships between the keywords are well identified, the keyword analysis can be a useful tool for revealing the overall technological structure of the invention and the technological landscape.
+
+## A Map for Lexicons Design
+
+After the identification of the main techniques for dictionaries construction and for NER techniques used in the 23 papers, techniques were grouped into three classes: pre-processing tools, NER supervised tools and NER unsupervised tools. Table presented in figure \@ref(fig:lexdesign)  shows what of these techniques were used in the analysed papers. In the table, there is also a column that indicates the presence of expert intervention, a column that indicates the year of publication of papers and a column that gives an indication about the number of documents used as datasets for the analysis described in papers.
+
+```{r lexdesign, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Summary of state-of-art techniques for lexicons design.', message=FALSE, warning=FALSE, out.width='80%'}
+
+knitr::include_graphics("_bookdown_files/figures/final_lexicon.pdf")
+
+```
+
+The use of experts for crafting of Knowledge Base and Technical lexicons has evolved in time: at first, knowledge extraction was a completely human task in which domain experts selected manually keywords from raw texts. To date, with the development of text mining techniques just described, experts’ intervention has been reduced but not eliminated: although their intervention is considered too subjective, expensive and time-consuming, their contribution is still fundamental in the process of keywords selection and filtering, and in phase of dictionaries check and analysis check.
+
+# Future Developments
+
+One of the main evidence looking at the state-of-art literature on the topic of knowledge extraction from documents is the lacks in management studies. In particular, researchers did not study the best way to integrate NLP outputs with human activities yet. This work is a first step in the desired direction, but the research agenda is still long. 
+
+Among the many possible future works the most important at this time is the development of measurements of efficiency and effectiveness of human-machine processes for the knowledge extraction from texts. To do so we will focus on specific areas of applications and understand how to measure the impact of our designs on the day-to-day work of our stakeholders.
+
+For this reason, in further research we will investigate the impact of the method specifically on the design and marketing process. Our tools can be used in the design or the redesign of existing products; the users or the advantages of the inventions for example, can  help marketer in communicate the positive effects of a product/system, helping them in the product positioning.
+
+Another interesting area of research is the extraction of new lexicons that could be connected with the ones described in this thesis. A taxonomy instead of a dictionary could dramatically improve the quality of the output of our systems.
+
+Finally, it is important to underline that further areas of research can focus on using our methodology for the extraction of new types of entities, far from the design and marketing field. The challenge is to understand which other group of words contained in patents texts can add value to different stakeholders, and how to use design science, data science and natural language processing to solve their problems.
+
+
+
+
 

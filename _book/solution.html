@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="This document contains the PhD thesis of Filippo Chiarello.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  <meta name="twitter:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="problems-and-goals.html">
+<link rel="next" href="stakeholders-of-this-thesis.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Text Mining Techniques for Knowledge Extraction from Technical Documents</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="" data-path="context.html"><a href="context.html"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="problems-and-goals.html"><a href="problems-and-goals.html"><i class="fa fa-check"></i>Problems and Goals</a></li>
+<li class="chapter" data-level="" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i>Solution</a></li>
+<li class="chapter" data-level="" data-path="stakeholders-of-this-thesis.html"><a href="stakeholders-of-this-thesis.html"><i class="fa fa-check"></i>Stakeholders of this Thesis</a></li>
+<li class="chapter" data-level="" data-path="structure-and-rationale.html"><a href="structure-and-rationale.html"><i class="fa fa-check"></i>Structure and Rationale</a></li>
+<li class="part"><span><b>II State of the Art</b></span></li>
+<li class="chapter" data-level="1" data-path="sotatools.html"><a href="sotatools.html"><i class="fa fa-check"></i><b>1</b> Phases, Tasks, and Techniques</a><ul>
+<li class="chapter" data-level="1.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsprogram"><i class="fa fa-check"></i><b>1.1</b> Program</a></li>
+<li class="chapter" data-level="1.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimport"><i class="fa fa-check"></i><b>1.2</b> Import</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportretrieval"><i class="fa fa-check"></i><b>1.2.1</b> Document Retrieval</a></li>
+<li class="chapter" data-level="1.2.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportformat"><i class="fa fa-check"></i><b>1.2.2</b> Documents Format</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstidy"><i class="fa fa-check"></i><b>1.3</b> Tidy</a></li>
+<li class="chapter" data-level="1.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransform"><i class="fa fa-check"></i><b>1.4</b> Transform</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformsentencesplit"><i class="fa fa-check"></i><b>1.4.1</b> Sentence Splitting</a></li>
+<li class="chapter" data-level="1.4.2" data-path="sotatools.html"><a href="sotatools.html#tokenization"><i class="fa fa-check"></i><b>1.4.2</b> Tokenization</a></li>
+<li class="chapter" data-level="1.4.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformstemming"><i class="fa fa-check"></i><b>1.4.3</b> Stemming</a></li>
+<li class="chapter" data-level="1.4.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformlemmatisation"><i class="fa fa-check"></i><b>1.4.4</b> Lemmatisation</a></li>
+<li class="chapter" data-level="1.4.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformwi"><i class="fa fa-check"></i><b>1.4.5</b> Words importance metrics</a></li>
+<li class="chapter" data-level="1.4.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformpos"><i class="fa fa-check"></i><b>1.4.6</b> Part-of-Speech Tagging</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodel"><i class="fa fa-check"></i><b>1.5</b> Model</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformngrams"><i class="fa fa-check"></i><b>1.5.1</b> N-Grams</a></li>
+<li class="chapter" data-level="1.5.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeldocclass"><i class="fa fa-check"></i><b>1.5.2</b> Document Classification</a></li>
+<li class="chapter" data-level="1.5.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelsentanal"><i class="fa fa-check"></i><b>1.5.3</b> Sentiment Analsysis</a></li>
+<li class="chapter" data-level="1.5.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelnetanal"><i class="fa fa-check"></i><b>1.5.4</b> Text Clustering</a></li>
+<li class="chapter" data-level="1.5.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelner"><i class="fa fa-check"></i><b>1.5.5</b> Named Entity Recognition</a></li>
+<li class="chapter" data-level="1.5.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeltopicmodel"><i class="fa fa-check"></i><b>1.5.6</b> Topic Modelling</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsvisualize"><i class="fa fa-check"></i><b>1.6</b> Visualize</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="sotatools.html"><a href="sotatools.html#the-grammar-of-graphics"><i class="fa fa-check"></i><b>1.6.1</b> The Grammar of Graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="sotatools.html"><a href="sotatools.html#sotatoolscomunicate"><i class="fa fa-check"></i><b>1.7</b> Comunicate</a></li>
+<li class="chapter" data-level="1.8" data-path="sotatools.html"><a href="sotatools.html#sotadocumentsunderstand"><i class="fa fa-check"></i><b>1.8</b> Understand</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="sotatools.html"><a href="sotatools.html#sotadocumentsunderstandbyas"><i class="fa fa-check"></i><b>1.8.1</b> The problem of byases</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sotadocuments.html"><a href="sotadocuments.html"><i class="fa fa-check"></i><b>2</b> Documents</a><ul>
+<li class="chapter" data-level="2.1" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentspatents"><i class="fa fa-check"></i><b>2.1</b> Patents</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="sotadocuments.html"><a href="sotadocuments.html#metadata-approaches"><i class="fa fa-check"></i><b>2.1.1</b> Metadata Approaches</a></li>
+<li class="chapter" data-level="2.1.2" data-path="sotadocuments.html"><a href="sotadocuments.html#keywords-approaches"><i class="fa fa-check"></i><b>2.1.2</b> Keywords Approaches</a></li>
+<li class="chapter" data-level="2.1.3" data-path="sotadocuments.html"><a href="sotadocuments.html#natural-language-processing-approaches"><i class="fa fa-check"></i><b>2.1.3</b> Natural Language Processing approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentspapers"><i class="fa fa-check"></i><b>2.2</b> Papers</a></li>
+<li class="chapter" data-level="2.3" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentswiki"><i class="fa fa-check"></i><b>2.3</b> Wikipedia</a></li>
+<li class="chapter" data-level="2.4" data-path="sotadocuments.html"><a href="sotadocuments.html#sotadocumentstwitter"><i class="fa fa-check"></i><b>2.4</b> Social Media</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="sotadocuments.html"><a href="sotadocuments.html#economics"><i class="fa fa-check"></i><b>2.4.1</b> Economics</a></li>
+<li class="chapter" data-level="2.4.2" data-path="sotadocuments.html"><a href="sotadocuments.html#marketing"><i class="fa fa-check"></i><b>2.4.2</b> Marketing</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Methods and Results</b></span></li>
+<li class="chapter" data-level="3" data-path="patents.html"><a href="patents.html"><i class="fa fa-check"></i><b>3</b> Patents</a><ul>
+<li class="chapter" data-level="3.1" data-path="patents.html"><a href="patents.html#usersresults"><i class="fa fa-check"></i><b>3.1</b> Users</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="patents.html"><a href="patents.html#method"><i class="fa fa-check"></i><b>3.1.1</b> Method</a></li>
+<li class="chapter" data-level="3.1.2" data-path="patents.html"><a href="patents.html#results"><i class="fa fa-check"></i><b>3.1.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="patents.html"><a href="patents.html#advdrwresults"><i class="fa fa-check"></i><b>3.2</b> Advantages and Drawbacks</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="patents.html"><a href="patents.html#methodology"><i class="fa fa-check"></i><b>3.2.1</b> Methodology</a></li>
+<li class="chapter" data-level="3.2.2" data-path="patents.html"><a href="patents.html#results-1"><i class="fa fa-check"></i><b>3.2.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="patents.html"><a href="patents.html#trademakrs"><i class="fa fa-check"></i><b>3.3</b> Trademakrs</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="patents.html"><a href="patents.html#methodology-1"><i class="fa fa-check"></i><b>3.3.1</b> Methodology</a></li>
+<li class="chapter" data-level="3.3.2" data-path="patents.html"><a href="patents.html#results-2"><i class="fa fa-check"></i><b>3.3.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="papers.html"><a href="papers.html"><i class="fa fa-check"></i><b>4</b> Papers</a><ul>
+<li class="chapter" data-level="4.1" data-path="papers.html"><a href="papers.html#smtextdrivenbottomup"><i class="fa fa-check"></i><b>4.1</b> Sustainable Manufacturing: an Analysis of the 6R Framework</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="papers.html"><a href="papers.html#methodology-2"><i class="fa fa-check"></i><b>4.1.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.1.2" data-path="papers.html"><a href="papers.html#results-3"><i class="fa fa-check"></i><b>4.1.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="papers.html"><a href="papers.html#sustainable-manufacturing-an-extended-mapping"><i class="fa fa-check"></i><b>4.2</b> Sustainable Manufacturing: An Extended Mapping</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="papers.html"><a href="papers.html#methodology-3"><i class="fa fa-check"></i><b>4.2.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.2.2" data-path="papers.html"><a href="papers.html#results-4"><i class="fa fa-check"></i><b>4.2.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="papers.html"><a href="papers.html#blockchainanalysis"><i class="fa fa-check"></i><b>4.3</b> Blockchain</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="papers.html"><a href="papers.html#methodology-4"><i class="fa fa-check"></i><b>4.3.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.3.2" data-path="papers.html"><a href="papers.html#results-5"><i class="fa fa-check"></i><b>4.3.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="papers.html"><a href="papers.html#precisionagri"><i class="fa fa-check"></i><b>4.4</b> Precision Agriculture</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="papers.html"><a href="papers.html#methodology-5"><i class="fa fa-check"></i><b>4.4.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.4.2" data-path="papers.html"><a href="papers.html#results-6"><i class="fa fa-check"></i><b>4.4.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="wikipedia.html"><a href="wikipedia.html"><i class="fa fa-check"></i><b>5</b> Wikipedia</a><ul>
+<li class="chapter" data-level="5.1" data-path="wikipedia.html"><a href="wikipedia.html#technimetrochap"><i class="fa fa-check"></i><b>5.1</b> Industry 4.0: Extracting and Mapping Technologies</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="wikipedia.html"><a href="wikipedia.html#methodology-6"><i class="fa fa-check"></i><b>5.1.1</b> Methodology</a></li>
+<li class="chapter" data-level="5.1.2" data-path="wikipedia.html"><a href="wikipedia.html#results-7"><i class="fa fa-check"></i><b>5.1.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="wikipedia.html"><a href="wikipedia.html#industry-4.0-a-comparison-with-industrie-4.0"><i class="fa fa-check"></i><b>5.2</b> Industry 4.0: a Comparison with Industrie 4.0</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="wikipedia.html"><a href="wikipedia.html#methodology-7"><i class="fa fa-check"></i><b>5.2.1</b> Methodology</a></li>
+<li class="chapter" data-level="5.2.2" data-path="wikipedia.html"><a href="wikipedia.html#results-8"><i class="fa fa-check"></i><b>5.2.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="social-media.html"><a href="social-media.html"><i class="fa fa-check"></i><b>6</b> Social Media</a><ul>
+<li class="chapter" data-level="6.1" data-path="social-media.html"><a href="social-media.html#techsentanal"><i class="fa fa-check"></i><b>6.1</b> Technical Sentiment Analysis</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="social-media.html"><a href="social-media.html#methodology-8"><i class="fa fa-check"></i><b>6.1.1</b> Methodology</a></li>
+<li class="chapter" data-level="6.1.2" data-path="social-media.html"><a href="social-media.html#results-9"><i class="fa fa-check"></i><b>6.1.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Applications of the Results</b></span></li>
+<li class="chapter" data-level="7" data-path="explpatentnovel.html"><a href="explpatentnovel.html"><i class="fa fa-check"></i><b>7</b> Exploiting Patent IUnformation in Novel Ways</a><ul>
+<li class="chapter" data-level="7.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#towards-formal-definitions-of-advantages-and-drawbacks"><i class="fa fa-check"></i><b>7.1</b> Towards Formal Definitions of Advantages and Drawbacks</a></li>
+<li class="chapter" data-level="7.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#methodology-9"><i class="fa fa-check"></i><b>7.2</b> Methodology</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#advantages-and-drawbacks-extraction"><i class="fa fa-check"></i><b>7.2.1</b> Advantages and drawbacks extraction</a></li>
+<li class="chapter" data-level="7.2.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#advantages-and-drawbacks-adio-classification"><i class="fa fa-check"></i><b>7.2.2</b> Advantages and Drawbacks ADIO classification</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="explpatentnovel.html"><a href="explpatentnovel.html#results-10"><i class="fa fa-check"></i><b>7.3</b> Results</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#patent-set"><i class="fa fa-check"></i><b>7.3.1</b> Patent set</a></li>
+<li class="chapter" data-level="7.3.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#extraction-of-advantages-and-drawbacks"><i class="fa fa-check"></i><b>7.3.2</b> Extraction of Advantages and Drawbacks</a></li>
+<li class="chapter" data-level="7.3.3" data-path="explpatentnovel.html"><a href="explpatentnovel.html#a-d-i-o-representation"><i class="fa fa-check"></i><b>7.3.3</b> A-D-I-O Representation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="explpatentnovel.html"><a href="explpatentnovel.html#discussion"><i class="fa fa-check"></i><b>7.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html"><i class="fa fa-check"></i><b>8</b> Enriched dictionaries for Innovation</a><ul>
+<li class="chapter" data-level="8.1" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#an-overview-of-dictionaries-for-technology-intelligence"><i class="fa fa-check"></i><b>8.1</b> An overview of dictionaries for technology intelligence</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#publicly-available-dictionaries"><i class="fa fa-check"></i><b>8.1.1</b> Publicly available dictionaries</a></li>
+<li class="chapter" data-level="8.1.2" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#research-based-dictionaries"><i class="fa fa-check"></i><b>8.1.2</b> Research-based dictionaries</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#the-value-added-of-enriched-dictionaries"><i class="fa fa-check"></i><b>8.2</b> The value added of enriched dictionaries</a></li>
+<li class="chapter" data-level="8.3" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#methodology-10"><i class="fa fa-check"></i><b>8.3</b> Methodology</a></li>
+<li class="chapter" data-level="8.4" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#results-11"><i class="fa fa-check"></i><b>8.4</b> Results</a></li>
+<li class="chapter" data-level="8.5" data-path="enriched-dictionaries-for-innovation.html"><a href="enriched-dictionaries-for-innovation.html#discussions"><i class="fa fa-check"></i><b>8.5</b> Discussions</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="impactresuser.html"><a href="impactresuser.html"><i class="fa fa-check"></i><b>9</b> Impact of Research from the Perspective of Users</a><ul>
+<li class="chapter" data-level="9.1" data-path="impactresuser.html"><a href="impactresuser.html#methodological-challenges"><i class="fa fa-check"></i><b>9.1</b> Methodological challenges</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="impactresuser.html"><a href="impactresuser.html#variability-in-the-identification-of-outcomes-and-users"><i class="fa fa-check"></i><b>9.1.1</b> Variability in the identification of outcomes and users</a></li>
+<li class="chapter" data-level="9.1.2" data-path="impactresuser.html"><a href="impactresuser.html#sources-of-information"><i class="fa fa-check"></i><b>9.1.2</b> Sources of information</a></li>
+<li class="chapter" data-level="9.1.3" data-path="impactresuser.html"><a href="impactresuser.html#text-based-impact-assessment"><i class="fa fa-check"></i><b>9.1.3</b> Text-based impact assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="impactresuser.html"><a href="impactresuser.html#methodology-11"><i class="fa fa-check"></i><b>9.2</b> Methodology</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="impactresuser.html"><a href="impactresuser.html#operationalizing-user-groups-using-natural-language-processing-techniques"><i class="fa fa-check"></i><b>9.2.1</b> Operationalizing user groups using Natural Language Processing techniques</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="impactresuser.html"><a href="impactresuser.html#from-text-extraction-to-indicators"><i class="fa fa-check"></i><b>9.3</b> From text extraction to indicators</a><ul>
+<li class="chapter" data-level="" data-path="impactresuser.html"><a href="impactresuser.html#frequency"><i class="fa fa-check"></i>Frequency</a></li>
+<li class="chapter" data-level="" data-path="impactresuser.html"><a href="impactresuser.html#diversity"><i class="fa fa-check"></i>Diversity</a></li>
+<li class="chapter" data-level="" data-path="impactresuser.html"><a href="impactresuser.html#specificity"><i class="fa fa-check"></i>Specificity</a></li>
+<li class="chapter" data-level="9.3.1" data-path="impactresuser.html"><a href="impactresuser.html#the-meaning-of-frequency-diversity-and-specificity-indicators-for-the-analysis-of-research-impact"><i class="fa fa-check"></i><b>9.3.1</b> The meaning of Frequency, Diversity and Specificity indicators for the analysis of research impact</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="impactresuser.html"><a href="impactresuser.html#data"><i class="fa fa-check"></i><b>9.4</b> Data</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="impactresuser.html"><a href="impactresuser.html#description-of-the-corpus"><i class="fa fa-check"></i><b>9.4.1</b> Description of the corpus</a></li>
+<li class="chapter" data-level="9.4.2" data-path="impactresuser.html"><a href="impactresuser.html#preliminary-analysis-of-the-corpus"><i class="fa fa-check"></i><b>9.4.2</b> Preliminary analysis of the corpus</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="impactresuser.html"><a href="impactresuser.html#results-12"><i class="fa fa-check"></i><b>9.5</b> Results</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="impactresuser.html"><a href="impactresuser.html#descriptive-analysis"><i class="fa fa-check"></i><b>9.5.1</b> Descriptive analysis</a></li>
+<li class="chapter" data-level="9.5.2" data-path="impactresuser.html"><a href="impactresuser.html#findings-by-subject-area"><i class="fa fa-check"></i><b>9.5.2</b> Findings by subject area</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="impactresuser.html"><a href="impactresuser.html#discussion-1"><i class="fa fa-check"></i><b>9.6</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html"><i class="fa fa-check"></i><b>10</b> Defining Industry 4.0 Professional Archetypes</a><ul>
+<li class="chapter" data-level="10.1" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html#digital-competences-development"><i class="fa fa-check"></i><b>10.1</b> Digital Competences Development</a></li>
+<li class="chapter" data-level="10.2" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html#methodology-12"><i class="fa fa-check"></i><b>10.2</b> Methodology</a></li>
+<li class="chapter" data-level="10.3" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html#the-archetypes"><i class="fa fa-check"></i><b>10.3</b> The Archetypes</a></li>
+<li class="chapter" data-level="10.4" data-path="defining-industry-4-0-professional-archetypes.html"><a href="defining-industry-4-0-professional-archetypes.html#discussions-1"><i class="fa fa-check"></i><b>10.4</b> Discussions</a></li>
+</ul></li>
+<li class="part"><span><b>V Conclusions</b></span></li>
+<li class="chapter" data-level="11" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html"><i class="fa fa-check"></i><b>11</b> Lexicons Design for Mining Technical Knowledge</a><ul>
+<li class="chapter" data-level="11.1" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html#the-knowledge-bases-and-technical-lexicons"><i class="fa fa-check"></i><b>11.1</b> The Knowledge Bases and Technical Lexicons</a></li>
+<li class="chapter" data-level="11.2" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html#the-history-of-lexicons-design"><i class="fa fa-check"></i><b>11.2</b> The history of Lexicons Design</a></li>
+<li class="chapter" data-level="11.3" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html#a-map-for-lexicons-design"><i class="fa fa-check"></i><b>11.3</b> A Map for Lexicons Design</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="future-developments.html"><a href="future-developments.html"><i class="fa fa-check"></i><b>12</b> Future Developments</a></li>
+<li class="chapter" data-level="" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i>Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="solution" class="section level1 unnumbered">
+<h1>Solution</h1>
+<p>Many frameworks and models exists that describes the process of knowledge extraction from data <span class="citation">(Kanehisa et al. <a href="#ref-kanehisa2013data">2013</a>, <span class="citation">Bellinger, Castro, and Mills (<a href="#ref-bellinger2004data">2004</a>)</span>, <span class="citation">Ackoff (<a href="#ref-ackoff1989data">1989</a>)</span>, <span class="citation">Liew (<a href="#ref-liew2007understanding">2007</a>)</span>)</span>. All this models brings contribution to the literature but with a focus on the <em>behavioral-science paradigm</em>, thus with the goal to develop theories about the analysis, design, implementation, management, and use of data analysis systems.</p>
+<p>For the present thesis we adopted a more actionable framework popular in the field of data science: the Data Science Workflow described by Wickham <span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>)</span>. We adopted this model because is a generic workflow that can be used as guideline to design any knowledge extraction system. The workflow is represented in figure <a href="solution.html#fig:mainworkflow">.</a>.</p>
+<p>The workflow is a model of the tools needed in a typical data science project. Since data science is a huge field, and there’s no way that a model can master it, the goal of the model is to give a solid foundation in the most important tools.These tools are used in every data science project, but for most projects they are not enough. The tools represented in the model has been chosen following a rough Pareto 80-20 rule <span class="citation">(Pareto and others <a href="#ref-pareto1971manual">1971</a>)</span>.</p>
+<p>The workflow is divided in the sequent tasks:</p>
+<ul>
+<li><p><em>Import:</em> take data stored in a file, database, or web API, and load it into a computer.</p></li>
+<li><p><em>Tidy:</em> Tidying data means storing it in a consistent form that matches the semantics of the dataset with the way it is stored. In brief, when the data is tidy, each column is a variable, and each row is an observation. Tidy data is important because the consistent structure lets focus on questions about the data and not in its shape.</p></li>
+<li><p><em>Transform:</em> Transformation includes narrowing in on observations of interest, creating new variables that are functions of existing variables, and calculating a set of summary statistics.</p></li>
+<li><p><em>Visualize:</em> Visualisation is a fundamentally human activity. A good visualisation will show unexpected information, or raise new questions about the data. A good visualisation might also hint that the hypothesis is wrong, or there is the need to collect different data. Visualisations can surprise, but do not scale particularly well because they require a human to interpret them.</p></li>
+<li><p><em>Model:</em> Model is complementary to visualize. Once the hypothesis are sufficiently precise, a model can answer them. Models are a fundamentally mathematical or computational tool, so they generally scale well. Even when they don’t, it’s usually cheaper to buy more computers than it is to buy more brains. But every model makes assumptions, and by its very nature a model cannot question its own assumptions. That means a model cannot fundamentally surprise.</p></li>
+<li><p><em>Communicate</em>: The last step is communication, an absolutely critical part of any project. As stated before communication phase is crucial, and the results of a design science based research has to be comprehensible and usable to a technical audience a managerial audience.</p></li>
+<li><p><em>Program:</em> To design knowledge extraction tool programming is nowadays essential. There is no need to be an expert programmer to design effective knowledge extraction tool, but learning more about programming allows to automate common tasks, and solve new problems with greater ease.</p></li>
+<li><p><em>Understand:</em> The greatest feature of a knowledge extraction system is not to detect the large trends- they are visible anyway; it is, rather, to detect weak signals, or information that initially appears with low frequency <span class="citation">(Apreda et al. <a href="#ref-apreda2016functional">2016</a>)</span>. These signals escape from traditional statistical detection techniques, exactly because it is difficult to distinguish them from pure statistical noise. It is hard to distinguish weak-signals from noise only using algorithms: understanding the problem to be solved and having domain expertise is essential. For this reason <em>understand</em> is not only part of the process of analysis, but is maybe the most important task with respect to the present thesis.</p></li>
+</ul>
+<p>A full state of the art on all of these tasks as been conducted in section <a href="sotatools.html#sotatools">1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:mainworkflow"></span>
+<img src="_bookdown_files/figures/main_work_flow.png" alt="A general workflow for the process of data analysis. Readapted from Wickham (2016)" width="80%" />
+<p class="caption">
+Figure .: A general workflow for the process of data analysis. Readapted from Wickham (2016)
+</p>
+</div>
+<p>As stated before, the focus of the present thesis is on the interaction between men and machines in the <em>extraction of knowledge from technical documents</em>. This focus has two main reasons:</p>
+<ol style="list-style-type: decimal">
+<li><p>Documents written in natural language contains knowledge by design. Their goal in fact is the explication of implicit knowledge <span class="citation">(Masters <a href="#ref-masters1992knowledge">1992</a>, <span class="citation">Graesser and Clark (<a href="#ref-graesser1985structures">1985</a>)</span>)</span>. With the growth of information of the last years also this kind of documents has grown in number and there exist a huge opportunity for business to manage this knowledge.</p></li>
+<li><p>Thank to the improvement in the Artificial Intelligence field, Natural Language Processing has dramatically increased its effectiveness in the last years <span class="citation">(Russell and Norvig <a href="#ref-russell2016artificial">2016</a>)</span>. Now powerful tools for the analysis of documents are available to every one that has a little understating of programming <span class="citation">(Arnold <a href="#ref-Taylor2017Tidy">2017</a>, <span class="citation">Benoit and Matsuo (<a href="#ref-Kenneth2018spacyr">2018</a>)</span>, <span class="citation">Wijffels (<a href="#ref-Wijffels2018udpipe">2018</a>)</span>)</span>.</p></li>
+</ol>
+<p>The design processes carried out in this thesis uses state of the art Natural Language Processing techniques or algorithms that only in few cases has been deeply modified in the design process. In other words the value of the output is not in the modified natural language algorithm but on the whole process of knowledge extraction that goes from the decision of which documents to analyze to the communication of the results. In fact, great value is added to the design process by the decision of which documents mine to extract knowledge. To maximize this value the problem space has to be searched in term of <em>business relevant knowledge content of documents</em>. Since this problem space is huge (all the documents of which a company is stakeholder) the decision can be considered as a feature of the method, as valuable as (or even more in this case) the algorithm of natural language processing.</p>
+<p>To decide the documents on which the thesis has the focus, section <a href="sotadocuments.html#sotadocuments">2</a> contains a review of the characteristics and on the state of the art of the analysis on four different document types: patents, papers, Wikipedia and social media.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-kanehisa2013data">
+<p>Kanehisa, Minoru, Susumu Goto, Yoko Sato, Masayuki Kawashima, Miho Furumichi, and Mao Tanabe. 2013. “Data, Information, Knowledge and Principle: Back to Metabolism in Kegg.” <em>Nucleic Acids Research</em> 42 (D1). Oxford University Press: D199–D205.</p>
+</div>
+<div id="ref-bellinger2004data">
+<p>Bellinger, Gene, Durval Castro, and Anthony Mills. 2004. “Data, Information, Knowledge, and Wisdom.”</p>
+</div>
+<div id="ref-ackoff1989data">
+<p>Ackoff, Russell L. 1989. “From Data to Wisdom.” <em>Journal of Applied Systems Analysis</em> 16 (1): 3–9.</p>
+</div>
+<div id="ref-liew2007understanding">
+<p>Liew, Anthony. 2007. “Understanding Data, Information, Knowledge and Their Inter-Relationships.” <em>Journal of Knowledge Management Practice</em> 8 (2): 1–16.</p>
+</div>
+<div id="ref-wickham2016r">
+<p>Wickham, Hadley, and Garrett Grolemund. 2016. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. “ O’Reilly Media, Inc.”</p>
+</div>
+<div id="ref-pareto1971manual">
+<p>Pareto, Vilfredo, and others. 1971. “Manual of Political Economy.” AM Kelley.</p>
+</div>
+<div id="ref-apreda2016functional">
+<p>Apreda, Riccardo, Andrea Bonaccorsi, Felice dell’Orletta, and Gualtiero Fantoni. 2016. “Functional Technology Foresight. a Novel Methodology to Identify Emerging Technologies.” <em>European Journal of Futures Research</em> 4 (1). Springer: 13.</p>
+</div>
+<div id="ref-masters1992knowledge">
+<p>Masters, Richard SW. 1992. “Knowledge, Knerves and Know-How: The Role of Explicit Versus Implicit Knowledge in the Breakdown of a Complex Motor Skill Under Pressure.” <em>British Journal of Psychology</em> 83 (3). Wiley Online Library: 343–58.</p>
+</div>
+<div id="ref-graesser1985structures">
+<p>Graesser, Arthur C, and Leslie F Clark. 1985. “Structures and Procedures of Implicit Knowledge:(Advances in Discourse Processes).” <span class="math inline">\(\{\)</span>Ablex Publishing<span class="math inline">\(\}\)</span>.</p>
+</div>
+<div id="ref-russell2016artificial">
+<p>Russell, Stuart J, and Peter Norvig. 2016. <em>Artificial Intelligence: A Modern Approach</em>. Malaysia; Pearson Education Limited,</p>
+</div>
+<div id="ref-Taylor2017Tidy">
+<p>Arnold, Taylor. 2017. “A Tidy Data Model for Natural Language Processing Using cleanNLP.” <em>The R Journal</em> 9 (2): 1–20. <a href="https://journal.r-project.org/archive/2017/RJ-2017-035/index.html" class="uri">https://journal.r-project.org/archive/2017/RJ-2017-035/index.html</a>.</p>
+</div>
+<div id="ref-Kenneth2018spacyr">
+<p>Benoit, Kenneth, and Akitaka Matsuo. 2018. <em>Spacyr: Wrapper to the ’spaCy’ ’Nlp’ Library</em>. <a href="https://CRAN.R-project.org/package=spacyr" class="uri">https://CRAN.R-project.org/package=spacyr</a>.</p>
+</div>
+<div id="ref-Wijffels2018udpipe">
+<p>Wijffels, Jan. 2018. <em>Udpipe: Tokenization, Parts of Speech Tagging, Lemmatization and Dependency Parsing with the ’Udpipe’ ’Nlp’ Toolkit</em>. <a href="https://CRAN.R-project.org/package=udpipe" class="uri">https://CRAN.R-project.org/package=udpipe</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="problems-and-goals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stakeholders-of-this-thesis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["thesis_source.pdf", "thesis_source.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

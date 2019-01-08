@@ -6,147 +6,85 @@ output:
 ---
 # (PART) Introduction {-}
 
-# Problems and Goals {#introproblems}
+# Context {-}
 
-## Big Data, Many Information, Less Knowledge?
+The information field human beings are living in has changed dramatically over the last years, effecting economy, technology, culture and society. And yet, its stronger mark has been over business systems [@Arun2006Firm; @jin2015significance; @degryse2016digitalisation; @john2014big; @o2016weapons] that to strive and stay competitive, have to master methods and tools to solve the information overload issue [@levitin2014organized; @feng2015competing].
 
-Se l'ambiente informativo in cui noi esseri umani viviamo è radicalmente cambianto negli ultimi anni, con evidenti impatti su economia, tecnologia, cultura e società, l'impatto che ha avuto sui sistemi aziendali è ancora più forte [@Arun2006Firm; @jin2015significance; @degryse2016digitalisation; @john2014big; @o2016weapons]. Una persona infatti può raggiungere i suoi obiettivi anche senza il bisogno di gestire questa informazione (anche se con ormai difficolà non trascurabili). Ciò non è vero per le aziende: per sopravviere ed essere competitive hanno la necessità di avere dei chiari metodi e strumenti per risolvere il problema della information overload [@levitin2014organized; @feng2015competing]. 
+In order to understand what companies go through in terms of challenges, we have to wear their shoes. Let’s say that the amount of information (such as tactile, visual and sounds, rumors and conversations, the content of business papers) gathered in the location we live in starts to rise quickly. To survive such an environment, we would need new and more powerful senses; we would probably need outside systems to help us processing information. Considering the mole of digital information produced in the past 10 years, companies have found themselves in our hypothetical scenario: their digital universe is chaotic and constantly expanding. In fact, this very universe will grow from 2005 to 2020, from 130 exabytes to 40,000 exabytes (40 zettabytes) [@gantz2012digital], as shown in figure \@ref(fig:biginfo).
 
-Per capire le sfide che devono affrontare le aziende oggi, dobbiamo inanzitutto svolgere un esercizio di immedesimazione nei loro confronti. Immaginiamo che le la quantità di informazione di nostro interesse proveniente dall'ambiente nel quale viviamo (le informazioni visive, tattili e sonore, cio che dicono le persone con le quali interagiamo, il contenuto dei documenti importanti per il lavoro che svogliamo ecc..) inizi velocemente ad aumentare. Per sopravvivere in un ambiente di questo genere, avremmo bisogno di sensi più potenti o forse di nuovi; potremmo inoltre aver necessità sistemi esterni che ci aiutino nel compito della processazione delle informazioni. Misurando la quantità di informazione digitale prodotta negli ultimi 10 anni, notiamo come questa situazione è simile a quella che le aziende stanno vivendo: si ritrovano in un universo digitale caotico ed in continua espansione. Questo universo digitale crescerà di un fattore di 300 dal 2005 al 2020, da 130 exabytes a 40,000 exabytes (40 zettabytes) [@gantz2012digital], come mostrato in figura \@ref(fig:biginfo).
-
-Le nuove tecnologie digitali inoltre non stanno avendo un impatto solo fuori le aziende, ma anche dentro di esse [@lasi2014industry; @brettel2014virtualization; @russmann2015industry]. Grazie ad industria 4.0 è infatti diventato possibile creare a poco prezzo un duale digitale dell'azienda, o in altri termini è economicamente fattibile oggi estrarre informazione da qualsiasi processo aziendale [@davies2015industry]. Questo che pare essere un enorme vantaggio per le aziende, crea il problema di una information overload anche interna, che necessità di essere gestita proprio come quella esterna. 
-
+Moreover, new digital technologies have had an impact outside but most importantly inside companies [@lasi2014industry; @brettel2014virtualization; @russmann2015industry]. Thanks to Industry 4.0, it is possible to create a low-budget digital copy of the company; in other terms, it is economically sustainable to extract information from any business process [@davies2015industry].  Even though it seems a great advantage for companies, it leads to an information overload as an internal issue which should be handled as an external one.
 
 ```{r  biginfo, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Hisogram of the eximated Zettabites of information produced from 2005 to 2020.', message=FALSE, warning=FALSE, out.width='60%'}
 
+ 
+
 tabletmp <- readxl::read_xlsx("_bookdown_files/tables/data_growth.xlsx") 
 
+ 
+
 ggplot2::ggplot(tabletmp,ggplot2::aes(x= Year, y=`Information [ZB]`)) +
+
   ggplot2::geom_bar(stat="identity", color= "black", fill="grey") +
+
   ggplot2::theme_bw()
 
-```
-
-Un primo problema in tale contesto di pressione informativa crescente, è la difficoltà nel capire quali informazioni hanno valore per una azienda [@larose2014discovering;  @chemchem2015data; @kasemsap2015role] . Per valore qui si intende tutte le informazioni che possono aiutare l'azienda a costruire conoscenza in modo tale da raggiungere i propri obiettivi (sia in termini di vision che di mission). Questo tipo di analisi richiede infatti sia una profonda comprensione delle tecnologie digitali, che di business acumen: non tutte le aziende sono in grado di avere al proprio interno (o comunque di procurarsi) queste skills [@hecklau2016holistic;  @davenport2012data; @provost2013data; @van2014data], considerando inoltre che il business acumen è fortemente dipendente dal settore nel quale si lavora. Come conseguenza è stato stimato che solo una piccola frazione dell'unvierso digitale è stato esplorato con l'obiettivo di estrarre vantaggio competitivo [@data2012bigger]. La percenutale di dati ancora untapped è stimata essere del 25% ed è destinata a cresce al 33% entro il 2020. Questo valore untapped può essere trovato in pattern nascosti nei social media, correlazioni fra studi scientifici, studi medici intersecati con studi sociologici, dall'analisi massima di documenti legislativi e così via.
-
-Sempre in relazione alla difficoltà del reperimento di valuable information, va considerato il fatto che sempre più spesso le informazioni ad alto impatto non sono più di tipo settoriale (tipiche di un solo knowledge field), ma nascono in contesti multidisciplinari rendendole ancora più difficili da individuare. Tali risorse anche se accessibili dagli esperti di un certo settore sono per essi di difficile comprensione, poichè per definizione lontane dal settore stesso e rese esplicite utilizzando un gergo che pesca da diversi settori disciplinari. A dimostrazione di tale fenomeno citiamo il recente aggiornamento della CPC (Cooperative Patent Classification) nella quale è stata introdotta la classe B33 sulle tecnologie di addive manufacturing [@cpc2014], campo tecnologico ad alto contenuto multidisciplinare (scienze dei materiali, ingeria meccanica, informatica e robotica) [@mueller2012additive]. Avere una nuova CPC significa un forte impatto sul patent officie, il quale deve foramre nuovi examiner per quella specifica CPC: questo è segno che i prcedenti examiner non avevano il range di competenze necessarie, e non è possibile a breve termine muoversi dall'interno di un dominio per conquistale. Se i nuovi settori tecnologici ibridi hanno un impatto così forte sull'European Patent Office, che ha chiaramente un accesso priviligenta sia alla conoscenza su un certo settore sia alle risorse umane necessarie per gestirlo, possiamo immaginare quanto forte possa essere tale impatto su una azienda manifatturiera. 
-
-In seconda istanza, note le potenziali fonti di informazione che possono portare valore, è necessario capire quali strumenti è possibile utilizzare per estrarre questo valore sotto forma di conoscenza [@hand2007principles; @mining2006data]. Come mostrato nell'esempio precedente, una azienda si trova in una posizione di pericolo se l'informazione cresce in quantità ed in direzioni tali da rendere impossibile un suo corretto processamento. In altri termini, l'aumento di informazione mostrato in figura  \@ref(fig:biginfo) non implica un aumento di conoscenza, ma al contrario è probabile che contribuisca ad impedirne la crescita [@allen2003information; @herbig1994effect]. Un celebre esempio di tale fenomeno è il computer boom dei decenni 1970 e 1980, il quale implicò un declinio temporaneo nella produttività generale sia _economica_ che _scentifica_ [@solow1987we]. Tale fenomeno viene identificato con il nome di productivity paradox. 
-
-Dal punto di vista _economico_, evidenza di ciò è che i computer in quel periodo ebbero impatti su molti indicatori ma non su quelli di produttività economica (Robert Solow in 1987), e che gli stati uniti furono vittima di quattro recessioni tra il 1969 ed il 1982[@national2010us]. 
-
-Il progresso _scientifico_ è invece più difficile da misurare di quello economico [@hirsch2005index; @hauschildt1991towards; @van2000evaluation; @erno2011measuring; @bornmann2013societal; @bornmann2014evaluate; @bornmann2017does]. Non è infatti chiaro che misure possano essere utilizzate per misurare quanto uno stato sia efficace nel creare conoscenza, nonostante la letteratura sterminata su tale tema. Una proxy largamente utilizzata per effettuare tale misura, è il numero di brevetti prodotti, letto in proporzione rispetto a l'investimento in ricerca e sviluppo: se diventa meno costoso per le aziende innovare, questo suggerisce che le aziende stanno usando le informazioni che hanno a disposizione in maniera più efficiente e che sono in grado di trasformarle in conoscenza utilie all'innovazione. Per misurare tale costo, si può vedere quanto una nazione spende ogni anno per produrre in media un brevetto. Tale metrica ha ovviamente una serie di problematiche (fra le quali il fatto che gli investimenti per brevettare non provengono solo da fonti pubbliche, un brevetto può far parte di una famiglia di brevetti e la United Stated Patent Office può processare brevetti non sviluppati in America) ma è interessante notare l'andamento che adotta nel grafico di figura \@ref(fig:bigexpendifure). Nel 1960 gli stati uniti infatti hanno speso \$1000  (aggiustati per l'infalizione al 2015) per ogni patent application. Tale spesa inizialmente scende, poi sale con l'arrivo dei computer nel 1986 con un picco di 735\$  [@silver2012signal]. La produttività ha nuovamente un crescita negli anni '90, quando ormai i computer erano diventati di largo utilizzo non solo per il business ma anche per applicazioni di tutti i giorni. In altri termini, la gobba presente intorno al decennio '80 nel grafico in figura \@ref(fig:bigexpendifure)  mostra come  il sistema Ameica è stato meno efficente nel produrre nuova conoscenza a seguito dell'introduzione dei computer nelle aziende. Un simile effetto è inoltre visibile quando nei primi anni del 2000 internet è entrato di fatto in tutte le aziende. 
-
-
-```{r  bigexpendifure, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Trend in time (from 1964 to 2014) of the Research and Development Spending per Patent Application in dollars', message=FALSE, warning=FALSE, out.width='60%'}
-
-tabletmp <- readxl::read_xlsx("_bookdown_files/tables/redexpenditure.xlsx") 
-
-tabletmp <- dplyr::mutate(tabletmp, "R&D Spending per Patnet Application"= (`Total R&D Expenditure`/`Total Patent Applications`)*1000000)
-
-ggplot2::ggplot(tabletmp,ggplot2::aes(x= Year, y=`R&D Spending per Patnet Application`)) +
-  ggplot2::geom_line(stat="identity", color= "black", fill="grey") +
-  ggplot2::theme_bw()
+ 
 
 ```
 
-Oggi, nell'era dei big data, le aziende (ma anche le università) hanno dunque bisogno di nuovi "sensi" ed "aiutanti" che le assistano nella estrazione e consolidazione della conoscenza dalle crescenti fonti di informazioni disponibili. 
+# Problems and Goals {-}
 
-La presente tesi ha come primo macro obiettivo comprendere quali fonti di informazioni ad oggi contengono maggiore valore ancora non dischiuso e quali metodologie e strumenti posso essere utilizzati a tale scopo. 
+Inside this rising information pressure, the general goal of the present Thesis is to extract and synthesise knowledge from these information.
 
-## A New Challenge for Management Engineers
+The first problem is to understand which pieces of information are relevant to a certain company [@larose2014discovering;  @chemchem2015data; @kasemsap2015role]. It is considered relevant all the information that helps the company building knowledge as a tool to achieve their goals (both vision and mission). This kind of analysis requires a deep understanding of digital technologies and of business acumen: not all companies have those skills [@hecklau2016holistic;  @davenport2012data; @provost2013data; @van2014data], considering that business acumen is strongly influenced by the field of work. It has been estimated that just a small portion of the digital universe has been explored with the purpose of extracting competitive gain [@data2012bigger]. The estimated percentage of untapped data is 25% and it is going to rise to 33% within 2020. This untapped value can be found in hidden pattern in social media, correlations among scientific studies, overlaps between medical and sociological studies, beneath complex analysis in legal documents and so on.
 
-Il problema del digital impact è stato già affrontato da molte discipline (management science, computer science, sociology, informatics) ma la presenti tesi offre (to our best knowledge) una visione nuova che cerca di tenere insieme metodologie di engineering management e di strumenti di natural language processing. L'ipotesi che nel presente documento si inizia ad indagare, è che esiste un ampio campo di applicazione per gli strumetni tipici del text mining alla soluzione di problemi proprio dell'engeneering management, come del resto è la digital transformation. 
+The difficulty of gathering valuable information is related to high-impact information being no longer sectorial (belonging to one knowledge field); instead, this information comes from multi-disciplinary fields, making it even harder to spot. Although those resources are accessible to experts from a certain field they may have troubles comprehending a mixed jargon of overlapping areas far from their own. To show the phenomena, here is a recent update from CPC (Cooperative Patent Classification) in which it has been added the class B33 regarding additive manufacturing technologies [@cpc2014], a technological field with a vast multidisciplinary content (material sciences, mechanic, computer, robotic engineering) [@mueller2012additive]. A new CPC means a great impact on patent office, whose job is to form new examiners for that specific CPC: it means that the previous examiners did not have the needed set of skills which are not acquirable inside a domain in a short period of time. So, if new hybrid technological fields have such a relevant impact on European Patent Office (which has special access to both knowledge and human resources needed to run a certain field) we can imagine how this impact is determinant onto a manufacturing company.
 
-Sebbene ingegneria gestionale in quanto branca relativamente nuova dell'Ingegneria non sia universalmente strutturata in modo univoco, nella maggior parte delle Università essa nasce come un indirizzo economico-organizzativo di ingegneria industriale. Gli studi di ingegneria gestionale in Italia nascono molto tempo dopo la creazione del corso di laurea che nel resto del mondo (ed in particolare negli Stati Uniti d'America, dove il corso di laurea è nato degli anni '30 e si chiama "Industrial Engineering").
+Secondly, knowing the potential sources of information that can bring value, it is essential to understand which tools can be used to extract this value in the form of knowledge [@hand2007principles; @mining2006data]. As previously shown, a company is at risk if the information grows in quantity and directions impossible to process. In other terms, the rise of information shown in picture \@ref(fig:biginfo) does not imply the rise of knowledge; in fact, it is possible that it can prevent it from growing [@allen2003information; @herbig1994effect]. That phenomena is known as the productivity paradox.
 
-L'ingegnere gestionale, in tutti i casi, riceve una preparazione focalizzata alla specializzazione nel campo della gestione della produzione industriale, in particolare nella pianificazione e programmazione integrata delle risorse dell'impresa . Parallelamente vengono impartiti corsi di gestione dei progetti (Project management), controllo statistico della qualità, logistica e ricerca operativa per la modellazione di problemi tipici delle imprese. Nell'ambito della gestione di impresa vengono studiate materie riguardanti la gestione dell'innovazione, delle risorse umane, il ridisegno dei processi aziendali nonché solide basi riguardanti il posizionamento strategico e tattico dell'impresa. Infine, alcuni corsi di studi negli ultimi anni, offrono particolare attenzione alla gestione delle informazioni aziendali mediante l'utilizzo dei sistemi informatici e le tecnologie di Business Intelligence.
+Nowadays, in the big data era, companies (and universities too) need new _senses_ and _helpers_ who can assist them in the processes of extraction and grounding of knowledge, considering the growing amount of resources and information available. For these reason the emerging field of Data Science had a huge success in the last decade with a great focus on the study of artificial intellingece and machine learning. 
 
-L'ingegneria Gestionale dunque nasce occupandosi di attività ad altà ripetitività. Tale disciplina si porta dietro metodologie ingegneristiche applicate a sistemi inernti, cercando di operare in sistemi socio-tecnici.
+It is clear that data science is not manageable by machines alone. A system capable of extracting knowledge from large amounts of information, which companies have to deal with, needs both humans and machines.
 
-Negli ultimi anni però, a causa della digitalization, le attività a maggiore valore aggiunto per le aziende sono scarsamente standardizzate e non ripetitive. La grande mole di informazioni che sta cambiando l'ambiente di vita delle aziende ha infatti un impatto enorme su Research and Development, Design, Marketing e Human Resources Management: in pratica tutte le funzioni a più alto contenuto strategico e quindi di knowledge. Su processi volatili, eterogenei e a scarsa ripetitività l'ingegnere gestionale rischia di non avere gli strumenti adatti. 
+Human-computer interaction, HCI, also called human-machine interaction (wide spectrum connotation, mostly used in the literature in Informatics), is the study of the interaction between people and computers to design and develop interactive systems to be usable, trustworthy and able to support and facilitate human activity.
 
-Il secodno macro obiettivo quindi è capire come l'ingegneria gestionale possa presidiare queste aree attraverso il design ti processi innovativi in grado di gestire la nuova complessità con la quale le aziende devo confrontarsi.
+The in-depth study of the interaction covers informatics, psychology, cognitive sciences, ergonomics, design, information science, artificial intelligence, natural language and others.
 
-## Human & Machines
+The main goal of this discipline is the usability. The usability, as stated in the norm ISO 9241, is the measure in which a product can be used by specific users, to achieve specific goals with efficacy, efficiency and satisfaction in a specific context of use. The reasons why usability is important are:  
 
-Quello che risulta chiaro è che Datascience non è fattibile da sole macchine. Un sistema in grado di estrarre conoscenza dalla grande mole di informazione nella quale le aziende sono immesrse, necessità di both men and machines.
+- increase efficiency for users (more productivity)
 
-L'interazione uomo-computer (in inglese human-computer interaction, HCI) anche detta interazione uomo-macchina (traduzione di senso più ampio ma oramai ampiamente utilizzata in letteratura nel campo informatico) è lo studio dell'interazione tra le persone (utenti) e computer per la progettazione e lo sviluppo di sistemi interattivi che siano usabili, affidabili e che supportino e facilitino le attività umane.
+- decrease in errors (increase in security)
 
-Lo studio approfondito dell'interazione copre aspetti di informatica, psicologia, scienze cognitive, ergonomia, design, scienza dell'informazione, intelligenza artificiale, linguaggio naturale ed altre materie.
+- decrease the need for training (lower costs)
 
-Il principale obiettivo di questa disciplina è l'usabilità. L'usabilità, secondo la norma ISO 9241 [@jokela2003standard] è la misura con cui un prodotto può essere usato da specifici utenti, per raggiungere specifici obiettivi con efficacia, efficienza e soddisfazione in uno specifico contesto d'uso. I motivi per cui l'usabilità è importante sono:
+- decrease the need of support for users
 
-- aumenta l'efficienza degli utenti (più produttività)
-- si riducono gli errori (aumenta la sicurezza)
-- si riduce il bisogno di addestramento (meno costi)
-- si riduce il bisogno di supporto degli utenti
-- aumenta le vendite
+- increase sales
 
-In quest'ottica si apre ampio margine di operazione per l'ingegneria gestionale con l'obiettivo di saper mettere insieme la conoscenza degli esperti e la forza computazionale delle macchine. Questa deve essere una interazione, e non è pensabile in ambiti fortemente strategici delle aziende e ad alto contenuto di conoscenza di dominio,  di sostituire progressivamente la domain knowledge con le macchine. Questa idea infatti ha ormai fallito.
+ There must exist an interaction: in such a strategic environment with a great amount of domain knowledge, it is impossible to substitute experts with artificial intelligence.
 
-Interessante notare però come il modo in cui le aziende incorporano conoscenza nei propri sistemi sia radicalmente cambiato. Negli anni '90 infatti l'approccio princinaple era quello della knowledge engineering: le macchine imparavano ad eseguire task di analisi sfruttando regole definite dagli esperti. Questa idea è fallita. In alcuni contesti, è impossibile rappresentare la conoscenza con regole.
+It is interesting to notice that the way companies incorporate knowledge in their own systems is drastically changed. In fact, in the 1990s the main approach was knowledge engineering: machine learned how to perform analysis tasks thanks to the rules experts gave them. This idea has failed, too. In some contexts, it is impossible representing knowledge with rules.
 
-Per tale ragione negli ultimi anni si è svolta una inductive revolution: le macchine sono utilizzate per estrarre le regole che codificano la conoscenza direttamente grandi moli di dati che rappresentatno la realtà. 
+For that reason, lately, inductive revolution developed; machines are used to extract the rules that code knowledge in the form of huge amounts of data representing reality leading to a new problem observed by literature: black boxes. This expression is commonly used to indicate those cases when algorithms and computational methods, whose working mechanism are unknown, except input and output, are needed. 
 
-Tale fenomeno a sua volta a creato un nuovo problema che la letteratura si trova a dover affrontare: quello delle balck-boxes. L'espressione black box è ormai di uso comune per indicare i casi in cui si fa uso di algoritmi e metodi computazionali di cui non si conoscono i meccanismi di funzionamento, ma solo input ed output.
+A recent paper [@pedreschi2018open] tries to clarify the issue with black box and offers a few solutions. The authors point at a way similar to reversing, in which a program is stimulated with various inputs to study the outputs and understand its logic. In the same way, to study the mechanisms of a machine-learning model, it is possible to modify slightly the input only, and observe the result; or, foresee the right input for the needed output. It is still cutting edge, but it is already discussed and it is opening up to specific research, such as explainable AI.
 
-Un recente paper, pubblicato su Arxive da un team dell’Università di Pisa, prova a fare chiarezza sul problema della black box, oltre a suggerire alcune possibili soluzioni. Nel paper gli autori indicano alcune possibili strade per affrontare il problema, simili per certi aspetti al reversing informatico, nel quale si stimola un programma con vari input per studiarne gli output e dedurne così la logica. Analogamente, per studiare i meccanismi di un modello di machine learning, si può modificare solo leggermente il dato in input, e osservare il risultato. Oppure cercare di prevedere un input tale da fornire un output desiderato. Si tratta di un campo ancora all’avanguardia, ma di cui tanto si sta discutendo, aprendo strade di ricerca specifiche come l’intelligenza artificiale comprensibile (explainable AI).
+To conclude, considereing the general goal of the present thesis (e.g. to extract and synthesise knowledge from information) we can state that the path to reach this objective pass trough the design of analysis algorithms, which can provide correct knowledge exchange between human and machine, leading to:
 
-Terzo ed ultimo macro obiettivo della tesi è quello di progettare algoritmi di analisi che permettano un corretto scambio di conoscenza fra human e machine andando a:
+- incorporate knowledge of the experts inside machine-learning systems
 
-- incorporare la conoscenza degli esperti nei sistemi di machine learning, 
-- far si che gli esperti possano utilizzare nel proprio processo di decision making la conoscenza generata induttivamente dalle macchine. 
+- experts’ ability to use in their process of decision making, inductively generated knowledge of machines
 
-# Solutions
+# Solution {-}
 
-## The Design Science Approach {#introdesres}
+Many frameworks and models exists that describes the process of knowledge extraction from data [@kanehisa2013data, @bellinger2004data, @ackoff1989data, @liew2007understanding]. All this models brings contribution to the literature but with a focus on the _behavioral-science paradigm_, thus with the goal to develop theories about the analysis, design, implementation, management, and use of data analysis systems. 
 
-Knowledge extraction systems are implemented within an organization for the purpose of improving the probability for that organisation to reach its goals. A wide litterature exists on the design of these kind of systems and the main focus comes from information Systems (IS) discipline. It is incumbent upon researchers in the IS to further knowledge that aids in the productive application of information technology to human organizations and their management [@edit2002info] and to develop and communicate knowledge concerning both the management of information technology and the use of information technology for managerial and organizational purposes [@Zmud1997edit]. Since the the first main goal of this thesis is understand which sources of information contains the best value added for companies and which methodologies and tools can we use for this purpose, acquiring such knowledge is incumbet also for the present thesis. 
+For the present thesis we adopted a more actionable framework popular in the field of data science: the Data Science Workflow described by Wickham [@wickham2016r]. We adopted this model because is a generic workflow that can be used as guideline to design any knowledge extraction system. The workflow is represented in figure \@ref(fig:mainworkflow).
 
-Hevner et al. [@bichler2006design] argues that acquiring such knowledge involves two complementary but distinct paradigms, _behavioral science_ and _design science_ [@march1995design]. 
+The workflow is a model of the tools needed in a typical data science project. Since data science is a huge field, and there’s no way that a model can master it, the goal of the model is to give a solid foundation in the most important tools.These tools are used in every data science project, but for most projects they are not enough. The tools represented in the model has been chosen following a rough Pareto 80-20 rule [@pareto1971manual].
 
-The _behavioral-science paradigm_ has its roots in the research methodot of natural science. Its goal is to develop and justify theories that explain (or predict) organizational phenomena about the analysis, design, implementation, management, and use of information systems. 
-Such theories inform researchers and companies of the interactions among humans, machines, and organizations that must be managed if an information system has to be effective. These theories interact with design decisions made with respect to the system development methodology used.
-
-The _design-science paradigm_ is a problemsolving paradigm andhas its roots in engineering and the sciences of the artificial [@simon1996sciences]. Its goal is to create innovations: define the ideas, practices, technical capabilities, and products through which the analysis, design, implementation, management, and use of information systems can be effectively and efficiently accomplished [@denning1997new; @tsichritzis1997dynamics]. In this context the researchers switches his goal: the artifacts taht are created in the research process are not exempt from natural laws or behavioral theories but relies on existing kernel theories that are applied, tested, modified, and extended through the experience, creativity, intuition, and problem solving capabilities of the researcher [@markus2002design; @walls1992building].
-
-Since Design science creates and evaluates IT artifacts intended to solve identified organizational problems, the present thesis belongs to this second paradigm. In Design Science, such artifacts are represented in a structured form that may vary from software, formal logic, and rigorous mathematics to informal natural language descriptions. We will use all these rapresentations at different level, for the different applications described in this thesis. 
-
-Furthrmore the thesis has been developed following the guidelines of design-science research. Hevner et al. [@bichler2006design] provide a set of seven guidelines which help information systems researchers conduct, evaluate and present design-science research. The guidelines are summarised in table \@ref(tab:introdesignscience).
-
-As previously discussed, design science is a problem solving pradigm. The fundamental principle of design-science research is that is the building and application of an artifact that permits to the researcher to gain new knowledge and understanding of a design problem and its solution. From this foundamental principle the seven guidelines are derived. That is, design-science research must end and must have as goal the _creation of an innovative, purposeful artifact (Guideline 1)_ for a specified _problem domain (Guideline 2)_. Because the artifact has to be purposeful, researcher has to measure its utility for the specified problem: this imply that _evaluation of the artifact is crucial (Guideline 3)_. Novelty is similarly crucial since the artifact must _solve an unsolved problem or solving a known problem in a more effective or efficient manner (Guideline 4)_. In this way, design-science research is differentiated from the practice of design since artifact itself must be _rigorously defined, formally represented, coherent, and internally consistent (Guideline 5)_. The process of design of the artificat and also artifact itself, incorporates a search process whereby _a problem space is constructed and a mechanism posed or enacted to find an effective (not necessarely otpimal) solution (Guideline 6)_. Finally, the results of the _design-science research must be communicated effectively (Guideline 7)_.
-
-The comunication phase is crucial, and the results of a design science based research has to be comprensible and usable to:
-
-- a technical audience (researchers who will extend them and practitioners who will implement them) 
-- a managerial audience (researchers who will study them in context and practitioners who will decide if they should be implemented within their organizations).
-
-
-```{r introdesignscience, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
-
-library(magrittr)
-
-knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/introdesignscience.xlsx"), "latex", booktabs = T,caption = "Design-Science Research Guidelines" ) %>%      kableExtra::kable_styling(full_width = F) %>% 
-  kableExtra::column_spec(1) %>% 
-  kableExtra::column_spec(2, italic=T, width = "30em")
-  
-
-```
-
-## Design Processes for Knowledge Extraction: the Data Science Workflow
-
-Since the second goal of the thesis is to understand how management engineering can control the new informative complexity with which companies have to deal with, there is the need of a clear framework that can help in the development of the tools able to solve this probleb. In other words, to design effective processes for knowledge extraction, there is the need for a more specific framework with respect to the design science paradigm, which gives a set of unvaluable guidelines but it is still to abstract to be usable for the present thesis.
-
-Many frameworks and models exists that describes the process of knowledge extraction from data [@kanehisa2013data, @bellinger2004data, @ackoff1989data, @liew2007understanding]. All this models brings contribution to the litterature but with a focus on the _behavioral-science paradigm_, thus with the goal to develop theories about the analysis, design, implementation, management, and use of data analysis systems. 
-
-For the present thesis we adopted a more actionable framework popular in the field of data science: the Data Science Workflow described by Wickham [@wickham2016r]. We adopted this model becaues is a generic workflow that can be used as guideline to design any knowledge extraction system. The workflow is rapresented in figure \@ref(fig:mainworkflow).
-
-The workflow is a model of the tools needed in a typical data science project. Since data science is a huge field, and there’s no way that a model can master it, the goal of the model is to give a solid foundation in the most important tools.These tools are used in every data science project, but for most projects they are not enough. The tools rapresented in the model has been chosen following a rough Pareto 80-20 rule [@pareto1971manual].
-
-The workflow is divided in the seguent tasks:
+The workflow is divided in the sequent tasks:
 
 - _Import:_ take data stored in a file, database, or web API, and load it into a computer. 
 
@@ -154,15 +92,15 @@ The workflow is divided in the seguent tasks:
 
 - _Transform:_ Transformation includes narrowing in on observations of interest, creating new variables that are functions of existing variables, and calculating a set of summary statistics.
 
-- _Visualize:_ Visualisation is a fundamentally human activity. A good visualisation will show unexpexted information, or raise new questions about the data. A good visualisation might also hint that the hypothesis is wrong, or there is the need to collect different data. Visualisations can surprise, but do not scale particularly well because they require a human to interpret them.
+- _Visualize:_ Visualisation is a fundamentally human activity. A good visualisation will show unexpected information, or raise new questions about the data. A good visualisation might also hint that the hypothesis is wrong, or there is the need to collect different data. Visualisations can surprise, but do not scale particularly well because they require a human to interpret them.
 
 - _Model:_ Model is complementary to visualize. Once the hypothesis are sufficiently precise, a model can answer them. Models are a fundamentally mathematical or computational tool, so they generally scale well. Even when they don’t, it’s usually cheaper to buy more computers than it is to buy more brains. But every model makes assumptions, and by its very nature a model cannot question its own assumptions. That means a model cannot fundamentally surprise.
 
-- _Communicate_: The last step is communication, an absolutely critical part of any project. As stated before comunication phase is crucial, and the results of a design science based research has to be comprensible and usable to a technical audience a managerial audience.
+- _Communicate_: The last step is communication, an absolutely critical part of any project. As stated before communication phase is crucial, and the results of a design science based research has to be comprehensible and usable to a technical audience a managerial audience.
 
-- _Program:_ To design knowledge extraction tool programming is nowadays essention. There is no need to be an expert programmer to design effective knowledge extraction tool, but learning more about programming allows  to automate common tasks, and solve new problems with greater ease.
+- _Program:_ To design knowledge extraction tool programming is nowadays essential. There is no need to be an expert programmer to design effective knowledge extraction tool, but learning more about programming allows  to automate common tasks, and solve new problems with greater ease.
 
-- _Understand:_ The greatest feature of a knowledge extraction system is not to detect the large trends- they are visible anyway; it is, rather,  to detect weak signals, or information that initially appears with low frequency [@apreda2016functional]. These signals escape from traditional statistical detection techniques, exactly because it is difficult to distinguish them from pure statistical noise. It is hard to disntinguish weak-signals from noise only using algorythms: understanding the problem to be solved and having domain expertise is essential. For this reason _understand_ is not only part of the process of analysis, but is maybe the most important task with respect to the present thesis. 
+- _Understand:_ The greatest feature of a knowledge extraction system is not to detect the large trends- they are visible anyway; it is, rather,  to detect weak signals, or information that initially appears with low frequency [@apreda2016functional]. These signals escape from traditional statistical detection techniques, exactly because it is difficult to distinguish them from pure statistical noise. It is hard to distinguish weak-signals from noise only using algorithms: understanding the problem to be solved and having domain expertise is essential. For this reason _understand_ is not only part of the process of analysis, but is maybe the most important task with respect to the present thesis. 
 
 A full state of the art on all of these tasks as been conducted in section \@ref(sotatools).
 
@@ -173,26 +111,28 @@ knitr::include_graphics("_bookdown_files/figures/main_work_flow.png")
 
 ```
 
-## The Exploitation of Natural Language Processing Techniques
+As stated before, the focus of the present thesis is on the interaction between men and machines in the _extraction of knowledge from technical documents_. This focus has two main reasons:
 
-As stated before, the third macro objective of thesis (or at this point of the design output of the thesis) is to improve the comunication and the interaction between domain experts and computers to foster the correct exchange of knowledge between these two entities. In particular the focus of the present thesis is on the interaction between men and machines in the _extraction of knowledge from technical documents_. This focus has two main reasons:
+1. Documents written in natural language contains knowledge by design. Their goal in fact is the explication of implicit knowledge [@masters1992knowledge, @graesser1985structures]. With the growth of information of the last years also this kind of documents has grown in number and there exist a huge opportunity for business to manage this knowledge.
 
-1. Documents written in natural language contains knowledge by design. Their goal in fact is the explicitation of implicit knowledge [@masters1992knowledge, @graesser1985structures]. With the growth of information of the last years also this kind of documents growed in number and there exist a huge opportunity for business to manage this knowledge.
+2. Thank to the improvement in the Artificial Intelligence field, Natural Language Processing has dramatically increased its effectiveness in the last years [@russell2016artificial]. Now powerful tools for the analysis of documents are available to every one that has a little understating of programming [@Taylor2017Tidy, @Kenneth2018spacyr, @Wijffels2018udpipe]. 
 
-2. Thank to the improvement in the Artificial Intelligence field, Natural Language Processing has drammatically increased its effectivenes in the last years [@russell2016artificial]. Now powerfull tools for the analysis of documents are available to every one that has a litle understaing of programming [@Taylor2017Tidy, @Kenneth2018spacyr, @Wijffels2018udpipe]. 
+The design processes carried out in this thesis uses state of the art Natural Language Processing techniques or algorithms that only in few cases has been deeply modified in the design process. In other words the value of the output is not in the modified natural language algorithm but on the whole process of knowledge extraction that goes from the decision of which documents to analyze to the communication of the results. In fact, great value is added to the design process by the decision of which documents mine to extract knowledge. To maximize this value the problem space has to be searched in term of _business relevant knowledge content of documents_. Since this problem space is huge (all the documents of which a company is stakeholder) the decision can be considered as a feature of the method, as valuable as (or even more in this case) the algorithm of natural language processing. 
 
-The design processes carried out in this thesis uses stated of the art Natural Language Processing techniques or algorythms that only in few cases has been deeply modified in the design proces. In other words the value of the output is not in the modified natural language algorythm but on the whole process of knowledge extraction that goes from the decision of which documents to analyze to the comunication of the results. In fact, great value is added to the design proces by the decision of which documents mine to extract knowledge. To maximize this value the problem space has to be searched in term of _business relevant knowledge content of documents_. Since this problem space is huge (all the documents of which a company is stakeholder) the decision can be considered as a feature of the method, as valuable as (or even more in this case) the algorythm of natural language processing. 
+To decide the documents on which the thesis has the focus, section \@ref(sotadocuments) contains a review of the characteristics and on the state of the art of the analysis on four different document types: patents, papers, Wikipedia and social media. 
 
-To decide the documents on which the thesis has the focus, section \@ref(sotadocuments) contains a review of the characteristics and on the state of the art of the analysis on four different document types: patents, papers, wikipedia and social media. 
+# Stakeholders of this Thesis {-}
 
-# Structure and rationale
+# Structure and Rationale {-}
 
 The Design Science Approach, the Data Science Workflow and the exploitation of Natural Language Processing Techniques helps to explain the structure of this thesis, since the decision of using these paradigm and tools had a direct impact on the form and content of it. 
 
-- _Part Number 2 "State of the Art"_ makes a review of tools and techniques for Natural Language Processing and shows the documents used for knowledge extraction. In particular, the analysis of technical documents require the design of processes that rely both on Natural Language Processing techniques and on technical field expertis. While the first techniques are codified and explicit, the second are sometimes implicit and always hard to systematize. In the State of the Art these two groups of techniques are treated in the same way to give to the reader a systematic literature review on these topics. Furthermore it is important to define the value in terms of new knowlege that documents can bring to companies. The goal of this state of the art is to demostrate that a large litterature on Techniques able to solve the probles descripted in section \@ref(introproblems) exists, but week or no effort exist in the litterature in the systemic integration of these tools and in the design of holistic methods to solve these problems.
+- _Part Number 2 "State of the Art"_ makes a review of tools and techniques for Natural Language Processing and shows the documents used for knowledge extraction. In particular, the analysis of technical documents require the design of processes that rely both on Natural Language Processing techniques and on technical field experts. While the first techniques are codified and explicit, the second are sometimes implicit and always hard to systematize. In the State of the Art these two groups of techniques are treated in the same way to give to the reader a systematic literature review on these topics. Furthermore it is important to define the value in terms of new knowledge that documents can bring to companies. The goal of this state of the art is to demonstrate that a large literature on Techniques able to solve the problems described in section \@ref(introproblems) exists, but weak or no effort exist in the literature in the systemic integration of these tools and in the design of holistic methods to solve these problems.
 
-- _Part Number 3 "Methods and Results"_ is the core Part of the thesis. This part describes the methods and processes designed for the analysis of technical documents following the guidelines of design research described in section \@ref(introdesres). Since design research is a problem solving paradigm, each chapter (focalised on a different kind of document) starts with a brief description of the field of applicaton of the method and with the framing of the problem to be solved.  Then the methodlogy to solve the prolbem is described with the goal of beeing clear to a technical audience and a managerial audience. Each chapter closes with the results description that proves the utility, quality, and efficacy of the design artifact.
+- _Part Number 3 "Methods and Results"_ is the core Part of the thesis. This part describes the methods and processes designed for the analysis of technical documents following the guidelines of design research described in section \@ref(introdesres). Since design research is a problem solving paradigm, each chapter (focalised on a different kind of document) starts with a brief description of the field of application of the method and with the framing of the problem to be solved.  Then the methodology to solve the problem is described with the goal of being clear to a technical audience and a managerial audience. Each chapter closes with the results description that proves the utility, quality, and efficacy of the design artifact.
 
 - _Part Number 4 "Applications of the Results"_  is a collection of projects that describes the applications and results of the methods designed in _Part 3 "Methods and Results"_. The goal, again following the  the guidelines of design research [@bichler2006design], is to provide clear and verifiable contributions in the areas of the design artifact, design foundations, and/or design methodologies.
 
-- _Part Number 5 "Conclusions and Future Developments"_ summarises the thesis, its limitations and possibile future developments. The thesis ends trough an abstraction process that gives a more descriptive-science view of the results. In this last part we give a general method that has proven to be effective in the major part of the designs of the present thesis: __lexicons design__.
+- _Part Number 5 "Conclusions"_ summarises the thesis, and its possible future developments. The thesis ends giving a more descriptive-science view of the results. In this last part we focus on a general method that has proven to be effective in the major part of the designs of the present thesis: __lexicons design__.
+
+

@@ -2,13 +2,13 @@
 
 This part describes the methods and processes designed for the analysis of technical documents following the guidelines of design research described in section \@ref(introdesres). The methods are ensamble of Natural Language Processing (NLP) and Text Mining _techniques_ described in \@ref(sotatools), re-designed depending on the analyzed document and the analysis goal. 
 
-Since design research is a problem solving paradigm,  each chapter starts with a brief description of the field of applicaton of the method and with the framing of the problem to be solved. Then the methodlogy to solve the prolbem is described with the goal of beeing clear to a technical audience and a managerial audience. Each chapter closes with the results description that proves the utility, quality, and efficacy of the design artifact.
+Since design research is a problem solving paradigm,  each chapter starts with a brief description of the field of application of the method and with the framing of the problem to be solved. Then the methodology to solve the problem is described with the goal of being clear to a technical audience and a managerial audience. Each chapter closes with the results description that proves the utility, quality, and efficacy of the design artifact.
 
 # Patents
 
 Patents contain a large quantity of information which is usually neglected. This information is hidden beneath technical and juridical jargon and therefore so many potential readers cannot take advantage of it. State of the art natural language processing tools and in particular named entity recognition tools, could be used to detect valuable concepts in patent documents. A deeper description of what patents are and how these documents are used to mine technical knowledge can be found in section \@ref(sotadocumentspatents)
 
-In this section we present three methodologies capable of automatically detecting and extracting threee of the multiple entities hidden in patents: the users of the invention, advantages and drawbacks of the invention and trademarks contained in patents. The results of the methodologies are described, togheter with example of applications of the extracted entities for intelligence tasks. 
+In this section we present three methodologies capable of automatically detecting and extracting three of the multiple entities hidden in patents: the users of the invention, advantages and drawbacks of the invention and trademarks contained in patents. The results of the methodologies are described, together with example of applications of the extracted entities for intelligence tasks. 
 
 ## Users {#usersresults}
 
@@ -164,7 +164,7 @@ It is still possible that the classification process creates false positive resu
 
 The following section describes the performances of the automatic users extraction process on two different patent sets. To test the system four experiments were conducted}. Finally the performances and the outcomes of the system are shown and discussed.
 
-Following the guidelines for the patent set selection described in section \ref{patsel}, we examined two patent sets belonging to the IPC class A:
+Following the guidelines for the patent set selection, we examined two patent sets belonging to the IPC class A:
 
 
 - __A47G33__. The IPC definition of the subclass is _"religious or ritual equipment in dwelling or for general"_.
@@ -814,11 +814,11 @@ With respect to Users \@ref(usersresults) and to Advantages and Distadvantages \
 - Part-of-speech tagging
 - Lemmatization
 
-After that is is possibile to identify tradenames searching for the symbols ™ and ®.
+After that is is possible to identify tradenames searching for the symbols ™ and ®.
 
 ### Results
 
-The first investigation has the aim of understanding if the ™ and ® symbols has different content depending on different IPC [@wipo1] classes. The IPC classes are:  The main evidence in figure \@ref(fig:histtm) is that ® is used more than ™ in patent, with and average percent of presence of 7.4% and 5.6% respectively. The reason of this evidence could be that patents contains unregistered trademarks that are never converted to registered trademarks; another reason is the confusion between the ® and ™ symbol, usually considered as synonymous. Furthermore the writer will use the symbol only if he/she knows that the mark is protected, otherwise he/she will not indicate any symbols or will use ™ or ® without checking the right use. Another possible problem is that the word has become of common use and thus usually used without symbols. Furthemore, classes A (Human Necessities) and C (Chemistry; Metallurgy) clearly has more trade symbols than the other classes. 
+The first investigation has the aim of understanding if the ™ and ® symbols has different content depending on different IPC [@wipo1] classes. The IPC classes are:  The main evidence in figure \@ref(fig:histtm) is that ® is used more than ™ in patent, with and average percent of presence of 7.4% and 5.6% respectively. The reason of this evidence could be that patents contains unregistered trademarks that are never converted to registered trademarks; another reason is the confusion between the ® and ™ symbol, usually considered as synonymous. Furthermore the writer will use the symbol only if he/she knows that the mark is protected, otherwise he/she will not indicate any symbols or will use ™ or ® without checking the right use. Another possible problem is that the word has become of common use and thus usually used without symbols. Furthermore, classes A (Human Necessities) and C (Chemistry; Metallurgy) clearly has more trade symbols than the other classes. 
 
 
 ```{r histtm, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Histogram of the percentage of ® and ™ in patentes for each IPC class (limited to US patents). A (Human Necessities); B (Performing Operations; Transporting); C (Chemistry; Metallurgy); D (Textiles; Paper); E (Fixed Constructions); F (Mechanical Engineering; Lighting; Heating; Weapons; Blasting); G (Physics); H (Electricity).', message=FALSE, warning=FALSE, out.width='80%'}
@@ -842,10 +842,10 @@ knitr::kable(
 
 #### The Selected Tradenames {-}
 
-We a set of popular tradenames referring to [@morris2016trademarks]. Then we filtered the ambigouus ones (the one that can refer to surnames), because this can create an onverstimation of the number of patent citing it witouth the tradenames. The total namber of tradenames is 38 and these are: amazon®, blackberry®, bose®, budweiser®, chiquita®, chrome®, cocacola®, ebay®, facebook®, fender®, firefox®, gibson®, gillette®, heineken®, ibanez®, intel®, iphone®, kellog®, kodak®, lego®, marlboro®, matlab®, mcdonald’s®, nitinol®, nutella®, nylon®, photoshop®, polaroid®, postit®, powerpoint®, prozac®, sennheiser®, spotify®, teflon®, velcro®, whatsapp® and xanax®.
+We a set of popular tradenames referring to [@morris2016trademarks]. Then we filtered the ambiguous ones (the one that can refer to surnames), because this can create an overestimation of the number of patent citing it without the tradenames. The total number of tradenames is 38 and these are: amazon®, blackberry®, bose®, budweiser®, chiquita®, chrome®, cocacola®, ebay®, facebook®, fender®, firefox®, gibson®, gillette®, heineken®, ibanez®, intel®, iphone®, kellog®, kodak®, lego®, marlboro®, matlab®, mcdonald’s®, nitinol®, nutella®, nylon®, photoshop®, polaroid®, postit®, powerpoint®, prozac®, sennheiser®, spotify®, teflon®, velcro®, whatsapp® and xanax®.
 
-In figure \@ref(fig:tmlistcpmplete) are shown the number of patent containing the tradenames with and withouht ™ and ®; furthermore the information is divided for all the years, from 1995 to 2002 and from 2007 to 2014. 
-In the previous analysis we noticed that ® is generally more used than ™. Now the goal is to understand if patent writers uses tradesymbols or not when citing tradenames, if there are any differences between different tradenames and if we can notice different behaviours in recent years. From figure \@ref(fig:tmlistcpmplete) is evident that despite the fact that it is mandatory to use ™ o ®, these symbols are not always used.
+In figure \@ref(fig:tmlistcpmplete) are shown the number of patent containing the tradenames with and without ™ and ®; furthermore the information is divided for all the years, from 1995 to 2002 and from 2007 to 2014. 
+In the previous analysis we noticed that ® is generally more used than ™. Now the goal is to understand if patent writers uses tradesymbols or not when citing tradenames, if there are any differences between different tradenames and if we can notice different behaviors in recent years. From figure \@ref(fig:tmlistcpmplete) is evident that despite the fact that it is mandatory to use ™ o ®, these symbols are not always used.
 
 
 ```{r tmlistcpmplete, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Number of patents citing one of the 38 selected tradenames. The data are divided for any years, from 1995 to 2002 and from 2007 to 2014.', message=FALSE, warning=FALSE, out.width='100%'}
@@ -857,7 +857,7 @@ knitr::include_graphics("_bookdown_files/figures/table_all_tradenames.png")
 
 #### Tradenames Usage in Patents {-}
 
-It is relevant to understand if there exists any difference between different tradenames in the correct usage of trade symbols (a trade name has been cited in the patent texts with the trade symbol). Figure \@ref(fig:tmcitedwell) illustrates in a bi-logaritmic plot the distribution of trade names correctly cited in patents with ® and ™ (Y-axis) versus the same trade names cited without using the proper symbol. Most of trade names are located under the diagonal. Those around the diagonal are those we can considered as well known trademarks and not so subject to genericization phenomena (green area). Conversely on the right we can find a read area where the ratio is even more shifted toward the absence of any indication of protected trademark. In the middle the orange area where many of the most famous trademarks fall down and that could be in phase of generalisation or conversely, since the trademark of a product is totally entangled with the owner (Iphone-Apple; Intel), inventors do not feel the reason to cite them as a trademark. 
+It is relevant to understand if there exists any difference between different tradenames in the correct usage of trade symbols (a trade name has been cited in the patent texts with the trade symbol). Figure \@ref(fig:tmcitedwell) illustrates in a bi-logarithmic plot the distribution of trade names correctly cited in patents with ® and ™ (Y-axis) versus the same trade names cited without using the proper symbol. Most of trade names are located under the diagonal. Those around the diagonal are those we can considered as well known trademarks and not so subject to genericization phenomena (green area). Conversely on the right we can find a read area where the ratio is even more shifted toward the absence of any indication of protected trademark. In the middle the orange area where many of the most famous trademarks fall down and that could be in phase of generalisation or conversely, since the trademark of a product is totally entangled with the owner (Iphone-Apple; Intel), inventors do not feel the reason to cite them as a trademark. 
 A remark on Figure \@ref(fig:tmcitedwell) is necessary: the plot presents a correct measurement of trademarks with ® and ™ plotted in the y axis, while the search for trademark with missing trademark symbols in some case can introduce undesired errors and include other meaning of the word. Take for example the case of Blackberry®: the datum is referring to mobile phones and accessories or software applications. In all the cases where ® or ™ are correctly written, it is probably true that the inventor is referring to the Blackberry® mobile phones, but machines for jam or juice production extracted out of the blackberry introduce false positive examples. Similarly Fender is probably located too far on the right because it is also a part of a car, bike, motorbike, boat, etc.. and Gibson could introduce citations of works performed by someone called Gibson, therefore if cleaned results are necessary the searching strategies for the trademarks without symbols have to be refined. 
 
 ```{r tmcitedwell, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Plot of the trade names correctly cited in patents with ® and ™ on the y-axis and the same trade names cited without using the proper symbol on the x-axes. Both axes are on a logaritmic scale.', message=FALSE, warning=FALSE, out.width='100%'}
@@ -869,14 +869,14 @@ knitr::include_graphics("_bookdown_files/figures/TrendsMarks.001.jpeg")
 
 #### The Popularity of Tradenames in Patens {-}
 
-In figure \@ref(fig:populartm) are plotted the trends of the numbers of patents that correctly cites a tradenames. We anlyzed 12 different tradenames, divided in couples: each couple belong to a similar sector. We make use of a generalized additive model fitting function to better analyze the results and to make more easily to understand and compare the two element of each pair. 
+In figure \@ref(fig:populartm) are plotted the trends of the numbers of patents that correctly cites a tradenames. We analyzed 12 different tradenames, divided in couples: each couple belong to a similar sector. We make use of a generalized additive model fitting function to better analyze the results and to make more easily to understand and compare the two element of each pair. 
 
 Each pair has been chosen to compare trademarks in homogeneous markets. Some of them shows: 
 
 - (d, e) similar trends but different incidence; 
-- (a, c) dissimilar behaviours (Amazon vs Ebay, Blackberry vs. Iphone: linear vs. exponential); 
-- (f) similar results (e.g. Gibson vs Fender in the music market have almost the same behaviour and a reduced presence in patents)
-- similar behaviour but shifted in time (e.g. Firefox vs Chrome). 
+- (a, c) dissimilar behaviors (Amazon vs Ebay, Blackberry vs. Iphone: linear vs. exponential); 
+- (f) similar results (e.g. Gibson vs Fender in the music market have almost the same behavior and a reduced presence in patents)
+- similar behavior but shifted in time (e.g. Firefox vs Chrome). 
 
 
 ```{r populartm, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Plot of the trade names correctly cited in patents from 2000 to 2014.', message=FALSE, warning=FALSE, out.width='80%'}
@@ -889,7 +889,7 @@ knitr::include_graphics("_bookdown_files/figures/Marks_Years.jpeg")
 
 #### The Similarity of Tradenames in Patens {-}
 
-Further informations can be derived by analysing the IPC classes where the patent have been chosen by the assignees-attorneys-examiners.The choice of a class is not only matter of market segment but rather of market use. Moreover it is necessary to remark that  from a formal point of view the IPC classes form a feature vector, denoted y ∈ N639. IPC classes form a complete dataset of 639 elements of such feature vector. Each tradename is represented in such a feature vector where the number of patents in each class constitutes the length of the vector along that direction (feature). Our training data is therefore D = (x,y,z), where x∈[1, .., 12], y∈[1, .., 639], and z represents the patent numerosity z∈[0..15*106]. This dataset contains information about how z varies as a function of x and y. The matrix is quite empty since each product/brand addresses needs of specific market/s, after cleaning of the totally empty columns the matrix reduces to the dimensions of 12x479 and demonstrates a correct choice of the trademarks since they covered almost 75% of the IPC space.
+Further information can be derived by analysing the IPC classes where the patent have been chosen by the assignees-attorneys-examiners.The choice of a class is not only matter of market segment but rather of market use. Moreover it is necessary to remark that  from a formal point of view the IPC classes form a feature vector, denoted y ∈ N639. IPC classes form a complete dataset of 639 elements of such feature vector. Each tradename is represented in such a feature vector where the number of patents in each class constitutes the length of the vector along that direction (feature). Our training data is therefore D = (x,y,z), where x∈[1, .., 12], y∈[1, .., 639], and z represents the patent numerosity z∈[0..15*106]. This dataset contains information about how z varies as a function of x and y. The matrix is quite empty since each product/brand addresses needs of specific market/s, after cleaning of the totally empty columns the matrix reduces to the dimensions of 12x479 and demonstrates a correct choice of the trademarks since they covered almost 75% of the IPC space.
 
 With such a dataset a series of computations can be performed: here we show the results of the correlation analysis among the chosen trademarks to analyse their relative positioning on the invention landscape (not only the market);
 Correlation analysis is shown in Figure \@ref(fig:similartm). The matrix is triangular owing to the symmetry of the relationship.
@@ -905,14 +905,14 @@ knitr::include_graphics("_bookdown_files/figures/correlation_matrix_tm.png")
 # Papers
 
 There are fields (mature technologies) where patents anticipate papers, while in others (basic research) the opposite happens. For this reason, scientific literature is the place where companies and scholars gather information about the problems that researchers are facing in the development of new technologies. Anyway, standard approaches of knowledge extraction from papers requires skilled personnel, they are time consuming and lacks in reproducibility. 
-Furthemore, the volume of scientific literature has grown rapidly raising an imminent question about how to extract knowledge from this source. On the other hand, this tehcnical knowledge if  managed, can be used to answer questions that 10 years ago would need the help of domain experts to be  answered. In the present section is shown how text mining techniques can help to unswer some of this questions.
-In particular, it is an essential problem when different classification codes are used in order to organize scientific knowledge on a specific domain, becaues a specific categorization in a certain scientific field is missing. This leads to unnecessary complications in the researchers’ aims who want to quickly and easily find literature on a specific topic among the large amount of scientific publications, or want to effectivelly position a new research. Text mining techniques, and in particular topic modelling, can help scholars in solving this problems, if properly used togheter with domain expertise. 
+Furthermore, the volume of scientific literature has grown rapidly raising an imminent question about how to extract knowledge from this source. On the other hand, this technical knowledge if  managed, can be used to answer questions that 10 years ago would need the help of domain experts to be  answered. In the present section is shown how text mining techniques can help to answer some of this questions.
+In particular, it is an essential problem when different classification codes are used in order to organize scientific knowledge on a specific domain, because a specific categorization in a certain scientific field is missing. This leads to unnecessary complications in the researchers’ aims who want to quickly and easily find literature on a specific topic among the large amount of scientific publications, or want to effectively position a new research. Text mining techniques, and in particular topic modelling, can help scholars in solving this problems, if properly used together with domain expertise. 
 A deeper description of what patents are and how these documents are used to mine technical knowledge can be found in section \@ref(sotadocumentspapers)
 
 
-In this section we present two methodologies capable of automatically segmenting a knowledge field. These selected knowledge field are: sustainable manufacturing and block-chain. The results of the methodologies are described, togheter with example of applications. 
+In this section we present two methodologies capable of automatically segmenting a knowledge field. These selected knowledge field are: sustainable manufacturing and block-chain. The results of the methodologies are described, together with example of applications. 
 
-## Sustainable Manufacturing: an Analysis of the 6R Framework
+## Sustainable Manufacturing: an Analysis of the 6R Framework {#smtextdrivenbottomup}
 
 One of the most important objectives of Sustainable Manufacturing (SM) is developing innovative and viable engineered materials, manufacturing processes and systems to provide multiple life-cycle of products. In SM the old concept “from cradle to grave” is now transforming into “from cradle to cradle” [@jawahir2016technological], tending toward multiple product life-cycles or even a “near-perpetual” product/material life. 
 Scientific contributions in the sustainable manufacturing field mostly deals with energy and resource consumption. In this respect, two different main fields of causes can be identified: the process level and the material efficiency one. As a matter of facts, manufacturing processes have a significant role also in putting in place material efficiency strategies [@ingarao2017manufacturing].  As far as the processes are concerned, a first classification of research contributions was discussed in the CIRP General Assembly [@duflou2012towards]. There the authors state that research in manufacturing field, oriented to environmental impact reduction, can be clustered in 5 main sub-classes: 
@@ -953,7 +953,7 @@ Sustainability (from sustain plus ability) refers to the set of properties of a 
 -	(+) adopt sustainable infrastructures.
 
 where the (-) sign stands for those prescriptions oriented to preservation of resources without any significant change of the present condition, while the (+) sign indicates those prescriptions aiming at ameliorating/modification of the trends with respect to traditionally manufactured processes/products. To summarize simplifying, sustainable manufacturing is all about minimizing business risks of any manufacturing operation while maximizing the new opportunities that arise from improving processes and products.  
-Fascinating in principle, these general statements are really difficult to deploy into real operations and production settings. The focus of the present analysis is to derive a clear definition of the concept of manufacturing sustainability based on clear and paper based evidences, rather than referring to general ethical or social principles, which appear to be a __top down__ definition. Conversely, information extracted from all the scientific papers available on SM can provide a sort of __bottom up__ statement. Evidences are relevant words and short concepts that can be related to sustainability, as it will be explained in the following paragraphs by also providing some sound examples from the italian point of view.
+Fascinating in principle, these general statements are really difficult to deploy into real operations and production settings. The focus of the present analysis is to derive a clear definition of the concept of manufacturing sustainability based on clear and paper based evidences, rather than referring to general ethical or social principles, which appear to be a __top down__ definition. Conversely, information extracted from all the scientific papers available on SM can provide a sort of __bottom up__ statement. Evidences are relevant words and short concepts that can be related to sustainability, as it will be explained in the following paragraphs by also providing some sound examples from the Italian point of view.
 
 ### Methodology
 
@@ -973,7 +973,7 @@ knitr::include_graphics("_bookdown_files/figures/workflow_sm.png")
 
 __Reuse__
 
-Reuse is the action or practice of using something again, whether for its original purpose (conventional reuse) or to fulfill a different function (creative reuse or repurposing). Reuse involves taking, but not reprocessing, previously used items in order to save time, money, energy, and resources. In particular reuse is useful for machineries, especially when they are expensive, and for their components. Besides, technologies can be also reused and readapted to different situations. In addition, reuse is important because it minimizes disposal needs and costs.
+Reuse is the action or practice of using something again, whether for its original purpose (conventional reuse) or to fulfill a different function (creative reuse or repurposing). Reuse involves taking, but not reprocessing, previously used items in order to save time, money, energy, and resources. In particular reuse is useful for machineries, especially when they are expensive, and for their components. Besides, technologies can be also reused and re-adapted to different situations. In addition, reuse is important because it minimizes disposal needs and costs.
 
 __Reduce__
 
@@ -1004,7 +1004,7 @@ In order to analyze the information coming from scientific papers belonging to t
 The text mining process performed is summarized in the following. First, the information content of the
 document is converted into a structured form (vector space representation). In fact, most of text mining techniques are based on the idea that a document can be faithfully represented by the set of words contained in it (bag-of-words representation 9). According to this representation, each document j of a collection of documents is represented as an M-dimensional vector, where M is the number of words defined in the document collection, and w(tji) specifies the weight of the word ti in document j. The simplest weighting method assigns a binary value to w(tji), thus indicating the absence or the presence of the word ti, while other methods assign a real value to w(tji).
 
-In the following, the text mining steps performed are described (for details aobut the activities see section \@ref(sotatools):
+In the following, the text mining steps performed are described (for details about the activities see section \@ref(sotatools):
 
 - _Tokenization_ is the first step of our text mining process, and consists in transforming a string of characters into a string of processing units called tokens that could be syllables, words, or phrases. Typically, with tokenization other operations are performed with the aim of making the text cleaner. Such operations are the removal of punctuation and other non-text characters, and the normalization of symbols (e.g., accents, apostrophes, hyphens, tabs and spaces). In the proposed system, the tokenizer removes all punctuation marks and splits each text into tokens corresponding to words, bigrams and trigrams.
 - _Stop-word filtering_ consists in eliminating the words which provide little or no information to the text analysis, or that, in our case, could make the clustering process fuzzier. Common stop-words belong to certain part of speech classes, such as articles, conjunctions, prepositions, pronouns, etc. Other stop-words are those that typically appear very often in sentences of the considered language (language-specific stop-words), or in the set of texts being analysed (domain-specific stop-words). In our case, this second group consists of typical words of the scientific articles such as "paper", "state-of-the-art", "present work”.
@@ -1039,7 +1039,7 @@ Spherical k-means exploit cosine dissimilarities to perform prototype-based part
 
 ### Results
 
-In the present section, we describe the output of the application of the methodology described in section \@ref(smtextdrivenbottomup) on the 339 selected scientific papers on sustainable manufacturing extracted by the query "sustainable manufacturing" in the paper search field of the SCOPUS® database. Accordingly, apart the deliberate selection of the source database, no other filter was applied in the journal selection and this guarantees the significance of the journal sample selected. The main output, as highlighted in Figure 1, is the distribution of documents among the 6R principles (i.e. classes) as manually classified, the automatic keywords representations of the classes and the outputs of the clustering algorithm (which is an unsupervised assignment of the documents) compared to the manual classification.
+In the present section, we describe the output of the application of the methodology on the 339 selected scientific papers on sustainable manufacturing extracted by the query "sustainable manufacturing" in the paper search field of the SCOPUS® database. Accordingly, apart the deliberate selection of the source database, no other filter was applied in the journal selection and this guarantees the significance of the journal sample selected. The main output, as highlighted in Figure 1, is the distribution of documents among the 6R principles (i.e. classes) as manually classified, the automatic keywords representations of the classes and the outputs of the clustering algorithm (which is an unsupervised assignment of the documents) compared to the manual classification.
 
 The assignment of a paper to a class was made by recognizing the application, or tools or scope of the paper to one 6R’s principles. In this sense, for instance, a paper belonging to a recover might have as scope, or keywords or approach or an activity performed with the principal task to assure the recovery of a give good. It is thus clear, from the beginning, how complex may be to recognize just one principle more than a multiple possibility to satisfy more principles. This fact will be discussed in the followings.
 
@@ -1081,11 +1081,11 @@ knitr::include_graphics("_bookdown_files/figures/heat_map_sm.png")
 
 ## Sustainable Manufacturing: An Extended Mapping
 
-The methodology described in section \@ref(smtextdrivenbottomup) has been then re-adapted to give an extended anlysis of the 6R framework from a bottom-up perspective. In the present section, we map the state of the art of Sustainable Manufacturing using topic modelling, a widely used text mining techniques. The aim is to give a broad overview of how this knowledge field is approached world-wide and then, in section 3, to have a deeper look at the Italian way to sustainable manufacturing.
+The methodology described in section \@ref(smtextdrivenbottomup) has been then re-adapted to give an extended analysis of the 6R framework from a bottom-up perspective. In the present section, we map the state of the art of Sustainable Manufacturing using topic modelling, a widely used text mining techniques. The aim is to give a broad overview of how this knowledge field is approached world-wide and then, in section 3, to have a deeper look at the Italian way to sustainable manufacturing.
 
 ### Methodology
 
-The process of topic extraction is composed by the sequent activities:
+The process of topic extraction is composed by the subsequent activities:
 
 1.	_Papers Collection_
 2.	_Keyword Extraction_
@@ -1093,7 +1093,7 @@ The process of topic extraction is composed by the sequent activities:
 4.	_Topic Modelling:_ LDA Model fitting
 5.	_Manual topic labelling_
 
-Each activity is described in the sequent sections. 
+Each activity is described in the subsequent sections. 
 
 #### Papers collection {-}
 
@@ -1109,7 +1109,7 @@ At the date of 29/05/2018 the query results in 1,628 documents.
 #### Keyword extraction {-}
 
 
-We represent each article as a set of keywords, merging Author Keywords and Index Keywords. The keywords are then “sanitized” following the sequent rules:
+We represent each article as a set of keywords, merging Author Keywords and Index Keywords. The keywords are then “sanitized” following the subsequent rules:
 
 -	Eliminate duplicated keywords
 -	Eliminate brackets and its content 
@@ -1155,7 +1155,7 @@ knitr::include_graphics("_bookdown_files/figures/geom_point_topic.pdf")
 
 #### Manual Labelling of the topics {-}
 
-To have a clearer representation of the topics, these were manually labelled by 6 independent experts in the field of manufacturing and sustainability. Then a seventh experts took in input the results of the manual naming and synthetized the label.  The final results are the names of the 12 topics. These names are: 
+To have a clearer representation of the topics, these were manually labelled by 6 independent experts in the field of manufacturing and sustainability. Then a seventh experts took in input the results of the manual naming and synthesized the label.  The final results are the names of the 12 topics. These names are: 
 
 1.	Smartness for Sustainability 
 2.	Sustainable Machining
@@ -1172,11 +1172,11 @@ To have a clearer representation of the topics, these were manually labelled by 
 
 This final picture provides a clear representation of how topics recognized are mostly homogeneous, provided there are few outlier keywords per each topic, as in figure \@ref(fig:topicpicture). This “new perspective” of sustainable manufacturing represents a way of defining its contents by the grace of the tools or domain of interest involved. For instance, topic n.1 (smart sustainability) refers to the use of the new group of tools and approaches belonging to the Industry 4.0 stream, thus defining specific contents and criteria useful to pursue the sustainability in manufacturing.
 
-## Blockchain
+## Blockchain {#blockchainanalysis}
 
-In section \@ref(advdrwresults)  has been proposed a new usage of sentiment analysis to extract advantages (considered synonym of the words benefit, gain or profit) and disadvantages (drawback, failure) of technologies from patents with the aim of helping researchers and designers to effectively develop new products, analyzing positive and negative properties of an innovation. The main contributions of the present analysis is to list the problems of a technological field using this sentiment tool. We want to understand which are the problems that research is trying to solve for a technology and if is there any focus from researchers on the solution of certain technical problem. Furthermore using text mining techniques it is possibile to correlate these problems between them and understand if is there any correlation between problems of technologies and if this map help researchers and companies to understand the research agenda.
+In section \@ref(advdrwresults)  has been proposed a new usage of sentiment analysis to extract advantages (considered synonym of the words benefit, gain or profit) and disadvantages (drawback, failure) of technologies from patents with the aim of helping researchers and designers to effectively develop new products, analyzing positive and negative properties of an innovation. The main contributions of the present analysis is to list the problems of a technological field using this sentiment tool. We want to understand which are the problems that research is trying to solve for a technology and if is there any focus from researchers on the solution of certain technical problem. Furthermore using text mining techniques it is possible to correlate these problems between them and understand if is there any correlation between problems of technologies and if this map help researchers and companies to understand the research agenda.
 
-This section thus proposes an innovative methodology for the (semi-automatic) extraction of technical knowledge from academic articles, using text mining techniques. Among many information related to technical knowledge, thw methodology focus on the collection and the analysis of the problems of a technology. The meaning of problems of a technology is related to the concept of disadvantages of a technology but with a broader sense. In fact, using papers as a source makes it possible to collect not only technical disadvantages (typically described in patents) but also, organizational, business or even social problems, since these are faced by different intellectual fields in the scientific literature.
+This section thus proposes an innovative methodology for the (semi-automatic) extraction of technical knowledge from academic articles, using text mining techniques. Among many information related to technical knowledge, the methodology focus on the collection and the analysis of the problems of a technology. The meaning of problems of a technology is related to the concept of disadvantages of a technology but with a broader sense. In fact, using papers as a source makes it possible to collect not only technical disadvantages (typically described in patents) but also, organizational, business or even social problems, since these are faced by different intellectual fields in the scientific literature.
 We also propose a case study on the application of the method to the field of _block-chain_. We chose this technology because:
 
 - It is highly innovative 
@@ -1196,11 +1196,11 @@ The blockchain is a continuously growing list of records, called blocks, which a
 
 The distributed nature and the cooperative model makes the validation process robust and secure, but it has considerable time and costs, due in large part to the _price of the electricity_ needed to validate the blocks [@underwood2016blockchain]. Authentication takes place through mass collaboration and is fueled by collective interests. The result of all this is a robust workflow where participants' data security expertise is not required. The use of this technology also makes it possible to overcome the problem of the infinite reproducibility of a digital asset and of the double expense without using a central server or an authority. [@karame2012double]
 
-There exist an overtrust about blochain technology for businesess, and there exist a growing interest about the drawbacks of this technology [@eyal2018majority; @lin2017survey; @yli2016current]. Has been pointed out that a 51 percent attack 26 would be enough to access or control a private blockchain because, in most cases, the organization that controls it already controls one hundred percent of the block creation. In fact, if someone could attack or damage the blocking tool on a private company server, would be possibile to get complete management of the network and the ability to access and modify the data [@hampton2016understanding]. This is because the centralization due to the privatization of the blockchain leads to a single point of failure, or a central break point, which in a public blockchain could not happen as distributed, so there would be no central point to attack. This could have profound implications in financial crises or debt crises like the 2007-08 financial crisis.
+There exist an overtrust about blokchain technology for businesses, and there exist a growing interest about the drawbacks of this technology [@eyal2018majority; @lin2017survey; @yli2016current]. Has been pointed out that a 51 percent attack 26 would be enough to access or control a private blockchain because, in most cases, the organization that controls it already controls one hundred percent of the block creation. In fact, if someone could attack or damage the blocking tool on a private company server, would be possible to get complete management of the network and the ability to access and modify the data [@hampton2016understanding]. This is because the centralization due to the privatization of the blockchain leads to a single point of failure, or a central break point, which in a public blockchain could not happen as distributed, so there would be no central point to attack. This could have profound implications in financial crises or debt crises like the 2007-08 financial crisis.
  
 ### Methodology
 
-Considering our objectives, the approach we adopted for paper analysis is radically new with respect to the one traditionally established in the literature (bibliometric analysis and keyword approaches). These approaches do not allow a deeper understanding of the technical content described in the text. For this reason, we relied on text mining techniques supported by our technical knowledge base. For the sentiment computation in fact, we used a technical sentiment lexicon developed by the authors that extracts advantages and disadvantages of inventions from patents (\@ref(advdrwresults)) and a novel dictionary lookup approach that incorporates weighting for valence shifters. Following a bottom up-approach, we redesigned and updated these lexicons for an optimal application to paper documents.
+Considering our objectives, the approach we adopted for paper analysis is radically new with respect to the one traditionally established in the literature (bibliometric analysis and keyword approaches). These approaches do not allow a deeper understanding of the technical content described in the text. For this reason, we relied on text mining techniques supported by our technical knowledge base. For the sentiment computation in fact, we used a technical sentiment lexicon developed by the authors that extracts advantages and disadvantages of inventions from patents (\@ref(advdrwresults)) and a novel dictionary lockup approach that incorporates weighting for valence shifters. Following a bottom up-approach, we redesigned and updated these lexicons for an optimal application to paper documents.
 
 ```{r bcworkflow, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Proposed workflow for the problem extraction from papers. ', message=FALSE, warning=FALSE, out.width='80%'}
 
@@ -1231,11 +1231,11 @@ At the date of 29/05/2018 the query results in 1,628 documents.
 
 The term blockchain and its morphological variations is used in other fields different from computer science and economics, in particular in chemistry. For this reason we filtered from the data set all the papers belonging to one of the sequent All Science Journal Classification (ASJC) classes: chemistry, physics and astronomy, chemical engineering, biochemistry, genetics and molecular biology, pharmacology, toxicology and pharmaceutics, immunology and microbiology. The result of this lead us to a set of 1,364 papers.
 
-To have a dataset with an higher precision, we also filtered using rules based on the content of the abstracts, since many conferences do not have an ASJC class in scopus. This characteristic of the scopus database could lead to bias in the results, especially for innovative technologies like block-chain for which the scientific discussion is stronger in conferences then in more structured journals. For this reason we analyzed the abstracts of the 264 articles belonging to one of the ASJC classes listed above (chemistry related) extracting the most frequent words and filtering for a blacklist of generic words contained in scientific articles. This results in a dictionary of words that has ben used to search and filter al the papers containing in the abstract one or more of the words in the dictionary. The final number of selected papers is 1,276.
+To have a dataset with an higher precision, we also filtered using rules based on the content of the abstracts, since many conferences do not have an ASJC class in Scopus. This characteristic of the Scopus database could lead to bias in the results, especially for innovative technologies like block-chain for which the scientific discussion is stronger in conferences then in more structured journals. For this reason we analyzed the abstracts of the 264 articles belonging to one of the ASJC classes listed above (chemistry related) extracting the most frequent words and filtering for a blacklist of generic words contained in scientific articles. This results in a dictionary of words that has been used to search and filter al the papers containing in the abstract one or more of the words in the dictionary. The final number of selected papers is 1,276.
 
 #### Sentence Splitting {-}
 
-A sentence splitter (for furhter details see setction \@ref(sotatoolstransformsentencesplit)) is then applied to the abstract to divide the texts in sentences. From this step we had an output of 8,406 sentences.
+A sentence splitter (for further details see section \@ref(sotatoolstransformsentencesplit)) is then applied to the abstract to divide the texts in sentences. From this step we had an output of 8,406 sentences.
 
 ```{r histbllength, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Histogram of the lengths of the sentences.', message=FALSE, warning=FALSE, out.width='80%'}
 
@@ -1248,7 +1248,7 @@ The next step involved the measure of the sentences length. Some of the sentence
 
 #### Polarity Computation {-}
 
-At this point has been possibile to apply a sentiment polarity measurement on the sentences [@sentimentr2018].
+At this point has been possible to apply a sentiment polarity measurement on the sentences [@sentimentr2018].
 As output we had a polarity score between -1 (strongly negative) and 1 (strongly positive) for each sentence. Since we are interested in extracting the problems of the state-of-the-art blockchain systems, we visualize the distribution of the polarity scores of the sentences labeled as negative (having a polarity score lower then 0). The histogram of this distribution is shown in figure TOT. In this histogram are represented 1,108 different sentences. As we can see we have a distribution center in -0.2, with a tail that goes down to -0.8. This is an evidence that the system give a reasonable measures since it would be unreasonable to have more probable extreme values. Furthermore, the number of sentences having a polarity equal to 0 is 4,435 that is about the 50% of the sentences and the number of sentences having a positive polarity is 2,700 : it is reasonable that the higher number of sentences falls in these classes since the scientific jargon has to be neutral. The positive bias has been seen also for patent documents (see section \@ref(advdrwresults))).
 
 
@@ -1295,9 +1295,9 @@ knitr::include_graphics("_bookdown_files/figures/FindTopicsNumber_plot_bl.pdf")
 
 ```
 
-We computed these for measures fitting a LDA model for every K between 2 and 30. We choose the higher value because we wanted to obtain a reasonable number of topics representing the problems of blockchain. After a brain storming with experts it emerges that there can not exists more than 15 classes of problems. We decide to take the double of this number to take in to consideration the biases of human experts. The results of the analysis are shown in figure \@ref(fig:topicnumsmbl). From this figure is evident how the measure we want to minimize interest each other at a value of 7 topics; the values we want to minimize are a little more unstable (especially Arun2010) and intersect both at level of 9 and 11. We thus decided to visualize and make choose the results of the LDA models for a number of topics k between 7 an 10. 
+We computed these for measures fitting a LDA model for every K between 2 and 30. We choose the higher value because we wanted to obtain a reasonable number of topics representing the problems of blockchain. After a brain storming with experts it emerges that there can not exists more than 15 classes of problems. We decide to take the double of this number to take in to consideration the biases of human experts. The results of the analysis are shown in figure \@ref(fig:topicnumsmbl). From this figure is evident how the measure we want to minimize interest each other at a value of 7 topics; the values we want to minimize are a little more unstable (especially [@arun2010finding]) and intersect both at level of 9 and 11. We thus decided to visualize and make choose the results of the LDA models for a number of topics k between 7 an 10. 
 
-To help experts in their decision process, an interactive map of the problem hass been generated for 7, 8, 9, 10 and 11 topics. The map was created using Shiny [@shiny2017].  The interactive map of problems (a screen shot of the app is shown in figure \@ref(fig:topicmodelschinybc)) helped experts to understand the relationships between the problems. Here a multidimensional scaling algorithm compute the inter-topic distance that permits to visualize the distribution of topics in two dimensions. Clicking on a topic the experts can see its content, and for each word can see both at the estimated term frequency within the selected topic and at the overall term frequency. 
+To help experts in their decision process, an interactive map of the problem has been generated for 7, 8, 9, 10 and 11 topics. The map was created using Shiny [@shiny2017].  The interactive map of problems (a screen shot of the app is shown in figure \@ref(fig:topicmodelschinybc)) helped experts to understand the relationships between the problems. Here a multidimensional scaling algorithm compute the inter-topic distance that permits to visualize the distribution of topics in two dimensions. Clicking on a topic the experts can see its content, and for each word can see both at the estimated term frequency within the selected topic and at the overall term frequency. 
 
 ```{r topicmodelschinybc, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Screenshot of the shiny app used by experts to choose the optimal number of topcis. ', message=FALSE, warning=FALSE, out.width='80%'}
 
@@ -1310,7 +1310,7 @@ The experts agreed for a total number of 8 topics as optimal.
 
 ### Results
 
-The output topic modelling phase is show in figure \@ref(fig:topicmodelsoutputbc). The results of the topic modelling are visualized to make it possibile for the expert to explore and label the topic representing the problems of block chain technology. Each point is a word, and word belonging to the same topic are grouped. The size of the label is proportional to the probability ß that the word belong to that topic.
+The output topic modelling phase is show in figure \@ref(fig:topicmodelsoutputbc). The results of the topic modelling are visualized to make it possible for the expert to explore and label the topic representing the problems of block chain technology. Each point is a word, and word belonging to the same topic are grouped. The size of the label is proportional to the probability ß that the word belong to that topic.
 
 ```{r topicmodelsoutputbc, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Content of the 8 topics of problems of blockchain. Each topic has a different vertical position and a different color. Each topic is represented by a set of keywords and each keyword has a different position on the y axes. For each intersection topic/keyword, the dimension of a circle represent beta (what is the probability that topic to produce that term', message=FALSE, warning=FALSE, out.width='80%'}
 
@@ -1319,7 +1319,7 @@ knitr::include_graphics("_bookdown_files/figures/output_bl_topicmodels.png")
 
 ```
 
-## Precision Agriculture
+## Precision Agriculture {#precisionagri}
 
 The agriculture is facing rapidly changing economic, social and environmental scenarios in 21st Century. Forecasts on worldwide population estimate that it might increase at about 9 billion by 2050 and led the Food and Agriculture Organization of the United Nations (FAO) to underline the growth of food needs of about 60% if compared to the annual average calculated between 2005 and 2007.  The Committee on Agriculture and Rural Development of the European Parliament confirms these figures. In this regard, FAO focuses on how global agricultural and food systems can support the subsistence needs of the worldwide population according to different cultures and dietary habits of both developed and emerging countries.
 
@@ -1350,7 +1350,7 @@ Starting from this relationship, the present chapter aims at analysing the techn
 The work focuses on the creation of a dictionary which identifies the most innovative technologies that are applied in Precision Agriculture by investigating the overlaps with Industry 4.0 technologies to create clusters and to analyze the connections between them. 
 
 The dictionary aims to analyze the technologies related to the Precision Agriculture domain and to identify those belonging also to the Industry 4.0 paradigm. Concretely, the dictionary is a list of Precision Agriculture technologies that were identified by analysing papers retrieved from the international database.
-First of all, the twenty-five most cited scientific papers were identified by using the query “precision agriculture”, among those published between 2002 and 2017. Secondly, a text mining analysis on the 25 papers was conducted to identify the technologies mentioned and belonging to the Precision Agriculture domain. However, this list of technologies was not to considered exhaustive because of the reduced number of analyzed sources, which however provided the basic information to build the analysis context. To face this limitation, and given the proximity of the founding concepts of Industry 4.0 and Precision Agriculture, the Technimetro® was used to expand the list of technologies at the base of the dictionary. Technimetro® (Chiarello et al., 2018) is a dictionary that contains over 1500 technologies belonging to the Industry 4.0 paradigm and was created by selecting the Industry 4.0 technologies found in manuals, technical documents and scientific publications on Scopus. The relationships between these technologies were studied through a text mining activity to describe possible clusters and to understand how technologies are linked one-another. Therefore, the present work attempted to understand if the Technimetro® contains other Precision Agriculture technologies that were not identified with the analysis of the papers.
+First of all, the twenty-five most cited scientific papers were identified by using the query “precision agriculture”, among those published between 2002 and 2017. Secondly, a text mining analysis on the 25 papers was conducted to identify the technologies mentioned and belonging to the Precision Agriculture domain. However, this list of technologies was not to considered exhaustive because of the reduced number of analyzed sources, which however provided the basic information to build the analysis context. To face this limitation, and given the proximity of the founding concepts of Industry 4.0 and Precision Agriculture, the Technimetro® was used to expand the list of technologies at the base of the dictionary. Technimetro® [@chiarello2018extracting] is a dictionary that contains over 1500 technologies belonging to the Industry 4.0 paradigm and was created by selecting the Industry 4.0 technologies found in manuals, technical documents and scientific publications on Scopus. The relationships between these technologies were studied through a text mining activity to describe possible clusters and to understand how technologies are linked one-another. Therefore, the present work attempted to understand if the Technimetro® contains other Precision Agriculture technologies that were not identified with the analysis of the papers.
 
 To answer this question, all abstracts of the publications on Precision Agriculture (published on SCOPUS from 2002 to 2017 for a total number of 4320 papers) were analyzed using the software “R”. In this way, technologies belonging to the Technimetro® that were mentioned in the Precision Agriculture publications were identified. Therefore, technologies extracted through the Technimetro® have been checked to manually eliminate not applicable terms. Technologies ware removed with the help of control groups.
 
@@ -1397,7 +1397,7 @@ knitr::include_graphics("_bookdown_files/figures/precisiongraph.png")
 
 Wikipedia is a non-conventional source of technical knowledge, with respect to patent and papers. With respect to the literature on field delineation and clustering applied to science and technology we innovate by introducing this new source. In particular in the present chapter, Wikipedia is proposed as tool to map a technological field. The process start with a small number of documents following a procedure which is _expert-independent_, in order to minimize the distortions from subjective judgment. We then exploit the properties of Wikipedia in order to delineate the field and identifying the linkages between technologies. Further description of the structure of Wikipedia can be found in section \@ref(sotadocumentswiki)
 
-In this section we present two methodologies capable of automatically use Wikipedia inforamtion and its structure with the aim of mapping and analysing this content. The results of the methodologies are described, togheter with example of applications of the extracted entities for intelligence tasks. 
+In this section we present two methodologies capable of automatically use Wikipedia information and its structure with the aim of mapping and analysing this content. The results of the methodologies are described, together with example of applications of the extracted entities for intelligence tasks. 
 
 ## Industry 4.0: Extracting and Mapping Technologies {#technimetrochap}
 
@@ -1448,7 +1448,7 @@ knitr::kable(
 
 
 
-Formulated initially in Germany in 2011, the Industry 4.0 paradigm has been quickly translated, adapted and reinterpreted in developed and developing countries. Table \ref(tabledocs40scopus) offers a compilation of official documents of governments, agencies and international organizations that in a few years after the initial formulation have embraced the concept.
+Formulated initially in Germany in 2011, the Industry 4.0 paradigm has been quickly translated, adapted and reinterpreted in developed and developing countries. Table \@ref(tabledocs40scopus) offers a compilation of official documents of governments, agencies and international organizations that in a few years after the initial formulation have embraced the concept.
 
 
 
@@ -1493,7 +1493,7 @@ Summing up, the recombinant nature of Industry 4.0 creates several interrelated 
 - the stakeholders are located in several organizational positions
 - the technical progress is very fast, with many (even if not all) constituent technologies facing rapid changes in their nature and performance.
 
-Faced with this situation, a traditional approach to profiling and mapping would require a massive effort of keyword definition. A number of experts would be recruited in order to offer a representation of the field from their disciplinary or industry perspective. Extensive domain knowledge would be mobilized in such a way to build up detailed yet comprehensive maps of technologies. Based on these maps, governments, statistical offices and international organizations would work for a few years in line in the effort to identify the trends of technologies, the most important actors, the shares of individual countries or regions in the global landscape. For sure, this is the approach underlying most of the documents illustrated in Table \ref(tab:tabledocs40scopus) and this the approach that will be pursued in the years to come.
+Faced with this situation, a traditional approach to profiling and mapping would require a massive effort of keyword definition. A number of experts would be recruited in order to offer a representation of the field from their disciplinary or industry perspective. Extensive domain knowledge would be mobilized in such a way to build up detailed yet comprehensive maps of technologies. Based on these maps, governments, statistical offices and international organizations would work for a few years in line in the effort to identify the trends of technologies, the most important actors, the shares of individual countries or regions in the global landscape. For sure, this is the approach underlying most of the documents illustrated in Table \@ref(tab:tabledocs40scopus) and this the approach that will be pursued in the years to come.
 
 We strongly suggest this approach does not deliver the expected result. Keyword-based approaches to emerging technologies are too dependent on subjective judgments of experts. Even when the experts involved are top class and disinterested (often the best researchers or industrialists), their vision is inevitably partial. Even more importantly, keyword-based representations cannot be updated with the same speed of technology. The set of keywords identified by experts becomes inevitably obsolete in a few months.
 This paper leverages on publications and open source repositories to design, develop and test a methodology that provides delineation and clustering of technologies of the Industry 4.0 paradigm. The methodology is based on a dictionary concerning the enabling technologies for industry 4.0 with full definitions and connections between them.
@@ -1572,7 +1572,7 @@ As input for our methodology we used technical documents, official government do
 
 – taking the 10 most cited papers on Industry 4.0 according to Scopus. The reference to Industry 4.0 was explicit in the title, abstract and keywords of the papers. The extraction was made on Scopus Database in June 2017. 
 
-We deliberately limit ourselves to a small number of documents. The reason is explained in conjunction with the chosen stopping rules. The documents have been manually parsed by a team of Master students in Engineering Management at the University of Pisa. The assignment was “Understand each document and extract the enabling technologies for industry 4.0”. The manual search in the documents continued until the team reached the goal of 100 different technologies extracted. For our purposes 100 different technologies represents a reasonable seed list of technologies, which will be used as input for the automatic expansion phase. The chosen documents are shown in Table \ref(tab:tabledocs40scopus).
+We deliberately limit ourselves to a small number of documents. The reason is explained in conjunction with the chosen stopping rules. The documents have been manually parsed by a team of Master students in Engineering Management at the University of Pisa. The assignment was “Understand each document and extract the enabling technologies for industry 4.0”. The manual search in the documents continued until the team reached the goal of 100 different technologies extracted. For our purposes 100 different technologies represents a reasonable seed list of technologies, which will be used as input for the automatic expansion phase. The chosen documents are shown in Table \@ref(tab:tabledocs40scopus).
 
 ####  Seed list expansion {-}
 
@@ -1589,9 +1589,9 @@ Given that the automatic extraction of Wikipedia pages can be run on a permanent
 
 #### The stopping rule for the manual and the automatic expansion {-}
 
-The three stopping rules follow a sequential logic of order of mag- nitude: we start with approximately 101 documents, from which we extract 102 names of technologies, that, used as inputs to Wikipedia, deliver approximately 103 final technologies. More in detail we make use of:
+The three stopping rules follow a sequential logic of order of magnitude: we start with approximately 101 documents, from which we extract 102 names of technologies, that, used as inputs to Wikipedia, deliver approximately 103 final technologies. More in detail we make use of:
 
-1. 20 input documents: all technical documents taken as reference for Industry 4.0 share the same framework (i.e. DIN:SPEC 91345:2106). Many of the documents contains the same informations/terms/ technologies. Furthermore these documents are technology focused and therefore from a low number of documents we obtain a large number of technologies.
+1. 20 input documents: all technical documents taken as reference for Industry 4.0 share the same framework (i.e. DIN:SPEC 91345:2106). Many of the documents contains the same information/terms/ technologies. Furthermore these documents are technology focused and therefore from a low number of documents we obtain a large number of technologies.
 
 1. seed list of 100 technologies: as demonstrated in the past Wikipedia is a good source also for technical terms, therefore we assumed it was able to quickly expand the technologies related to Industry 4.0. For this reason the seed list is composed of no more than 102 entries.
 
@@ -1604,9 +1604,9 @@ The enriched dictionary can be defined as a set of enabling technologies for ind
 For the purpose of publication in an academic paper the tool can be represented as a table in which we have:
 
 - Column 1- Technologies: Enabling technologies for industry 4.0, or a broad categorisation of technologies following a clustering procedure (see below)
-- Column 2- Url: Links of the Wikipedia pages of the enabling tech- nologies for industry 4.0
+- Column 2- Url: Links of the Wikipedia pages of the enabling technologies for industry 4.0
 - Column 3- Definitions: Glossary, snippets from wikipedia page of the definition of the enabling technologies for industry 4.0
-- Column 4 Links: hyperlinks to other wikipedia pages from the wi- kipedia pages of enabling technologies for industry 4.0
+- Column 4 Links: hyperlinks to other wikipedia pages from the wikipedia pages of enabling technologies for industry 4.0
 - Column 5- Anchors: hyperlinks to other wikipedia pages that are enabling technologies for industry 4.0 from the wikipedia pages of enabling technologies for industry 4.
 
 In the table shown in figure \@ref(fig:technimetrosample) shows a sample of the dictionary for four enabling technologies. An evidence is that there are conflicting definitions of “Augmented reality” (AR) and “Virtual reality” (VR); the first says that AR contrasts VR, while the second states that “AR systems may also be considered a form of VR”. This is an evidence of the ambiguity that exists in the definition of 4.0 technologies. Moreover, the table underlines how words such as “3D printing” and “Additive manufacturing” that are used in different ways within papers and technical documents (see Table 3), basically refer to the same concept.
@@ -1626,7 +1626,7 @@ The network structure naturally gives origin to graph-theoretic metrics. We expl
 
 #### Graph analysis and Sub-graph selection {-}
 
-Figure \@ref(fig:techgraphplot1) gives an overview of the obtained. We compute for each node the in-degree (horizontal axis), the out-degree (vertical axis) and the number of links to other Wikipedia pages that each node has (color of the node). Our results show that in terms of the analyzed variables we can identify 4 different clusters of nodes (or technologies) each one having a different behaviour.
+Figure \@ref(fig:techgraphplot1) gives an overview of the obtained. We compute for each node the in-degree (horizontal axis), the out-degree (vertical axis) and the number of links to other Wikipedia pages that each node has (color of the node). Our results show that in terms of the analyzed variables we can identify 4 different clusters of nodes (or technologies) each one having a different behavior.
 The first group we take in consideration are the point having an indegree greater than 70 and an out-degree greater than 70. In this group on the top right of the page we have some outliers. These are terms like Microprocessor and Microcontroller, X86, 8-bit, 16-bit and 32-bit. Then we observe a sub-group centered on the coordinates (150, 100). Here we have terms like Program counter, Adressing mode, Instruction Cycle, Coprocessor, Symultaneus multitrading, SISD and MISD. Still within the first cluster we have another sub-group of terms centered in (80,110) with terms like Intel i860, Intel Atom, Intel 80286, Intel 80188 but also Bloomfiled and Wolfdale. The second cluster is one in which the points have an in-degree greater than 70 and an out-degree smaller than 70. Here we have terms like Machine learning, Artificial Neural Network, Cognitive Computing, Software, Random Access Memory, Internet, Firmware and C++. The third group collects points having an in-degree lower than 70 and an out-degree greater than 70. Here we have terms like Processors, Micro-Operation, Micro-Assembler, Application specific integrated circuit. The last and most populated cluster has an in-degree smaller than 70 and an out degree smaller than 70.
 
 ```{r techgraphplot1, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Plot of the in-degree and the out-degree of the nodes of the graph. The colour of the node represents the number of Wikipedia internal links.', message=FALSE, warning=FALSE, out.width='100%'}
@@ -1635,7 +1635,7 @@ knitr::include_graphics("_bookdown_files/figures/techgraphplot1.png")
 
 ```
 
-This cluster is more precisely visualized in Figure \@ref(fig:techgraphplot2), for which we have as before the in-degree (horizontal axis), the out-degree (vertical axis) and the number of links to other Wikipedia pages that each node has (colour of the node). A jitter process has been implemented to the points on the graph in order to better visualize the overlapped points. In this plot only the technologies having both an in-degree and an outdegree lower than 70 are shown. This generates a subgraph composed by 931 nodes and 10673 edges.
+This cluster is more precisely visualized in Figure \@ref(fig:techgraphplot2), for which we have as before the in-degree (horizontal axis), the out-degree (vertical axis) and the number of links to other Wikipedia pages that each node has (color of the node). A jitter process has been implemented to the points on the graph in order to better visualize the overlapped points. In this plot only the technologies having both an in-degree and an outdegree lower than 70 are shown. This generates a subgraph composed by 931 nodes and 10673 edges.
 
 ```{r techgraphplot2, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Plot of the in-degree and the out-degree of the nodes of the sub-graph. Selection of the nodes having an in-degree and an out-degree lower than 70. The colour of the node represent the number of Wikipedia internal links.', message=FALSE, warning=FALSE, out.width='100%'}
 
@@ -1647,7 +1647,7 @@ knitr::include_graphics("_bookdown_files/figures/techgraphplot2.png")
 
 The structure of the graph offers it self naturally to clustering of technologies in order to obtain a readable mapping.
 The clustering algorithm receives as input the collection of technology terms T of the analyzed subgraph and returns a set of terms clusters C = {C1, C2,.., Cn} that cover the whole subgraph in analysis. Each cluster Ci is a subset of terms of T, and a term may belong to only one cluster.
-In Figure \@ref(fig:technimetro) we show a representation of the sub-graph made using Gephi software with its implementation of the Force Atlas algorithm [@ICWSM09154] . In this representation, two nodes in the graph are represented closely if they share an edge. In this way also nodes that belongs to the same communities of nodes (nodes that can be grouped into sets such that each set is densely connected internally) but do not share any edge are represented closely. In other words, the visualization tends to be coherent with the clustering algorithm. The size of the node is proportional to its in-degree while the colour express the cluster to which each node belong. Finally some of the labels of nodes and clusters are shown.
+In Figure \@ref(fig:technimetro) we show a representation of the sub-graph made using Gephi software with its implementation of the Force Atlas algorithm [@ICWSM09154] . In this representation, two nodes in the graph are represented closely if they share an edge. In this way also nodes that belongs to the same communities of nodes (nodes that can be grouped into sets such that each set is densely connected internally) but do not share any edge are represented closely. In other words, the visualization tends to be coherent with the clustering algorithm. The size of the node is proportional to its in-degree while the color express the cluster to which each node belong. Finally some of the labels of nodes and clusters are shown.
 
 ```{r technimetro, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap=' Representation of the graph of 4.0 technologies and of the clusters in wich them are arranged.', message=FALSE, warning=FALSE, out.width='100%'}
 
@@ -1655,7 +1655,7 @@ knitr::include_graphics("_bookdown_files/figures/Graph_Tech.001.jpeg")
 
 ```
 
-Each node is a technology and each edge represent a Wikipedia link between the pages. The size of the nodes is proportional to the in-degree, and the colours represent the clusters.
+Each node is a technology and each edge represent a Wikipedia link between the pages. The size of the nodes is proportional to the in-degree, and the colors represent the clusters.
 
 The algorithm we used to compute the modularity of each node and thus to assign a group to each of them is described in Blondel et al. [@blondel2008fast]. The process resulted in 11 clusters. The content of each cluster is (for each cluster we can see the first 15 nodes in terms of in-degree):
 
@@ -1691,7 +1691,7 @@ knitr::include_graphics("_bookdown_files/figures/wctech.png")
 
 ## Industry 4.0: a Comparison with Industrie 4.0
 
-The Industry 4.0 paradygim can be understood and implemented differently in different industrial eco-systems, depending on the country in which it is adopted. In the present section we make use of Wikipedia to build a  network of pages regarding industry 4.0 in such a way taht it is possible to map how a country is actually implementing the industry 4.0 paradigm. To analyze the differences between the industry 4.0 concept in the country of origin (Germany) and the rest of the world, our approach is thus to investigate the Wikipedia pages of Industrie 4.0 and Industry 4.0 and the pages they are connected to. Using clustering algorithm it is then possible to explore the different focus that countries have on different technological sub-field of Industry 4.0.
+The Industry 4.0 paradigm can be understood and implemented differently in different industrial eco-systems, depending on the country in which it is adopted. In the present section we make use of Wikipedia to build a  network of pages regarding industry 4.0 in such a way that it is possible to map how a country is actually implementing the industry 4.0 paradigm. To analyze the differences between the industry 4.0 concept in the country of origin (Germany) and the rest of the world, our approach is thus to investigate the Wikipedia pages of Industrie 4.0 and Industry 4.0 and the pages they are connected to. Using clustering algorithm it is then possible to explore the different focus that countries have on different technological sub-field of Industry 4.0.
 
 All aspects during our analyses and the description of the project, e.g. page names, consist of two parts: one in English and one in German. For simplicity and better understandability, we well mostly refer to everything only by the English name.
 
@@ -1708,7 +1708,7 @@ knitr::include_graphics("_bookdown_files/figures/industrie_wf.png")
 
 #### Wikipedia Pages Collection {-}
 
-To list the pages connected to the concept of Industry 4.0, all Wikipedia pages that are linked to the page of Industry 4.0 (and Industrie 4.0) were downloaded. We will refer to these pages as level 1 connection. Then all the pages linked to the level 1 pages are collected and marked as level 2 pages. This process can be continued until a wanted level is reached: for the purposes of the present work we decided to show the effectiveness of the process stopping at level two. For each page, we collected the links to other pages and the categoriess of the page. 
+To list the pages connected to the concept of Industry 4.0, all Wikipedia pages that are linked to the page of Industry 4.0 (and Industrie 4.0) were downloaded. We will refer to these pages as level 1 connection. Then all the pages linked to the level 1 pages are collected and marked as level 2 pages. This process can be continued until a wanted level is reached: for the purposes of the present work we decided to show the effectiveness of the process stopping at level two. For each page, we collected the links to other pages and the categories of the page. 
 
 #### Graph Generation {-}
 
@@ -1731,7 +1731,6 @@ We collect 97 pages for the German graph and 95 pages for the English graph. A l
 - __German Version__: Absatzwirtschaft, Automatisierung, Automatisierungsgrad, Automatisierungstechnik, Autonomic Computing, Autopoiesis, Betriebswirtschaftslehre, Corporate Evolution, Cyber-physisches System, Dataset, Daten, Datenabgleich, Datenarchitektur, Datenaustausch, Datenbasis, Datenelement, Datenfeld, Datenmanagement, Datenmodell, Datenmodellierung, Datensicherung, Datenstruktur, Datentyp, Denken, Dienst (Informatik), Dienstleistung, Digitales Objektgedächtnis, Elektronische Datenverarbeitung, Erfahrungskurve, Erinnerungsvermögen, Feld (Datentyp), Feldgerät, Fertigungslinie, Fließbandabstimmung, Fließbandfertigung, Gegenwart, Geschichte der Produktionstechnik, Glauben, Gruppenfertigung, Halbzeug.
 
 - __English Version__: Adaptive system, Agent-assisted automation, Ambient intelligence, AmbieSense, Analytics, Artificial intelligence, Automated reasoning, Automation, Autonomic computing, Autonomous car, Big data, Big Data Maturity Model, Big memory, Carrier cloud, Cloud-based design and manufacturing, Cloud analytics, Cloud collaboration, Cloud computing, Cloud computing comparison, Cloud computing security, Cloud database, Cloud engineering, Cloud Foundry, Cloud management, Cloud manufacturing, Cloud research, Cognitive computer, Cognitive computing, Community cloud, Competitions and prizes in artificial intelligence, Computer-aided engineering, Computer-aided technologies, Computer-integrated manufacturing, Computer vision, Continuous analytics, Control loop, Control system, Cyber-physical system, Cyber manufacturing, Datafication. 
-
 
 
 #### The Graphs {-}
@@ -1817,14 +1816,14 @@ knitr::include_graphics("_bookdown_files/figures/industrie_clusters.png")
 
 The technical knowledge generated by Social Media remains largely untapped. Some researchers proved that social media have been a valuable source to predict the future outcomes of some events such as box-office movie revenues or political elections. Social media are nowadays also used by companies to measure the sentiment of customers about their brand and products. 
 
-This chpater proposes a new social media based model to measure how users perceive new products from a technical point of view. This model relies on the analysis of advantages and drawbacks of products, which are both important aspects evaluated by consumers during the buying decision process. This model is based on a lexicon developed in a related work (see chapter \@ref(advdrwresults)) to analyse patents and detect advantages and drawbacks connected to a certain technology.
+This chapter proposes a new social media based model to measure how users perceive new products from a technical point of view. This model relies on the analysis of advantages and drawbacks of products, which are both important aspects evaluated by consumers during the buying decision process. This model is based on a lexicon developed in a related work (see chapter \@ref(advdrwresults)) to analyse patents and detect advantages and drawbacks connected to a certain technology.
 
-The results show that when a product has a certain technological complexity and fuels a more technical debate, advantages and drawbacks analysis is more efficient than sentiment analysis in producing technical-functional judgements.
+The results show that when a product has a certain technological complexity and fuels a more technical debate, advantages and drawbacks analysis is more efficient than sentiment analysis in producing technical-functional judgments.
 
-## Technical Sentiment Analysis
+## Technical Sentiment Analysis {#techsentanal}
 
 Nowadays, social media have become an inseparable part of modern life, providing a vast record of mankind’s everyday thoughts, feelings and actions. For this reason, there has been an increasing interest in research of exploiting social media as information source of knowledge although extracting a valuable signal is not a trivial task since social media data is noisy and must be filtered before proceeding with the analysis. In this domain, sentiment analysis, which aims to determine the sentiment content of a text unit, is considered one of the best data mining method. It relies on different approaches [@collomb2014study] and it has been used to answer research questions in a variety of fields comprised the measure of customers perception of new products [@mirtalaie2018extracting].
-In this section, we try to understand if sentiment analysis is really the best available method to analyse consumer’s perception of products, expecialy when we want to measure the perception of the technical content of the product. Thus we compare State of the art sentiment analysis techniques with a lexicon of  advantages and drawbacks related to products.
+In this section, we try to understand if sentiment analysis is really the best available method to analyse consumer’s perception of products, especially when we want to measure the perception of the technical content of the product. Thus we compare State of the art sentiment analysis techniques with a lexicon of  advantages and drawbacks related to products.
 
 ### Methodology
 
@@ -1843,7 +1842,7 @@ We chose to collect tweets not only after the tradeshow, but also before. For th
 #### Data filtering {-}
 
 The initial dataset resulted to be very noisy, containing tweets written in different languages, advertising and posts related to different products or subjects. We chose to keep into account only English tweets because sentiment and advantages/drawbacks lexicon is in this language. The data set is filtered removing tweets with less than five words and non-English posts with a language classifier. We obtained 7.165.216 of filtered tweets.  
-At this point we created a golden set of relevant tweet to train a Supported Vector Machine classifier able to recognize relevant and unrelevant tweets. We defined characteristics that make a tweet: (i) relevant (posted by users or containing words or opinions related to our products of interests and their functionalities), (ii) irrelevant (tweets containing advertisings, links to e-commerce websites or messages related to other products or subjects). A researcher manually classified a subset made up of randomly extracted tweets. In particular, we exctract a subset composed of 6.500 finding 105 positive results and 6.395 negative. SVM model was then trained using this dataset, and computed a probability for each tweet to be relevant or irrelevant. A threshold of 0.7 has been chosen to label a tweet as relevant. The final dataset of filtered tweets, made up of 66.796 posts. We clustered tweets using product-related keywords. Clustering posts allowed us to further filter the final dataset which contained a small number of irrelevant tweets (Table \@ref(tab:tweetab1)).
+At this point we created a golden set of relevant tweet to train a Supported Vector Machine classifier able to recognize relevant and unrelevant tweets. We defined characteristics that make a tweet: (i) relevant (posted by users or containing words or opinions related to our products of interests and their functionalities), (ii) irrelevant (tweets containing advertisings, links to e-commerce websites or messages related to other products or subjects). A researcher manually classified a subset made up of randomly extracted tweets. In particular, we extract a subset composed of 6.500 finding 105 positive results and 6.395 negative. SVM model was then trained using this dataset, and computed a probability for each tweet to be relevant or irrelevant. A threshold of 0.7 has been chosen to label a tweet as relevant. The final dataset of filtered tweets, made up of 66.796 posts. We clustered tweets using product-related keywords. Clustering posts allowed us to further filter the final dataset which contained a small number of irrelevant tweets (Table \@ref(tab:tweetab1)).
 
 Table: (\#tab:tweetab1) Clusters of tweets.
 
@@ -1878,7 +1877,7 @@ Table: (\#tab:tweetab3) Percentages of tweets containing or not words from our l
 
 ### Results
 
-We adapted the advantages & drawbacks analysis to give as output a classification ef each tweet. We classified data coming from the latter analysis in this way: 
+We adapted the advantages & drawbacks analysis to give as output a classification of each tweet. We classified data coming from the latter analysis in this way: 
 
 1. positive (tweets containing only advantages words)
 2. negative (tweets containing only drawbacks)
