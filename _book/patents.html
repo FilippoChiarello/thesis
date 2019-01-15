@@ -135,7 +135,7 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="papers.html"><a href="papers.html"><i class="fa fa-check"></i><b>6</b> Papers</a><ul>
-<li class="chapter" data-level="6.1" data-path="papers.html"><a href="papers.html#smtextdrivenbottomup"><i class="fa fa-check"></i><b>6.1</b> Sustainable Manufacturing: an Analysis of the 6R Framework</a><ul>
+<li class="chapter" data-level="6.1" data-path="papers.html"><a href="papers.html#smtextdrivenbottomup"><i class="fa fa-check"></i><b>6.1</b> Sustainable Manufacturing: the 6R Framework</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="papers.html"><a href="papers.html#methodology-2"><i class="fa fa-check"></i><b>6.1.1</b> Methodology</a></li>
 <li class="chapter" data-level="6.1.2" data-path="papers.html"><a href="papers.html#results-3"><i class="fa fa-check"></i><b>6.1.2</b> Results</a></li>
 </ul></li>
@@ -169,7 +169,7 @@
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Applications of the Results</b></span></li>
-<li class="chapter" data-level="9" data-path="explpatentnovel.html"><a href="explpatentnovel.html"><i class="fa fa-check"></i><b>9</b> A Novel Rapresentation of Patents in Terms of Adantages and Drawbacks</a><ul>
+<li class="chapter" data-level="9" data-path="explpatentnovel.html"><a href="explpatentnovel.html"><i class="fa fa-check"></i><b>9</b> A Novel Rapresentation of Patents</a><ul>
 <li class="chapter" data-level="9.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#towards-formal-definitions-of-advantages-and-drawbacks"><i class="fa fa-check"></i><b>9.1</b> Towards Formal Definitions of Advantages and Drawbacks</a></li>
 <li class="chapter" data-level="9.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#methodology-9"><i class="fa fa-check"></i><b>9.2</b> Methodology</a><ul>
 <li class="chapter" data-level="9.2.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#advantages-and-drawbacks-extraction"><i class="fa fa-check"></i><b>9.2.1</b> Advantages and drawbacks extraction</a></li>
@@ -1584,34 +1584,16 @@ Figure 5.6: Overview of the domain specific advantages and failures clue validat
 <div id="filterting-and-validation-of-the-extracted-clues" class="section level4 unnumbered">
 <h4>Filterting and validation of the extracted clues</h4>
 <p>The sentiment classifier is employed to validate the advantage and drawback clues which were previously extracted from patents by the clue extractor. In order to do so, we exploited the output of the tweet classifier on the tweets we previously downloaded. Each tweet, as said before, contains one or more clues to be validated. The sentiment classifier assigns the likeliness to each tweet to positive, neutral or negative. Consequently by analyzing all the tweets we previously downloaded, we obtained for each clue the distribution of positive, neutral and negative tweets.</p>
-<p>Then to make a decision regarding each clue we used another SVM based classifier. This classifier is trained on a gold set of advantages and drawbacks clues: we manually labeled 344 words as advantages and 193 words as drawbacks, obtaining the gold set. The features used by this classifier are a number of positive, neutral and negative tweets extracted in which the entities are mentioned and the <em>word2vec</em> vector representing the considered entity. In table <a href="patents.html#tab:sentiment-validation">5.11</a> the classification results of the proposed approach over a 5-fold cross validation are reported. The obtained results show that the proposed entity validation method is suitable for the automatic advantages/drawbacks clues validation process.</p>
-<table>
-<caption><span id="tab:sentiment-validation">Table 5.11: </span> Classification results of the proposed validation method over a 5-fold validation.</caption>
-<thead>
-<tr class="header">
-<th align="center"><em>Method</em></th>
-<th align="center">Global accuracy</th>
-<th align="center"><em>ADV Prec.</em></th>
-<th align="center"><em>ADV Rec.</em></th>
-<th align="center"><em>ADV F1</em></th>
-<th align="center"><em>DRW Prec.</em></th>
-<th align="center"><em>DRW Rec.</em></th>
-<th align="center"><em>DRW F1</em></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">SVM-W2V</td>
-<td align="center">87.71</td>
-<td align="center">89.89</td>
-<td align="center">91.29</td>
-<td align="center">90.57</td>
-<td align="center">83.35</td>
-<td align="center">80.66</td>
-<td align="center">81.92</td>
-</tr>
-</tbody>
-</table>
+<p>Then to make a decision regarding each clue we used another SVM based classifier. This classifier is trained on a gold set of advantages and drawbacks clues: we manually labeled 344 words as advantages and 193 words as drawbacks, obtaining the gold set. The features used by this classifier are a number of positive, neutral and negative tweets extracted in which the entities are mentioned and the <em>word2vec</em> vector representing the considered entity.</p>
+<p>The classification results of the proposed approach over a 5-fold cross validation using the SVM-W2V are:</p>
+<ul>
+<li>Global accuracy: 87.71</li>
+<li>ADV Precision: 89.89</li>
+<li>ADV Recall: 91.29</li>
+<li>DRW Precision: 83.35</li>
+<li>DRW Recall: 80.66</li>
+</ul>
+<p>The obtained results show that the proposed entity validation method is suitable for the automatic advantages/drawbacks clues validation process.</p>
 </div>
 <div id="advantages-and-drawbacks-sentences-extraction" class="section level4 unnumbered">
 <h4>Advantages and Drawbacks sentences extraction</h4>
@@ -1636,9 +1618,9 @@ Figure 5.7: Overview of the advantages and failures extraction process.
 <div id="results-1" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Results</h3>
 <p>In this section we describe the experimental use of the proposed process by applying it on four different patent sets.</p>
-<p>To test the proposed methodology, we chose 4 patent sets composed of a sample of 3,000 patents each. The patent sets belong to 4 different IPC patent classes. The chosen classes and the definitions given by WIPO are reported in table <a href="patents.html#tab:advdrwarticleexampleipcclasses">5.12</a>.</p>
+<p>To test the proposed methodology, we chose 4 patent sets composed of a sample of 3,000 patents each. The patent sets belong to 4 different IPC patent classes. The chosen classes and the definitions given by WIPO are reported in table <a href="patents.html#tab:advdrwarticleexampleipcclasses">5.11</a>.</p>
 <table>
-<caption><span id="tab:advdrwarticleexampleipcclasses">Table 5.12: </span> The patent IPC classes from which samples of 3,000 patents were chosen for the experimental analysis.</caption>
+<caption><span id="tab:advdrwarticleexampleipcclasses">Table 5.11: </span> The patent IPC classes from which samples of 3,000 patents were chosen for the experimental analysis.</caption>
 <thead>
 <tr class="header">
 <th align="center"><em>IPC name</em></th>
@@ -1665,11 +1647,11 @@ Figure 5.7: Overview of the advantages and failures extraction process.
 </tbody>
 </table>
 <p>Our choice of patent sets aimed at challenging our system to find new domain specific advantages and drawback clues in different domains. Furthermore, we only selected patent sets from the IPC class A, which is based on human necessities, to maximize the probability of finding advantages and drawbacks that impacts on the users and not only on other products/components.</p>
-<p>Once the advantages and drawbacks are extracted, a manual review process was performed on the output of the system to compute the number of true positive clues. In this way we were able to compute the precision of the process for both the advantages and the drawbacks. The output of the clue extraction validated by the clue validator is analyzed in table <a href="patents.html#tab:advdrwarticlecluemeas">5.13</a>.</p>
+<p>Once the advantages and drawbacks are extracted, a manual review process was performed on the output of the system to compute the number of true positive clues. In this way we were able to compute the precision of the process for both the advantages and the drawbacks. The output of the clue extraction validated by the clue validator is analyzed in table <a href="patents.html#tab:advdrwarticlecluemeas">5.12</a>.</p>
 <p>The table shows that the number of the extracted true positive advantage clues is higher than the number of the extracted true positive drawback clues. On the other side, the automatic evaluation process has a lower performance on advantage clues in terms of precision.</p>
 <p>A first hypotheses to explain these results is that our knowledge base contained more drawback clues than advantage clues. Another possible reason could be that the applicant is minded to describe the invention highlighting the positive effects of the invention.</p>
 <table>
-<caption><span id="tab:advdrwarticlecluemeas">Table 5.13: </span> Number of clues filtered with the clue validator and number of true positive clues.</caption>
+<caption><span id="tab:advdrwarticlecluemeas">Table 5.12: </span> Number of clues filtered with the clue validator and number of true positive clues.</caption>
 <thead>
 <tr class="header">
 <th align="center"></th>
@@ -1700,9 +1682,9 @@ Figure 5.7: Overview of the advantages and failures extraction process.
 </tr>
 </tbody>
 </table>
-<p>In order to assess the performance of the overall process, another important measure is the amount of new information that is obtained, which we call <em>information gain</em>. As shown in table <a href="patents.html#tab:infogain1">5.14</a>, the percentage of new discovered clues decreases with the number of starting clues. Obviously, the more patent sets are analyzed, the less new generic and domain specific clues are extracted. The percentage of information gain (represented as delta in the table), stabilizes at a 5% value in the advantage clues case, and 1% in the drawback clues case. This trend could be an evidence that the clue extraction process has a natural saturation level.</p>
+<p>In order to assess the performance of the overall process, another important measure is the amount of new information that is obtained, which we call <em>information gain</em>. As shown in table <a href="patents.html#tab:infogain1">5.13</a>, the percentage of new discovered clues decreases with the number of starting clues. Obviously, the more patent sets are analyzed, the less new generic and domain specific clues are extracted. The percentage of information gain (represented as delta in the table), stabilizes at a 5% value in the advantage clues case, and 1% in the drawback clues case. This trend could be an evidence that the clue extraction process has a natural saturation level.</p>
 <table>
-<caption><span id="tab:infogain1">Table 5.14: </span> Information gained by applying the extraction process on different patent sets. Each row reports the percentage of information gained by incrementally adding the extracted entities to the knowledge base and the overall number of entities belonging to the extended knowledge base.</caption>
+<caption><span id="tab:infogain1">Table 5.13: </span> Information gained by applying the extraction process on different patent sets. Each row reports the percentage of information gained by incrementally adding the extracted entities to the knowledge base and the overall number of entities belonging to the extended knowledge base.</caption>
 <thead>
 <tr class="header">
 <th align="center"><em>Patent set</em></th>
@@ -1750,9 +1732,9 @@ Figure 5.7: Overview of the advantages and failures extraction process.
 </tr>
 </tbody>
 </table>
-<p>Tables <a href="patents.html#tab:advantageclueextracted">5.15</a> and <a href="patents.html#tab:drawbacksclueextracted">5.16</a> show the frequencies of a randomly chosen set of the new extracted advantages and drawbacks domain specific clues for each of the four analyzed patent sets. The results show that the domain specific clues clearly characterize the different technical areas of the patent sets. It is thus interesting to notice how valuable information is contained in the context specific clues them self. Further research can decide to stop here the process, without extracting the whole sentence.</p>
+<p>Tables <a href="patents.html#tab:advantageclueextracted">5.14</a> and <a href="patents.html#tab:drawbacksclueextracted">5.15</a> show the frequencies of a randomly chosen set of the new extracted advantages and drawbacks domain specific clues for each of the four analyzed patent sets. The results show that the domain specific clues clearly characterize the different technical areas of the patent sets. It is thus interesting to notice how valuable information is contained in the context specific clues them self. Further research can decide to stop here the process, without extracting the whole sentence.</p>
 <table>
-<caption><span id="tab:advantageclueextracted">Table 5.15: </span> Extracted domain specific advantages clues with the measures of occurrences for each patent set.</caption>
+<caption><span id="tab:advantageclueextracted">Table 5.14: </span> Extracted domain specific advantages clues with the measures of occurrences for each patent set.</caption>
 <colgroup>
 <col width="18%" />
 <col width="27%" />
@@ -1829,7 +1811,7 @@ Figure 5.7: Overview of the advantages and failures extraction process.
 </tbody>
 </table>
 <table>
-<caption><span id="tab:drawbacksclueextracted">Table 5.16: </span> Extracted domain specific drawbacks clues with the measures of occurrences for each patent set.</caption>
+<caption><span id="tab:drawbacksclueextracted">Table 5.15: </span> Extracted domain specific drawbacks clues with the measures of occurrences for each patent set.</caption>
 <colgroup>
 <col width="22%" />
 <col width="25%" />
@@ -1907,7 +1889,7 @@ Figure 5.7: Overview of the advantages and failures extraction process.
 </table>
 <p>Then, after the re-projection of the extracted clues on the text, the regular expression described in section is used to extract the sentences highlighted by the clues.</p>
 <table>
-<caption><span id="tab:advantagedrawbackssentences">Table 5.17: </span> Number of sentences containing advantages and drawbacks for each analyzed patent set.</caption>
+<caption><span id="tab:advantagedrawbackssentences">Table 5.16: </span> Number of sentences containing advantages and drawbacks for each analyzed patent set.</caption>
 <thead>
 <tr class="header">
 <th align="center"><em>Patent class</em></th>
@@ -1943,7 +1925,7 @@ Figure 5.7: Overview of the advantages and failures extraction process.
 </tr>
 </tbody>
 </table>
-<p>The number of advantages and drawbacks sentences extracted from each patent are shown in table <a href="patents.html#tab:advantagedrawbackssentences">5.17</a>. The table shows that the occurrence of sentences describing an advantage is higher than the ones containing a drawback <a href="patents.html#tab:infogain1">5.14</a>. This result may be due to the fact that the applicant is minded to describe the invention by highlighting the positive effects of the invention.</p>
+<p>The number of advantages and drawbacks sentences extracted from each patent are shown in table <a href="patents.html#tab:advantagedrawbackssentences">5.16</a>. The table shows that the occurrence of sentences describing an advantage is higher than the ones containing a drawback <a href="patents.html#tab:infogain1">5.13</a>. This result may be due to the fact that the applicant is minded to describe the invention by highlighting the positive effects of the invention.</p>
 <p>Figure <a href="patents.html#fig:processimagetest1">5.8</a> and <a href="patents.html#fig:processimagetest2">5.9</a> show two subsets of the taxonomies obtained by the extraction of the advantages and drawbacks for each of the four analyzed patent sets. The two figures respectively refers to a subset of the leaves linked to the advantage clue <em>Improve</em> and a subset of the leaves linked to the drawback clue Damage. In both cases an additional trimming action is performed by removing those branches or leaves containing terms belonging to the stop-word list typical of patent lexicon (e.g. claim, embodiment, invention, comprise, figure, etc..). The figure shows that our process can extract highly informative sentences also starting from generic and non-contextual clues like <em>improve</em> or <em>damage</em>. Moreover the words that follow the generic clues are specific of the technical field of the analyzed products. Both the results are promising for future applications, especially for the design fields. In particular figure <a href="patents.html#fig:processimagetest1">5.8</a> allows designers to focus on the positive side of the effects provided by the product and to better meet the explicit and implicit user needs. Similarly, figure <a href="patents.html#fig:processimagetest2">5.9</a> helps designers to redesign of the product in a proactive way, to keep attention to the critical issues identified by the drawbacks and to conceive possible corrective actions to solve such drawbacks.</p>
 <div class="figure" style="text-align: center"><span id="fig:processimagetest1"></span>
 <img src="_bookdown_files/figures/improve.png" alt="Sample of the tree based taxonomy extracted from the analyzed patent sets. The sample contains some of the leaves linked to the advantage clue Improve" width="100%" />
@@ -1992,9 +1974,9 @@ Figure 5.9: Sample of the tree based taxonomy extracted from the analyzed patent
 Figure 5.10: Histogram of the percentage of ® and ™ in patentes for each IPC class (limited to US patents). A (Human Necessities); B (Performing Operations; Transporting); C (Chemistry; Metallurgy); D (Textiles; Paper); E (Fixed Constructions); F (Mechanical Engineering; Lighting; Heating; Weapons; Blasting); G (Physics); H (Electricity).
 </p>
 </div>
-<p>Secondly, from table <a href="patents.html#tab:ipcclassestm">5.18</a> it is evident that the average ratio is 6.4 for ® (the usage is 6.4 times higher in the year span 2007-2014 than the span 1995-2002) and 5.4 for ™ (the usage is 5.4 times higher in the year span 2007-2014 than the span 1995-2002) thus the usage of trade-symbols in patent is growing and the presence of ® is increasing faster than the presence of ™. From the present results is not possible to say if this effect is due to an higher quality of the process of patent application (and thus an higher awareness of applicant and examiner) or of a positive trend in trademark registration. In particular for the IPC class E (fields constructions) the number of ® and ™ has increased 10.5 and 9.0 times respectively. This could be an evidence of the fact that the number of trademark in the field of fixed constructions is increasing.</p>
+<p>Secondly, from table <a href="patents.html#tab:ipcclassestm">5.17</a> it is evident that the average ratio is 6.4 for ® (the usage is 6.4 times higher in the year span 2007-2014 than the span 1995-2002) and 5.4 for ™ (the usage is 5.4 times higher in the year span 2007-2014 than the span 1995-2002) thus the usage of trade-symbols in patent is growing and the presence of ® is increasing faster than the presence of ™. From the present results is not possible to say if this effect is due to an higher quality of the process of patent application (and thus an higher awareness of applicant and examiner) or of a positive trend in trademark registration. In particular for the IPC class E (fields constructions) the number of ® and ™ has increased 10.5 and 9.0 times respectively. This could be an evidence of the fact that the number of trademark in the field of fixed constructions is increasing.</p>
 <table>
-<caption><span id="tab:ipcclassestm">Table 5.18: </span> For each IPC class the ratio of the percentage of patents containing at least one ® or ™ character is computed for two patents sets 1995 to 2002 and from 2007 to 2014.</caption>
+<caption><span id="tab:ipcclassestm">Table 5.17: </span> For each IPC class the ratio of the percentage of patents containing at least one ® or ™ character is computed for two patents sets 1995 to 2002 and from 2007 to 2014.</caption>
 <colgroup>
 <col width="14%" />
 <col width="42%" />
