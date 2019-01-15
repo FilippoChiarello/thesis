@@ -1,4 +1,4 @@
-\documentclass[]{book}
+\documentclass[b5paper,]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -100,6 +100,20 @@
 \usepackage{threeparttablex}
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -123,23 +137,20 @@
 }
 \part{Introduction}\label{part-introduction}
 
-\chapter*{Context}\label{context}
-\addcontentsline{toc}{chapter}{Context}
-
 The information field human beings are living in has changed
 dramatically over the last years, effecting economy, technology, culture
 and society. And yet, its stronger mark has been over business systems
-\citep{Arun2006Firm, jin2015significance, degryse2016digitalisation, john2014big, o2016weapons}
-that to strive and stay competitive, have to master methods and tools to
-solve the information overload issue
+\citep{Arun2006Firm, jin2015significance, degryse2016digitalisation, john2014big, o2016weapons}:
+companies have to master methods and tools to solve the information
+overload issue in order to strive and stay competitive
 \citep{levitin2014organized, feng2015competing}.
 
-In order to understand what companies go through in terms of challenges,
-we have to wear their shoes. Let's say that the amount of information
-(such as tactile, visual and sounds, rumors and conversations, the
-content of business papers) gathered in the location we live in starts
-to rise quickly. To survive such an environment, we would need new and
-more powerful senses; we would probably need outside systems to help us
+To understand what companies go through in terms of challenges, we have
+to wear their shoes. Let's say that the amount of information (such as
+tactile, visual and sounds, rumors and conversations, the content of
+business papers) gathered in the location we live in starts to rise
+quickly. To survive such an environment, we would need new and more
+powerful senses; we would probably need outside systems to help us
 processing information. Considering the mole of digital information
 produced in the past 10 years, companies have found themselves in our
 hypothetical scenario: their digital universe is chaotic and constantly
@@ -157,6 +168,25 @@ extract information from any business process
 companies, it leads to an information overload as an internal issue
 which should be handled as an external one.
 
+Inside this rising pressure, the general goal of the present thesis is
+to understand how this information can be turned in to technical
+knowledge by technical experts (e.g.~engineers, researchers, managers,
+marketeers). In order to do that, this work investigates:
+
+\begin{itemize}
+\tightlist
+\item
+  where valuable business information is hidden in certain documents
+\item
+  which technical knowledge can be extracted from different sources of
+  information
+\item
+  what methods and software are available in order to reach this goal
+\item
+  how these tools can be redesigned (if necessary) for being effective
+  in non-standard contexts
+\end{itemize}
+
 \begin{figure}
 
 {\centering \includegraphics[width=0.6\linewidth]{thesis_source_files/figure-latex/biginfo-1} 
@@ -166,145 +196,254 @@ which should be handled as an external one.
 \caption{Hisogram of the eximated Zettabites of information produced from 2005 to 2020.}\label{fig:biginfo}
 \end{figure}
 
-\chapter*{Problems and Goals}\label{problems-and-goals}
-\addcontentsline{toc}{chapter}{Problems and Goals}
+\chapter{Scope of the Thesis}\label{scope-of-the-thesis}
 
-Inside this rising information pressure, the general goal of the present
-Thesis is to extract and synthesise knowledge from these information.
+\section{Sources of Information}\label{sources-of-information}
 
-The first problem is to understand which pieces of information are
+Documents written in natural language contains knowledge by design.
+Their goal in fact is the explication of implicit knowledge
+\citep[\citet{graesser1985structures}]{masters1992knowledge}. With the
+growth of information of the last years also this kind of documents has
+grown in number and there exist a huge opportunity for business to
+manage this knowledge. The problem to address in order to take advantage
+of this opportunity, is understanding which sources of information are
 relevant to a certain company
 \citep{larose2014discovering, chemchem2015data, kasemsap2015role}. It is
 considered relevant all the information that helps the company building
 knowledge as a tool to achieve their goals (both vision and mission).
-This kind of analysis requires a deep understanding of digital
-technologies and of business acumen: not all companies have those skills
-\citep{hecklau2016holistic, davenport2012data, provost2013data, van2014data},
-considering that business acumen is strongly influenced by the field of
-work. It has been estimated that just a small portion of the digital
-universe has been explored with the purpose of extracting competitive
-gain \citep{data2012bigger}. The estimated percentage of untapped data
-is 25\% and it is going to rise to 33\% within 2020. This untapped value
-can be found in hidden pattern in social media, correlations among
-scientific studies, overlaps between medical and sociological studies,
-beneath complex analysis in legal documents and so on.
+Finding these sources requires a deep understanding of digital
+technologies and of business acumen , skills that not every company can
+have
+\citep{hecklau2016holistic, davenport2012data, provost2013data, van2014data}.
+To understand the practical implications of this issue, it has been
+estimated that just a small portion of the digital universe has been
+explored with the purpose of extracting competitive gain
+\citep{data2012bigger}. The estimated percentage of untapped data is
+25\% and it is going to rise to 33\% within 2020: it is likely that many
+of the potential sources of valuable knowledge are not taken in to
+consideration by companies and that a huge value is still hidden. This
+untapped value can be potentially found everywhere in the info-verse:
+users behaviors in social media, correlations among scientific studies,
+overlaps between medical and sociological studies, beneath complex
+analysis in legal documents and so on.
 
-The difficulty of gathering valuable information is related to
-high-impact information being no longer sectorial (belonging to one
-knowledge field); instead, this information comes from
-multi-disciplinary fields, making it even harder to spot. Although those
-resources are accessible to experts from a certain field they may have
-troubles comprehending a mixed jargon of overlapping areas far from
-their own. To show the phenomena, here is a recent update from CPC
-(Cooperative Patent Classification) in which it has been added the class
-B33 regarding additive manufacturing technologies \citep{cpc2014}, a
-technological field with a vast multidisciplinary content (material
-sciences, mechanic, computer, robotic engineering)
-\citep{mueller2012additive}. A new CPC means a great impact on patent
-office, whose job is to form new examiners for that specific CPC: it
-means that the previous examiners did not have the needed set of skills
-which are not acquirable inside a domain in a short period of time. So,
-if new hybrid technological fields have such a relevant impact on
-European Patent Office (which has special access to both knowledge and
-human resources needed to run a certain field) we can imagine how this
-impact is determinant onto a manufacturing company.
+For these reasons an analytically process gains great value thanks to a
+correct decision of which documents mine to extract knowledge. To
+maximize this value the problem space has to be searched in term of
+business relevant knowledge content of documents. Since this problem
+space is huge (all the documents of which a company is stakeholder) in
+the present thesis this decision has been taken a-priori ensuring a wide
+set of document types in terms of their characteristics. These documents
+are:
 
-Secondly, knowing the potential sources of information that can bring
-value, it is essential to understand which tools can be used to extract
-this value in the form of knowledge
-\citep{hand2007principles, mining2006data}. As previously shown, a
-company is at risk if the information grows in quantity and directions
-impossible to process. In other terms, the rise of information shown in
-picture \ref{fig:biginfo} does not imply the rise of knowledge; in fact,
-it is possible that it can prevent it from growing
-\citep{allen2003information, herbig1994effect}. That phenomena is known
-as the productivity paradox.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Patents}
+\item
+  \emph{Scientific Papers}
+\item
+  \emph{Wikipedia}
+\item
+  \emph{Social Media}
+\end{enumerate}
 
-Nowadays, in the big data era, companies (and universities too) need new
-\emph{senses} and \emph{helpers} who can assist them in the processes of
-extraction and grounding of knowledge, considering the growing amount of
-resources and information available. For these reason the emerging field
-of Data Science had a huge success in the last decade with a great focus
-on the study of artificial intellingece and machine learning.
+Patents has their core in technical information. Despite this, some
+researchers \citep{bonino2010review} affirm that there is an increasing
+variety of readers of patents: not only technician and researchers but
+also marketers and designers who have grown an interest in patent
+analysis. To our knowledge this thesis represent a first step the
+direction of these potential readers. Papers are similar to patents in
+terms of technical content but are not affected by the bias of being
+legal documents. If this makes technical information easier to find, it
+also brings a problem when there is the need of synthesizing the huge
+information coming from a corpus of papers. Wikipedia is distant from
+patents and papers. It (by design) contains encyclopedic and less
+objective information, which comes in a semi-structured form. Due to the
+bottom-up approach in which Wikipedia is developed, it has some
+reliability shortages to take in to account. Finally social media
+documents are far from the previous ones since they make use of a short,
+subjective and colloquial lexicon. It is another of the challenges
+addressed by this thesis to demonstrate that this sources contains
+exploitable technical information too.
 
-It is clear that data science is not manageable by machines alone. A
-system capable of extracting knowledge from large amounts of
-information, which companies have to deal with, needs both humans and
-machines.
+\section{Methods and Focus of the
+Analysis}\label{methods-and-focus-of-the-analysis}
 
-Human-computer interaction, HCI, also called human-machine interaction
-(wide spectrum connotation, mostly used in the literature in
-Informatics), is the study of the interaction between people and
-computers to design and develop interactive systems to be usable,
-trustworthy and able to support and facilitate human activity.
+Thanks to the improvement in the Artificial Intelligence (AI) field,
+\emph{Natural Language Processing} (NLP) has dramatically increased its
+effectiveness in the last years \citep{russell2016artificial}. Now
+powerful tools for the analysis of documents are available to every one
+that has a little understating of programming
+\citep[\citet{Kenneth2018spacyr},
+\citet{Wijffels2018udpipe}]{Taylor2017Tidy}. For this reason, the
+processes carried out in this thesis uses state of the art NLP
+techniques that only in few cases has been deeply modified in the design
+process. In other words the value of the output is not in the modified
+NLP algorithm but on the whole process of knowledge extraction that goes
+from the decision of which documents to analyze to the communication of
+the results.
 
-The in-depth study of the interaction covers informatics, psychology,
-cognitive sciences, ergonomics, design, information science, artificial
-intelligence, natural language and others.
+Furthermore, despite the golden ages of AI and NLP we are living in,
+some problems this research area is trying to address are still having a
+huge impact on companies \citep{hand2007principles, mining2006data}.
 
-The main goal of this discipline is the usability. The usability, as
-stated in the norm ISO 9241, is the measure in which a product can be
-used by specific users, to achieve specific goals with efficacy,
-efficiency and satisfaction in a specific context of use. The reasons
-why usability is important are:
+The first one is that the information overload is not manageable by
+machines alone and thus there is the need of understating which are the
+best practices in experts-machine interaction. In this context, it is
+interesting to notice that the way companies incorporate knowledge in
+their own artificial systems is drastically changed in the last 30
+years. In fact, in the 1990s the main approach was knowledge
+engineering: machine learned how to perform analysis tasks thanks to the
+rules experts gave them. This idea has failed. In some contexts, it is
+impossible representing knowledge with explicit expert-driven rules. For
+this reason on the 2010s inductive revolution developed; machines are
+used to extract knowledge from huge amounts of data in an inductive way.
+
+This has led to a second major problem observed by literature: black
+boxes or systems whose working mechanism are unknown, except input and
+output. A recent paper \citep{pedreschi2018open} tries to clarify the
+issue with black boxes and offers a few solutions. The authors point at
+a way similar to reversing, in which a program is stimulated with
+various inputs to study the outputs and understand its logic. In the
+same way, to study the mechanisms of a machine-learning model, it is
+possible to modify slightly the input only, and observe the result; or,
+foresee the right input for the needed output. It is still cutting edge,
+but it is already discussed and it is opening up to specific research,
+such as explainable AI.
+
+Considering these problems and considering the general goal of the
+present thesis (i.e.~to extract and synthesize technical knowledge from
+unstructured documents) we can state that we can not take aside the
+design of processes, which can provide correct knowledge exchange
+between human and machine, leading to:
 
 \begin{itemize}
 \item
-  increase efficiency for users (more productivity)
-\item
-  decrease in errors (increase in security)
-\item
-  decrease the need for training (lower costs)
-\item
-  decrease the need of support for users
-\item
-  increase sales
-\end{itemize}
-
-There must exist an interaction: in such a strategic environment with a
-great amount of domain knowledge, it is impossible to substitute experts
-with artificial intelligence.
-
-It is interesting to notice that the way companies incorporate knowledge
-in their own systems is drastically changed. In fact, in the 1990s the
-main approach was knowledge engineering: machine learned how to perform
-analysis tasks thanks to the rules experts gave them. This idea has
-failed, too. In some contexts, it is impossible representing knowledge
-with rules.
-
-For that reason, lately, inductive revolution developed; machines are
-used to extract the rules that code knowledge in the form of huge
-amounts of data representing reality leading to a new problem observed
-by literature: black boxes. This expression is commonly used to indicate
-those cases when algorithms and computational methods, whose working
-mechanism are unknown, except input and output, are needed.
-
-A recent paper \citep{pedreschi2018open} tries to clarify the issue with
-black box and offers a few solutions. The authors point at a way similar
-to reversing, in which a program is stimulated with various inputs to
-study the outputs and understand its logic. In the same way, to study
-the mechanisms of a machine-learning model, it is possible to modify
-slightly the input only, and observe the result; or, foresee the right
-input for the needed output. It is still cutting edge, but it is already
-discussed and it is opening up to specific research, such as explainable
-AI.
-
-To conclude, considereing the general goal of the present thesis
-(e.g.~to extract and synthesise knowledge from information) we can state
-that the path to reach this objective pass trough the design of analysis
-algorithms, which can provide correct knowledge exchange between human
-and machine, leading to:
-
-\begin{itemize}
-\item
-  incorporate knowledge of the experts inside machine-learning systems
+  incorporate knowledge of the experts inside AI systems
 \item
   experts' ability to use in their process of decision making,
   inductively generated knowledge of machines
 \end{itemize}
 
-\chapter*{Solution}\label{solution}
-\addcontentsline{toc}{chapter}{Solution}
+\chapter{Approach}\label{approach}
+
+\section{Design Science Paradigm}\label{introdesres}
+
+Knowledge extraction systems are implemented within an organization for
+the purpose of improving the probability for that organisation to reach
+its goals. A wide literature exists on the design of these kind of
+systems and the main focus comes from Information Systems (IS)
+discipline. It is incumbent upon researchers in the IS to further
+knowledge that aids in the productive application of information
+technology to human organizations and their management
+\citep{edit2002info} and to develop and communicate knowledge concerning
+both the management of information technology and the use of information
+technology for managerial and organizational purposes
+\citep{Zmud1997edit}. Hevner et al. \citep{bichler2006design} argues
+that acquiring such knowledge involves two complementary but distinct
+paradigms: \emph{behavioral science} and \emph{design science}
+\citep{march1995design}.
+
+The \emph{behavioral-science paradigm} has its roots in the research
+method of natural science
+\citep{makadok2018practical, colquitt2007trends}. Its goal is to develop
+and justify theories that explain (or predict) organizational phenomena
+\citep{zahra2009maximizing} about the analysis, design, implementation,
+management, and use of information systems. Such theories inform
+researchers and companies of the interactions among humans, machines,
+and organizations that must be managed if an information system has to
+be effective. These theories interact with design decisions made with
+respect to the system development methodology used
+\citep{fini2018collaborative}.
+
+The \emph{design-science paradigm} is a problem solving paradigm and has
+its roots in engineering and the sciences of the artificial
+\citep{simon1996sciences}. Its goal is to create innovations: define the
+ideas, practices, technical capabilities, and products through which the
+analysis, design, implementation, management, and use of information
+systems can be effectively and efficiently accomplished
+\citep{denning1997new, tsichritzis1997dynamics}. In this context the
+researchers switches his goal: the artifacts that are created in the
+research process are not exempt from natural laws or behavioral theories
+but relies on existing kernel theories that are applied, tested,
+modified, and extended through the experience, creativity, intuition,
+and problem solving capabilities of the researcher
+\citep{george2016big, madhavji2015big, markus2002design, walls1992building}.
+
+Since Design science creates and evaluates IT artifacts intended to
+solve identified organizational problems, the present thesis has as main
+approach this second paradigm. In Design Science, artifacts are
+represented in a structured form that may vary from software, formal
+logic, and rigorous mathematics to informal natural language
+descriptions. We will use all these representations at different level,
+for the different applications described.
+
+Furthermore the thesis has been developed following the guidelines of
+design-science research. Hevner et al. \citep{bichler2006design} provide
+a set of seven guidelines which help information systems researchers
+conduct, evaluate and present design-science research. The guidelines
+are summarised in table \ref{tab:introdesignscience}.
+
+As previously discussed, design science is a problem solving paradigm.
+The fundamental principle of design-science research is that is the
+building and application of an artifact that permits to the researcher
+to gain new knowledge and understanding of a design problem and its
+solution. From this fundamental principle the seven guidelines are
+derived. That is, design-science research must end and must have as goal
+the \emph{creation of an innovative, purposeful artifact (Guideline 1)}
+for a specified \emph{problem domain (Guideline 2)}. Because the
+artifact has to be purposeful, researcher has to measure its utility for
+the specified problem: this imply that \emph{evaluation of the artifact
+is crucial (Guideline 3)}. Novelty is similarly crucial since the
+artifact must \emph{solve an unsolved problem or solving a known problem
+in a more effective or efficient manner (Guideline 4)}. In this way,
+design-science research is differentiated from the practice of design
+since artifact itself must be \emph{rigorously defined, formally
+represented, coherent, and internally consistent (Guideline 5)}. The
+process of design of the artificial and also artifact itself,
+incorporates a search process whereby \emph{a problem space is
+constructed and a mechanism posed or enacted to find an effective (not
+necessarely otpimal) solution (Guideline 6)}. Finally, the results of
+the \emph{design-science research must be communicated effectively
+(Guideline 7)}.
+
+The communication phase is crucial, and the results of a design science
+based research has to be comprehensible and usable to:
+
+\begin{itemize}
+\tightlist
+\item
+  a technical audience (researchers who will extend them and
+  practitioners who will implement them)
+\item
+  a managerial audience (researchers who will study them in context and
+  practitioners who will decide if they should be implemented within
+  their organizations).
+\end{itemize}
+
+\begin{table}
+
+\caption{\label{tab:introdesignscience}Design-Science Research Guidelines}
+\centering
+\begin{tabular}[t]{>{}l>{\em\raggedright\arraybackslash}p{20em}}
+\toprule
+Guideline & Description\\
+\midrule
+Design as an Artifact & Design-science research must produce a viable artifact in the form of a construct, a model, a method, or an instantiation.\\
+Problem Relevance & The objective of design-science research is to develop technology-based solutions to important and relevant business problems.\\
+Design Evaluation & The utility, quality, and efficacy of a design artifact must be rigorously demonstrated via well-executed evaluation methods.\\
+Research Contributions & Effective design-science research must provide clear and verifiable contributions in the areas of the design artifact, design foundations, and/or design methodologies.\\
+Research Rigor & Design-science research relies upon the application of rigorous methods in both the construction and evaluation of the design artifact.\\
+\addlinespace
+Design as a Search Process & The search for an effective artifact requires utilizing available means to reach desired ends while satisfying laws in the problem environment.\\
+Communication of Research & Design-science research must be presented effectively both to technology-oriented as well as management-oriented audiences.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Data Science Workflow}\label{data-science-workflow}
 
 Many frameworks and models exists that describes the process of
 knowledge extraction from data \citep[\citet{bellinger2004data},
@@ -316,8 +455,8 @@ theories about the analysis, design, implementation, management, and use
 of data analysis systems.
 
 For the present thesis we adopted a more actionable framework popular in
-the field of data science: the Data Science Workflow described by
-Wickham \citep{wickham2016r}. We adopted this model because is a generic
+the field of data science: the Data Science Workflow
+\citep{wickham2016r}. We adopted this model because is a generic
 workflow that can be used as guideline to design any knowledge
 extraction system. The workflow is represented in figure
 \ref{fig:mainworkflow}.
@@ -325,12 +464,12 @@ extraction system. The workflow is represented in figure
 The workflow is a model of the tools needed in a typical data science
 project. Since data science is a huge field, and there's no way that a
 model can master it, the goal of the model is to give a solid foundation
-in the most important tools.These tools are used in every data science
+in the most important tools. These tools are used in every data science
 project, but for most projects they are not enough. The tools
 represented in the model has been chosen following a rough Pareto 80-20
 rule \citep{pareto1971manual}.
 
-The workflow is divided in the sequent tasks:
+The workflow is divided in the subsequent tasks:
 
 \begin{itemize}
 \item
@@ -338,7 +477,7 @@ The workflow is divided in the sequent tasks:
   load it into a computer.
 \item
   \emph{Tidy:} Tidying data means storing it in a consistent form that
-  matches the semantics of the dataset with the way it is stored. In
+  matches the semantics of the data-set with the way it is stored. In
   brief, when the data is tidy, each column is a variable, and each row
   is an observation. Tidy data is important because the consistent
   structure lets focus on questions about the data and not in its shape.
@@ -399,58 +538,14 @@ section \ref{sotatools}.
 \caption{A general workflow for the process of data analysis. Readapted from Wickham (2016)}\label{fig:mainworkflow}
 \end{figure}
 
-As stated before, the focus of the present thesis is on the interaction
-between men and machines in the \emph{extraction of knowledge from
-technical documents}. This focus has two main reasons:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Documents written in natural language contains knowledge by design.
-  Their goal in fact is the explication of implicit knowledge
-  \citep[\citet{graesser1985structures}]{masters1992knowledge}. With the
-  growth of information of the last years also this kind of documents
-  has grown in number and there exist a huge opportunity for business to
-  manage this knowledge.
-\item
-  Thank to the improvement in the Artificial Intelligence field, Natural
-  Language Processing has dramatically increased its effectiveness in
-  the last years \citep{russell2016artificial}. Now powerful tools for
-  the analysis of documents are available to every one that has a little
-  understating of programming \citep[\citet{Kenneth2018spacyr},
-  \citet{Wijffels2018udpipe}]{Taylor2017Tidy}.
-\end{enumerate}
-
-The design processes carried out in this thesis uses state of the art
-Natural Language Processing techniques or algorithms that only in few
-cases has been deeply modified in the design process. In other words the
-value of the output is not in the modified natural language algorithm
-but on the whole process of knowledge extraction that goes from the
-decision of which documents to analyze to the communication of the
-results. In fact, great value is added to the design process by the
-decision of which documents mine to extract knowledge. To maximize this
-value the problem space has to be searched in term of \emph{business
-relevant knowledge content of documents}. Since this problem space is
-huge (all the documents of which a company is stakeholder) the decision
-can be considered as a feature of the method, as valuable as (or even
-more in this case) the algorithm of natural language processing.
-
-To decide the documents on which the thesis has the focus, section
-\ref{sotadocuments} contains a review of the characteristics and on the
-state of the art of the analysis on four different document types:
-patents, papers, Wikipedia and social media.
-
-\chapter*{Stakeholders of this
-Thesis}\label{stakeholders-of-this-thesis}
-\addcontentsline{toc}{chapter}{Stakeholders of this Thesis}
-
 \chapter*{Structure and Rationale}\label{structure-and-rationale}
 \addcontentsline{toc}{chapter}{Structure and Rationale}
 
-The Design Science Approach, the Data Science Workflow and the
-exploitation of Natural Language Processing Techniques helps to explain
-the structure of this thesis, since the decision of using these paradigm
-and tools had a direct impact on the form and content of it.
+The selected documents to analyze, the exploitation of Natural Language
+Processing Techniques , the Design Science Approach and the Data Science
+Workflow helps to explain the structure of this thesis, since the
+decision of using these paradigm and tools had a direct impact on its
+form and content. The thesis is in fact structured as follow:
 
 \begin{itemize}
 \item
@@ -505,10 +600,12 @@ rely both on Natural Language Processing techniques and on technical
 field expertise. While the first techniques are codified and explicit,
 the second are sometimes implicit and always hard to systematize. In
 this section i treat these two groups of techniques in the same way to
-give to the reader a systematic literature review on these topics.
-Furthermore it is important to define the value in terms of new
-knowledge that documents can bring to companies. For this reason the
-chapter of this part has the subsequent structure:
+give to the reader a systematic literature review on these topics. This
+chapter can be seen as a background chapter as it illustrates the
+information that the reader should know to understand the rest of the
+dissertation. Furthermore it is important to define the value in terms
+of new knowledge that documents can bring to companies. For this reason
+the chapter of this part has the subsequent structure:
 
 \begin{itemize}
 \item
@@ -709,19 +806,20 @@ tidy data can be thus summarised as the points \citep{leek2015elements}:
   that allows them to be linked
 \end{itemize}
 
-There main advantages of structuring the data in this way is that a
+The main advantages of structuring the data in this way is that a
 consistent data structure make it easier to use the tools (programs)
 that work with it because they have an underlying uniformity. This lead
 to an advantage in reproducibility of code.
 
-As stated before tidying data is not a trivial task, and applying this
-process to text is even harder for documents with respect to structured
-data \citep{silge2016tidytext}. On the other side, is clear that using
-tidy data principles can make many text mining tasks easier, more
-effective, and consistent with tools already in wide use . Treating text
-as data frames of individual words allows us to manipulate, summarize,
-and visualize the characteristics of text easily and integrate natural
-language processing into effective workflows already used.
+In the context of the present Thesys, the Tidy task mean applying this
+process to text. It is clear that to tidy unstructured information is
+harder then to tidy structured data \citep{silge2016tidytext}. On the
+other side, using tidy data principles can make many text mining tasks
+easier, more effective, and consistent with tools already in wide use.
+Treating text as data frames of individual words allows us to
+manipulate, summarize, and visualize the characteristics of text easily
+and integrate natural language processing into effective workflows
+already used.
 
 Tidy text format is designed as being a table with one-token-per-row. A
 token unit of text that is meaningful for the analysis to be performed
@@ -1018,7 +1116,7 @@ Many kinds of machine learning algorithms are used to build classifiers
   different classes on the basis of the word presence in the documents
   \citep{pop2006approach}.
 \item
-  \emph{Neural Netword Classifiers}: The basic unit in a neural network
+  \emph{Neural Network Classifiers}: The basic unit in a neural network
   is a neuron. Each neuron receives a set of inputs, which are denoted
   by the vector \emph{Xi}, which are the values of the feature vector
   for a certain instance. Each neuron is also associated with a set of
@@ -1034,7 +1132,7 @@ Many kinds of machine learning algorithms are used to build classifiers
   \citep{lai2015recurrent, kim2014convolutional}.
 \end{itemize}
 
-\subsection{Sentiment Analsysis}\label{sotatoolsmodelsentanal}
+\subsection{Sentiment Analysis}\label{sotatoolsmodelsentanal}
 
 Sentiment analysis techniques are algorithms able to measure from text,
 people's opinions and emotions toward events, topics, products and their
@@ -1101,13 +1199,13 @@ most interesting for technical documents analysis are:
 The goal of clustering methods is to find groups of similar objects in
 the data thanks to the measure of a similarity function
 \citep{jain1988algorithms, kaufman2009finding}. Clustering techniques
-has been widely applied in the text domain, where the objects of the
+are widely applied in the text domain, where the objects of the
 clustering can be documents (at different level of granularity) or
 terms. In the context of technical documents analysis Clustering is
 especially useful documents retrieval
 \citep{anick1997exploiting, cutting1993constant}. Clustering problems
-has been and are studied widely outside the text domain. Methods for
-clustering have been developed focusing on quantitative/non-textual data
+are studied widely outside the text domain. Methods for clustering have
+been developed focusing on quantitative/non-textual data
 \citep{guha1998cure, han2001spatial, zhang1996birch}.
 
 In the context of text analysis, the problem of clustering finds
@@ -1187,9 +1285,9 @@ peripheral device). Different training algorithms, such as Hidden Markov
 Models \citep{eddy1996hidden}, Conditional Random Fields (CRF)
 \citep{lafferty2001conditional} Support Vector Machines (SVM)
 \citep{hearst1998support}, or Bidirectional Long Short Term Mermory-CRF
-Neural Networks \citep[ ]{lample2016neural, misawa2017character} are
-used to build a statistical model based on features that are extracted
-from the analyzed documents in the training phase.
+Neural Networks \citep{lample2016neural, misawa2017character} are used
+to build a statistical model based on features that are extracted from
+the analyzed documents in the training phase.
 
 \subsection{Topic Modelling}\label{sotatoolsmodeltopicmodel}
 
@@ -1252,12 +1350,12 @@ more variables.
 Data visualisation has become in the last year a well established
 discipline thanks to the increased amounts of data created by Internet
 activity and an expanding number of sensors in the environment are
-referred to as ``big data'' or Internet of things. It is important to
-underline how the way this data is communicated present ethical and
-analytical challenges for data visualization practitioner
-\citep{bikakis2018big}. The field of data science and practitioners
-called data scientists help address this challenge
-\citep{loukides2011data}.
+referred to as ``big data'' or Internet of things
+\citep{ertug2018editors}. It is important to underline how the way this
+data is communicated present ethical and analytical challenges for data
+visualization practitioner \citep{bikakis2018big}. The field of data
+science and practitioners called data scientists help address this
+challenge \citep{loukides2011data}.
 
 Users of information displays are executing (consciously or not)
 particular analytical tasks such as making comparisons or determining
@@ -1357,7 +1455,7 @@ analysis.
 \subsection{The Grammar of Graphics}\label{the-grammar-of-graphics}
 
 Even if trial and error is and will remain an important part of data
-visualisation, some works as tried to give to data visualisation
+visualisation, some works has tried to give to data visualisation
 practitioners a well structured framework able to guide the process of
 data visualisation. Among the many frameworks, the most used is the
 \emph{Grammar of Graphics} \citep{wilkinson2006grammar} and its
@@ -1530,7 +1628,7 @@ raised only recently in a few seminal papers, but it has not yet created
 a consistent literature, comparable to the large and robust literature
 in the field of forecasting and in many other areas of social sciences.
 
-\subsection{The problem of byases}\label{sotadocumentsunderstandbyas}
+\subsection{The problem of biases}\label{sotadocumentsunderstandbyas}
 
 The literature in the heuristic and biases tradition is now in the order
 of several thousand articles. A deliberately crude search for
@@ -1601,7 +1699,7 @@ should be as diverse as possible, and systems for engagement should
 encourage people to listen and integrate information and reasoning from
 as many sources as possible, and to explore competing explanations''.
 
-different expert orientation than a framing in which gains and losses
+Different expert orientation than a framing in which gains and losses
 are compared and weighted. A related problem is that the framing of the
 problem may hinder the ability to identify rare events, or low
 predictability phenomena. A combination between quantitative modelling
@@ -1822,20 +1920,20 @@ Papers, Wikipedia and Social Media.
 \section{Patents}\label{sotadocumentspatents}
 
 Nowadays patent data can be used for planning technological strategy
-\citep{ernst2003patent}. The focus on the technological usefulness of
-patent data is certainly a great advantage, but this huge research area
-could hide other useful application for patents. For example, in
-\citep{jin2015technology} the authors consider on one side patents as a
-source to collect information about technologies and products, and on
-the other side manuals, handbooks and market reports to collect market
-information. Since patents are only technological documents many
-potential patent reader (e.g.~designers, marketers) could be taken
-aside. Despite this problem, some researchers \citep{bonino2010review}
-affirm that there is an increasing variety of readers: not only
-technician and researchers but also marketers and designers who have
-grown an interest in patent analysis. Nevertheless, to our knowledge
-there are no researches that aim at facilitating information extraction
-for non-technological focused patent readers.
+\citep{azoulay2009impact, ernst2003patent}. The focus on the
+technological usefulness of patent data is certainly a great advantage,
+but this huge research area could hide other useful application for
+patents. For example, in \citep{jin2015technology} the authors consider
+on one side patents as a source to collect information about
+technologies and products, and on the other side manuals, handbooks and
+market reports to collect market information. Since patents are only
+technological documents many potential patent reader (e.g.~designers,
+marketers) could be taken aside. Despite this problem, some researchers
+\citep{bonino2010review} affirm that there is an increasing variety of
+readers: not only technician and researchers but also marketers and
+designers who have grown an interest in patent analysis. Nevertheless,
+to our knowledge there are no researches that aim at facilitating
+information extraction for non-technological focused patent readers.
 
 The bias that patent are only tech-oriented documents is due to two main
 reasons:
@@ -1856,20 +1954,6 @@ all the other kinds of information (e.g.~marketing and sociological
 information ) is not contained elsewhere and it will appear in public
 documents (e.g.~manual handbooks and market reports) in 6-18 months
 \citep{golzio2012}.
-
-Unfortunately there are four aspects reducing the non-tech readers'
-ability to analyze patents efficiently. First of all, an increasingly
-high number of patent filings generates a massive information overflow
-{[}\citet{bergmann2008evaluating}; secondly, analyzing patents takes a
-long time and requires skilled personnel \citep{liang2007text}; the
-quality of patent assessment process is decreasing
-\citep{burke2007, philipp2006} because of the reduced assessment time
-available for patent examiners; finally, activities like patent hiding,
-proliferation and bombing, contribute to the generation of confusion and
-to the loss of time in research and analysis phases
-\citep{fantoni2013automatic}. These problems affect non-tech oriented
-patent readers as well as typical readers, even though the impact may be
-stronger on the firsts.
 
 The main difference between typical and non-tech patent readers is the
 information they focus on. \emph{Patent attorneys} and
@@ -1921,7 +2005,7 @@ Semantic analysis, Neural networks). Another possible classification is:
   blacklist to remove noisy words \citep{blanchard2007understanding} or
   use predefined lexicons \citep{chiarello2017product}. The right design
   of such list dramatically impacts the final output of the analysis
-  \citep[\citet{Lee2015}, \citet{Montecchi2013}]{Lee2009}
+  \citep{Lee2009, Lee2015, Montecchi2013}
 \item
   \emph{Natural Language Processing approaches}: methods based on
   grammatical and syntactical structures extracted by natural language
@@ -2461,17 +2545,18 @@ can not be fully exploited in generic system.
 \section{Papers}\label{sotadocumentspapers}
 
 Researchers are starting to increasingly design and rely on automated
-literature analysis using text mining techniques \citep{nuzzo2010text}.
-This task is particularly valuable in the starting stage of any study,
-when gathering knowledge about a scientific question or a problem is
-crucial in formulation of hypotheses and resaearch planning.
-Furthermore, even if research communities and publishing houses are
-putting increasing efforts in delivering scientific articles as
-structured texts \citep{poelmans2012text}, nowadays a considerable part
-of digital scientific literature is available in layout-oriented data
-formats, like PDF, lacking any explicit structural or semantic
-information. As a consequence the bootstrap of textual analysis of
-scientific papers is often a time-consuming activity.
+literature analysis using text mining techniques
+\citep{nuzzo2010text, azoulay2006publicationharvester}. This task is
+particularly valuable in the starting stage of any study, when gathering
+knowledge about a scientific question or a problem is crucial in
+formulation of hypotheses and resaearch planning. Furthermore, even if
+research communities and publishing houses are putting increasing
+efforts in delivering scientific articles as structured texts
+\citep{poelmans2012text}, nowadays a considerable part of digital
+scientific literature is available in layout-oriented data formats, like
+PDF, lacking any explicit structural or semantic information. As a
+consequence the bootstrap of textual analysis of scientific papers is
+often a time-consuming activity.
 
 To understand how text minign techniques can help to extract knowledge
 from scientific papers, we can analyze the phases in wich the literature
@@ -2499,24 +2584,23 @@ incorrectly
 \citep{cooper1988structure, okoli2010guide, edinger2013large}.
 
 In general an automatic systems able to extract knowledge from
-scientific papers and a process of litterature review are structured in
-a similar way. The steps for the first type of process (with a
-particular focus on paper classification, see section
-\ref{sotatoolsmodeldocclass}) can be divied in paper collection, text
-processing, data division, feature extraction, feature selection, data
-representation, classifier training, applying a classification model,
-and performance evaluation
+scientific papers and a process of literature review are structured in a
+similar way. The steps for the first type of process (with a particular
+focus on paper classification, see section \ref{sotatoolsmodeldocclass})
+can be divied in paper collection, text processing, data division,
+feature extraction, feature selection, data representation, classifier
+training, applying a classification model, and performance evaluation
 \citep{khorsheed2013comparative, weiss2010text, carlos2015text} (which
 are a subset of the generical tasks of natural language processing
 described in chapter \ref{sotatools}).
 
 Papers Collection has the aim of selecting all the papers that belong to
-a limited scientific domain, i.e., ``industry 4.0''
+a limited scientific domain, e.g., ``industry 4.0''
 \citep{weiss2015fundamentals, chiarello2018extracting}. This task is not
-trivial, and domain experts has to work with computer scientist with the
-goal of building a query able to filter for all the relevant documents.
-Each sample text must then be labeled with one or more tags indicating a
-label to a certain class.
+trivial, and domain experts has to work with computer scientists with
+the goal of building a query able to filter for all the relevant
+documents. Each sample text must then be labeled with one or more tags
+indicating a label to a certain class.
 
 \emph{Text preprocessing} has been discussed in section
 \ref{sotatoolstransform}. Actually preprocessing is in this context a
@@ -2601,7 +2685,7 @@ mining applications.
 
 First, Wikipedia pages are considered reliable in many knowledge fields,
 including the ones more interesting for technical analysis,
-i.e.~engineering and computer science \citep{xu2015improving}. The pages
+e.g.~engineering and computer science \citep{xu2015improving}. The pages
 are regularly and systematically updated by a large global community of
 contributors, which includes many scientific and industrial authorities
 in the field. The use of Wikipedia as knowledge source for computerized
@@ -2622,10 +2706,7 @@ distinction between equivalent relations (synonymy), hierarchical
 relations (hyponymy/ hyperonimy) and associative relations, but this
 limitation is not relevant for our applications.
 
-Third, it makes use of categories which do not have a hierarchical
-structure, but a tree-like structure.
-
-Fourth, it has the ability to evolve quickly \citep{lih2004wikipedia},
+Third, it has the ability to evolve quickly \citep{lih2004wikipedia},
 particularly after the development of systems such as Wikify
 \citep{mihalcea2007wikify, cheng2013relational}. Wikipedia has by design
 a dynamic structure, since it is constantly growing in the number of
@@ -2729,7 +2810,7 @@ future. At the same time, some works have been controversial
 its infancy, methodologies are different, common best practices are
 difficult to determine, and true replication of studies is
 near-impossible due to data sharing concerns
-\citep[@][]{weller2015accepting}. The use of data from Social Media for
+\citep{weller2015accepting}. The use of data from Social Media for
 modelling real-world events and behavior has seen a growing interest
 since his first appearance in academic world around 2008. This
 increasing popularity is proportional to the leaps ahead made in
@@ -2767,7 +2848,7 @@ the world and what is happening in it. According to Hamad
 importance of Twitter for Social Media analysis: 1. Twitter is a popular
 platform in terms of the media attention it receives, and it therefore
 attracts more research due to its cultural status; 2. Twitter makes it
-easier to find and follow conversations (i.e., by both its search
+easier to find and follow conversations (e.g., by both its search
 feature and by tweets appearing in Google search results); 3. Twitter
 has hashtag norms which make it easier gathering, sorting, and expanding
 searches when collecting data; 4. Twitter data is easy to retrieve as
@@ -2782,7 +2863,7 @@ platform. It is probable that a combination of the response from 1 to 6
 led to more research on Twitter. However, this raises another distinct
 but closely related question: when research is focused so heavily on
 Twitter, what (if any) are the implications of this on methods? As for
-the methods that are currently used in analysing Twitter data i.e.,
+the methods that are currently used in analysing Twitter data e.g.,
 sentiment analysis, time series analysis (examining peaks in tweets),
 network analysis etc., can these be applied to other platforms or are
 different tools, methods and techniques required?
@@ -2985,11 +3066,16 @@ performance. Even when just using Social Media information from the
 first three days of the project, they achieve an AUC of 0.90, reflecting
 very high classification performance.
 
+Also the software engineering field, has helped marketing specialits
+using social media and other data sources, as, e.g., reviews, to improve
+products design specificaly in the requirements design phase
+\citep{groen2017crowd}.
+
 \part{Methods and Results}\label{part-methods-and-results}
 
 This part describes the methods and processes designed for the analysis
 of technical documents following the guidelines of design research
-described in section \ref{introdesres}. The methods are ensamble of
+described in Part 1 of the present Thesis. The methods are ensamble of
 Natural Language Processing (NLP) and Text Mining \emph{techniques}
 described in \ref{sotatools}, re-designed depending on the analyzed
 document and the analysis goal.
@@ -3014,11 +3100,13 @@ and how these documents are used to mine technical knowledge can be
 found in section \ref{sotadocumentspatents}
 
 In this section we present three methodologies capable of automatically
-detecting and extracting three of the multiple entities hidden in
-patents: the users of the invention, advantages and drawbacks of the
-invention and trademarks contained in patents. The results of the
-methodologies are described, together with example of applications of
-the extracted entities for intelligence tasks.
+detecting and extracting three technical entities hidden in patents:
+
+1- the users of the invention 2- advantages and drawbacks of the
+invention 3- trademarks.
+
+The results of the methodologies are described, together with example of
+applications of the extracted entities for intelligence tasks.
 
 \section{Users}\label{usersresults}
 
@@ -3046,7 +3134,7 @@ a patent has not got any stakeholder information in it the patent
 application should be rejected.
 
 Definition 2: \textbf{User}: \emph{Users are animated or previously
-animated entities (human or animal, alive or dead), on which the
+animated Stakeholder (human or animal, alive or dead), on which the
 invention has a positive or negative effect at an unspecified moment.}
 
 Given definition 2, it is clear that every user is a stakeholder while
@@ -3056,16 +3144,17 @@ operational processes.
 Corollary 1: \textbf{Multiple roles}: \emph{Identities may have multiple
 roles as users.}
 
-Our idea of users describes roles, not identities. Animated entities
-have an identity, as it happens for a specific person. A person has many
-roles as a user. For example, a \emph{working mother} starts her day
-taking on the role of a \emph{mom}, in which she is expected to feed her
-children and get them ready for school. At the office she shifts to the
-role of \emph{project manager}, so she oversees projects in a timely and
-professional manner. \emph{Working mother}, \emph{mom} or \emph{project
-manager} can be considered user roles attributed to the same person, or
-identity. From this definition it is clear that users are close to what
-social sciences define as ``social roles''.
+Our idea of users describes roles, not identities (individual entities
+or specific persons). Animated entities have an identity, as it happens
+for a specific person. A person has many roles as a user. For example, a
+\emph{working mother} starts her day taking on the role of a \emph{mom},
+in which she is expected to feed her children and get them ready for
+school. At the office she shifts to the role of \emph{project manager},
+so she oversees projects in a timely and professional manner.
+\emph{Working mother}, \emph{mom} or \emph{project manager} can be
+considered user roles attributed to the same person, or identity. From
+this definition it is clear that users are close to what social sciences
+define as ``social roles''.
 
 Afterward, we can outline knowledge fields using the concept of user,
 with a twofold aim: help the reader to understand how the concept of
@@ -3147,6 +3236,23 @@ like ``User Centered Design'' are based on the concept of user
 the design process is proportional to the user needs' satisfaction. It
 implies that a designer has to understand the user needs; as a
 consequence he has to discover whom are potential users.
+
+\subsubsection*{Artificial Intelligence: utility-based
+agents}\label{artificial-intelligence-utility-based-agents}
+\addcontentsline{toc}{subsubsection}{Artificial Intelligence:
+utility-based agents}
+
+In artificial intelligence the concept of utility-based agent is to be
+thaken in to consideration to complete our list of concpets near to
+user. An utility-based agents or intelligent agent is an autonomous
+entity which observes through sensors and acts upon an environment using
+actuators (i.e.~it is an agent) and directs its activity towards
+achieving goals \citep{russell2016artificial}. Intelligent agents may
+also learn or use knowledge to achieve their goals. In our context Users
+are a subset of intelligent agents (only human and Animals). It is to be
+noticed that also some products or components are intelligent agents.
+For example a reflex machine, such as a thermostat, is considered an
+example of an intelligent agent.
 
 \subsection{Method}\label{method}
 
@@ -3266,8 +3372,7 @@ have intentionally \textbf{not} been introduced in the input list
 because we considered these terms as candidates to be extracted by the
 process in our case study .
 
-\subsubsection*{Patent set selection}\label{patent-set-selection}
-\addcontentsline{toc}{subsubsection}{Patent set selection}
+\subsubsection{Patent set selection \{-\}}\label{patsetsel}
 
 Our choice of patent sets aimed at challenging our system to find new
 users missing in the input list. To reproduce a patent set selection, we
@@ -3313,8 +3418,7 @@ phase is:
   order to extract new entities from unseen documents. A semi-automatic
   method has been used to generate an annotated corpus of users to avoid
   manual annotation of a patent set. The method is a projection of the
-  list of users on the patent set defined in section @ref\{patsel\}. The
-  list of users described in section @ref\{sourc\} is cleaned to avoid
+  list of users on the patent set. The list of users is cleaned to avoid
   linguistic ambiguities when projecting these entities on the corpus.
   For example, the term \emph{``guide''} has two different meanings when
   used as a verb or as a noun. Furthermore, as a noun it could indicate
@@ -3357,7 +3461,8 @@ In our experiments the classifier has been trained using two different
 learning algorithms: Support Vector Machines (SVM) using the LIBSVM
 library \citep{svm} configured to use a linear kernel and Multi Layer
 Perceptron (MLP) implemented using the Keras library \citep{libkeras}.
-It has been proven that LSTM methods are well suited for similar NER
+It has been proven that Long Short Term Memory Recurrent Neural Network
+(LSTM) \citep{chiu2016named} methods are well suited for similar NER
 task. Anyway, we chose SVM and MLP method to study how two wheel
 established state of the art classifiers perform on the specific task of
 user extraction from patents and to evaluate their performance in terms
@@ -3403,9 +3508,9 @@ users}
 
 It is still possible that the classification process creates false
 positive results (words labeled as users that do not match the
-definition in section @ref\{theuse\}). Thus, it is necessary to make a
-manual review of the extracted entities with the aim of evaluating the
-output.
+definition in section @ref\{usersresults\}). Thus, it is necessary to
+make a manual review of the extracted entities with the aim of
+evaluating the output.
 
 \subsection{Results}\label{results}
 
@@ -3414,8 +3519,8 @@ extraction process on two different patent sets. To test the system four
 experiments were conducted\}. Finally the performances and the outcomes
 of the system are shown and discussed.
 
-Following the guidelines for the patent set selection, we examined two
-patent sets belonging to the IPC class A:
+Following the guidelines for the patent set selection @ref\{patsetsel\},
+we examined two patent sets belonging to the IPC class A:
 
 \begin{itemize}
 \tightlist
@@ -3429,12 +3534,16 @@ patent sets belonging to the IPC class A:
 \end{itemize}
 
 We extracted from the private Errequadro s.r.l. \footnote{\url{http://www.errequadrosrl.com/}}
-database a random sample of 2.000 patents from each IPC class. For each
-patent set we applied the semiautomatic set annotation process by
-projecting the input list of users on the morphosyntactically analyzed
-patent set. After this process, each semi-automatically annotated patent
-set was split in two parts: the first was used as training set for the
-user extractor, and the second one was used as test set.
+database a random sample of 2.000 patents from each IPC class. We have
+chosen this database because of the reliability of the data given by
+this copany with respect to the public available databases. Furthermore
+it is not always possibile to have acces to the full text of a patent
+for free. For each patent set we applied the semiautomatic set
+annotation process by projecting the input list of users on the
+morphosyntactically analyzed patent set. After this process, each
+semi-automatically annotated patent set was split in two parts: the
+first was used as training set for the user extractor, and the second
+one was used as test set.
 
 To build an informative training set, from the semi-automatically patent
 set we selected a subset of sentences containing at least one user. The
@@ -3443,8 +3552,6 @@ size of the training set in both cases is approximately composed by
 shows the number of sentences of the training set, the number of
 sentences of the test set, and the number of distinct users in the
 training set (re-projected by the semi-automatic annotation process).
-
-ref ---\textgreater{} patent set-details
 
 \begin{longtable}[]{@{}cccc@{}}
 \caption{\label{tab:patentsetdetails} Statistics related to the patent set
@@ -3548,7 +3655,7 @@ higher precision in the classification phase, since explicit lexical
 information is used in the training phase. For the same reason we
 expected to have low recall in classification phase. On the other hand,
 the third and fourth configurations are delexicalized: lexical
-information is provided by word vectors computed by word2vec\_. In these
+information is provided by word vectors computed by word2vec. In these
 two configurations we expected to have an higher recall and a lower
 precision, due to the characteristics of the computed vectors explained
 before. To limit errors when using the \emph{word2vec} features, some
@@ -4006,9 +4113,9 @@ Other remarkable results are:
   Taking into consideration the definition of user of an invention, the
   system extracts unusual and sometimes borderline users. Examples like
   \emph{saint}, \emph{angel}, \emph{god} and \emph{ghost} need
-  discussion that is far beyond the purposes of the present paper. These
-  results are a remarkable evidence of the human-like generalization
-  ability of the described method.
+  discussion that is far beyond the purposes of the present thesis.
+  These results are a remarkable evidence of the human-like
+  generalization ability of the described method.
 \end{itemize}
 
 \begin{longtable}[]{@{}cccccc@{}}
@@ -4422,7 +4529,7 @@ extraction results.
 
 Successively the \emph{semi-automatic annotation of advantages and
 drawbacks clues} is performed. The advantages and drawbacks clues
-extraction tool is the key ingredient of the present paper, and it is
+extraction tool is the key ingredient of the present thesis, and it is
 based on supervised methods. Such methods require an entity annotated
 corpus in order to extract new entities from unseen documents. Since the
 manual annotation of a patent set is too expensive both in terms of time
@@ -4588,6 +4695,10 @@ terms or chunks of terms commonly used in other contexts, too.
 Therefore, if we can identify a wide source of sentences tagged with a
 polarity score and containing advantages or drawbacks, the probability
 of assigning the proper polarity to advantages and drawbacks increases.
+Of course this method has a treat: some technical words can be used
+rarely in a non-technical context. For this reason we will rely on a big
+number of tweets in order to augment the probability of finding all the
+clues we want to measure.
 
 Social media platforms provide powerful venues for consumers to interact
 not only with brands but also with other consumers as they engage in the
@@ -4684,9 +4795,10 @@ learning algorithm can be parametrized through a configuration file. For
 this work, we used a tandem Long Short Term Memory Recurrent Neural
 Network (LSTM) - Support Vector Machines (SVM) architecture.
 
-\subsubsection*{Validation of the extracted
-clues}\label{validation-of-the-extracted-clues}
-\addcontentsline{toc}{subsubsection}{Validation of the extracted clues}
+\subsubsection*{Filterting and validation of the extracted
+clues}\label{filterting-and-validation-of-the-extracted-clues}
+\addcontentsline{toc}{subsubsection}{Filterting and validation of the
+extracted clues}
 
 The sentiment classifier is employed to validate the advantage and
 drawback clues which were previously extracted from patents by the clue
@@ -4704,32 +4816,28 @@ drawbacks clues: we manually labeled 344 words as advantages and 193
 words as drawbacks, obtaining the gold set. The features used by this
 classifier are a number of positive, neutral and negative tweets
 extracted in which the entities are mentioned and the \emph{word2vec}
-vector representing the considered entity. In table
-\ref{tab:sentiment-validation} the classification results of the
-proposed approach over a 5-fold cross validation are reported. The
-obtained results show that the proposed entity validation method is
+vector representing the considered entity.
+
+The classification results of the proposed approach over a 5-fold cross
+validation using the SVM-W2V are:
+
+\begin{itemize}
+\tightlist
+\item
+  Global accuracy: 87.71
+\item
+  ADV Precision: 89.89
+\item
+  ADV Recall: 91.29
+\item
+  DRW Precision: 83.35
+\item
+  DRW Recall: 80.66
+\end{itemize}
+
+The obtained results show that the proposed entity validation method is
 suitable for the automatic advantages/drawbacks clues validation
 process.
-
-\begin{longtable}[]{@{}cccccccc@{}}
-\caption{\label{tab:sentiment-validation} Classification results of the
-proposed validation method over a 5-fold validation.}\tabularnewline
-\toprule
-\emph{Method} & Global accuracy & \emph{ADV Prec.} & \emph{ADV Rec.} &
-\emph{ADV F1} & \emph{DRW Prec.} & \emph{DRW Rec.} & \emph{DRW
-F1}\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-\emph{Method} & Global accuracy & \emph{ADV Prec.} & \emph{ADV Rec.} &
-\emph{ADV F1} & \emph{DRW Prec.} & \emph{DRW Rec.} & \emph{DRW
-F1}\tabularnewline
-\midrule
-\endhead
-SVM-W2V & 87.71 & 89.89 & 91.29 & 90.57 & 83.35 & 80.66 &
-81.92\tabularnewline
-\bottomrule
-\end{longtable}
 
 \subsubsection*{Advantages and Drawbacks sentences
 extraction}\label{advantages-and-drawbacks-sentences-extraction}
@@ -4760,7 +4868,7 @@ we identified sequences of allowed pos--clue-pattern in order to cover
 most of the English morphosyntactic multi--words structures, using the
 following pattern:
 
-(ADVClue\textbar{}textbar DISClue)+Noun.*Noun.*Noun.
+(ADVClue\textbar{} DISClue)+Noun.*Noun.*Noun.
 
 The pattern is applied to the previously lemmatized text in order to
 have less sparse and more informative extractions.
@@ -5153,7 +5261,7 @@ two subsets of the taxonomies obtained by the extraction of the
 advantages and drawbacks for each of the four analyzed patent sets. The
 two figures respectively refers to a subset of the leaves linked to the
 advantage clue \emph{Improve} and a subset of the leaves linked to the
-drawback clue \_Damage. In both cases an additional trimming action is
+drawback clue Damage. In both cases an additional trimming action is
 performed by removing those branches or leaves containing terms
 belonging to the stop-word list typical of patent lexicon (e.g.~claim,
 embodiment, invention, comprise, figure, etc..). The figure shows that
@@ -5315,7 +5423,7 @@ trademark owner.
 \subsection{Methodology}\label{methodology-1}
 
 With respect to Users \ref{usersresults} and to Advantages and
-Distadvantages @ref(\#advdrwresults) the process to extract tradenames
+Distadvantages \ref{advdrwresults} the process to extract tradenames
 from patents is trivial. The main activity performed are (for details
 aobut the activities see section \ref{sotatools}:
 
@@ -5545,12 +5653,12 @@ have to be refined.
 \end{figure}
 
 \subsubsection*{The Popularity of Tradenames in
-Patens}\label{the-popularity-of-tradenames-in-patens}
+Patents}\label{the-popularity-of-tradenames-in-patents}
 \addcontentsline{toc}{subsubsection}{The Popularity of Tradenames in
-Patens}
+Patents}
 
 In figure \ref{fig:populartm} are plotted the trends of the numbers of
-patents that correctly cites a tradenames. We analyzed 12 different
+patents that correctly cite a tradenames. We analyzed 12 different
 tradenames, divided in couples: each couple belong to a similar sector.
 We make use of a generalized additive model fitting function to better
 analyze the results and to make more easily to understand and compare
@@ -5588,9 +5696,9 @@ Some of them shows:
 \end{figure}
 
 \subsubsection*{The Similarity of Tradenames in
-Patens}\label{the-similarity-of-tradenames-in-patens}
+Patents}\label{the-similarity-of-tradenames-in-patents}
 \addcontentsline{toc}{subsubsection}{The Similarity of Tradenames in
-Patens}
+Patents}
 
 Further information can be derived by analysing the IPC classes where
 the patent have been chosen by the assignees-attorneys-examiners.The
@@ -5657,7 +5765,7 @@ segmenting a knowledge field. These selected knowledge field are:
 sustainable manufacturing and block-chain. The results of the
 methodologies are described, together with example of applications.
 
-\section{Sustainable Manufacturing: an Analysis of the 6R
+\section{Sustainable Manufacturing: the 6R
 Framework}\label{smtextdrivenbottomup}
 
 One of the most important objectives of Sustainable Manufacturing (SM)
@@ -5752,18 +5860,18 @@ certain extent measure the ``degree of sustainability''. The higher the
 number of principles that are satisfied, the higher the potential
 positive impact on sustainability can be for a given adopted solution.
 In this sense, far from stating that the 6R framework is a widespread
-and commonly adopted metric of SM, the starting assumption in this paper
-is that 6R is the only approach, to the author's knowledge, that
+and commonly adopted metric of SM, the starting assumption in this
+section is that 6R is the only approach, to the author's knowledge, that
 provides a criteria of classification and selection of solution, and
 thus indirectly to provide a clear definition of what a SM application
 may look like. The true question nowadays is \emph{if the 6R framework
 may capture the essence of SM}, provided that it is really critical to
 clearly define the SM paradigm rationale to the scientific community.
-This paper aims to stimulate the reflection from the Italian perspective
-to this point, with a particular concern to the production technology
-side, by using an automatic classification of papers within the 6R
-framework and then by benchmarking approaches followed by the Italian
-Technologist research-network SOSTNERE on SM issues.
+This section aims to stimulate the reflection from the Italian
+perspective to this point, with a particular concern to the production
+technology side, by using an automatic classification of papers within
+the 6R framework and then by benchmarking approaches followed by the
+Italian Technologist research-network SOSTNERE on SM issues.
 
 Sustainability (from sustain plus ability) refers to the set of
 properties of a given system (either natural or artificial), which
@@ -5850,7 +5958,7 @@ The first critical issue is the selection criteria of 6R principles for
 the assignment. This was done by trying to assign a semantic
 specification of each R principle, as below explicated, built by
 summarizing all the possible definitions and concepts extracted by the
-selected bibliography (partially cited in the present paper). The
+selected bibliography (partially cited in the present section). The
 semantic specification provided below refers to the functional scope of
 each class, intended as an activity to be performed.
 
@@ -6774,7 +6882,7 @@ that we think that best represent the corpus in analysis. In literature
 there exists many measurement to compute an optimal value of k. However
 it is worth to keep in mind that these measures are not always
 correlated with expert judgement about topics interpretability and
-coherence. For this reason in the present paper we use an hybrid
+coherence. For this reason in the present section we use an hybrid
 approach in which we find an optimal neighborhood of value using state
 of the art k tuning methods and then we compute a graphical output for
 the 5 best k values to be evaluated by 4 different experts.
@@ -7154,7 +7262,7 @@ for a number of reasons we discuss in great detail. Faced with the
 complexity of Industry 4.0 existing delineation and clustering
 methodologies can be considered inadequate.
 
-In this paper we develop a novel approach, test it, and show its
+In this section we develop a novel approach, test it, and show its
 superior performance with respect to other approaches. The key features
 of the approach are as follows:
 
@@ -7254,34 +7362,7 @@ Energy & 30\\
 
 Formulated initially in Germany in 2011, the Industry 4.0 paradigm has
 been quickly translated, adapted and reinterpreted in developed and
-developing countries. Table \ref{tabledocs40scopus} offers a compilation
-of official documents of governments, agencies and international
-organizations that in a few years after the initial formulation have
-embraced the concept.
-
-\begin{table}
-
-\caption{\label{tab:tabledocs40scopus}Technical document and Scientific articles used to create the Technology Seed List.}
-\centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}>{\em\raggedright\arraybackslash}p{10em}r>{\raggedright\arraybackslash}p{5em}r>{\em\raggedright\arraybackslash}p{5em}l}
-\toprule
-Author(s) & Name/title of the source & Pages & Country & Year & Publisher & Typology\\
-\midrule
-France Government & New Industrial France - Building France’s industrial future & 112 & France & 2016 & French Government & Technical Document\\
-Geissbauer et al. & Industry 4.0: Building the digital enterprise - Global Industry Survey & 36 & United Kingdom & 2016 & Price Watehouse \& Coopers & Technical Document\\
-German Trade \& Invest & Industrie 4.0 - Smart manufacturing for the future & 40 & Germany & 2014 & German Trade \& Invest & Technical Document\\
-Heng, S. & Industry 4.0 - Upgrading of Germany’s industrial capabilities on the horizon & 16 & Germany & 2014 & Deutsche Bank & Technical Document\\
-National Intelligent Factories Cluster & Research andInnovation Roadmap & 88 & Italy & 2015 & National Intelligent Factories Cluster & Technical Document\\
-\addlinespace
-Rüßmann et al. & Industry 4.0 - The future of productivity and growth in manufacturing industries & 20 & United Sates & 2015 & Boston Consulting Group & Technical Document\\
-Siemens & On the Way to Industrie 4.0 – The Digital Enterprise & 27 & Germany & 2015 & Siemens & Technical Document\\
-Smit et al. & Industry 4.0 - Study for the ITRE Committee. & 94 & Europe & 2016 & European Parliament & Technical Document\\
-The Government Office for Science & The future of manufacturing: a new era of opportunity and challenge for the UK & 250 & United Kingdom & 2016 & The Government Office for Science & Technical Document\\
-Wee et al. & Industry 4.0 - How to navigate digitization of the manufacturing sector & 62 & United States & 2015 & McKinsey Company & Technical Document\\
-Gorecky et al. & Human-machine-interaction in the industry 4.0 era & 6 & Germany & 2014 & Industrial Informatics (INDIN) - 2014 12th IEEE International Conference & Scientific Article\\
-\bottomrule
-\end{tabular}
-\end{table}
+developing countries.
 
 Despite this rapid and impressive convergence of interest (in itself a
 clear demonstration of the interdependence of policies across the
@@ -7362,9 +7443,7 @@ comprehensive maps of technologies. Based on these maps, governments,
 statistical offices and international organizations would work for a few
 years in line in the effort to identify the trends of technologies, the
 most important actors, the shares of individual countries or regions in
-the global landscape. For sure, this is the approach underlying most of
-the documents illustrated in Table \ref{tab:tabledocs40scopus} and this
-the approach that will be pursued in the years to come.
+the global landscape.
 
 We strongly suggest this approach does not deliver the expected result.
 Keyword-based approaches to emerging technologies are too dependent on
@@ -7373,7 +7452,7 @@ class and disinterested (often the best researchers or industrialists),
 their vision is inevitably partial. Even more importantly, keyword-based
 representations cannot be updated with the same speed of technology. The
 set of keywords identified by experts becomes inevitably obsolete in a
-few months. This paper leverages on publications and open source
+few months. This section leverages on publications and open source
 repositories to design, develop and test a methodology that provides
 delineation and clustering of technologies of the Industry 4.0 paradigm.
 The methodology is based on a dictionary concerning the enabling
@@ -7508,8 +7587,8 @@ between the page and other pages. We exploit this feature as follows:
 members of the same cluster are those pages that share the hyperlinks to
 other pages, according to thresholds defined by an appropriate
 algorithm. Note that hyperlinks are only superficially similar to
-citations. The origin page ``cites'' another page by hyperlinking it,
-but in effect this linkage is not a citation (that is, a reference to a
+citations. The origin page cite another page by hyperlinking it, but in
+effect this linkage is not a citation (that is, a reference to a
 previous work) but a signal of semantic similarity, intended to guide
 the reader in the network of meanings. We suggest that the hyperlinks
 are similar to citations under some respect, but very different under
@@ -7630,8 +7709,7 @@ industry 4.0''. The manual search in the documents continued until the
 team reached the goal of 100 different technologies extracted. For our
 purposes 100 different technologies represents a reasonable seed list of
 technologies, which will be used as input for the automatic expansion
-phase. The chosen documents are shown in Table
-\ref{tab:tabledocs40scopus}.
+phase.
 
 \subsubsection*{Seed list expansion}\label{seed-list-expansion}
 \addcontentsline{toc}{subsubsection}{Seed list expansion}
@@ -8598,8 +8676,13 @@ reason the present section is a collection of projects that describes
 the applications and results of the methods designed in \emph{Part 3
 ``Methods and Results''}.
 
-\chapter{Exploiting Patent IUnformation in Novel
-Ways}\label{explpatentnovel}
+All the specific technologies from the previous chapters are exploited,
+and each chapter of the present part will show a specific application
+based on the technologies. The sequenct chapters provide an in depth
+view of the possibile appications of the tools with respect to the
+previous ones that are more focused on how the tools where developed.
+
+\chapter{A Novel Rapresentation of Patents}\label{explpatentnovel}
 
 Due to the complexity and volatility of user needs, companies
 increasingly ask product designers and engineers to create ideas that
@@ -9003,8 +9086,8 @@ corrective actions to solve such drawbacks.
 
 \section{Discussion}\label{discussion}
 
-This paper has proposed a method to extract and summarize sentences that
-describe advantages and drawbacks of technologies from patents.
+This chapter has proposed a method to extract and summarize sentences
+that describe advantages and drawbacks of technologies from patents.
 Advantages and drawbacks are considered as phenomena that influence the
 efficiency or the effectiveness of products by modifying their inputs or
 their outputs. Advantages and drawbacks information are useful for
@@ -9012,13 +9095,6 @@ designers who want to design new products or to redesign old ones so to
 meet user needs in novel and better ways. The proposed approach allows
 patent readers to analyze a massive quantity of patents and to reduce
 the time needed for research and analysis.
-
-In the future, we want to focus on the application of the proposed ADIO
-framework to a wider number of patents set and hopefully we would like
-to automate the classification of advantages and drawbacks. Furthermore
-we want to focus on the extraction of new entities of interest for
-designers, and to understand which other groups of words contained in
-patents texts can add value to the design process.
 
 \chapter{Enriched dictionaries for
 Innovation}\label{enriched-dictionaries-for-innovation}
@@ -9082,7 +9158,7 @@ dictionaries can be used in order to ``filter'' the semantic content of
 the full text of documents according to pre-defined structures,
 generated within the domain knowledge and validated at the state of the
 art. They can be used, therefore, within the so called supervised text
-mining approach. This paper has two objectives: introducing the
+mining approach. This section has two objectives: introducing the
 methodology of enriched dictionaries, and showing that it allows the
 joint use of several, and complementary, perspectives: one based on the
 abstract engineering principles of technologies (functional view),
@@ -9181,7 +9257,7 @@ Functional Verbs\strut
 Abrade, Absorb, Abut, Accelerate\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-Advantages/Disadvantages\strut
+ADV/DIS\strut
 \end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
 29902\strut
 \end{minipage} & \begin{minipage}[t]{0.62\columnwidth}\raggedright\strut
@@ -9529,7 +9605,7 @@ application of dictionaries to the four patent sets combined together.
 
 \caption{\label{tab:dictmetrix}Summary of findings from the application of dictionaries to the combined patent sets.}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{10em}>{\raggedleft\arraybackslash}p{10em}>{\raggedleft\arraybackslash}p{10em}>{\raggedleft\arraybackslash}p{10em}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}>{\raggedleft\arraybackslash}p{10em}>{\raggedleft\arraybackslash}p{10em}>{\raggedleft\arraybackslash}p{10em}}
 \toprule
 Dictionary & Average cosine distance of topics & Average number of topics & Average sparsity of the DFM\\
 \midrule
@@ -9914,7 +9990,7 @@ particularly important for innovations in the pre-paradigmatic stage.
 Patent clustering is a standard application in technology intelligence
 and has been common practice in the professional IP industry. In recent
 years, patent clustering based on text mining has gained large
-acceptance. In this paper we have introduced a novel methodology to
+acceptance. In this section we have introduced a novel methodology to
 cluster patents. With respect to the existing literature we give a
 contribution by testing the use of dictionaries as a structured list of
 words to filter patent data and build up clusters. The clustering based
@@ -9991,15 +10067,15 @@ validly the impacts of research on social change'', so that ``we have no
 satisfactory analytical tools for characterizing the social impact (of
 research)'' \citep{bozeman2011public}.
 
-This paper is a contribution to the substantive and methodological work
-on the assessment of societal impact of research. From the substantive
-point of view, it introduces the notion of target group, or group of
-potential users of research, as a necessary component of the design and
-implementation of research projects. From the methodological point of
-view, the paper strongly supports the idea, already advanced in the
-literature, that Text mining techniques are promising in this field, but
-suggests a major modification by introducing the Enriched dictionary
-methodology.
+This chapter is a contribution to the substantive and methodological
+work on the assessment of societal impact of research. From the
+substantive point of view, it introduces the notion of target group, or
+group of potential users of research, as a necessary component of the
+design and implementation of research projects. From the methodological
+point of view, the method strongly supports the idea, already advanced
+in the literature, that Text mining techniques are promising in this
+field, but suggests a major modification by introducing the Enriched
+dictionary methodology.
 
 To be more precise we argue that a necessary component for impact
 assessment is the definition of users of research at a granular level.
@@ -10078,7 +10154,7 @@ research is likely to be seen only after a long delay. This means that
 both outcomes and categories of users are much more difficult to
 identify and define.
 
-\subsection{Sources of information}\label{sources-of-information}
+\subsection{Sources of information}\label{sources-of-information-1}
 
 Current approaches can be classified, according to Morton
 \citep{morton2015progressing}, as forward tracking, backward tracking,
@@ -10125,8 +10201,8 @@ impact of research: government statements, academic literature, and
 public opinion polls containing public statements. More recently,
 Bornmann, Haunschild and Marx \citep{bornmann2016policy} have suggested
 to use the frequency of occurrence of policy-related words in policy
-documents as evidence of impact of research. In this paper we will make
-these suggestions operational.
+documents as evidence of impact of research. In this section we will
+make these suggestions operational.
 
 Yet another approach in the same line is to examine the documents
 produced within social media. A prominent approach is based on
@@ -10156,11 +10232,12 @@ case studies produced after the realization of research projects (ex
 post, or documents produced within the research assessment process).
 
 It is this type of documents we suggest to examine as a novel
-methodology to assess the potential societal impact of research. In this
-paper we follow type (b) documents and use the collection of case
-studies produced by UK researchers under the REF exercise. In future
-studies we plan to use archives of proposals made available in public
-sources in order to examine the ex ante representation of researchers.
+methodology to assess the potential societal impact of research. In the
+proposed method we follow type (b) documents and use the collection of
+case studies produced by UK researchers under the REF exercise. In
+future studies we plan to use archives of proposals made available in
+public sources in order to examine the ex ante representation of
+researchers.
 
 The REF impact case studies, as already noted, have been the object of a
 large literature in recent years. Among these studies, King's College
@@ -10337,26 +10414,26 @@ be part of a target group.
 
 \caption{\label{tab:impact1}Tokenization, lemmatization and annotation of a sentence in the corpus.}
 \centering
-\begin{tabular}[t]{rrrllll}
+\begin{tabular}[t]{rrllll}
 \toprule
-Doc\_id & Sentence\_id & Token\_id & Token & Lemma & Xpos & Full\_target\_group\\
+Doc\_id & Token\_id & Token & Lemma & Xpos & Target\_group\\
 \midrule
-1855 & 1 & 1 & Each & Each & DT & NA\\
-1855 & 1 & 2 & year & Year & NN & NA\\
-1855 & 1 & 3 & , & , & , & NA\\
-1855 & 1 & 4 & in & in & IN & NA\\
-1855 & 1 & 5 & England & england & NN & NA\\
+1855 & 1 & Each & Each & DT & NA\\
+1855 & 2 & year & Year & NN & NA\\
+1855 & 3 & , & , & , & NA\\
+1855 & 4 & in & in & IN & NA\\
+1855 & 5 & England & england & NN & NA\\
 \addlinespace
-1855 & 1 & 6 & alone & alone & RB & NA\\
-1855 & 1 & 7 & , & , & , & NA\\
-1855 & 1 & 8 & approximately & approximately & RB & NA\\
-1855 & 1 & 9 & 152 & 152 & CD & NA\\
-1855 & 1 & 10 & people & people & NN & People\\
+1855 & 6 & alone & alone & RB & NA\\
+1855 & 7 & , & , & , & NA\\
+1855 & 8 & approximately & approximately & RB & NA\\
+1855 & 9 & 152 & 152 & CD & NA\\
+1855 & 10 & people & people & NN & People\\
 \addlinespace
-1855 & 1 & 11 & suffer & suffer & VBP & NA\\
-1855 & 1 & 12 & a & A & DT & NA\\
-1855 & 1 & 13 & stroke & stroke & NN & NA\\
-1855 & 1 & 14 & . & . & . & NA\\
+1855 & 11 & suffer & suffer & VBP & NA\\
+1855 & 12 & a & A & DT & NA\\
+1855 & 13 & stroke & stroke & NN & NA\\
+1855 & 14 & . & . & . & NA\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -10464,14 +10541,14 @@ to examine whether researchers include users in their representation of
 research activity at all. Thanks to the use of an Enriched dictionary,
 which by definition saturates the semantic field, we are in a position
 to establish whether user-related expressions are found in researchers'
-texts or not. Since in this paper we use the impact case studies
-produced under the REF, the minimum level is by definition satisfied, as
-it was the condition for submitting the case study. At the same time,
-this indicator will be extremely useful for the ex ante evaluation of
-research proposals. The appropriateness of this indicator and its policy
-implications will be the object of future research. Authors of the REF
-documents are by definition aware of the existence of target groups of
-users.
+texts or not. Since in the proposed method we use the impact case
+studies produced under the REF, the minimum level is by definition
+satisfied, as it was the condition for submitting the case study. At the
+same time, this indicator will be extremely useful for the ex ante
+evaluation of research proposals. The appropriateness of this indicator
+and its policy implications will be the object of future research.
+Authors of the REF documents are by definition aware of the existence of
+target groups of users.
 
 Once the awareness level is satisfied, frequency comes into play.
 Frequency is a standard measure in computational linguistics and Text
@@ -10694,7 +10771,7 @@ groups, repeated 22 times in total.
 \centering
 \begin{tabular}[t]{lrlllll}
 \toprule
-Indicator & Minimum & Maximum & 1st quartile & 3rd quartile & Mean & Median\\
+Indicator & Min & Max & 1st quartile & 3rd quartile & Mean & Median\\
 \midrule
 Frequency:indicator & 0 & 9.2 & 1.2 & 2.7 & 2 & 1.9\\
 Frequency: absolute value & 0 & 115 & 14 & 34 & 25469 & 22\\
@@ -11733,11 +11810,11 @@ this approach.
 
 In section \ref{usersresults} a dictionary of \emph{users of inventions}
 has been developed, containing more than 76.000 entries, and this
-dictionary has been used to analyze projects texts @(impactresuser). In
-section @(advdrwresults) a dictionary of \emph{advantages and drawbacks}
-has been extracted from patents using twitter to validate its content.
-The dictionary contains a total of 6.568 advantages and the 14.809
-drawbacks and has been used to classify problems of different
+dictionary has been used to analyze projects texts \ref{impactresuser}.
+In section \ref{advdrwresults} a dictionary of \emph{advantages and
+drawbacks} has been extracted from patents using twitter to validate its
+content. The dictionary contains a total of 6.568 advantages and the
+14.809 drawbacks and has been used to classify problems of different
 technologies in patents \ref{explpatentnovel} and papers
 \ref{blockchainanalysis}. This dictionary has also been used to design a
 novel technical sentiment analysis, which has been used to analyze the
@@ -12048,11 +12125,15 @@ measure the impact of our designs on the day-to-day work of our
 stakeholders.
 
 For this reason, in further research we will investigate the impact of
-the method specifically on the design and marketing process. Our tools
-can be used in the design or the redesign of existing products; the
-users or the advantages of the inventions for example, can help marketer
-in communicate the positive effects of a product/system, helping them in
-the product positioning.
+the methods on the design and marketing processes. A first type of
+impact involves more effectiveness of the process. Our tools can be used
+in the design or the redesign of existing products; the users or the
+advantages of the inventions for example, can help marketer in
+communicate the positive effects of a product/system, helping them in
+the product positioning. A second type of impact can bring efficency.
+The use of the proposed methods are clearly less time and money
+expensive with respect to the manual analysis of documents made by
+experts.
 
 Another interesting area of research is the extraction of new lexicons
 that could be connected with the ones described in this thesis. A
@@ -12060,9 +12141,9 @@ taxonomy instead of a dictionary could dramatically improve the quality
 of the output of our systems.
 
 Finally, it is important to underline that further areas of research can
-focus on using our methodology for the extraction of new types of
-entities, far from the design and marketing field. The challenge is to
-understand which other group of words contained in patents texts can add
+focus on using our methodologies for the extraction of new types of
+entities, even far from the explored field. The challenge is to
+understand which other group of words contained in documents can add
 value to different stakeholders, and how to use design science, data
 science and natural language processing to solve their problems.
 

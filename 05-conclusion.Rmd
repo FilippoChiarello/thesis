@@ -30,7 +30,7 @@ and consolidation;
 
 From this thesis emerges the fact that _Information Extraction from texts for developing technical dictionaries (a Knowledge Base), is a effective approach to follow in order to increase the knowledge base of a specific field._ Many of the designs presented in this thesis uses this approach. 
 
-In section \@ref(usersresults) a dictionary of _users of inventions_ has been developed, containing more than 76.000 entries, and this dictionary has been used to analyze projects texts \@(impactresuser). In section \@(advdrwresults) a dictionary of _advantages and drawbacks_ has been extracted from patents using twitter to validate its content. The dictionary contains a total of 6.568 advantages and the 14.809 drawbacks and has been used to classify problems of different technologies in patents \@ref(explpatentnovel) and papers \@ref(blockchainanalysis). This dictionary has also been used to design a novel technical sentiment analysis, which has been used to analyze the sentiment about two innovative products in section \@ref(techsentanal).
+In section \@ref(usersresults) a dictionary of _users of inventions_ has been developed, containing more than 76.000 entries, and this dictionary has been used to analyze projects texts \@ref(impactresuser). In section \@ref(advdrwresults) a dictionary of _advantages and drawbacks_ has been extracted from patents using twitter to validate its content. The dictionary contains a total of 6.568 advantages and the 14.809 drawbacks and has been used to classify problems of different technologies in patents \@ref(explpatentnovel) and papers \@ref(blockchainanalysis). This dictionary has also been used to design a novel technical sentiment analysis, which has been used to analyze the sentiment about two innovative products in section \@ref(techsentanal).
 
 
 Sections \@ref(smtextdrivenbottomup), \@ref(precisionagri) and \@ref(technimetrochap) developed dictionaries for respectively sustainable manufacturing, precision agriculture and industry 4.0 with the aim of giving a clear picture to both academics and practitioners about the state of the of art of technologies in these fields. In particular in section \@ref(technimetrochap) the dictionary is an enriched dictionary: the enriched dictionary can be defined as a set of enabling technologies for industry 4.0, associated to their definitions and to the linkages between them.
@@ -108,13 +108,8 @@ One of the main evidence looking at the state-of-art literature on the topic of 
 
 Among the many possible future works the most important at this time is the development of measurements of efficiency and effectiveness of human-machine processes for the knowledge extraction from texts. To do so we will focus on specific areas of applications and understand how to measure the impact of our designs on the day-to-day work of our stakeholders.
 
-For this reason, in further research we will investigate the impact of the method specifically on the design and marketing process. Our tools can be used in the design or the redesign of existing products; the users or the advantages of the inventions for example, can  help marketer in communicate the positive effects of a product/system, helping them in the product positioning.
+For this reason, in further research we will investigate the impact of the methods on the design and marketing processes. A first type of impact involves more effectiveness of the process. Our tools can be used in the design or the redesign of existing products; the users or the advantages of the inventions for example, can  help marketer in communicate the positive effects of a product/system, helping them in the product positioning. A second type of impact can bring efficency. The use of the proposed methods are clearly less time and money expensive with respect to the manual analysis of documents made by experts.
 
 Another interesting area of research is the extraction of new lexicons that could be connected with the ones described in this thesis. A taxonomy instead of a dictionary could dramatically improve the quality of the output of our systems.
 
-Finally, it is important to underline that further areas of research can focus on using our methodology for the extraction of new types of entities, far from the design and marketing field. The challenge is to understand which other group of words contained in patents texts can add value to different stakeholders, and how to use design science, data science and natural language processing to solve their problems.
-
-
-
-
-
+Finally, it is important to underline that further areas of research can focus on using our methodologies for the extraction of new types of entities, even far from the explored field. The challenge is to understand which other group of words contained in documents can add value to different stakeholders, and how to use design science, data science and natural language processing to solve their problems.

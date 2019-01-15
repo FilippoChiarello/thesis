@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="This document contains the PhD thesis of Filippo Chiarello.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  <meta name="twitter:description" content="This document contains the PhD thesis of Filippo Chiarello." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="approach.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Mining Technical Knowledge</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="scope-of-the-thesis.html"><a href="scope-of-the-thesis.html"><i class="fa fa-check"></i><b>1</b> Scope of the Thesis</a><ul>
+<li class="chapter" data-level="1.1" data-path="scope-of-the-thesis.html"><a href="scope-of-the-thesis.html#sources-of-information"><i class="fa fa-check"></i><b>1.1</b> Sources of Information</a></li>
+<li class="chapter" data-level="1.2" data-path="scope-of-the-thesis.html"><a href="scope-of-the-thesis.html#methods-and-focus-of-the-analysis"><i class="fa fa-check"></i><b>1.2</b> Methods and Focus of the Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="approach.html"><a href="approach.html"><i class="fa fa-check"></i><b>2</b> Approach</a><ul>
+<li class="chapter" data-level="2.1" data-path="approach.html"><a href="approach.html#introdesres"><i class="fa fa-check"></i><b>2.1</b> Design Science Paradigm</a></li>
+<li class="chapter" data-level="2.2" data-path="approach.html"><a href="approach.html#data-science-workflow"><i class="fa fa-check"></i><b>2.2</b> Data Science Workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="structure-and-rationale.html"><a href="structure-and-rationale.html"><i class="fa fa-check"></i>Structure and Rationale</a></li>
+<li class="part"><span><b>II State of the Art</b></span></li>
+<li class="chapter" data-level="3" data-path="sotatools.html"><a href="sotatools.html"><i class="fa fa-check"></i><b>3</b> Phases, Tasks, and Techniques</a><ul>
+<li class="chapter" data-level="3.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsprogram"><i class="fa fa-check"></i><b>3.1</b> Program</a></li>
+<li class="chapter" data-level="3.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimport"><i class="fa fa-check"></i><b>3.2</b> Import</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportretrieval"><i class="fa fa-check"></i><b>3.2.1</b> Document Retrieval</a></li>
+<li class="chapter" data-level="3.2.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsimportformat"><i class="fa fa-check"></i><b>3.2.2</b> Documents Format</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstidy"><i class="fa fa-check"></i><b>3.3</b> Tidy</a></li>
+<li class="chapter" data-level="3.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransform"><i class="fa fa-check"></i><b>3.4</b> Transform</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformsentencesplit"><i class="fa fa-check"></i><b>3.4.1</b> Sentence Splitting</a></li>
+<li class="chapter" data-level="3.4.2" data-path="sotatools.html"><a href="sotatools.html#tokenization"><i class="fa fa-check"></i><b>3.4.2</b> Tokenization</a></li>
+<li class="chapter" data-level="3.4.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformstemming"><i class="fa fa-check"></i><b>3.4.3</b> Stemming</a></li>
+<li class="chapter" data-level="3.4.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformlemmatisation"><i class="fa fa-check"></i><b>3.4.4</b> Lemmatisation</a></li>
+<li class="chapter" data-level="3.4.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformwi"><i class="fa fa-check"></i><b>3.4.5</b> Words importance metrics</a></li>
+<li class="chapter" data-level="3.4.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformpos"><i class="fa fa-check"></i><b>3.4.6</b> Part-of-Speech Tagging</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodel"><i class="fa fa-check"></i><b>3.5</b> Model</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="sotatools.html"><a href="sotatools.html#sotatoolstransformngrams"><i class="fa fa-check"></i><b>3.5.1</b> N-Grams</a></li>
+<li class="chapter" data-level="3.5.2" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeldocclass"><i class="fa fa-check"></i><b>3.5.2</b> Document Classification</a></li>
+<li class="chapter" data-level="3.5.3" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelsentanal"><i class="fa fa-check"></i><b>3.5.3</b> Sentiment Analysis</a></li>
+<li class="chapter" data-level="3.5.4" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelnetanal"><i class="fa fa-check"></i><b>3.5.4</b> Text Clustering</a></li>
+<li class="chapter" data-level="3.5.5" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodelner"><i class="fa fa-check"></i><b>3.5.5</b> Named Entity Recognition</a></li>
+<li class="chapter" data-level="3.5.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsmodeltopicmodel"><i class="fa fa-check"></i><b>3.5.6</b> Topic Modelling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="sotatools.html"><a href="sotatools.html#sotatoolsvisualize"><i class="fa fa-check"></i><b>3.6</b> Visualize</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="sotatools.html"><a href="sotatools.html#the-grammar-of-graphics"><i class="fa fa-check"></i><b>3.6.1</b> The Grammar of Graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="sotatools.html"><a href="sotatools.html#sotatoolscomunicate"><i class="fa fa-check"></i><b>3.7</b> Comunicate</a></li>
+<li class="chapter" data-level="3.8" data-path="sotatools.html"><a href="sotatools.html#sotadocumentsunderstand"><i class="fa fa-check"></i><b>3.8</b> Understand</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="sotatools.html"><a href="sotatools.html#sotadocumentsunderstandbyas"><i class="fa fa-check"></i><b>3.8.1</b> The problem of biases</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="sotatools.html"><a href="sotatools.html#sotadocumentspatents"><i class="fa fa-check"></i><b>3.9</b> Patents</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="sotatools.html"><a href="sotatools.html#metadata-approaches"><i class="fa fa-check"></i><b>3.9.1</b> Metadata Approaches</a></li>
+<li class="chapter" data-level="3.9.2" data-path="sotatools.html"><a href="sotatools.html#keywords-approaches"><i class="fa fa-check"></i><b>3.9.2</b> Keywords Approaches</a></li>
+<li class="chapter" data-level="3.9.3" data-path="sotatools.html"><a href="sotatools.html#natural-language-processing-approaches"><i class="fa fa-check"></i><b>3.9.3</b> Natural Language Processing approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="sotatools.html"><a href="sotatools.html#sotadocumentspapers"><i class="fa fa-check"></i><b>3.10</b> Papers</a></li>
+<li class="chapter" data-level="3.11" data-path="sotatools.html"><a href="sotatools.html#sotadocumentswiki"><i class="fa fa-check"></i><b>3.11</b> Wikipedia</a></li>
+<li class="chapter" data-level="3.12" data-path="sotatools.html"><a href="sotatools.html#sotadocumentstwitter"><i class="fa fa-check"></i><b>3.12</b> Social Media</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="sotatools.html"><a href="sotatools.html#economics"><i class="fa fa-check"></i><b>3.12.1</b> Economics</a></li>
+<li class="chapter" data-level="3.12.2" data-path="sotatools.html"><a href="sotatools.html#marketing"><i class="fa fa-check"></i><b>3.12.2</b> Marketing</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Methods and Results</b></span></li>
+<li class="chapter" data-level="4" data-path="patents.html"><a href="patents.html"><i class="fa fa-check"></i><b>4</b> Patents</a><ul>
+<li class="chapter" data-level="4.1" data-path="patents.html"><a href="patents.html#usersresults"><i class="fa fa-check"></i><b>4.1</b> Users</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="patents.html"><a href="patents.html#method"><i class="fa fa-check"></i><b>4.1.1</b> Method</a></li>
+<li class="chapter" data-level="4.1.2" data-path="patents.html"><a href="patents.html#results"><i class="fa fa-check"></i><b>4.1.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="patents.html"><a href="patents.html#advdrwresults"><i class="fa fa-check"></i><b>4.2</b> Advantages and Drawbacks</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="patents.html"><a href="patents.html#methodology"><i class="fa fa-check"></i><b>4.2.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.2.2" data-path="patents.html"><a href="patents.html#results-1"><i class="fa fa-check"></i><b>4.2.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="patents.html"><a href="patents.html#trademakrs"><i class="fa fa-check"></i><b>4.3</b> Trademakrs</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="patents.html"><a href="patents.html#methodology-1"><i class="fa fa-check"></i><b>4.3.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.3.2" data-path="patents.html"><a href="patents.html#results-2"><i class="fa fa-check"></i><b>4.3.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="patents.html"><a href="patents.html#smtextdrivenbottomup"><i class="fa fa-check"></i><b>4.4</b> Sustainable Manufacturing: an Analysis of the 6R Framework</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="patents.html"><a href="patents.html#methodology-2"><i class="fa fa-check"></i><b>4.4.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.4.2" data-path="patents.html"><a href="patents.html#results-3"><i class="fa fa-check"></i><b>4.4.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="patents.html"><a href="patents.html#sustainable-manufacturing-an-extended-mapping"><i class="fa fa-check"></i><b>4.5</b> Sustainable Manufacturing: An Extended Mapping</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="patents.html"><a href="patents.html#methodology-3"><i class="fa fa-check"></i><b>4.5.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.5.2" data-path="patents.html"><a href="patents.html#results-4"><i class="fa fa-check"></i><b>4.5.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="patents.html"><a href="patents.html#blockchainanalysis"><i class="fa fa-check"></i><b>4.6</b> Blockchain</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="patents.html"><a href="patents.html#methodology-4"><i class="fa fa-check"></i><b>4.6.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.6.2" data-path="patents.html"><a href="patents.html#results-5"><i class="fa fa-check"></i><b>4.6.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="patents.html"><a href="patents.html#precisionagri"><i class="fa fa-check"></i><b>4.7</b> Precision Agriculture</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="patents.html"><a href="patents.html#methodology-5"><i class="fa fa-check"></i><b>4.7.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.7.2" data-path="patents.html"><a href="patents.html#results-6"><i class="fa fa-check"></i><b>4.7.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="patents.html"><a href="patents.html#technimetrochap"><i class="fa fa-check"></i><b>4.8</b> Industry 4.0: Extracting and Mapping Technologies</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="patents.html"><a href="patents.html#methodology-6"><i class="fa fa-check"></i><b>4.8.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.8.2" data-path="patents.html"><a href="patents.html#results-7"><i class="fa fa-check"></i><b>4.8.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="patents.html"><a href="patents.html#industry-4.0-a-comparison-with-industrie-4.0"><i class="fa fa-check"></i><b>4.9</b> Industry 4.0: a Comparison with Industrie 4.0</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="patents.html"><a href="patents.html#methodology-7"><i class="fa fa-check"></i><b>4.9.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.9.2" data-path="patents.html"><a href="patents.html#results-8"><i class="fa fa-check"></i><b>4.9.2</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="patents.html"><a href="patents.html#techsentanal"><i class="fa fa-check"></i><b>4.10</b> Technical Sentiment Analysis</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="patents.html"><a href="patents.html#methodology-8"><i class="fa fa-check"></i><b>4.10.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.10.2" data-path="patents.html"><a href="patents.html#results-9"><i class="fa fa-check"></i><b>4.10.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Applications of the Results</b></span></li>
+<li class="chapter" data-level="5" data-path="explpatentnovel.html"><a href="explpatentnovel.html"><i class="fa fa-check"></i><b>5</b> A Novel Rapresentation of Patents in Terms of Adantages and Drawbacks</a><ul>
+<li class="chapter" data-level="5.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#towards-formal-definitions-of-advantages-and-drawbacks"><i class="fa fa-check"></i><b>5.1</b> Towards Formal Definitions of Advantages and Drawbacks</a></li>
+<li class="chapter" data-level="5.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#methodology-9"><i class="fa fa-check"></i><b>5.2</b> Methodology</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#advantages-and-drawbacks-extraction"><i class="fa fa-check"></i><b>5.2.1</b> Advantages and drawbacks extraction</a></li>
+<li class="chapter" data-level="5.2.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#advantages-and-drawbacks-adio-classification"><i class="fa fa-check"></i><b>5.2.2</b> Advantages and Drawbacks ADIO classification</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="explpatentnovel.html"><a href="explpatentnovel.html#results-10"><i class="fa fa-check"></i><b>5.3</b> Results</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#patent-set"><i class="fa fa-check"></i><b>5.3.1</b> Patent set</a></li>
+<li class="chapter" data-level="5.3.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#extraction-of-advantages-and-drawbacks"><i class="fa fa-check"></i><b>5.3.2</b> Extraction of Advantages and Drawbacks</a></li>
+<li class="chapter" data-level="5.3.3" data-path="explpatentnovel.html"><a href="explpatentnovel.html#a-d-i-o-representation"><i class="fa fa-check"></i><b>5.3.3</b> A-D-I-O Representation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="explpatentnovel.html"><a href="explpatentnovel.html#discussion"><i class="fa fa-check"></i><b>5.4</b> Discussion</a></li>
+<li class="chapter" data-level="5.5" data-path="explpatentnovel.html"><a href="explpatentnovel.html#an-overview-of-dictionaries-for-technology-intelligence"><i class="fa fa-check"></i><b>5.5</b> An overview of dictionaries for technology intelligence</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#publicly-available-dictionaries"><i class="fa fa-check"></i><b>5.5.1</b> Publicly available dictionaries</a></li>
+<li class="chapter" data-level="5.5.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#research-based-dictionaries"><i class="fa fa-check"></i><b>5.5.2</b> Research-based dictionaries</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="explpatentnovel.html"><a href="explpatentnovel.html#the-value-added-of-enriched-dictionaries"><i class="fa fa-check"></i><b>5.6</b> The value added of enriched dictionaries</a></li>
+<li class="chapter" data-level="5.7" data-path="explpatentnovel.html"><a href="explpatentnovel.html#methodology-10"><i class="fa fa-check"></i><b>5.7</b> Methodology</a></li>
+<li class="chapter" data-level="5.8" data-path="explpatentnovel.html"><a href="explpatentnovel.html#results-11"><i class="fa fa-check"></i><b>5.8</b> Results</a></li>
+<li class="chapter" data-level="5.9" data-path="explpatentnovel.html"><a href="explpatentnovel.html#discussions"><i class="fa fa-check"></i><b>5.9</b> Discussions</a></li>
+<li class="chapter" data-level="5.10" data-path="explpatentnovel.html"><a href="explpatentnovel.html#methodological-challenges"><i class="fa fa-check"></i><b>5.10</b> Methodological challenges</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#variability-in-the-identification-of-outcomes-and-users"><i class="fa fa-check"></i><b>5.10.1</b> Variability in the identification of outcomes and users</a></li>
+<li class="chapter" data-level="5.10.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#sources-of-information-1"><i class="fa fa-check"></i><b>5.10.2</b> Sources of information</a></li>
+<li class="chapter" data-level="5.10.3" data-path="explpatentnovel.html"><a href="explpatentnovel.html#text-based-impact-assessment"><i class="fa fa-check"></i><b>5.10.3</b> Text-based impact assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="explpatentnovel.html"><a href="explpatentnovel.html#methodology-11"><i class="fa fa-check"></i><b>5.11</b> Methodology</a><ul>
+<li class="chapter" data-level="5.11.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#operationalizing-user-groups-using-natural-language-processing-techniques"><i class="fa fa-check"></i><b>5.11.1</b> Operationalizing user groups using Natural Language Processing techniques</a></li>
+</ul></li>
+<li class="chapter" data-level="5.12" data-path="explpatentnovel.html"><a href="explpatentnovel.html#from-text-extraction-to-indicators"><i class="fa fa-check"></i><b>5.12</b> From text extraction to indicators</a><ul>
+<li class="chapter" data-level="" data-path="explpatentnovel.html"><a href="explpatentnovel.html#frequency"><i class="fa fa-check"></i>Frequency</a></li>
+<li class="chapter" data-level="" data-path="explpatentnovel.html"><a href="explpatentnovel.html#diversity"><i class="fa fa-check"></i>Diversity</a></li>
+<li class="chapter" data-level="" data-path="explpatentnovel.html"><a href="explpatentnovel.html#specificity"><i class="fa fa-check"></i>Specificity</a></li>
+<li class="chapter" data-level="5.12.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#the-meaning-of-frequency-diversity-and-specificity-indicators-for-the-analysis-of-research-impact"><i class="fa fa-check"></i><b>5.12.1</b> The meaning of Frequency, Diversity and Specificity indicators for the analysis of research impact</a></li>
+</ul></li>
+<li class="chapter" data-level="5.13" data-path="explpatentnovel.html"><a href="explpatentnovel.html#data"><i class="fa fa-check"></i><b>5.13</b> Data</a><ul>
+<li class="chapter" data-level="5.13.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#description-of-the-corpus"><i class="fa fa-check"></i><b>5.13.1</b> Description of the corpus</a></li>
+<li class="chapter" data-level="5.13.2" data-path="explpatentnovel.html"><a href="explpatentnovel.html#preliminary-analysis-of-the-corpus"><i class="fa fa-check"></i><b>5.13.2</b> Preliminary analysis of the corpus</a></li>
+</ul></li>
+<li class="chapter" data-level="5.14" data-path="explpatentnovel.html"><a href="explpatentnovel.html#results-12"><i class="fa fa-check"></i><b>5.14</b> Results</a><ul>
+<li class="chapter" data-level="5.14.1" data-path="explpatentnovel.html"><a href="explpatentnovel.html#descriptive-analysis"><i class="fa fa-check"></i><b>5.14.1</b> Descriptive analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.15" data-path="explpatentnovel.html"><a href="explpatentnovel.html#discussion-1"><i class="fa fa-check"></i><b>5.15</b> Discussion</a></li>
+<li class="chapter" data-level="5.16" data-path="explpatentnovel.html"><a href="explpatentnovel.html#digital-competences-development"><i class="fa fa-check"></i><b>5.16</b> Digital Competences Development</a></li>
+<li class="chapter" data-level="5.17" data-path="explpatentnovel.html"><a href="explpatentnovel.html#methodology-12"><i class="fa fa-check"></i><b>5.17</b> Methodology</a></li>
+<li class="chapter" data-level="5.18" data-path="explpatentnovel.html"><a href="explpatentnovel.html#the-archetypes"><i class="fa fa-check"></i><b>5.18</b> The Archetypes</a></li>
+<li class="chapter" data-level="5.19" data-path="explpatentnovel.html"><a href="explpatentnovel.html#discussions-1"><i class="fa fa-check"></i><b>5.19</b> Discussions</a></li>
+</ul></li>
+<li class="part"><span><b>V Conclusions</b></span></li>
+<li class="chapter" data-level="6" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html"><i class="fa fa-check"></i><b>6</b> Lexicons Design for Mining Technical Knowledge</a><ul>
+<li class="chapter" data-level="6.1" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html#the-knowledge-bases-and-technical-lexicons"><i class="fa fa-check"></i><b>6.1</b> The Knowledge Bases and Technical Lexicons</a></li>
+<li class="chapter" data-level="6.2" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html#the-history-of-lexicons-design"><i class="fa fa-check"></i><b>6.2</b> The history of Lexicons Design</a></li>
+<li class="chapter" data-level="6.3" data-path="sotadocumentsunderstandlexicons.html"><a href="sotadocumentsunderstandlexicons.html#a-map-for-lexicons-design"><i class="fa fa-check"></i><b>6.3</b> A Map for Lexicons Design</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i>Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="scope-of-the-thesis" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Scope of the Thesis</h1>
+<div id="sources-of-information" class="section level2">
+<h2><span class="header-section-number">1.1</span> Sources of Information</h2>
+<p>Documents written in natural language contains knowledge by design. Their goal in fact is the explication of implicit knowledge <span class="citation">(Masters <a href="#ref-masters1992knowledge">1992</a>, <span class="citation">Graesser and Clark (<a href="#ref-graesser1985structures">1985</a>)</span>)</span>. With the growth of information of the last years also this kind of documents has grown in number and there exist a huge opportunity for business to manage this knowledge. The problem to address in order to take advantage of this opportunity, is understanding which sources of information are relevant to a certain company <span class="citation">(D. T. Larose and Larose <a href="#ref-larose2014discovering">2014</a>; Chemchem and Drias <a href="#ref-chemchem2015data">2015</a>; Kasemsap <a href="#ref-kasemsap2015role">2015</a>)</span>. It is considered relevant all the information that helps the company building knowledge as a tool to achieve their goals (both vision and mission). Finding these sources requires a deep understanding of digital technologies and of business acumen , skills that not every company can have <span class="citation">(Hecklau et al. <a href="#ref-hecklau2016holistic">2016</a>; Davenport and Patil <a href="#ref-davenport2012data">2012</a>; Provost and Fawcett <a href="#ref-provost2013data">2013</a>; Van der Aalst <a href="#ref-van2014data">2014</a>)</span>. To understand the practical implications of this issue, it has been estimated that just a small portion of the digital universe has been explored with the purpose of extracting competitive gain <span class="citation">(IDC Analyze the future <a href="#ref-data2012bigger">2012</a>)</span>. The estimated percentage of untapped data is 25% and it is going to rise to 33% within 2020: it is likely that many of the potential sources of valuable knowledge are not taken in to consideration by companies and that a huge value is still hidden. This untapped value can be potentially found everywhere in the info-verse: users behaviors in social media, correlations among scientific studies, overlaps between medical and sociological studies, beneath complex analysis in legal documents and so on.</p>
+<p>For these reasons an analytically process gains great value thanks to a correct decision of which documents mine to extract knowledge. To maximize this value the problem space has to be searched in term of business relevant knowledge content of documents. Since this problem space is huge (all the documents of which a company is stakeholder) in the present thesis this decision has been taken a-priori ensuring a wide set of document types in terms of their characteristics. These documents are:</p>
+<ol style="list-style-type: decimal">
+<li><em>Patents</em></li>
+<li><em>Scientific Papers</em></li>
+<li><em>Wikipedia</em></li>
+<li><em>Social Media</em></li>
+</ol>
+<p>Patents has their core in technical information. Despite this, some researchers <span class="citation">(Bonino, Ciaramella, and Corno <a href="#ref-bonino2010review">2010</a>)</span> affirm that there is an increasing variety of readers of patents: not only technician and researchers but also marketers and designers who have grown an interest in patent analysis. To our knowledge this thesis represent a first step the direction of these potential readers. Papers are similar to patents in terms of technical content but are not affected by the bias of being legal documents. If this makes technical information easier to find, it also brings a problem when there is the need of synthesizing the huge information coming from a corpus of papers. Wikipedia is distant from patents and papers. It (by design) contains encyclopedic and less objective information, which comes in a semi-structured form. Due to the bottom-up approach in which Wikipedia is developed, it has some reliability shortages to take in to account. Finally social media documents are far from the previous ones since they make use of a short, subjective and colloquial lexicon. It is another of the challenges addressed by this thesis to demonstrate that this sources contains exploitable technical information too.</p>
+</div>
+<div id="methods-and-focus-of-the-analysis" class="section level2">
+<h2><span class="header-section-number">1.2</span> Methods and Focus of the Analysis</h2>
+<p>Thanks to the improvement in the Artificial Intelligence (AI) field, <em>Natural Language Processing</em> (NLP) has dramatically increased its effectiveness in the last years <span class="citation">(Russell and Norvig <a href="#ref-russell2016artificial">2016</a>)</span>. Now powerful tools for the analysis of documents are available to every one that has a little understating of programming <span class="citation">(Arnold <a href="#ref-Taylor2017Tidy">2017</a>, <span class="citation">Benoit and Matsuo (<a href="#ref-Kenneth2018spacyr">2018</a>)</span>, <span class="citation">Wijffels (<a href="#ref-Wijffels2018udpipe">2018</a>)</span>)</span>. For this reason, the processes carried out in this thesis uses state of the art NLP techniques that only in few cases has been deeply modified in the design process. In other words the value of the output is not in the modified NLP algorithm but on the whole process of knowledge extraction that goes from the decision of which documents to analyze to the communication of the results.</p>
+<p>Furthermore, despite the golden ages of AI and NLP we are living in, some problems this research area is trying to address are still having a huge impact on companies <span class="citation">(Hand <a href="#ref-hand2007principles">2007</a>; Mining <a href="#ref-mining2006data">2006</a>)</span>.</p>
+<p>The first one is that the information overload is not manageable by machines alone and thus there is the need of understating which are the best practices in experts-machine interaction. In this context, it is interesting to notice that the way companies incorporate knowledge in their own artificial systems is drastically changed in the last 30 years. In fact, in the 1990s the main approach was knowledge engineering: machine learned how to perform analysis tasks thanks to the rules experts gave them. This idea has failed. In some contexts, it is impossible representing knowledge with explicit expert-driven rules. For this reason on the 2010s inductive revolution developed; machines are used to extract knowledge from huge amounts of data in an inductive way.</p>
+<p>This has led to a second major problem observed by literature: black boxes or systems whose working mechanism are unknown, except input and output. A recent paper <span class="citation">(Pedreschi et al. <a href="#ref-pedreschi2018open">2018</a>)</span> tries to clarify the issue with black boxes and offers a few solutions. The authors point at a way similar to reversing, in which a program is stimulated with various inputs to study the outputs and understand its logic. In the same way, to study the mechanisms of a machine-learning model, it is possible to modify slightly the input only, and observe the result; or, foresee the right input for the needed output. It is still cutting edge, but it is already discussed and it is opening up to specific research, such as explainable AI.</p>
+<p>Considering these problems and considering the general goal of the present thesis (i.e. to extract and synthesize technical knowledge from unstructured documents) we can state that we can not take aside the design of processes, which can provide correct knowledge exchange between human and machine, leading to:</p>
+<ul>
+<li><p>incorporate knowledge of the experts inside AI systems</p></li>
+<li><p>experts’ ability to use in their process of decision making, inductively generated knowledge of machines</p></li>
+</ul>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-masters1992knowledge">
+<p>Masters, Richard SW. 1992. “Knowledge, Knerves and Know-How: The Role of Explicit Versus Implicit Knowledge in the Breakdown of a Complex Motor Skill Under Pressure.” <em>British Journal of Psychology</em> 83 (3). Wiley Online Library: 343–58.</p>
+</div>
+<div id="ref-graesser1985structures">
+<p>Graesser, Arthur C, and Leslie F Clark. 1985. “Structures and Procedures of Implicit Knowledge:(Advances in Discourse Processes).” <span class="math inline">\(\{\)</span>Ablex Publishing<span class="math inline">\(\}\)</span>.</p>
+</div>
+<div id="ref-larose2014discovering">
+<p>Larose, Daniel T, and Chantal D Larose. 2014. <em>Discovering Knowledge in Data: An Introduction to Data Mining</em>. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-chemchem2015data">
+<p>Chemchem, Amine, and Habiba Drias. 2015. “From Data Mining to Knowledge Mining: Application to Intelligent Agents.” <em>Expert Systems with Applications</em> 42 (3). Elsevier: 1436–45.</p>
+</div>
+<div id="ref-kasemsap2015role">
+<p>Kasemsap, Kijpokin. 2015. “The Role of Data Mining for Business Intelligence in Knowledge Management.” In <em>Integration of Data Mining in Business Intelligence Systems</em>, 12–33. IGI Global.</p>
+</div>
+<div id="ref-hecklau2016holistic">
+<p>Hecklau, Fabian, Mila Galeitzke, Sebastian Flachs, and Holger Kohl. 2016. “Holistic Approach for Human Resource Management in Industry 4.0.” <em>Procedia CIRP</em> 54. Elsevier: 1–6.</p>
+</div>
+<div id="ref-davenport2012data">
+<p>Davenport, Thomas H, and DJ Patil. 2012. “Data Scientist.” <em>Harvard Business Review</em> 90 (5): 70–76.</p>
+</div>
+<div id="ref-provost2013data">
+<p>Provost, Foster, and Tom Fawcett. 2013. “Data Science and Its Relationship to Big Data and Data-Driven Decision Making.” <em>Big Data</em> 1 (1). Mary Ann Liebert, Inc. 140 Huguenot Street, 3rd Floor New Rochelle, NY 10801 USA: 51–59.</p>
+</div>
+<div id="ref-van2014data">
+<p>Van der Aalst, Wil MP. 2014. “Data Scientist: The Engineer of the Future.” In <em>Enterprise Interoperability Vi</em>, 13–26. Springer.</p>
+</div>
+<div id="ref-data2012bigger">
+<p>IDC Analyze the future, IDC iView: 2012. “Bigger Digital Shadows, and Biggest Growth in the Far East.” <em>IDC Digital Universe Study, EMC</em>.</p>
+</div>
+<div id="ref-bonino2010review">
+<p>Bonino, Dario, Alberto Ciaramella, and Fulvio Corno. 2010. “Review of the State-of-the-Art in Patent Information and Forthcoming Evolutions in Intelligent Patent Informatics.” <em>World Patent Information</em> 32 (1). Elsevier: 30–38.</p>
+</div>
+<div id="ref-russell2016artificial">
+<p>Russell, Stuart J, and Peter Norvig. 2016. <em>Artificial Intelligence: A Modern Approach</em>. Malaysia; Pearson Education Limited,</p>
+</div>
+<div id="ref-Taylor2017Tidy">
+<p>Arnold, Taylor. 2017. “A Tidy Data Model for Natural Language Processing Using cleanNLP.” <em>The R Journal</em> 9 (2): 1–20. <a href="https://journal.r-project.org/archive/2017/RJ-2017-035/index.html" class="uri">https://journal.r-project.org/archive/2017/RJ-2017-035/index.html</a>.</p>
+</div>
+<div id="ref-Kenneth2018spacyr">
+<p>Benoit, Kenneth, and Akitaka Matsuo. 2018. <em>Spacyr: Wrapper to the ’spaCy’ ’Nlp’ Library</em>. <a href="https://CRAN.R-project.org/package=spacyr" class="uri">https://CRAN.R-project.org/package=spacyr</a>.</p>
+</div>
+<div id="ref-Wijffels2018udpipe">
+<p>Wijffels, Jan. 2018. <em>Udpipe: Tokenization, Parts of Speech Tagging, Lemmatization and Dependency Parsing with the ’Udpipe’ ’Nlp’ Toolkit</em>. <a href="https://CRAN.R-project.org/package=udpipe" class="uri">https://CRAN.R-project.org/package=udpipe</a>.</p>
+</div>
+<div id="ref-hand2007principles">
+<p>Hand, David J. 2007. “Principles of Data Mining.” <em>Drug Safety</em> 30 (7). Springer: 621–22.</p>
+</div>
+<div id="ref-mining2006data">
+<p>Mining, What Is Data. 2006. “Data Mining: Concepts and Techniques.” <em>Morgan Kaufinann</em>.</p>
+</div>
+<div id="ref-pedreschi2018open">
+<p>Pedreschi, Dino, Fosca Giannotti, Riccardo Guidotti, Anna Monreale, Luca Pappalardo, Salvatore Ruggieri, and Franco Turini. 2018. “Open the Black Box Data-Driven Explanation of Black Box Decision Systems.” <em>arXiv Preprint arXiv:1806.09936</em>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="approach.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["thesis_source.pdf", "thesis_source.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

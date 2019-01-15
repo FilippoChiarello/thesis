@@ -3,6 +3,7 @@ bibliography:
 - papers.bib
 description: This document contains the PhD thesis of Filippo Chiarello.
 documentclass: book
+papersize: b5
 link-citations: yes
 site: bookdown::bookdown_site
 biblio-style: apalike

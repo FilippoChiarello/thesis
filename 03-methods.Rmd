@@ -1,6 +1,6 @@
 # (PART) Methods and Results {-}
 
-This part describes the methods and processes designed for the analysis of technical documents following the guidelines of design research described in section \@ref(introdesres). The methods are ensamble of Natural Language Processing (NLP) and Text Mining _techniques_ described in \@ref(sotatools), re-designed depending on the analyzed document and the analysis goal. 
+This part describes the methods and processes designed for the analysis of technical documents following the guidelines of design research described in Part 1 of the present Thesis. The methods are ensamble of Natural Language Processing (NLP) and Text Mining _techniques_ described in \@ref(sotatools), re-designed depending on the analyzed document and the analysis goal. 
 
 Since design research is a problem solving paradigm,  each chapter starts with a brief description of the field of application of the method and with the framing of the problem to be solved. Then the methodology to solve the problem is described with the goal of being clear to a technical audience and a managerial audience. Each chapter closes with the results description that proves the utility, quality, and efficacy of the design artifact.
 
@@ -8,7 +8,13 @@ Since design research is a problem solving paradigm,  each chapter starts with a
 
 Patents contain a large quantity of information which is usually neglected. This information is hidden beneath technical and juridical jargon and therefore so many potential readers cannot take advantage of it. State of the art natural language processing tools and in particular named entity recognition tools, could be used to detect valuable concepts in patent documents. A deeper description of what patents are and how these documents are used to mine technical knowledge can be found in section \@ref(sotadocumentspatents)
 
-In this section we present three methodologies capable of automatically detecting and extracting three of the multiple entities hidden in patents: the users of the invention, advantages and drawbacks of the invention and trademarks contained in patents. The results of the methodologies are described, together with example of applications of the extracted entities for intelligence tasks. 
+In this section we present three methodologies capable of automatically detecting and extracting three technical entities hidden in patents: 
+
+1- the users of the invention
+2- advantages and drawbacks of the invention 
+3- trademarks.
+
+The results of the methodologies are described, together with example of applications of the extracted entities for intelligence tasks. 
 
 ## Users {#usersresults}
 
@@ -22,13 +28,13 @@ Definition 1: __Stakeholder__ : _Stakeholders are entities on which the inventio
 
 This definition covers all possible entities that engage an active or passive relation with the invention.Given the logical condition of usefulness of patents, all patents must have stakeholder information. If a patent has not got any stakeholder information in it the patent application should be rejected.
 
-Definition 2: __User__: _Users are animated or previously animated entities (human or animal, alive or dead), on which the invention has a positive or negative effect at an unspecified moment._
+Definition 2: __User__: _Users are animated or previously animated Stakeholder (human or animal, alive or dead), on which the invention has a positive or negative effect at an unspecified moment._
 
 Given definition 2, it is clear that every user is a stakeholder while non-users stakeholders include artifacts, machines, manufacturing or operational processes. 
 
 Corollary 1: __Multiple roles__: _Identities may have multiple roles as users._
 
-Our idea of users describes roles, not identities. Animated entities have an identity, as it happens for a specific person. A person has many roles as a user. For example, a _working mother_ starts her day taking on the role of a _mom_, in which she is expected to feed her children and get them ready for school. At the office she shifts to the role of _project manager_, so she oversees projects in a timely and professional manner. _Working mother_, _mom_ or _project manager_ can be considered user roles attributed to the same person, or identity. From this definition it is clear that users are close to what social sciences define as “social roles”.
+Our idea of users describes roles, not identities (individual entities or specific persons). Animated entities have an identity, as it happens for a specific person. A person has many roles as a user. For example, a _working mother_ starts her day taking on the role of a _mom_, in which she is expected to feed her children and get them ready for school. At the office she shifts to the role of _project manager_, so she oversees projects in a timely and professional manner. _Working mother_, _mom_ or _project manager_ can be considered user roles attributed to the same person, or identity. From this definition it is clear that users are close to what social sciences define as “social roles”.
 
 Afterward, we can outline knowledge fields using the concept of user, with a twofold aim: help the reader to understand how the concept of users is interpreted in different knowledge fields; explain the background of the methodology we adopted.
 
@@ -54,6 +60,10 @@ Another field of interest is medicine, since patients can be considered users. A
 #### Design and Marketing: between users and customers {-}
 
 In the field of _Design_ the concept of user plays a central role and it overlaps with our definition of user. Many tools and theories like "User Centered Design" are based on the concept of user [@ucd]. As stated by the authors in [@npdul], the quality of the design process is proportional to the user needs' satisfaction. It implies that a designer has to understand the user needs; as a consequence he has to discover whom are potential users. 
+
+#### Artificial Intelligence: utility-based agents {-}
+
+In artificial intelligence the concept of utility-based agent is to be thaken in to consideration to complete our list of concpets near to user. An utility-based agents or intelligent agent is an autonomous entity which observes through sensors and acts upon an environment using actuators (i.e. it is an agent) and directs its activity towards achieving goals [@russell2016artificial]. Intelligent agents may also learn or use knowledge to achieve their goals. In our context Users are a subset of intelligent agents (only human and Animals). It is to be noticed that also some products or components are intelligent agents. For example a reflex machine, such as a thermostat, is considered an example of an intelligent agent.
 
 ### Method
 
@@ -112,7 +122,7 @@ The whole process generated a total of 76.857 users and gave us a reasonable num
 
 Obviously our lists have a limited coverage and, therefore, they do not contain all variations of a certain user. For instance, the lists miss some users belonging to the classes mentioned above (e.g. new jobs emerged in the last years) and all the alternative ways for referring to a user we do not spotted in the top-down approach. For example our lists miss jobs like _data analyst_, _lap dancer_, _undertaker_, _mortician_ and _thief_ or patients with emerging diseases  like _work-alcoholic_ and _web-addicted_. In addition, our lists miss a class of users related to religious groups, containing users like _christians_ or _jewish_. Such terms have intentionally __not__ been introduced in the input list because we considered these terms as candidates to be extracted by the process in our case study .
 
-#### Patent set selection {-}
+#### Patent set selection {-} {#patsetsel}
 
 Our choice of patent sets aimed at challenging our system to find new users missing in the input list. 
 To reproduce a patent set selection, we took into consideration the International Patent Classification (IPC) [@wipo1]. IPC is a hierarchical system of patent classes representing different areas of technology. Then, we wondered which classes could contain new users according to our seed list. Furthermore, IPC class A, which is the first level in IPC differentiation, is based on human necessities. For this reason, we assumed that in this class we would have found likely users from patents texts.
@@ -125,7 +135,7 @@ Our Entity Extraction system is composed by a set of sequential phases. The firs
 
 - POS tagging and Lemmatization: The Part-Of-Speech tagging (or POS tagging) is the process of assigning unambiguous grammatical categories to words in context. It plays a key role in NLP and in many language technology systems. For the present application we used the most recent version of the Felice-POS-tagger described in [@dell2009ensemble]. Once the computation of the POS-tagged text is completed, the text is lemmatized according to the result of this analysis.
 
-- Semi-automatic Users Annotation: The Users Extraction tool is based on supervised methods. Such methods require an entity annotated corpus in order to extract new entities from unseen documents. A semi-automatic method has been used to generate an annotated corpus of users to avoid manual annotation of a patent set. The method is a projection of the list of users on the patent set defined in section \@ref{patsel}. The list of users described in section \@ref{sourc} is cleaned to avoid linguistic ambiguities when projecting these entities on the corpus. For example, the term _"guide"_ has two different meanings when used as a verb or as a noun. Furthermore, as a noun it could indicate a component of a system (guide for mechanical parts) or a person (someone employed to conduct others) and therefore a user.
+- Semi-automatic Users Annotation: The Users Extraction tool is based on supervised methods. Such methods require an entity annotated corpus in order to extract new entities from unseen documents. A semi-automatic method has been used to generate an annotated corpus of users to avoid manual annotation of a patent set. The method is a projection of the list of users on the patent set. The list of users is cleaned to avoid linguistic ambiguities when projecting these entities on the corpus. For example, the term _"guide"_ has two different meanings when used as a verb or as a noun. Furthermore, as a noun it could indicate a component of a system (guide for mechanical parts) or a person (someone employed to conduct others) and therefore a user.
 Avoiding ambiguities is a crucial aspect to produce an informative training set, so ambiguous words were pruned.
 
 The entity annotation schema for a single token is defined using a widely accepted BIO annotation scheme \cite{ramshaw}:
@@ -142,7 +152,7 @@ The Users extraction problem is tackled by the implementation of a supervised cl
 
 Given a set of features the classifier trains a statistical model using the feature statistics extracted from the corpus. For each new document the trained model assigns to each word the probability of belonging to one of the classes previously defined (B-USE, I-USE, O).
 
-In our experiments the classifier has been trained using two different learning  algorithms:  Support  Vector  Machines  (SVM)  using  the  LIBSVM  library [@svm] configured to use a linear kernel and Multi Layer Perceptron (MLP) implemented using the Keras library [@libkeras]. It has been proven that LSTM methods are well suited for similar NER task. Anyway, we chose SVM and MLP method to study how two wheel established state of the art classifiers perform on the specific task of user extraction from patents and to evaluate their performance in terms of precision and computational effort. We also think that the popularity of these methods increment the reproducibility of the work.
+In our experiments the classifier has been trained using two different learning  algorithms:  Support  Vector  Machines  (SVM)  using  the  LIBSVM  library [@svm] configured to use a linear kernel and Multi Layer Perceptron (MLP) implemented using the Keras library [@libkeras]. It has been proven that Long Short Term Memory Recurrent Neural Network (LSTM) [@chiu2016named] methods are well suited for similar NER task. Anyway, we chose SVM and MLP method to study how two wheel established state of the art classifiers perform on the specific task of user extraction from patents and to evaluate their performance in terms of precision and computational effort. We also think that the popularity of these methods increment the reproducibility of the work.
 
 The classifier uses different kind of features extracted from the text:
 
@@ -158,24 +168,22 @@ _Word2vec_ is a NLP tool able to produce word representations exploiting big cor
  
 #### Manual Review of the new list of users {-}
 
-It is still possible that the classification process creates false positive results (words labeled as users that do not match the definition in section \@ref{theuse}). Thus, it is necessary to make a manual review of the extracted entities with the aim of evaluating the output.
+It is still possible that the classification process creates false positive results (words labeled as users that do not match the definition in section \@ref{usersresults}). Thus, it is necessary to make a manual review of the extracted entities with the aim of evaluating the output.
 
 ### Results
 
 The following section describes the performances of the automatic users extraction process on two different patent sets. To test the system four experiments were conducted}. Finally the performances and the outcomes of the system are shown and discussed.
 
-Following the guidelines for the patent set selection, we examined two patent sets belonging to the IPC class A:
+Following the guidelines for the patent set selection \@ref{patsetsel}, we examined two patent sets belonging to the IPC class A:
 
 
 - __A47G33__. The IPC definition of the subclass is _"religious or ritual equipment in dwelling or for general"_.
 - __A61G1-A61G13__. The IPC definition of the subclass A61G1 is _"Stretchers"_ while the definition of the subclass A61G13 is _"Operating tables; Auxiliary appliances therefor"_.
 
-We extracted from the private Errequadro s.r.l. ^[http://www.errequadrosrl.com/] database a random sample of 2.000 patents from each IPC class. For each patent set we applied the semiautomatic set annotation process by projecting the input list of users on the morphosyntactically analyzed patent set.
+We extracted from the private Errequadro s.r.l. ^[http://www.errequadrosrl.com/] database a random sample of 2.000 patents from each IPC class. We have chosen this database because of the reliability of the data given by this copany with respect to the public available databases. Furthermore it is not always possibile to have acces to the full text of a patent for free. For each patent set we applied the semiautomatic set annotation process by projecting the input list of users on the morphosyntactically analyzed patent set.
 After this process, each semi-automatically annotated patent set was split in two parts: the first was used as training set for the user extractor, and the second one was used as test set.
 
 To build an informative training set, from the semi-automatically patent set we selected a subset of sentences containing at least one user. The size of the training set in both cases is approximately composed by 600.000 tokens. For each patent set table \@ref(tab:patentsetdetails) shows the number of sentences of the training set, the number of sentences of the test set, and the number of distinct users in the training set (re-projected by the semi-automatic annotation process).
-
-ref ---> patent set-details
 
 Table: (\#tab:patentsetdetails) Statistics related to the patent set groups analyzed in the case study
 
@@ -209,7 +217,7 @@ Table: (\#tab:feat-confs) Context windows of the extracted features considering 
 | Compositional feature \#5 |        \\((NER_{-1}, Lemma_{0})\\)        |
 |          Word2vec         |            \[-2, -1, 0, 1, 2\]            |
 
-By using the first and the second configuration we expected to have a higher precision in the classification phase, since explicit lexical information is used in the training phase. For the same reason we expected to have low recall in classification phase. On the other hand, the third and fourth configurations are delexicalized: lexical information is provided by word vectors computed by word2vec_. In these two configurations we expected to have an higher recall and a lower precision, due to the characteristics of the computed vectors explained before. To limit errors when using the _word2vec_ features, some linguistically motivated filtering rules were introduced. Specifically, sequences of tokens classified as users were constrained from the following categories: verbs, adjectives not preceded by articles, articles and adverbs.
+By using the first and the second configuration we expected to have a higher precision in the classification phase, since explicit lexical information is used in the training phase. For the same reason we expected to have low recall in classification phase. On the other hand, the third and fourth configurations are delexicalized: lexical information is provided by word vectors computed by word2vec. In these two configurations we expected to have an higher recall and a lower precision, due to the characteristics of the computed vectors explained before. To limit errors when using the _word2vec_ features, some linguistically motivated filtering rules were introduced. Specifically, sequences of tokens classified as users were constrained from the following categories: verbs, adjectives not preceded by articles, articles and adverbs.
 
 To evaluate the whole user extraction process in each experiment, we defined some evaluation measures. Each measure was introduced to evaluate the characteristics of the extraction system concerning the configuration applied.
 
@@ -303,7 +311,7 @@ Other remarkable results are:
 
 - The system is able to extract single words and multi-words.
 
-- Taking into consideration the definition of user of an invention, the system extracts unusual and sometimes borderline users. Examples like _saint_, _angel_, _god_ and _ghost_ need  discussion that is far beyond the purposes of the present paper. These results are a remarkable evidence of the human-like generalization ability of the described method. 
+- Taking into consideration the definition of user of an invention, the system extracts unusual and sometimes borderline users. Examples like _saint_, _angel_, _god_ and _ghost_ need  discussion that is far beyond the purposes of the present thesis. These results are a remarkable evidence of the human-like generalization ability of the described method. 
 
 Table: (\#tab:result-extraction-dl-a47g33) Extracted users from the A47G33 patent set using the SVM and DL configurations.
             New users extracted by the system are reported in bold.
@@ -515,7 +523,7 @@ _Sentence splitting and Tokenization_ steps split the text into sentences and th
 
 The _Part-Of-Speech tagging_ (or POS tagging) step assigns unambiguous grammatical categories to the tokens. For the present application we use the most recent version of the Felice-POS-tagger described in [@dell2009ensemble]. Once the computation of the POS-tagged text is completed, the text is automatically _lemmatized_ in order to group inflected forms of a word in a single item. Some of the following steps of the entire extraction process exploit the lemmatized texts in order to achieve better extraction results. 
 
-Successively the _semi-automatic annotation of advantages and drawbacks clues_ is performed. The advantages and drawbacks clues extraction tool is the key ingredient of the present paper, and it is based on supervised methods. Such methods require an entity annotated corpus in order to extract new entities from unseen documents. Since the manual annotation of a patent set is too expensive both in terms of time and manual effort, we apply a semi-automatic method to generate an advantage and drawback annotated corpus.
+Successively the _semi-automatic annotation of advantages and drawbacks clues_ is performed. The advantages and drawbacks clues extraction tool is the key ingredient of the present thesis, and it is based on supervised methods. Such methods require an entity annotated corpus in order to extract new entities from unseen documents. Since the manual annotation of a patent set is too expensive both in terms of time and manual effort, we apply a semi-automatic method to generate an advantage and drawback annotated corpus.
 
 The entity annotation schema for a single token is defined using a widely accepted BIO annotation scheme [@ramshaw]:
 
@@ -586,7 +594,7 @@ knitr::include_graphics("_bookdown_files/figures/pointer-validation-phase.pdf")
 
 ```
 
-Figure \@ref(fig:advdrwarticleprocessfigcluevalidationphase) gives an overview of the activities performed to validate the collected clues using twtitter. Since the manual review of the new domain specific clues can be very time consuming, an innovative approach to automatic validation of these entities is proposed. The approach is based on the assumption that advantages of technological innovations can be considered positive factors by the users. Conversely, the drawbacks of the artifacts are considered negative factors impacting on the satisfaction of the users. Both advantages and drawbacks are common terms or chunks of terms commonly used in other contexts, too. Therefore, if we can identify a wide source of sentences tagged with a polarity score and containing advantages or drawbacks, the probability of assigning the proper polarity to advantages and drawbacks increases.
+Figure \@ref(fig:advdrwarticleprocessfigcluevalidationphase) gives an overview of the activities performed to validate the collected clues using twtitter. Since the manual review of the new domain specific clues can be very time consuming, an innovative approach to automatic validation of these entities is proposed. The approach is based on the assumption that advantages of technological innovations can be considered positive factors by the users. Conversely, the drawbacks of the artifacts are considered negative factors impacting on the satisfaction of the users. Both advantages and drawbacks are common terms or chunks of terms commonly used in other contexts, too. Therefore, if we can identify a wide source of sentences tagged with a polarity score and containing advantages or drawbacks, the probability of assigning the proper polarity to advantages and drawbacks increases. Of course this method has a treat: some technical words can be used rarely in a non-technical context. For this reason we will rely on a big number of tweets in order to augment the probability of finding all the clues we want to measure. 
 
 Social media platforms provide powerful venues for consumers to interact not only with brands but also with other consumers as they engage in the processes of curation, creation, and collaboration [@evans2010social].  Such virtual platforms are places where users discuss about products, about their features but also about problems and failures they experienced during the daily use. The way they discuss or describe products or services is often unambiguous and highly polarized.
 
@@ -614,19 +622,21 @@ By exploiting the described resources, the following features were extracted: po
 
 In order to assign a sentiment polarity score to each tweet, we employed an adapted version of the ItaliaNLP Sentiment Polarity Classifier for the English language [@cimino2014linguistically]. This classifier operates on morpho-syntactically tagged and dependency parsed texts and assigns to each document a score expressing its probability of belonging to a given polarity class. The highest score represents the most probable class. Given a set of features and a training corpus, the classifier creates a statistical model using the feature statistics extracted from the training corpus. This model is used in the classification of unseen documents. The set of features and the machine learning algorithm can be parametrized through a configuration file.  For this work, we used a tandem Long Short Term Memory Recurrent Neural Network (LSTM) - Support Vector Machines (SVM) architecture.
 
-#### Validation of the extracted clues {-}
+#### Filterting and validation of the extracted clues {-}
 
 The sentiment classifier is employed to validate the advantage and drawback clues which were previously extracted from patents by the clue extractor. In order to do so, we exploited the output of the tweet classifier on the tweets we previously downloaded. Each tweet, as said before, contains one or more clues to be validated. The sentiment classifier assigns the likeliness to each tweet to positive, neutral or negative. Consequently by analyzing all the tweets we previously downloaded, we obtained for each clue the distribution of positive, neutral and negative tweets. 
 
 Then to make a decision regarding each clue we used another SVM based classifier. This classifier is trained on a gold set of advantages and drawbacks clues: we manually labeled 344 words as advantages and 193 words as drawbacks, obtaining the gold set. The features used by this classifier are a number of positive, neutral and negative tweets extracted in which the entities are mentioned and the _word2vec_ vector representing the considered entity. 
-In table \@ref(tab:sentiment-validation) the classification results of the proposed approach over a 5-fold cross validation are reported. The obtained results show that the proposed entity validation method is suitable for the automatic advantages/drawbacks clues validation process.
 
-Table: (\#tab:sentiment-validation) Classification results of the proposed validation method over a 5-fold validation.
+The classification results of the proposed approach over a 5-fold cross validation using the SVM-W2V are:
 
-| *Method* | Global accuracy | *ADV Prec.* | *ADV Rec.* | *ADV F1* | *DRW Prec.* | *DRW Rec.* | *DRW F1* |
-|:--------:|:---------------:|:-----------:|:----------:|:--------:|:-----------:|:----------:|:--------:|
-|  SVM-W2V |      87.71      |    89.89    |    91.29   |   90.57  |    83.35    |    80.66   |   81.92  |
+- Global accuracy: 87.71
+- ADV Precision: 89.89
+- ADV Recall: 91.29
+- DRW Precision: 83.35
+- DRW Recall: 80.66
 
+The obtained results show that the proposed entity validation method is suitable for the automatic advantages/drawbacks clues validation process.
 
 
 
@@ -642,7 +652,7 @@ knitr::include_graphics("_bookdown_files/figures/relevant-sentences-extraction.p
 
 The advantages and drawbacks extraction process is shown in figure \@ref(fig:advantagedrawbacksextraction). Once all the domain specific advantages and drawbacks clues are extracted, these are merged with the ones belonging to the original knowledge base, obtaining a final list which will be processed by the advantages and drawbacks sentences extractor. The advantages and drawbacks sentences extractor exploits predefined linguistic and clues filters which operate on the automatic pos–tagged patents. Specifically, for each advantage and drawback term identified in patents, we used a pos–clue-pattern constraining the start-token and the rest of the token pos. Since we were interested in phrases containing words belonging to specific morphological categories, we identified sequences of allowed pos–clue-pattern in order to cover most of the English morphosyntactic multi–words structures, using the following pattern:
 
-(ADVClue|textbar DISClue)+Noun.\*Noun.\*Noun.
+(ADVClue| DISClue)+Noun.\*Noun.\*Noun.
 
 
 The pattern is applied to the previously lemmatized text in order to have less sparse and more informative extractions.
@@ -757,7 +767,7 @@ Table: (\#tab:advantagedrawbackssentences) Number of sentences containing advant
 The number of advantages and drawbacks sentences extracted from each patent are shown in table \@ref(tab:advantagedrawbackssentences). The table shows that the occurrence of sentences describing an advantage is higher than the ones containing a drawback \@ref(tab:infogain1). This result may be due to the fact that the applicant is minded to describe the invention by highlighting the positive effects of the invention.
 
 
-Figure \@ref(fig:processimagetest1) and \@ref(fig:processimagetest2) show two subsets of the taxonomies obtained by the extraction of the advantages and drawbacks for each of the four analyzed patent sets. The two figures respectively refers to a subset of the leaves linked to the advantage clue _Improve_ and a subset of the leaves linked to the drawback clue _Damage.
+Figure \@ref(fig:processimagetest1) and \@ref(fig:processimagetest2) show two subsets of the taxonomies obtained by the extraction of the advantages and drawbacks for each of the four analyzed patent sets. The two figures respectively refers to a subset of the leaves linked to the advantage clue _Improve_ and a subset of the leaves linked to the drawback clue Damage.
 In both cases an additional trimming action is performed by removing those branches or leaves containing terms belonging to the stop-word list typical of patent lexicon (e.g. claim, embodiment, invention, comprise, figure, etc..).
 The figure shows that our process can extract highly informative sentences also starting from generic and non-contextual clues like  _improve_ or _damage_. Moreover the words that follow the generic clues are specific of the technical field of the analyzed products.
 Both the results are promising for future applications, especially for the design fields. In particular figure \@ref(fig:processimagetest1) allows designers to focus on the positive side of the effects provided by the product and to better meet the explicit and implicit user needs. Similarly, figure \@ref(fig:processimagetest2) helps designers to redesign of the product in a proactive way, to keep attention to the critical issues identified by the drawbacks and to conceive possible corrective actions to solve such drawbacks.
@@ -807,7 +817,7 @@ Finally, in [@pressman2018nolo] the authors gives some guidelines on how to intr
 
 ### Methodology 
 
-With respect to Users \@ref(usersresults) and to Advantages and Distadvantages \@ref(#advdrwresults) the process to extract tradenames from patents is trivial. The main activity performed are (for details aobut the activities see section \@ref(sotatools):
+With respect to Users \@ref(usersresults) and to Advantages and Distadvantages \@ref(advdrwresults) the process to extract tradenames from patents is trivial. The main activity performed are (for details aobut the activities see section \@ref(sotatools):
 
 - Sentence splitting
 - Tokenization
@@ -867,9 +877,9 @@ knitr::include_graphics("_bookdown_files/figures/TrendsMarks.001.jpeg")
 
 ```
 
-#### The Popularity of Tradenames in Patens {-}
+#### The Popularity of Tradenames in Patents {-}
 
-In figure \@ref(fig:populartm) are plotted the trends of the numbers of patents that correctly cites a tradenames. We analyzed 12 different tradenames, divided in couples: each couple belong to a similar sector. We make use of a generalized additive model fitting function to better analyze the results and to make more easily to understand and compare the two element of each pair. 
+In figure \@ref(fig:populartm) are plotted the trends of the numbers of patents that correctly cite a tradenames. We analyzed 12 different tradenames, divided in couples: each couple belong to a similar sector. We make use of a generalized additive model fitting function to better analyze the results and to make more easily to understand and compare the two element of each pair. 
 
 Each pair has been chosen to compare trademarks in homogeneous markets. Some of them shows: 
 
@@ -887,7 +897,7 @@ knitr::include_graphics("_bookdown_files/figures/Marks_Years.jpeg")
 ```
 
 
-#### The Similarity of Tradenames in Patens {-}
+#### The Similarity of Tradenames in Patents {-}
 
 Further information can be derived by analysing the IPC classes where the patent have been chosen by the assignees-attorneys-examiners.The choice of a class is not only matter of market segment but rather of market use. Moreover it is necessary to remark that  from a formal point of view the IPC classes form a feature vector, denoted y ∈ N639. IPC classes form a complete dataset of 639 elements of such feature vector. Each tradename is represented in such a feature vector where the number of patents in each class constitutes the length of the vector along that direction (feature). Our training data is therefore D = (x,y,z), where x∈[1, .., 12], y∈[1, .., 639], and z represents the patent numerosity z∈[0..15*106]. This dataset contains information about how z varies as a function of x and y. The matrix is quite empty since each product/brand addresses needs of specific market/s, after cleaning of the totally empty columns the matrix reduces to the dimensions of 12x479 and demonstrates a correct choice of the trademarks since they covered almost 75% of the IPC space.
 
@@ -912,7 +922,7 @@ A deeper description of what patents are and how these documents are used to min
 
 In this section we present two methodologies capable of automatically segmenting a knowledge field. These selected knowledge field are: sustainable manufacturing and block-chain. The results of the methodologies are described, together with example of applications. 
 
-## Sustainable Manufacturing: an Analysis of the 6R Framework {#smtextdrivenbottomup}
+## Sustainable Manufacturing: the 6R Framework {#smtextdrivenbottomup}
 
 One of the most important objectives of Sustainable Manufacturing (SM) is developing innovative and viable engineered materials, manufacturing processes and systems to provide multiple life-cycle of products. In SM the old concept “from cradle to grave” is now transforming into “from cradle to cradle” [@jawahir2016technological], tending toward multiple product life-cycles or even a “near-perpetual” product/material life. 
 Scientific contributions in the sustainable manufacturing field mostly deals with energy and resource consumption. In this respect, two different main fields of causes can be identified: the process level and the material efficiency one. As a matter of facts, manufacturing processes have a significant role also in putting in place material efficiency strategies [@ingarao2017manufacturing].  As far as the processes are concerned, a first classification of research contributions was discussed in the CIRP General Assembly [@duflou2012towards]. There the authors state that research in manufacturing field, oriented to environmental impact reduction, can be clustered in 5 main sub-classes: 
@@ -937,8 +947,8 @@ The role of manufacturing processes in putting in place material efficiency/reus
 
 #### The 6R Framework {-}
 
-All the life-cycle stages of the product development (namely, design, production, use and post-use) should be considered carefully, with a particular attention to the design phase. This represents the real difference introduced by sustainable manufacturing concept with respect to traditional manufacturing, to lean manufacturing or even to green manufacturing, precursors of the SM. In a word, SM paradigm embraces those principles belonging to the 6R framework, namely: Reduce, Reuse, Recycle, Recover, Redesign and Remanufacture. The latter three principles where not included into the previous 3R framework.  To a certain extent, it appears that the better definition of sustainability for any manufacturing operation provided so far is the extent to these principles are applied. This statement justifies because in the search to find a common rationale behind the mess of SM applications, one possible way is to find common roots in the principles that inspired the same applications: namely principles, which allows to the decision maker either an effective way to search for new sustainable solutions or to a certain extent measure the “degree of sustainability”. The higher the number of principles that are satisfied, the higher the potential positive impact on sustainability can be for a given adopted solution.  In this sense, far from stating that the 6R framework is a widespread and commonly adopted metric of SM, the starting assumption in this paper is that 6R is the only approach, to the author’s knowledge, that provides a criteria of classification and selection of solution, and thus indirectly to provide a clear definition of what a SM application may look like.
-The true question nowadays is _if the 6R framework may capture the essence of SM_, provided that it is really critical to clearly define the SM paradigm rationale to the scientific community. This paper aims to stimulate the reflection from the Italian perspective to this point, with a particular concern to the production technology side, by using an automatic classification of papers within the 6R framework and then by benchmarking approaches followed by the Italian Technologist research-network SOSTNERE on SM issues. 
+All the life-cycle stages of the product development (namely, design, production, use and post-use) should be considered carefully, with a particular attention to the design phase. This represents the real difference introduced by sustainable manufacturing concept with respect to traditional manufacturing, to lean manufacturing or even to green manufacturing, precursors of the SM. In a word, SM paradigm embraces those principles belonging to the 6R framework, namely: Reduce, Reuse, Recycle, Recover, Redesign and Remanufacture. The latter three principles where not included into the previous 3R framework.  To a certain extent, it appears that the better definition of sustainability for any manufacturing operation provided so far is the extent to these principles are applied. This statement justifies because in the search to find a common rationale behind the mess of SM applications, one possible way is to find common roots in the principles that inspired the same applications: namely principles, which allows to the decision maker either an effective way to search for new sustainable solutions or to a certain extent measure the “degree of sustainability”. The higher the number of principles that are satisfied, the higher the potential positive impact on sustainability can be for a given adopted solution.  In this sense, far from stating that the 6R framework is a widespread and commonly adopted metric of SM, the starting assumption in this section is that 6R is the only approach, to the author’s knowledge, that provides a criteria of classification and selection of solution, and thus indirectly to provide a clear definition of what a SM application may look like.
+The true question nowadays is _if the 6R framework may capture the essence of SM_, provided that it is really critical to clearly define the SM paradigm rationale to the scientific community. This section aims to stimulate the reflection from the Italian perspective to this point, with a particular concern to the production technology side, by using an automatic classification of papers within the 6R framework and then by benchmarking approaches followed by the Italian Technologist research-network SOSTNERE on SM issues. 
 
 Sustainability (from sustain plus ability) refers to the set of properties of a given system (either natural or artificial), which allows the same system to maintain itself for an almost indefinite period of time. This concept was officially introduced in a document of the World Commission on Environment and Development (WCED) entitled “Our Common Future”, where the Sustainable Development was defined as follows: _"Sustainable development is development that meets the needs of the present without compromising the ability of future generations to meet their own needs "_[@wced1987world]. Starting from this general definition, further conceptualizations have been produced for manufacturing activities and/or processes, as here briefly recalled. According to the Organization for Economic Co-operation and Development, Sustainable manufacturing is a formal name for an exciting new way of doing business and creating value. Different statements of sustainability in literature ^[http://www.trade.gov/green/sm-101-module.asp] share the same focus on the following three aspects: economy, environment and society. It is thus possible to summarize from the literature analyzed a possible definition for sustainable manufactured processes/products, according to the following set of prescriptions:
 
@@ -962,7 +972,7 @@ As seen in the flowchart of figure 1 the main activities of the process are four
 
 #### Assignment of 6R principle meanings {-}
 
-The first critical issue is the selection criteria of 6R principles for the assignment. This was done by trying to assign a semantic specification of each R principle, as below explicated, built by summarizing all the possible definitions and concepts extracted by the selected bibliography (partially cited in the present paper). The semantic specification provided below refers to the functional scope of each class, intended as an activity to be performed.
+The first critical issue is the selection criteria of 6R principles for the assignment. This was done by trying to assign a semantic specification of each R principle, as below explicated, built by summarizing all the possible definitions and concepts extracted by the selected bibliography (partially cited in the present section). The semantic specification provided below refers to the functional scope of each class, intended as an activity to be performed.
 
 ```{r wfsm, echo=FALSE, fig.align='center', fig.asp=.75, fig.cap='Flowchart of the 6R papers analysis process. The white boxes represent the activities and the yellow boxes the predicted documents. In the figure are also highlighted the input and the main outputs of the process.', message=FALSE, warning=FALSE, out.width='80%'}
 
@@ -1279,7 +1289,7 @@ In our case the DTM has 1077 rows representing the sentences (31 sentences did n
 
 #### Definition of the Optimal Number of Topics: a Human-Machine Hybrid Approach {-}
 
-To fit a LDA model we have to give as a parameter the number of topic k that we think that best represent the corpus in analysis. In literature there exists many measurement to compute an optimal value of k. However it is worth to keep in mind that these measures  are not always correlated with expert judgement about topics interpretability and coherence. For this reason in the present paper we use an hybrid approach in which we find an optimal neighborhood of value using state of the art k tuning methods and then we compute a graphical output for the 5 best k values to be evaluated by 4 different experts. 
+To fit a LDA model we have to give as a parameter the number of topic k that we think that best represent the corpus in analysis. In literature there exists many measurement to compute an optimal value of k. However it is worth to keep in mind that these measures  are not always correlated with expert judgement about topics interpretability and coherence. For this reason in the present section we use an hybrid approach in which we find an optimal neighborhood of value using state of the art k tuning methods and then we compute a graphical output for the 5 best k values to be evaluated by 4 different experts. 
 
 Several approaches tried to take the problem of automatically finding the right number of topics contained in a set of documents. Every approach follow the idea of computing distances (or similarities) between pair of topics varying the number of topics.  We used four different methods to evaluate the output of a topic model for different value of k. These methods are:
 
@@ -1405,7 +1415,7 @@ Industry 4.0 is getting the center of the scene with respect to the future of pr
 
 Yet other authors claim that this new wave of technology is fundamentally different from previous technologies and not just an amalgamation. In order to address the question whether Industry 4.0 is a new paradigm, or rather a re-labeling of existing technologies, a preliminary activity is needed, namely the delineation of the field and the clustering of technologies covered in the perimeter. It turns out that this activity is extremely challenging in the case of Industry 4.0, for a number of reasons we discuss in great detail. Faced with the complexity of Industry 4.0 existing delineation and clustering methodologies can be considered inadequate.
 
-In this paper we develop a novel approach, test it, and show its superior performance with respect to other approaches.
+In this section we develop a novel approach, test it, and show its superior performance with respect to other approaches.
 The key features of the approach are as follows:
 
 i) the description of Industry 4.0 is offered in the form of an “enriched dictionary”, or an ordered and comprehensive collection of lemmas, each of which are associated to full scale definitions and descriptions and to explicit linkages to other lemmas;
@@ -1448,25 +1458,7 @@ knitr::kable(
 
 
 
-Formulated initially in Germany in 2011, the Industry 4.0 paradigm has been quickly translated, adapted and reinterpreted in developed and developing countries. Table \@ref(tabledocs40scopus) offers a compilation of official documents of governments, agencies and international organizations that in a few years after the initial formulation have embraced the concept.
-
-
-
-```{r tabledocs40scopus, echo=FALSE, fig.align='center', fig.asp=.75, message=FALSE, warning=FALSE, out.width='80%'}
-
-library(magrittr)
-
-knitr::kable(
-  readxl::read_xlsx("_bookdown_files/tables/table_2_tech40.xlsx"), "latex", booktabs = T,
-  caption = "Technical document and Scientific articles used to create the Technology Seed List." ) %>%   
-  kableExtra::column_spec(1, width = "5em") %>% 
-  kableExtra::column_spec(2, italic=T, width = "10em") %>% 
-  kableExtra::column_spec(4, width = "5em") %>% 
-  kableExtra::column_spec(6, italic=T, width = "5em")
-  
-
-```
-
+Formulated initially in Germany in 2011, the Industry 4.0 paradigm has been quickly translated, adapted and reinterpreted in developed and developing countries.
 
 Despite this rapid and impressive convergence of interest (in itself a clear demonstration of the interdependence of policies across the world), there is no common ground in the definition and delineation of the field even if a first definition of the goal of industry 4.0 have been presented since 1998 [@national1998visionary].
 
@@ -1493,10 +1485,10 @@ Summing up, the recombinant nature of Industry 4.0 creates several interrelated 
 - the stakeholders are located in several organizational positions
 - the technical progress is very fast, with many (even if not all) constituent technologies facing rapid changes in their nature and performance.
 
-Faced with this situation, a traditional approach to profiling and mapping would require a massive effort of keyword definition. A number of experts would be recruited in order to offer a representation of the field from their disciplinary or industry perspective. Extensive domain knowledge would be mobilized in such a way to build up detailed yet comprehensive maps of technologies. Based on these maps, governments, statistical offices and international organizations would work for a few years in line in the effort to identify the trends of technologies, the most important actors, the shares of individual countries or regions in the global landscape. For sure, this is the approach underlying most of the documents illustrated in Table \@ref(tab:tabledocs40scopus) and this the approach that will be pursued in the years to come.
+Faced with this situation, a traditional approach to profiling and mapping would require a massive effort of keyword definition. A number of experts would be recruited in order to offer a representation of the field from their disciplinary or industry perspective. Extensive domain knowledge would be mobilized in such a way to build up detailed yet comprehensive maps of technologies. Based on these maps, governments, statistical offices and international organizations would work for a few years in line in the effort to identify the trends of technologies, the most important actors, the shares of individual countries or regions in the global landscape.
 
 We strongly suggest this approach does not deliver the expected result. Keyword-based approaches to emerging technologies are too dependent on subjective judgments of experts. Even when the experts involved are top class and disinterested (often the best researchers or industrialists), their vision is inevitably partial. Even more importantly, keyword-based representations cannot be updated with the same speed of technology. The set of keywords identified by experts becomes inevitably obsolete in a few months.
-This paper leverages on publications and open source repositories to design, develop and test a methodology that provides delineation and clustering of technologies of the Industry 4.0 paradigm. The methodology is based on a dictionary concerning the enabling technologies for industry 4.0 with full definitions and connections between them.
+This section leverages on publications and open source repositories to design, develop and test a methodology that provides delineation and clustering of technologies of the Industry 4.0 paradigm. The methodology is based on a dictionary concerning the enabling technologies for industry 4.0 with full definitions and connections between them.
 Given the fast growth and the uncertainty that characterizes industry 4.0 technologies, the present methodology is designed to be a bottom-up and continuous evolving tool. The structure and measurements made on the tool refer to July 2017.
 
 #### Mapping and Clustering a complex emerging technology {-}
@@ -1540,7 +1532,7 @@ The most used approaches to clustering assume that members of a cluster:
 
 
 In the proposed methodology we exploit the hyperlink feature of Wikipedia in order to introduce a new approach to clustering. Hyperlinks are introduced by authors in order to establish a semantic linkage between the page and other pages. We exploit this feature as follows: members of the same cluster are those pages that share the hyperlinks to other pages, according to thresholds defined by an appropriate algorithm.
-Note that hyperlinks are only superficially similar to citations. The origin page “cites” another page by hyperlinking it, but in effect this linkage is not a citation (that is, a reference to a previous work) but a signal of semantic similarity, intended to guide the reader in the network of meanings.
+Note that hyperlinks are only superficially similar to citations. The origin page cite another page by hyperlinking it, but in effect this linkage is not a citation (that is, a reference to a previous work) but a signal of semantic similarity, intended to guide the reader in the network of meanings.
 We suggest that the hyperlinks are similar to citations under some respect, but very different under some other respects. Like citations, hyperlinks are introduced in the text by authors and reflect intentionality. Unlike citations, they reflect semantic relations, not relations of credit assignment or tribute to scientific authority. Perhaps more importantly, citations are introduced only by the author(s) of a paper and remain unchanged after publication. Hyperlinks, on the contrary, are introduced also by subsequent readers of the Wikipedia page. If the introduction of hyperlinks is not considered appropriate by the community of contributors, as it may happen due to vandalism, they are immediately removed (see the discussion below). This means that they reflect all possible semantic connections among the pages, as collectively stated by a large community of authors, in a reliable and robust way. We believe this methodology offers a remarkable improvement with respect to existing approaches.
 
 #### How is similarity measured by using Wikipedia {-}
@@ -1572,7 +1564,7 @@ As input for our methodology we used technical documents, official government do
 
 – taking the 10 most cited papers on Industry 4.0 according to Scopus. The reference to Industry 4.0 was explicit in the title, abstract and keywords of the papers. The extraction was made on Scopus Database in June 2017. 
 
-We deliberately limit ourselves to a small number of documents. The reason is explained in conjunction with the chosen stopping rules. The documents have been manually parsed by a team of Master students in Engineering Management at the University of Pisa. The assignment was “Understand each document and extract the enabling technologies for industry 4.0”. The manual search in the documents continued until the team reached the goal of 100 different technologies extracted. For our purposes 100 different technologies represents a reasonable seed list of technologies, which will be used as input for the automatic expansion phase. The chosen documents are shown in Table \@ref(tab:tabledocs40scopus).
+We deliberately limit ourselves to a small number of documents. The reason is explained in conjunction with the chosen stopping rules. The documents have been manually parsed by a team of Master students in Engineering Management at the University of Pisa. The assignment was “Understand each document and extract the enabling technologies for industry 4.0”. The manual search in the documents continued until the team reached the goal of 100 different technologies extracted. For our purposes 100 different technologies represents a reasonable seed list of technologies, which will be used as input for the automatic expansion phase. 
 
 ####  Seed list expansion {-}
 

@@ -3,7 +3,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Text Mining Techniques for Knowledge Extraction from Technical Documents</a></li>
+        <li><a href="./">Mining Technical Knowledge</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     download: ["pdf", "epub"]
